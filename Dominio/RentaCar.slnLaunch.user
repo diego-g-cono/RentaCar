@@ -1,0 +1,11 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "..\\Escritorio\\Escritorio.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "qN/NvbFPQSI=",
+  "success": true,
+  "projectFilePath": "D:\\Seminario I\\TP Final\\Rev0\\Dominio\\Dominio.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\diego\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
