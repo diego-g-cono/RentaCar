@@ -10,3 +10,4 @@ D:\Seminario I\TP Final\Rev0\Dominio\obj\Debug\net8.0\Dominio.dll
 D:\Seminario I\TP Final\Rev0\Dominio\obj\Debug\net8.0\refint\Dominio.dll
 D:\Seminario I\TP Final\Rev0\Dominio\obj\Debug\net8.0\Dominio.pdb
 D:\Seminario I\TP Final\Rev0\Dominio\obj\Debug\net8.0\ref\Dominio.dll
+D:\Seminario I\TP Final\Rev0\Dominio\obj\Debug\net8.0\Dominio.sourcelink.json

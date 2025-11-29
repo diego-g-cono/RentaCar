@@ -123,10 +123,37 @@ namespace Escritorio
         {
             HabilitarCampos(true);
             LimpiarFormulario();
+            filaEnEdicion = -1;
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtBoxPatente.Text))
+            {
+                MessageBox.Show("La patente es obligatoria", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtBoxPatente.Focus();
+                return;
+            }
+
+            if (cmbBoxMarca.SelectedItem == null)
+            {
+                MessageBox.Show("Debe seleccionar una marca", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cmbBoxMarca.DroppedDown = true;
+                return;
+            }
+
+            if (cmbBoxModelo.SelectedItem == null)
+            {
+                MessageBox.Show("Debe seleccionar un modelo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cmbBoxModelo.DroppedDown = true;
+                return;
+            }
+            if (cmbBoxEstado.SelectedItem == null)
+            {
+                MessageBox.Show("Debe seleccionar un estado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cmbBoxEstado.DroppedDown = true;
+                return;
+            }
             if (filaEnEdicion == -1)
             {
                 using (var db = new RentaCarDBContext())

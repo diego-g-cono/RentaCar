@@ -36,3 +36,4 @@ D:\Seminario I\TP Final\Rev0\Escritorio\bin\Debug\net8.0-windows\Npgsql.dll
 D:\Seminario I\TP Final\Rev0\Escritorio\bin\Debug\net8.0-windows\Npgsql.EntityFrameworkCore.PostgreSQL.dll
 D:\Seminario I\TP Final\Rev0\Escritorio\obj\Debug\net8.0-windows\Escritorio.FrmClientes.resources
 D:\Seminario I\TP Final\Rev0\Escritorio\obj\Debug\net8.0-windows\Escritorio.FrmReservas.resources
+D:\Seminario I\TP Final\Rev0\Escritorio\obj\Debug\net8.0-windows\Escritorio.sourcelink.json

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Dominio;
 
 namespace Escritorio
 {
@@ -35,6 +36,14 @@ namespace Escritorio
             }
 
             MessageBox.Show("Cliente guardado correctamente");
+
+            using (var db = new RentaCarDBContext())
+            {
+                var lista = db.Clientes.ToList();
+                dataGridViewClientes.AutoGenerateColumns = false;
+                dataGridViewClientes.DataSource = lista;
+            }
         }
+
     }
 }
