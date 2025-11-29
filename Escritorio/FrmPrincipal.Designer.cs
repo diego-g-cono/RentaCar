@@ -30,7 +30,7 @@
         {
             menuStrip1 = new MenuStrip();
             gestionarToolStripMenuItem = new ToolStripMenuItem();
-            vehículosToolStripMenuItem = new ToolStripMenuItem();
+            vehiculosToolStripMenuItem = new ToolStripMenuItem();
             reservasToolStripMenuItem = new ToolStripMenuItem();
             clientesToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
@@ -47,23 +47,24 @@
             // 
             // gestionarToolStripMenuItem
             // 
-            gestionarToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { vehículosToolStripMenuItem, reservasToolStripMenuItem, clientesToolStripMenuItem });
+            gestionarToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { vehiculosToolStripMenuItem, reservasToolStripMenuItem, clientesToolStripMenuItem });
             gestionarToolStripMenuItem.Name = "gestionarToolStripMenuItem";
             gestionarToolStripMenuItem.Size = new Size(69, 20);
             gestionarToolStripMenuItem.Text = "Gestionar";
             // 
-            // vehículosToolStripMenuItem
+            // vehiculosToolStripMenuItem
             // 
-            vehículosToolStripMenuItem.Name = "vehículosToolStripMenuItem";
-            vehículosToolStripMenuItem.Size = new Size(180, 22);
-            vehículosToolStripMenuItem.Text = "Vehículos";
-            vehículosToolStripMenuItem.Click += vehículosToolStripMenuItem_Click;
+            vehiculosToolStripMenuItem.Name = "vehiculosToolStripMenuItem";
+            vehiculosToolStripMenuItem.Size = new Size(180, 22);
+            vehiculosToolStripMenuItem.Text = "Vehículos";
+            vehiculosToolStripMenuItem.Click += vehiculosToolStripMenuItem_Click;
             // 
             // reservasToolStripMenuItem
             // 
             reservasToolStripMenuItem.Name = "reservasToolStripMenuItem";
             reservasToolStripMenuItem.Size = new Size(180, 22);
             reservasToolStripMenuItem.Text = "Reservas";
+            reservasToolStripMenuItem.Click += reservasToolStripMenuItem_Click;
             // 
             // clientesToolStripMenuItem
             // 
@@ -92,7 +93,7 @@
 
         private MenuStrip menuStrip1;
         private ToolStripMenuItem gestionarToolStripMenuItem;
-        private ToolStripMenuItem vehículosToolStripMenuItem;
+        private ToolStripMenuItem vehiculosToolStripMenuItem;
         private ToolStripMenuItem reservasToolStripMenuItem;
         private ToolStripMenuItem clientesToolStripMenuItem;
     }

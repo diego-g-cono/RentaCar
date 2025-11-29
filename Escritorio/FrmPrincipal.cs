@@ -7,7 +7,7 @@ namespace Escritorio
             InitializeComponent();
         }
 
-        private void vehículosToolStripMenuItem_Click(object sender, EventArgs e)
+        private void vehiculosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmVehiculos frmVehiculos = new FrmVehiculos();
             frmVehiculos.MdiParent = this;
@@ -18,6 +18,12 @@ namespace Escritorio
             FrmClientes frmClientes = new FrmClientes();
             frmClientes.MdiParent = this;
             frmClientes.Show();
+        }
+        private void reservasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmReservas frmReservas = new FrmReservas();
+            frmReservas.MdiParent = this;
+            frmReservas.Show();
         }
     }
 }

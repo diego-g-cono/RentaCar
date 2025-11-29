@@ -31,27 +31,34 @@
             btnNuevo = new Button();
             btnModificar = new Button();
             btnEliminar = new Button();
-            groupBoxReservas = new GroupBox();
+            grBoxReservas = new GroupBox();
+            numBoxSenia = new NumericUpDown();
+            dateTimeFechaDevolucion = new DateTimePicker();
+            dateTimeFechaRetiro = new DateTimePicker();
+            txtBoxVehiculo = new TextBox();
+            txtBoxCliente = new TextBox();
+            labelSenia = new Label();
+            labelFechaDevolucion = new Label();
+            labelFechaRetiro = new Label();
+            labelVehiculo = new Label();
+            labelCliente = new Label();
             tabControlReservas = new TabControl();
             tabPageReservas = new TabPage();
+            dataGridViewReservas = new DataGridView();
+            ColumnaId = new DataGridViewTextBoxColumn();
+            ColumnaCliente = new DataGridViewTextBoxColumn();
+            ColumnaVehiculo = new DataGridViewTextBoxColumn();
+            ColumnaFechaRetiro = new DataGridViewTextBoxColumn();
+            ColumnaFechaDevolucion = new DataGridViewTextBoxColumn();
+            ColumnaSenia = new DataGridViewTextBoxColumn();
             tabPageClientes = new TabPage();
-            labelCliente = new Label();
-            labelVehiculo = new Label();
-            labelFechaRetiro = new Label();
-            labelFechaDevolucion = new Label();
-            labelSenia = new Label();
-            txtBoxCliente = new TextBox();
-            txtBoxVehiculo = new TextBox();
-            dateTimeFechaRetiro = new DateTimePicker();
-            dateTimeFechaDevolucion = new DateTimePicker();
-            numBoxSenia = new NumericUpDown();
-            tabPageVehiculos = new TabPage();
             dataGridViewClientes = new DataGridView();
             ColumnaDNI = new DataGridViewTextBoxColumn();
             ColumnaNombre = new DataGridViewTextBoxColumn();
             ColumnaApellido = new DataGridViewTextBoxColumn();
             ColumnaUsuario = new DataGridViewTextBoxColumn();
             ColumnaContrasenia = new DataGridViewTextBoxColumn();
+            tabPageVehiculos = new TabPage();
             dataGridViewVehiculos = new DataGridView();
             ColumnaPatente = new DataGridViewTextBoxColumn();
             ColumnaMarca = new DataGridViewTextBoxColumn();
@@ -61,16 +68,17 @@
             ColumnaCombustible = new DataGridViewTextBoxColumn();
             ColumnaKm = new DataGridViewTextBoxColumn();
             ColumnaEstado = new DataGridViewTextBoxColumn();
-            dataGridView1 = new DataGridView();
-            groupBoxReservas.SuspendLayout();
+            btnGuardar = new Button();
+            btnCancelar = new Button();
+            grBoxReservas.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)numBoxSenia).BeginInit();
             tabControlReservas.SuspendLayout();
             tabPageReservas.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewReservas).BeginInit();
             tabPageClientes.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numBoxSenia).BeginInit();
-            tabPageVehiculos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewClientes).BeginInit();
+            tabPageVehiculos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewVehiculos).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // btnNuevo
@@ -81,10 +89,11 @@
             btnNuevo.TabIndex = 0;
             btnNuevo.Text = "Nueva";
             btnNuevo.UseVisualStyleBackColor = true;
+            btnNuevo.Click += btnNuevo_Click;
             // 
             // btnModificar
             // 
-            btnModificar.Location = new Point(115, 12);
+            btnModificar.Location = new Point(144, 12);
             btnModificar.Name = "btnModificar";
             btnModificar.Size = new Size(75, 23);
             btnModificar.TabIndex = 1;
@@ -93,100 +102,66 @@
             // 
             // btnEliminar
             // 
-            btnEliminar.Location = new Point(214, 12);
+            btnEliminar.Location = new Point(275, 12);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(75, 23);
             btnEliminar.TabIndex = 2;
             btnEliminar.Text = "Eliminar";
             btnEliminar.UseVisualStyleBackColor = true;
             // 
-            // groupBoxReservas
+            // grBoxReservas
             // 
-            groupBoxReservas.Controls.Add(numBoxSenia);
-            groupBoxReservas.Controls.Add(dateTimeFechaDevolucion);
-            groupBoxReservas.Controls.Add(dateTimeFechaRetiro);
-            groupBoxReservas.Controls.Add(txtBoxVehiculo);
-            groupBoxReservas.Controls.Add(txtBoxCliente);
-            groupBoxReservas.Controls.Add(labelSenia);
-            groupBoxReservas.Controls.Add(labelFechaDevolucion);
-            groupBoxReservas.Controls.Add(labelFechaRetiro);
-            groupBoxReservas.Controls.Add(labelVehiculo);
-            groupBoxReservas.Controls.Add(labelCliente);
-            groupBoxReservas.Location = new Point(12, 53);
-            groupBoxReservas.Name = "groupBoxReservas";
-            groupBoxReservas.Size = new Size(338, 211);
-            groupBoxReservas.TabIndex = 3;
-            groupBoxReservas.TabStop = false;
-            groupBoxReservas.Text = "Datos Reserva";
+            grBoxReservas.Controls.Add(numBoxSenia);
+            grBoxReservas.Controls.Add(dateTimeFechaDevolucion);
+            grBoxReservas.Controls.Add(dateTimeFechaRetiro);
+            grBoxReservas.Controls.Add(txtBoxVehiculo);
+            grBoxReservas.Controls.Add(txtBoxCliente);
+            grBoxReservas.Controls.Add(labelSenia);
+            grBoxReservas.Controls.Add(labelFechaDevolucion);
+            grBoxReservas.Controls.Add(labelFechaRetiro);
+            grBoxReservas.Controls.Add(labelVehiculo);
+            grBoxReservas.Controls.Add(labelCliente);
+            grBoxReservas.Location = new Point(12, 53);
+            grBoxReservas.Name = "grBoxReservas";
+            grBoxReservas.Size = new Size(338, 211);
+            grBoxReservas.TabIndex = 3;
+            grBoxReservas.TabStop = false;
+            grBoxReservas.Text = "Datos Reserva";
             // 
-            // tabControlReservas
+            // numBoxSenia
             // 
-            tabControlReservas.Controls.Add(tabPageReservas);
-            tabControlReservas.Controls.Add(tabPageClientes);
-            tabControlReservas.Controls.Add(tabPageVehiculos);
-            tabControlReservas.Location = new Point(365, 53);
-            tabControlReservas.Name = "tabControlReservas";
-            tabControlReservas.SelectedIndex = 0;
-            tabControlReservas.Size = new Size(856, 295);
-            tabControlReservas.TabIndex = 4;
+            numBoxSenia.Location = new Point(118, 158);
+            numBoxSenia.Name = "numBoxSenia";
+            numBoxSenia.Size = new Size(120, 23);
+            numBoxSenia.TabIndex = 9;
             // 
-            // tabPageReservas
+            // dateTimeFechaDevolucion
             // 
-            tabPageReservas.Controls.Add(dataGridView1);
-            tabPageReservas.Location = new Point(4, 24);
-            tabPageReservas.Name = "tabPageReservas";
-            tabPageReservas.Padding = new Padding(3);
-            tabPageReservas.Size = new Size(848, 267);
-            tabPageReservas.TabIndex = 0;
-            tabPageReservas.Text = "Reservas";
-            tabPageReservas.UseVisualStyleBackColor = true;
+            dateTimeFechaDevolucion.Location = new Point(118, 125);
+            dateTimeFechaDevolucion.Name = "dateTimeFechaDevolucion";
+            dateTimeFechaDevolucion.Size = new Size(200, 23);
+            dateTimeFechaDevolucion.TabIndex = 8;
             // 
-            // tabPageClientes
+            // dateTimeFechaRetiro
             // 
-            tabPageClientes.Controls.Add(dataGridViewClientes);
-            tabPageClientes.Location = new Point(4, 24);
-            tabPageClientes.Name = "tabPageClientes";
-            tabPageClientes.Padding = new Padding(3);
-            tabPageClientes.Size = new Size(848, 267);
-            tabPageClientes.TabIndex = 1;
-            tabPageClientes.Text = "Clientes";
-            tabPageClientes.UseVisualStyleBackColor = true;
+            dateTimeFechaRetiro.Location = new Point(118, 88);
+            dateTimeFechaRetiro.Name = "dateTimeFechaRetiro";
+            dateTimeFechaRetiro.Size = new Size(200, 23);
+            dateTimeFechaRetiro.TabIndex = 7;
             // 
-            // labelCliente
+            // txtBoxVehiculo
             // 
-            labelCliente.AutoSize = true;
-            labelCliente.Location = new Point(6, 22);
-            labelCliente.Name = "labelCliente";
-            labelCliente.Size = new Size(47, 15);
-            labelCliente.TabIndex = 0;
-            labelCliente.Text = "Cliente:";
+            txtBoxVehiculo.Location = new Point(118, 51);
+            txtBoxVehiculo.Name = "txtBoxVehiculo";
+            txtBoxVehiculo.Size = new Size(100, 23);
+            txtBoxVehiculo.TabIndex = 6;
             // 
-            // labelVehiculo
+            // txtBoxCliente
             // 
-            labelVehiculo.AutoSize = true;
-            labelVehiculo.Location = new Point(6, 54);
-            labelVehiculo.Name = "labelVehiculo";
-            labelVehiculo.Size = new Size(55, 15);
-            labelVehiculo.TabIndex = 1;
-            labelVehiculo.Text = "Vehículo:";
-            // 
-            // labelFechaRetiro
-            // 
-            labelFechaRetiro.AutoSize = true;
-            labelFechaRetiro.Location = new Point(3, 94);
-            labelFechaRetiro.Name = "labelFechaRetiro";
-            labelFechaRetiro.Size = new Size(72, 15);
-            labelFechaRetiro.TabIndex = 2;
-            labelFechaRetiro.Text = "Fecha retiro:";
-            // 
-            // labelFechaDevolucion
-            // 
-            labelFechaDevolucion.AutoSize = true;
-            labelFechaDevolucion.Location = new Point(6, 131);
-            labelFechaDevolucion.Name = "labelFechaDevolucion";
-            labelFechaDevolucion.Size = new Size(103, 15);
-            labelFechaDevolucion.TabIndex = 3;
-            labelFechaDevolucion.Text = "Fecha devolución:";
+            txtBoxCliente.Location = new Point(118, 19);
+            txtBoxCliente.Name = "txtBoxCliente";
+            txtBoxCliente.Size = new Size(100, 23);
+            txtBoxCliente.TabIndex = 5;
             // 
             // labelSenia
             // 
@@ -197,51 +172,129 @@
             labelSenia.TabIndex = 4;
             labelSenia.Text = "Seña:";
             // 
-            // txtBoxCliente
+            // labelFechaDevolucion
             // 
-            txtBoxCliente.Location = new Point(118, 19);
-            txtBoxCliente.Name = "txtBoxCliente";
-            txtBoxCliente.Size = new Size(100, 23);
-            txtBoxCliente.TabIndex = 5;
+            labelFechaDevolucion.AutoSize = true;
+            labelFechaDevolucion.Location = new Point(6, 131);
+            labelFechaDevolucion.Name = "labelFechaDevolucion";
+            labelFechaDevolucion.Size = new Size(103, 15);
+            labelFechaDevolucion.TabIndex = 3;
+            labelFechaDevolucion.Text = "Fecha devolución:";
             // 
-            // txtBoxVehiculo
+            // labelFechaRetiro
             // 
-            txtBoxVehiculo.Location = new Point(118, 51);
-            txtBoxVehiculo.Name = "txtBoxVehiculo";
-            txtBoxVehiculo.Size = new Size(100, 23);
-            txtBoxVehiculo.TabIndex = 6;
+            labelFechaRetiro.AutoSize = true;
+            labelFechaRetiro.Location = new Point(6, 94);
+            labelFechaRetiro.Name = "labelFechaRetiro";
+            labelFechaRetiro.Size = new Size(72, 15);
+            labelFechaRetiro.TabIndex = 2;
+            labelFechaRetiro.Text = "Fecha retiro:";
             // 
-            // dateTimeFechaRetiro
+            // labelVehiculo
             // 
-            dateTimeFechaRetiro.Location = new Point(118, 88);
-            dateTimeFechaRetiro.Name = "dateTimeFechaRetiro";
-            dateTimeFechaRetiro.Size = new Size(200, 23);
-            dateTimeFechaRetiro.TabIndex = 7;
+            labelVehiculo.AutoSize = true;
+            labelVehiculo.Location = new Point(6, 54);
+            labelVehiculo.Name = "labelVehiculo";
+            labelVehiculo.Size = new Size(55, 15);
+            labelVehiculo.TabIndex = 1;
+            labelVehiculo.Text = "Vehículo:";
             // 
-            // dateTimeFechaDevolucion
+            // labelCliente
             // 
-            dateTimeFechaDevolucion.Location = new Point(118, 125);
-            dateTimeFechaDevolucion.Name = "dateTimeFechaDevolucion";
-            dateTimeFechaDevolucion.Size = new Size(200, 23);
-            dateTimeFechaDevolucion.TabIndex = 8;
+            labelCliente.AutoSize = true;
+            labelCliente.Location = new Point(6, 22);
+            labelCliente.Name = "labelCliente";
+            labelCliente.Size = new Size(47, 15);
+            labelCliente.TabIndex = 0;
+            labelCliente.Text = "Cliente:";
             // 
-            // numBoxSenia
+            // tabControlReservas
             // 
-            numBoxSenia.Location = new Point(118, 158);
-            numBoxSenia.Name = "numBoxSenia";
-            numBoxSenia.Size = new Size(120, 23);
-            numBoxSenia.TabIndex = 9;
+            tabControlReservas.Controls.Add(tabPageReservas);
+            tabControlReservas.Controls.Add(tabPageClientes);
+            tabControlReservas.Controls.Add(tabPageVehiculos);
+            tabControlReservas.Location = new Point(365, 53);
+            tabControlReservas.Name = "tabControlReservas";
+            tabControlReservas.SelectedIndex = 0;
+            tabControlReservas.Size = new Size(856, 294);
+            tabControlReservas.TabIndex = 4;
+            tabControlReservas.Click += tabControlReservas_Click;
             // 
-            // tabPageVehiculos
+            // tabPageReservas
             // 
-            tabPageVehiculos.Controls.Add(dataGridViewVehiculos);
-            tabPageVehiculos.Location = new Point(4, 24);
-            tabPageVehiculos.Name = "tabPageVehiculos";
-            tabPageVehiculos.Padding = new Padding(3);
-            tabPageVehiculos.Size = new Size(848, 267);
-            tabPageVehiculos.TabIndex = 2;
-            tabPageVehiculos.Text = "Vehículos";
-            tabPageVehiculos.UseVisualStyleBackColor = true;
+            tabPageReservas.Controls.Add(dataGridViewReservas);
+            tabPageReservas.Location = new Point(4, 24);
+            tabPageReservas.Name = "tabPageReservas";
+            tabPageReservas.Padding = new Padding(3);
+            tabPageReservas.Size = new Size(848, 266);
+            tabPageReservas.TabIndex = 0;
+            tabPageReservas.Text = "Reservas";
+            tabPageReservas.UseVisualStyleBackColor = true;
+            // 
+            // dataGridViewReservas
+            // 
+            dataGridViewReservas.AllowUserToAddRows = false;
+            dataGridViewReservas.AllowUserToDeleteRows = false;
+            dataGridViewReservas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewReservas.Columns.AddRange(new DataGridViewColumn[] { ColumnaId, ColumnaCliente, ColumnaVehiculo, ColumnaFechaRetiro, ColumnaFechaDevolucion, ColumnaSenia });
+            dataGridViewReservas.Location = new Point(0, 0);
+            dataGridViewReservas.Name = "dataGridViewReservas";
+            dataGridViewReservas.ReadOnly = true;
+            dataGridViewReservas.Size = new Size(651, 261);
+            dataGridViewReservas.TabIndex = 0;
+            // 
+            // ColumnaId
+            // 
+            ColumnaId.DataPropertyName = "IdReserva";
+            ColumnaId.HeaderText = "ID";
+            ColumnaId.Name = "ColumnaId";
+            ColumnaId.ReadOnly = true;
+            // 
+            // ColumnaCliente
+            // 
+            ColumnaCliente.DataPropertyName = "Cliente";
+            ColumnaCliente.HeaderText = "Cliente";
+            ColumnaCliente.Name = "ColumnaCliente";
+            ColumnaCliente.ReadOnly = true;
+            // 
+            // ColumnaVehiculo
+            // 
+            ColumnaVehiculo.DataPropertyName = "Vehiculo";
+            ColumnaVehiculo.HeaderText = "Vehículo";
+            ColumnaVehiculo.Name = "ColumnaVehiculo";
+            ColumnaVehiculo.ReadOnly = true;
+            // 
+            // ColumnaFechaRetiro
+            // 
+            ColumnaFechaRetiro.DataPropertyName = "FechaInicio";
+            ColumnaFechaRetiro.HeaderText = "Fecha Retiro";
+            ColumnaFechaRetiro.Name = "ColumnaFechaRetiro";
+            ColumnaFechaRetiro.ReadOnly = true;
+            // 
+            // ColumnaFechaDevolucion
+            // 
+            ColumnaFechaDevolucion.DataPropertyName = "FechaDevolucion";
+            ColumnaFechaDevolucion.HeaderText = "Fecha Devolución";
+            ColumnaFechaDevolucion.Name = "ColumnaFechaDevolucion";
+            ColumnaFechaDevolucion.ReadOnly = true;
+            // 
+            // ColumnaSenia
+            // 
+            ColumnaSenia.DataPropertyName = "Senia";
+            ColumnaSenia.HeaderText = "Seña";
+            ColumnaSenia.Name = "ColumnaSenia";
+            ColumnaSenia.ReadOnly = true;
+            // 
+            // tabPageClientes
+            // 
+            tabPageClientes.Controls.Add(dataGridViewClientes);
+            tabPageClientes.Location = new Point(4, 24);
+            tabPageClientes.Name = "tabPageClientes";
+            tabPageClientes.Padding = new Padding(3);
+            tabPageClientes.Size = new Size(848, 266);
+            tabPageClientes.TabIndex = 1;
+            tabPageClientes.Text = "Clientes";
+            tabPageClientes.UseVisualStyleBackColor = true;
             // 
             // dataGridViewClientes
             // 
@@ -254,6 +307,7 @@
             dataGridViewClientes.ReadOnly = true;
             dataGridViewClientes.Size = new Size(838, 256);
             dataGridViewClientes.TabIndex = 6;
+            dataGridViewClientes.CellDoubleClick += dataGridViewClientes_CellDoubleClick;
             // 
             // ColumnaDNI
             // 
@@ -290,6 +344,17 @@
             ColumnaContrasenia.Name = "ColumnaContrasenia";
             ColumnaContrasenia.ReadOnly = true;
             // 
+            // tabPageVehiculos
+            // 
+            tabPageVehiculos.Controls.Add(dataGridViewVehiculos);
+            tabPageVehiculos.Location = new Point(4, 24);
+            tabPageVehiculos.Name = "tabPageVehiculos";
+            tabPageVehiculos.Padding = new Padding(3);
+            tabPageVehiculos.Size = new Size(848, 266);
+            tabPageVehiculos.TabIndex = 2;
+            tabPageVehiculos.Text = "Vehículos";
+            tabPageVehiculos.UseVisualStyleBackColor = true;
+            // 
             // dataGridViewVehiculos
             // 
             dataGridViewVehiculos.AllowUserToAddRows = false;
@@ -299,8 +364,9 @@
             dataGridViewVehiculos.Location = new Point(0, 1);
             dataGridViewVehiculos.Name = "dataGridViewVehiculos";
             dataGridViewVehiculos.ReadOnly = true;
-            dataGridViewVehiculos.Size = new Size(845, 260);
+            dataGridViewVehiculos.Size = new Size(845, 262);
             dataGridViewVehiculos.TabIndex = 7;
+            dataGridViewVehiculos.CellDoubleClick += dataGridViewVehiculos_CellDoubleClick;
             // 
             // ColumnaPatente
             // 
@@ -358,39 +424,49 @@
             ColumnaEstado.Name = "ColumnaEstado";
             ColumnaEstado.ReadOnly = true;
             // 
-            // dataGridView1
+            // btnGuardar
             // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(0, 0);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridView1.Size = new Size(841, 260);
-            dataGridView1.TabIndex = 0;
+            btnGuardar.Location = new Point(12, 289);
+            btnGuardar.Name = "btnGuardar";
+            btnGuardar.Size = new Size(75, 23);
+            btnGuardar.TabIndex = 5;
+            btnGuardar.Text = "Guardar";
+            btnGuardar.UseVisualStyleBackColor = true;
+            // 
+            // btnCancelar
+            // 
+            btnCancelar.Location = new Point(275, 289);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(75, 23);
+            btnCancelar.TabIndex = 6;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.UseVisualStyleBackColor = true;
             // 
             // FrmReservas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1309, 612);
+            ClientSize = new Size(1229, 585);
+            Controls.Add(btnCancelar);
+            Controls.Add(btnGuardar);
             Controls.Add(tabControlReservas);
-            Controls.Add(groupBoxReservas);
+            Controls.Add(grBoxReservas);
             Controls.Add(btnEliminar);
             Controls.Add(btnModificar);
             Controls.Add(btnNuevo);
             Name = "FrmReservas";
             Text = "Reservas";
-            groupBoxReservas.ResumeLayout(false);
-            groupBoxReservas.PerformLayout();
+            Load += FrmReservas_Load;
+            grBoxReservas.ResumeLayout(false);
+            grBoxReservas.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)numBoxSenia).EndInit();
             tabControlReservas.ResumeLayout(false);
             tabPageReservas.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridViewReservas).EndInit();
             tabPageClientes.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)numBoxSenia).EndInit();
-            tabPageVehiculos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridViewClientes).EndInit();
+            tabPageVehiculos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridViewVehiculos).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
 
@@ -399,7 +475,7 @@
         private Button btnNuevo;
         private Button btnModificar;
         private Button btnEliminar;
-        private GroupBox groupBoxReservas;
+        private GroupBox grBoxReservas;
         private TabControl tabControlReservas;
         private TabPage tabPageReservas;
         private TabPage tabPageClientes;
@@ -420,7 +496,7 @@
         private DataGridViewTextBoxColumn ColumnaApellido;
         private DataGridViewTextBoxColumn ColumnaUsuario;
         private DataGridViewTextBoxColumn ColumnaContrasenia;
-        private DataGridView dataGridView1;
+        private DataGridView dataGridViewReservas;
         private DataGridView dataGridViewVehiculos;
         private DataGridViewTextBoxColumn ColumnaPatente;
         private DataGridViewTextBoxColumn ColumnaMarca;
@@ -430,5 +506,13 @@
         private DataGridViewTextBoxColumn ColumnaCombustible;
         private DataGridViewTextBoxColumn ColumnaKm;
         private DataGridViewTextBoxColumn ColumnaEstado;
+        private DataGridViewTextBoxColumn ColumnaId;
+        private DataGridViewTextBoxColumn ColumnaCliente;
+        private DataGridViewTextBoxColumn ColumnaVehiculo;
+        private DataGridViewTextBoxColumn ColumnaFechaRetiro;
+        private DataGridViewTextBoxColumn ColumnaFechaDevolucion;
+        private DataGridViewTextBoxColumn ColumnaSenia;
+        private Button btnGuardar;
+        private Button btnCancelar;
     }
 }
