@@ -6,22 +6,29 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    internal class Reserva
+    public class Reserva
     {
         private int _idReserva;
+        // Foreign keys
+        public int _clienteDni;
+        public string _vehiculoPatente;
+
         private Cliente _cliente;
         private float? _senia;
         private DateOnly _fechaInicio;
         private DateOnly _fechaFin;
         private Vehiculo _vehiculo;
+        private string _estado;
 
-        public Reserva(int id, Cliente cliente, DateOnly fechaInicio, DateOnly fechaFin, Vehiculo vehiculo, float? senia = null)
+        public Reserva(int clienteDni, string vehiculoPatente, DateOnly fechaInicio, DateOnly fechaFin, string estado, float? senia = null)
         {
-            _idReserva = id;
-            _cliente = cliente;
             _senia = senia;
+            _fechaInicio = fechaInicio;
             _fechaFin = fechaFin;
-            _vehiculo = vehiculo;
+            _estado = estado;
+            _clienteDni = clienteDni;
+            _vehiculoPatente = vehiculoPatente;
+
         }
         public int IdReserva
         {
@@ -52,6 +59,21 @@ namespace Dominio
         {
             get { return _fechaFin; }
             set { _fechaFin = value; }
+        }
+        public string Estado
+        {
+            get { return _estado; }
+            set { _estado = value; }
+        }
+        public int ClienteDni
+        {
+            get { return _clienteDni; }
+            set { _clienteDni = value; }
+        }
+        public string VehiculoPatente
+        {
+            get { return _vehiculoPatente; }
+            set { _vehiculoPatente = value; }
         }
     }
 }

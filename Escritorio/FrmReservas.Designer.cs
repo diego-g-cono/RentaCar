@@ -32,6 +32,8 @@
             btnModificar = new Button();
             btnEliminar = new Button();
             grBoxReservas = new GroupBox();
+            cmbBoxEstado = new ComboBox();
+            labelEstado = new Label();
             numBoxSenia = new NumericUpDown();
             dateTimeFechaDevolucion = new DateTimePicker();
             dateTimeFechaRetiro = new DateTimePicker();
@@ -50,6 +52,7 @@
             ColumnaVehiculo = new DataGridViewTextBoxColumn();
             ColumnaFechaRetiro = new DataGridViewTextBoxColumn();
             ColumnaFechaDevolucion = new DataGridViewTextBoxColumn();
+            ColumnaEstadoR = new DataGridViewTextBoxColumn();
             ColumnaSenia = new DataGridViewTextBoxColumn();
             tabPageClientes = new TabPage();
             dataGridViewClientes = new DataGridView();
@@ -111,6 +114,8 @@
             // 
             // grBoxReservas
             // 
+            grBoxReservas.Controls.Add(cmbBoxEstado);
+            grBoxReservas.Controls.Add(labelEstado);
             grBoxReservas.Controls.Add(numBoxSenia);
             grBoxReservas.Controls.Add(dateTimeFechaDevolucion);
             grBoxReservas.Controls.Add(dateTimeFechaRetiro);
@@ -123,10 +128,27 @@
             grBoxReservas.Controls.Add(labelCliente);
             grBoxReservas.Location = new Point(12, 53);
             grBoxReservas.Name = "grBoxReservas";
-            grBoxReservas.Size = new Size(338, 211);
+            grBoxReservas.Size = new Size(338, 239);
             grBoxReservas.TabIndex = 3;
             grBoxReservas.TabStop = false;
             grBoxReservas.Text = "Datos Reserva";
+            // 
+            // cmbBoxEstado
+            // 
+            cmbBoxEstado.FormattingEnabled = true;
+            cmbBoxEstado.Location = new Point(118, 197);
+            cmbBoxEstado.Name = "cmbBoxEstado";
+            cmbBoxEstado.Size = new Size(121, 23);
+            cmbBoxEstado.TabIndex = 11;
+            // 
+            // labelEstado
+            // 
+            labelEstado.AutoSize = true;
+            labelEstado.Location = new Point(6, 200);
+            labelEstado.Name = "labelEstado";
+            labelEstado.Size = new Size(45, 15);
+            labelEstado.TabIndex = 10;
+            labelEstado.Text = "Estado:";
             // 
             // numBoxSenia
             // 
@@ -148,6 +170,7 @@
             dateTimeFechaRetiro.Name = "dateTimeFechaRetiro";
             dateTimeFechaRetiro.Size = new Size(200, 23);
             dateTimeFechaRetiro.TabIndex = 7;
+            dateTimeFechaRetiro.ValueChanged += dateTimeFechaRetiro_ValueChanged;
             // 
             // txtBoxVehiculo
             // 
@@ -236,11 +259,11 @@
             dataGridViewReservas.AllowUserToAddRows = false;
             dataGridViewReservas.AllowUserToDeleteRows = false;
             dataGridViewReservas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewReservas.Columns.AddRange(new DataGridViewColumn[] { ColumnaId, ColumnaCliente, ColumnaVehiculo, ColumnaFechaRetiro, ColumnaFechaDevolucion, ColumnaSenia });
+            dataGridViewReservas.Columns.AddRange(new DataGridViewColumn[] { ColumnaId, ColumnaCliente, ColumnaVehiculo, ColumnaFechaRetiro, ColumnaFechaDevolucion, ColumnaEstadoR, ColumnaSenia });
             dataGridViewReservas.Location = new Point(0, 0);
             dataGridViewReservas.Name = "dataGridViewReservas";
             dataGridViewReservas.ReadOnly = true;
-            dataGridViewReservas.Size = new Size(651, 261);
+            dataGridViewReservas.Size = new Size(743, 263);
             dataGridViewReservas.TabIndex = 0;
             // 
             // ColumnaId
@@ -252,14 +275,14 @@
             // 
             // ColumnaCliente
             // 
-            ColumnaCliente.DataPropertyName = "Cliente";
+            ColumnaCliente.DataPropertyName = "ClienteDni";
             ColumnaCliente.HeaderText = "Cliente";
             ColumnaCliente.Name = "ColumnaCliente";
             ColumnaCliente.ReadOnly = true;
             // 
             // ColumnaVehiculo
             // 
-            ColumnaVehiculo.DataPropertyName = "Vehiculo";
+            ColumnaVehiculo.DataPropertyName = "VehiculoPatente";
             ColumnaVehiculo.HeaderText = "Vehículo";
             ColumnaVehiculo.Name = "ColumnaVehiculo";
             ColumnaVehiculo.ReadOnly = true;
@@ -273,10 +296,17 @@
             // 
             // ColumnaFechaDevolucion
             // 
-            ColumnaFechaDevolucion.DataPropertyName = "FechaDevolucion";
+            ColumnaFechaDevolucion.DataPropertyName = "FechaFin";
             ColumnaFechaDevolucion.HeaderText = "Fecha Devolución";
             ColumnaFechaDevolucion.Name = "ColumnaFechaDevolucion";
             ColumnaFechaDevolucion.ReadOnly = true;
+            // 
+            // ColumnaEstadoR
+            // 
+            ColumnaEstadoR.DataPropertyName = "Estado";
+            ColumnaEstadoR.HeaderText = "Estado";
+            ColumnaEstadoR.Name = "ColumnaEstadoR";
+            ColumnaEstadoR.ReadOnly = true;
             // 
             // ColumnaSenia
             // 
@@ -426,21 +456,23 @@
             // 
             // btnGuardar
             // 
-            btnGuardar.Location = new Point(12, 289);
+            btnGuardar.Location = new Point(12, 315);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(75, 23);
             btnGuardar.TabIndex = 5;
             btnGuardar.Text = "Guardar";
             btnGuardar.UseVisualStyleBackColor = true;
+            btnGuardar.Click += btnGuardar_Click;
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(275, 289);
+            btnCancelar.Location = new Point(275, 315);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(75, 23);
             btnCancelar.TabIndex = 6;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // FrmReservas
             // 
@@ -506,13 +538,16 @@
         private DataGridViewTextBoxColumn ColumnaCombustible;
         private DataGridViewTextBoxColumn ColumnaKm;
         private DataGridViewTextBoxColumn ColumnaEstado;
+        private Button btnGuardar;
+        private Button btnCancelar;
+        private ComboBox cmbBoxEstado;
+        private Label labelEstado;
         private DataGridViewTextBoxColumn ColumnaId;
         private DataGridViewTextBoxColumn ColumnaCliente;
         private DataGridViewTextBoxColumn ColumnaVehiculo;
         private DataGridViewTextBoxColumn ColumnaFechaRetiro;
         private DataGridViewTextBoxColumn ColumnaFechaDevolucion;
+        private DataGridViewTextBoxColumn ColumnaEstadoR;
         private DataGridViewTextBoxColumn ColumnaSenia;
-        private Button btnGuardar;
-        private Button btnCancelar;
     }
 }
