@@ -14,11 +14,12 @@ namespace Escritorio
 {
     public partial class FrmReservas : Form
     {
+        int filaEnEdicion = -1;
+        private bool seleccionHabilitada = false;
         public FrmReservas()
         {
             InitializeComponent();
         }
-        private bool seleccionHabilitada = false;
         
         private void FrmReservas_Load(object sender, EventArgs e)
         {
@@ -112,67 +113,119 @@ namespace Escritorio
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            using (var db = new RentaCarDBContext())
+            if (string.IsNullOrWhiteSpace(txtBoxCliente.Text))
             {
-                string patente = txtBoxVehiculo.Text.Trim();
-                // Buscar vehículo
-                var vehiculo = db.Vehiculos.FirstOrDefault(v => v.Patente == patente);
-                if (vehiculo == null)
-                {
-                    MessageBox.Show("No existe un vehículo con esa patente");
-                    return;
-                }
-
-                //Validar superposición de reservas
-                bool existeSolapamiento = db.Reservas.Any(r =>
-                    r.VehiculoPatente == vehiculo.Patente &&
-                    DateOnly.FromDateTime(dateTimeFechaRetiro.Value) <= r.FechaFin &&
-                    DateOnly.FromDateTime(dateTimeFechaDevolucion.Value) >= r.FechaInicio &&
-                    r.Estado != "Cancelada"     // Opcional: ignorar reservas canceladas
-                );
-
-                if (existeSolapamiento)
-                {
-                    MessageBox.Show("El vehículo seleccionado ya está reservado en ese rango de fechas.");
-                    return;
-                }
-
-                // Buscar cliente por DNI
-                int dni = int.Parse(txtBoxCliente.Text.Trim());
-                var cliente = db.Clientes.FirstOrDefault(c => c.Dni == dni);
-
-                if (cliente == null)
-                {
-                    MessageBox.Show("No existe un cliente con ese DNI");
-                    return;
-                }
-
-              
-
-                if (vehiculo == null)
-                {
-                    MessageBox.Show("No existe un vehículo con esa patente");
-                    return;
-                }
-                // Crear reserva y asignar objetos encontrados
-                var reserva = new Reserva(
-                    clienteDni: dni,
-                    vehiculoPatente: patente,
-                    fechaInicio: DateOnly.FromDateTime(dateTimeFechaRetiro.Value),
-                    fechaFin: DateOnly.FromDateTime(dateTimeFechaDevolucion.Value),
-                    estado: cmbBoxEstado.SelectedItem?.ToString(),
-                    senia: (float?)numBoxSenia.Value
-                );
-
-                db.Reservas.Add(reserva);
-                db.SaveChanges();
+                MessageBox.Show("Debe seleccionar un cliente.");
+                return;
             }
 
-            MessageBox.Show("Reserva guardada correctamente");
+            if (string.IsNullOrWhiteSpace(txtBoxVehiculo.Text))
+            {
+                MessageBox.Show("Debe seleccionar un vehículo.");
+                return;
+            }
 
-            HabilitarCampos(false);
-            LimpiarFormulario();
-            seleccionHabilitada = false;
+            if (cmbBoxEstado.SelectedItem == null)
+            {
+                MessageBox.Show("Debe seleccionar un estado.");
+                return;
+            }
+
+            if (filaEnEdicion == -1)
+            {
+                using (var db = new RentaCarDBContext())
+                {
+                    string patente = txtBoxVehiculo.Text.Trim();
+                    var vehiculo = db.Vehiculos.FirstOrDefault(v => v.Patente == patente);
+                    if (vehiculo == null)
+                    {
+                        MessageBox.Show("No existe un vehículo con esa patente");
+                        return;
+                    }
+
+                    bool existeSolapamiento = db.Reservas.Any(r =>
+                        r.VehiculoPatente == vehiculo.Patente &&
+                        DateOnly.FromDateTime(dateTimeFechaRetiro.Value) <= r.FechaFin &&
+                        DateOnly.FromDateTime(dateTimeFechaDevolucion.Value) >= r.FechaInicio &&
+                        r.Estado != "Cancelada"
+                    );
+
+                    if (existeSolapamiento)
+                    {
+                        MessageBox.Show("El vehículo seleccionado ya está reservado en ese rango de fechas.");
+                        return;
+                    }
+
+                    // Buscar cliente por DNI
+                    int dni = int.Parse(txtBoxCliente.Text.Trim());
+                    var cliente = db.Clientes.FirstOrDefault(c => c.Dni == dni);
+
+                    var reserva = new Reserva(
+                        clienteDni: dni,
+                        vehiculoPatente: patente,
+                        fechaInicio: DateOnly.FromDateTime(dateTimeFechaRetiro.Value),
+                        fechaFin: DateOnly.FromDateTime(dateTimeFechaDevolucion.Value),
+                        estado: cmbBoxEstado.SelectedItem?.ToString(),
+                        senia: (float?)numBoxSenia.Value
+                    );
+
+                    db.Reservas.Add(reserva);
+                    db.SaveChanges();
+                }
+
+                MessageBox.Show("Reserva guardada correctamente");
+
+                HabilitarCampos(false);
+                LimpiarFormulario();
+                seleccionHabilitada = false;
+                filaEnEdicion = -1;
+            }
+            else
+            {
+                
+                using (var db = new RentaCarDBContext())
+                {
+                    string patente = txtBoxVehiculo.Text.Trim();
+                    var vehiculo = db.Vehiculos.FirstOrDefault(v => v.Patente == patente);
+                    var reservaActual = db.Reservas.ToList()[filaEnEdicion];
+
+                    bool existeSolapamiento = db.Reservas.Any(r =>
+                        r.VehiculoPatente == vehiculo.Patente &&
+                        DateOnly.FromDateTime(dateTimeFechaRetiro.Value) <= r.FechaFin &&
+                        DateOnly.FromDateTime(dateTimeFechaDevolucion.Value) >= r.FechaInicio &&
+                        r.IdReserva != reservaActual.IdReserva &&
+                        r.Estado != "Cancelada"
+                    );
+
+                    if (existeSolapamiento)
+                    {
+                        MessageBox.Show("El vehículo seleccionado ya está reservado en ese rango de fechas.");
+                        return;
+                    }
+
+                    var reserva = db.Reservas.ToList()[filaEnEdicion];
+                    reserva.Senia = (float?)numBoxSenia.Value;
+                    reserva.Estado = cmbBoxEstado.SelectedItem?.ToString();
+                    reserva.FechaInicio = DateOnly.FromDateTime(dateTimeFechaRetiro.Value);
+                    reserva.FechaFin = DateOnly.FromDateTime(dateTimeFechaDevolucion.Value);
+                    reserva.ClienteDni = int.Parse(txtBoxCliente.Text.Trim());
+                    reserva.VehiculoPatente = txtBoxVehiculo.Text.Trim();
+                    db.SaveChanges();
+                }
+
+                MessageBox.Show("Cambios actualizados correctamente");
+                HabilitarCampos(false);
+                LimpiarFormulario();
+                seleccionHabilitada = false;
+                filaEnEdicion = -1;
+            }
+
+            using (var db = new RentaCarDBContext())
+            {
+                var lista = db.Reservas.ToList();
+                dataGridViewReservas.AutoGenerateColumns = false;
+                dataGridViewReservas.DataSource = lista;
+            }
         }
         private void LimpiarFormulario()
         {
@@ -199,7 +252,7 @@ namespace Escritorio
             if (confirmacion == DialogResult.No)
                 return;
 
-            //filaEnEdicion = -1;
+            filaEnEdicion = -1;
 
             LimpiarFormulario();
             HabilitarCampos(false);
@@ -208,6 +261,75 @@ namespace Escritorio
         private void dateTimeFechaRetiro_ValueChanged(object sender, EventArgs e)
         {
             dateTimeFechaDevolucion.MinDate = dateTimeFechaRetiro.Value.AddDays(1);
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewReservas.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Debe seleccionar una reserva para editar.");
+                return;
+            }
+
+            var fila = dataGridViewReservas.SelectedRows[0];
+            filaEnEdicion = fila.Index;
+
+            txtBoxCliente.Text = fila.Cells["ColumnaCliente"].Value?.ToString();
+            txtBoxVehiculo.Text = fila.Cells["ColumnaVehiculo"].Value?.ToString();
+            numBoxSenia.Value = Convert.ToDecimal(fila.Cells["ColumnaSenia"].Value);
+            cmbBoxEstado.SelectedItem = fila.Cells["ColumnaEstadoR"].Value?.ToString();
+
+            DateOnly fechaInicio = (DateOnly)fila.Cells["ColumnaFechaRetiro"].Value;
+            dateTimeFechaRetiro.Value = fechaInicio.ToDateTime(TimeOnly.MinValue);
+
+            DateOnly fechaFin = (DateOnly)fila.Cells["ColumnaFechaDevolucion"].Value;
+            dateTimeFechaDevolucion.Value = fechaFin.ToDateTime(TimeOnly.MinValue);
+
+            HabilitarCampos(true);
+            seleccionHabilitada = true;
+        }
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewReservas.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Seleccione una reserva para eliminar.");
+                return;
+            }
+
+            DialogResult confirmacion = MessageBox.Show(
+                "¿Está seguro de que desea cancelar esta reserva?",
+                "Confirmar cancelación",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (confirmacion == DialogResult.No)
+                return;
+
+            // Obtengo el ID de la reserva seleccionada
+            int idReserva = Convert.ToInt32(
+                dataGridViewReservas.SelectedRows[0].Cells["ColumnaId"].Value
+            );
+
+            using (var db = new RentaCarDBContext())
+            {
+                var reserva = db.Reservas.FirstOrDefault(r => r.IdReserva == idReserva);
+
+                if (reserva != null)
+                {
+                    reserva.Estado = "Cancelada";
+                    db.SaveChanges();
+                }
+            }
+
+            // Reflejar el cambio en la grilla
+            dataGridViewReservas.SelectedRows[0].Cells["ColumnaEstadoR"].Value = "Cancelada";
+
+            MessageBox.Show("Reserva cancelada correctamente");
+
+            LimpiarFormulario();
+            HabilitarCampos(false);
+            seleccionHabilitada = false;
         }
     }
 }

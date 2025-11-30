@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             btnNuevo = new Button();
-            btnModificar = new Button();
+            btnEditar = new Button();
             btnEliminar = new Button();
             grBoxReservas = new GroupBox();
             cmbBoxEstado = new ComboBox();
@@ -94,14 +94,15 @@
             btnNuevo.UseVisualStyleBackColor = true;
             btnNuevo.Click += btnNuevo_Click;
             // 
-            // btnModificar
+            // btnEditar
             // 
-            btnModificar.Location = new Point(144, 12);
-            btnModificar.Name = "btnModificar";
-            btnModificar.Size = new Size(75, 23);
-            btnModificar.TabIndex = 1;
-            btnModificar.Text = "Modificar";
-            btnModificar.UseVisualStyleBackColor = true;
+            btnEditar.Location = new Point(144, 12);
+            btnEditar.Name = "btnEditar";
+            btnEditar.Size = new Size(75, 23);
+            btnEditar.TabIndex = 1;
+            btnEditar.Text = "Editar";
+            btnEditar.UseVisualStyleBackColor = true;
+            btnEditar.Click += btnEditar_Click;
             // 
             // btnEliminar
             // 
@@ -111,6 +112,7 @@
             btnEliminar.TabIndex = 2;
             btnEliminar.Text = "Eliminar";
             btnEliminar.UseVisualStyleBackColor = true;
+            btnEliminar.Click += btnEliminar_Click;
             // 
             // grBoxReservas
             // 
@@ -153,6 +155,7 @@
             // numBoxSenia
             // 
             numBoxSenia.Location = new Point(118, 158);
+            numBoxSenia.Maximum = new decimal(new int[] { 999999999, 0, 0, 0 });
             numBoxSenia.Name = "numBoxSenia";
             numBoxSenia.Size = new Size(120, 23);
             numBoxSenia.TabIndex = 9;
@@ -484,7 +487,7 @@
             Controls.Add(tabControlReservas);
             Controls.Add(grBoxReservas);
             Controls.Add(btnEliminar);
-            Controls.Add(btnModificar);
+            Controls.Add(btnEditar);
             Controls.Add(btnNuevo);
             Name = "FrmReservas";
             Text = "Reservas";
@@ -505,7 +508,7 @@
         #endregion
 
         private Button btnNuevo;
-        private Button btnModificar;
+        private Button btnEditar;
         private Button btnEliminar;
         private GroupBox grBoxReservas;
         private TabControl tabControlReservas;

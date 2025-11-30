@@ -75,9 +75,7 @@ namespace Escritorio
             cmbBoxEstado.Items.AddRange(new string[]
             {
                 "Disponible",
-                "Reservado",
                 "En reparación",
-                "Alquilado",
                 "No disponible"
             });
 
