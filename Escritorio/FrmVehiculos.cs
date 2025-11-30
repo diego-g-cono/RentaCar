@@ -289,9 +289,20 @@ namespace Escritorio
 
             string patente = dataGridViewVehiculos.SelectedRows[0].Cells["ColumnaPatente"].Value.ToString();
 
+            
             using (var db = new RentaCarDBContext())
             {
                 var vehiculo = db.Vehiculos.FirstOrDefault(v => v.Patente == patente);
+                bool tieneReservasActivas = db.Reservas.Any(r =>
+                    r.VehiculoPatente == patente &&
+                    r.Estado != "Cancelada"
+                );
+
+                if (tieneReservasActivas)
+                {
+                    MessageBox.Show("No se puede eliminar el vehículo porque posee reservas activas.");
+                    return;
+                }
 
                 if (vehiculo != null)
                 {

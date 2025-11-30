@@ -3,6 +3,9 @@
   "WorkspaceRootPath": "D:\\Seminario I\\TP Final\\Rev0\\Dominio\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{FEBD42F9-E4D9-49EE-BF4B-D252044B7046}|..\\Escritorio\\Escritorio.csproj|d:\\seminario i\\tp final\\rev0\\escritorio\\frmvehiculos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{FEBD42F9-E4D9-49EE-BF4B-D252044B7046}|..\\Escritorio\\Escritorio.csproj|d:\\seminario i\\tp final\\rev0\\escritorio\\rentacardbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -10,9 +13,6 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{FEBD42F9-E4D9-49EE-BF4B-D252044B7046}|..\\Escritorio\\Escritorio.csproj|d:\\seminario i\\tp final\\rev0\\escritorio\\frmreservas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FEBD42F9-E4D9-49EE-BF4B-D252044B7046}|..\\Escritorio\\Escritorio.csproj|d:\\seminario i\\tp final\\rev0\\escritorio\\frmvehiculos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FEBD42F9-E4D9-49EE-BF4B-D252044B7046}|..\\Escritorio\\Escritorio.csproj|d:\\seminario i\\tp final\\rev0\\escritorio\\frmclientes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -36,69 +36,18 @@
       "DocumentGroups": [
         {
           "DockedWidth": 303,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "FrmReservas.cs",
-              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev0\\Escritorio\\FrmReservas.cs",
-              "RelativeDocumentMoniker": "..\\Escritorio\\FrmReservas.cs",
-              "ToolTip": "D:\\Seminario I\\TP Final\\Rev0\\Escritorio\\FrmReservas.cs",
-              "RelativeToolTip": "..\\Escritorio\\FrmReservas.cs",
-              "ViewState": "AgIAADMAAAAAAAAAAAAYwEEAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-29T01:52:58.036Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "RentaCarDBContext.cs",
-              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev0\\Escritorio\\RentaCarDBContext.cs",
-              "RelativeDocumentMoniker": "..\\Escritorio\\RentaCarDBContext.cs",
-              "ToolTip": "D:\\Seminario I\\TP Final\\Rev0\\Escritorio\\RentaCarDBContext.cs",
-              "RelativeToolTip": "..\\Escritorio\\RentaCarDBContext.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAowBIAAAB6AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-29T22:41:08.652Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "FrmClientes.cs",
-              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev0\\Escritorio\\FrmClientes.cs",
-              "RelativeDocumentMoniker": "..\\Escritorio\\FrmClientes.cs",
-              "ToolTip": "D:\\Seminario I\\TP Final\\Rev0\\Escritorio\\FrmClientes.cs",
-              "RelativeToolTip": "..\\Escritorio\\FrmClientes.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAgwCsAAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-29T13:03:22.35Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Reserva.cs",
-              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev0\\Dominio\\Reserva.cs",
-              "RelativeDocumentMoniker": "Reserva.cs",
-              "ToolTip": "D:\\Seminario I\\TP Final\\Rev0\\Dominio\\Reserva.cs",
-              "RelativeToolTip": "Reserva.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAiwCAAAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-28T22:18:21.057Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "FrmReservas.cs [Design]",
               "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev0\\Escritorio\\FrmReservas.cs",
               "RelativeDocumentMoniker": "..\\Escritorio\\FrmReservas.cs",
               "ToolTip": "D:\\Seminario I\\TP Final\\Rev0\\Escritorio\\FrmReservas.cs [Design]",
               "RelativeToolTip": "..\\Escritorio\\FrmReservas.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-28T22:18:13.787Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-11-28T22:18:13.787Z"
             },
             {
               "$type": "Document",
@@ -114,15 +63,65 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "FrmVehiculos.cs",
               "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev0\\Escritorio\\FrmVehiculos.cs",
               "RelativeDocumentMoniker": "..\\Escritorio\\FrmVehiculos.cs",
               "ToolTip": "D:\\Seminario I\\TP Final\\Rev0\\Escritorio\\FrmVehiculos.cs",
               "RelativeToolTip": "..\\Escritorio\\FrmVehiculos.cs",
-              "ViewState": "AgIAAA0BAAAAAAAAAAAAAA8BAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAA8BAAAAAAAAAAAxwC4BAABMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-28T21:25:35.467Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "RentaCarDBContext.cs",
+              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev0\\Escritorio\\RentaCarDBContext.cs",
+              "RelativeDocumentMoniker": "..\\Escritorio\\RentaCarDBContext.cs",
+              "ToolTip": "D:\\Seminario I\\TP Final\\Rev0\\Escritorio\\RentaCarDBContext.cs",
+              "RelativeToolTip": "..\\Escritorio\\RentaCarDBContext.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAowBIAAAB6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-29T22:41:08.652Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Reserva.cs",
+              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev0\\Dominio\\Reserva.cs",
+              "RelativeDocumentMoniker": "Reserva.cs",
+              "ToolTip": "D:\\Seminario I\\TP Final\\Rev0\\Dominio\\Reserva.cs",
+              "RelativeToolTip": "Reserva.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAiwCAAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-28T22:18:21.057Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "FrmClientes.cs",
+              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev0\\Escritorio\\FrmClientes.cs",
+              "RelativeDocumentMoniker": "..\\Escritorio\\FrmClientes.cs",
+              "ToolTip": "D:\\Seminario I\\TP Final\\Rev0\\Escritorio\\FrmClientes.cs",
+              "RelativeToolTip": "..\\Escritorio\\FrmClientes.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAgwCsAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-29T13:03:22.35Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "FrmReservas.cs",
+              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev0\\Escritorio\\FrmReservas.cs",
+              "RelativeDocumentMoniker": "..\\Escritorio\\FrmReservas.cs",
+              "ToolTip": "D:\\Seminario I\\TP Final\\Rev0\\Escritorio\\FrmReservas.cs",
+              "RelativeToolTip": "..\\Escritorio\\FrmReservas.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAAYwEEAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-29T01:52:58.036Z",
               "EditorCaption": ""
             },
             {
