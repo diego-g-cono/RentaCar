@@ -56,8 +56,21 @@ namespace Escritorio
             {
                 using (var db = new RentaCarDBContext())
                 {
-                    var lista = db.Vehiculos.ToList();
-                    dataGridViewVehiculos.AutoGenerateColumns = false;
+                    var lista = db.Vehiculos
+                        .Where(v => v.Estado == "Disponible")
+                        .Select(v => new
+                        {
+                            Patente = v.Patente,
+                            Marca = v.Marca,
+                            Modelo = v.Modelo,
+                            Anio = v.Anio,
+                            Color = v.Color,
+                            Kilometraje = v.Kilometraje,
+                            Estado = v.Estado,
+                            TipoCombustible = v.TipoCombustible
+                        })
+                        .ToList();
+
                     dataGridViewVehiculos.DataSource = lista;
                 }
             }

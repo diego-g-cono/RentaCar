@@ -16,7 +16,7 @@ namespace Escritorio
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=RentaCarDb;Username=postgres;Password=YourPassword;");
+            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=RentaCarDb;Username=postgres;Password=yourPassword;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

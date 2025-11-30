@@ -46,7 +46,7 @@
               "RelativeDocumentMoniker": "..\\Escritorio\\FrmReservas.cs",
               "ToolTip": "D:\\Seminario I\\TP Final\\Rev0\\Escritorio\\FrmReservas.cs",
               "RelativeToolTip": "..\\Escritorio\\FrmReservas.cs",
-              "ViewState": "AgIAACcBAAAAAAAAAAAowEgBAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAADMAAAAAAAAAAAAYwEEAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-29T01:52:58.036Z",
               "EditorCaption": ""
@@ -59,7 +59,7 @@
               "RelativeDocumentMoniker": "..\\Escritorio\\RentaCarDBContext.cs",
               "ToolTip": "D:\\Seminario I\\TP Final\\Rev0\\Escritorio\\RentaCarDBContext.cs",
               "RelativeToolTip": "..\\Escritorio\\RentaCarDBContext.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAowBIAAABwAAAAAAAAAA==",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAowBIAAAB6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-29T22:41:08.652Z",
               "EditorCaption": ""
@@ -97,7 +97,8 @@
               "ToolTip": "D:\\Seminario I\\TP Final\\Rev0\\Escritorio\\FrmReservas.cs [Design]",
               "RelativeToolTip": "..\\Escritorio\\FrmReservas.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-28T22:18:13.787Z"
+              "WhenOpened": "2025-11-28T22:18:13.787Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
