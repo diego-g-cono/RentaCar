@@ -183,7 +183,25 @@ namespace Escritorio
                     string patenteOriginal = dataGridViewVehiculos.Rows[filaEnEdicion].Cells["ColumnaPatente"].Value?.ToString();
 
                     var vehiculo = db.Vehiculos.FirstOrDefault(v => v.Patente == patenteOriginal);
+                    string nuevoEstado = cmbBoxEstado.SelectedItem?.ToString();
+                    if (vehiculo.Estado != nuevoEstado)
+                    {
+                        bool tieneReservasActivas = db.Reservas.Any(r =>
+                            r.VehiculoPatente == patenteOriginal &&
+                            r.Estado != "Cancelada"
+                        );
 
+                        if (tieneReservasActivas)
+                        {
+                            MessageBox.Show(
+                                "No es posible modificar el estado porque el vehículo posee reservas activas.",
+                                "Operación no permitida",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning
+                            );
+                            return;
+                        }
+                    }
                     if (vehiculo != null)
                     {
                         vehiculo.Patente = txtBoxPatente.Text.Trim();
