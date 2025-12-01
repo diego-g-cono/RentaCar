@@ -154,8 +154,18 @@ namespace Escritorio
             }
             if (filaEnEdicion == -1)
             {
+                
                 using (var db = new RentaCarDBContext())
                 {
+                    string patente = txtBoxPatente.Text.Trim();
+                    string nuevoEstado = cmbBoxEstado.SelectedItem?.ToString();
+
+                    bool existe = db.Vehiculos.Any(v => v.Patente == patente);
+                    if (existe)
+                    {
+                        MessageBox.Show("Ya existe un vehículo con esa patente.");
+                        return;
+                    }
                     var vehiculo = new Vehiculo(
                         patente: txtBoxPatente.Text.Trim(),
                         tipoCombustible: cmbBoxCombustible.SelectedItem?.ToString(),
