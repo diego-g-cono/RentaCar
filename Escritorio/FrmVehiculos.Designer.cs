@@ -300,7 +300,7 @@
             dataGridViewVehiculos.Location = new Point(321, 46);
             dataGridViewVehiculos.Name = "dataGridViewVehiculos";
             dataGridViewVehiculos.ReadOnly = true;
-            dataGridViewVehiculos.Size = new Size(843, 150);
+            dataGridViewVehiculos.Size = new Size(845, 392);
             dataGridViewVehiculos.TabIndex = 6;
             // 
             // ColumnaPatente

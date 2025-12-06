@@ -287,6 +287,9 @@ namespace Escritorio
             var fila = dataGridViewReservas.SelectedRows[0];
             filaEnEdicion = fila.Index;
 
+            dateTimeFechaRetiro.MinDate = DateTimePicker.MinimumDateTime;
+            dateTimeFechaDevolucion.MinDate = DateTimePicker.MinimumDateTime;
+
             txtBoxCliente.Text = fila.Cells["ColumnaCliente"].Value?.ToString();
             txtBoxVehiculo.Text = fila.Cells["ColumnaVehiculo"].Value?.ToString();
             numBoxSenia.Value = Convert.ToDecimal(fila.Cells["ColumnaSenia"].Value);

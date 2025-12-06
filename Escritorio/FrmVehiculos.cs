@@ -1,4 +1,5 @@
 ﻿using Dominio;
+using Dominio;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,9 +7,9 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Dominio;
 
 namespace Escritorio
 {
@@ -157,9 +158,14 @@ namespace Escritorio
                 
                 using (var db = new RentaCarDBContext())
                 {
-                    string patente = txtBoxPatente.Text.Trim();
+                    string patente = txtBoxPatente.Text.Trim().ToUpper();
                     string nuevoEstado = cmbBoxEstado.SelectedItem?.ToString();
 
+                    if (!Regex.IsMatch(patente, @"^[A-Z]{2}[0-9]{3}[A-Z]{2}$"))
+                    {
+                        MessageBox.Show("La patente debe tener el formato AA000AA (2 letras, 3 números, 2 letras).");
+                        return;
+                    }
                     bool existe = db.Vehiculos.Any(v => v.Patente == patente);
                     if (existe)
                     {
@@ -167,7 +173,7 @@ namespace Escritorio
                         return;
                     }
                     var vehiculo = new Vehiculo(
-                        patente: txtBoxPatente.Text.Trim(),
+                        patente: txtBoxPatente.Text.Trim().ToUpper(),
                         tipoCombustible: cmbBoxCombustible.SelectedItem?.ToString(),
                         kilometraje: (int?)numBoxKm.Value,
                         estado: cmbBoxEstado.SelectedItem?.ToString(),
@@ -179,6 +185,9 @@ namespace Escritorio
 
                     db.Vehiculos.Add(vehiculo);
                     db.SaveChanges();
+                    var lista = db.Vehiculos.ToList();
+                    dataGridViewVehiculos.AutoGenerateColumns = false;
+                    dataGridViewVehiculos.DataSource = lista;
                 }
 
                 MessageBox.Show("Vehículo guardado correctamente");
