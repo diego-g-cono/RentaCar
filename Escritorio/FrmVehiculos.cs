@@ -1,5 +1,4 @@
 ﻿using Dominio;
-using Dominio;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,24 +14,6 @@ namespace Escritorio
 {
     public partial class FrmVehiculos : Form
     {
-        private Dictionary<string, List<string>> modelosPorMarca = new Dictionary<string, List<string>>()
-        {
-            { "Toyota", new List<string> { "Corolla", "Hilux", "Yaris", "Etios", "Camry", "RAV4", "SW4", "Prius", "Avanza", "Land Cruiser", "Tundra", "Tacoma", "Supra", "86", "Innova" } },
-            { "Ford", new List<string> { "Focus", "Fiesta", "Ranger", "EcoSport", "Ka", "Mustang", "Explorer", "F-150", "Bronco", "Escape", "Edge", "Territory", "Mondeo", "Galaxy", "Transit" } },
-            { "Chevrolet", new List<string> { "Onix", "Cruze", "S10", "Spin", "Tracker", "Prisma", "Silverado", "Camaro", "Montana", "Avalanche", "Trailblazer", "Equinox", "Celta", "Captiva", "Malibu" } },
-            { "Volkswagen", new List<string> { "Gol", "Polo", "Amarok", "T-Cross", "Vento", "Golf", "Passat", "Tiguan", "Fox", "Saveiro", "Virtus", "Nivus", "Scirocco", "Beetle", "Touareg" } },
-            { "Renault", new List<string> { "Clio", "Kangoo", "Sandero", "Duster", "Stepway", "Logan", "Megane", "Fluence", "Captur", "Oroch", "Talisman", "Symbol", "Laguna", "Scenic", "R19" } },
-            { "Peugeot", new List<string> { "208", "2008", "308", "301", "3008", "Partner", "5008", "207", "206", "407", "508", "405", "Rifter", "108", "607" } },
-            { "Honda", new List<string> { "Civic", "CR-V", "Fit", "Accord", "HR-V", "City", "Pilot", "Odyssey", "Passport", "Ridgeline", "Jazz", "Integra", "Prelude", "S2000", "Brio" } },
-            { "Nissan", new List<string> { "Versa", "Sentra", "Frontier", "Kicks", "March", "X-Trail", "Murano", "Altima", "Pathfinder", "Patrol", "Titan", "Rogue", "Juke", "Maxima", "GT-R" } },
-            { "Fiat", new List<string> { "Cronos", "Argo", "Toro", "Strada", "Uno", "Pulse", "Siena", "Punto", "Mobi", "Fiorino", "Palio", "Ducato", "Tipo", "147", "Idea" } },
-            { "Hyundai", new List<string> { "Creta", "Tucson", "Santa Fe", "i20", "i30", "Accent", "Elantra", "Kona", "Sonata", "Palisade", "Venue", "Veracruz", "Terracan", "Genesis", "Staria" } },
-            { "Kia", new List<string> { "Rio", "Cerato", "Sportage", "Sorento", "Picanto", "Seltos", "Optima", "Carens", "Soul", "Stonic", "Cadenza", "Mohave", "Niro", "Telluride", "Carnival" } },
-            { "BMW", new List<string> { "Serie 1", "Serie 2", "Serie 3", "Serie 4", "Serie 5", "Serie 6", "Serie 7", "Serie 8", "X1", "X3", "X4", "X5", "X6", "X7", "Z4" } },
-            { "Mercedes-Benz", new List<string> { "Clase A", "Clase B", "Clase C", "Clase E", "Clase S", "GLA", "GLB", "GLC", "GLE", "GLS", "CLA", "CLS", "Vito", "Sprinter", "AMG GT" } },
-            { "Audi", new List<string> { "A1", "A3", "A4", "A5", "A6", "A7", "A8", "Q2", "Q3", "Q5", "Q7", "Q8", "TT", "R8", "Allroad" } },
-            { "Citroën", new List<string> { "C3", "C4", "C5 Aircross", "C-Elysée", "Berlingo", "C3 Aircross", "C1", "C2", "C5", "DS3", "DS4", "DS5", "C6", "C8", "Ami" } }
-        };
         private int filaEnEdicion = -1;
         public FrmVehiculos()
         {
@@ -42,7 +23,17 @@ namespace Escritorio
 
         private void FrmVehiculos_Load(object sender, EventArgs e)
         {
-            cmbBoxMarca.DataSource = modelosPorMarca.Keys.ToList();
+            using (var db = new RentaCarDBContext())
+            {
+                var marcas = db.marcas
+                               .OrderBy(m => m.nombre)
+                               .Select(m => new { id_marca = m.id_marca, nombre = m.nombre })
+                               .ToList();
+
+                cmbBoxMarca.DataSource = marcas;
+                cmbBoxMarca.DisplayMember = "nombre";
+                cmbBoxMarca.ValueMember = "id_marca";
+            }
             cmbBoxMarca.SelectedIndex = -1;
 
             numBoxAnio.Minimum = 1950;
@@ -50,35 +41,44 @@ namespace Escritorio
             numBoxAnio.Value = DateTime.Now.Year - 5;
             numBoxAnio.ResetText();
 
-            cmbBoxColor.Items.AddRange(new string[]
+            using (var db = new RentaCarDBContext())
             {
-                "Blanco",
-                "Negro",
-                "Gris Plata",
-                "Gris Oscuro",
-                "Rojo",
-                "Azul",
-                "Azul Marino",
-                "Bordo",
-                "Verde",
-                "Beige"
-            });
-            cmbBoxCombustible.Items.AddRange(new string[]
+                var listaColores = db.colores
+                                     .OrderBy(c => c.nombre)
+                                     .ToList();
+
+                cmbBoxColor.DataSource = listaColores;
+                cmbBoxColor.DisplayMember = "nombre";
+                cmbBoxColor.ValueMember = "id_color";
+                cmbBoxColor.SelectedIndex = -1;
+            }
+
+            using (var db = new RentaCarDBContext())
             {
-                "Nafta",
-                "Gas-Oil",
-                "GNC",
-                "Electrico"
-            });
+                var listaCombustibles = db.combustibles
+                                       .OrderBy(c => c.nombre)
+                                       .ToList();
+
+                cmbBoxCombustible.DataSource = listaCombustibles;
+                cmbBoxCombustible.DisplayMember = "nombre";
+                cmbBoxCombustible.ValueMember = "id_combustible";
+                cmbBoxCombustible.SelectedIndex = -1;
+            }
 
             numBoxKm.ThousandsSeparator = true;
 
-            cmbBoxEstado.Items.AddRange(new string[]
+            using (var db = new RentaCarDBContext())
             {
-                "Disponible",
-                "En reparación",
-                "No disponible"
-            });
+                var estadosVehiculo = db.estados
+                    .Where(e => e.categoria == "vehiculo")
+                    .OrderBy(e => e.nombre)
+                    .ToList();
+
+                cmbBoxEstado.DataSource = estadosVehiculo;
+                cmbBoxEstado.DisplayMember = "nombre";
+                cmbBoxEstado.ValueMember = "id_estado";
+                cmbBoxEstado.SelectedIndex = -1;
+            }
 
             cmbBoxMarca.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             cmbBoxMarca.AutoCompleteSource = AutoCompleteSource.ListItems;
@@ -105,9 +105,22 @@ namespace Escritorio
                 cmbBoxModelo.DataSource = null;
                 return;
             }
-            string marcaSeleccionada = cmbBoxMarca.SelectedItem.ToString();
-            cmbBoxModelo.DataSource = modelosPorMarca[marcaSeleccionada];
-            cmbBoxModelo.SelectedIndex = -1;
+
+            if (cmbBoxMarca.SelectedValue is int id_marca)
+            {
+                using (var db = new RentaCarDBContext())
+                {
+                    var lista = db.modelos
+                                  .Where(m => m.id_marca == id_marca)
+                                  .OrderBy(m => m.nombre)
+                                  .ToList();
+
+                    cmbBoxModelo.DataSource = lista;
+                    cmbBoxModelo.DisplayMember = "nombre";
+                    cmbBoxModelo.ValueMember = "id_modelo";
+                    cmbBoxModelo.SelectedIndex = -1;
+                }
+            }
         }
         private void HabilitarCampos(bool activo)
         {
@@ -166,7 +179,7 @@ namespace Escritorio
                         MessageBox.Show("La patente debe tener el formato AA000AA (2 letras, 3 números, 2 letras).");
                         return;
                     }
-                    bool existe = db.Vehiculos.Any(v => v.Patente == patente);
+                    bool existe = db.vehiculos.Any(v => v.patente == patente);
                     if (existe)
                     {
                         MessageBox.Show("Ya existe un vehículo con esa patente.");
@@ -174,7 +187,7 @@ namespace Escritorio
                     }
                     var vehiculo = new Vehiculo(
                         patente: txtBoxPatente.Text.Trim().ToUpper(),
-                        tipoCombustible: cmbBoxCombustible.SelectedItem?.ToString(),
+                        tipo_combustible: cmbBoxCombustible.SelectedItem?.ToString(),
                         kilometraje: (int?)numBoxKm.Value,
                         estado: cmbBoxEstado.SelectedItem?.ToString(),
                         marca: cmbBoxMarca.SelectedItem?.ToString(),
@@ -183,9 +196,9 @@ namespace Escritorio
                         color: cmbBoxColor.SelectedItem?.ToString()
                     );
 
-                    db.Vehiculos.Add(vehiculo);
+                    db.vehiculos.Add(vehiculo);
                     db.SaveChanges();
-                    var lista = db.Vehiculos.ToList();
+                    var lista = db.vehiculos.ToList();
                     dataGridViewVehiculos.AutoGenerateColumns = false;
                     dataGridViewVehiculos.DataSource = lista;
                 }
@@ -201,13 +214,13 @@ namespace Escritorio
                 {
                     string patenteOriginal = dataGridViewVehiculos.Rows[filaEnEdicion].Cells["ColumnaPatente"].Value?.ToString();
 
-                    var vehiculo = db.Vehiculos.FirstOrDefault(v => v.Patente == patenteOriginal);
+                    var vehiculo = db.vehiculos.FirstOrDefault(v => v.patente == patenteOriginal);
                     string nuevoEstado = cmbBoxEstado.SelectedItem?.ToString();
-                    if (vehiculo.Estado != nuevoEstado)
+                    if (vehiculo.estado != nuevoEstado)
                     {
-                        bool tieneReservasActivas = db.Reservas.Any(r =>
-                            r.VehiculoPatente == patenteOriginal &&
-                            r.Estado != "Cancelada"
+                        bool tieneReservasActivas = db.reservas.Any(r =>
+                            r.vehiculo_patente == patenteOriginal &&
+                            r.estado != "Cancelada"
                         );
 
                         if (tieneReservasActivas)
@@ -223,14 +236,14 @@ namespace Escritorio
                     }
                     if (vehiculo != null)
                     {
-                        vehiculo.Patente = txtBoxPatente.Text.Trim();
-                        vehiculo.Marca = cmbBoxMarca.SelectedItem?.ToString();
-                        vehiculo.Modelo = cmbBoxModelo.SelectedItem?.ToString();
-                        vehiculo.Anio = (int?)numBoxAnio.Value;
-                        vehiculo.Color = cmbBoxColor.SelectedItem?.ToString();
-                        vehiculo.Kilometraje = (int?)numBoxKm.Value;
-                        vehiculo.Estado = cmbBoxEstado.SelectedItem?.ToString();
-                        vehiculo.TipoCombustible = cmbBoxCombustible.SelectedItem?.ToString();
+                        vehiculo.patente = txtBoxPatente.Text.Trim();
+                        vehiculo.marca = cmbBoxMarca.SelectedItem?.ToString();
+                        vehiculo.modelo = cmbBoxModelo.SelectedItem?.ToString();
+                        vehiculo.anio = (int?)numBoxAnio.Value;
+                        vehiculo.color = cmbBoxColor.SelectedItem?.ToString();
+                        vehiculo.kilometraje = (int?)numBoxKm.Value;
+                        vehiculo.estado = cmbBoxEstado.SelectedItem?.ToString();
+                        vehiculo.tipo_combustible = cmbBoxCombustible.SelectedItem?.ToString();
 
                         db.SaveChanges();
                     }
@@ -257,7 +270,7 @@ namespace Escritorio
         {
             using (var db = new RentaCarDBContext())
             {
-                var lista = db.Vehiculos.ToList();
+                var lista = db.vehiculos.ToList();
                 dataGridViewVehiculos.AutoGenerateColumns = false;
                 dataGridViewVehiculos.DataSource = lista;
             }
@@ -329,10 +342,10 @@ namespace Escritorio
             
             using (var db = new RentaCarDBContext())
             {
-                var vehiculo = db.Vehiculos.FirstOrDefault(v => v.Patente == patente);
-                bool tieneReservasActivas = db.Reservas.Any(r =>
-                    r.VehiculoPatente == patente &&
-                    r.Estado != "Cancelada"
+                var vehiculo = db.vehiculos.FirstOrDefault(v => v.patente == patente);
+                bool tieneReservasActivas = db.reservas.Any(r =>
+                    r.vehiculo_patente == patente &&
+                    r.estado != "Cancelada"
                 );
 
                 if (tieneReservasActivas)
@@ -343,7 +356,7 @@ namespace Escritorio
 
                 if (vehiculo != null)
                 {
-                    vehiculo.Estado = "No disponible";
+                    vehiculo.estado = "No disponible";
                     db.SaveChanges();
                 }
             }
@@ -369,5 +382,6 @@ namespace Escritorio
             LimpiarFormulario();
             HabilitarCampos(false);
         }
+        
     }
 }

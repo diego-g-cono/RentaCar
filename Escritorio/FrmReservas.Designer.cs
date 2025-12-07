@@ -47,13 +47,6 @@
             tabControlReservas = new TabControl();
             tabPageReservas = new TabPage();
             dataGridViewReservas = new DataGridView();
-            ColumnaId = new DataGridViewTextBoxColumn();
-            ColumnaCliente = new DataGridViewTextBoxColumn();
-            ColumnaVehiculo = new DataGridViewTextBoxColumn();
-            ColumnaFechaRetiro = new DataGridViewTextBoxColumn();
-            ColumnaFechaDevolucion = new DataGridViewTextBoxColumn();
-            ColumnaEstadoR = new DataGridViewTextBoxColumn();
-            ColumnaSenia = new DataGridViewTextBoxColumn();
             tabPageClientes = new TabPage();
             dataGridViewClientes = new DataGridView();
             ColumnaDNI = new DataGridViewTextBoxColumn();
@@ -73,6 +66,13 @@
             ColumnaEstado = new DataGridViewTextBoxColumn();
             btnGuardar = new Button();
             btnCancelar = new Button();
+            ColumnaId = new DataGridViewTextBoxColumn();
+            ColumnaCliente = new DataGridViewTextBoxColumn();
+            ColumnaVehiculo = new DataGridViewTextBoxColumn();
+            ColumnaFechaRetiro = new DataGridViewTextBoxColumn();
+            ColumnaFechaDevolucion = new DataGridViewTextBoxColumn();
+            ColumnaEstadoR = new DataGridViewTextBoxColumn();
+            ColumnaSenia = new DataGridViewTextBoxColumn();
             grBoxReservas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numBoxSenia).BeginInit();
             tabControlReservas.SuspendLayout();
@@ -269,55 +269,6 @@
             dataGridViewReservas.Size = new Size(743, 263);
             dataGridViewReservas.TabIndex = 0;
             // 
-            // ColumnaId
-            // 
-            ColumnaId.DataPropertyName = "IdReserva";
-            ColumnaId.HeaderText = "ID";
-            ColumnaId.Name = "ColumnaId";
-            ColumnaId.ReadOnly = true;
-            // 
-            // ColumnaCliente
-            // 
-            ColumnaCliente.DataPropertyName = "ClienteDni";
-            ColumnaCliente.HeaderText = "Cliente";
-            ColumnaCliente.Name = "ColumnaCliente";
-            ColumnaCliente.ReadOnly = true;
-            // 
-            // ColumnaVehiculo
-            // 
-            ColumnaVehiculo.DataPropertyName = "VehiculoPatente";
-            ColumnaVehiculo.HeaderText = "Vehículo";
-            ColumnaVehiculo.Name = "ColumnaVehiculo";
-            ColumnaVehiculo.ReadOnly = true;
-            // 
-            // ColumnaFechaRetiro
-            // 
-            ColumnaFechaRetiro.DataPropertyName = "FechaInicio";
-            ColumnaFechaRetiro.HeaderText = "Fecha Retiro";
-            ColumnaFechaRetiro.Name = "ColumnaFechaRetiro";
-            ColumnaFechaRetiro.ReadOnly = true;
-            // 
-            // ColumnaFechaDevolucion
-            // 
-            ColumnaFechaDevolucion.DataPropertyName = "FechaFin";
-            ColumnaFechaDevolucion.HeaderText = "Fecha Devolución";
-            ColumnaFechaDevolucion.Name = "ColumnaFechaDevolucion";
-            ColumnaFechaDevolucion.ReadOnly = true;
-            // 
-            // ColumnaEstadoR
-            // 
-            ColumnaEstadoR.DataPropertyName = "Estado";
-            ColumnaEstadoR.HeaderText = "Estado";
-            ColumnaEstadoR.Name = "ColumnaEstadoR";
-            ColumnaEstadoR.ReadOnly = true;
-            // 
-            // ColumnaSenia
-            // 
-            ColumnaSenia.DataPropertyName = "Senia";
-            ColumnaSenia.HeaderText = "Seña";
-            ColumnaSenia.Name = "ColumnaSenia";
-            ColumnaSenia.ReadOnly = true;
-            // 
             // tabPageClientes
             // 
             tabPageClientes.Controls.Add(dataGridViewClientes);
@@ -476,6 +427,55 @@
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
             btnCancelar.Click += btnCancelar_Click;
+            // 
+            // ColumnaId
+            // 
+            ColumnaId.DataPropertyName = "Id_Reserva";
+            ColumnaId.HeaderText = "ID";
+            ColumnaId.Name = "ColumnaId";
+            ColumnaId.ReadOnly = true;
+            // 
+            // ColumnaCliente
+            // 
+            ColumnaCliente.DataPropertyName = "Cliente_Dni";
+            ColumnaCliente.HeaderText = "Cliente";
+            ColumnaCliente.Name = "ColumnaCliente";
+            ColumnaCliente.ReadOnly = true;
+            // 
+            // ColumnaVehiculo
+            // 
+            ColumnaVehiculo.DataPropertyName = "Vehiculo_Patente";
+            ColumnaVehiculo.HeaderText = "Vehículo";
+            ColumnaVehiculo.Name = "ColumnaVehiculo";
+            ColumnaVehiculo.ReadOnly = true;
+            // 
+            // ColumnaFechaRetiro
+            // 
+            ColumnaFechaRetiro.DataPropertyName = "Fecha_Inicio";
+            ColumnaFechaRetiro.HeaderText = "Fecha Retiro";
+            ColumnaFechaRetiro.Name = "ColumnaFechaRetiro";
+            ColumnaFechaRetiro.ReadOnly = true;
+            // 
+            // ColumnaFechaDevolucion
+            // 
+            ColumnaFechaDevolucion.DataPropertyName = "Fecha_Fin";
+            ColumnaFechaDevolucion.HeaderText = "Fecha Devolución";
+            ColumnaFechaDevolucion.Name = "ColumnaFechaDevolucion";
+            ColumnaFechaDevolucion.ReadOnly = true;
+            // 
+            // ColumnaEstadoR
+            // 
+            ColumnaEstadoR.DataPropertyName = "Estado";
+            ColumnaEstadoR.HeaderText = "Estado";
+            ColumnaEstadoR.Name = "ColumnaEstadoR";
+            ColumnaEstadoR.ReadOnly = true;
+            // 
+            // ColumnaSenia
+            // 
+            ColumnaSenia.DataPropertyName = "Senia";
+            ColumnaSenia.HeaderText = "Seña";
+            ColumnaSenia.Name = "ColumnaSenia";
+            ColumnaSenia.ReadOnly = true;
             // 
             // FrmReservas
             // 

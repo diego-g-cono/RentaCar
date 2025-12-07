@@ -8,72 +8,59 @@ namespace Dominio
 {
     public class Reserva
     {
-        private int _idReserva;
+        private int _id_reserva;
         // Foreign keys
-        public int _clienteDni;
-        public string _vehiculoPatente;
+        public int _cliente_dni;
+        public string _vehiculo_patente;
 
-        private Cliente _cliente;
         private float? _senia;
-        private DateOnly _fechaInicio;
-        private DateOnly _fechaFin;
-        private Vehiculo _vehiculo;
+        private DateOnly _fecha_inicio;
+        private DateOnly _fecha_fin;
         private string _estado;
 
-        public Reserva(int clienteDni, string vehiculoPatente, DateOnly fechaInicio, DateOnly fechaFin, string estado, float? senia = null)
+        public Reserva(int cliente_dni, string vehiculo_patente, DateOnly fecha_inicio, DateOnly fecha_fin, string estado, float? senia = null)
         {
             _senia = senia;
-            _fechaInicio = fechaInicio;
-            _fechaFin = fechaFin;
+            _fecha_inicio = fecha_inicio;
+            _fecha_fin = fecha_fin;
             _estado = estado;
-            _clienteDni = clienteDni;
-            _vehiculoPatente = vehiculoPatente;
-
+            _cliente_dni = cliente_dni;
+            _vehiculo_patente = vehiculo_patente;
         }
-        public int IdReserva
+        public int id_reserva
         {
-            get { return _idReserva; }
-            set { _idReserva = value; }
+            get { return _id_reserva; }
+            set { _id_reserva = value; }
         }
-        public Cliente Cliente
-        {
-            get { return _cliente; }
-            set { _cliente = value; }
-        }
-        public float? Senia
+        public float? senia
         {
             get { return _senia; }
             set { _senia = value; }
         }
-        public DateOnly FechaInicio
+        public DateOnly fecha_inicio
         {
-            get { return _fechaInicio; }
-            set { _fechaInicio = value; }
+            get { return _fecha_inicio; }
+            set { _fecha_inicio = value; }
         }
-        public Vehiculo Vehiculo
+        public DateOnly fecha_fin
         {
-            get { return _vehiculo; }
-            set { _vehiculo = value; }
+            get { return _fecha_fin; }
+            set { _fecha_fin = value; }
         }
-        public DateOnly FechaFin
-        {
-            get { return _fechaFin; }
-            set { _fechaFin = value; }
-        }
-        public string Estado
+        public string estado
         {
             get { return _estado; }
             set { _estado = value; }
         }
-        public int ClienteDni
+        public int cliente_dni
         {
-            get { return _clienteDni; }
-            set { _clienteDni = value; }
+            get { return _cliente_dni; }
+            set { _cliente_dni = value; }
         }
-        public string VehiculoPatente
+        public string vehiculo_patente
         {
-            get { return _vehiculoPatente; }
-            set { _vehiculoPatente = value; }
+            get { return _vehiculo_patente; }
+            set { _vehiculo_patente = value; }
         }
     }
 }

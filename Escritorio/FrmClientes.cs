@@ -28,10 +28,10 @@ namespace Escritorio
                     nombre: txtBoxNombre.Text.Trim(),
                     apellido: txtBoxApellido.Text.Trim(),
                     usuario: txtBoxUsuario.Text.Trim(),
-                    contraseña: txtBoxContrasenia.Text
+                    contrasenia: txtBoxContrasenia.Text
                 );
 
-                db.Clientes.Add(cliente);
+                db.clientes.Add(cliente);
                 db.SaveChanges();
             }
 
@@ -39,11 +39,20 @@ namespace Escritorio
 
             using (var db = new RentaCarDBContext())
             {
-                var lista = db.Clientes.ToList();
+                var lista = db.clientes.ToList();
                 dataGridViewClientes.AutoGenerateColumns = false;
                 dataGridViewClientes.DataSource = lista;
             }
         }
 
+        private void FrmClientes_Load(object sender, EventArgs e)
+        {
+            using (var db = new RentaCarDBContext())
+            {
+                var lista = db.clientes.ToList();
+                dataGridViewClientes.AutoGenerateColumns = false;
+                dataGridViewClientes.DataSource = lista;
+            }
+        }
     }
 }

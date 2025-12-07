@@ -12,21 +12,21 @@ namespace Dominio
     public class Cliente:Persona
     {
         private string? _usuario;
-        private string? _contraseñaHash;
+        private string? _contrasenia_hash;
         private string? _email;
-        public string? Usuario
+        public string? usuario
         {
             get { return _usuario; }
             set { _usuario = value; }
         }
-        public string? ContraseñaHash
+        public string? contrasenia_hash
         {
-            get { return _contraseñaHash; }
-            private set { _contraseñaHash = value; }
+            get { return _contrasenia_hash; }
+            private set { _contrasenia_hash = value; }
         }
 
         [EmailAddress]
-        public string? Email
+        public string? email
         {
             get { return _email; }
             set { _email = value; }
@@ -36,16 +36,16 @@ namespace Dominio
             // Constructor sin parámetros para EF Core
         }
         public Cliente(int dni, string? nombre = null, string? apellido = null, string? direccion = null, DateOnly? fechaNacimiento=null,
-                        string? usuario = null, string? contraseña = null, string? email = null)
+                        string? usuario = null, string? contrasenia = null, string? email = null)
             : base(dni, nombre, apellido, direccion, fechaNacimiento)
         {
             _usuario = usuario;
-            _contraseñaHash = BCrypt.Net.BCrypt.HashPassword(contraseña); ;
+            _contrasenia_hash = BCrypt.Net.BCrypt.HashPassword(contrasenia); ;
             _email = email;
         }
         public bool VerificarContraseña(string contraseña)
         {
-            return BCrypt.Net.BCrypt.Verify(contraseña, ContraseñaHash);
+            return BCrypt.Net.BCrypt.Verify(contraseña, contrasenia_hash);
         }
     }
 }

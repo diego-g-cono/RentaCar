@@ -13,10 +13,10 @@ namespace Dominio
         private string _modelo;
         private int? _anio;
         private string? _color;
-        private string? _tipoCombustible;
+        private string? _tipo_combustible;
         private int? _kilometraje;
         private string _estado;
-        public Vehiculo(string patente, string estado, string marca, string modelo, int? anio = null, string? color = null, string? tipoCombustible = null, int? kilometraje = null)
+        public Vehiculo(string patente, string estado, string marca, string modelo, int? anio = null, string? color = null, string? tipo_combustible = null, int? kilometraje = null)
         {
             _patente = patente;
             _kilometraje = kilometraje;
@@ -25,44 +25,44 @@ namespace Dominio
             _modelo = modelo;
             _anio = anio;
             _color = color;
-            _tipoCombustible = tipoCombustible;
+            _tipo_combustible = tipo_combustible;
         }
-        public string Patente
+        public string patente
         {
             get { return _patente; }
             set { _patente = value; }
         }
-        public string Marca
+        public string marca
         {
             get { return _marca; }
             set { _marca = value; }
         }
-        public string Modelo
+        public string modelo
         {
             get { return _modelo; }
             set { _modelo = value; }
         }
-        public int? Anio
+        public int? anio
         {
             get { return _anio; }
             set { _anio = value; }
         }
-        public string? Color
+        public string? color
         {
             get { return _color; }
             set { _color = value; }
         }
-        public string? TipoCombustible
+        public string? tipo_combustible
         {
-            get { return _tipoCombustible; }
-            set { _tipoCombustible = value; }
+            get { return _tipo_combustible; }
+            set { _tipo_combustible = value; }
         }
-        public int? Kilometraje
+        public int? kilometraje
         {
             get { return _kilometraje; }
             set { _kilometraje = value; }
         }
-        public string Estado
+        public string estado
         {
             get { return _estado; }
             set { _estado = value; }

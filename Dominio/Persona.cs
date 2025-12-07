@@ -6,39 +6,39 @@
         private string? _nombre;
         private string? _apellido;
         private string? _direccion;
-        private DateOnly? _fechaNacimiento;
-        public int Dni
+        private DateOnly? _fecha_nacimiento;
+        public int dni
         {
             get { return _dni; }
             set { _dni = value; }
         }
-        public string? Nombre
+        public string? nombre
         {
             get { return _nombre; }
             set { _nombre = value; }
         }
-        public string? Apellido
+        public string? apellido
         {
             get { return _apellido; }
             set { _apellido = value; }
         }
-        public string? Direccion
+        public string? direccion
         {
             get { return _direccion; }
             set { _direccion = value; }
         }
-        public DateOnly? FechaNacimiento
+        public DateOnly? fecha_nacimiento
         {
-            get { return _fechaNacimiento; }
-            set { _fechaNacimiento = value; }
+            get { return _fecha_nacimiento; }
+            set { _fecha_nacimiento = value; }
         }
-        protected Persona(int dni, string? nombre=null, string? apellido = null, string? direccion = null, DateOnly? fechaNacimiento=null)
+        protected Persona(int dni, string? nombre=null, string? apellido = null, string? direccion = null, DateOnly? fecha_nacimiento=null)
         {
             _dni = dni;
             _nombre = nombre;
             _apellido = apellido;
             _direccion = direccion;
-            _fechaNacimiento = fechaNacimiento;
+            _fecha_nacimiento = fecha_nacimiento;
         }
     }
 }

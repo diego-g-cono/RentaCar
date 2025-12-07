@@ -231,7 +231,7 @@
             // 
             // ColumnaContrasenia
             // 
-            ColumnaContrasenia.DataPropertyName = "ContraseñaHash";
+            ColumnaContrasenia.DataPropertyName = "Contrasenia_Hash";
             ColumnaContrasenia.HeaderText = "Contraseña";
             ColumnaContrasenia.Name = "ColumnaContrasenia";
             ColumnaContrasenia.ReadOnly = true;
@@ -249,6 +249,7 @@
             Controls.Add(btnNuevo);
             Name = "FrmClientes";
             Text = "Clientes";
+            Load += FrmClientes_Load;
             groupBoxClientes.ResumeLayout(false);
             groupBoxClientes.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewClientes).EndInit();

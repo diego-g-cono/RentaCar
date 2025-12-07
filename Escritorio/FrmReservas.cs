@@ -34,7 +34,7 @@ namespace Escritorio
             });
             using (var db = new RentaCarDBContext())
             {
-                var lista = db.Reservas.ToList();
+                var lista = db.reservas.ToList();
                 dataGridViewReservas.AutoGenerateColumns = false;
                 dataGridViewReservas.DataSource = lista;
             }
@@ -56,18 +56,18 @@ namespace Escritorio
             {
                 using (var db = new RentaCarDBContext())
                 {
-                    var lista = db.Vehiculos
-                        .Where(v => v.Estado == "Disponible")
+                    var lista = db.vehiculos
+                        .Where(v => v.estado == "Disponible")
                         .Select(v => new
                         {
-                            Patente = v.Patente,
-                            Marca = v.Marca,
-                            Modelo = v.Modelo,
-                            Anio = v.Anio,
-                            Color = v.Color,
-                            Kilometraje = v.Kilometraje,
-                            Estado = v.Estado,
-                            TipoCombustible = v.TipoCombustible
+                            Patente = v.patente,
+                            Marca = v.marca,
+                            Modelo = v.modelo,
+                            Anio = v.anio,
+                            Color = v.color,
+                            Kilometraje = v.kilometraje,
+                            Estado = v.estado,
+                            TipoCombustible = v.tipo_combustible
                         })
                         .ToList();
 
@@ -78,7 +78,7 @@ namespace Escritorio
             {
                 using (var db = new RentaCarDBContext())
                 {
-                    var lista = db.Clientes.ToList();
+                    var lista = db.clientes.ToList();
                     dataGridViewClientes.AutoGenerateColumns = false;
                     dataGridViewClientes.DataSource = lista;
                 }
@@ -87,7 +87,7 @@ namespace Escritorio
             {
                 using (var db = new RentaCarDBContext())
                 {
-                    var lista = db.Reservas.ToList();
+                    var lista = db.reservas.ToList();
                     dataGridViewReservas.AutoGenerateColumns = false;
                     dataGridViewReservas.DataSource = lista;
                 }
@@ -149,18 +149,18 @@ namespace Escritorio
                 using (var db = new RentaCarDBContext())
                 {
                     string patente = txtBoxVehiculo.Text.Trim();
-                    var vehiculo = db.Vehiculos.FirstOrDefault(v => v.Patente == patente);
+                    var vehiculo = db.vehiculos.FirstOrDefault(v => v.patente == patente);
                     if (vehiculo == null)
                     {
                         MessageBox.Show("No existe un vehículo con esa patente");
                         return;
                     }
 
-                    bool existeSolapamiento = db.Reservas.Any(r =>
-                        r.VehiculoPatente == vehiculo.Patente &&
-                        DateOnly.FromDateTime(dateTimeFechaRetiro.Value) <= r.FechaFin &&
-                        DateOnly.FromDateTime(dateTimeFechaDevolucion.Value) >= r.FechaInicio &&
-                        r.Estado != "Cancelada"
+                    bool existeSolapamiento = db.reservas.Any(r =>
+                        r.vehiculo_patente == vehiculo.patente &&
+                        DateOnly.FromDateTime(dateTimeFechaRetiro.Value) <= r.fecha_fin &&
+                        DateOnly.FromDateTime(dateTimeFechaDevolucion.Value) >= r.fecha_inicio &&
+                        r.estado != "Cancelada"
                     );
 
                     if (existeSolapamiento)
@@ -171,18 +171,18 @@ namespace Escritorio
 
                     // Buscar cliente por DNI
                     int dni = int.Parse(txtBoxCliente.Text.Trim());
-                    var cliente = db.Clientes.FirstOrDefault(c => c.Dni == dni);
+                    var cliente = db.clientes.FirstOrDefault(c => c.dni == dni);
 
                     var reserva = new Reserva(
-                        clienteDni: dni,
-                        vehiculoPatente: patente,
-                        fechaInicio: DateOnly.FromDateTime(dateTimeFechaRetiro.Value),
-                        fechaFin: DateOnly.FromDateTime(dateTimeFechaDevolucion.Value),
+                        cliente_dni: dni,
+                        vehiculo_patente: patente,
+                        fecha_inicio: DateOnly.FromDateTime(dateTimeFechaRetiro.Value),
+                        fecha_fin: DateOnly.FromDateTime(dateTimeFechaDevolucion.Value),
                         estado: cmbBoxEstado.SelectedItem?.ToString(),
                         senia: (float?)numBoxSenia.Value
                     );
 
-                    db.Reservas.Add(reserva);
+                    db.reservas.Add(reserva);
                     db.SaveChanges();
                 }
 
@@ -199,15 +199,15 @@ namespace Escritorio
                 using (var db = new RentaCarDBContext())
                 {
                     string patente = txtBoxVehiculo.Text.Trim();
-                    var vehiculo = db.Vehiculos.FirstOrDefault(v => v.Patente == patente);
-                    var reservaActual = db.Reservas.ToList()[filaEnEdicion];
+                    var vehiculo = db.vehiculos.FirstOrDefault(v => v.patente == patente);
+                    var reservaActual = db.reservas.ToList()[filaEnEdicion];
 
-                    bool existeSolapamiento = db.Reservas.Any(r =>
-                        r.VehiculoPatente == vehiculo.Patente &&
-                        DateOnly.FromDateTime(dateTimeFechaRetiro.Value) <= r.FechaFin &&
-                        DateOnly.FromDateTime(dateTimeFechaDevolucion.Value) >= r.FechaInicio &&
-                        r.IdReserva != reservaActual.IdReserva &&
-                        r.Estado != "Cancelada"
+                    bool existeSolapamiento = db.reservas.Any(r =>
+                        r.vehiculo_patente == vehiculo.patente &&
+                        DateOnly.FromDateTime(dateTimeFechaRetiro.Value) <= r.fecha_fin &&
+                        DateOnly.FromDateTime(dateTimeFechaDevolucion.Value) >= r.fecha_inicio &&
+                        r.id_reserva != reservaActual.id_reserva &&
+                        r.estado != "Cancelada"
                     );
 
                     if (existeSolapamiento)
@@ -216,13 +216,13 @@ namespace Escritorio
                         return;
                     }
 
-                    var reserva = db.Reservas.ToList()[filaEnEdicion];
-                    reserva.Senia = (float?)numBoxSenia.Value;
-                    reserva.Estado = cmbBoxEstado.SelectedItem?.ToString();
-                    reserva.FechaInicio = DateOnly.FromDateTime(dateTimeFechaRetiro.Value);
-                    reserva.FechaFin = DateOnly.FromDateTime(dateTimeFechaDevolucion.Value);
-                    reserva.ClienteDni = int.Parse(txtBoxCliente.Text.Trim());
-                    reserva.VehiculoPatente = txtBoxVehiculo.Text.Trim();
+                    var reserva = db.reservas.ToList()[filaEnEdicion];
+                    reserva.senia = (float?)numBoxSenia.Value;
+                    reserva.estado = cmbBoxEstado.SelectedItem?.ToString();
+                    reserva.fecha_inicio = DateOnly.FromDateTime(dateTimeFechaRetiro.Value);
+                    reserva.fecha_fin = DateOnly.FromDateTime(dateTimeFechaDevolucion.Value);
+                    reserva.cliente_dni = int.Parse(txtBoxCliente.Text.Trim());
+                    reserva.vehiculo_patente = txtBoxVehiculo.Text.Trim();
                     db.SaveChanges();
                 }
 
@@ -235,7 +235,7 @@ namespace Escritorio
 
             using (var db = new RentaCarDBContext())
             {
-                var lista = db.Reservas.ToList();
+                var lista = db.reservas.ToList();
                 dataGridViewReservas.AutoGenerateColumns = false;
                 dataGridViewReservas.DataSource = lista;
             }
@@ -329,11 +329,11 @@ namespace Escritorio
 
             using (var db = new RentaCarDBContext())
             {
-                var reserva = db.Reservas.FirstOrDefault(r => r.IdReserva == idReserva);
+                var reserva = db.reservas.FirstOrDefault(r => r.id_reserva == idReserva);
 
                 if (reserva != null)
                 {
-                    reserva.Estado = "Cancelada";
+                    reserva.estado = "Cancelada";
                     db.SaveChanges();
                 }
             }
