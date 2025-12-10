@@ -35,9 +35,9 @@ namespace Dominio
         {
             // Constructor sin parámetros para EF Core
         }
-        public Cliente(int dni, string? nombre = null, string? apellido = null, string? direccion = null, DateOnly? fechaNacimiento=null,
+        public Cliente(int dni, string? nombre = null, string? apellido = null, string? direccion = null, DateOnly? fecha_nacimiento=null,
                         string? usuario = null, string? contrasenia = null, string? email = null)
-            : base(dni, nombre, apellido, direccion, fechaNacimiento)
+            : base(dni, nombre, apellido, direccion, fecha_nacimiento)
         {
             _usuario = usuario;
             _contrasenia_hash = BCrypt.Net.BCrypt.HashPassword(contrasenia); ;

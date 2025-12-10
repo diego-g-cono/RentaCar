@@ -101,15 +101,13 @@ namespace Escritorio
                 entity.Property(c => c.nombre).HasColumnName("nombre");
             });
 
-            modelBuilder.Entity<Estado>()
-                        .ToTable("estados")
-                        .HasKey(e => e.id_estado);
-
-            modelBuilder.Entity<Estado>()
-                        .Property(e => e.categoria).HasColumnName("categoria");
-
-            modelBuilder.Entity<Estado>()
-                        .Property(e => e.nombre).HasColumnName("nombre");
+            modelBuilder.Entity<Estado>(entity => 
+            {
+                entity.ToTable("estados");
+                entity.HasKey(e => e.id_estado);
+                entity.Property(e => e.categoria).HasColumnName("categoria");
+                entity.Property(e => e.nombre).HasColumnName("nombre");
+            });
         }
         public RentaCarDBContext()
         {

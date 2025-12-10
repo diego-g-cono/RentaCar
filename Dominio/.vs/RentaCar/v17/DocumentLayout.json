@@ -3,36 +3,27 @@
   "WorkspaceRootPath": "D:\\Seminario I\\TP Final\\Rev0\\Dominio\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{FEBD42F9-E4D9-49EE-BF4B-D252044B7046}|..\\Escritorio\\Escritorio.csproj|d:\\seminario i\\tp final\\rev0\\escritorio\\frmvehiculos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{FEBD42F9-E4D9-49EE-BF4B-D252044B7046}|..\\Escritorio\\Escritorio.csproj|d:\\seminario i\\tp final\\rev0\\escritorio\\frmclientes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FEBD42F9-E4D9-49EE-BF4B-D252044B7046}|..\\Escritorio\\Escritorio.csproj|d:\\seminario i\\tp final\\rev0\\escritorio\\rentacardbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B74670CF-25B5-4CEE-A924-ED6AB6C48056}|Dominio.csproj|d:\\seminario i\\tp final\\rev0\\dominio\\estado.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B74670CF-25B5-4CEE-A924-ED6AB6C48056}|Dominio.csproj|solutionrelative:estado.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FEBD42F9-E4D9-49EE-BF4B-D252044B7046}|..\\Escritorio\\Escritorio.csproj|d:\\seminario i\\tp final\\rev0\\escritorio\\frmvehiculos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B74670CF-25B5-4CEE-A924-ED6AB6C48056}|Dominio.csproj|d:\\seminario i\\tp final\\rev0\\dominio\\combustible.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B74670CF-25B5-4CEE-A924-ED6AB6C48056}|Dominio.csproj|solutionrelative:combustible.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FEBD42F9-E4D9-49EE-BF4B-D252044B7046}|..\\Escritorio\\Escritorio.csproj|d:\\seminario i\\tp final\\rev0\\escritorio\\frmclientes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B74670CF-25B5-4CEE-A924-ED6AB6C48056}|Dominio.csproj|d:\\seminario i\\tp final\\rev0\\dominio\\modelo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B74670CF-25B5-4CEE-A924-ED6AB6C48056}|Dominio.csproj|solutionrelative:modelo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B74670CF-25B5-4CEE-A924-ED6AB6C48056}|Dominio.csproj|d:\\seminario i\\tp final\\rev0\\dominio\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B74670CF-25B5-4CEE-A924-ED6AB6C48056}|Dominio.csproj|solutionrelative:cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B74670CF-25B5-4CEE-A924-ED6AB6C48056}|Dominio.csproj|d:\\seminario i\\tp final\\rev0\\dominio\\persona.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B74670CF-25B5-4CEE-A924-ED6AB6C48056}|Dominio.csproj|solutionrelative:persona.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B74670CF-25B5-4CEE-A924-ED6AB6C48056}|Dominio.csproj|d:\\seminario i\\tp final\\rev0\\dominio\\reserva.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B74670CF-25B5-4CEE-A924-ED6AB6C48056}|Dominio.csproj|solutionrelative:reserva.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{FEBD42F9-E4D9-49EE-BF4B-D252044B7046}|..\\Escritorio\\Escritorio.csproj|d:\\seminario i\\tp final\\rev0\\escritorio\\frmclientes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEBD42F9-E4D9-49EE-BF4B-D252044B7046}|..\\Escritorio\\Escritorio.csproj|d:\\seminario i\\tp final\\rev0\\escritorio\\frmreservas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEBD42F9-E4D9-49EE-BF4B-D252044B7046}|..\\Escritorio\\Escritorio.csproj|d:\\seminario i\\tp final\\rev0\\escritorio\\frmvehiculos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,70 +33,71 @@
       "DocumentGroups": [
         {
           "DockedWidth": 303,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Estado.cs",
-              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev0\\Dominio\\Estado.cs",
-              "RelativeDocumentMoniker": "Estado.cs",
-              "ToolTip": "D:\\Seminario I\\TP Final\\Rev0\\Dominio\\Estado.cs",
-              "RelativeToolTip": "Estado.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAIwAgAAAAKAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "FrmReservas.cs",
+              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev0\\Escritorio\\FrmReservas.cs",
+              "RelativeDocumentMoniker": "..\\Escritorio\\FrmReservas.cs",
+              "ToolTip": "D:\\Seminario I\\TP Final\\Rev0\\Escritorio\\FrmReservas.cs",
+              "RelativeToolTip": "..\\Escritorio\\FrmReservas.cs",
+              "ViewState": "AgIAAKQAAAAAAAAAAAAAwCEBAABJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-07T20:28:26.839Z",
+              "WhenOpened": "2025-12-09T23:25:59.965Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Combustible.cs",
-              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev0\\Dominio\\Combustible.cs",
-              "RelativeDocumentMoniker": "Combustible.cs",
-              "ToolTip": "D:\\Seminario I\\TP Final\\Rev0\\Dominio\\Combustible.cs",
-              "RelativeToolTip": "Combustible.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-07T19:57:16.709Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Modelo.cs",
-              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev0\\Dominio\\Modelo.cs",
-              "RelativeDocumentMoniker": "Modelo.cs",
-              "ToolTip": "D:\\Seminario I\\TP Final\\Rev0\\Dominio\\Modelo.cs",
-              "RelativeToolTip": "Modelo.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-07T16:38:00.508Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 3,
               "Title": "Persona.cs",
               "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev0\\Dominio\\Persona.cs",
               "RelativeDocumentMoniker": "Persona.cs",
               "ToolTip": "D:\\Seminario I\\TP Final\\Rev0\\Dominio\\Persona.cs",
               "RelativeToolTip": "Persona.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAwwCgAAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-28T21:55:52.224Z"
+              "WhenOpened": "2025-12-09T22:25:47.559Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
+              "Title": "Cliente.cs",
+              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev0\\Dominio\\Cliente.cs",
+              "RelativeDocumentMoniker": "Cliente.cs",
+              "ToolTip": "D:\\Seminario I\\TP Final\\Rev0\\Dominio\\Cliente.cs",
+              "RelativeToolTip": "Cliente.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAB7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-09T22:26:06.652Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "FrmVehiculos.cs",
               "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev0\\Escritorio\\FrmVehiculos.cs",
               "RelativeDocumentMoniker": "..\\Escritorio\\FrmVehiculos.cs",
               "ToolTip": "D:\\Seminario I\\TP Final\\Rev0\\Escritorio\\FrmVehiculos.cs",
               "RelativeToolTip": "..\\Escritorio\\FrmVehiculos.cs",
-              "ViewState": "AgIAADMAAAAAAAAAAAAowEoAAAAeAAAAAAAAAA==",
+              "ViewState": "AgIAACQBAAAAAAAAAAAYwDsBAABWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-28T21:25:35.467Z",
+              "WhenOpened": "2025-12-08T16:18:36.511Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "FrmClientes.cs",
+              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev0\\Escritorio\\FrmClientes.cs",
+              "RelativeDocumentMoniker": "..\\Escritorio\\FrmClientes.cs",
+              "ToolTip": "D:\\Seminario I\\TP Final\\Rev0\\Escritorio\\FrmClientes.cs",
+              "RelativeToolTip": "..\\Escritorio\\FrmClientes.cs",
+              "ViewState": "AgIAAE0AAAAAAAAAAAAmwK4AAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-08T16:11:12.281Z",
               "EditorCaption": ""
             },
             {
@@ -116,46 +108,21 @@
               "RelativeDocumentMoniker": "..\\Escritorio\\RentaCarDBContext.cs",
               "ToolTip": "D:\\Seminario I\\TP Final\\Rev0\\Escritorio\\RentaCarDBContext.cs",
               "RelativeToolTip": "..\\Escritorio\\RentaCarDBContext.cs",
-              "ViewState": "AgIAAFEAAAAAAAAAAAAkwG8AAAAYAAAAAAAAAA==",
+              "ViewState": "AgIAACIAAAAAAAAAAAAYwBwAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-29T22:41:08.652Z",
+              "WhenOpened": "2025-12-08T16:07:41.379Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Reserva.cs",
-              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev0\\Dominio\\Reserva.cs",
-              "RelativeDocumentMoniker": "Reserva.cs",
-              "ToolTip": "D:\\Seminario I\\TP Final\\Rev0\\Dominio\\Reserva.cs",
-              "RelativeToolTip": "Reserva.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACsAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-28T22:18:21.057Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "FrmClientes.cs",
+              "DocumentIndex": 0,
+              "Title": "FrmClientes.cs [Design]",
               "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev0\\Escritorio\\FrmClientes.cs",
               "RelativeDocumentMoniker": "..\\Escritorio\\FrmClientes.cs",
-              "ToolTip": "D:\\Seminario I\\TP Final\\Rev0\\Escritorio\\FrmClientes.cs",
-              "RelativeToolTip": "..\\Escritorio\\FrmClientes.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADQAAABBAAAAAAAAAA==",
+              "ToolTip": "D:\\Seminario I\\TP Final\\Rev0\\Escritorio\\FrmClientes.cs [Design]",
+              "RelativeToolTip": "..\\Escritorio\\FrmClientes.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-29T13:03:22.35Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "FrmVehiculos.cs [Design]",
-              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev0\\Escritorio\\FrmVehiculos.cs",
-              "RelativeDocumentMoniker": "..\\Escritorio\\FrmVehiculos.cs",
-              "ToolTip": "D:\\Seminario I\\TP Final\\Rev0\\Escritorio\\FrmVehiculos.cs [Design]",
-              "RelativeToolTip": "..\\Escritorio\\FrmVehiculos.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-23T02:16:06.057Z",
+              "WhenOpened": "2025-12-07T21:58:19.786Z",
               "EditorCaption": " [Design]"
             }
           ]
