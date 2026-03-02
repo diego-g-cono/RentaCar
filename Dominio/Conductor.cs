@@ -6,19 +6,14 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    internal class Conductor:Persona
+    public class Conductor : Persona
     {
-        private DateOnly _fechaVencLic;
-        public DateOnly FechaVencimiento
+        public DateOnly Fecha_venc_lic { get; set; }
+
+        public Conductor(int dni, string nombre, string apellido, DateOnly fecha_venc_lic)
+            : base(dni, nombre, apellido)
         {
-            get { return _fechaVencLic; }
-            set { _fechaVencLic = value; }
-        }
-        public Conductor(int dni, string nombre, string apellido, string direccion, DateOnly fechaNacimiento,
-                         DateOnly fechaVencimiento)
-            : base(dni, nombre, apellido, direccion, fechaNacimiento)
-        {
-            _fechaVencLic = fechaVencimiento;
+            Fecha_venc_lic = fecha_venc_lic;
         }
     }
 }

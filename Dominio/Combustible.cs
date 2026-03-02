@@ -8,16 +8,16 @@ namespace Dominio
 {
     public class Combustible
     {
-        private int _id_combustible;
+        private int _id;
         private string _nombre;
         public Combustible(string nombre)
         {
             _nombre = nombre;
         }
-        public int id_combustible
+        public int id
         {
-            get { return _id_combustible; }
-            set { _id_combustible = value; }
+            get { return _id; }
+            set { _id = value; }
         }
         public string nombre
         {

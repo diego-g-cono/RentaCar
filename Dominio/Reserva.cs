@@ -8,17 +8,17 @@ namespace Dominio
 {
     public class Reserva
     {
-        private int _id_reserva;
+        private int _id;
         // Foreign keys
-        public int _cliente_dni;
-        public string _vehiculo_patente;
+        private int _cliente_dni;
+        private string _vehiculo_patente;
 
-        private float? _senia;
+        private decimal? _senia;
         private DateOnly _fecha_inicio;
         private DateOnly _fecha_fin;
         private string _estado;
 
-        public Reserva(int cliente_dni, string vehiculo_patente, DateOnly fecha_inicio, DateOnly fecha_fin, string estado, float? senia = null)
+        public Reserva(int cliente_dni, string vehiculo_patente, DateOnly fecha_inicio, DateOnly fecha_fin, string estado, decimal? senia = null)
         {
             _senia = senia;
             _fecha_inicio = fecha_inicio;
@@ -27,12 +27,12 @@ namespace Dominio
             _cliente_dni = cliente_dni;
             _vehiculo_patente = vehiculo_patente;
         }
-        public int id_reserva
+        public int id
         {
-            get { return _id_reserva; }
-            set { _id_reserva = value; }
+            get { return _id; }
+            set { _id = value; }
         }
-        public float? senia
+        public decimal? senia
         {
             get { return _senia; }
             set { _senia = value; }

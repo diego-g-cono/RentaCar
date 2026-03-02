@@ -50,7 +50,6 @@
             labelDNI = new Label();
             btnGuardar = new Button();
             dataGridViewClientes = new DataGridView();
-            btnCancelar = new Button();
             ColumnaDNI = new DataGridViewTextBoxColumn();
             ColumnaNombre = new DataGridViewTextBoxColumn();
             ColumnaApellido = new DataGridViewTextBoxColumn();
@@ -58,6 +57,7 @@
             ColumnaFechaDeNacimiento = new DataGridViewTextBoxColumn();
             ColumnaDireccion = new DataGridViewTextBoxColumn();
             ColumnaEmail = new DataGridViewTextBoxColumn();
+            btnCancelar = new Button();
             groupBoxClientes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewClientes).BeginInit();
             SuspendLayout();
@@ -74,7 +74,7 @@
             // 
             // btnEditar
             // 
-            btnEditar.Location = new Point(111, 12);
+            btnEditar.Location = new Point(152, 12);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(75, 23);
             btnEditar.TabIndex = 1;
@@ -84,7 +84,7 @@
             // 
             // btnEliminar
             // 
-            btnEliminar.Location = new Point(211, 12);
+            btnEliminar.Location = new Point(287, 12);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(75, 23);
             btnEliminar.TabIndex = 2;
@@ -111,7 +111,7 @@
             groupBoxClientes.Controls.Add(labelDNI);
             groupBoxClientes.Location = new Point(12, 49);
             groupBoxClientes.Name = "groupBoxClientes";
-            groupBoxClientes.Size = new Size(350, 251);
+            groupBoxClientes.Size = new Size(350, 258);
             groupBoxClientes.TabIndex = 3;
             groupBoxClientes.TabStop = false;
             groupBoxClientes.Text = "Datos Cliente";
@@ -136,7 +136,7 @@
             // 
             txtBoxEmail.Location = new Point(140, 168);
             txtBoxEmail.Name = "txtBoxEmail";
-            txtBoxEmail.Size = new Size(100, 23);
+            txtBoxEmail.Size = new Size(200, 23);
             txtBoxEmail.TabIndex = 14;
             // 
             // txtBoxDireccion
@@ -261,21 +261,11 @@
             dataGridViewClientes.AllowUserToDeleteRows = false;
             dataGridViewClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewClientes.Columns.AddRange(new DataGridViewColumn[] { ColumnaDNI, ColumnaNombre, ColumnaApellido, ColumnaUsuario, ColumnaFechaDeNacimiento, ColumnaDireccion, ColumnaEmail });
-            dataGridViewClientes.Location = new Point(368, 49);
+            dataGridViewClientes.Location = new Point(381, 49);
             dataGridViewClientes.Name = "dataGridViewClientes";
             dataGridViewClientes.ReadOnly = true;
-            dataGridViewClientes.Size = new Size(744, 287);
+            dataGridViewClientes.Size = new Size(744, 296);
             dataGridViewClientes.TabIndex = 5;
-            // 
-            // btnCancelar
-            // 
-            btnCancelar.Location = new Point(211, 322);
-            btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(75, 23);
-            btnCancelar.TabIndex = 6;
-            btnCancelar.Text = "Cancelar";
-            btnCancelar.UseVisualStyleBackColor = true;
-            btnCancelar.Click += btnCancelar_Click;
             // 
             // ColumnaDNI
             // 
@@ -326,11 +316,21 @@
             ColumnaEmail.Name = "ColumnaEmail";
             ColumnaEmail.ReadOnly = true;
             // 
+            // btnCancelar
+            // 
+            btnCancelar.Location = new Point(287, 322);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(75, 23);
+            btnCancelar.TabIndex = 6;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
+            // 
             // FrmClientes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1124, 450);
+            ClientSize = new Size(1171, 455);
             Controls.Add(btnCancelar);
             Controls.Add(dataGridViewClientes);
             Controls.Add(btnGuardar);

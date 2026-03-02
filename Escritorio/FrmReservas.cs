@@ -179,7 +179,7 @@ namespace Escritorio
                         fecha_inicio: DateOnly.FromDateTime(dateTimeFechaRetiro.Value),
                         fecha_fin: DateOnly.FromDateTime(dateTimeFechaDevolucion.Value),
                         estado: cmbBoxEstado.SelectedItem?.ToString(),
-                        senia: (float?)numBoxSenia.Value
+                        senia: (decimal?)numBoxSenia.Value
                     );
 
                     db.reservas.Add(reserva);
@@ -206,7 +206,7 @@ namespace Escritorio
                         r.vehiculo_patente == vehiculo.patente &&
                         DateOnly.FromDateTime(dateTimeFechaRetiro.Value) <= r.fecha_fin &&
                         DateOnly.FromDateTime(dateTimeFechaDevolucion.Value) >= r.fecha_inicio &&
-                        r.id_reserva != reservaActual.id_reserva &&
+                        r.id != reservaActual.id &&
                         r.estado != "Cancelada"
                     );
 
@@ -217,7 +217,7 @@ namespace Escritorio
                     }
 
                     var reserva = db.reservas.ToList()[filaEnEdicion];
-                    reserva.senia = (float?)numBoxSenia.Value;
+                    reserva.senia = (decimal?)numBoxSenia.Value;
                     reserva.estado = cmbBoxEstado.SelectedItem?.ToString();
                     reserva.fecha_inicio = DateOnly.FromDateTime(dateTimeFechaRetiro.Value);
                     reserva.fecha_fin = DateOnly.FromDateTime(dateTimeFechaDevolucion.Value);
@@ -287,8 +287,8 @@ namespace Escritorio
             var fila = dataGridViewReservas.SelectedRows[0];
             filaEnEdicion = fila.Index;
 
-            dateTimeFechaRetiro.MinDate = DateTimePicker.MinimumDateTime;
-            dateTimeFechaDevolucion.MinDate = DateTimePicker.MinimumDateTime;
+            dateTimeFechaRetiro.MinDate = DateTime.Today;
+            dateTimeFechaDevolucion.MinDate = dateTimeFechaRetiro.Value.AddDays(1);
 
             txtBoxCliente.Text = fila.Cells["ColumnaCliente"].Value?.ToString();
             txtBoxVehiculo.Text = fila.Cells["ColumnaVehiculo"].Value?.ToString();
@@ -329,7 +329,7 @@ namespace Escritorio
 
             using (var db = new RentaCarDBContext())
             {
-                var reserva = db.reservas.FirstOrDefault(r => r.id_reserva == idReserva);
+                var reserva = db.reservas.FirstOrDefault(r => r.id == idReserva);
 
                 if (reserva != null)
                 {

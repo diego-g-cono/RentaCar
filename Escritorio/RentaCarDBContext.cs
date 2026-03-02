@@ -15,9 +15,9 @@ namespace Escritorio
         public DbSet<Reserva> reservas { get; set; }
         public DbSet<Marca> marcas { get; set; }
         public DbSet<Modelo> modelos { get; set; }
-        public DbSet<ColorV> colores { get; set; }
+        public DbSet<Dominio.Color> colores { get; set; }
         public DbSet<Combustible>combustibles { get; set; }
-        public DbSet<Estado> estados { get; set; }
+        public DbSet<EstadoVehiculo> estados { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -49,19 +49,15 @@ namespace Escritorio
                 entity.Property(c => c.dni).HasColumnName("dni");
                 entity.Property(c => c.nombre).HasColumnName("nombre");
                 entity.Property(c => c.apellido).HasColumnName("apellido");
-                entity.Property(c => c.direccion).HasColumnName("direccion");
-                entity.Property(c => c.fecha_nacimiento).HasColumnName("fecha_nacimiento");
-                entity.Property(c => c.usuario).HasColumnName("usuario");
-                entity.Property(c => c.contrasenia_hash).HasColumnName("contrasenia_hash");
                 entity.Property(c => c.email).HasColumnName("email");
             });
 
             modelBuilder.Entity<Reserva>(entity =>
             {
                 entity.ToTable("reservas");
-                entity.HasKey(r => r.id_reserva);
+                entity.HasKey(r => r.id);
 
-                entity.Property(r => r.id_reserva).HasColumnName("id_reserva");
+                entity.Property(r => r.id).HasColumnName("id");
                 entity.Property(r => r.cliente_dni).HasColumnName("cliente_dni");
                 entity.Property(r => r.vehiculo_patente).HasColumnName("vehiculo_patente");
                 entity.Property(r => r.fecha_inicio).HasColumnName("fecha_inicio");
@@ -73,38 +69,43 @@ namespace Escritorio
             modelBuilder.Entity<Marca>(entity =>
             {
                 entity.ToTable("marcas");
-                entity.HasKey(m => m.id_marca);
-                entity.Property(m => m.id_marca).HasColumnName("id_marca");
+                entity.HasKey(m => m.id);
+
+                entity.Property(m => m.id).HasColumnName("id");
                 entity.Property(m => m.nombre).HasColumnName("nombre");
             });
 
             modelBuilder.Entity<Modelo>(entity =>
             {
                 entity.ToTable("modelos");
-                entity.HasKey(m => m.id_modelo);
-                entity.Property(m => m.id_modelo).HasColumnName("id_modelo");
+                entity.HasKey(m => m.id);
+
+                entity.Property(m => m.id).HasColumnName("id");
                 entity.Property(m => m.nombre).HasColumnName("nombre");
-                entity.Property(m => m.id_marca).HasColumnName("id_marca");
+                entity.Property(m => m.id_marca).HasColumnName("marca_id");
             });
 
-            modelBuilder.Entity<ColorV>(entity =>
+            modelBuilder.Entity<Dominio.Color>(entity =>
             {
                 entity.ToTable("colores");
-                entity.HasKey(c => c.id_color);
+                entity.HasKey(c => c.id);
+
                 entity.Property(c => c.nombre).HasColumnName("nombre");
             });
 
             modelBuilder.Entity<Combustible>(entity =>
             {
                 entity.ToTable("combustibles");
-                entity.HasKey(c => c.id_combustible);
+                entity.HasKey(c => c.id);
+
                 entity.Property(c => c.nombre).HasColumnName("nombre");
             });
 
-            modelBuilder.Entity<Estado>(entity => 
+            modelBuilder.Entity<EstadoVehiculo>(entity => 
             {
                 entity.ToTable("estados");
-                entity.HasKey(e => e.id_estado);
+                entity.HasKey(e => e.id);
+
                 entity.Property(e => e.categoria).HasColumnName("categoria");
                 entity.Property(e => e.nombre).HasColumnName("nombre");
             });

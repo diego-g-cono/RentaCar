@@ -9,43 +9,19 @@ using BCrypt.Net;
 
 namespace Dominio
 {
-    public class Cliente:Persona
+    public class Cliente : Persona
     {
-        private string? _usuario;
-        private string? _contrasenia_hash;
-        private string? _email;
-        public string? usuario
-        {
-            get { return _usuario; }
-            set { _usuario = value; }
-        }
-        public string? contrasenia_hash
-        {
-            get { return _contrasenia_hash; }
-            private set { _contrasenia_hash = value; }
-        }
-
         [EmailAddress]
-        public string? email
+        public string Email { get; set; }
+
+        // Foreign key
+        public int Usuario_id { get; set; }
+
+        public Cliente(int dni, string nombre, string apellido, string email, int usuario_id)
+            : base(dni, nombre, apellido)
         {
-            get { return _email; }
-            set { _email = value; }
-        }
-        public Cliente(int dni) : base(dni)
-        {
-            // Constructor sin parámetros para EF Core
-        }
-        public Cliente(int dni, string? nombre = null, string? apellido = null, string? direccion = null, DateOnly? fecha_nacimiento=null,
-                        string? usuario = null, string? contrasenia = null, string? email = null)
-            : base(dni, nombre, apellido, direccion, fecha_nacimiento)
-        {
-            _usuario = usuario;
-            _contrasenia_hash = BCrypt.Net.BCrypt.HashPassword(contrasenia); ;
-            _email = email;
-        }
-        public bool VerificarContraseña(string contraseña)
-        {
-            return BCrypt.Net.BCrypt.Verify(contraseña, contrasenia_hash);
+            Email = email;
+            Usuario_id = usuario_id;
         }
     }
 }

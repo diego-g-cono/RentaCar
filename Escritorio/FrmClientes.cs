@@ -43,8 +43,11 @@ namespace Escritorio
                     dni: int.Parse(txtBoxDNI.Text.Trim()),
                     nombre: txtBoxNombre.Text.Trim(),
                     apellido: txtBoxApellido.Text.Trim(),
+                    direccion: txtBoxDireccion.Text.Trim(),
+                    fecha_nacimiento: DateOnly.FromDateTime(dateTimePickerFdN.Value),
                     usuario: txtBoxUsuario.Text.Trim(),
-                    fecha_nacimiento: DateOnly.FromDateTime(dateTimePickerFdN.Value)
+                    contrasenia: txtBoxContrasenia.Text.Trim(),
+                    email: txtBoxEmail.Text.Trim()
                 );
                 db.clientes.Add(cliente);
                 db.SaveChanges();
@@ -176,7 +179,7 @@ namespace Escritorio
 
             txtBoxDNI.Enabled = false;
 
-            btnGuardar.Enabled = false;
+            txtBoxContrasenia.Enabled = false;
         }
     }
 }

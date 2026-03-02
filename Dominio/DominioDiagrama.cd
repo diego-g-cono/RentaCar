@@ -1,21 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Dominio.Persona">
-    <Position X="2.5" Y="0.5" Width="1.5" />
+    <Position X="2.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>EAEAAAAAAAAAAAQEACAAgQAAAAAAAAAAAAAAAEIAAIA=</HashCode>
+      <HashCode>AAEAAAAAAAAAAAAEAAAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Persona.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Dominio.Cliente">
-    <Position X="1.25" Y="4.5" Width="1.5" />
+    <Position X="0.5" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAADAAAAAAAACAAAAAABAQAAAAAAAEAAAAAAE=</HashCode>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAA=</HashCode>
       <FileName>Cliente.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Dominio.Conductor">
-    <Position X="3.75" Y="4.5" Width="1.5" />
+    <Position X="2.25" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAIAAAAA=</HashCode>
       <FileName>Conductor.cs</FileName>
@@ -24,29 +24,57 @@
   <Class Name="Dominio.Vehiculo">
     <Position X="5.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAgBBAACAAKRAAgAAAAAAAACAAAAAAAAAgAxgAAAAg=</HashCode>
+      <HashCode>AAAADAAACAAaRAAgAAAIAAAACAAAAADAAAAAACAIAAI=</HashCode>
       <FileName>Vehiculo.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Dominio.Alquiler">
-    <Position X="8" Y="0.5" Width="1.5" />
+    <Position X="7.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AMAAQAIkgAgAQAAAQACAAAQAAgIAAAQAACAAAAAgIAA=</HashCode>
       <FileName>Alquiler.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Dominio.Reserva">
-    <Position X="10" Y="0.5" Width="1.5" />
+    <Position X="9.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAAAAAAgAgAAAAAAACAAAAAAhAAAAQAAAAAAACgIAA=</HashCode>
+      <HashCode>AAAADAAAAAAAAAAAAAJAEAgAIAAAAAAIAAAAAAKMAgA=</HashCode>
       <FileName>Reserva.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Dominio.Devolucion">
-    <Position X="11.75" Y="0.5" Width="1.5" />
+    <Position X="11" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAQAAAFAAAIAAAAABAAAAEAAAAACAAAAAAAAABCBA=</HashCode>
       <FileName>Devolucion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dominio.Usuario">
+    <Position X="12.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAASAAAAAAACCABAAAACAAAAAAAAAAAAYAAAAgA=</HashCode>
+      <FileName>Usuario.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dominio.Empleado">
+    <Position X="4" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAIAAQAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Empleado.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dominio.Color">
+    <Position X="9.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Color.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dominio.Catalogo">
+    <Position X="13.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Catalogo.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
