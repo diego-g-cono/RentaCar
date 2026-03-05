@@ -29,16 +29,16 @@ namespace Escritorio
             modelBuilder.Entity<Vehiculo>(entity =>
             {
                 entity.ToTable("vehiculos");
-                entity.HasKey(v => v.patente);
+                entity.HasKey(v => v.Patente);
 
-                entity.Property(v => v.patente).HasColumnName("patente");
-                entity.Property(v => v.marca).HasColumnName("marca");
-                entity.Property(v => v.modelo).HasColumnName("modelo");
-                entity.Property(v => v.estado).HasColumnName("estado");
-                entity.Property(v => v.anio).HasColumnName("anio");
-                entity.Property(v => v.color).HasColumnName("color");
-                entity.Property(v => v.tipo_combustible).HasColumnName("tipo_combustible");
-                entity.Property(v => v.kilometraje).HasColumnName("kilometraje");
+                entity.Property(v => v.Patente).HasColumnName("patente");
+                entity.Property(v => v.Marca_id).HasColumnName("marca");
+                entity.Property(v => v.Modelo_id).HasColumnName("modelo");
+                entity.Property(v => v.EstadoVehiculo_id).HasColumnName("estado");
+                entity.Property(v => v.Anio).HasColumnName("anio");
+                entity.Property(v => v.Color).HasColumnName("color");
+                entity.Property(v => v.Tipo_combustible).HasColumnName("tipo_combustible");
+                entity.Property(v => v.Kilometraje).HasColumnName("kilometraje");
             });
 
             modelBuilder.Entity<Cliente>(entity =>

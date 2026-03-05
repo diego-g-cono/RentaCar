@@ -62,9 +62,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Seminario I\\TP Final\\Rev0\\Dominio\\Dominio.csproj",
-      "projectName": "Dominio",
-      "projectPath": "D:\\Seminario I\\TP Final\\Rev0\\Dominio\\Dominio.csproj",
+      "projectUniqueName": "D:\\Seminario I\\TP Final\\Rev0\\Dominio\\RentaCar.Dominio.csproj",
+      "projectName": "RentaCar.Dominio",
+      "projectPath": "D:\\Seminario I\\TP Final\\Rev0\\Dominio\\RentaCar.Dominio.csproj",
       "packagesPath": "C:\\Users\\diego\\.nuget\\packages\\",
       "outputPath": "D:\\Seminario I\\TP Final\\Rev0\\Dominio\\obj\\",
       "projectStyle": "PackageReference",

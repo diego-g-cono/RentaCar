@@ -179,7 +179,7 @@ namespace Escritorio
                         MessageBox.Show("La patente debe tener el formato AA000AA (2 letras, 3 números, 2 letras).");
                         return;
                     }
-                    bool existe = db.vehiculos.Any(v => v.patente == patente);
+                    bool existe = db.vehiculos.Any(v => v.Patente == patente);
                     if (existe)
                     {
                         MessageBox.Show("Ya existe un vehículo con esa patente.");
@@ -214,9 +214,9 @@ namespace Escritorio
                 {
                     string patenteOriginal = dataGridViewVehiculos.Rows[filaEnEdicion].Cells["ColumnaPatente"].Value?.ToString();
 
-                    var vehiculo = db.vehiculos.FirstOrDefault(v => v.patente == patenteOriginal);
+                    var vehiculo = db.vehiculos.FirstOrDefault(v => v.Patente == patenteOriginal);
                     string nuevoEstado = cmbBoxEstado.SelectedItem?.ToString();
-                    if (vehiculo.estado != nuevoEstado)
+                    if (vehiculo.EstadoVehiculo_id != nuevoEstado)
                     {
                         bool tieneReservasActivas = db.reservas.Any(r =>
                             r.vehiculo_patente == patenteOriginal &&
@@ -236,14 +236,14 @@ namespace Escritorio
                     }
                     if (vehiculo != null)
                     {
-                        vehiculo.patente = txtBoxPatente.Text.Trim();
-                        vehiculo.marca = cmbBoxMarca.SelectedItem?.ToString();
-                        vehiculo.modelo = cmbBoxModelo.SelectedItem?.ToString();
-                        vehiculo.anio = (int?)numBoxAnio.Value;
-                        vehiculo.color = cmbBoxColor.SelectedItem?.ToString();
-                        vehiculo.kilometraje = (int?)numBoxKm.Value;
-                        vehiculo.estado = cmbBoxEstado.SelectedItem?.ToString();
-                        vehiculo.tipo_combustible = cmbBoxCombustible.SelectedItem?.ToString();
+                        vehiculo.Patente = txtBoxPatente.Text.Trim();
+                        vehiculo.Marca_id = cmbBoxMarca.SelectedItem?.ToString();
+                        vehiculo.Modelo_id = cmbBoxModelo.SelectedItem?.ToString();
+                        vehiculo.Anio = (int?)numBoxAnio.Value;
+                        vehiculo.Color = cmbBoxColor.SelectedItem?.ToString();
+                        vehiculo.Kilometraje = (int?)numBoxKm.Value;
+                        vehiculo.EstadoVehiculo_id = cmbBoxEstado.SelectedItem?.ToString();
+                        vehiculo.Tipo_combustible = cmbBoxCombustible.SelectedItem?.ToString();
 
                         db.SaveChanges();
                     }
@@ -342,7 +342,7 @@ namespace Escritorio
             
             using (var db = new RentaCarDBContext())
             {
-                var vehiculo = db.vehiculos.FirstOrDefault(v => v.patente == patente);
+                var vehiculo = db.vehiculos.FirstOrDefault(v => v.Patente == patente);
                 bool tieneReservasActivas = db.reservas.Any(r =>
                     r.vehiculo_patente == patente &&
                     r.estado != "Cancelada"
@@ -356,7 +356,7 @@ namespace Escritorio
 
                 if (vehiculo != null)
                 {
-                    vehiculo.estado = "No disponible";
+                    vehiculo.EstadoVehiculo_id = "No disponible";
                     db.SaveChanges();
                 }
             }

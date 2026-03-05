@@ -283,17 +283,17 @@
           }
         }
       },
-      "Dominio/1.0.0": {
+      "RentaCar.Dominio/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "BCrypt.Net-Next": "4.0.3"
         },
         "compile": {
-          "bin/placeholder/Dominio.dll": {}
+          "bin/placeholder/RentaCar.Dominio.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Dominio.dll": {}
+          "bin/placeholder/RentaCar.Dominio.dll": {}
         }
       }
     }
@@ -765,18 +765,18 @@
         "postgresql.png"
       ]
     },
-    "Dominio/1.0.0": {
+    "RentaCar.Dominio/1.0.0": {
       "type": "project",
-      "path": "../Dominio/Dominio.csproj",
-      "msbuildProject": "../Dominio/Dominio.csproj"
+      "path": "../Dominio/RentaCar.Dominio.csproj",
+      "msbuildProject": "../Dominio/RentaCar.Dominio.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0-windows7.0": [
-      "Dominio >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 8.0.22",
       "Npgsql >= 8.0.8",
-      "Npgsql.EntityFrameworkCore.PostgreSQL >= 8.0.11"
+      "Npgsql.EntityFrameworkCore.PostgreSQL >= 8.0.11",
+      "RentaCar.Dominio >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -786,9 +786,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Seminario I\\TP Final\\Rev0\\Escritorio\\Escritorio.csproj",
-      "projectName": "Escritorio",
-      "projectPath": "D:\\Seminario I\\TP Final\\Rev0\\Escritorio\\Escritorio.csproj",
+      "projectUniqueName": "D:\\Seminario I\\TP Final\\Rev0\\Escritorio\\RentaCar.Escritorio.csproj",
+      "projectName": "RentaCar.Escritorio",
+      "projectPath": "D:\\Seminario I\\TP Final\\Rev0\\Escritorio\\RentaCar.Escritorio.csproj",
       "packagesPath": "C:\\Users\\diego\\.nuget\\packages\\",
       "outputPath": "D:\\Seminario I\\TP Final\\Rev0\\Escritorio\\obj\\",
       "projectStyle": "PackageReference",
@@ -811,8 +811,8 @@
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
           "projectReferences": {
-            "D:\\Seminario I\\TP Final\\Rev0\\Dominio\\Dominio.csproj": {
-              "projectPath": "D:\\Seminario I\\TP Final\\Rev0\\Dominio\\Dominio.csproj"
+            "D:\\Seminario I\\TP Final\\Rev0\\Dominio\\RentaCar.Dominio.csproj": {
+              "projectPath": "D:\\Seminario I\\TP Final\\Rev0\\Dominio\\RentaCar.Dominio.csproj"
             }
           }
         }

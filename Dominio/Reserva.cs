@@ -1,66 +1,48 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Dominio
 {
     public class Reserva
     {
-        private int _id;
+        public int Id { get; set; }
+
         // Foreign keys
-        private int _cliente_dni;
-        private string _vehiculo_patente;
+        public int ClienteDni { get; set; }
+        public string VehiculoPatente { get; set; }
 
-        private decimal? _senia;
-        private DateOnly _fecha_inicio;
-        private DateOnly _fecha_fin;
-        private string _estado;
+        public DateOnly FechaInicio { get; set; }
+        public DateOnly FechaFin { get; set; }
 
-        public Reserva(int cliente_dni, string vehiculo_patente, DateOnly fecha_inicio, DateOnly fecha_fin, string estado, decimal? senia = null)
+        public decimal PrecioDia { get; set; }
+        public decimal PrecioTotal { get; set; }
+
+        public decimal? Senia { get; set; }
+
+        public string Estado { get; set; }
+
+        public Reserva(
+            int clienteDni,
+            string vehiculoPatente,
+            DateOnly fechaInicio,
+            DateOnly fechaFin,
+            decimal precioDia,
+            string estado,
+            decimal? senia = null)
         {
-            _senia = senia;
-            _fecha_inicio = fecha_inicio;
-            _fecha_fin = fecha_fin;
-            _estado = estado;
-            _cliente_dni = cliente_dni;
-            _vehiculo_patente = vehiculo_patente;
+            ClienteDni = clienteDni;
+            VehiculoPatente = vehiculoPatente;
+            FechaInicio = fechaInicio;
+            FechaFin = fechaFin;
+            PrecioDia = precioDia;
+            PrecioTotal = CalcularPrecioTotal(fechaInicio, fechaFin, precioDia);
+            Estado = estado;
+            Senia = senia;
         }
-        public int id
+
+        private decimal CalcularPrecioTotal(DateOnly inicio, DateOnly fin, decimal precioDia)
         {
-            get { return _id; }
-            set { _id = value; }
-        }
-        public decimal? senia
-        {
-            get { return _senia; }
-            set { _senia = value; }
-        }
-        public DateOnly fecha_inicio
-        {
-            get { return _fecha_inicio; }
-            set { _fecha_inicio = value; }
-        }
-        public DateOnly fecha_fin
-        {
-            get { return _fecha_fin; }
-            set { _fecha_fin = value; }
-        }
-        public string estado
-        {
-            get { return _estado; }
-            set { _estado = value; }
-        }
-        public int cliente_dni
-        {
-            get { return _cliente_dni; }
-            set { _cliente_dni = value; }
-        }
-        public string vehiculo_patente
-        {
-            get { return _vehiculo_patente; }
-            set { _vehiculo_patente = value; }
+            int dias = fin.DayNumber - inicio.DayNumber;
+            return dias * precioDia;
         }
     }
 }

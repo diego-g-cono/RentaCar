@@ -57,17 +57,17 @@ namespace Escritorio
                 using (var db = new RentaCarDBContext())
                 {
                     var lista = db.vehiculos
-                        .Where(v => v.estado == "Disponible")
+                        .Where(v => v.EstadoVehiculo_id == "Disponible")
                         .Select(v => new
                         {
-                            Patente = v.patente,
-                            Marca = v.marca,
-                            Modelo = v.modelo,
-                            Anio = v.anio,
-                            Color = v.color,
-                            Kilometraje = v.kilometraje,
-                            Estado = v.estado,
-                            TipoCombustible = v.tipo_combustible
+                            Patente = v.Patente,
+                            Marca = v.Marca_id,
+                            Modelo = v.Modelo_id,
+                            Anio = v.Anio,
+                            Color = v.Color,
+                            Kilometraje = v.Kilometraje,
+                            Estado = v.EstadoVehiculo_id,
+                            TipoCombustible = v.Tipo_combustible
                         })
                         .ToList();
 
@@ -149,7 +149,7 @@ namespace Escritorio
                 using (var db = new RentaCarDBContext())
                 {
                     string patente = txtBoxVehiculo.Text.Trim();
-                    var vehiculo = db.vehiculos.FirstOrDefault(v => v.patente == patente);
+                    var vehiculo = db.vehiculos.FirstOrDefault(v => v.Patente == patente);
                     if (vehiculo == null)
                     {
                         MessageBox.Show("No existe un vehículo con esa patente");
@@ -157,7 +157,7 @@ namespace Escritorio
                     }
 
                     bool existeSolapamiento = db.reservas.Any(r =>
-                        r.vehiculo_patente == vehiculo.patente &&
+                        r.vehiculo_patente == vehiculo.Patente &&
                         DateOnly.FromDateTime(dateTimeFechaRetiro.Value) <= r.fecha_fin &&
                         DateOnly.FromDateTime(dateTimeFechaDevolucion.Value) >= r.fecha_inicio &&
                         r.estado != "Cancelada"
@@ -199,11 +199,11 @@ namespace Escritorio
                 using (var db = new RentaCarDBContext())
                 {
                     string patente = txtBoxVehiculo.Text.Trim();
-                    var vehiculo = db.vehiculos.FirstOrDefault(v => v.patente == patente);
+                    var vehiculo = db.vehiculos.FirstOrDefault(v => v.Patente == patente);
                     var reservaActual = db.reservas.ToList()[filaEnEdicion];
 
                     bool existeSolapamiento = db.reservas.Any(r =>
-                        r.vehiculo_patente == vehiculo.patente &&
+                        r.vehiculo_patente == vehiculo.Patente &&
                         DateOnly.FromDateTime(dateTimeFechaRetiro.Value) <= r.fecha_fin &&
                         DateOnly.FromDateTime(dateTimeFechaDevolucion.Value) >= r.fecha_inicio &&
                         r.id != reservaActual.id &&

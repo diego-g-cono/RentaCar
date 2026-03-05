@@ -15,13 +15,13 @@ namespace Dominio
         public string Email { get; set; }
 
         // Foreign key
-        public int Usuario_id { get; set; }
+        public int UsuarioId { get; set; }
 
         public Cliente(int dni, string nombre, string apellido, string email, int usuario_id)
             : base(dni, nombre, apellido)
         {
             Email = email;
-            Usuario_id = usuario_id;
+            UsuarioId = usuario_id;
         }
     }
 }
