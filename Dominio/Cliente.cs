@@ -7,21 +7,23 @@ using System.Text;
 using System.Threading.Tasks;
 using BCrypt.Net;
 
-namespace Dominio
+namespace RentaCar.Dominio
 {
     public class Cliente : Persona
     {
         [EmailAddress]
         public string Email { get; set; }
+        public string Telefono { get; set; }
 
         // Foreign key
-        public int UsuarioId { get; set; }
+        public int? UsuarioId { get; set; }
 
-        public Cliente(int dni, string nombre, string apellido, string email, int usuario_id)
+        public Cliente(int dni, string nombre, string apellido, string email, int? usuarioId, string telefono)
             : base(dni, nombre, apellido)
         {
             Email = email;
-            UsuarioId = usuario_id;
+            UsuarioId = usuarioId;
+            Telefono = telefono;
         }
     }
 }

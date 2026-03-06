@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Dominio;
+using RentaCar.Dominio;
 
-namespace Escritorio
+namespace RentaCar.Escritorio
 {
     internal class RentaCarDBContext : DbContext
     {

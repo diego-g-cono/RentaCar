@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace RentaCar.Dominio
 {
-    public class Combustible : Catalogo
-    {   
-        public Combustible(string nombre) : base(nombre) { }
-        public Combustible() { }
+    internal class TipoVehiculo : Catalogo
+    {
+        public TipoVehiculo(string nombre) : base(nombre)
+        {
+        }
     }
 }

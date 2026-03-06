@@ -1,39 +1,40 @@
 ﻿using System;
 
-namespace Dominio
+namespace RentaCar.Dominio
 {
     internal class Alquiler
     {
-        public int AlquilerId { get; set; }
+        public int Id { get; set; }
         public DateOnly FechaInicio { get; set; }
         public DateOnly FechaFin { get; set; }
-        public Vehiculo Vehiculo { get; set; }
-        public Conductor Conductor { get; set; }
-        public Cliente Cliente { get; set; }
-        public decimal Tarifa { get; set; }
-        public string Status { get; set; }
-        public Reserva? Reserva { get; set; }
-
-        public Alquiler(
-            int alquilerId,
-            DateOnly fechaInicio,
-            DateOnly fechaFin,
-            Vehiculo vehiculo,
-            Conductor conductor,
-            Cliente cliente,
-            decimal tarifa,
-            string status,
-            Reserva? reserva = null)
+        public decimal Precio { get; set; }
+        //foreign keys
+        public int VehiculoPatente { get; set; }
+        public int ConductorId { get; set; }
+        public int ClienteId { get; set; }
+        public int EstadoAlquilerId { get; set; }
+        public int? ReservaId { get; set; }
+        
+        public Alquiler(int id, 
+            DateOnly fechaInicio, 
+            DateOnly fechaFin, 
+            decimal precio, 
+            int vehiculoPatente, 
+            int conductorId, 
+            int clienteId, 
+            int estadoAlquilerId, 
+            int? reservaId
+        )
         {
-            AlquilerId = alquilerId;
+            Id = id;
             FechaInicio = fechaInicio;
             FechaFin = fechaFin;
-            Vehiculo = vehiculo;
-            Conductor = conductor;
-            Cliente = cliente;
-            Tarifa = tarifa;
-            Status = status;
-            Reserva = reserva;
+            Precio = precio;
+            VehiculoPatente = vehiculoPatente;
+            ConductorId = conductorId;
+            ClienteId = clienteId;
+            EstadoAlquilerId = estadoAlquilerId;
+            ReservaId = reservaId;
         }
     }
 }

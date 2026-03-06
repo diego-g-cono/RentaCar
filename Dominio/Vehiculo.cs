@@ -1,28 +1,41 @@
 ﻿using System;
 
-namespace Dominio
+namespace RentaCar.Dominio
 {
     public class Vehiculo
     {
         public string Patente { get; set; }
-        public string MarcaId { get; set; }
-        public string ModeloId { get; set; }
-        public int? Anio { get; set; }
-        public string? ColorId { get; set; }
-        public string? TipoCombustible { get; set; }
-        public int? Kilometraje { get; set; }
-        public string EstadoVehiculoId { get; set; }
+        public int Anio { get; set; }
+        public int Kilometraje { get; set; }
 
-        public Vehiculo(string patente, string estado, string marca, string modelo, int? anio = null, string? color = null, string? tipo_combustible = null, int? kilometraje = null)
+        //foreign keys
+        public int MarcaId { get; set; }
+        public int ModeloId { get; set; }
+        public int ColorId { get; set; }
+        public int TipoCombustibleId { get; set; }
+        public int EstadoVehiculoId { get; set; }
+        public int TipoVehiculoId { get; set; }
+
+        public Vehiculo(
+            string patente,
+            int anio,
+            int kilometraje,
+            int marcaId,
+            int modeloId,
+            int colorId,
+            int tipoCombustibleId,
+            int estadoVehiculoId,
+            int tipoVehiculoId)
         {
             Patente = patente;
-            EstadoVehiculoId = estado;
-            MarcaId = marca;
-            ModeloId = modelo;
             Anio = anio;
-            ColorId = color;
-            TipoCombustible = tipo_combustible;
             Kilometraje = kilometraje;
+            MarcaId = marcaId;
+            ModeloId = modeloId;
+            ColorId = colorId;
+            TipoCombustibleId = tipoCombustibleId;
+            EstadoVehiculoId = estadoVehiculoId;
+            TipoVehiculoId = tipoVehiculoId;
         }
     }
 }

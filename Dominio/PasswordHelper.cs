@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BCrypt.Net;
 
-namespace Dominio
+namespace RentaCar.Dominio
 {
     public static class PasswordHelper
     {

@@ -1,4 +1,4 @@
-﻿namespace Dominio
+﻿namespace RentaCar.Dominio
 {
     internal class EstadoReserva : Catalogo
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Dominio
+namespace RentaCar.Dominio
 {
     internal class Devolucion
     {

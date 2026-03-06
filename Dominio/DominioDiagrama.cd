@@ -1,115 +1,150 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Dominio.Persona">
+  <Class Name="RentaCar.Dominio.Persona">
     <Position X="2.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAEAAAAAAAAAAAAEAAAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Persona.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Dominio.Cliente">
-    <Position X="0.5" Y="3.5" Width="1.5" />
+  <Class Name="RentaCar.Dominio.Cliente">
+    <Position X="0.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAIAAAAAAAAAAAgAAAAA=</HashCode>
       <FileName>Cliente.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Dominio.Conductor">
-    <Position X="2.25" Y="3.5" Width="1.5" />
+  <Class Name="RentaCar.Dominio.Conductor">
+    <Position X="2.25" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Conductor.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Dominio.Vehiculo">
+  <Class Name="RentaCar.Dominio.Vehiculo">
     <Position X="5.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAgCAABAAAAAAAAAAAAAAAADAAAAAAAAAAAQgAAACA=</HashCode>
+      <HashCode>AAAACAABAAAAAAIAAAAAAAAADAAAAAAAAAAAQgEAACA=</HashCode>
       <FileName>Vehiculo.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Dominio.Alquiler">
+  <Class Name="RentaCar.Dominio.Alquiler">
     <Position X="7" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAQAAEAAAAAAAAQACAAAAAAgAAAAQAACAAAAAgAAA=</HashCode>
+      <HashCode>AAACAAAACAAAAAAkABAAAAAQAgAAAAAAAAAAAAAoAAA=</HashCode>
       <FileName>Alquiler.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Dominio.Reserva">
+  <Class Name="RentaCar.Dominio.Reserva">
     <Position X="8.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAADAAAAAAAAAAAAAJAEAgAIAAAAAAIAAAAAAKMAgA=</HashCode>
+      <HashCode>AAACAAAAAAAAAAgAIBAAAAAAAhAAAAAABAAAAAAoAAg=</HashCode>
       <FileName>Reserva.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Dominio.Devolucion">
+  <Class Name="RentaCar.Dominio.Devolucion">
     <Position X="10.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAFAAAIAAAAAAAAAAEAAAAAAAAAAAAAAAAABA=</HashCode>
+      <HashCode>AAACAAAAFAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAABA=</HashCode>
       <FileName>Devolucion.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Dominio.Usuario">
+  <Class Name="RentaCar.Dominio.Usuario">
     <Position X="12.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAEAAACAAAAAAAAAAAAgAgAIAAAAAAAAA=</HashCode>
       <FileName>Usuario.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Dominio.Empleado">
-    <Position X="4" Y="3.5" Width="1.5" />
+  <Class Name="RentaCar.Dominio.Empleado">
+    <Position X="4" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Empleado.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Dominio.Color">
-    <Position X="2.75" Y="6.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Color.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Dominio.Catalogo">
-    <Position X="6.75" Y="4.25" Width="1.75" />
+  <Class Name="RentaCar.Dominio.Catalogo">
+    <Position X="7.5" Y="4.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Catalogo.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Dominio.Combustible">
+  <Class Name="RentaCar.Dominio.EstadoReserva">
     <Position X="4.75" Y="6.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Combustible.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Dominio.EstadoReserva">
-    <Position X="6.5" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>EstadoReserva.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Dominio.EstadoVehiculo">
-    <Position X="8.5" Y="6.75" Width="1.5" />
+  <Class Name="RentaCar.Dominio.EstadoVehiculo">
+    <Position X="8.25" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>EstadoVehiculo.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Dominio.Marca">
-    <Position X="10.5" Y="6.75" Width="1.5" />
+  <Class Name="RentaCar.Dominio.Marca">
+    <Position X="10" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Marca.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Dominio.Modelo">
-    <Position X="12.25" Y="6.75" Width="1.5" />
+  <Class Name="RentaCar.Dominio.Modelo">
+    <Position X="11.75" Y="6.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <HashCode>AAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Modelo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RentaCar.Dominio.Color">
+    <Position X="1" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Color.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RentaCar.Dominio.Combustible">
+    <Position X="3" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Combustible.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RentaCar.Dominio.Rol">
+    <Position X="6.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Rol.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RentaCar.Dominio.TipoVehiculo">
+    <Position X="15.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TipoVehiculo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RentaCar.Dominio.Tarifa">
+    <Position X="14" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAACAAAAAIAIAAAAAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Tarifa.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RentaCar.Dominio.EstadoAlquiler">
+    <Position X="13.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EstadoAlquiler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RentaCar.Dominio.PasswordHelper">
+    <Position X="15.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAACAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PasswordHelper.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

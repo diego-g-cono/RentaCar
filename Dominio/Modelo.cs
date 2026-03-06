@@ -1,13 +1,13 @@
-﻿namespace Dominio
+﻿namespace RentaCar.Dominio
 {
     public class Modelo : Catalogo
     {
         // Foreign key
-        public int Marca_id { get; set; }
+        public int MarcaId { get; set; }
 
-        public Modelo(string nombre, int marca_id) : base(nombre)
+        public Modelo(string nombre, int marcaId) : base(nombre)
         {
-            Marca_id = marca_id;
+            MarcaId = marcaId;
         }
 
         public Modelo() { }

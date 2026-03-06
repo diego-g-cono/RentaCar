@@ -1,4 +1,4 @@
-﻿namespace Escritorio
+﻿namespace RentaCar.Escritorio
 {
     partial class FrmClientes
     {

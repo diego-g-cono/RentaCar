@@ -1,4 +1,4 @@
-﻿namespace Dominio
+﻿namespace RentaCar.Dominio
 {
     public class Color : Catalogo
     {

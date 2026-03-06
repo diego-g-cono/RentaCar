@@ -1,4 +1,4 @@
-namespace Escritorio
+namespace RentaCar.Escritorio
 {
     internal static class Program
     {
