@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Seminario I\\TP Final\\Rev0\\Dominio\\RentaCar.Dominio.csproj": {}
+    "D:\\Seminario I\\TP Final\\Rev0\\RentaCar.Dominio\\RentaCar.Dominio.csproj": {}
   },
   "projects": {
-    "D:\\Seminario I\\TP Final\\Rev0\\Dominio\\RentaCar.Dominio.csproj": {
+    "D:\\Seminario I\\TP Final\\Rev0\\RentaCar.Dominio\\RentaCar.Dominio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Seminario I\\TP Final\\Rev0\\Dominio\\RentaCar.Dominio.csproj",
+        "projectUniqueName": "D:\\Seminario I\\TP Final\\Rev0\\RentaCar.Dominio\\RentaCar.Dominio.csproj",
         "projectName": "RentaCar.Dominio",
-        "projectPath": "D:\\Seminario I\\TP Final\\Rev0\\Dominio\\RentaCar.Dominio.csproj",
+        "projectPath": "D:\\Seminario I\\TP Final\\Rev0\\RentaCar.Dominio\\RentaCar.Dominio.csproj",
         "packagesPath": "C:\\Users\\diego\\.nuget\\packages\\",
-        "outputPath": "D:\\Seminario I\\TP Final\\Rev0\\Dominio\\obj\\",
+        "outputPath": "D:\\Seminario I\\TP Final\\Rev0\\RentaCar.Dominio\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -6,19 +6,19 @@ namespace RentaCar.Dominio
     {
         public int Id { get; set; }
 
-        public DateTime FechaDevolucion { get; set; }
+        public DateTime Fecha { get; set; }
 
-        public Alquiler Alquiler { get; set; }
+        public int AlquilerId { get; set; }
 
         public bool TanqueLleno { get; set; }
 
         public string Observaciones { get; set; }
 
-        public Devolucion(int id, DateTime fechaDevolucion, Alquiler alquiler, bool tanqueLleno, string observaciones)
+        public Devolucion(int id, DateTime fecha, int alquilerId, bool tanqueLleno, string observaciones)
         {
             Id = id;
-            FechaDevolucion = fechaDevolucion;
-            Alquiler = alquiler;
+            Fecha = fecha;
+            AlquilerId = alquilerId;
             TanqueLleno = tanqueLleno;
             Observaciones = observaciones;
         }

@@ -1,18 +1,10 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Seminario I\\TP Final\\Rev0\\Dominio\\",
+  "WorkspaceRootPath": "D:\\Seminario I\\TP Final\\Rev0\\RentaCar.Dominio\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B74670CF-25B5-4CEE-A924-ED6AB6C48056}|RentaCar.Dominio.csproj|d:\\seminario i\\tp final\\rev0\\dominio\\dominiodiagrama.cd||{59B0B277-7DDF-4E36-A3ED-02DAC5B9E2FA}|",
+      "AbsoluteMoniker": "D:0:0:{B74670CF-25B5-4CEE-A924-ED6AB6C48056}|RentaCar.Dominio.csproj|d:\\seminario i\\tp final\\rev0\\rentacar.dominio\\dominiodiagrama.cd||{59B0B277-7DDF-4E36-A3ED-02DAC5B9E2FA}|",
       "RelativeMoniker": "D:0:0:{B74670CF-25B5-4CEE-A924-ED6AB6C48056}|RentaCar.Dominio.csproj|solutionrelative:dominiodiagrama.cd||{59B0B277-7DDF-4E36-A3ED-02DAC5B9E2FA}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B74670CF-25B5-4CEE-A924-ED6AB6C48056}|RentaCar.Dominio.csproj|d:\\seminario i\\tp final\\rev0\\dominio\\estadoalquiler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B74670CF-25B5-4CEE-A924-ED6AB6C48056}|RentaCar.Dominio.csproj|solutionrelative:estadoalquiler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B74670CF-25B5-4CEE-A924-ED6AB6C48056}|RentaCar.Dominio.csproj|d:\\seminario i\\tp final\\rev0\\dominio\\alquiler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B74670CF-25B5-4CEE-A924-ED6AB6C48056}|RentaCar.Dominio.csproj|solutionrelative:alquiler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +14,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 303,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,40 +22,14 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "EstadoAlquiler.cs",
-              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev0\\Dominio\\EstadoAlquiler.cs",
-              "RelativeDocumentMoniker": "EstadoAlquiler.cs",
-              "ToolTip": "D:\\Seminario I\\TP Final\\Rev0\\Dominio\\EstadoAlquiler.cs",
-              "RelativeToolTip": "EstadoAlquiler.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA5AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-06T22:57:57.105Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "DominioDiagrama.cd",
-              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev0\\Dominio\\DominioDiagrama.cd",
+              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev0\\RentaCar.Dominio\\DominioDiagrama.cd",
               "RelativeDocumentMoniker": "DominioDiagrama.cd",
-              "ToolTip": "D:\\Seminario I\\TP Final\\Rev0\\Dominio\\DominioDiagrama.cd",
+              "ToolTip": "D:\\Seminario I\\TP Final\\Rev0\\RentaCar.Dominio\\DominioDiagrama.cd",
               "RelativeToolTip": "DominioDiagrama.cd",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000463|",
               "WhenOpened": "2026-03-06T22:16:42.557Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Alquiler.cs",
-              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev0\\Dominio\\Alquiler.cs",
-              "RelativeDocumentMoniker": "Alquiler.cs",
-              "ToolTip": "D:\\Seminario I\\TP Final\\Rev0\\Dominio\\Alquiler.cs",
-              "RelativeToolTip": "Alquiler.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAuwBkAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-06T22:34:42.172Z",
               "EditorCaption": ""
             }
           ]

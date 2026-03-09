@@ -12,9 +12,9 @@ namespace RentaCar.Dominio
         public int MarcaId { get; set; }
         public int ModeloId { get; set; }
         public int ColorId { get; set; }
-        public int TipoCombustibleId { get; set; }
-        public int EstadoVehiculoId { get; set; }
-        public int TipoVehiculoId { get; set; }
+        public int CombustibleId { get; set; }
+        public int EstadoId { get; set; }
+        public int TipoId { get; set; }
 
         public Vehiculo(
             string patente,
@@ -23,9 +23,9 @@ namespace RentaCar.Dominio
             int marcaId,
             int modeloId,
             int colorId,
-            int tipoCombustibleId,
-            int estadoVehiculoId,
-            int tipoVehiculoId)
+            int combustibleId,
+            int estadoId,
+            int tipoId)
         {
             Patente = patente;
             Anio = anio;
@@ -33,9 +33,9 @@ namespace RentaCar.Dominio
             MarcaId = marcaId;
             ModeloId = modeloId;
             ColorId = colorId;
-            TipoCombustibleId = tipoCombustibleId;
-            EstadoVehiculoId = estadoVehiculoId;
-            TipoVehiculoId = tipoVehiculoId;
+            CombustibleId = combustibleId;
+            EstadoId = estadoId;
+            TipoId = tipoId;
         }
     }
 }

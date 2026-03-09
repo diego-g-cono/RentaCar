@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RentaCar.Dominio")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f8fe870a4d01c36810b853cc444d5be256106ab9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+249e24c6c152f16b17dec706759680a75770f24f")]
 [assembly: System.Reflection.AssemblyProductAttribute("RentaCar.Dominio")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RentaCar.Dominio")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
