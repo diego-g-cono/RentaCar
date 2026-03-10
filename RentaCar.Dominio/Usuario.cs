@@ -15,15 +15,15 @@ namespace RentaCar.Dominio
             set { _contrasenia = PasswordHelper.HashPassword(value); }
         }
 
-        public string Rol { get; set; }
+        public string RolId { get; set; }
 
         public bool Activo { get; set; }
 
-        public Usuario(string nombreUsuario, string contrasenia, string rol, bool activo)
+        public Usuario(string nombreUsuario, string contrasenia, string rolId, bool activo)
         {
             NombreUsuario = nombreUsuario;
             Contrasenia = contrasenia;
-            Rol = rol;
+            RolId = rolId;
             Activo = activo;
         }
     }

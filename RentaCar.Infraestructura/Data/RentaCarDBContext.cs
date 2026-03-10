@@ -168,6 +168,93 @@ namespace RentaCar.Infraestructura.Data
                 entity.Property(a => a.FechaInicio).HasColumnName("fecha_inicio");
                 entity.Property(a => a.FechaFin).HasColumnName("fecha_fin");
                 entity.Property(a => a.EstadoId).HasColumnName("estado_id");
+                entity.Property(a => a.Precio).HasColumnName("precio");
+                entity.Property(a => a.ConductorId).HasColumnName("conductor_id");
+                entity.Property(a => a.ClienteId).HasColumnName("cliente_id");
+                entity.Property(a => a.VehiculoPatente).HasColumnName("vehiculo_patente");
+            });
+
+            modelBuilder.Entity<Devolucion>(entity =>
+            {
+                entity.ToTable("devoluciones");
+                entity.HasKey(d => d.Id);
+
+                entity.Property(d => d.Id).HasColumnName("id");
+                entity.Property(d => d.AlquilerId).HasColumnName("alquiler_id");
+                entity.Property(d => d.TanqueLleno).HasColumnName("tanque_lleno");
+                entity.Property(d => d.Observaciones).HasColumnName("obervaciones");
+            });
+
+            modelBuilder.Entity<Conductor>(entity =>
+            {
+                entity.ToTable("conductores");
+                entity.HasKey(c => c.Dni);
+
+                entity.Property(c => c.Dni).HasColumnName("id");
+                entity.Property(c => c.Nombre).HasColumnName("nombre");
+                entity.Property(c => c.Apellido).HasColumnName("apellido");
+                entity.Property(c => c.FechaVencLic).HasColumnName("fecha_venc_lic");
+            });
+
+            modelBuilder.Entity<EstadoAlquiler>(entity =>
+            {
+                entity.ToTable("estados_alquileres");
+                entity.HasKey(e => e.Id);
+
+                entity.Property(e => e.Id).HasColumnName("id");
+                entity.Property(e => e.Nombre).HasColumnName("nombre");
+            });
+
+            modelBuilder.Entity<Rol>(entity =>
+            {
+                entity.ToTable("roles");
+                entity.HasKey(r => r.Id);
+
+                entity.Property(r => r.Id).HasColumnName("id");
+                entity.Property(r => r.Nombre).HasColumnName("nombre");
+            });
+
+            modelBuilder.Entity<Usuario>(entity =>
+            {
+                entity.ToTable("usuarios");
+                entity.HasKey(u => u.Id);
+
+                entity.Property(u => u.Id).HasColumnName("id");
+                entity.Property(u => u.NombreUsuario).HasColumnName("nombre_usuario");
+                entity.Property(u => u.Contrasenia).HasColumnName("contrasenia");
+                entity.Property(u => u.RolId).HasColumnName("rol_id");
+                entity.Property(u => u.Activo).HasColumnName("activo");
+            });
+
+            modelBuilder.Entity<Seguro>(entity =>
+            {
+                entity.ToTable("seguros");
+                entity.HasKey(s => s.Id);
+
+                entity.Property(s => s.Id).HasColumnName("id");
+                entity.Property(s => s.Nombre).HasColumnName("nombre");
+                entity.Property(s => s.Tasa).HasColumnName("tasa");
+            });
+
+            modelBuilder.Entity<Tarifa>(entity =>
+            {
+                entity.ToTable("tarifas");
+                entity.HasKey(t => t.Id);
+
+                entity.Property(t => t.Id).HasColumnName("id");
+                entity.Property(t => t.TipoVehiculoId).HasColumnName("tipo_vehiculo_id");
+                entity.Property(t => t.PrecioSemana).HasColumnName("precio_semana");
+                entity.Property(t => t.PrecioDia).HasColumnName("precio_dia");
+                entity.Property(t => t.Activa).HasColumnName("activa");
+            });
+
+            modelBuilder.Entity<TipoVehiculo>(entity =>
+            {
+                entity.ToTable("tipos_vehiculos");
+                entity.HasKey(t => t.Id);
+
+                entity.Property(t => t.Id).HasColumnName("id");
+                entity.Property(t => t.Nombre).HasColumnName("nombre");
             });
         }
         public RentaCarDBContext()
