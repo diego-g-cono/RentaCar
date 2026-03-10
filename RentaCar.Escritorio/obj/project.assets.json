@@ -767,8 +767,8 @@
     },
     "RentaCar.Dominio/1.0.0": {
       "type": "project",
-      "path": "../Dominio/RentaCar.Dominio.csproj",
-      "msbuildProject": "../Dominio/RentaCar.Dominio.csproj"
+      "path": "../RentaCar.Dominio/RentaCar.Dominio.csproj",
+      "msbuildProject": "../RentaCar.Dominio/RentaCar.Dominio.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -786,11 +786,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Seminario I\\TP Final\\Rev0\\Escritorio\\RentaCar.Escritorio.csproj",
+      "projectUniqueName": "D:\\Seminario I\\TP Final\\Rev0\\RentaCar.Escritorio\\RentaCar.Escritorio.csproj",
       "projectName": "RentaCar.Escritorio",
-      "projectPath": "D:\\Seminario I\\TP Final\\Rev0\\Escritorio\\RentaCar.Escritorio.csproj",
+      "projectPath": "D:\\Seminario I\\TP Final\\Rev0\\RentaCar.Escritorio\\RentaCar.Escritorio.csproj",
       "packagesPath": "C:\\Users\\diego\\.nuget\\packages\\",
-      "outputPath": "D:\\Seminario I\\TP Final\\Rev0\\Escritorio\\obj\\",
+      "outputPath": "D:\\Seminario I\\TP Final\\Rev0\\RentaCar.Escritorio\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -813,6 +813,9 @@
           "projectReferences": {
             "D:\\Seminario I\\TP Final\\Rev0\\Dominio\\RentaCar.Dominio.csproj": {
               "projectPath": "D:\\Seminario I\\TP Final\\Rev0\\Dominio\\RentaCar.Dominio.csproj"
+            },
+            "D:\\Seminario I\\TP Final\\Rev0\\RentaCar.Dominio\\RentaCar.Dominio.csproj": {
+              "projectPath": "D:\\Seminario I\\TP Final\\Rev0\\RentaCar.Dominio\\RentaCar.Dominio.csproj"
             }
           }
         }

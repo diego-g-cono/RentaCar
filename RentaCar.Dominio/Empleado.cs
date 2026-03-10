@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RentaCar.Dominio
 {
-    internal class Empleado : Persona
+    public class Empleado : Persona
     {
         public string Puesto { get; set; }
         public int? UsuarioId { get; set; }

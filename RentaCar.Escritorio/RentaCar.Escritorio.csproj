@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Dominio\RentaCar.Dominio.csproj" />
+    <ProjectReference Include="..\RentaCar.Dominio\RentaCar.Dominio.csproj" />
   </ItemGroup>
 
 </Project>

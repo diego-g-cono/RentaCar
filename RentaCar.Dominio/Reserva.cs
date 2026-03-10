@@ -16,29 +16,25 @@ namespace RentaCar.Dominio
 
         public decimal Senia { get; set; }
 
-        public string Estado { get; set; }
+        public int EstadoId { get; set; }
 
         public Reserva(
             int clienteDni,
             string vehiculoPatente,
             DateOnly fechaInicio,
             DateOnly fechaFin,
-            string estado,
+            decimal precio,
+            int estadoId,
             decimal senia)
         {
             ClienteDni = clienteDni;
             VehiculoPatente = vehiculoPatente;
             FechaInicio = fechaInicio;
             FechaFin = fechaFin;
-            Precio = CalcularPrecioTotal(fechaInicio, fechaFin);
-            Estado = estado;
+            Precio = precio;
+            EstadoId = estadoId;
             Senia = senia;
         }
 
-        private decimal CalcularPrecioTotal(DateOnly inicio, DateOnly fin)
-        {
-            int dias = fin.DayNumber - inicio.DayNumber;
-            return dias;
-        }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RentaCar.Dominio
 {
-    internal class Seguro : Catalogo
+    public class Seguro : Catalogo
     {
         public decimal Tasa { get; set; }
         public Seguro(string nombre, decimal tasa) : base(nombre)

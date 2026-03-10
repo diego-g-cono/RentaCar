@@ -2,7 +2,7 @@
 
 namespace RentaCar.Dominio
 {
-    internal class Devolucion
+    public class Devolucion
     {
         public int Id { get; set; }
 

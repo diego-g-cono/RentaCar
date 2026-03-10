@@ -2,7 +2,7 @@
 
 namespace RentaCar.Dominio
 {
-    internal class Alquiler
+    public class Alquiler
     {
         public int Id { get; set; }
         public DateOnly FechaInicio { get; set; }
@@ -12,7 +12,7 @@ namespace RentaCar.Dominio
         public int VehiculoPatente { get; set; }
         public int ConductorId { get; set; }
         public int ClienteId { get; set; }
-        public int EstadoAlquilerId { get; set; }
+        public int EstadoId { get; set; }
         public int? ReservaId { get; set; }
         
         public Alquiler(int id, 
@@ -22,7 +22,7 @@ namespace RentaCar.Dominio
             int vehiculoPatente, 
             int conductorId, 
             int clienteId, 
-            int estadoAlquilerId, 
+            int estadoId, 
             int? reservaId
         )
         {
@@ -33,7 +33,7 @@ namespace RentaCar.Dominio
             VehiculoPatente = vehiculoPatente;
             ConductorId = conductorId;
             ClienteId = clienteId;
-            EstadoAlquilerId = estadoAlquilerId;
+            EstadoId = estadoId;
             ReservaId = reservaId;
         }
     }

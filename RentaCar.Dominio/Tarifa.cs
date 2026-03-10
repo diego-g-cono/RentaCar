@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RentaCar.Dominio
 {
-    internal class Tarifa
+    public class Tarifa
     {
         public int Id { get; set; }
         public decimal PrecioDia { get; set; }
