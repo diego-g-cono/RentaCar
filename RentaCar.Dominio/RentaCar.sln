@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentaCar.Infraestructura", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentaCar.Blazor", "..\RentaCar.Blazor\RentaCar.Blazor.csproj", "{7B946326-8E32-4FE9-8E23-759916F7F39B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentaCar.Escritorio", "..\RentaCar.Escritorio\RentaCar.Escritorio.csproj", "{3DECB14F-4C93-357E-D3BD-FF5BA6B474DA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentaCar.Escritorio", "..\RentaCar.Escritorio\RentaCar.Escritorio.csproj", "{4117058D-68E7-41BC-BB4F-4C6DD3AC24C6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,10 @@ Global
 		{7B946326-8E32-4FE9-8E23-759916F7F39B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B946326-8E32-4FE9-8E23-759916F7F39B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B946326-8E32-4FE9-8E23-759916F7F39B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3DECB14F-4C93-357E-D3BD-FF5BA6B474DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3DECB14F-4C93-357E-D3BD-FF5BA6B474DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3DECB14F-4C93-357E-D3BD-FF5BA6B474DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3DECB14F-4C93-357E-D3BD-FF5BA6B474DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4117058D-68E7-41BC-BB4F-4C6DD3AC24C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4117058D-68E7-41BC-BB4F-4C6DD3AC24C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4117058D-68E7-41BC-BB4F-4C6DD3AC24C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4117058D-68E7-41BC-BB4F-4C6DD3AC24C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

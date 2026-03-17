@@ -9,11 +9,10 @@ namespace RentaCar.Dominio
     public class Conductor : Persona
     {
         public DateOnly FechaVencLic { get; set; }
-
-        public Conductor(int dni, string nombre, string apellido, DateOnly fecha_venc_lic)
+        public Conductor(int dni, string nombre, string apellido, DateOnly fechaVencLic)
             : base(dni, nombre, apellido)
         {
-            FechaVencLic = fecha_venc_lic;
+            FechaVencLic = fechaVencLic;
         }
     }
 }

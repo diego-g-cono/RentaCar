@@ -17,5 +17,9 @@ namespace RentaCar.Dominio
         {
             Nombre = nombre;
         }
+        public override string ToString()
+        {
+            return Nombre;
+        }
     }
 }

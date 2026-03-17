@@ -52,6 +52,31 @@ namespace RentaCar.Infraestructura.Data
                 entity.Property(v => v.ColorId).HasColumnName("color_id");
                 entity.Property(v => v.CombustibleId).HasColumnName("combustible_id");
                 entity.Property(v => v.Kilometraje).HasColumnName("kilometraje");
+                entity.Property(v => v.TipoId).HasColumnName("tipo_id");
+
+                entity.HasOne(v => v.Marca)
+                      .WithMany()
+                      .HasForeignKey(v => v.MarcaId);
+
+                entity.HasOne(v => v.Modelo)
+                      .WithMany()
+                      .HasForeignKey(v => v.ModeloId);
+
+                entity.HasOne(v => v.Color)
+                      .WithMany()
+                      .HasForeignKey(v => v.ColorId);
+
+                entity.HasOne(v => v.Estado)
+                      .WithMany()
+                      .HasForeignKey(v => v.EstadoId);
+
+                entity.HasOne(v => v.Combustible)
+                      .WithMany()
+                      .HasForeignKey(v => v.CombustibleId);
+
+                entity.HasOne(v => v.Tipo)
+                      .WithMany()
+                      .HasForeignKey(v => v.TipoId);
             });
 
             modelBuilder.Entity<Cliente>(entity =>

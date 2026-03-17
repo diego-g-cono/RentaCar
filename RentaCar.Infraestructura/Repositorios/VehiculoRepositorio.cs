@@ -1,4 +1,5 @@
-﻿using RentaCar.Dominio;
+﻿using Microsoft.EntityFrameworkCore;
+using RentaCar.Dominio;
 using RentaCar.Infraestructura;
 using RentaCar.Infraestructura.Data;
 using System.Collections.Generic;
@@ -17,7 +18,14 @@ namespace RentaCar.Infraestructura.Repositorios
 
         public List<Vehiculo> ObtenerTodos()
         {
-            return _context.Vehiculos.ToList();
+            return _context.Vehiculos
+                .Include(v => v.Marca)
+                .Include(v => v.Modelo)
+                .Include(v => v.Color)
+                .Include(v => v.Tipo)
+                .Include(v => v.Estado)
+                .Include(v => v.Combustible)
+                .ToList();
         }
 
         public Vehiculo ObtenerPorPatente(string patente)

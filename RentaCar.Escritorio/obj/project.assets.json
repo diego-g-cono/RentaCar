@@ -295,6 +295,22 @@
         "runtime": {
           "bin/placeholder/RentaCar.Dominio.dll": {}
         }
+      },
+      "RentaCar.Infraestructura/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "8.0.22",
+          "Npgsql": "8.0.8",
+          "Npgsql.EntityFrameworkCore.PostgreSQL": "8.0.11",
+          "RentaCar.Dominio": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/RentaCar.Infraestructura.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/RentaCar.Infraestructura.dll": {}
+        }
       }
     }
   },
@@ -769,14 +785,17 @@
       "type": "project",
       "path": "../RentaCar.Dominio/RentaCar.Dominio.csproj",
       "msbuildProject": "../RentaCar.Dominio/RentaCar.Dominio.csproj"
+    },
+    "RentaCar.Infraestructura/1.0.0": {
+      "type": "project",
+      "path": "../RentaCar.Infraestructura/RentaCar.Infraestructura.csproj",
+      "msbuildProject": "../RentaCar.Infraestructura/RentaCar.Infraestructura.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0-windows7.0": [
-      "Microsoft.EntityFrameworkCore >= 8.0.22",
-      "Npgsql >= 8.0.8",
-      "Npgsql.EntityFrameworkCore.PostgreSQL >= 8.0.11",
-      "RentaCar.Dominio >= 1.0.0"
+      "RentaCar.Dominio >= 1.0.0",
+      "RentaCar.Infraestructura >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -811,11 +830,11 @@
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
           "projectReferences": {
-            "D:\\Seminario I\\TP Final\\Rev0\\Dominio\\RentaCar.Dominio.csproj": {
-              "projectPath": "D:\\Seminario I\\TP Final\\Rev0\\Dominio\\RentaCar.Dominio.csproj"
-            },
             "D:\\Seminario I\\TP Final\\Rev0\\RentaCar.Dominio\\RentaCar.Dominio.csproj": {
               "projectPath": "D:\\Seminario I\\TP Final\\Rev0\\RentaCar.Dominio\\RentaCar.Dominio.csproj"
+            },
+            "D:\\Seminario I\\TP Final\\Rev0\\RentaCar.Infraestructura\\RentaCar.Infraestructura.csproj": {
+              "projectPath": "D:\\Seminario I\\TP Final\\Rev0\\RentaCar.Infraestructura\\RentaCar.Infraestructura.csproj"
             }
           }
         }
@@ -835,20 +854,6 @@
     "frameworks": {
       "net8.0-windows7.0": {
         "targetAlias": "net8.0-windows",
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore": {
-            "target": "Package",
-            "version": "[8.0.22, )"
-          },
-          "Npgsql": {
-            "target": "Package",
-            "version": "[8.0.8, )"
-          },
-          "Npgsql.EntityFrameworkCore.PostgreSQL": {
-            "target": "Package",
-            "version": "[8.0.11, )"
-          }
-        },
         "imports": [
           "net461",
           "net462",

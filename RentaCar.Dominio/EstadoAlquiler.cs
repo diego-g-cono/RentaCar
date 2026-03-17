@@ -8,7 +8,11 @@ namespace RentaCar.Dominio
 {
     public class EstadoAlquiler : Catalogo
     {
+
         public EstadoAlquiler(string descripcion) : base(descripcion)
+        {
+        }
+        public EstadoAlquiler()
         {
         }
     }

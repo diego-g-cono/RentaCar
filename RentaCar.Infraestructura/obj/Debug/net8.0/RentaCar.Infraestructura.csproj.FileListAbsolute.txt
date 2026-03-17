@@ -1,0 +1,16 @@
+D:\Seminario I\TP Final\Rev0\RentaCar.Infraestructura\obj\Debug\net8.0\RentaCar.Infraestructura.csproj.AssemblyReference.cache
+D:\Seminario I\TP Final\Rev0\RentaCar.Infraestructura\obj\Debug\net8.0\RentaCar.Infraestructura.GeneratedMSBuildEditorConfig.editorconfig
+D:\Seminario I\TP Final\Rev0\RentaCar.Infraestructura\obj\Debug\net8.0\RentaCar.Infraestructura.AssemblyInfoInputs.cache
+D:\Seminario I\TP Final\Rev0\RentaCar.Infraestructura\obj\Debug\net8.0\RentaCar.Infraestructura.AssemblyInfo.cs
+D:\Seminario I\TP Final\Rev0\RentaCar.Infraestructura\obj\Debug\net8.0\RentaCar.Infraestructura.csproj.CoreCompileInputs.cache
+D:\Seminario I\TP Final\Rev0\RentaCar.Infraestructura\obj\Debug\net8.0\RentaCar.Infraestructura.sourcelink.json
+D:\Seminario I\TP Final\Rev0\RentaCar.Infraestructura\bin\Debug\net8.0\RentaCar.Infraestructura.deps.json
+D:\Seminario I\TP Final\Rev0\RentaCar.Infraestructura\bin\Debug\net8.0\RentaCar.Infraestructura.dll
+D:\Seminario I\TP Final\Rev0\RentaCar.Infraestructura\bin\Debug\net8.0\RentaCar.Infraestructura.pdb
+D:\Seminario I\TP Final\Rev0\RentaCar.Infraestructura\bin\Debug\net8.0\RentaCar.Dominio.dll
+D:\Seminario I\TP Final\Rev0\RentaCar.Infraestructura\bin\Debug\net8.0\RentaCar.Dominio.pdb
+D:\Seminario I\TP Final\Rev0\RentaCar.Infraestructura\obj\Debug\net8.0\RentaCar.776773DB.Up2Date
+D:\Seminario I\TP Final\Rev0\RentaCar.Infraestructura\obj\Debug\net8.0\RentaCar.Infraestructura.dll
+D:\Seminario I\TP Final\Rev0\RentaCar.Infraestructura\obj\Debug\net8.0\refint\RentaCar.Infraestructura.dll
+D:\Seminario I\TP Final\Rev0\RentaCar.Infraestructura\obj\Debug\net8.0\RentaCar.Infraestructura.pdb
+D:\Seminario I\TP Final\Rev0\RentaCar.Infraestructura\obj\Debug\net8.0\ref\RentaCar.Infraestructura.dll
