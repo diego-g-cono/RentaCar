@@ -190,6 +190,7 @@
             buttonEditar.TabIndex = 1;
             buttonEditar.Text = "Editar";
             buttonEditar.UseVisualStyleBackColor = false;
+            buttonEditar.Click += btnEditar_Click;
             // 
             // buttonEliminar
             // 
@@ -206,6 +207,7 @@
             buttonEliminar.TabIndex = 2;
             buttonEliminar.Text = "Eliminar";
             buttonEliminar.UseVisualStyleBackColor = false;
+            buttonEliminar.Click += btnEliminar_Click;
             // 
             // groupBox
             // 
@@ -475,6 +477,7 @@
             buttonCancelar.TabIndex = 5;
             buttonCancelar.Text = "Cancelar";
             buttonCancelar.UseVisualStyleBackColor = false;
+            buttonCancelar.Click += btnCancelar_Click;
             // 
             // FormVehiculo
             // 

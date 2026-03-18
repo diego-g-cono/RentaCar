@@ -41,8 +41,22 @@ namespace RentaCar.Infraestructura.Repositorios
 
         public void Actualizar(Vehiculo vehiculo)
         {
-            _context.Vehiculos.Update(vehiculo);
-            _context.SaveChanges();
+            var existente = _context.Vehiculos
+                .FirstOrDefault(v => v.Patente == vehiculo.Patente);
+
+            if (existente != null)
+            {
+                existente.Anio = vehiculo.Anio;
+                existente.Kilometraje = vehiculo.Kilometraje;
+                existente.MarcaId = vehiculo.MarcaId;
+                existente.ModeloId = vehiculo.ModeloId;
+                existente.ColorId = vehiculo.ColorId;
+                existente.CombustibleId = vehiculo.CombustibleId;
+                existente.EstadoId = vehiculo.EstadoId;
+                existente.TipoId = vehiculo.TipoId;
+
+                _context.SaveChanges();
+            }
         }
 
         public void Eliminar(string patente)

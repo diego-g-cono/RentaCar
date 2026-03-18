@@ -24,6 +24,9 @@ namespace RentaCar.Escritorio
         private readonly ColorRepositorio _repoColores;
         private readonly CombustibleRepositorio _repoCombustibles;
         private readonly EstadoVehiculoRepositorio _repoEstados;
+
+        private bool modoEdicion = false;
+        private string patenteSeleccionada = null;
         public FormVehiculo()
         {
             InitializeComponent();
@@ -159,7 +162,7 @@ namespace RentaCar.Escritorio
                 return;
             }
 
-            if (_repoVehiculos.ExistePatente(patente))
+            if (_repoVehiculos.ExistePatente(patente) && modoEdicion == false)
             {
                 MessageBox.Show("La patente ya existe");
                 return;
@@ -201,10 +204,19 @@ namespace RentaCar.Escritorio
                 Anio = (int)numericUpDownAnio.Value,
                 Kilometraje = (int)numericUpDownKm.Value
             };
-
-            _repoVehiculos.Agregar(vehiculo);
-
-            MessageBox.Show("Vehículo guardado correctamente");
+            if (modoEdicion)
+            {
+                _repoVehiculos.Actualizar(vehiculo);
+                MessageBox.Show("Vehículo actualizado correctamente");
+                modoEdicion = false;
+                textBoxPatente.Enabled = true;
+            }
+            else
+            {
+                _repoVehiculos.Agregar(vehiculo);
+                MessageBox.Show("Vehículo guardado correctamente");
+            }
+            
 
             CargarVehiculos();
             LimpiarCampos();
@@ -228,6 +240,81 @@ namespace RentaCar.Escritorio
 
             numericUpDownAnio.Value = numericUpDownAnio.Minimum;
             numericUpDownKm.Value = numericUpDownKm.Minimum;
+        }
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            var resultado = MessageBox.Show(
+                "¿Está seguro que desea cancelar? Se perderán los datos ingresados.",
+                "Confirmar cancelación",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (resultado == DialogResult.Yes)
+            {
+                LimpiarCampos();
+                BloquearCampos(false);
+                modoEdicion = false;
+            }
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            if (dataGridView.CurrentRow == null)
+            {
+                MessageBox.Show("Seleccione un vehículo para editar");
+                return;
+            }
+
+            // Obtener datos de la fila
+            var fila = dataGridView.CurrentRow;
+
+            patenteSeleccionada = fila.Cells["ColumnPatente"].Value.ToString();
+
+            textBoxPatente.Text = patenteSeleccionada;
+            textBoxPatente.Enabled = false;
+
+            numericUpDownAnio.Value = Convert.ToInt32(fila.Cells["ColumnAnio"].Value);
+            numericUpDownKm.Value = Convert.ToInt32(fila.Cells["ColumnKm"].Value);
+
+            comboBoxMarca.Text = fila.Cells["ColumnMarca"].Value.ToString();
+            comboBoxModelo.Text = fila.Cells["ColumnModelo"].Value.ToString();
+            comboBoxTipo.Text = fila.Cells["ColumnTipo"].Value.ToString();
+            comboBoxColor.Text = fila.Cells["ColumnColor"].Value.ToString();
+            comboBoxCombustible.Text = fila.Cells["ColumnCombustible"].Value.ToString();
+            comboBoxEstado.Text = fila.Cells["ColumnEstado"].Value.ToString();
+
+            BloquearCampos(true);
+
+            modoEdicion = true;
+        }
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (dataGridView.CurrentRow == null)
+            {
+                MessageBox.Show("Seleccione un vehículo para eliminar");
+                return;
+            }
+
+            var patente = dataGridView.CurrentRow.Cells["ColumnPatente"].Value.ToString();
+
+            var resultado = MessageBox.Show(
+                $"¿Está seguro que desea eliminar el vehículo {patente}?",
+                "Confirmar eliminación",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (resultado == DialogResult.Yes)
+            {
+                _repoVehiculos.Eliminar(patente);
+
+                MessageBox.Show("Vehículo eliminado correctamente");
+
+                CargarVehiculos();
+                LimpiarCampos();
+                BloquearCampos(false);
+            }
         }
 
     }
