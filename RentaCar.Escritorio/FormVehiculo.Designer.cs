@@ -239,6 +239,7 @@
             // comboBoxTipo
             // 
             comboBoxTipo.BackColor = Color.MidnightBlue;
+            comboBoxTipo.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxTipo.FlatStyle = FlatStyle.Flat;
             comboBoxTipo.Font = new Font("Verdana", 9F);
             comboBoxTipo.ForeColor = SystemColors.ButtonFace;
@@ -261,6 +262,7 @@
             // comboBoxEstado
             // 
             comboBoxEstado.BackColor = Color.MidnightBlue;
+            comboBoxEstado.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxEstado.FlatStyle = FlatStyle.Flat;
             comboBoxEstado.Font = new Font("Verdana", 9F);
             comboBoxEstado.ForeColor = SystemColors.ButtonFace;
@@ -277,6 +279,7 @@
             numericUpDownKm.Font = new Font("Verdana", 9F);
             numericUpDownKm.ForeColor = SystemColors.ButtonFace;
             numericUpDownKm.Location = new Point(121, 281);
+            numericUpDownKm.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
             numericUpDownKm.Name = "numericUpDownKm";
             numericUpDownKm.Size = new Size(120, 22);
             numericUpDownKm.TabIndex = 14;
@@ -284,6 +287,7 @@
             // comboBoxCombustible
             // 
             comboBoxCombustible.BackColor = Color.MidnightBlue;
+            comboBoxCombustible.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxCombustible.FlatStyle = FlatStyle.Flat;
             comboBoxCombustible.Font = new Font("Verdana", 9F);
             comboBoxCombustible.ForeColor = SystemColors.ButtonFace;
@@ -300,13 +304,17 @@
             numericUpDownAnio.Font = new Font("Verdana", 9F);
             numericUpDownAnio.ForeColor = SystemColors.ButtonFace;
             numericUpDownAnio.Location = new Point(121, 166);
+            numericUpDownAnio.Maximum = new decimal(new int[] { 3000, 0, 0, 0 });
+            numericUpDownAnio.Minimum = new decimal(new int[] { 1950, 0, 0, 0 });
             numericUpDownAnio.Name = "numericUpDownAnio";
             numericUpDownAnio.Size = new Size(120, 22);
             numericUpDownAnio.TabIndex = 12;
+            numericUpDownAnio.Value = new decimal(new int[] { 1950, 0, 0, 0 });
             // 
             // comboBoxColor
             // 
             comboBoxColor.BackColor = Color.MidnightBlue;
+            comboBoxColor.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxColor.FlatStyle = FlatStyle.Flat;
             comboBoxColor.Font = new Font("Verdana", 9F);
             comboBoxColor.ForeColor = SystemColors.ButtonFace;
@@ -319,6 +327,7 @@
             // comboBoxModelo
             // 
             comboBoxModelo.BackColor = Color.MidnightBlue;
+            comboBoxModelo.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxModelo.FlatStyle = FlatStyle.Flat;
             comboBoxModelo.Font = new Font("Verdana", 9F);
             comboBoxModelo.ForeColor = SystemColors.ButtonFace;
@@ -331,6 +340,7 @@
             // comboBoxMarca
             // 
             comboBoxMarca.BackColor = Color.MidnightBlue;
+            comboBoxMarca.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxMarca.FlatStyle = FlatStyle.Flat;
             comboBoxMarca.Font = new Font("Verdana", 9F);
             comboBoxMarca.ForeColor = SystemColors.ButtonFace;
@@ -351,6 +361,7 @@
             textBoxPatente.Name = "textBoxPatente";
             textBoxPatente.Size = new Size(121, 22);
             textBoxPatente.TabIndex = 8;
+            textBoxPatente.TextChanged += textBoxPatente_TextChanged;
             // 
             // label6
             // 
@@ -447,6 +458,7 @@
             buttonGuardar.TabIndex = 4;
             buttonGuardar.Text = "Guardar";
             buttonGuardar.UseVisualStyleBackColor = false;
+            buttonGuardar.Click += btnGuardar_Click;
             // 
             // buttonCancelar
             // 

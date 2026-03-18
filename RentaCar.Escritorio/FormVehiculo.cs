@@ -39,16 +39,19 @@ namespace RentaCar.Escritorio
 
         private void FormVehiculo_Load(object sender, EventArgs e)
         {
-            List<Vehiculo> vehiculos = _repoVehiculos.ObtenerTodos();
-            dataGridView.AutoGenerateColumns = false;
-            dataGridView.DataSource = vehiculos;
-
+            CargarVehiculos();
             BloquearCampos(false);
             CargarMarcas();
             CargarTiposVehiculo();
             CargarColores();
             CargarCombustibles();
             CargarEstados();
+        }
+        private void CargarVehiculos()
+        {
+            List<Vehiculo> vehiculos = _repoVehiculos.ObtenerTodos();
+            dataGridView.AutoGenerateColumns = false;
+            dataGridView.DataSource = vehiculos;
         }
 
         private void BloquearCampos(bool estado)
@@ -62,6 +65,8 @@ namespace RentaCar.Escritorio
             comboBoxCombustible.Enabled = estado;
             numericUpDownKm.Enabled = estado;
             comboBoxEstado.Enabled = estado;
+            numericUpDownAnio.Text = "";
+            numericUpDownKm.Text = "";
         }
         private void btnNuevo_Click(object sender, EventArgs e)
         {
@@ -136,5 +141,94 @@ namespace RentaCar.Escritorio
             comboBoxEstado.ValueMember = "Id";
             comboBoxEstado.SelectedIndex = -1;
         }
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            string patente = textBoxPatente.Text.Trim().ToUpper();
+
+            if (string.IsNullOrWhiteSpace(patente))
+            {
+                MessageBox.Show("Ingrese la patente");
+                return;
+            }
+
+            var regex = new System.Text.RegularExpressions.Regex(@"^[A-Z]{3}[0-9]{3}$|^[A-Z]{2}[0-9]{3}[A-Z]{2}$");
+
+            if (!regex.IsMatch(patente))
+            {
+                MessageBox.Show("Formato de patente inválido");
+                return;
+            }
+
+            if (_repoVehiculos.ExistePatente(patente))
+            {
+                MessageBox.Show("La patente ya existe");
+                return;
+            }
+            int anio = (int)numericUpDownAnio.Value;
+
+            if (anio < 1950 || anio > DateTime.Now.Year)
+            {
+                MessageBox.Show("Ingrese un año válido");
+                return;
+            }
+            int kilometraje = (int)numericUpDownKm.Value;
+
+            if (kilometraje < 0)
+            {
+                MessageBox.Show("El kilometraje no puede ser negativo");
+                return;
+            }
+            // Validación básica
+            if (!(comboBoxMarca.SelectedItem is Marca marca) ||
+                !(comboBoxModelo.SelectedItem is Modelo modelo) ||
+                !(comboBoxColor.SelectedItem is Dominio.Color color) ||
+                !(comboBoxCombustible.SelectedItem is Combustible combustible) ||
+                !(comboBoxEstado.SelectedItem is EstadoVehiculo estado) ||
+                !(comboBoxTipo.SelectedItem is TipoVehiculo tipo))
+            {
+                MessageBox.Show("Complete todos los campos");
+                return;
+            }
+            var vehiculo = new Vehiculo
+            {
+                Patente = textBoxPatente.Text,
+                MarcaId = ((Marca)comboBoxMarca.SelectedItem).Id,
+                ModeloId = ((Modelo)comboBoxModelo.SelectedItem).Id,
+                TipoId = ((TipoVehiculo)comboBoxTipo.SelectedItem).Id,
+                ColorId = ((Dominio.Color)comboBoxColor.SelectedItem).Id,
+                CombustibleId = ((Combustible)comboBoxCombustible.SelectedItem).Id,
+                EstadoId = ((EstadoVehiculo)comboBoxEstado.SelectedItem).Id,
+                Anio = (int)numericUpDownAnio.Value,
+                Kilometraje = (int)numericUpDownKm.Value
+            };
+
+            _repoVehiculos.Agregar(vehiculo);
+
+            MessageBox.Show("Vehículo guardado correctamente");
+
+            CargarVehiculos();
+            LimpiarCampos();
+            BloquearCampos(false);
+        }
+        private void textBoxPatente_TextChanged(object sender, EventArgs e)
+        {
+            textBoxPatente.Text = textBoxPatente.Text.ToUpper();
+            textBoxPatente.SelectionStart = textBoxPatente.Text.Length;
+        }
+        private void LimpiarCampos()
+        {
+            textBoxPatente.Clear();
+
+            comboBoxMarca.SelectedIndex = -1;
+            comboBoxModelo.DataSource = null; // importante porque depende de marca
+            comboBoxTipo.SelectedIndex = -1;
+            comboBoxColor.SelectedIndex = -1;
+            comboBoxCombustible.SelectedIndex = -1;
+            comboBoxEstado.SelectedIndex = -1;
+
+            numericUpDownAnio.Value = numericUpDownAnio.Minimum;
+            numericUpDownKm.Value = numericUpDownKm.Minimum;
+        }
+
     }
 }

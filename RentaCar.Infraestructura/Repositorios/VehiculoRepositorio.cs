@@ -55,5 +55,9 @@ namespace RentaCar.Infraestructura.Repositorios
                 _context.SaveChanges();
             }
         }
+        public bool ExistePatente(string patente)
+        {
+            return _context.Vehiculos.Any(v => v.Patente == patente);
+        }
     }
 }

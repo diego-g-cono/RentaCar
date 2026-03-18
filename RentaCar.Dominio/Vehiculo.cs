@@ -43,5 +43,8 @@ namespace RentaCar.Dominio
             EstadoId = estadoId;
             TipoId = tipoId;
         }
+        public Vehiculo()
+        {
+        }
     }
 }
