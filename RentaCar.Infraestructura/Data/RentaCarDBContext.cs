@@ -88,6 +88,8 @@ namespace RentaCar.Infraestructura.Data
                 entity.Property(c => c.Nombre).HasColumnName("nombre");
                 entity.Property(c => c.Apellido).HasColumnName("apellido");
                 entity.Property(c => c.Email).HasColumnName("email");
+                entity.Property(c => c.Telefono).HasColumnName("telefono");
+                entity.Property(c => c.UsuarioId).HasColumnName("usuario_id");
             });
 
             modelBuilder.Entity<Reserva>(entity =>

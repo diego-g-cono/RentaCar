@@ -68,8 +68,6 @@ namespace RentaCar.Escritorio
             comboBoxCombustible.Enabled = estado;
             numericUpDownKm.Enabled = estado;
             comboBoxEstado.Enabled = estado;
-            numericUpDownAnio.Text = "";
-            numericUpDownKm.Text = "";
         }
         private void btnNuevo_Click(object sender, EventArgs e)
         {

@@ -9,8 +9,10 @@
       "AbsoluteMoniker": "D:0:0:{4117058D-68E7-41BC-BB4F-4C6DD3AC24C6}|..\\RentaCar.Escritorio\\RentaCar.Escritorio.csproj|d:\\seminario i\\tp final\\rev0\\rentacar.escritorio\\formvehiculo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B74670CF-25B5-4CEE-A924-ED6AB6C48056}|RentaCar.Dominio.csproj|d:\\seminario i\\tp final\\rev0\\rentacar.dominio\\catalogo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B74670CF-25B5-4CEE-A924-ED6AB6C48056}|RentaCar.Dominio.csproj|solutionrelative:catalogo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4117058D-68E7-41BC-BB4F-4C6DD3AC24C6}|..\\RentaCar.Escritorio\\RentaCar.Escritorio.csproj|d:\\seminario i\\tp final\\rev0\\rentacar.escritorio\\formcliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4117058D-68E7-41BC-BB4F-4C6DD3AC24C6}|..\\RentaCar.Escritorio\\RentaCar.Escritorio.csproj|d:\\seminario i\\tp final\\rev0\\rentacar.escritorio\\formcliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,23 +36,35 @@
               "RelativeDocumentMoniker": "..\\RentaCar.Escritorio\\FormVehiculo.cs",
               "ToolTip": "D:\\Seminario I\\TP Final\\Rev0\\RentaCar.Escritorio\\FormVehiculo.cs",
               "RelativeToolTip": "..\\RentaCar.Escritorio\\FormVehiculo.cs",
-              "ViewState": "AgIAAAABAAAAAAAAAAAAABQBAABWAAAAAAAAAA==",
+              "ViewState": "AgIAAFcAAAAAAAAAAAAnwEwAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-15T23:41:43.912Z",
+              "WhenOpened": "2026-03-21T21:53:40.351Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "FormCliente.cs",
+              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev0\\RentaCar.Escritorio\\FormCliente.cs",
+              "RelativeDocumentMoniker": "..\\RentaCar.Escritorio\\FormCliente.cs",
+              "ToolTip": "D:\\Seminario I\\TP Final\\Rev0\\RentaCar.Escritorio\\FormCliente.cs",
+              "RelativeToolTip": "..\\RentaCar.Escritorio\\FormCliente.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAqwDEAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-21T21:52:04.45Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Catalogo.cs",
-              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev0\\RentaCar.Dominio\\Catalogo.cs",
-              "RelativeDocumentMoniker": "Catalogo.cs",
-              "ToolTip": "D:\\Seminario I\\TP Final\\Rev0\\RentaCar.Dominio\\Catalogo.cs",
-              "RelativeToolTip": "Catalogo.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAjAAAAAAAAAA==",
+              "Title": "FormCliente.cs [Design]",
+              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev0\\RentaCar.Escritorio\\FormCliente.cs",
+              "RelativeDocumentMoniker": "..\\RentaCar.Escritorio\\FormCliente.cs",
+              "ToolTip": "D:\\Seminario I\\TP Final\\Rev0\\RentaCar.Escritorio\\FormCliente.cs [Design]",
+              "RelativeToolTip": "..\\RentaCar.Escritorio\\FormCliente.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-15T23:31:10.42Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-21T21:24:53.939Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
