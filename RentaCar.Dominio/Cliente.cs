@@ -17,7 +17,7 @@ namespace RentaCar.Dominio
 
         // Foreign key
         public int? UsuarioId { get; set; }
-
+        public Cliente() { }
         public Cliente(int dni, string nombre, string apellido, string email, int? usuarioId, string telefono)
             : base(dni, nombre, apellido)
         {

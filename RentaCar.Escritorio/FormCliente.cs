@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Net.Mail;
 
 namespace RentaCar.Escritorio
 {
@@ -18,6 +19,8 @@ namespace RentaCar.Escritorio
     {
         private readonly RentaCarDBContext _context;
         private readonly ClienteRepositorio _repoClientes;
+
+        private bool modoEdicion = false;
         public FormCliente()
         {
             InitializeComponent();
@@ -48,5 +51,155 @@ namespace RentaCar.Escritorio
         {
             BloquearCampos(true);
         }
+        private void textBoxDNI_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Permite solo números y la tecla de borrar
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+        private void textBoxTel_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Permite solo números y la tecla de borrar
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+        private void textBoxNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) &&
+                !char.IsLetter(e.KeyChar) &&
+                e.KeyChar != ' ')
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            // Validar campos vacíos
+            if (string.IsNullOrWhiteSpace(textBoxDNI.Text) ||
+                string.IsNullOrWhiteSpace(textBoxNombre.Text) ||
+                string.IsNullOrWhiteSpace(textBoxApellido.Text) ||
+                string.IsNullOrWhiteSpace(textBoxEmail.Text) ||
+                string.IsNullOrWhiteSpace(textBoxTel.Text))
+            {
+                MessageBox.Show("Todos los campos son obligatorios", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Validar email
+            if (!EmailValido(textBoxEmail.Text))
+            {
+                MessageBox.Show("Ingrese un email válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            var cliente = new Cliente
+            {
+                Dni = int.Parse(textBoxDNI.Text),
+                Nombre = textBoxNombre.Text,
+                Apellido = textBoxApellido.Text,
+                Email = textBoxEmail.Text,
+                Telefono = textBoxTel.Text
+            };
+            if(modoEdicion)
+            {
+                _repoClientes.Actualizar(cliente);
+                modoEdicion = false;
+                MessageBox.Show("Cliente actualizado correctamente", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                _repoClientes.Agregar(cliente);
+                MessageBox.Show("Cliente guardado correctamente", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            LimpiarCampos();
+            BloquearCampos(false);
+            CargarClientes();
+            
+        }
+        private bool EmailValido(string email)
+        {
+            try
+            {
+                var mail = new MailAddress(email);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        private void LimpiarCampos()
+        {
+            textBoxDNI.Clear();
+            textBoxNombre.Clear();
+            textBoxApellido.Clear();
+            textBoxEmail.Clear();
+            textBoxTel.Clear();
+        }
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            var resultado = MessageBox.Show(
+                "¿Está seguro que desea cancelar? Se perderán los datos ingresados.",
+                "Confirmar cancelación",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (resultado == DialogResult.Yes)
+            {
+                LimpiarCampos();
+                BloquearCampos(false);
+            }
+        }
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            if (dataGridView.CurrentRow == null)
+            {
+                MessageBox.Show("Seleccione un registro");
+                return;
+            }
+            textBoxDNI.Text = dataGridView.CurrentRow.Cells["ColumnDNI"].Value.ToString();
+            textBoxNombre.Text = dataGridView.CurrentRow.Cells["ColumnNombre"].Value.ToString();
+            textBoxApellido.Text = dataGridView.CurrentRow.Cells["ColumnApellido"].Value.ToString();
+            textBoxEmail.Text = dataGridView.CurrentRow.Cells["ColumnEmail"].Value.ToString();
+            textBoxTel.Text = dataGridView.CurrentRow.Cells["ColumnTelefono"].Value.ToString();
+
+            BloquearCampos(true);
+            textBoxDNI.Enabled = false;
+            modoEdicion = true;
+        }
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (dataGridView.CurrentRow == null)
+            {
+                MessageBox.Show("Seleccione un vehículo para eliminar");
+                return;
+            }
+
+            var dni = (int)dataGridView.CurrentRow.Cells["ColumnDNI"].Value;
+
+            var resultado = MessageBox.Show(
+                $"¿Está seguro que desea eliminar el cliente con DNI: {dni}?",
+                "Confirmar eliminación",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (resultado == DialogResult.Yes)
+            {
+                _repoClientes.Eliminar(dni);
+
+                MessageBox.Show("Cliente eliminado correctamente");
+
+                CargarClientes();
+                LimpiarCampos();
+                BloquearCampos(false);
+            }
+        }
     }
+
 }

@@ -72,6 +72,7 @@
             buttonEliminar.TabIndex = 5;
             buttonEliminar.Text = "Eliminar";
             buttonEliminar.UseVisualStyleBackColor = false;
+            buttonEliminar.Click += btnEliminar_Click;
             // 
             // buttonEditar
             // 
@@ -88,6 +89,7 @@
             buttonEditar.TabIndex = 4;
             buttonEditar.Text = "Editar";
             buttonEditar.UseVisualStyleBackColor = false;
+            buttonEditar.Click += btnEditar_Click;
             // 
             // buttonNuevo
             // 
@@ -137,6 +139,7 @@
             textBoxTel.Name = "textBoxTel";
             textBoxTel.Size = new Size(121, 22);
             textBoxTel.TabIndex = 20;
+            textBoxTel.KeyPress += textBoxTel_KeyPress;
             // 
             // textBoxEmail
             // 
@@ -159,6 +162,7 @@
             textBoxApellido.Name = "textBoxApellido";
             textBoxApellido.Size = new Size(121, 22);
             textBoxApellido.TabIndex = 18;
+            textBoxApellido.KeyPress += textBoxNombre_KeyPress;
             // 
             // textBoxNombre
             // 
@@ -170,6 +174,7 @@
             textBoxNombre.Name = "textBoxNombre";
             textBoxNombre.Size = new Size(121, 22);
             textBoxNombre.TabIndex = 17;
+            textBoxNombre.KeyPress += textBoxNombre_KeyPress;
             // 
             // labelEmail
             // 
@@ -191,6 +196,7 @@
             textBoxDNI.Name = "textBoxDNI";
             textBoxDNI.Size = new Size(121, 22);
             textBoxDNI.TabIndex = 8;
+            textBoxDNI.KeyPress += textBoxDNI_KeyPress;
             // 
             // labelTelefono
             // 
@@ -247,6 +253,7 @@
             buttonCancelar.TabIndex = 8;
             buttonCancelar.Text = "Cancelar";
             buttonCancelar.UseVisualStyleBackColor = false;
+            buttonCancelar.Click += btnCancelar_Click;
             // 
             // buttonGuardar
             // 
@@ -263,6 +270,7 @@
             buttonGuardar.TabIndex = 7;
             buttonGuardar.Text = "Guardar";
             buttonGuardar.UseVisualStyleBackColor = false;
+            buttonGuardar.Click += btnGuardar_Click;
             // 
             // dataGridView
             // 

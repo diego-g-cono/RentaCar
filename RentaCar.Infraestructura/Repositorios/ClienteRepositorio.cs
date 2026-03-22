@@ -41,8 +41,18 @@ namespace RentaCar.Infraestructura.Repositorios
         // Actualizar cliente
         public void Actualizar(Cliente cliente)
         {
-            _context.Clientes.Update(cliente);
-            _context.SaveChanges();
+            var existente = _context.Clientes
+                .FirstOrDefault(c => c.Dni == cliente.Dni);
+
+            if (existente != null)
+            {
+                existente.Nombre = cliente.Nombre;
+                existente.Apellido = cliente.Apellido;
+                existente.Email = cliente.Email;
+                existente.Telefono = cliente.Telefono;
+
+                _context.SaveChanges();
+            }
         }
 
         // Eliminar cliente

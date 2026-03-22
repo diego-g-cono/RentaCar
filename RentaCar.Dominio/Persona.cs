@@ -6,6 +6,8 @@
         public string Nombre { get; set; }
         public string Apellido { get; set; }
 
+        public Persona() { }
+
         protected Persona(int dni, string nombre, string apellido)
         {
             Dni = dni;
