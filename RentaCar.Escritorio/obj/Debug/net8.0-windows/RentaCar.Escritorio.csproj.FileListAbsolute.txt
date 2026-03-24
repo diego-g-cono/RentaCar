@@ -39,3 +39,4 @@ D:\Seminario I\TP Final\Rev0\RentaCar.Escritorio\obj\Debug\net8.0-windows\RentaC
 D:\Seminario I\TP Final\Rev0\RentaCar.Escritorio\obj\Debug\net8.0-windows\ref\RentaCar.Escritorio.dll
 D:\Seminario I\TP Final\Rev0\RentaCar.Escritorio\obj\Debug\net8.0-windows\RentaCar.Escritorio.FormVehiculo.resources
 D:\Seminario I\TP Final\Rev0\RentaCar.Escritorio\obj\Debug\net8.0-windows\RentaCar.Escritorio.FormCliente.resources
+D:\Seminario I\TP Final\Rev0\RentaCar.Escritorio\obj\Debug\net8.0-windows\RentaCar.Escritorio.FormReserva.resources

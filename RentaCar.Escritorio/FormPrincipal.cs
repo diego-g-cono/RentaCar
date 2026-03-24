@@ -32,5 +32,11 @@ namespace RentaCar.Escritorio
             form.MdiParent = this;   // para que sea hijo del formulario principal
             form.Show();
         }
+        private void reservasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormReserva form = new FormReserva();
+            form.MdiParent = this;   // para que sea hijo del formulario principal
+            form.Show();
+        }
     }
 }
