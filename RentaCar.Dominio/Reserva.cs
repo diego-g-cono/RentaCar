@@ -8,8 +8,9 @@ namespace RentaCar.Dominio
 
         // Foreign keys
         public int ClienteDni { get; set; }
+        public Cliente Cliente { get; set; }
         public string VehiculoPatente { get; set; }
-
+        public Vehiculo Vehiculo { get; set; }
         public DateOnly FechaInicio { get; set; }
         public DateOnly FechaFin { get; set; }
         public decimal Precio { get; set; }
@@ -17,6 +18,7 @@ namespace RentaCar.Dominio
         public decimal Senia { get; set; }
 
         public int EstadoId { get; set; }
+        public EstadoReserva Estado { get; set; }
 
         public Reserva(
             int clienteDni,
@@ -34,6 +36,9 @@ namespace RentaCar.Dominio
             Precio = precio;
             EstadoId = estadoId;
             Senia = senia;
+        }
+        public Reserva()
+        {
         }
 
     }

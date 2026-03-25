@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RentaCar.Infraestructura
+namespace RentaCar.Infraestructura.Data
 {
     public class ReservaRepositorio
     {
@@ -21,7 +21,11 @@ namespace RentaCar.Infraestructura
         // Obtener todas las reservas
         public List<Reserva> ObtenerTodos()
         {
-            return _context.Reservas.ToList();
+            return _context.Reservas
+                .Include(r => r.Cliente)
+                .Include(r => r.Vehiculo)
+                .Include(r => r.Estado)
+                .ToList();
         }
 
         // Obtener reserva por ID

@@ -42,13 +42,13 @@
             comboBoxEstado = new ComboBox();
             numericUpDownSenia = new NumericUpDown();
             numericUpDownPrecio = new NumericUpDown();
-            dtpDevolucion = new DateTimePicker();
+            dtpFechaDevolucion = new DateTimePicker();
             dtpFechaRetiro = new DateTimePicker();
             labelEstado = new Label();
             labelSenia = new Label();
-            textBoxNombre = new TextBox();
+            textBoxVehiculo = new TextBox();
             labelFechaDevolucion = new Label();
-            textBoxDNI = new TextBox();
+            textBoxCliente = new TextBox();
             labelPrecio = new Label();
             labelFechaInicio = new Label();
             labelVehiculo = new Label();
@@ -58,6 +58,14 @@
             tabControl = new TabControl();
             tabPageReserva = new TabPage();
             dataGridViewReserva = new DataGridView();
+            ColumnId = new DataGridViewTextBoxColumn();
+            ColumnCliente = new DataGridViewTextBoxColumn();
+            ColumnVehiculo = new DataGridViewTextBoxColumn();
+            ColumnFechaRetiro = new DataGridViewTextBoxColumn();
+            ColumnFechaDevolucion = new DataGridViewTextBoxColumn();
+            ColumnPrecio = new DataGridViewTextBoxColumn();
+            ColumnSenia = new DataGridViewTextBoxColumn();
+            ColumnEstadoReserva = new DataGridViewTextBoxColumn();
             tabPageCliente = new TabPage();
             dataGridViewCliente = new DataGridView();
             ColumnDNI = new DataGridViewTextBoxColumn();
@@ -76,14 +84,6 @@
             ColumnCombustible = new DataGridViewTextBoxColumn();
             ColumnKm = new DataGridViewTextBoxColumn();
             ColumnEstado = new DataGridViewTextBoxColumn();
-            ColumnId = new DataGridViewTextBoxColumn();
-            ColumnCliente = new DataGridViewTextBoxColumn();
-            ColumnVehiculo = new DataGridViewTextBoxColumn();
-            ColumnFechaRetiro = new DataGridViewTextBoxColumn();
-            ColumnFechaDevolucion = new DataGridViewTextBoxColumn();
-            ColumnPrecio = new DataGridViewTextBoxColumn();
-            ColumnSenia = new DataGridViewTextBoxColumn();
-            ColumnEstadoReserva = new DataGridViewTextBoxColumn();
             groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDownSenia).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownPrecio).BeginInit();
@@ -143,19 +143,20 @@
             buttonNuevo.TabIndex = 3;
             buttonNuevo.Text = "Nuevo";
             buttonNuevo.UseVisualStyleBackColor = false;
+            buttonNuevo.Click += buttonNuevo_Click;
             // 
             // groupBox
             // 
             groupBox.Controls.Add(comboBoxEstado);
             groupBox.Controls.Add(numericUpDownSenia);
             groupBox.Controls.Add(numericUpDownPrecio);
-            groupBox.Controls.Add(dtpDevolucion);
+            groupBox.Controls.Add(dtpFechaDevolucion);
             groupBox.Controls.Add(dtpFechaRetiro);
             groupBox.Controls.Add(labelEstado);
             groupBox.Controls.Add(labelSenia);
-            groupBox.Controls.Add(textBoxNombre);
+            groupBox.Controls.Add(textBoxVehiculo);
             groupBox.Controls.Add(labelFechaDevolucion);
-            groupBox.Controls.Add(textBoxDNI);
+            groupBox.Controls.Add(textBoxCliente);
             groupBox.Controls.Add(labelPrecio);
             groupBox.Controls.Add(labelFechaInicio);
             groupBox.Controls.Add(labelVehiculo);
@@ -197,12 +198,12 @@
             numericUpDownPrecio.Size = new Size(120, 22);
             numericUpDownPrecio.TabIndex = 25;
             // 
-            // dtpDevolucion
+            // dtpFechaDevolucion
             // 
-            dtpDevolucion.Location = new Point(150, 131);
-            dtpDevolucion.Name = "dtpDevolucion";
-            dtpDevolucion.Size = new Size(200, 22);
-            dtpDevolucion.TabIndex = 24;
+            dtpFechaDevolucion.Location = new Point(150, 131);
+            dtpFechaDevolucion.Name = "dtpFechaDevolucion";
+            dtpFechaDevolucion.Size = new Size(200, 22);
+            dtpFechaDevolucion.TabIndex = 24;
             // 
             // dtpFechaRetiro
             // 
@@ -231,16 +232,17 @@
             labelSenia.TabIndex = 21;
             labelSenia.Text = "Seña:";
             // 
-            // textBoxNombre
+            // textBoxVehiculo
             // 
-            textBoxNombre.BackColor = Color.MidnightBlue;
-            textBoxNombre.BorderStyle = BorderStyle.FixedSingle;
-            textBoxNombre.Font = new Font("Verdana", 9F);
-            textBoxNombre.ForeColor = SystemColors.ButtonFace;
-            textBoxNombre.Location = new Point(150, 62);
-            textBoxNombre.Name = "textBoxNombre";
-            textBoxNombre.Size = new Size(121, 22);
-            textBoxNombre.TabIndex = 17;
+            textBoxVehiculo.BackColor = Color.MidnightBlue;
+            textBoxVehiculo.BorderStyle = BorderStyle.FixedSingle;
+            textBoxVehiculo.Font = new Font("Verdana", 9F);
+            textBoxVehiculo.ForeColor = SystemColors.ButtonFace;
+            textBoxVehiculo.Location = new Point(150, 62);
+            textBoxVehiculo.Name = "textBoxVehiculo";
+            textBoxVehiculo.Size = new Size(121, 22);
+            textBoxVehiculo.TabIndex = 17;
+            textBoxVehiculo.TextChanged += textBoxPatente_TextChanged;
             // 
             // labelFechaDevolucion
             // 
@@ -252,16 +254,17 @@
             labelFechaDevolucion.TabIndex = 16;
             labelFechaDevolucion.Text = "Fecha Devolución:";
             // 
-            // textBoxDNI
+            // textBoxCliente
             // 
-            textBoxDNI.BackColor = Color.MidnightBlue;
-            textBoxDNI.BorderStyle = BorderStyle.FixedSingle;
-            textBoxDNI.Font = new Font("Verdana", 9F);
-            textBoxDNI.ForeColor = SystemColors.ButtonFace;
-            textBoxDNI.Location = new Point(150, 28);
-            textBoxDNI.Name = "textBoxDNI";
-            textBoxDNI.Size = new Size(121, 22);
-            textBoxDNI.TabIndex = 8;
+            textBoxCliente.BackColor = Color.MidnightBlue;
+            textBoxCliente.BorderStyle = BorderStyle.FixedSingle;
+            textBoxCliente.Font = new Font("Verdana", 9F);
+            textBoxCliente.ForeColor = SystemColors.ButtonFace;
+            textBoxCliente.Location = new Point(150, 28);
+            textBoxCliente.Name = "textBoxCliente";
+            textBoxCliente.Size = new Size(121, 22);
+            textBoxCliente.TabIndex = 8;
+            textBoxCliente.KeyPress += textBoxCliente_KeyPress;
             // 
             // labelPrecio
             // 
@@ -289,9 +292,9 @@
             labelVehiculo.Font = new Font("Verdana", 9F);
             labelVehiculo.Location = new Point(19, 64);
             labelVehiculo.Name = "labelVehiculo";
-            labelVehiculo.Size = new Size(63, 14);
+            labelVehiculo.Size = new Size(117, 14);
             labelVehiculo.TabIndex = 1;
-            labelVehiculo.Text = "Vehículo:";
+            labelVehiculo.Text = "Vehículo Patente:";
             // 
             // labelCliente
             // 
@@ -299,9 +302,9 @@
             labelCliente.Font = new Font("Verdana", 9F);
             labelCliente.Location = new Point(19, 30);
             labelCliente.Name = "labelCliente";
-            labelCliente.Size = new Size(56, 14);
+            labelCliente.Size = new Size(83, 14);
             labelCliente.TabIndex = 0;
-            labelCliente.Text = "Cliente:";
+            labelCliente.Text = "Cliente DNI:";
             // 
             // buttonCancelar
             // 
@@ -388,6 +391,54 @@
             dataGridViewReserva.RowTemplate.DefaultCellStyle.SelectionForeColor = SystemColors.ButtonFace;
             dataGridViewReserva.Size = new Size(846, 365);
             dataGridViewReserva.TabIndex = 11;
+            // 
+            // ColumnId
+            // 
+            ColumnId.DataPropertyName = "Id";
+            ColumnId.HeaderText = "ID";
+            ColumnId.Name = "ColumnId";
+            // 
+            // ColumnCliente
+            // 
+            ColumnCliente.DataPropertyName = "ClienteDni";
+            ColumnCliente.HeaderText = "Cliente";
+            ColumnCliente.Name = "ColumnCliente";
+            // 
+            // ColumnVehiculo
+            // 
+            ColumnVehiculo.DataPropertyName = "VehiculoPatente";
+            ColumnVehiculo.HeaderText = "Vehículo";
+            ColumnVehiculo.Name = "ColumnVehiculo";
+            // 
+            // ColumnFechaRetiro
+            // 
+            ColumnFechaRetiro.DataPropertyName = "FechaInicio";
+            ColumnFechaRetiro.HeaderText = "Fecha Retiro";
+            ColumnFechaRetiro.Name = "ColumnFechaRetiro";
+            // 
+            // ColumnFechaDevolucion
+            // 
+            ColumnFechaDevolucion.DataPropertyName = "FechaFin";
+            ColumnFechaDevolucion.HeaderText = "Fecha Devolución";
+            ColumnFechaDevolucion.Name = "ColumnFechaDevolucion";
+            // 
+            // ColumnPrecio
+            // 
+            ColumnPrecio.DataPropertyName = "Precio";
+            ColumnPrecio.HeaderText = "Precio";
+            ColumnPrecio.Name = "ColumnPrecio";
+            // 
+            // ColumnSenia
+            // 
+            ColumnSenia.DataPropertyName = "Senia";
+            ColumnSenia.HeaderText = "Seña";
+            ColumnSenia.Name = "ColumnSenia";
+            // 
+            // ColumnEstadoReserva
+            // 
+            ColumnEstadoReserva.DataPropertyName = "Estado";
+            ColumnEstadoReserva.HeaderText = "Estado";
+            ColumnEstadoReserva.Name = "ColumnEstadoReserva";
             // 
             // tabPageCliente
             // 
@@ -562,51 +613,6 @@
             ColumnEstado.HeaderText = "Estado";
             ColumnEstado.Name = "ColumnEstado";
             // 
-            // ColumnId
-            // 
-            ColumnId.HeaderText = "ID";
-            ColumnId.Name = "ColumnId";
-            // 
-            // ColumnCliente
-            // 
-            ColumnCliente.DataPropertyName = "Cliente";
-            ColumnCliente.HeaderText = "Cliente";
-            ColumnCliente.Name = "ColumnCliente";
-            // 
-            // ColumnVehiculo
-            // 
-            ColumnVehiculo.DataPropertyName = "Vehiculo";
-            ColumnVehiculo.HeaderText = "Vehículo";
-            ColumnVehiculo.Name = "ColumnVehiculo";
-            // 
-            // ColumnFechaRetiro
-            // 
-            ColumnFechaRetiro.DataPropertyName = "FechaRetiro";
-            ColumnFechaRetiro.HeaderText = "Fecha Retiro";
-            ColumnFechaRetiro.Name = "ColumnFechaRetiro";
-            // 
-            // ColumnFechaDevolucion
-            // 
-            ColumnFechaDevolucion.DataPropertyName = "FechaDevolucion";
-            ColumnFechaDevolucion.HeaderText = "Fecha Devolución";
-            ColumnFechaDevolucion.Name = "ColumnFechaDevolucion";
-            // 
-            // ColumnPrecio
-            // 
-            ColumnPrecio.DataPropertyName = "Precio";
-            ColumnPrecio.HeaderText = "Precio";
-            ColumnPrecio.Name = "ColumnPrecio";
-            // 
-            // ColumnSenia
-            // 
-            ColumnSenia.HeaderText = "Seña";
-            ColumnSenia.Name = "ColumnSenia";
-            // 
-            // ColumnEstadoReserva
-            // 
-            ColumnEstadoReserva.HeaderText = "Estado";
-            ColumnEstadoReserva.Name = "ColumnEstadoReserva";
-            // 
             // FormReserva
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -623,6 +629,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormReserva";
             Text = "Reservas";
+            Load += FormReserva_Load;
             groupBox.ResumeLayout(false);
             groupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDownSenia).EndInit();
@@ -643,9 +650,9 @@
         private Button buttonEditar;
         private Button buttonNuevo;
         private GroupBox groupBox;
-        private TextBox textBoxNombre;
+        private TextBox textBoxVehiculo;
         private Label labelFechaDevolucion;
-        private TextBox textBoxDNI;
+        private TextBox textBoxCliente;
         private Label labelPrecio;
         private Label labelFechaInicio;
         private Label labelVehiculo;
@@ -655,7 +662,7 @@
         private ComboBox comboBoxEstado;
         private NumericUpDown numericUpDownSenia;
         private NumericUpDown numericUpDownPrecio;
-        private DateTimePicker dtpDevolucion;
+        private DateTimePicker dtpFechaDevolucion;
         private DateTimePicker dtpFechaRetiro;
         private Button buttonCancelar;
         private Button buttonGuardar;
