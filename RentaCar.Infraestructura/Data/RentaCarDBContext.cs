@@ -34,7 +34,7 @@ namespace RentaCar.Infraestructura.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=RentaCarDb;Username=postgres;Password=<1123581321>;");
+            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=rentacar;Username=postgres;Password=postgres;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -217,7 +217,7 @@ namespace RentaCar.Infraestructura.Data
                 entity.ToTable("conductores");
                 entity.HasKey(c => c.Dni);
 
-                entity.Property(c => c.Dni).HasColumnName("id");
+                entity.Property(c => c.Dni).HasColumnName("dni");
                 entity.Property(c => c.Nombre).HasColumnName("nombre");
                 entity.Property(c => c.Apellido).HasColumnName("apellido");
                 entity.Property(c => c.FechaVencLic).HasColumnName("fecha_venc_lic");

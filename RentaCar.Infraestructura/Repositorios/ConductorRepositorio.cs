@@ -21,7 +21,10 @@ namespace RentaCar.Infraestructura
         // Obtener todos los conductores
         public List<Conductor> ObtenerTodos()
         {
-            return _context.Conductores.ToList();
+            //return _context.Conductores.ToList();
+            return _context.Conductores
+        .FromSqlRaw("SELECT dni as id, dni, nombre, apellido, fecha_venc_lic FROM conductores")
+        .ToList();
         }
 
         // Obtener conductor por DNI

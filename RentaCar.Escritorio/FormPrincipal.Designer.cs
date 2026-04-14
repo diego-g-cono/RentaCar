@@ -35,7 +35,11 @@
             clientesToolStripMenuItem = new ToolStripMenuItem();
             reservasToolStripMenuItem = new ToolStripMenuItem();
             devolucionesToolStripMenuItem = new ToolStripMenuItem();
-            tarifasToolStripMenuItem = new ToolStripMenuItem();
+            alquilerToolStripMenuItem = new ToolStripMenuItem();
+            agregarToolStripMenuItem = new ToolStripMenuItem();
+            usuariosToolStripMenuItem = new ToolStripMenuItem();
+            conductoresToolStripMenuItem = new ToolStripMenuItem();
+            tarifasToolStripMenuItem1 = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -52,7 +56,7 @@
             // 
             // gestionarToolStripMenuItem
             // 
-            gestionarToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { vehiculosToolStripMenuItem, clientesToolStripMenuItem, reservasToolStripMenuItem, devolucionesToolStripMenuItem, tarifasToolStripMenuItem });
+            gestionarToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { vehiculosToolStripMenuItem, clientesToolStripMenuItem, reservasToolStripMenuItem, devolucionesToolStripMenuItem, alquilerToolStripMenuItem, agregarToolStripMenuItem });
             gestionarToolStripMenuItem.Name = "gestionarToolStripMenuItem";
             gestionarToolStripMenuItem.Size = new Size(69, 20);
             gestionarToolStripMenuItem.Text = "Gestionar";
@@ -83,12 +87,43 @@
             devolucionesToolStripMenuItem.Name = "devolucionesToolStripMenuItem";
             devolucionesToolStripMenuItem.Size = new Size(180, 22);
             devolucionesToolStripMenuItem.Text = "Devoluciones";
+            devolucionesToolStripMenuItem.Click += devolucionesToolStripMenuItem_Click;
             // 
-            // tarifasToolStripMenuItem
+            // alquilerToolStripMenuItem
             // 
-            tarifasToolStripMenuItem.Name = "tarifasToolStripMenuItem";
-            tarifasToolStripMenuItem.Size = new Size(180, 22);
-            tarifasToolStripMenuItem.Text = "Tarifas";
+            alquilerToolStripMenuItem.Name = "alquilerToolStripMenuItem";
+            alquilerToolStripMenuItem.Size = new Size(180, 22);
+            alquilerToolStripMenuItem.Text = "Alquileres";
+            alquilerToolStripMenuItem.Click += alquileresToolStripMenuItem_Click;
+            // 
+            // agregarToolStripMenuItem
+            // 
+            agregarToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { usuariosToolStripMenuItem, conductoresToolStripMenuItem, tarifasToolStripMenuItem1 });
+            agregarToolStripMenuItem.Name = "agregarToolStripMenuItem";
+            agregarToolStripMenuItem.Size = new Size(180, 22);
+            agregarToolStripMenuItem.Text = "Agregar/Modificar";
+            agregarToolStripMenuItem.Click += agregarToolStripMenuItem_Click;
+            // 
+            // usuariosToolStripMenuItem
+            // 
+            usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
+            usuariosToolStripMenuItem.Size = new Size(142, 22);
+            usuariosToolStripMenuItem.Text = "Usuarios";
+            usuariosToolStripMenuItem.Click += usuariosToolStripMenuItem_Click;
+            // 
+            // conductoresToolStripMenuItem
+            // 
+            conductoresToolStripMenuItem.Name = "conductoresToolStripMenuItem";
+            conductoresToolStripMenuItem.Size = new Size(142, 22);
+            conductoresToolStripMenuItem.Text = "Conductores";
+            conductoresToolStripMenuItem.Click += conductoresToolStripMenuItem_Click;
+            // 
+            // tarifasToolStripMenuItem1
+            // 
+            tarifasToolStripMenuItem1.Name = "tarifasToolStripMenuItem1";
+            tarifasToolStripMenuItem1.Size = new Size(142, 22);
+            tarifasToolStripMenuItem1.Text = "Tarifas";
+            tarifasToolStripMenuItem1.Click += tarifasToolStripMenuItem1_Click;
             // 
             // FormPrincipal
             // 
@@ -120,6 +155,10 @@
         private ToolStripMenuItem clientesToolStripMenuItem;
         private ToolStripMenuItem reservasToolStripMenuItem;
         private ToolStripMenuItem devolucionesToolStripMenuItem;
-        private ToolStripMenuItem tarifasToolStripMenuItem;
+        private ToolStripMenuItem agregarToolStripMenuItem;
+        private ToolStripMenuItem usuariosToolStripMenuItem;
+        private ToolStripMenuItem conductoresToolStripMenuItem;
+        private ToolStripMenuItem tarifasToolStripMenuItem1;
+        private ToolStripMenuItem alquilerToolStripMenuItem;
     }
 }

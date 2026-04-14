@@ -111,6 +111,7 @@
             buttonEliminar.TabIndex = 5;
             buttonEliminar.Text = "Eliminar";
             buttonEliminar.UseVisualStyleBackColor = false;
+            buttonEliminar.Click += buttonEliminar_Click;
             // 
             // buttonEditar
             // 
@@ -204,6 +205,7 @@
             dtpFechaDevolucion.Name = "dtpFechaDevolucion";
             dtpFechaDevolucion.Size = new Size(200, 22);
             dtpFechaDevolucion.TabIndex = 24;
+            dtpFechaDevolucion.ValueChanged += dtpFechaDevolucion_ValueChanged;
             // 
             // dtpFechaRetiro
             // 

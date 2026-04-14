@@ -95,5 +95,15 @@ namespace RentaCar.Escritorio
             textBoxVehiculo.Text = textBoxVehiculo.Text.ToUpper();
             textBoxVehiculo.SelectionStart = textBoxVehiculo.Text.Length;
         }
+
+        private void dtpFechaDevolucion_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonEliminar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
