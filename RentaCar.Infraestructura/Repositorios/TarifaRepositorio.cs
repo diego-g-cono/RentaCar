@@ -21,7 +21,9 @@ namespace RentaCar.Infraestructura
         // Obtener todas las tarifas
         public List<Tarifa> ObtenerTodos()
         {
-            return _context.Tarifas.ToList();
+            return _context.Tarifas
+                .Include(t => t.TipoVehiculo)
+                .ToList();
         }
 
         // Obtener tarifa por ID

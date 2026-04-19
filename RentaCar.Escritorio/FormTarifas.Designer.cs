@@ -33,6 +33,7 @@
             buttonEditar = new Button();
             buttonEliminar = new Button();
             groupBox = new GroupBox();
+            comboBoxVehiculo = new ComboBox();
             comboBoxEstado = new ComboBox();
             textBoxPrecioSemana = new TextBox();
             textBoxPrecioDia = new TextBox();
@@ -43,20 +44,15 @@
             buttonCancelar = new Button();
             buttonGuardar = new Button();
             dataGridViewTarifas = new DataGridView();
+            tarifaBindingSource = new BindingSource(components);
             Id = new DataGridViewTextBoxColumn();
             precioDiaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             precioSemanaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             activaDataGridViewCheckBoxColumn = new DataGridViewCheckBoxColumn();
-            tipoVehiculoIdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            tarifaBindingSource = new BindingSource(components);
-            tabControl = new TabControl();
-            tabPage1 = new TabPage();
-            tabPage2 = new TabPage();
+            NombreVehiculo = new DataGridViewTextBoxColumn();
             groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewTarifas).BeginInit();
             ((System.ComponentModel.ISupportInitialize)tarifaBindingSource).BeginInit();
-            tabControl.SuspendLayout();
-            tabPage1.SuspendLayout();
             SuspendLayout();
             // 
             // buttonNuevo
@@ -91,6 +87,7 @@
             buttonEditar.TabIndex = 5;
             buttonEditar.Text = "Editar";
             buttonEditar.UseVisualStyleBackColor = false;
+            buttonEditar.Click += buttonEditar_Click;
             // 
             // buttonEliminar
             // 
@@ -107,9 +104,11 @@
             buttonEliminar.TabIndex = 6;
             buttonEliminar.Text = "Eliminar";
             buttonEliminar.UseVisualStyleBackColor = false;
+            buttonEliminar.Click += buttonEliminar_Click;
             // 
             // groupBox
             // 
+            groupBox.Controls.Add(comboBoxVehiculo);
             groupBox.Controls.Add(comboBoxEstado);
             groupBox.Controls.Add(textBoxPrecioSemana);
             groupBox.Controls.Add(textBoxPrecioDia);
@@ -125,19 +124,26 @@
             groupBox.TabIndex = 7;
             groupBox.TabStop = false;
             groupBox.Text = "Datos Tarifa";
-            groupBox.Enter += groupBox_Enter;
+            // 
+            // comboBoxVehiculo
+            // 
+            comboBoxVehiculo.BackColor = Color.MidnightBlue;
+            comboBoxVehiculo.ForeColor = SystemColors.ButtonFace;
+            comboBoxVehiculo.FormattingEnabled = true;
+            comboBoxVehiculo.Location = new Point(129, 150);
+            comboBoxVehiculo.Name = "comboBoxVehiculo";
+            comboBoxVehiculo.Size = new Size(121, 22);
+            comboBoxVehiculo.TabIndex = 29;
             // 
             // comboBoxEstado
             // 
             comboBoxEstado.BackColor = Color.MidnightBlue;
             comboBoxEstado.ForeColor = SystemColors.ButtonFace;
             comboBoxEstado.FormattingEnabled = true;
-            comboBoxEstado.Items.AddRange(new object[] { "Si", "No" });
             comboBoxEstado.Location = new Point(129, 118);
             comboBoxEstado.Name = "comboBoxEstado";
             comboBoxEstado.Size = new Size(121, 22);
             comboBoxEstado.TabIndex = 28;
-            comboBoxEstado.SelectedIndexChanged += comboBoxEstado_SelectedIndexChanged;
             // 
             // textBoxPrecioSemana
             // 
@@ -180,7 +186,6 @@
             labelTelefono.Size = new Size(63, 14);
             labelTelefono.TabIndex = 3;
             labelTelefono.Text = "Vehiculo:";
-            labelTelefono.Click += labelTelefono_Click;
             // 
             // labelApellido
             // 
@@ -201,7 +206,6 @@
             labelNombre.Size = new Size(74, 14);
             labelNombre.TabIndex = 1;
             labelNombre.Text = "Precio Dia:";
-            labelNombre.Click += labelNombre_Click;
             // 
             // buttonCancelar
             // 
@@ -218,6 +222,7 @@
             buttonCancelar.TabIndex = 22;
             buttonCancelar.Text = "Cancelar";
             buttonCancelar.UseVisualStyleBackColor = false;
+            buttonCancelar.Click += buttonCancelar_Click;
             // 
             // buttonGuardar
             // 
@@ -234,83 +239,58 @@
             buttonGuardar.TabIndex = 21;
             buttonGuardar.Text = "Guardar";
             buttonGuardar.UseVisualStyleBackColor = false;
+            buttonGuardar.Click += buttonGuardar_Click;
             // 
             // dataGridViewTarifas
             // 
             dataGridViewTarifas.AutoGenerateColumns = false;
             dataGridViewTarifas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewTarifas.Columns.AddRange(new DataGridViewColumn[] { Id, precioDiaDataGridViewTextBoxColumn, precioSemanaDataGridViewTextBoxColumn, activaDataGridViewCheckBoxColumn, tipoVehiculoIdDataGridViewTextBoxColumn });
+            dataGridViewTarifas.Columns.AddRange(new DataGridViewColumn[] { Id, precioDiaDataGridViewTextBoxColumn, precioSemanaDataGridViewTextBoxColumn, activaDataGridViewCheckBoxColumn, NombreVehiculo });
             dataGridViewTarifas.DataSource = tarifaBindingSource;
-            dataGridViewTarifas.Location = new Point(0, 0);
+            dataGridViewTarifas.Location = new Point(355, 59);
             dataGridViewTarifas.Name = "dataGridViewTarifas";
+            dataGridViewTarifas.ReadOnly = true;
             dataGridViewTarifas.Size = new Size(544, 277);
             dataGridViewTarifas.TabIndex = 23;
-            dataGridViewTarifas.CellContentClick += dataGridView1_CellContentClick;
+            // 
+            // tarifaBindingSource
+            // 
+            tarifaBindingSource.DataSource = typeof(Dominio.Tarifa);
             // 
             // Id
             // 
             Id.DataPropertyName = "Id";
-            Id.HeaderText = "Id";
+            Id.HeaderText = "ID";
             Id.Name = "Id";
+            Id.ReadOnly = true;
             // 
             // precioDiaDataGridViewTextBoxColumn
             // 
             precioDiaDataGridViewTextBoxColumn.DataPropertyName = "PrecioDia";
-            precioDiaDataGridViewTextBoxColumn.HeaderText = "PrecioDia";
+            precioDiaDataGridViewTextBoxColumn.HeaderText = "Precio Dia";
             precioDiaDataGridViewTextBoxColumn.Name = "precioDiaDataGridViewTextBoxColumn";
+            precioDiaDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // precioSemanaDataGridViewTextBoxColumn
             // 
             precioSemanaDataGridViewTextBoxColumn.DataPropertyName = "PrecioSemana";
-            precioSemanaDataGridViewTextBoxColumn.HeaderText = "PrecioSemana";
+            precioSemanaDataGridViewTextBoxColumn.HeaderText = "Precio Semana";
             precioSemanaDataGridViewTextBoxColumn.Name = "precioSemanaDataGridViewTextBoxColumn";
+            precioSemanaDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // activaDataGridViewCheckBoxColumn
             // 
             activaDataGridViewCheckBoxColumn.DataPropertyName = "Activa";
             activaDataGridViewCheckBoxColumn.HeaderText = "Activa";
             activaDataGridViewCheckBoxColumn.Name = "activaDataGridViewCheckBoxColumn";
+            activaDataGridViewCheckBoxColumn.ReadOnly = true;
             // 
-            // tipoVehiculoIdDataGridViewTextBoxColumn
+            // NombreVehiculo
             // 
-            tipoVehiculoIdDataGridViewTextBoxColumn.DataPropertyName = "TipoVehiculoId";
-            tipoVehiculoIdDataGridViewTextBoxColumn.HeaderText = "TipoVehiculoId";
-            tipoVehiculoIdDataGridViewTextBoxColumn.Name = "tipoVehiculoIdDataGridViewTextBoxColumn";
-            // 
-            // tarifaBindingSource
-            // 
-            tarifaBindingSource.DataSource = typeof(Dominio.Tarifa);
-            // 
-            // tabControl
-            // 
-            tabControl.Controls.Add(tabPage1);
-            tabControl.Controls.Add(tabPage2);
-            tabControl.Location = new Point(355, 36);
-            tabControl.Name = "tabControl";
-            tabControl.SelectedIndex = 0;
-            tabControl.Size = new Size(553, 300);
-            tabControl.TabIndex = 24;
-            // 
-            // tabPage1
-            // 
-            tabPage1.Controls.Add(dataGridViewTarifas);
-            tabPage1.Location = new Point(4, 24);
-            tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(545, 272);
-            tabPage1.TabIndex = 0;
-            tabPage1.Text = "Tarifas";
-            tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            tabPage2.Location = new Point(4, 24);
-            tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(545, 272);
-            tabPage2.TabIndex = 1;
-            tabPage2.Text = "Vehiculos";
-            tabPage2.UseVisualStyleBackColor = true;
+            NombreVehiculo.DataPropertyName = "NombreVehiculo";
+            NombreVehiculo.HeaderText = "Vehiculo";
+            NombreVehiculo.Name = "NombreVehiculo";
+            NombreVehiculo.ReadOnly = true;
             // 
             // FormTarifas
             // 
@@ -318,7 +298,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MidnightBlue;
             ClientSize = new Size(939, 395);
-            Controls.Add(tabControl);
+            Controls.Add(dataGridViewTarifas);
             Controls.Add(buttonCancelar);
             Controls.Add(buttonGuardar);
             Controls.Add(groupBox);
@@ -332,8 +312,6 @@
             groupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewTarifas).EndInit();
             ((System.ComponentModel.ISupportInitialize)tarifaBindingSource).EndInit();
-            tabControl.ResumeLayout(false);
-            tabPage1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -354,13 +332,12 @@
         private ComboBox comboBoxEstado;
         private DataGridView dataGridViewTarifas;
         private BindingSource tarifaBindingSource;
+        private ComboBox comboBoxVehiculo;
+        private DataGridViewTextBoxColumn tipoVehiculoIdDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn precioDiaDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn precioSemanaDataGridViewTextBoxColumn;
         private DataGridViewCheckBoxColumn activaDataGridViewCheckBoxColumn;
-        private DataGridViewTextBoxColumn tipoVehiculoIdDataGridViewTextBoxColumn;
-        private TabControl tabControl;
-        private TabPage tabPage1;
-        private TabPage tabPage2;
+        private DataGridViewTextBoxColumn NombreVehiculo;
     }
 }

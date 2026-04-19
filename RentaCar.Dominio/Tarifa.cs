@@ -14,6 +14,8 @@ namespace RentaCar.Dominio
         public bool Activa { get; set; }
         //foreign keys
         public int TipoVehiculoId { get; set; }
+        public TipoVehiculo TipoVehiculo { get; set; }
+        public string NombreVehiculo => TipoVehiculo?.Nombre;
 
         public Tarifa(int id, decimal precioDia, decimal precioSemana, bool activa, int tipoVehiculoId)
         {
@@ -23,5 +25,7 @@ namespace RentaCar.Dominio
             Activa = activa;
             TipoVehiculoId = tipoVehiculoId;
         }
+
+        public Tarifa() { }
     }
 }

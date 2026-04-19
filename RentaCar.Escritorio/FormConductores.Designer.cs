@@ -36,10 +36,10 @@
             textBoxApellido = new TextBox();
             textBoxNombre = new TextBox();
             textBoxDni = new TextBox();
-            labelEmail = new Label();
-            labelTelefono = new Label();
-            labelApellido = new Label();
-            labelNombre = new Label();
+            labelNombreCond = new Label();
+            labelApellidoCond = new Label();
+            labelDni = new Label();
+            labelVencLic = new Label();
             buttonEliminar = new Button();
             buttonEditar = new Button();
             buttonNuevo = new Button();
@@ -69,6 +69,7 @@
             buttonCancelar.TabIndex = 28;
             buttonCancelar.Text = "Cancelar";
             buttonCancelar.UseVisualStyleBackColor = false;
+            buttonCancelar.Click += buttonCancelar_Click;
             // 
             // buttonGuardar
             // 
@@ -93,10 +94,10 @@
             groupBoxConductores.Controls.Add(textBoxApellido);
             groupBoxConductores.Controls.Add(textBoxNombre);
             groupBoxConductores.Controls.Add(textBoxDni);
-            groupBoxConductores.Controls.Add(labelEmail);
-            groupBoxConductores.Controls.Add(labelTelefono);
-            groupBoxConductores.Controls.Add(labelApellido);
-            groupBoxConductores.Controls.Add(labelNombre);
+            groupBoxConductores.Controls.Add(labelNombreCond);
+            groupBoxConductores.Controls.Add(labelApellidoCond);
+            groupBoxConductores.Controls.Add(labelDni);
+            groupBoxConductores.Controls.Add(labelVencLic);
             groupBoxConductores.Font = new Font("Verdana", 9F, FontStyle.Bold);
             groupBoxConductores.ForeColor = SystemColors.ButtonFace;
             groupBoxConductores.Location = new Point(23, 91);
@@ -145,47 +146,46 @@
             textBoxDni.Name = "textBoxDni";
             textBoxDni.Size = new Size(121, 22);
             textBoxDni.TabIndex = 18;
-            textBoxDni.TextChanged += textBoxApellido_TextChanged;
             // 
-            // labelEmail
+            // labelNombreCond
             // 
-            labelEmail.AutoSize = true;
-            labelEmail.Font = new Font("Verdana", 9F);
-            labelEmail.Location = new Point(19, 118);
-            labelEmail.Name = "labelEmail";
-            labelEmail.Size = new Size(61, 14);
-            labelEmail.TabIndex = 16;
-            labelEmail.Text = "Nombre:";
+            labelNombreCond.AutoSize = true;
+            labelNombreCond.Font = new Font("Verdana", 9F);
+            labelNombreCond.Location = new Point(19, 118);
+            labelNombreCond.Name = "labelNombreCond";
+            labelNombreCond.Size = new Size(61, 14);
+            labelNombreCond.TabIndex = 16;
+            labelNombreCond.Text = "Nombre:";
             // 
-            // labelTelefono
+            // labelApellidoCond
             // 
-            labelTelefono.AutoSize = true;
-            labelTelefono.Font = new Font("Verdana", 9F);
-            labelTelefono.Location = new Point(19, 155);
-            labelTelefono.Name = "labelTelefono";
-            labelTelefono.Size = new Size(61, 14);
-            labelTelefono.TabIndex = 3;
-            labelTelefono.Text = "Apellido:";
+            labelApellidoCond.AutoSize = true;
+            labelApellidoCond.Font = new Font("Verdana", 9F);
+            labelApellidoCond.Location = new Point(19, 155);
+            labelApellidoCond.Name = "labelApellidoCond";
+            labelApellidoCond.Size = new Size(61, 14);
+            labelApellidoCond.TabIndex = 3;
+            labelApellidoCond.Text = "Apellido:";
             // 
-            // labelApellido
+            // labelDni
             // 
-            labelApellido.AutoSize = true;
-            labelApellido.Font = new Font("Verdana", 9F);
-            labelApellido.Location = new Point(19, 78);
-            labelApellido.Name = "labelApellido";
-            labelApellido.Size = new Size(35, 14);
-            labelApellido.TabIndex = 2;
-            labelApellido.Text = "DNI:";
+            labelDni.AutoSize = true;
+            labelDni.Font = new Font("Verdana", 9F);
+            labelDni.Location = new Point(19, 78);
+            labelDni.Name = "labelDni";
+            labelDni.Size = new Size(35, 14);
+            labelDni.TabIndex = 2;
+            labelDni.Text = "DNI:";
             // 
-            // labelNombre
+            // labelVencLic
             // 
-            labelNombre.AutoSize = true;
-            labelNombre.Font = new Font("Verdana", 9F);
-            labelNombre.Location = new Point(19, 35);
-            labelNombre.Name = "labelNombre";
-            labelNombre.Size = new Size(98, 14);
-            labelNombre.TabIndex = 1;
-            labelNombre.Text = "Vence licencia:";
+            labelVencLic.AutoSize = true;
+            labelVencLic.Font = new Font("Verdana", 9F);
+            labelVencLic.Location = new Point(19, 35);
+            labelVencLic.Name = "labelVencLic";
+            labelVencLic.Size = new Size(98, 14);
+            labelVencLic.TabIndex = 1;
+            labelVencLic.Text = "Vence licencia:";
             // 
             // buttonEliminar
             // 
@@ -202,6 +202,7 @@
             buttonEliminar.TabIndex = 25;
             buttonEliminar.Text = "Eliminar";
             buttonEliminar.UseVisualStyleBackColor = false;
+            buttonEliminar.Click += buttonEliminar_Click;
             // 
             // buttonEditar
             // 
@@ -218,6 +219,7 @@
             buttonEditar.TabIndex = 24;
             buttonEditar.Text = "Editar";
             buttonEditar.UseVisualStyleBackColor = false;
+            buttonEditar.Click += buttonEditar_Click;
             // 
             // buttonNuevo
             // 
@@ -248,6 +250,7 @@
             dataGridViewConductores.DataSource = conductorBindingSource;
             dataGridViewConductores.Location = new Point(388, 57);
             dataGridViewConductores.Name = "dataGridViewConductores";
+            dataGridViewConductores.ReadOnly = true;
             dataGridViewConductores.Size = new Size(444, 280);
             dataGridViewConductores.TabIndex = 29;
             // 
@@ -256,24 +259,28 @@
             dniDataGridViewTextColumn.DataPropertyName = "Dni";
             dniDataGridViewTextColumn.HeaderText = "Dni";
             dniDataGridViewTextColumn.Name = "dniDataGridViewTextColumn";
+            dniDataGridViewTextColumn.ReadOnly = true;
             // 
             // fechaVencLicDataGridViewTextBoxColumn
             // 
             fechaVencLicDataGridViewTextBoxColumn.DataPropertyName = "FechaVencLic";
             fechaVencLicDataGridViewTextBoxColumn.HeaderText = "Vence Lic.";
             fechaVencLicDataGridViewTextBoxColumn.Name = "fechaVencLicDataGridViewTextBoxColumn";
+            fechaVencLicDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // nombreDataGridViewTextBoxColumn
             // 
             nombreDataGridViewTextBoxColumn.DataPropertyName = "Nombre";
             nombreDataGridViewTextBoxColumn.HeaderText = "Nombre";
             nombreDataGridViewTextBoxColumn.Name = "nombreDataGridViewTextBoxColumn";
+            nombreDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // apellidoDataGridViewTextBoxColumn
             // 
             apellidoDataGridViewTextBoxColumn.DataPropertyName = "Apellido";
             apellidoDataGridViewTextBoxColumn.HeaderText = "Apellido";
             apellidoDataGridViewTextBoxColumn.Name = "apellidoDataGridViewTextBoxColumn";
+            apellidoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // FormConductores
             // 
@@ -304,10 +311,10 @@
         private Button buttonGuardar;
         private GroupBox groupBoxConductores;
         private TextBox textBoxDni;
-        private Label labelEmail;
-        private Label labelTelefono;
-        private Label labelApellido;
-        private Label labelNombre;
+        private Label labelNombreCond;
+        private Label labelApellidoCond;
+        private Label labelDni;
+        private Label labelVencLic;
         private Button buttonEliminar;
         private Button buttonEditar;
         private Button buttonNuevo;
@@ -320,6 +327,5 @@
         private DataGridViewTextBoxColumn fechaVencLicDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn apellidoDataGridViewTextBoxColumn;
-        private Label ARREGLARERROR;
     }
 }
