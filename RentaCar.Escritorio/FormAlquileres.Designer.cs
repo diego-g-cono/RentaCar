@@ -36,8 +36,20 @@
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
             tabControlAlquileres = new TabControl();
             tabPage1 = new TabPage();
+            dataGridViewAlquileres = new DataGridView();
+            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn8 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn9 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn7 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn10 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
+            DniConductor = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn11 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn12 = new DataGridViewTextBoxColumn();
             tabPage2 = new TabPage();
             dataGridViewVehiculos = new DataGridView();
             ColumnPatente = new DataGridViewTextBoxColumn();
@@ -58,6 +70,10 @@
             ColumnTelefono = new DataGridViewTextBoxColumn();
             tabPage3 = new TabPage();
             dataGridViewConductores = new DataGridView();
+            ColumnDniCond = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
             tabPage4 = new TabPage();
             dataGridViewReserva = new DataGridView();
             ColumnId = new DataGridViewTextBoxColumn();
@@ -76,7 +92,7 @@
             groupBoxAlquileres = new GroupBox();
             comboBoxEstado = new ComboBox();
             labelEstado = new Label();
-            textBox1 = new TextBox();
+            textBoxReserva = new TextBox();
             textBoxDniCond = new TextBox();
             label1 = new Label();
             textBoxDniCliente = new TextBox();
@@ -90,11 +106,9 @@
             labelPrecio = new Label();
             labelVehiculo = new Label();
             labelCliente = new Label();
-            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
             tabControlAlquileres.SuspendLayout();
+            tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewAlquileres).BeginInit();
             tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewVehiculos).BeginInit();
             tabPage5.SuspendLayout();
@@ -117,18 +131,116 @@
             tabControlAlquileres.Location = new Point(398, 50);
             tabControlAlquileres.Name = "tabControlAlquileres";
             tabControlAlquileres.SelectedIndex = 0;
-            tabControlAlquileres.Size = new Size(954, 339);
+            tabControlAlquileres.Size = new Size(950, 339);
             tabControlAlquileres.TabIndex = 18;
             // 
             // tabPage1
             // 
+            tabPage1.BackColor = Color.MidnightBlue;
+            tabPage1.Controls.Add(dataGridViewAlquileres);
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(946, 311);
+            tabPage1.Size = new Size(942, 311);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Alquileres";
-            tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // dataGridViewAlquileres
+            // 
+            dataGridViewAlquileres.AllowUserToOrderColumns = true;
+            dataGridViewAlquileres.BackgroundColor = Color.MidnightBlue;
+            dataGridViewAlquileres.BorderStyle = BorderStyle.Fixed3D;
+            dataGridViewAlquileres.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
+            dataGridViewAlquileres.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.MidnightBlue;
+            dataGridViewCellStyle1.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ButtonFace;
+            dataGridViewCellStyle1.SelectionBackColor = Color.RoyalBlue;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridViewAlquileres.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewAlquileres.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewAlquileres.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn8, dataGridViewTextBoxColumn9, dataGridViewTextBoxColumn7, dataGridViewTextBoxColumn10, dataGridViewTextBoxColumn6, DniConductor, dataGridViewTextBoxColumn11, dataGridViewTextBoxColumn12 });
+            dataGridViewAlquileres.GridColor = Color.MidnightBlue;
+            dataGridViewAlquileres.Location = new Point(0, 0);
+            dataGridViewAlquileres.Name = "dataGridViewAlquileres";
+            dataGridViewAlquileres.ReadOnly = true;
+            dataGridViewCellStyle2.BackColor = Color.MidnightBlue;
+            dataGridViewCellStyle2.ForeColor = SystemColors.ButtonFace;
+            dataGridViewCellStyle2.SelectionBackColor = Color.RoyalBlue;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.ButtonFace;
+            dataGridViewAlquileres.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewAlquileres.RowTemplate.DefaultCellStyle.BackColor = Color.MidnightBlue;
+            dataGridViewAlquileres.RowTemplate.DefaultCellStyle.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewAlquileres.RowTemplate.DefaultCellStyle.ForeColor = SystemColors.ButtonFace;
+            dataGridViewAlquileres.RowTemplate.DefaultCellStyle.SelectionBackColor = Color.RoyalBlue;
+            dataGridViewAlquileres.RowTemplate.DefaultCellStyle.SelectionForeColor = SystemColors.ButtonFace;
+            dataGridViewAlquileres.Size = new Size(950, 315);
+            dataGridViewAlquileres.TabIndex = 13;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            dataGridViewTextBoxColumn5.DataPropertyName = "Id";
+            dataGridViewTextBoxColumn5.HeaderText = "ID";
+            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            dataGridViewTextBoxColumn8.DataPropertyName = "FechaInicio";
+            dataGridViewTextBoxColumn8.HeaderText = "Fecha Inicio";
+            dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            dataGridViewTextBoxColumn8.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            dataGridViewTextBoxColumn9.DataPropertyName = "FechaFin";
+            dataGridViewTextBoxColumn9.HeaderText = "Fecha Devolución";
+            dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            dataGridViewTextBoxColumn9.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            dataGridViewTextBoxColumn7.DataPropertyName = "VehiculoPatente";
+            dataGridViewTextBoxColumn7.HeaderText = "Vehículo";
+            dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            dataGridViewTextBoxColumn7.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            dataGridViewTextBoxColumn10.DataPropertyName = "Precio";
+            dataGridViewTextBoxColumn10.HeaderText = "Precio";
+            dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            dataGridViewTextBoxColumn10.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            dataGridViewTextBoxColumn6.DataPropertyName = "ClienteId";
+            dataGridViewTextBoxColumn6.HeaderText = "Cliente";
+            dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // DniConductor
+            // 
+            DniConductor.DataPropertyName = "ConductorId";
+            DniConductor.HeaderText = "Conductor";
+            DniConductor.Name = "DniConductor";
+            DniConductor.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            dataGridViewTextBoxColumn11.DataPropertyName = "ReservaId";
+            dataGridViewTextBoxColumn11.HeaderText = "ID Reserva";
+            dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            dataGridViewTextBoxColumn11.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            dataGridViewTextBoxColumn12.DataPropertyName = "EstadoId";
+            dataGridViewTextBoxColumn12.HeaderText = "Estado";
+            dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            dataGridViewTextBoxColumn12.ReadOnly = true;
             // 
             // tabPage2
             // 
@@ -136,7 +248,7 @@
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(946, 311);
+            tabPage2.Size = new Size(942, 311);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Vehiculos";
             tabPage2.UseVisualStyleBackColor = true;
@@ -148,24 +260,25 @@
             dataGridViewVehiculos.BorderStyle = BorderStyle.Fixed3D;
             dataGridViewVehiculos.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
             dataGridViewVehiculos.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.MidnightBlue;
-            dataGridViewCellStyle1.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = SystemColors.ButtonFace;
-            dataGridViewCellStyle1.SelectionBackColor = Color.RoyalBlue;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridViewVehiculos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = Color.MidnightBlue;
+            dataGridViewCellStyle3.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ButtonFace;
+            dataGridViewCellStyle3.SelectionBackColor = Color.RoyalBlue;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dataGridViewVehiculos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewVehiculos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewVehiculos.Columns.AddRange(new DataGridViewColumn[] { ColumnPatente, ColumnMarca, ColumnModelo, ColumnTipo, ColumnAnio, ColumnColor, ColumnCombustible, ColumnKm, ColumnEstado });
             dataGridViewVehiculos.GridColor = Color.MidnightBlue;
             dataGridViewVehiculos.Location = new Point(-2, -1);
             dataGridViewVehiculos.Name = "dataGridViewVehiculos";
-            dataGridViewCellStyle2.BackColor = Color.MidnightBlue;
-            dataGridViewCellStyle2.ForeColor = SystemColors.ButtonFace;
-            dataGridViewCellStyle2.SelectionBackColor = Color.RoyalBlue;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.ButtonFace;
-            dataGridViewVehiculos.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewVehiculos.ReadOnly = true;
+            dataGridViewCellStyle4.BackColor = Color.MidnightBlue;
+            dataGridViewCellStyle4.ForeColor = SystemColors.ButtonFace;
+            dataGridViewCellStyle4.SelectionBackColor = Color.RoyalBlue;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.ButtonFace;
+            dataGridViewVehiculos.RowsDefaultCellStyle = dataGridViewCellStyle4;
             dataGridViewVehiculos.RowTemplate.DefaultCellStyle.BackColor = Color.MidnightBlue;
             dataGridViewVehiculos.RowTemplate.DefaultCellStyle.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewVehiculos.RowTemplate.DefaultCellStyle.ForeColor = SystemColors.ButtonFace;
@@ -173,60 +286,70 @@
             dataGridViewVehiculos.RowTemplate.DefaultCellStyle.SelectionForeColor = SystemColors.ButtonFace;
             dataGridViewVehiculos.Size = new Size(950, 313);
             dataGridViewVehiculos.TabIndex = 8;
+            dataGridViewVehiculos.CellClick += dataGridViewVehiculos_CellClick;
             // 
             // ColumnPatente
             // 
             ColumnPatente.DataPropertyName = "Patente";
             ColumnPatente.HeaderText = "Patente";
             ColumnPatente.Name = "ColumnPatente";
+            ColumnPatente.ReadOnly = true;
             // 
             // ColumnMarca
             // 
             ColumnMarca.DataPropertyName = "Marca";
             ColumnMarca.HeaderText = "Marca";
             ColumnMarca.Name = "ColumnMarca";
+            ColumnMarca.ReadOnly = true;
             // 
             // ColumnModelo
             // 
             ColumnModelo.DataPropertyName = "Modelo";
             ColumnModelo.HeaderText = "Modelo";
             ColumnModelo.Name = "ColumnModelo";
+            ColumnModelo.ReadOnly = true;
             // 
             // ColumnTipo
             // 
             ColumnTipo.DataPropertyName = "Tipo";
             ColumnTipo.HeaderText = "Tipo";
             ColumnTipo.Name = "ColumnTipo";
+            ColumnTipo.ReadOnly = true;
             // 
             // ColumnAnio
             // 
             ColumnAnio.DataPropertyName = "Anio";
             ColumnAnio.HeaderText = "Año";
             ColumnAnio.Name = "ColumnAnio";
+            ColumnAnio.ReadOnly = true;
             // 
             // ColumnColor
             // 
             ColumnColor.DataPropertyName = "Color";
             ColumnColor.HeaderText = "Color";
             ColumnColor.Name = "ColumnColor";
+            ColumnColor.ReadOnly = true;
             // 
             // ColumnCombustible
             // 
             ColumnCombustible.DataPropertyName = "Combustible";
             ColumnCombustible.HeaderText = "Combustible";
             ColumnCombustible.Name = "ColumnCombustible";
+            ColumnCombustible.ReadOnly = true;
             // 
             // ColumnKm
             // 
             ColumnKm.DataPropertyName = "Kilometraje";
             ColumnKm.HeaderText = "Kilometraje";
             ColumnKm.Name = "ColumnKm";
+            ColumnKm.ReadOnly = true;
             // 
             // ColumnEstado
             // 
             ColumnEstado.DataPropertyName = "Estado";
             ColumnEstado.HeaderText = "Estado";
             ColumnEstado.Name = "ColumnEstado";
+            ColumnEstado.ReadOnly = true;
             // 
             // tabPage5
             // 
@@ -234,7 +357,7 @@
             tabPage5.Controls.Add(dataGridViewClientes);
             tabPage5.Location = new Point(4, 24);
             tabPage5.Name = "tabPage5";
-            tabPage5.Size = new Size(946, 311);
+            tabPage5.Size = new Size(942, 311);
             tabPage5.TabIndex = 4;
             tabPage5.Text = "Clientes";
             // 
@@ -245,24 +368,25 @@
             dataGridViewClientes.BorderStyle = BorderStyle.Fixed3D;
             dataGridViewClientes.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
             dataGridViewClientes.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = Color.MidnightBlue;
-            dataGridViewCellStyle3.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ButtonFace;
-            dataGridViewCellStyle3.SelectionBackColor = Color.RoyalBlue;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dataGridViewClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = Color.MidnightBlue;
+            dataGridViewCellStyle5.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle5.ForeColor = SystemColors.ButtonFace;
+            dataGridViewCellStyle5.SelectionBackColor = Color.RoyalBlue;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dataGridViewClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dataGridViewClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewClientes.Columns.AddRange(new DataGridViewColumn[] { ColumnDNI, ColumnNombre, ColumnApellido, ColumnEmail, ColumnTelefono });
             dataGridViewClientes.GridColor = Color.MidnightBlue;
             dataGridViewClientes.Location = new Point(-4, 0);
             dataGridViewClientes.Name = "dataGridViewClientes";
-            dataGridViewCellStyle4.BackColor = Color.MidnightBlue;
-            dataGridViewCellStyle4.ForeColor = SystemColors.ButtonFace;
-            dataGridViewCellStyle4.SelectionBackColor = Color.RoyalBlue;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.ButtonFace;
-            dataGridViewClientes.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewClientes.ReadOnly = true;
+            dataGridViewCellStyle6.BackColor = Color.MidnightBlue;
+            dataGridViewCellStyle6.ForeColor = SystemColors.ButtonFace;
+            dataGridViewCellStyle6.SelectionBackColor = Color.RoyalBlue;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.ButtonFace;
+            dataGridViewClientes.RowsDefaultCellStyle = dataGridViewCellStyle6;
             dataGridViewClientes.RowTemplate.DefaultCellStyle.BackColor = Color.MidnightBlue;
             dataGridViewClientes.RowTemplate.DefaultCellStyle.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewClientes.RowTemplate.DefaultCellStyle.ForeColor = SystemColors.ButtonFace;
@@ -270,36 +394,42 @@
             dataGridViewClientes.RowTemplate.DefaultCellStyle.SelectionForeColor = SystemColors.ButtonFace;
             dataGridViewClientes.Size = new Size(543, 278);
             dataGridViewClientes.TabIndex = 11;
+            dataGridViewClientes.CellClick += dataGridViewClientes_CellClick;
             // 
             // ColumnDNI
             // 
             ColumnDNI.DataPropertyName = "DNI";
             ColumnDNI.HeaderText = "DNI";
             ColumnDNI.Name = "ColumnDNI";
+            ColumnDNI.ReadOnly = true;
             // 
             // ColumnNombre
             // 
             ColumnNombre.DataPropertyName = "Nombre";
             ColumnNombre.HeaderText = "Nombre";
             ColumnNombre.Name = "ColumnNombre";
+            ColumnNombre.ReadOnly = true;
             // 
             // ColumnApellido
             // 
             ColumnApellido.DataPropertyName = "Apellido";
             ColumnApellido.HeaderText = "Apellido";
             ColumnApellido.Name = "ColumnApellido";
+            ColumnApellido.ReadOnly = true;
             // 
             // ColumnEmail
             // 
             ColumnEmail.DataPropertyName = "Email";
             ColumnEmail.HeaderText = "E-mail";
             ColumnEmail.Name = "ColumnEmail";
+            ColumnEmail.ReadOnly = true;
             // 
             // ColumnTelefono
             // 
             ColumnTelefono.DataPropertyName = "Telefono";
             ColumnTelefono.HeaderText = "Teléfono";
             ColumnTelefono.Name = "ColumnTelefono";
+            ColumnTelefono.ReadOnly = true;
             // 
             // tabPage3
             // 
@@ -307,7 +437,7 @@
             tabPage3.Controls.Add(dataGridViewConductores);
             tabPage3.Location = new Point(4, 24);
             tabPage3.Name = "tabPage3";
-            tabPage3.Size = new Size(946, 311);
+            tabPage3.Size = new Size(942, 311);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Conductores";
             // 
@@ -318,24 +448,25 @@
             dataGridViewConductores.BorderStyle = BorderStyle.Fixed3D;
             dataGridViewConductores.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
             dataGridViewConductores.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = Color.MidnightBlue;
-            dataGridViewCellStyle5.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle5.ForeColor = SystemColors.ButtonFace;
-            dataGridViewCellStyle5.SelectionBackColor = Color.RoyalBlue;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            dataGridViewConductores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = Color.MidnightBlue;
+            dataGridViewCellStyle7.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle7.ForeColor = SystemColors.ButtonFace;
+            dataGridViewCellStyle7.SelectionBackColor = Color.RoyalBlue;
+            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
+            dataGridViewConductores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             dataGridViewConductores.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewConductores.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4 });
+            dataGridViewConductores.Columns.AddRange(new DataGridViewColumn[] { ColumnDniCond, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4 });
             dataGridViewConductores.GridColor = Color.MidnightBlue;
             dataGridViewConductores.Location = new Point(0, 3);
             dataGridViewConductores.Name = "dataGridViewConductores";
-            dataGridViewCellStyle6.BackColor = Color.MidnightBlue;
-            dataGridViewCellStyle6.ForeColor = SystemColors.ButtonFace;
-            dataGridViewCellStyle6.SelectionBackColor = Color.RoyalBlue;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.ButtonFace;
-            dataGridViewConductores.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewConductores.ReadOnly = true;
+            dataGridViewCellStyle8.BackColor = Color.MidnightBlue;
+            dataGridViewCellStyle8.ForeColor = SystemColors.ButtonFace;
+            dataGridViewCellStyle8.SelectionBackColor = Color.RoyalBlue;
+            dataGridViewCellStyle8.SelectionForeColor = SystemColors.ButtonFace;
+            dataGridViewConductores.RowsDefaultCellStyle = dataGridViewCellStyle8;
             dataGridViewConductores.RowTemplate.DefaultCellStyle.BackColor = Color.MidnightBlue;
             dataGridViewConductores.RowTemplate.DefaultCellStyle.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewConductores.RowTemplate.DefaultCellStyle.ForeColor = SystemColors.ButtonFace;
@@ -343,6 +474,35 @@
             dataGridViewConductores.RowTemplate.DefaultCellStyle.SelectionForeColor = SystemColors.ButtonFace;
             dataGridViewConductores.Size = new Size(444, 255);
             dataGridViewConductores.TabIndex = 31;
+            dataGridViewConductores.CellClick += dataGridViewConductores_CellClick;
+            // 
+            // ColumnDniCond
+            // 
+            ColumnDniCond.DataPropertyName = "DNI";
+            ColumnDniCond.HeaderText = "DNI";
+            ColumnDniCond.Name = "ColumnDniCond";
+            ColumnDniCond.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            dataGridViewTextBoxColumn2.DataPropertyName = "fechaVencLic";
+            dataGridViewTextBoxColumn2.HeaderText = "Vence Lic.";
+            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            dataGridViewTextBoxColumn3.DataPropertyName = "Nombre";
+            dataGridViewTextBoxColumn3.HeaderText = "Nombre";
+            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            dataGridViewTextBoxColumn4.DataPropertyName = "Apellido";
+            dataGridViewTextBoxColumn4.HeaderText = "Apellido";
+            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
             // tabPage4
             // 
@@ -350,7 +510,7 @@
             tabPage4.Controls.Add(dataGridViewReserva);
             tabPage4.Location = new Point(4, 24);
             tabPage4.Name = "tabPage4";
-            tabPage4.Size = new Size(946, 311);
+            tabPage4.Size = new Size(942, 311);
             tabPage4.TabIndex = 3;
             tabPage4.Text = "Reservas";
             // 
@@ -361,24 +521,25 @@
             dataGridViewReserva.BorderStyle = BorderStyle.Fixed3D;
             dataGridViewReserva.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
             dataGridViewReserva.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = Color.MidnightBlue;
-            dataGridViewCellStyle7.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle7.ForeColor = SystemColors.ButtonFace;
-            dataGridViewCellStyle7.SelectionBackColor = Color.RoyalBlue;
-            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
-            dataGridViewReserva.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = Color.MidnightBlue;
+            dataGridViewCellStyle9.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle9.ForeColor = SystemColors.ButtonFace;
+            dataGridViewCellStyle9.SelectionBackColor = Color.RoyalBlue;
+            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
+            dataGridViewReserva.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             dataGridViewReserva.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewReserva.Columns.AddRange(new DataGridViewColumn[] { ColumnId, ColumnCliente, ColumnVehiculo, ColumnFechaRetiro, ColumnFechaDevolucion, ColumnPrecio, ColumnSenia, ColumnEstadoReserva });
             dataGridViewReserva.GridColor = Color.MidnightBlue;
             dataGridViewReserva.Location = new Point(3, 3);
             dataGridViewReserva.Name = "dataGridViewReserva";
-            dataGridViewCellStyle8.BackColor = Color.MidnightBlue;
-            dataGridViewCellStyle8.ForeColor = SystemColors.ButtonFace;
-            dataGridViewCellStyle8.SelectionBackColor = Color.RoyalBlue;
-            dataGridViewCellStyle8.SelectionForeColor = SystemColors.ButtonFace;
-            dataGridViewReserva.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewReserva.ReadOnly = true;
+            dataGridViewCellStyle10.BackColor = Color.MidnightBlue;
+            dataGridViewCellStyle10.ForeColor = SystemColors.ButtonFace;
+            dataGridViewCellStyle10.SelectionBackColor = Color.RoyalBlue;
+            dataGridViewCellStyle10.SelectionForeColor = SystemColors.ButtonFace;
+            dataGridViewReserva.RowsDefaultCellStyle = dataGridViewCellStyle10;
             dataGridViewReserva.RowTemplate.DefaultCellStyle.BackColor = Color.MidnightBlue;
             dataGridViewReserva.RowTemplate.DefaultCellStyle.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewReserva.RowTemplate.DefaultCellStyle.ForeColor = SystemColors.ButtonFace;
@@ -386,54 +547,63 @@
             dataGridViewReserva.RowTemplate.DefaultCellStyle.SelectionForeColor = SystemColors.ButtonFace;
             dataGridViewReserva.Size = new Size(843, 305);
             dataGridViewReserva.TabIndex = 12;
+            dataGridViewReserva.CellClick += dataGridViewReserva_CellClick;
             // 
             // ColumnId
             // 
             ColumnId.DataPropertyName = "Id";
             ColumnId.HeaderText = "ID";
             ColumnId.Name = "ColumnId";
+            ColumnId.ReadOnly = true;
             // 
             // ColumnCliente
             // 
             ColumnCliente.DataPropertyName = "ClienteDni";
             ColumnCliente.HeaderText = "Cliente";
             ColumnCliente.Name = "ColumnCliente";
+            ColumnCliente.ReadOnly = true;
             // 
             // ColumnVehiculo
             // 
             ColumnVehiculo.DataPropertyName = "VehiculoPatente";
             ColumnVehiculo.HeaderText = "Vehículo";
             ColumnVehiculo.Name = "ColumnVehiculo";
+            ColumnVehiculo.ReadOnly = true;
             // 
             // ColumnFechaRetiro
             // 
             ColumnFechaRetiro.DataPropertyName = "FechaInicio";
             ColumnFechaRetiro.HeaderText = "Fecha Retiro";
             ColumnFechaRetiro.Name = "ColumnFechaRetiro";
+            ColumnFechaRetiro.ReadOnly = true;
             // 
             // ColumnFechaDevolucion
             // 
             ColumnFechaDevolucion.DataPropertyName = "FechaFin";
             ColumnFechaDevolucion.HeaderText = "Fecha Devolución";
             ColumnFechaDevolucion.Name = "ColumnFechaDevolucion";
+            ColumnFechaDevolucion.ReadOnly = true;
             // 
             // ColumnPrecio
             // 
             ColumnPrecio.DataPropertyName = "Precio";
             ColumnPrecio.HeaderText = "Precio";
             ColumnPrecio.Name = "ColumnPrecio";
+            ColumnPrecio.ReadOnly = true;
             // 
             // ColumnSenia
             // 
             ColumnSenia.DataPropertyName = "Senia";
             ColumnSenia.HeaderText = "Seña";
             ColumnSenia.Name = "ColumnSenia";
+            ColumnSenia.ReadOnly = true;
             // 
             // ColumnEstadoReserva
             // 
             ColumnEstadoReserva.DataPropertyName = "Estado";
             ColumnEstadoReserva.HeaderText = "Estado";
             ColumnEstadoReserva.Name = "ColumnEstadoReserva";
+            ColumnEstadoReserva.ReadOnly = true;
             // 
             // buttonEliminar
             // 
@@ -450,6 +620,7 @@
             buttonEliminar.TabIndex = 21;
             buttonEliminar.Text = "Eliminar";
             buttonEliminar.UseVisualStyleBackColor = false;
+            buttonEliminar.Click += buttonEliminar_Click;
             // 
             // buttonEditar
             // 
@@ -466,6 +637,7 @@
             buttonEditar.TabIndex = 20;
             buttonEditar.Text = "Editar";
             buttonEditar.UseVisualStyleBackColor = false;
+            buttonEditar.Click += buttonEditar_Click;
             // 
             // buttonNuevo
             // 
@@ -499,6 +671,7 @@
             buttonCancelar.TabIndex = 23;
             buttonCancelar.Text = "Cancelar";
             buttonCancelar.UseVisualStyleBackColor = false;
+            buttonCancelar.Click += buttonCancelar_Click;
             // 
             // buttonGuardar
             // 
@@ -515,12 +688,13 @@
             buttonGuardar.TabIndex = 22;
             buttonGuardar.Text = "Guardar";
             buttonGuardar.UseVisualStyleBackColor = false;
+            buttonGuardar.Click += buttonGuardar_Click;
             // 
             // groupBoxAlquileres
             // 
             groupBoxAlquileres.Controls.Add(comboBoxEstado);
             groupBoxAlquileres.Controls.Add(labelEstado);
-            groupBoxAlquileres.Controls.Add(textBox1);
+            groupBoxAlquileres.Controls.Add(textBoxReserva);
             groupBoxAlquileres.Controls.Add(textBoxDniCond);
             groupBoxAlquileres.Controls.Add(label1);
             groupBoxAlquileres.Controls.Add(textBoxDniCliente);
@@ -563,16 +737,17 @@
             labelEstado.TabIndex = 34;
             labelEstado.Text = "Estado:";
             // 
-            // textBox1
+            // textBoxReserva
             // 
-            textBox1.BackColor = Color.MidnightBlue;
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Font = new Font("Verdana", 9F);
-            textBox1.ForeColor = SystemColors.ButtonFace;
-            textBox1.Location = new Point(149, 233);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(121, 22);
-            textBox1.TabIndex = 33;
+            textBoxReserva.BackColor = Color.MidnightBlue;
+            textBoxReserva.BorderStyle = BorderStyle.FixedSingle;
+            textBoxReserva.Font = new Font("Verdana", 9F);
+            textBoxReserva.ForeColor = SystemColors.ButtonFace;
+            textBoxReserva.Location = new Point(149, 233);
+            textBoxReserva.Name = "textBoxReserva";
+            textBoxReserva.ReadOnly = true;
+            textBoxReserva.Size = new Size(121, 22);
+            textBoxReserva.TabIndex = 33;
             // 
             // textBoxDniCond
             // 
@@ -582,6 +757,7 @@
             textBoxDniCond.ForeColor = SystemColors.ButtonFace;
             textBoxDniCond.Location = new Point(149, 192);
             textBoxDniCond.Name = "textBoxDniCond";
+            textBoxDniCond.ReadOnly = true;
             textBoxDniCond.Size = new Size(121, 22);
             textBoxDniCond.TabIndex = 32;
             // 
@@ -603,6 +779,7 @@
             textBoxDniCliente.ForeColor = SystemColors.ButtonFace;
             textBoxDniCliente.Location = new Point(150, 157);
             textBoxDniCliente.Name = "textBoxDniCliente";
+            textBoxDniCliente.ReadOnly = true;
             textBoxDniCliente.Size = new Size(120, 22);
             textBoxDniCliente.TabIndex = 30;
             // 
@@ -667,6 +844,7 @@
             textBoxVehiculo.ForeColor = SystemColors.ButtonFace;
             textBoxVehiculo.Location = new Point(151, 95);
             textBoxVehiculo.Name = "textBoxVehiculo";
+            textBoxVehiculo.ReadOnly = true;
             textBoxVehiculo.Size = new Size(121, 22);
             textBoxVehiculo.TabIndex = 17;
             // 
@@ -688,7 +866,7 @@
             labelVehiculo.Name = "labelVehiculo";
             labelVehiculo.Size = new Size(117, 14);
             labelVehiculo.TabIndex = 1;
-            labelVehiculo.Text = "Vehículo Patente:";
+            labelVehiculo.Text = "Patente Vehiculo:";
             // 
             // labelCliente
             // 
@@ -699,30 +877,6 @@
             labelCliente.Size = new Size(86, 14);
             labelCliente.TabIndex = 0;
             labelCliente.Text = "Fecha Inicio:";
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            dataGridViewTextBoxColumn1.DataPropertyName = "DNI";
-            dataGridViewTextBoxColumn1.HeaderText = "DNI";
-            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            dataGridViewTextBoxColumn2.DataPropertyName = "fechaVencLic";
-            dataGridViewTextBoxColumn2.HeaderText = "Vence Lic.";
-            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            dataGridViewTextBoxColumn3.DataPropertyName = "Nombre";
-            dataGridViewTextBoxColumn3.HeaderText = "Nombre";
-            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            dataGridViewTextBoxColumn4.DataPropertyName = "Apellido";
-            dataGridViewTextBoxColumn4.HeaderText = "Apellido";
-            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             // 
             // FormAlquileres
             // 
@@ -741,6 +895,8 @@
             Text = "Alquileres";
             Load += FormAlquileres_Load;
             tabControlAlquileres.ResumeLayout(false);
+            tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridViewAlquileres).EndInit();
             tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridViewVehiculos).EndInit();
             tabPage5.ResumeLayout(false);
@@ -807,13 +963,23 @@
         private TextBox textBoxDniCliente;
         private TextBox textBoxDniCond;
         private Label label1;
-        private TextBox textBox1;
+        private TextBox textBoxReserva;
         private ComboBox comboBoxEstado;
         private Label labelEstado;
         private DataGridView dataGridViewConductores;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridView dataGridViewAlquileres;
+        private DataGridViewTextBoxColumn ColumnDniCond;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private DataGridViewTextBoxColumn DniConductor;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
     }
 }

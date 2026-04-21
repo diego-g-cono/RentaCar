@@ -9,7 +9,7 @@ namespace RentaCar.Dominio
         public DateOnly FechaFin { get; set; }
         public decimal Precio { get; set; }
         //foreign keys
-        public int VehiculoPatente { get; set; }
+        public string VehiculoPatente { get; set; }
         public int ConductorId { get; set; }
         public int ClienteId { get; set; }
         public int EstadoId { get; set; }
@@ -19,7 +19,7 @@ namespace RentaCar.Dominio
             DateOnly fechaInicio, 
             DateOnly fechaFin, 
             decimal precio, 
-            int vehiculoPatente, 
+            string vehiculoPatente, 
             int conductorId, 
             int clienteId, 
             int estadoId, 
@@ -36,5 +36,7 @@ namespace RentaCar.Dominio
             EstadoId = estadoId;
             ReservaId = reservaId;
         }
+
+        public Alquiler() { }
     }
 }

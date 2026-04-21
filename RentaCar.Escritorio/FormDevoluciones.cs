@@ -27,12 +27,20 @@ namespace RentaCar.Escritorio
         {
             BloquearCampos(false);
             CargarDevoluciones();
+            CargarAlquileres();
         }
         private void CargarDevoluciones()
         {
             var devoluciones = _repoDevoluciones.ObtenerTodos();
             dataGridViewDevoluciones.AutoGenerateColumns = false;
             dataGridViewDevoluciones.DataSource = devoluciones;
+        }
+
+        private void CargarAlquileres()
+        {
+            var alquileres = _context.Alquileres.ToList();
+            dataGridViewAlquileres.AutoGenerateColumns = false;
+            dataGridViewAlquileres.DataSource = alquileres;
         }
 
         private void BloquearCampos(bool estado)

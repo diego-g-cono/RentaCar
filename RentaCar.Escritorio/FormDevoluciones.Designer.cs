@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            dataGridViewDevoluciones = new DataGridView();
-            fechaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            alquilerIdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            tanqueLlenoDataGridViewCheckBoxColumn = new DataGridViewCheckBoxColumn();
-            observacionesDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             devolucionBindingSource = new BindingSource(components);
             buttonCancelar = new Button();
             buttonGuardar = new Button();
             groupBox = new GroupBox();
+            textBoxAlquiler = new TextBox();
             textBoxObservaciones = new TextBox();
             comboBoxTqueLleno = new ComboBox();
             dtpFechaDevolucion = new DateTimePicker();
@@ -51,48 +51,29 @@
             tabControlDevoluciones = new TabControl();
             tabPage1 = new TabPage();
             tabPage2 = new TabPage();
-            textBoxAlquiler = new TextBox();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewDevoluciones).BeginInit();
+            dataGridViewAlquileres = new DataGridView();
+            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn8 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn9 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn7 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn10 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
+            DniConductor = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn11 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn12 = new DataGridViewTextBoxColumn();
+            dataGridViewDevoluciones = new DataGridView();
+            fechaColumn = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)devolucionBindingSource).BeginInit();
             groupBox.SuspendLayout();
             tabControlDevoluciones.SuspendLayout();
             tabPage1.SuspendLayout();
+            tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewAlquileres).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewDevoluciones).BeginInit();
             SuspendLayout();
-            // 
-            // dataGridViewDevoluciones
-            // 
-            dataGridViewDevoluciones.AutoGenerateColumns = false;
-            dataGridViewDevoluciones.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewDevoluciones.Columns.AddRange(new DataGridViewColumn[] { fechaDataGridViewTextBoxColumn, alquilerIdDataGridViewTextBoxColumn, tanqueLlenoDataGridViewCheckBoxColumn, observacionesDataGridViewTextBoxColumn });
-            dataGridViewDevoluciones.DataSource = devolucionBindingSource;
-            dataGridViewDevoluciones.Location = new Point(0, 0);
-            dataGridViewDevoluciones.Name = "dataGridViewDevoluciones";
-            dataGridViewDevoluciones.Size = new Size(443, 305);
-            dataGridViewDevoluciones.TabIndex = 0;
-            // 
-            // fechaDataGridViewTextBoxColumn
-            // 
-            fechaDataGridViewTextBoxColumn.DataPropertyName = "Fecha";
-            fechaDataGridViewTextBoxColumn.HeaderText = "Fecha";
-            fechaDataGridViewTextBoxColumn.Name = "fechaDataGridViewTextBoxColumn";
-            // 
-            // alquilerIdDataGridViewTextBoxColumn
-            // 
-            alquilerIdDataGridViewTextBoxColumn.DataPropertyName = "AlquilerId";
-            alquilerIdDataGridViewTextBoxColumn.HeaderText = "Alquiler";
-            alquilerIdDataGridViewTextBoxColumn.Name = "alquilerIdDataGridViewTextBoxColumn";
-            // 
-            // tanqueLlenoDataGridViewCheckBoxColumn
-            // 
-            tanqueLlenoDataGridViewCheckBoxColumn.DataPropertyName = "TanqueLleno";
-            tanqueLlenoDataGridViewCheckBoxColumn.HeaderText = "Tanque Lleno";
-            tanqueLlenoDataGridViewCheckBoxColumn.Name = "tanqueLlenoDataGridViewCheckBoxColumn";
-            // 
-            // observacionesDataGridViewTextBoxColumn
-            // 
-            observacionesDataGridViewTextBoxColumn.DataPropertyName = "Observaciones";
-            observacionesDataGridViewTextBoxColumn.HeaderText = "Observaciones";
-            observacionesDataGridViewTextBoxColumn.Name = "observacionesDataGridViewTextBoxColumn";
             // 
             // devolucionBindingSource
             // 
@@ -150,6 +131,17 @@
             groupBox.TabIndex = 14;
             groupBox.TabStop = false;
             groupBox.Text = "Datos Devolucion";
+            // 
+            // textBoxAlquiler
+            // 
+            textBoxAlquiler.BackColor = Color.MidnightBlue;
+            textBoxAlquiler.BorderStyle = BorderStyle.FixedSingle;
+            textBoxAlquiler.Font = new Font("Verdana", 9F);
+            textBoxAlquiler.ForeColor = SystemColors.ButtonFace;
+            textBoxAlquiler.Location = new Point(151, 80);
+            textBoxAlquiler.Name = "textBoxAlquiler";
+            textBoxAlquiler.Size = new Size(122, 22);
+            textBoxAlquiler.TabIndex = 30;
             // 
             // textBoxObservaciones
             // 
@@ -277,47 +269,196 @@
             tabControlDevoluciones.Location = new Point(434, 16);
             tabControlDevoluciones.Name = "tabControlDevoluciones";
             tabControlDevoluciones.SelectedIndex = 0;
-            tabControlDevoluciones.Size = new Size(451, 333);
+            tabControlDevoluciones.Size = new Size(951, 339);
             tabControlDevoluciones.TabIndex = 17;
             // 
             // tabPage1
             // 
+            tabPage1.BackColor = Color.MidnightBlue;
             tabPage1.Controls.Add(dataGridViewDevoluciones);
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(443, 305);
+            tabPage1.Size = new Size(943, 311);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Devoluciones";
-            tabPage1.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(dataGridViewAlquileres);
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(443, 305);
+            tabPage2.Size = new Size(943, 311);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Alquileres";
             tabPage2.UseVisualStyleBackColor = true;
             // 
-            // textBoxAlquiler
+            // dataGridViewAlquileres
             // 
-            textBoxAlquiler.BackColor = Color.MidnightBlue;
-            textBoxAlquiler.BorderStyle = BorderStyle.FixedSingle;
-            textBoxAlquiler.Font = new Font("Verdana", 9F);
-            textBoxAlquiler.ForeColor = SystemColors.ButtonFace;
-            textBoxAlquiler.Location = new Point(151, 80);
-            textBoxAlquiler.Name = "textBoxAlquiler";
-            textBoxAlquiler.Size = new Size(122, 22);
-            textBoxAlquiler.TabIndex = 30;
+            dataGridViewAlquileres.AllowUserToOrderColumns = true;
+            dataGridViewAlquileres.BackgroundColor = Color.MidnightBlue;
+            dataGridViewAlquileres.BorderStyle = BorderStyle.Fixed3D;
+            dataGridViewAlquileres.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
+            dataGridViewAlquileres.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = Color.MidnightBlue;
+            dataGridViewCellStyle3.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ButtonFace;
+            dataGridViewCellStyle3.SelectionBackColor = Color.RoyalBlue;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dataGridViewAlquileres.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewAlquileres.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewAlquileres.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn8, dataGridViewTextBoxColumn9, dataGridViewTextBoxColumn7, dataGridViewTextBoxColumn10, dataGridViewTextBoxColumn6, DniConductor, dataGridViewTextBoxColumn11, dataGridViewTextBoxColumn12 });
+            dataGridViewAlquileres.GridColor = Color.MidnightBlue;
+            dataGridViewAlquileres.Location = new Point(0, 0);
+            dataGridViewAlquileres.Name = "dataGridViewAlquileres";
+            dataGridViewAlquileres.ReadOnly = true;
+            dataGridViewCellStyle4.BackColor = Color.MidnightBlue;
+            dataGridViewCellStyle4.ForeColor = SystemColors.ButtonFace;
+            dataGridViewCellStyle4.SelectionBackColor = Color.RoyalBlue;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.ButtonFace;
+            dataGridViewAlquileres.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewAlquileres.RowTemplate.DefaultCellStyle.BackColor = Color.MidnightBlue;
+            dataGridViewAlquileres.RowTemplate.DefaultCellStyle.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewAlquileres.RowTemplate.DefaultCellStyle.ForeColor = SystemColors.ButtonFace;
+            dataGridViewAlquileres.RowTemplate.DefaultCellStyle.SelectionBackColor = Color.RoyalBlue;
+            dataGridViewAlquileres.RowTemplate.DefaultCellStyle.SelectionForeColor = SystemColors.ButtonFace;
+            dataGridViewAlquileres.Size = new Size(950, 315);
+            dataGridViewAlquileres.TabIndex = 14;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            dataGridViewTextBoxColumn5.DataPropertyName = "Id";
+            dataGridViewTextBoxColumn5.HeaderText = "ID";
+            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            dataGridViewTextBoxColumn8.DataPropertyName = "FechaInicio";
+            dataGridViewTextBoxColumn8.HeaderText = "Fecha Inicio";
+            dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            dataGridViewTextBoxColumn8.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            dataGridViewTextBoxColumn9.DataPropertyName = "FechaFin";
+            dataGridViewTextBoxColumn9.HeaderText = "Fecha Devolución";
+            dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            dataGridViewTextBoxColumn9.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            dataGridViewTextBoxColumn7.DataPropertyName = "VehiculoPatente";
+            dataGridViewTextBoxColumn7.HeaderText = "Vehículo";
+            dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            dataGridViewTextBoxColumn7.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            dataGridViewTextBoxColumn10.DataPropertyName = "Precio";
+            dataGridViewTextBoxColumn10.HeaderText = "Precio";
+            dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            dataGridViewTextBoxColumn10.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            dataGridViewTextBoxColumn6.DataPropertyName = "ClienteId";
+            dataGridViewTextBoxColumn6.HeaderText = "Cliente";
+            dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // DniConductor
+            // 
+            DniConductor.DataPropertyName = "ConductorId";
+            DniConductor.HeaderText = "Conductor";
+            DniConductor.Name = "DniConductor";
+            DniConductor.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            dataGridViewTextBoxColumn11.DataPropertyName = "ReservaId";
+            dataGridViewTextBoxColumn11.HeaderText = "ID Reserva";
+            dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            dataGridViewTextBoxColumn11.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            dataGridViewTextBoxColumn12.DataPropertyName = "EstadoId";
+            dataGridViewTextBoxColumn12.HeaderText = "Estado";
+            dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            dataGridViewTextBoxColumn12.ReadOnly = true;
+            // 
+            // dataGridViewDevoluciones
+            // 
+            dataGridViewDevoluciones.AllowUserToOrderColumns = true;
+            dataGridViewDevoluciones.BackgroundColor = Color.MidnightBlue;
+            dataGridViewDevoluciones.BorderStyle = BorderStyle.Fixed3D;
+            dataGridViewDevoluciones.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
+            dataGridViewDevoluciones.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.MidnightBlue;
+            dataGridViewCellStyle1.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ButtonFace;
+            dataGridViewCellStyle1.SelectionBackColor = Color.RoyalBlue;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridViewDevoluciones.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewDevoluciones.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewDevoluciones.Columns.AddRange(new DataGridViewColumn[] { fechaColumn, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4 });
+            dataGridViewDevoluciones.GridColor = Color.MidnightBlue;
+            dataGridViewDevoluciones.Location = new Point(0, 3);
+            dataGridViewDevoluciones.Name = "dataGridViewDevoluciones";
+            dataGridViewDevoluciones.ReadOnly = true;
+            dataGridViewCellStyle2.BackColor = Color.MidnightBlue;
+            dataGridViewCellStyle2.ForeColor = SystemColors.ButtonFace;
+            dataGridViewCellStyle2.SelectionBackColor = Color.RoyalBlue;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.ButtonFace;
+            dataGridViewDevoluciones.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewDevoluciones.RowTemplate.DefaultCellStyle.BackColor = Color.MidnightBlue;
+            dataGridViewDevoluciones.RowTemplate.DefaultCellStyle.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewDevoluciones.RowTemplate.DefaultCellStyle.ForeColor = SystemColors.ButtonFace;
+            dataGridViewDevoluciones.RowTemplate.DefaultCellStyle.SelectionBackColor = Color.RoyalBlue;
+            dataGridViewDevoluciones.RowTemplate.DefaultCellStyle.SelectionForeColor = SystemColors.ButtonFace;
+            dataGridViewDevoluciones.Size = new Size(444, 255);
+            dataGridViewDevoluciones.TabIndex = 32;
+            // 
+            // fechaColumn
+            // 
+            fechaColumn.DataPropertyName = "Fecha";
+            fechaColumn.HeaderText = "Fecha";
+            fechaColumn.Name = "fechaColumn";
+            fechaColumn.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            dataGridViewTextBoxColumn2.DataPropertyName = "AlquilerId";
+            dataGridViewTextBoxColumn2.HeaderText = "Alquiler";
+            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            dataGridViewTextBoxColumn3.DataPropertyName = "TanqueLleno";
+            dataGridViewTextBoxColumn3.HeaderText = "Tanque Lleno";
+            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            dataGridViewTextBoxColumn4.DataPropertyName = "Observaciones";
+            dataGridViewTextBoxColumn4.HeaderText = "Observaciones";
+            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
             // FormDevoluciones
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MidnightBlue;
-            ClientSize = new Size(919, 371);
+            ClientSize = new Size(1396, 364);
             Controls.Add(tabControlDevoluciones);
             Controls.Add(buttonCancelar);
             Controls.Add(buttonGuardar);
@@ -327,22 +468,18 @@
             Controls.Add(buttonNuevo);
             Name = "FormDevoluciones";
             Text = "Devoluciones";
-            ((System.ComponentModel.ISupportInitialize)dataGridViewDevoluciones).EndInit();
             ((System.ComponentModel.ISupportInitialize)devolucionBindingSource).EndInit();
             groupBox.ResumeLayout(false);
             groupBox.PerformLayout();
             tabControlDevoluciones.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
+            tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridViewAlquileres).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewDevoluciones).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
-
-        private DataGridView dataGridViewDevoluciones;
-        private DataGridViewTextBoxColumn fechaDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn alquilerIdDataGridViewTextBoxColumn;
-        private DataGridViewCheckBoxColumn tanqueLlenoDataGridViewCheckBoxColumn;
-        private DataGridViewTextBoxColumn observacionesDataGridViewTextBoxColumn;
         private BindingSource devolucionBindingSource;
         private Button buttonCancelar;
         private Button buttonGuardar;
@@ -361,5 +498,20 @@
         private TabPage tabPage1;
         private TabPage tabPage2;
         private TextBox textBoxAlquiler;
+        private DataGridView dataGridViewDevoluciones;
+        private DataGridViewTextBoxColumn fechaColumn;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private DataGridView dataGridViewAlquileres;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private DataGridViewTextBoxColumn DniConductor;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
     }
 }

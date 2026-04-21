@@ -264,6 +264,7 @@
             dataGridViewConductores.GridColor = Color.MidnightBlue;
             dataGridViewConductores.Location = new Point(403, 82);
             dataGridViewConductores.Name = "dataGridViewConductores";
+            dataGridViewConductores.ReadOnly = true;
             dataGridViewCellStyle2.BackColor = Color.MidnightBlue;
             dataGridViewCellStyle2.ForeColor = SystemColors.ButtonFace;
             dataGridViewCellStyle2.SelectionBackColor = Color.RoyalBlue;
@@ -282,24 +283,28 @@
             ColumnDNI.DataPropertyName = "DNI";
             ColumnDNI.HeaderText = "DNI";
             ColumnDNI.Name = "ColumnDNI";
+            ColumnDNI.ReadOnly = true;
             // 
             // fechaVencLic
             // 
             fechaVencLic.DataPropertyName = "fechaVencLic";
             fechaVencLic.HeaderText = "Vence Lic.";
             fechaVencLic.Name = "fechaVencLic";
+            fechaVencLic.ReadOnly = true;
             // 
             // ColumnNombre
             // 
             ColumnNombre.DataPropertyName = "Nombre";
             ColumnNombre.HeaderText = "Nombre";
             ColumnNombre.Name = "ColumnNombre";
+            ColumnNombre.ReadOnly = true;
             // 
             // ColumnApellido
             // 
             ColumnApellido.DataPropertyName = "Apellido";
             ColumnApellido.HeaderText = "Apellido";
             ColumnApellido.Name = "ColumnApellido";
+            ColumnApellido.ReadOnly = true;
             // 
             // FormConductores
             // 

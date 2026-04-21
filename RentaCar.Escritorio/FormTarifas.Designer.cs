@@ -267,6 +267,7 @@
             dataGridViewTarifas.GridColor = Color.MidnightBlue;
             dataGridViewTarifas.Location = new Point(379, 66);
             dataGridViewTarifas.Name = "dataGridViewTarifas";
+            dataGridViewTarifas.ReadOnly = true;
             dataGridViewCellStyle2.BackColor = Color.MidnightBlue;
             dataGridViewCellStyle2.ForeColor = SystemColors.ButtonFace;
             dataGridViewCellStyle2.SelectionBackColor = Color.RoyalBlue;
@@ -285,30 +286,35 @@
             Id.DataPropertyName = "Id";
             Id.HeaderText = "ID";
             Id.Name = "Id";
+            Id.ReadOnly = true;
             // 
             // PrecioDia
             // 
             PrecioDia.DataPropertyName = "PrecioDia";
             PrecioDia.HeaderText = "Precio Dia";
             PrecioDia.Name = "PrecioDia";
+            PrecioDia.ReadOnly = true;
             // 
             // PrecioSemana
             // 
             PrecioSemana.DataPropertyName = "PrecioSemana";
             PrecioSemana.HeaderText = "Precio Semana";
             PrecioSemana.Name = "PrecioSemana";
+            PrecioSemana.ReadOnly = true;
             // 
             // ActivaDataGridViewCheckBoxColumn
             // 
             ActivaDataGridViewCheckBoxColumn.DataPropertyName = "ActivaDataGridViewCheckBoxColumn";
             ActivaDataGridViewCheckBoxColumn.HeaderText = "Activa";
             ActivaDataGridViewCheckBoxColumn.Name = "ActivaDataGridViewCheckBoxColumn";
+            ActivaDataGridViewCheckBoxColumn.ReadOnly = true;
             // 
             // NombreVehiculo
             // 
             NombreVehiculo.DataPropertyName = "NombreVehiculo";
             NombreVehiculo.HeaderText = "Vehiculo";
             NombreVehiculo.Name = "NombreVehiculo";
+            NombreVehiculo.ReadOnly = true;
             // 
             // FormTarifas
             // 
@@ -350,7 +356,6 @@
         private ComboBox comboBoxEstado;
         private BindingSource tarifaBindingSource;
         private ComboBox comboBoxVehiculo;
-        private DataGridViewTextBoxColumn tipoVehiculoIdDataGridViewTextBoxColumn;
         private DataGridView dataGridViewTarifas;
         private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn PrecioDia;
