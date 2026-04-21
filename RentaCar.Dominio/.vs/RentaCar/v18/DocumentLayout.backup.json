@@ -3,17 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\marti\\source\\repos\\RentaCar\\RentaCar.Dominio\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D1CCC161-5285-427B-A0EC-2D845A430F8D}|..\\RentaCar.Infraestructura\\RentaCar.Infraestructura.csproj|c:\\users\\marti\\source\\repos\\rentacar\\rentacar.infraestructura\\repositorios\\tarifarepositorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4117058D-68E7-41BC-BB4F-4C6DD3AC24C6}|..\\RentaCar.Escritorio\\RentaCar.Escritorio.csproj|c:\\users\\marti\\source\\repos\\rentacar\\rentacar.escritorio\\formalquileres.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B74670CF-25B5-4CEE-A924-ED6AB6C48056}|RentaCar.Dominio.csproj|c:\\users\\marti\\source\\repos\\rentacar\\rentacar.dominio\\tarifa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B74670CF-25B5-4CEE-A924-ED6AB6C48056}|RentaCar.Dominio.csproj|solutionrelative:tarifa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4117058D-68E7-41BC-BB4F-4C6DD3AC24C6}|..\\RentaCar.Escritorio\\RentaCar.Escritorio.csproj|c:\\users\\marti\\source\\repos\\rentacar\\rentacar.escritorio\\formtarifas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4117058D-68E7-41BC-BB4F-4C6DD3AC24C6}|..\\RentaCar.Escritorio\\RentaCar.Escritorio.csproj|c:\\users\\marti\\source\\repos\\rentacar\\rentacar.escritorio\\formtarifas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{4117058D-68E7-41BC-BB4F-4C6DD3AC24C6}|..\\RentaCar.Escritorio\\RentaCar.Escritorio.csproj|c:\\users\\marti\\source\\repos\\rentacar\\rentacar.escritorio\\formalquileres.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4117058D-68E7-41BC-BB4F-4C6DD3AC24C6}|..\\RentaCar.Escritorio\\RentaCar.Escritorio.csproj|c:\\users\\marti\\source\\repos\\rentacar\\rentacar.escritorio\\formconductores.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -26,8 +19,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 303,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FormAlquileres.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\marti\\source\\repos\\RentaCar\\RentaCar.Escritorio\\FormAlquileres.cs",
+              "RelativeDocumentMoniker": "..\\RentaCar.Escritorio\\FormAlquileres.cs",
+              "ToolTip": "C:\\Users\\marti\\source\\repos\\RentaCar\\RentaCar.Escritorio\\FormAlquileres.cs [Design]",
+              "RelativeToolTip": "..\\RentaCar.Escritorio\\FormAlquileres.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-21T01:24:51.858Z",
+              "IsPinned": true,
+              "EditorCaption": " [Design]"
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
@@ -35,86 +41,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Tarifa.cs",
-              "DocumentMoniker": "C:\\Users\\marti\\source\\repos\\RentaCar\\RentaCar.Dominio\\Tarifa.cs",
-              "RelativeDocumentMoniker": "Tarifa.cs",
-              "ToolTip": "C:\\Users\\marti\\source\\repos\\RentaCar\\RentaCar.Dominio\\Tarifa.cs",
-              "RelativeToolTip": "Tarifa.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAoAAAAAAAAAA==",
+              "Title": "FormAlquileres.cs",
+              "DocumentMoniker": "C:\\Users\\marti\\source\\repos\\RentaCar\\RentaCar.Escritorio\\FormAlquileres.cs",
+              "RelativeDocumentMoniker": "..\\RentaCar.Escritorio\\FormAlquileres.cs",
+              "ToolTip": "C:\\Users\\marti\\source\\repos\\RentaCar\\RentaCar.Escritorio\\FormAlquileres.cs",
+              "RelativeToolTip": "..\\RentaCar.Escritorio\\FormAlquileres.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAIwDUAAABRAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-19T15:56:34.767Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "TarifaRepositorio.cs",
-              "DocumentMoniker": "C:\\Users\\marti\\source\\repos\\RentaCar\\RentaCar.Infraestructura\\Repositorios\\TarifaRepositorio.cs",
-              "RelativeDocumentMoniker": "..\\RentaCar.Infraestructura\\Repositorios\\TarifaRepositorio.cs",
-              "ToolTip": "C:\\Users\\marti\\source\\repos\\RentaCar\\RentaCar.Infraestructura\\Repositorios\\TarifaRepositorio.cs",
-              "RelativeToolTip": "..\\RentaCar.Infraestructura\\Repositorios\\TarifaRepositorio.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAIwCYAAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-19T15:49:40.184Z",
+              "WhenOpened": "2026-04-21T00:56:01.094Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "FormTarifas.cs",
-              "DocumentMoniker": "C:\\Users\\marti\\source\\repos\\RentaCar\\RentaCar.Escritorio\\FormTarifas.cs",
-              "RelativeDocumentMoniker": "..\\RentaCar.Escritorio\\FormTarifas.cs",
-              "ToolTip": "C:\\Users\\marti\\source\\repos\\RentaCar\\RentaCar.Escritorio\\FormTarifas.cs",
-              "RelativeToolTip": "..\\RentaCar.Escritorio\\FormTarifas.cs",
-              "ViewState": "AgIAAJoAAAAAAAAAAAAswKcAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-17T18:43:48.195Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "FormTarifas.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\marti\\source\\repos\\RentaCar\\RentaCar.Escritorio\\FormTarifas.cs",
-              "RelativeDocumentMoniker": "..\\RentaCar.Escritorio\\FormTarifas.cs",
-              "ToolTip": "C:\\Users\\marti\\source\\repos\\RentaCar\\RentaCar.Escritorio\\FormTarifas.cs [Design]",
-              "RelativeToolTip": "..\\RentaCar.Escritorio\\FormTarifas.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-17T18:40:16.299Z",
-              "EditorCaption": " [Design]"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "Orientation": 0,
-      "VerticalTabListWidth": 256,
-      "FloatingWindowState": {
-        "Id": "03f68f3b-606c-4254-b482-66e48e69bc07",
-        "Display": 1,
-        "X": 285,
-        "Y": 63,
-        "Width": 1390,
-        "Height": 927,
-        "WindowState": 0
-      },
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
               "Title": "FormConductores.cs",
               "DocumentMoniker": "C:\\Users\\marti\\source\\repos\\RentaCar\\RentaCar.Escritorio\\FormConductores.cs",
               "RelativeDocumentMoniker": "..\\RentaCar.Escritorio\\FormConductores.cs",
               "ToolTip": "C:\\Users\\marti\\source\\repos\\RentaCar\\RentaCar.Escritorio\\FormConductores.cs",
               "RelativeToolTip": "..\\RentaCar.Escritorio\\FormConductores.cs",
-              "ViewState": "AgIAAM0AAAAAAAAAAAAswK0AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAH0AAAAAAAAAAAAkwOIAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-16T14:33:27.17Z",
+              "WhenOpened": "2026-04-21T00:53:38.706Z",
               "EditorCaption": ""
             }
           ]

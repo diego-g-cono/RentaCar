@@ -32,7 +32,9 @@
             buttonCancelar = new Button();
             buttonGuardar = new Button();
             groupBox = new GroupBox();
-            textBoxApellido = new TextBox();
+            comboBoxActivo = new ComboBox();
+            comboBoxRol = new ComboBox();
+            textBoxNombreUsuario = new TextBox();
             labelEmail = new Label();
             labelTelefono = new Label();
             labelApellido = new Label();
@@ -40,12 +42,10 @@
             buttonEditar = new Button();
             buttonNuevo = new Button();
             dataGridView1 = new DataGridView();
-            usuarioBindingSource = new BindingSource(components);
             nombreUsuarioDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             rolIdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             activoDataGridViewCheckBoxColumn = new DataGridViewCheckBoxColumn();
-            comboBoxEstado = new ComboBox();
-            comboBox1 = new ComboBox();
+            usuarioBindingSource = new BindingSource(components);
             groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)usuarioBindingSource).BeginInit();
@@ -85,9 +85,9 @@
             // 
             // groupBox
             // 
-            groupBox.Controls.Add(comboBox1);
-            groupBox.Controls.Add(comboBoxEstado);
-            groupBox.Controls.Add(textBoxApellido);
+            groupBox.Controls.Add(comboBoxActivo);
+            groupBox.Controls.Add(comboBoxRol);
+            groupBox.Controls.Add(textBoxNombreUsuario);
             groupBox.Controls.Add(labelEmail);
             groupBox.Controls.Add(labelTelefono);
             groupBox.Controls.Add(labelApellido);
@@ -99,18 +99,39 @@
             groupBox.TabIndex = 32;
             groupBox.TabStop = false;
             groupBox.Text = "Datos Usuario";
-            groupBox.Enter += groupBox_Enter;
             // 
-            // textBoxApellido
+            // comboBoxActivo
             // 
-            textBoxApellido.BackColor = Color.MidnightBlue;
-            textBoxApellido.BorderStyle = BorderStyle.FixedSingle;
-            textBoxApellido.Font = new Font("Verdana", 9F);
-            textBoxApellido.ForeColor = SystemColors.ButtonFace;
-            textBoxApellido.Location = new Point(162, 35);
-            textBoxApellido.Name = "textBoxApellido";
-            textBoxApellido.Size = new Size(121, 22);
-            textBoxApellido.TabIndex = 18;
+            comboBoxActivo.BackColor = Color.MidnightBlue;
+            comboBoxActivo.ForeColor = SystemColors.ButtonFace;
+            comboBoxActivo.FormattingEnabled = true;
+            comboBoxActivo.Items.AddRange(new object[] { "Si", "No" });
+            comboBoxActivo.Location = new Point(162, 131);
+            comboBoxActivo.Name = "comboBoxActivo";
+            comboBoxActivo.Size = new Size(121, 22);
+            comboBoxActivo.TabIndex = 29;
+            // 
+            // comboBoxRol
+            // 
+            comboBoxRol.BackColor = Color.MidnightBlue;
+            comboBoxRol.ForeColor = SystemColors.ButtonFace;
+            comboBoxRol.FormattingEnabled = true;
+            comboBoxRol.Items.AddRange(new object[] { "Admin", "User" });
+            comboBoxRol.Location = new Point(162, 81);
+            comboBoxRol.Name = "comboBoxRol";
+            comboBoxRol.Size = new Size(121, 22);
+            comboBoxRol.TabIndex = 28;
+            // 
+            // textBoxNombreUsuario
+            // 
+            textBoxNombreUsuario.BackColor = Color.MidnightBlue;
+            textBoxNombreUsuario.BorderStyle = BorderStyle.FixedSingle;
+            textBoxNombreUsuario.Font = new Font("Verdana", 9F);
+            textBoxNombreUsuario.ForeColor = SystemColors.ButtonFace;
+            textBoxNombreUsuario.Location = new Point(162, 35);
+            textBoxNombreUsuario.Name = "textBoxNombreUsuario";
+            textBoxNombreUsuario.Size = new Size(121, 22);
+            textBoxNombreUsuario.TabIndex = 18;
             // 
             // labelEmail
             // 
@@ -121,7 +142,6 @@
             labelEmail.Size = new Size(31, 14);
             labelEmail.TabIndex = 16;
             labelEmail.Text = "Rol:";
-            labelEmail.Click += labelEmail_Click;
             // 
             // labelTelefono
             // 
@@ -132,7 +152,6 @@
             labelTelefono.Size = new Size(49, 14);
             labelTelefono.TabIndex = 3;
             labelTelefono.Text = "Activo:";
-            labelTelefono.Click += labelTelefono_Click;
             // 
             // labelApellido
             // 
@@ -202,11 +221,6 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(349, 242);
             dataGridView1.TabIndex = 35;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
-            // 
-            // usuarioBindingSource
-            // 
-            usuarioBindingSource.DataSource = typeof(Dominio.Usuario);
             // 
             // nombreUsuarioDataGridViewTextBoxColumn
             // 
@@ -226,27 +240,9 @@
             activoDataGridViewCheckBoxColumn.HeaderText = "Activo";
             activoDataGridViewCheckBoxColumn.Name = "activoDataGridViewCheckBoxColumn";
             // 
-            // comboBoxEstado
+            // usuarioBindingSource
             // 
-            comboBoxEstado.BackColor = Color.MidnightBlue;
-            comboBoxEstado.ForeColor = SystemColors.ButtonFace;
-            comboBoxEstado.FormattingEnabled = true;
-            comboBoxEstado.Items.AddRange(new object[] { "Admin", "User" });
-            comboBoxEstado.Location = new Point(162, 81);
-            comboBoxEstado.Name = "comboBoxEstado";
-            comboBoxEstado.Size = new Size(121, 22);
-            comboBoxEstado.TabIndex = 28;
-            // 
-            // comboBox1
-            // 
-            comboBox1.BackColor = Color.MidnightBlue;
-            comboBox1.ForeColor = SystemColors.ButtonFace;
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Si", "No" });
-            comboBox1.Location = new Point(162, 131);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(121, 22);
-            comboBox1.TabIndex = 29;
+            usuarioBindingSource.DataSource = typeof(Dominio.Usuario);
             // 
             // FormUsuarios
             // 
@@ -275,7 +271,7 @@
         private Button buttonCancelar;
         private Button buttonGuardar;
         private GroupBox groupBox;
-        private TextBox textBoxApellido;
+        private TextBox textBoxNombreUsuario;
         private Label labelEmail;
         private Label labelTelefono;
         private Label labelApellido;
@@ -287,7 +283,7 @@
         private DataGridViewTextBoxColumn nombreUsuarioDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn rolIdDataGridViewTextBoxColumn;
         private DataGridViewCheckBoxColumn activoDataGridViewCheckBoxColumn;
-        private ComboBox comboBoxEstado;
-        private ComboBox comboBox1;
+        private ComboBox comboBoxRol;
+        private ComboBox comboBoxActivo;
     }
 }

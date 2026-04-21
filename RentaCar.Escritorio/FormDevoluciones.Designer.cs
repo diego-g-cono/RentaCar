@@ -48,9 +48,15 @@
             buttonEliminar = new Button();
             buttonEditar = new Button();
             buttonNuevo = new Button();
+            tabControlDevoluciones = new TabControl();
+            tabPage1 = new TabPage();
+            tabPage2 = new TabPage();
+            textBoxAlquiler = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dataGridViewDevoluciones).BeginInit();
             ((System.ComponentModel.ISupportInitialize)devolucionBindingSource).BeginInit();
             groupBox.SuspendLayout();
+            tabControlDevoluciones.SuspendLayout();
+            tabPage1.SuspendLayout();
             SuspendLayout();
             // 
             // dataGridViewDevoluciones
@@ -59,9 +65,9 @@
             dataGridViewDevoluciones.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewDevoluciones.Columns.AddRange(new DataGridViewColumn[] { fechaDataGridViewTextBoxColumn, alquilerIdDataGridViewTextBoxColumn, tanqueLlenoDataGridViewCheckBoxColumn, observacionesDataGridViewTextBoxColumn });
             dataGridViewDevoluciones.DataSource = devolucionBindingSource;
-            dataGridViewDevoluciones.Location = new Point(437, 47);
+            dataGridViewDevoluciones.Location = new Point(0, 0);
             dataGridViewDevoluciones.Name = "dataGridViewDevoluciones";
-            dataGridViewDevoluciones.Size = new Size(445, 279);
+            dataGridViewDevoluciones.Size = new Size(443, 305);
             dataGridViewDevoluciones.TabIndex = 0;
             // 
             // fechaDataGridViewTextBoxColumn
@@ -107,6 +113,7 @@
             buttonCancelar.TabIndex = 16;
             buttonCancelar.Text = "Cancelar";
             buttonCancelar.UseVisualStyleBackColor = false;
+            buttonCancelar.Click += buttonCancelar_Click;
             // 
             // buttonGuardar
             // 
@@ -123,9 +130,11 @@
             buttonGuardar.TabIndex = 15;
             buttonGuardar.Text = "Guardar";
             buttonGuardar.UseVisualStyleBackColor = false;
+            buttonGuardar.Click += buttonGuardar_Click;
             // 
             // groupBox
             // 
+            groupBox.Controls.Add(textBoxAlquiler);
             groupBox.Controls.Add(textBoxObservaciones);
             groupBox.Controls.Add(comboBoxTqueLleno);
             groupBox.Controls.Add(dtpFechaDevolucion);
@@ -158,7 +167,6 @@
             comboBoxTqueLleno.BackColor = Color.MidnightBlue;
             comboBoxTqueLleno.ForeColor = SystemColors.ButtonFace;
             comboBoxTqueLleno.FormattingEnabled = true;
-            comboBoxTqueLleno.Items.AddRange(new object[] { "Si", "No" });
             comboBoxTqueLleno.Location = new Point(151, 124);
             comboBoxTqueLleno.Name = "comboBoxTqueLleno";
             comboBoxTqueLleno.Size = new Size(121, 22);
@@ -226,6 +234,7 @@
             buttonEliminar.TabIndex = 13;
             buttonEliminar.Text = "Eliminar";
             buttonEliminar.UseVisualStyleBackColor = false;
+            buttonEliminar.Click += buttonEliminar_Click;
             // 
             // buttonEditar
             // 
@@ -242,6 +251,7 @@
             buttonEditar.TabIndex = 12;
             buttonEditar.Text = "Editar";
             buttonEditar.UseVisualStyleBackColor = false;
+            buttonEditar.Click += buttonEditar_Click;
             // 
             // buttonNuevo
             // 
@@ -258,6 +268,49 @@
             buttonNuevo.TabIndex = 11;
             buttonNuevo.Text = "Nueva";
             buttonNuevo.UseVisualStyleBackColor = false;
+            buttonNuevo.Click += buttonNuevo_Click;
+            // 
+            // tabControlDevoluciones
+            // 
+            tabControlDevoluciones.Controls.Add(tabPage1);
+            tabControlDevoluciones.Controls.Add(tabPage2);
+            tabControlDevoluciones.Location = new Point(434, 16);
+            tabControlDevoluciones.Name = "tabControlDevoluciones";
+            tabControlDevoluciones.SelectedIndex = 0;
+            tabControlDevoluciones.Size = new Size(451, 333);
+            tabControlDevoluciones.TabIndex = 17;
+            // 
+            // tabPage1
+            // 
+            tabPage1.Controls.Add(dataGridViewDevoluciones);
+            tabPage1.Location = new Point(4, 24);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Padding = new Padding(3);
+            tabPage1.Size = new Size(443, 305);
+            tabPage1.TabIndex = 0;
+            tabPage1.Text = "Devoluciones";
+            tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            tabPage2.Location = new Point(4, 24);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(443, 305);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "Alquileres";
+            tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // textBoxAlquiler
+            // 
+            textBoxAlquiler.BackColor = Color.MidnightBlue;
+            textBoxAlquiler.BorderStyle = BorderStyle.FixedSingle;
+            textBoxAlquiler.Font = new Font("Verdana", 9F);
+            textBoxAlquiler.ForeColor = SystemColors.ButtonFace;
+            textBoxAlquiler.Location = new Point(151, 80);
+            textBoxAlquiler.Name = "textBoxAlquiler";
+            textBoxAlquiler.Size = new Size(122, 22);
+            textBoxAlquiler.TabIndex = 30;
             // 
             // FormDevoluciones
             // 
@@ -265,19 +318,21 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MidnightBlue;
             ClientSize = new Size(919, 371);
+            Controls.Add(tabControlDevoluciones);
             Controls.Add(buttonCancelar);
             Controls.Add(buttonGuardar);
             Controls.Add(groupBox);
             Controls.Add(buttonEliminar);
             Controls.Add(buttonEditar);
             Controls.Add(buttonNuevo);
-            Controls.Add(dataGridViewDevoluciones);
             Name = "FormDevoluciones";
             Text = "Devoluciones";
             ((System.ComponentModel.ISupportInitialize)dataGridViewDevoluciones).EndInit();
             ((System.ComponentModel.ISupportInitialize)devolucionBindingSource).EndInit();
             groupBox.ResumeLayout(false);
             groupBox.PerformLayout();
+            tabControlDevoluciones.ResumeLayout(false);
+            tabPage1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -302,5 +357,9 @@
         private Button buttonEditar;
         private Button buttonNuevo;
         private TextBox textBoxObservaciones;
+        private TabControl tabControlDevoluciones;
+        private TabPage tabPage1;
+        private TabPage tabPage2;
+        private TextBox textBoxAlquiler;
     }
 }

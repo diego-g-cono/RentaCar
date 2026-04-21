@@ -17,24 +17,5 @@ namespace RentaCar.Escritorio
             InitializeComponent();
         }
 
-        private void groupBox_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void labelEmail_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelTelefono_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

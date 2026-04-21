@@ -32,7 +32,7 @@ namespace RentaCar.Escritorio
             BloquearCampos(false);
             CargarTarifas();
             CargarComboBox();
-            var tarifas = _repoTarifas.ObtenerTodos();
+            //var tarifas = _repoTarifas.ObtenerTodos();
 
 
         }

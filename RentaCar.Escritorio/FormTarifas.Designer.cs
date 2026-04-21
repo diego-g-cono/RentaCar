@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             buttonNuevo = new Button();
             buttonEditar = new Button();
             buttonEliminar = new Button();
@@ -43,16 +45,16 @@
             labelNombre = new Label();
             buttonCancelar = new Button();
             buttonGuardar = new Button();
-            dataGridViewTarifas = new DataGridView();
             tarifaBindingSource = new BindingSource(components);
+            dataGridViewTarifas = new DataGridView();
             Id = new DataGridViewTextBoxColumn();
-            precioDiaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            precioSemanaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            activaDataGridViewCheckBoxColumn = new DataGridViewCheckBoxColumn();
+            PrecioDia = new DataGridViewTextBoxColumn();
+            PrecioSemana = new DataGridViewTextBoxColumn();
+            ActivaDataGridViewCheckBoxColumn = new DataGridViewTextBoxColumn();
             NombreVehiculo = new DataGridViewTextBoxColumn();
             groupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewTarifas).BeginInit();
             ((System.ComponentModel.ISupportInitialize)tarifaBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewTarifas).BeginInit();
             SuspendLayout();
             // 
             // buttonNuevo
@@ -241,63 +243,79 @@
             buttonGuardar.UseVisualStyleBackColor = false;
             buttonGuardar.Click += buttonGuardar_Click;
             // 
-            // dataGridViewTarifas
-            // 
-            dataGridViewTarifas.AutoGenerateColumns = false;
-            dataGridViewTarifas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewTarifas.Columns.AddRange(new DataGridViewColumn[] { Id, precioDiaDataGridViewTextBoxColumn, precioSemanaDataGridViewTextBoxColumn, activaDataGridViewCheckBoxColumn, NombreVehiculo });
-            dataGridViewTarifas.DataSource = tarifaBindingSource;
-            dataGridViewTarifas.Location = new Point(355, 59);
-            dataGridViewTarifas.Name = "dataGridViewTarifas";
-            dataGridViewTarifas.ReadOnly = true;
-            dataGridViewTarifas.Size = new Size(544, 277);
-            dataGridViewTarifas.TabIndex = 23;
-            // 
             // tarifaBindingSource
             // 
             tarifaBindingSource.DataSource = typeof(Dominio.Tarifa);
+            // 
+            // dataGridViewTarifas
+            // 
+            dataGridViewTarifas.AllowUserToOrderColumns = true;
+            dataGridViewTarifas.BackgroundColor = Color.MidnightBlue;
+            dataGridViewTarifas.BorderStyle = BorderStyle.Fixed3D;
+            dataGridViewTarifas.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
+            dataGridViewTarifas.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.MidnightBlue;
+            dataGridViewCellStyle1.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ButtonFace;
+            dataGridViewCellStyle1.SelectionBackColor = Color.RoyalBlue;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridViewTarifas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewTarifas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewTarifas.Columns.AddRange(new DataGridViewColumn[] { Id, PrecioDia, PrecioSemana, ActivaDataGridViewCheckBoxColumn, NombreVehiculo });
+            dataGridViewTarifas.GridColor = Color.MidnightBlue;
+            dataGridViewTarifas.Location = new Point(379, 66);
+            dataGridViewTarifas.Name = "dataGridViewTarifas";
+            dataGridViewCellStyle2.BackColor = Color.MidnightBlue;
+            dataGridViewCellStyle2.ForeColor = SystemColors.ButtonFace;
+            dataGridViewCellStyle2.SelectionBackColor = Color.RoyalBlue;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.ButtonFace;
+            dataGridViewTarifas.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewTarifas.RowTemplate.DefaultCellStyle.BackColor = Color.MidnightBlue;
+            dataGridViewTarifas.RowTemplate.DefaultCellStyle.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewTarifas.RowTemplate.DefaultCellStyle.ForeColor = SystemColors.ButtonFace;
+            dataGridViewTarifas.RowTemplate.DefaultCellStyle.SelectionBackColor = Color.RoyalBlue;
+            dataGridViewTarifas.RowTemplate.DefaultCellStyle.SelectionForeColor = SystemColors.ButtonFace;
+            dataGridViewTarifas.Size = new Size(544, 286);
+            dataGridViewTarifas.TabIndex = 31;
             // 
             // Id
             // 
             Id.DataPropertyName = "Id";
             Id.HeaderText = "ID";
             Id.Name = "Id";
-            Id.ReadOnly = true;
             // 
-            // precioDiaDataGridViewTextBoxColumn
+            // PrecioDia
             // 
-            precioDiaDataGridViewTextBoxColumn.DataPropertyName = "PrecioDia";
-            precioDiaDataGridViewTextBoxColumn.HeaderText = "Precio Dia";
-            precioDiaDataGridViewTextBoxColumn.Name = "precioDiaDataGridViewTextBoxColumn";
-            precioDiaDataGridViewTextBoxColumn.ReadOnly = true;
+            PrecioDia.DataPropertyName = "PrecioDia";
+            PrecioDia.HeaderText = "Precio Dia";
+            PrecioDia.Name = "PrecioDia";
             // 
-            // precioSemanaDataGridViewTextBoxColumn
+            // PrecioSemana
             // 
-            precioSemanaDataGridViewTextBoxColumn.DataPropertyName = "PrecioSemana";
-            precioSemanaDataGridViewTextBoxColumn.HeaderText = "Precio Semana";
-            precioSemanaDataGridViewTextBoxColumn.Name = "precioSemanaDataGridViewTextBoxColumn";
-            precioSemanaDataGridViewTextBoxColumn.ReadOnly = true;
+            PrecioSemana.DataPropertyName = "PrecioSemana";
+            PrecioSemana.HeaderText = "Precio Semana";
+            PrecioSemana.Name = "PrecioSemana";
             // 
-            // activaDataGridViewCheckBoxColumn
+            // ActivaDataGridViewCheckBoxColumn
             // 
-            activaDataGridViewCheckBoxColumn.DataPropertyName = "Activa";
-            activaDataGridViewCheckBoxColumn.HeaderText = "Activa";
-            activaDataGridViewCheckBoxColumn.Name = "activaDataGridViewCheckBoxColumn";
-            activaDataGridViewCheckBoxColumn.ReadOnly = true;
+            ActivaDataGridViewCheckBoxColumn.DataPropertyName = "ActivaDataGridViewCheckBoxColumn";
+            ActivaDataGridViewCheckBoxColumn.HeaderText = "Activa";
+            ActivaDataGridViewCheckBoxColumn.Name = "ActivaDataGridViewCheckBoxColumn";
             // 
             // NombreVehiculo
             // 
             NombreVehiculo.DataPropertyName = "NombreVehiculo";
             NombreVehiculo.HeaderText = "Vehiculo";
             NombreVehiculo.Name = "NombreVehiculo";
-            NombreVehiculo.ReadOnly = true;
             // 
             // FormTarifas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MidnightBlue;
-            ClientSize = new Size(939, 395);
+            ClientSize = new Size(951, 388);
             Controls.Add(dataGridViewTarifas);
             Controls.Add(buttonCancelar);
             Controls.Add(buttonGuardar);
@@ -310,8 +328,8 @@
             Load += FormTarifas_Load;
             groupBox.ResumeLayout(false);
             groupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewTarifas).EndInit();
             ((System.ComponentModel.ISupportInitialize)tarifaBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewTarifas).EndInit();
             ResumeLayout(false);
         }
 
@@ -330,14 +348,14 @@
         private Button buttonCancelar;
         private Button buttonGuardar;
         private ComboBox comboBoxEstado;
-        private DataGridView dataGridViewTarifas;
         private BindingSource tarifaBindingSource;
         private ComboBox comboBoxVehiculo;
         private DataGridViewTextBoxColumn tipoVehiculoIdDataGridViewTextBoxColumn;
+        private DataGridView dataGridViewTarifas;
         private DataGridViewTextBoxColumn Id;
-        private DataGridViewTextBoxColumn precioDiaDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn precioSemanaDataGridViewTextBoxColumn;
-        private DataGridViewCheckBoxColumn activaDataGridViewCheckBoxColumn;
+        private DataGridViewTextBoxColumn PrecioDia;
+        private DataGridViewTextBoxColumn PrecioSemana;
+        private DataGridViewTextBoxColumn ActivaDataGridViewCheckBoxColumn;
         private DataGridViewTextBoxColumn NombreVehiculo;
     }
 }

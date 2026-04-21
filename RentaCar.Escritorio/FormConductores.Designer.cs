@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             buttonCancelar = new Button();
             buttonGuardar = new Button();
             groupBoxConductores = new GroupBox();
@@ -45,10 +47,10 @@
             buttonNuevo = new Button();
             conductorBindingSource = new BindingSource(components);
             dataGridViewConductores = new DataGridView();
-            dniDataGridViewTextColumn = new DataGridViewTextBoxColumn();
-            fechaVencLicDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            nombreDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            apellidoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            ColumnDNI = new DataGridViewTextBoxColumn();
+            fechaVencLic = new DataGridViewTextBoxColumn();
+            ColumnNombre = new DataGridViewTextBoxColumn();
+            ColumnApellido = new DataGridViewTextBoxColumn();
             groupBoxConductores.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)conductorBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewConductores).BeginInit();
@@ -244,50 +246,67 @@
             // 
             // dataGridViewConductores
             // 
-            dataGridViewConductores.AutoGenerateColumns = false;
+            dataGridViewConductores.AllowUserToOrderColumns = true;
+            dataGridViewConductores.BackgroundColor = Color.MidnightBlue;
+            dataGridViewConductores.BorderStyle = BorderStyle.Fixed3D;
+            dataGridViewConductores.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
+            dataGridViewConductores.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.MidnightBlue;
+            dataGridViewCellStyle1.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ButtonFace;
+            dataGridViewCellStyle1.SelectionBackColor = Color.RoyalBlue;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridViewConductores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewConductores.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewConductores.Columns.AddRange(new DataGridViewColumn[] { dniDataGridViewTextColumn, fechaVencLicDataGridViewTextBoxColumn, nombreDataGridViewTextBoxColumn, apellidoDataGridViewTextBoxColumn });
-            dataGridViewConductores.DataSource = conductorBindingSource;
-            dataGridViewConductores.Location = new Point(388, 57);
+            dataGridViewConductores.Columns.AddRange(new DataGridViewColumn[] { ColumnDNI, fechaVencLic, ColumnNombre, ColumnApellido });
+            dataGridViewConductores.GridColor = Color.MidnightBlue;
+            dataGridViewConductores.Location = new Point(403, 82);
             dataGridViewConductores.Name = "dataGridViewConductores";
-            dataGridViewConductores.ReadOnly = true;
-            dataGridViewConductores.Size = new Size(444, 280);
-            dataGridViewConductores.TabIndex = 29;
+            dataGridViewCellStyle2.BackColor = Color.MidnightBlue;
+            dataGridViewCellStyle2.ForeColor = SystemColors.ButtonFace;
+            dataGridViewCellStyle2.SelectionBackColor = Color.RoyalBlue;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.ButtonFace;
+            dataGridViewConductores.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewConductores.RowTemplate.DefaultCellStyle.BackColor = Color.MidnightBlue;
+            dataGridViewConductores.RowTemplate.DefaultCellStyle.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewConductores.RowTemplate.DefaultCellStyle.ForeColor = SystemColors.ButtonFace;
+            dataGridViewConductores.RowTemplate.DefaultCellStyle.SelectionBackColor = Color.RoyalBlue;
+            dataGridViewConductores.RowTemplate.DefaultCellStyle.SelectionForeColor = SystemColors.ButtonFace;
+            dataGridViewConductores.Size = new Size(444, 255);
+            dataGridViewConductores.TabIndex = 30;
             // 
-            // dniDataGridViewTextColumn
+            // ColumnDNI
             // 
-            dniDataGridViewTextColumn.DataPropertyName = "Dni";
-            dniDataGridViewTextColumn.HeaderText = "Dni";
-            dniDataGridViewTextColumn.Name = "dniDataGridViewTextColumn";
-            dniDataGridViewTextColumn.ReadOnly = true;
+            ColumnDNI.DataPropertyName = "DNI";
+            ColumnDNI.HeaderText = "DNI";
+            ColumnDNI.Name = "ColumnDNI";
             // 
-            // fechaVencLicDataGridViewTextBoxColumn
+            // fechaVencLic
             // 
-            fechaVencLicDataGridViewTextBoxColumn.DataPropertyName = "FechaVencLic";
-            fechaVencLicDataGridViewTextBoxColumn.HeaderText = "Vence Lic.";
-            fechaVencLicDataGridViewTextBoxColumn.Name = "fechaVencLicDataGridViewTextBoxColumn";
-            fechaVencLicDataGridViewTextBoxColumn.ReadOnly = true;
+            fechaVencLic.DataPropertyName = "fechaVencLic";
+            fechaVencLic.HeaderText = "Vence Lic.";
+            fechaVencLic.Name = "fechaVencLic";
             // 
-            // nombreDataGridViewTextBoxColumn
+            // ColumnNombre
             // 
-            nombreDataGridViewTextBoxColumn.DataPropertyName = "Nombre";
-            nombreDataGridViewTextBoxColumn.HeaderText = "Nombre";
-            nombreDataGridViewTextBoxColumn.Name = "nombreDataGridViewTextBoxColumn";
-            nombreDataGridViewTextBoxColumn.ReadOnly = true;
+            ColumnNombre.DataPropertyName = "Nombre";
+            ColumnNombre.HeaderText = "Nombre";
+            ColumnNombre.Name = "ColumnNombre";
             // 
-            // apellidoDataGridViewTextBoxColumn
+            // ColumnApellido
             // 
-            apellidoDataGridViewTextBoxColumn.DataPropertyName = "Apellido";
-            apellidoDataGridViewTextBoxColumn.HeaderText = "Apellido";
-            apellidoDataGridViewTextBoxColumn.Name = "apellidoDataGridViewTextBoxColumn";
-            apellidoDataGridViewTextBoxColumn.ReadOnly = true;
+            ColumnApellido.DataPropertyName = "Apellido";
+            ColumnApellido.HeaderText = "Apellido";
+            ColumnApellido.Name = "ColumnApellido";
             // 
             // FormConductores
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MidnightBlue;
-            ClientSize = new Size(881, 390);
+            ClientSize = new Size(870, 367);
             Controls.Add(dataGridViewConductores);
             Controls.Add(buttonCancelar);
             Controls.Add(buttonGuardar);
@@ -323,9 +342,9 @@
         private TextBox textBoxNombre;
         private DateTimePicker dateTimePickerVencLic;
         private DataGridView dataGridViewConductores;
-        private DataGridViewTextBoxColumn dniDataGridViewTextColumn;
-        private DataGridViewTextBoxColumn fechaVencLicDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn apellidoDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn ColumnDNI;
+        private DataGridViewTextBoxColumn fechaVencLic;
+        private DataGridViewTextBoxColumn ColumnNombre;
+        private DataGridViewTextBoxColumn ColumnApellido;
     }
 }
