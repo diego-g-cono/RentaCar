@@ -3,19 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\marti\\source\\repos\\RentaCar\\RentaCar.Dominio\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4117058D-68E7-41BC-BB4F-4C6DD3AC24C6}|..\\RentaCar.Escritorio\\RentaCar.Escritorio.csproj|c:\\users\\marti\\source\\repos\\rentacar\\rentacar.escritorio\\formtarifas.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D1CCC161-5285-427B-A0EC-2D845A430F8D}|..\\RentaCar.Infraestructura\\RentaCar.Infraestructura.csproj|c:\\users\\marti\\source\\repos\\rentacar\\rentacar.infraestructura\\data\\rentacardbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4117058D-68E7-41BC-BB4F-4C6DD3AC24C6}|..\\RentaCar.Escritorio\\RentaCar.Escritorio.csproj|c:\\users\\marti\\source\\repos\\rentacar\\rentacar.escritorio\\formdevoluciones.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4117058D-68E7-41BC-BB4F-4C6DD3AC24C6}|..\\RentaCar.Escritorio\\RentaCar.Escritorio.csproj|c:\\users\\marti\\source\\repos\\rentacar\\rentacar.escritorio\\formdevoluciones.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4117058D-68E7-41BC-BB4F-4C6DD3AC24C6}|..\\RentaCar.Escritorio\\RentaCar.Escritorio.csproj|c:\\users\\marti\\source\\repos\\rentacar\\rentacar.escritorio\\formdevoluciones.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4117058D-68E7-41BC-BB4F-4C6DD3AC24C6}|..\\RentaCar.Escritorio\\RentaCar.Escritorio.csproj|c:\\users\\marti\\source\\repos\\rentacar\\rentacar.escritorio\\formconductores.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4117058D-68E7-41BC-BB4F-4C6DD3AC24C6}|..\\RentaCar.Escritorio\\RentaCar.Escritorio.csproj|c:\\users\\marti\\source\\repos\\rentacar\\rentacar.escritorio\\formalquileres.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -25,7 +16,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 303,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,53 +25,15 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "FormTarifas.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\marti\\source\\repos\\RentaCar\\RentaCar.Escritorio\\FormTarifas.Designer.cs",
-              "RelativeDocumentMoniker": "..\\RentaCar.Escritorio\\FormTarifas.Designer.cs",
-              "ToolTip": "C:\\Users\\marti\\source\\repos\\RentaCar\\RentaCar.Escritorio\\FormTarifas.Designer.cs",
-              "RelativeToolTip": "..\\RentaCar.Escritorio\\FormTarifas.Designer.cs",
-              "ViewState": "AgIAAFkBAAAAAAAAAAAswGYBAAAAAAAAAAAAAA==",
+              "Title": "RentaCarDBContext.cs",
+              "DocumentMoniker": "C:\\Users\\marti\\source\\repos\\RentaCar\\RentaCar.Infraestructura\\Data\\RentaCarDBContext.cs",
+              "RelativeDocumentMoniker": "..\\RentaCar.Infraestructura\\Data\\RentaCarDBContext.cs",
+              "ToolTip": "C:\\Users\\marti\\source\\repos\\RentaCar\\RentaCar.Infraestructura\\Data\\RentaCarDBContext.cs",
+              "RelativeToolTip": "..\\RentaCar.Infraestructura\\Data\\RentaCarDBContext.cs",
+              "ViewState": "AgIAANIAAAAAAAAAAAAswA0BAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-21T20:54:00.848Z",
+              "WhenOpened": "2026-04-22T18:19:48.098Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "FormDevoluciones.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\marti\\source\\repos\\RentaCar\\RentaCar.Escritorio\\FormDevoluciones.Designer.cs",
-              "RelativeDocumentMoniker": "..\\RentaCar.Escritorio\\FormDevoluciones.Designer.cs",
-              "ToolTip": "C:\\Users\\marti\\source\\repos\\RentaCar\\RentaCar.Escritorio\\FormDevoluciones.Designer.cs",
-              "RelativeToolTip": "..\\RentaCar.Escritorio\\FormDevoluciones.Designer.cs",
-              "ViewState": "AgIAAPYBAAAAAAAAAAAswAMCAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-21T20:49:58.36Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "FormDevoluciones.cs",
-              "DocumentMoniker": "C:\\Users\\marti\\source\\repos\\RentaCar\\RentaCar.Escritorio\\FormDevoluciones.cs",
-              "RelativeDocumentMoniker": "..\\RentaCar.Escritorio\\FormDevoluciones.cs",
-              "ToolTip": "C:\\Users\\marti\\source\\repos\\RentaCar\\RentaCar.Escritorio\\FormDevoluciones.cs",
-              "RelativeToolTip": "..\\RentaCar.Escritorio\\FormDevoluciones.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAADwvx0AAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-21T20:42:39.206Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "FormDevoluciones.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\marti\\source\\repos\\RentaCar\\RentaCar.Escritorio\\FormDevoluciones.cs",
-              "RelativeDocumentMoniker": "..\\RentaCar.Escritorio\\FormDevoluciones.cs",
-              "ToolTip": "C:\\Users\\marti\\source\\repos\\RentaCar\\RentaCar.Escritorio\\FormDevoluciones.cs [Design]",
-              "RelativeToolTip": "..\\RentaCar.Escritorio\\FormDevoluciones.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-21T20:40:40.472Z",
-              "EditorCaption": " [Design]"
             }
           ]
         }
@@ -90,11 +43,11 @@
       "Orientation": 0,
       "VerticalTabListWidth": 256,
       "FloatingWindowState": {
-        "Id": "34cfcc8b-a2be-4e8c-83c9-99540017a513",
+        "Id": "2b88f024-ace4-4abc-a01c-f73627a930f7",
         "Display": 1,
-        "X": 263,
-        "Y": 76,
-        "Width": 1509,
+        "X": 9,
+        "Y": 64,
+        "Width": 1905,
         "Height": 927,
         "WindowState": 0
       },
@@ -105,15 +58,15 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "FormConductores.cs",
-              "DocumentMoniker": "C:\\Users\\marti\\source\\repos\\RentaCar\\RentaCar.Escritorio\\FormConductores.cs",
-              "RelativeDocumentMoniker": "..\\RentaCar.Escritorio\\FormConductores.cs",
-              "ToolTip": "C:\\Users\\marti\\source\\repos\\RentaCar\\RentaCar.Escritorio\\FormConductores.cs",
-              "RelativeToolTip": "..\\RentaCar.Escritorio\\FormConductores.cs",
-              "ViewState": "AgIAAIMAAAAAAAAAAAAuwBUAAAAgAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "FormAlquileres.cs",
+              "DocumentMoniker": "C:\\Users\\marti\\source\\repos\\RentaCar\\RentaCar.Escritorio\\FormAlquileres.cs",
+              "RelativeDocumentMoniker": "..\\RentaCar.Escritorio\\FormAlquileres.cs",
+              "ToolTip": "C:\\Users\\marti\\source\\repos\\RentaCar\\RentaCar.Escritorio\\FormAlquileres.cs",
+              "RelativeToolTip": "..\\RentaCar.Escritorio\\FormAlquileres.cs",
+              "ViewState": "AgIAADwAAAAAAAAAAAAgwJIAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-21T19:02:45.489Z",
+              "WhenOpened": "2026-04-22T15:03:33.087Z",
               "EditorCaption": ""
             }
           ]

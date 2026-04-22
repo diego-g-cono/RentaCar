@@ -67,16 +67,9 @@ namespace RentaCar.Escritorio
 
         private void CargarEstados()
         {
-            var estados = new List<object>
-                {
-                    new { Text = "Finalizado", Value = 1 },
-                    new { Text = "En Curso", Value = 2 },
-                    new { Text = "Reservado", Value = 3 }
-                };
-
-            comboBoxEstado.DataSource = estados;
-            comboBoxEstado.DisplayMember = "Text";
-            comboBoxEstado.ValueMember = "Value";
+            comboBoxEstado.DataSource = _context.EstadosAlquileres.ToList();
+            comboBoxEstado.DisplayMember = "Nombre";
+            comboBoxEstado.ValueMember = "Id";
             comboBoxEstado.SelectedIndex = -1;
         }
 

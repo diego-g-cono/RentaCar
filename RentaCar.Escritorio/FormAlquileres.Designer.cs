@@ -41,15 +41,6 @@
             tabControlAlquileres = new TabControl();
             tabPage1 = new TabPage();
             dataGridViewAlquileres = new DataGridView();
-            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn8 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn9 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn7 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn10 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
-            DniConductor = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn11 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn12 = new DataGridViewTextBoxColumn();
             tabPage2 = new TabPage();
             dataGridViewVehiculos = new DataGridView();
             ColumnPatente = new DataGridViewTextBoxColumn();
@@ -106,6 +97,15 @@
             labelPrecio = new Label();
             labelVehiculo = new Label();
             labelCliente = new Label();
+            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn8 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn9 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn7 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn10 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
+            DniConductor = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn11 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn12 = new DataGridViewTextBoxColumn();
             tabControlAlquileres.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewAlquileres).BeginInit();
@@ -178,69 +178,6 @@
             dataGridViewAlquileres.RowTemplate.DefaultCellStyle.SelectionForeColor = SystemColors.ButtonFace;
             dataGridViewAlquileres.Size = new Size(950, 315);
             dataGridViewAlquileres.TabIndex = 13;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            dataGridViewTextBoxColumn5.DataPropertyName = "Id";
-            dataGridViewTextBoxColumn5.HeaderText = "ID";
-            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            dataGridViewTextBoxColumn8.DataPropertyName = "FechaInicio";
-            dataGridViewTextBoxColumn8.HeaderText = "Fecha Inicio";
-            dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            dataGridViewTextBoxColumn8.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            dataGridViewTextBoxColumn9.DataPropertyName = "FechaFin";
-            dataGridViewTextBoxColumn9.HeaderText = "Fecha Devolución";
-            dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            dataGridViewTextBoxColumn9.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            dataGridViewTextBoxColumn7.DataPropertyName = "VehiculoPatente";
-            dataGridViewTextBoxColumn7.HeaderText = "Vehículo";
-            dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            dataGridViewTextBoxColumn7.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            dataGridViewTextBoxColumn10.DataPropertyName = "Precio";
-            dataGridViewTextBoxColumn10.HeaderText = "Precio";
-            dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            dataGridViewTextBoxColumn10.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            dataGridViewTextBoxColumn6.DataPropertyName = "ClienteId";
-            dataGridViewTextBoxColumn6.HeaderText = "Cliente";
-            dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            dataGridViewTextBoxColumn6.ReadOnly = true;
-            // 
-            // DniConductor
-            // 
-            DniConductor.DataPropertyName = "ConductorId";
-            DniConductor.HeaderText = "Conductor";
-            DniConductor.Name = "DniConductor";
-            DniConductor.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            dataGridViewTextBoxColumn11.DataPropertyName = "ReservaId";
-            dataGridViewTextBoxColumn11.HeaderText = "ID Reserva";
-            dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            dataGridViewTextBoxColumn11.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn12
-            // 
-            dataGridViewTextBoxColumn12.DataPropertyName = "EstadoId";
-            dataGridViewTextBoxColumn12.HeaderText = "Estado";
-            dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-            dataGridViewTextBoxColumn12.ReadOnly = true;
             // 
             // tabPage2
             // 
@@ -877,6 +814,69 @@
             labelCliente.Size = new Size(86, 14);
             labelCliente.TabIndex = 0;
             labelCliente.Text = "Fecha Inicio:";
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            dataGridViewTextBoxColumn5.DataPropertyName = "Id";
+            dataGridViewTextBoxColumn5.HeaderText = "ID";
+            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            dataGridViewTextBoxColumn8.DataPropertyName = "FechaInicio";
+            dataGridViewTextBoxColumn8.HeaderText = "Fecha Inicio";
+            dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            dataGridViewTextBoxColumn8.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            dataGridViewTextBoxColumn9.DataPropertyName = "FechaFin";
+            dataGridViewTextBoxColumn9.HeaderText = "Fecha Devolución";
+            dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            dataGridViewTextBoxColumn9.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            dataGridViewTextBoxColumn7.DataPropertyName = "VehiculoPatente";
+            dataGridViewTextBoxColumn7.HeaderText = "Vehículo";
+            dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            dataGridViewTextBoxColumn7.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            dataGridViewTextBoxColumn10.DataPropertyName = "Precio";
+            dataGridViewTextBoxColumn10.HeaderText = "Precio";
+            dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            dataGridViewTextBoxColumn10.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            dataGridViewTextBoxColumn6.DataPropertyName = "ClienteId";
+            dataGridViewTextBoxColumn6.HeaderText = "Cliente";
+            dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // DniConductor
+            // 
+            DniConductor.DataPropertyName = "ConductorId";
+            DniConductor.HeaderText = "Conductor";
+            DniConductor.Name = "DniConductor";
+            DniConductor.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            dataGridViewTextBoxColumn11.DataPropertyName = "ReservaId";
+            dataGridViewTextBoxColumn11.HeaderText = "ID Reserva";
+            dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            dataGridViewTextBoxColumn11.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            dataGridViewTextBoxColumn12.DataPropertyName = "EstadoId";
+            dataGridViewTextBoxColumn12.HeaderText = "Estado";
+            dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            dataGridViewTextBoxColumn12.ReadOnly = true;
             // 
             // FormAlquileres
             // 

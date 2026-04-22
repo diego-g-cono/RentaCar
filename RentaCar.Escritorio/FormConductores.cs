@@ -90,38 +90,7 @@ namespace RentaCar.Escritorio
                 MessageBox.Show("La licencia no puede estar vencida.");
                 return;
             }
-            /*
-            Conductor conductor = new Conductor()
-            {
-                Dni = int.Parse(textBoxDni.Text),
-                Nombre = textBoxNombre.Text,
-                Apellido = textBoxApellido.Text,
-                FechaVencLic = DateOnly.FromDateTime(dateTimePickerVencLic.Value)
-            };
-
-            var confirm = MessageBox.Show(
-                $"¿Son correctos los datos?\n\n" +
-                $"DNI: {conductor.Dni}\n" +
-                $"Nombre: {conductor.Nombre}\n" +
-                $"Apellido: {conductor.Apellido}\n" +
-                $"Vencimiento Licencia: {conductor.FechaVencLic}",
-                "Confirmar",
-                MessageBoxButtons.YesNo
-            );
-            if (confirm != DialogResult.Yes)
-                return;
-
-            if (modoEdicion)
-            {
-                //_repoConductores.Actualizar(conductor);
-                MessageBox.Show("arreglar actualizacion colisiona con el objeto ya creado.");
-                MessageBox.Show("Conductor editado correctamente");
-            }
-            else
-            {
-                _repoConductores.Agregar(conductor);
-                MessageBox.Show("Conductor agregado correctamente.");
-            } */
+            
             var confirm = MessageBox.Show(
                 $"¿Son correctos los datos?\n\n" +
                 $"DNI: {dni}\n" +

@@ -208,8 +208,9 @@ namespace RentaCar.Infraestructura.Data
 
                 entity.Property(d => d.Id).HasColumnName("id");
                 entity.Property(d => d.AlquilerId).HasColumnName("alquiler_id");
+                entity.Property(d => d.Fecha).HasColumnName("fecha");
                 entity.Property(d => d.TanqueLleno).HasColumnName("tanque_lleno");
-                entity.Property(d => d.Observaciones).HasColumnName("obervaciones");
+                entity.Property(d => d.Observaciones).HasColumnName("observaciones");
             });
 
             modelBuilder.Entity<Conductor>(entity =>
