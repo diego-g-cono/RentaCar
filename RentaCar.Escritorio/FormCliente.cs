@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RentaCar.Dominio;
+using RentaCar.Escritorio.Servicios;
 using RentaCar.Infraestructura.Data;
 using RentaCar.Infraestructura.Repositorios;
 using System;
@@ -8,34 +9,31 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Net.Mail;
 
 namespace RentaCar.Escritorio
 {
     public partial class FormCliente : Form
     {
-        private readonly RentaCarDBContext _context;
-        private readonly ClienteRepositorio _repoClientes;
+        private readonly ClienteServicio _clienteServicio;
 
         private bool modoEdicion = false;
         public FormCliente()
         {
             InitializeComponent();
-            _context = new RentaCarDBContext();
-            _repoClientes = new ClienteRepositorio(_context);
+            _clienteServicio = new ClienteServicio();
         }
         private void FormCliente_Load(object sender, EventArgs e)
         { 
             CargarClientes();
             BloquearCampos(false);
         }
-        private void CargarClientes()
+        private async void CargarClientes()
         {
-            List<Cliente> clientes = _repoClientes.ObtenerTodos();
-            dataGridView.AutoGenerateColumns = false;
+            var clientes = await _clienteServicio.ObtenerTodos();
             dataGridView.DataSource = clientes;
         }
 
@@ -77,7 +75,7 @@ namespace RentaCar.Escritorio
             }
         }
 
-        private void btnGuardar_Click(object sender, EventArgs e)
+        private async void btnGuardar_Click(object sender, EventArgs e)
         {
             // Validar campos vacíos
             if (string.IsNullOrWhiteSpace(textBoxDNI.Text) ||
@@ -104,17 +102,17 @@ namespace RentaCar.Escritorio
                 Email = textBoxEmail.Text,
                 Telefono = textBoxTel.Text
             };
-            if(modoEdicion)
+            if (modoEdicion)
             {
-                _repoClientes.Actualizar(cliente);
-                modoEdicion = false;
+                await _clienteServicio.Actualizar(cliente);
                 MessageBox.Show("Cliente actualizado correctamente", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                _repoClientes.Agregar(cliente);
+                await _clienteServicio.Agregar(cliente);
                 MessageBox.Show("Cliente guardado correctamente", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
             LimpiarCampos();
             BloquearCampos(false);
             CargarClientes();
@@ -172,7 +170,7 @@ namespace RentaCar.Escritorio
             textBoxDNI.Enabled = false;
             modoEdicion = true;
         }
-        private void btnEliminar_Click(object sender, EventArgs e)
+        private async void btnEliminar_Click(object sender, EventArgs e)
         {
             if (dataGridView.CurrentRow == null)
             {
@@ -191,7 +189,7 @@ namespace RentaCar.Escritorio
 
             if (resultado == DialogResult.Yes)
             {
-                _repoClientes.Eliminar(dni);
+                await _clienteServicio.Eliminar(dni);
 
                 MessageBox.Show("Cliente eliminado correctamente");
 

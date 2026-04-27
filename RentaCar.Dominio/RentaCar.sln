@@ -6,6 +6,10 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentaCar.Dominio", "RentaCar.Dominio.csproj", "{B74670CF-25B5-4CEE-A924-ED6AB6C48056}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentaCar.Api", "..\RentaCar.Api\RentaCar.Api.csproj", "{5CB2976B-D53D-47B6-B5BC-212ADA9F1B9E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B74670CF-25B5-4CEE-A924-ED6AB6C48056} = {B74670CF-25B5-4CEE-A924-ED6AB6C48056}
+		{D1CCC161-5285-427B-A0EC-2D845A430F8D} = {D1CCC161-5285-427B-A0EC-2D845A430F8D}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentaCar.Infraestructura", "..\RentaCar.Infraestructura\RentaCar.Infraestructura.csproj", "{D1CCC161-5285-427B-A0EC-2D845A430F8D}"
 EndProject

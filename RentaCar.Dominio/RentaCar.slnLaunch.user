@@ -3,7 +3,11 @@
     "Name": "New Profile",
     "Projects": [
       {
-        "Path": "..\\Escritorio\\RentaCar.Escritorio.csproj",
+        "Path": "..\\RentaCar.Api\\RentaCar.Api.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "..\\RentaCar.Escritorio\\RentaCar.Escritorio.csproj",
         "Action": "Start"
       }
     ]

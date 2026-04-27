@@ -24,3 +24,16 @@ C:\Users\marti\source\repos\RentaCar\RentaCar.Dominio\obj\Debug\net8.0\RentaCar.
 C:\Users\marti\source\repos\RentaCar\RentaCar.Dominio\obj\Debug\net8.0\refint\RentaCar.Dominio.dll
 C:\Users\marti\source\repos\RentaCar\RentaCar.Dominio\obj\Debug\net8.0\RentaCar.Dominio.pdb
 C:\Users\marti\source\repos\RentaCar\RentaCar.Dominio\obj\Debug\net8.0\ref\RentaCar.Dominio.dll
+D:\Seminario I\TP Final\Rev1\RentaCar\RentaCar.Dominio\bin\Debug\net8.0\RentaCar.Dominio.deps.json
+D:\Seminario I\TP Final\Rev1\RentaCar\RentaCar.Dominio\bin\Debug\net8.0\RentaCar.Dominio.dll
+D:\Seminario I\TP Final\Rev1\RentaCar\RentaCar.Dominio\bin\Debug\net8.0\RentaCar.Dominio.pdb
+D:\Seminario I\TP Final\Rev1\RentaCar\RentaCar.Dominio\obj\Debug\net8.0\RentaCar.Dominio.csproj.AssemblyReference.cache
+D:\Seminario I\TP Final\Rev1\RentaCar\RentaCar.Dominio\obj\Debug\net8.0\RentaCar.Dominio.GeneratedMSBuildEditorConfig.editorconfig
+D:\Seminario I\TP Final\Rev1\RentaCar\RentaCar.Dominio\obj\Debug\net8.0\RentaCar.Dominio.AssemblyInfoInputs.cache
+D:\Seminario I\TP Final\Rev1\RentaCar\RentaCar.Dominio\obj\Debug\net8.0\RentaCar.Dominio.AssemblyInfo.cs
+D:\Seminario I\TP Final\Rev1\RentaCar\RentaCar.Dominio\obj\Debug\net8.0\RentaCar.Dominio.csproj.CoreCompileInputs.cache
+D:\Seminario I\TP Final\Rev1\RentaCar\RentaCar.Dominio\obj\Debug\net8.0\RentaCar.Dominio.sourcelink.json
+D:\Seminario I\TP Final\Rev1\RentaCar\RentaCar.Dominio\obj\Debug\net8.0\RentaCar.Dominio.dll
+D:\Seminario I\TP Final\Rev1\RentaCar\RentaCar.Dominio\obj\Debug\net8.0\refint\RentaCar.Dominio.dll
+D:\Seminario I\TP Final\Rev1\RentaCar\RentaCar.Dominio\obj\Debug\net8.0\RentaCar.Dominio.pdb
+D:\Seminario I\TP Final\Rev1\RentaCar\RentaCar.Dominio\obj\Debug\net8.0\ref\RentaCar.Dominio.dll

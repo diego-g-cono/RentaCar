@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\marti\\source\\repos\\RentaCar\\RentaCar.Escritorio\\RentaCar.Escritorio.csproj": {}
+    "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Escritorio\\RentaCar.Escritorio.csproj": {}
   },
   "projects": {
-    "C:\\Users\\marti\\source\\repos\\RentaCar\\RentaCar.Dominio\\RentaCar.Dominio.csproj": {
+    "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Dominio\\RentaCar.Dominio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\marti\\source\\repos\\RentaCar\\RentaCar.Dominio\\RentaCar.Dominio.csproj",
+        "projectUniqueName": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Dominio\\RentaCar.Dominio.csproj",
         "projectName": "RentaCar.Dominio",
-        "projectPath": "C:\\Users\\marti\\source\\repos\\RentaCar\\RentaCar.Dominio\\RentaCar.Dominio.csproj",
-        "packagesPath": "C:\\Users\\marti\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\marti\\source\\repos\\RentaCar\\RentaCar.Dominio\\obj\\",
+        "projectPath": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Dominio\\RentaCar.Dominio.csproj",
+        "packagesPath": "C:\\Users\\diego\\.nuget\\packages\\",
+        "outputPath": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Dominio\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\marti\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\diego\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -30,7 +30,6 @@
         },
         "frameworks": {
           "net8.0": {
-            "framework": "net8.0",
             "targetAlias": "net8.0",
             "projectReferences": {}
           }
@@ -45,11 +44,10 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "10.0.200"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net8.0": {
-          "framework": "net8.0",
           "targetAlias": "net8.0",
           "dependencies": {
             "BCrypt.Net-Next": {
@@ -73,24 +71,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.202/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\marti\\source\\repos\\RentaCar\\RentaCar.Escritorio\\RentaCar.Escritorio.csproj": {
+    "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Escritorio\\RentaCar.Escritorio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\marti\\source\\repos\\RentaCar\\RentaCar.Escritorio\\RentaCar.Escritorio.csproj",
+        "projectUniqueName": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Escritorio\\RentaCar.Escritorio.csproj",
         "projectName": "RentaCar.Escritorio",
-        "projectPath": "C:\\Users\\marti\\source\\repos\\RentaCar\\RentaCar.Escritorio\\RentaCar.Escritorio.csproj",
-        "packagesPath": "C:\\Users\\marti\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\marti\\source\\repos\\RentaCar\\RentaCar.Escritorio\\obj\\",
+        "projectPath": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Escritorio\\RentaCar.Escritorio.csproj",
+        "packagesPath": "C:\\Users\\diego\\.nuget\\packages\\",
+        "outputPath": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Escritorio\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\marti\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\diego\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -102,15 +100,14 @@
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net8.0-windows": {
-            "framework": "net8.0-windows7.0",
+          "net8.0-windows7.0": {
             "targetAlias": "net8.0-windows",
             "projectReferences": {
-              "C:\\Users\\marti\\source\\repos\\RentaCar\\RentaCar.Dominio\\RentaCar.Dominio.csproj": {
-                "projectPath": "C:\\Users\\marti\\source\\repos\\RentaCar\\RentaCar.Dominio\\RentaCar.Dominio.csproj"
+              "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Dominio\\RentaCar.Dominio.csproj": {
+                "projectPath": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Dominio\\RentaCar.Dominio.csproj"
               },
-              "C:\\Users\\marti\\source\\repos\\RentaCar\\RentaCar.Infraestructura\\RentaCar.Infraestructura.csproj": {
-                "projectPath": "C:\\Users\\marti\\source\\repos\\RentaCar\\RentaCar.Infraestructura\\RentaCar.Infraestructura.csproj"
+              "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Infraestructura\\RentaCar.Infraestructura.csproj": {
+                "projectPath": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Infraestructura\\RentaCar.Infraestructura.csproj"
               }
             }
           }
@@ -125,11 +122,10 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "10.0.200"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
-        "net8.0-windows": {
-          "framework": "net8.0-windows7.0",
+        "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
           "imports": [
             "net461",
@@ -150,24 +146,24 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.202/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\marti\\source\\repos\\RentaCar\\RentaCar.Infraestructura\\RentaCar.Infraestructura.csproj": {
+    "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Infraestructura\\RentaCar.Infraestructura.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\marti\\source\\repos\\RentaCar\\RentaCar.Infraestructura\\RentaCar.Infraestructura.csproj",
+        "projectUniqueName": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Infraestructura\\RentaCar.Infraestructura.csproj",
         "projectName": "RentaCar.Infraestructura",
-        "projectPath": "C:\\Users\\marti\\source\\repos\\RentaCar\\RentaCar.Infraestructura\\RentaCar.Infraestructura.csproj",
-        "packagesPath": "C:\\Users\\marti\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\marti\\source\\repos\\RentaCar\\RentaCar.Infraestructura\\obj\\",
+        "projectPath": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Infraestructura\\RentaCar.Infraestructura.csproj",
+        "packagesPath": "C:\\Users\\diego\\.nuget\\packages\\",
+        "outputPath": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Infraestructura\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\marti\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\diego\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -180,11 +176,10 @@
         },
         "frameworks": {
           "net8.0": {
-            "framework": "net8.0",
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\marti\\source\\repos\\RentaCar\\RentaCar.Dominio\\RentaCar.Dominio.csproj": {
-                "projectPath": "C:\\Users\\marti\\source\\repos\\RentaCar\\RentaCar.Dominio\\RentaCar.Dominio.csproj"
+              "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Dominio\\RentaCar.Dominio.csproj": {
+                "projectPath": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Dominio\\RentaCar.Dominio.csproj"
               }
             }
           }
@@ -199,11 +194,10 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "10.0.200"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net8.0": {
-          "framework": "net8.0",
           "targetAlias": "net8.0",
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
@@ -235,7 +229,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.202/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
