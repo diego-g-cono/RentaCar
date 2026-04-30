@@ -3,25 +3,22 @@
   "WorkspaceRootPath": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Dominio\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D1CCC161-5285-427B-A0EC-2D845A430F8D}|..\\RentaCar.Infraestructura\\RentaCar.Infraestructura.csproj|d:\\seminario i\\tp final\\rev1\\rentacar\\rentacar.infraestructura\\repositorios\\clienterepositorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4117058D-68E7-41BC-BB4F-4C6DD3AC24C6}|..\\RentaCar.Escritorio\\RentaCar.Escritorio.csproj|d:\\seminario i\\tp final\\rev1\\rentacar\\rentacar.escritorio\\servicios\\clienteservicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5CB2976B-D53D-47B6-B5BC-212ADA9F1B9E}|..\\RentaCar.Api\\RentaCar.Api.csproj|d:\\seminario i\\tp final\\rev1\\rentacar\\rentacar.api\\controllers\\clientescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5CB2976B-D53D-47B6-B5BC-212ADA9F1B9E}|..\\RentaCar.Api\\RentaCar.Api.csproj|d:\\seminario i\\tp final\\rev1\\rentacar\\rentacar.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4117058D-68E7-41BC-BB4F-4C6DD3AC24C6}|..\\RentaCar.Escritorio\\RentaCar.Escritorio.csproj|d:\\seminario i\\tp final\\rev1\\rentacar\\rentacar.escritorio\\formvehiculo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4117058D-68E7-41BC-BB4F-4C6DD3AC24C6}|..\\RentaCar.Escritorio\\RentaCar.Escritorio.csproj|d:\\seminario i\\tp final\\rev1\\rentacar\\rentacar.escritorio\\servicios\\conexion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4117058D-68E7-41BC-BB4F-4C6DD3AC24C6}|..\\RentaCar.Escritorio\\RentaCar.Escritorio.csproj|d:\\seminario i\\tp final\\rev1\\rentacar\\rentacar.escritorio\\formcliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{5CB2976B-D53D-47B6-B5BC-212ADA9F1B9E}|..\\RentaCar.Api\\RentaCar.Api.csproj|d:\\seminario i\\tp final\\rev1\\rentacar\\rentacar.api\\controllers\\vehiculoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4117058D-68E7-41BC-BB4F-4C6DD3AC24C6}|..\\RentaCar.Escritorio\\RentaCar.Escritorio.csproj|d:\\seminario i\\tp final\\rev1\\rentacar\\rentacar.escritorio\\formcliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5CB2976B-D53D-47B6-B5BC-212ADA9F1B9E}|..\\RentaCar.Api\\RentaCar.Api.csproj|d:\\seminario i\\tp final\\rev1\\rentacar\\rentacar.api\\controllers\\marcascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5CB2976B-D53D-47B6-B5BC-212ADA9F1B9E}|..\\RentaCar.Api\\RentaCar.Api.csproj|d:\\seminario i\\tp final\\rev1\\rentacar\\rentacar.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D1CCC161-5285-427B-A0EC-2D845A430F8D}|..\\RentaCar.Infraestructura\\RentaCar.Infraestructura.csproj|d:\\seminario i\\tp final\\rev1\\rentacar\\rentacar.infraestructura\\repositorios\\marcarepositorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,7 +28,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 303,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -39,87 +36,76 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ClienteRepositorio.cs",
-              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Infraestructura\\Repositorios\\ClienteRepositorio.cs",
-              "RelativeDocumentMoniker": "..\\RentaCar.Infraestructura\\Repositorios\\ClienteRepositorio.cs",
-              "ToolTip": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Infraestructura\\Repositorios\\ClienteRepositorio.cs",
-              "RelativeToolTip": "..\\RentaCar.Infraestructura\\Repositorios\\ClienteRepositorio.cs",
-              "ViewState": "AgIAACsAAAAAAAAAAAAcwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-27T23:12:05.004Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "FormCliente.cs [Design]",
-              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Escritorio\\FormCliente.cs",
-              "RelativeDocumentMoniker": "..\\RentaCar.Escritorio\\FormCliente.cs",
-              "ToolTip": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Escritorio\\FormCliente.cs [Design]",
-              "RelativeToolTip": "..\\RentaCar.Escritorio\\FormCliente.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-27T22:57:28.782Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "Conexion.cs",
               "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Escritorio\\Servicios\\Conexion.cs",
               "RelativeDocumentMoniker": "..\\RentaCar.Escritorio\\Servicios\\Conexion.cs",
               "ToolTip": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Escritorio\\Servicios\\Conexion.cs",
               "RelativeToolTip": "..\\RentaCar.Escritorio\\Servicios\\Conexion.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-27T22:53:40.859Z"
+              "WhenOpened": "2026-04-29T22:05:12.392Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "VehiculosController.cs",
+              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Api\\Controllers\\VehiculosController.cs",
+              "RelativeDocumentMoniker": "..\\RentaCar.Api\\Controllers\\VehiculosController.cs",
+              "ToolTip": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Api\\Controllers\\VehiculosController.cs",
+              "RelativeToolTip": "..\\RentaCar.Api\\Controllers\\VehiculosController.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T22:04:04.276Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "MarcasController.cs",
+              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Api\\Controllers\\MarcasController.cs",
+              "RelativeDocumentMoniker": "..\\RentaCar.Api\\Controllers\\MarcasController.cs",
+              "ToolTip": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Api\\Controllers\\MarcasController.cs",
+              "RelativeToolTip": "..\\RentaCar.Api\\Controllers\\MarcasController.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAxwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T21:50:50.216Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FormVehiculo.cs",
+              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Escritorio\\FormVehiculo.cs",
+              "RelativeDocumentMoniker": "..\\RentaCar.Escritorio\\FormVehiculo.cs",
+              "ToolTip": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Escritorio\\FormVehiculo.cs",
+              "RelativeToolTip": "..\\RentaCar.Escritorio\\FormVehiculo.cs",
+              "ViewState": "AgIAAL4AAAAAAAAAAAAAwFcAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-28T21:45:19.704Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MarcaRepositorio.cs",
+              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Infraestructura\\Repositorios\\MarcaRepositorio.cs",
+              "RelativeDocumentMoniker": "..\\RentaCar.Infraestructura\\Repositorios\\MarcaRepositorio.cs",
+              "ToolTip": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Infraestructura\\Repositorios\\MarcaRepositorio.cs",
+              "RelativeToolTip": "..\\RentaCar.Infraestructura\\Repositorios\\MarcaRepositorio.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-28T21:37:27.912Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Api\\Program.cs",
               "RelativeDocumentMoniker": "..\\RentaCar.Api\\Program.cs",
               "ToolTip": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Api\\Program.cs",
               "RelativeToolTip": "..\\RentaCar.Api\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAxAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-27T22:27:33.986Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ClientesController.cs",
-              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Api\\Controllers\\ClientesController.cs",
-              "RelativeDocumentMoniker": "..\\RentaCar.Api\\Controllers\\ClientesController.cs",
-              "ToolTip": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Api\\Controllers\\ClientesController.cs",
-              "RelativeToolTip": "..\\RentaCar.Api\\Controllers\\ClientesController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-27T22:22:24.562Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ClienteServicio.cs",
-              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Escritorio\\Servicios\\ClienteServicio.cs",
-              "RelativeDocumentMoniker": "..\\RentaCar.Escritorio\\Servicios\\ClienteServicio.cs",
-              "ToolTip": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Escritorio\\Servicios\\ClienteServicio.cs",
-              "RelativeToolTip": "..\\RentaCar.Escritorio\\Servicios\\ClienteServicio.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-27T21:49:14.96Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "FormCliente.cs",
-              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Escritorio\\FormCliente.cs",
-              "RelativeDocumentMoniker": "..\\RentaCar.Escritorio\\FormCliente.cs",
-              "ToolTip": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Escritorio\\FormCliente.cs",
-              "RelativeToolTip": "..\\RentaCar.Escritorio\\FormCliente.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKwAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-27T21:34:01.511Z"
+              "WhenOpened": "2026-04-28T21:29:41.477Z"
             }
           ]
         }

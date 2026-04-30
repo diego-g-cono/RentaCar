@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RentaCar.Blazor")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+61367f2efec154d353265d35e965fa2d8021101d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2fb431bb309d8ce723e95696bdc8c7861b0e25d4")]
 [assembly: System.Reflection.AssemblyProductAttribute("RentaCar.Blazor")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RentaCar.Blazor")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

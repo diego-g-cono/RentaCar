@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RentaCar.Infraestructura
+namespace RentaCar.Infraestructura.Repositorios
 {
     public class MarcaRepositorio
     {

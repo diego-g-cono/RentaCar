@@ -1,4 +1,5 @@
 ﻿using RentaCar.Dominio;
+using RentaCar.Escritorio.Servicios;
 using RentaCar.Infraestructura;
 using RentaCar.Infraestructura.Data;
 using RentaCar.Infraestructura.Repositorios;
@@ -17,9 +18,9 @@ namespace RentaCar.Escritorio
     public partial class FormVehiculo : Form
     {
         private readonly RentaCarDBContext _context;
-        private readonly VehiculoRepositorio _repoVehiculos;
-        private readonly MarcaRepositorio _repoMarcas;
-        private readonly ModeloRepositorio _repoModelos;
+        private readonly VehiculoServicio _vehiculoServicio;
+        private readonly MarcaServicio _marcaServicio;
+        private readonly ModeloServicio _modeloServicio;
         private readonly TipoVehiculoRepositorio _repoTiposVehiculo;
         private readonly ColorRepositorio _repoColores;
         private readonly CombustibleRepositorio _repoCombustibles;
@@ -31,28 +32,28 @@ namespace RentaCar.Escritorio
         {
             InitializeComponent();
             _context = new RentaCarDBContext();
-            _repoVehiculos = new VehiculoRepositorio(_context);
-            _repoMarcas = new MarcaRepositorio(_context);
-            _repoModelos = new ModeloRepositorio(_context);
+            _vehiculoServicio = new VehiculoServicio();
+            _marcaServicio = new MarcaServicio();
+            _modeloServicio = new ModeloServicio();
             _repoTiposVehiculo = new TipoVehiculoRepositorio(_context);
             _repoColores = new ColorRepositorio(_context);
             _repoEstados = new EstadoVehiculoRepositorio(_context);
             _repoCombustibles = new CombustibleRepositorio(_context);
         }
 
-        private void FormVehiculo_Load(object sender, EventArgs e)
+        private async void FormVehiculo_Load(object sender, EventArgs e)
         {
-            CargarVehiculos();
+            await CargarVehiculos();
             BloquearCampos(false);
-            CargarMarcas();
+            await CargarMarcas();
             CargarTiposVehiculo();
             CargarColores();
             CargarCombustibles();
             CargarEstados();
         }
-        private void CargarVehiculos()
+        private async Task CargarVehiculos()
         {
-            List<Vehiculo> vehiculos = _repoVehiculos.ObtenerTodos();
+            var vehiculos = await _vehiculoServicio.ObtenerTodos();
             dataGridView.AutoGenerateColumns = false;
             dataGridView.DataSource = vehiculos;
         }
@@ -74,21 +75,19 @@ namespace RentaCar.Escritorio
             BloquearCampos(true);
         }
         // Método para cargar marcas en el ComboBox
-        private void CargarMarcas()
+        private async Task CargarMarcas()
         {
-            var marcas = _repoMarcas.ObtenerTodos();
+            var marcas = await _marcaServicio.ObtenerTodos();
 
             comboBoxMarca.DataSource = marcas;
-            comboBoxMarca.DisplayMember = "Nombre"; // lo que se muestra
-            comboBoxMarca.ValueMember = "Id"; // el valor real
+            comboBoxMarca.DisplayMember = "Nombre";
+            comboBoxMarca.ValueMember = "Id";
             comboBoxMarca.SelectedIndex = -1;
         }
         // Método para cargar modelos según la marca seleccionada
-        private void CargarModelos(int marcaId)
+        private async Task CargarModelos(int marcaId)
         {
-            var modelos = _repoModelos.ObtenerTodos()
-                            .Where(m => m.MarcaId == marcaId)
-                            .ToList();
+            var modelos = await _modeloServicio.ObtenerPorMarca(marcaId);
 
             comboBoxModelo.DataSource = modelos;
             comboBoxModelo.DisplayMember = "Nombre";
@@ -96,11 +95,11 @@ namespace RentaCar.Escritorio
             comboBoxModelo.SelectedIndex = -1;
         }
         // Evento para cargar modelos al seleccionar una marca
-        private void comboBoxMarca_SelectedIndexChanged(object sender, EventArgs e)
+        private async void comboBoxMarca_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBoxMarca.SelectedItem is Marca marca)
+            if (comboBoxMarca.SelectedValue is int marcaId)
             {
-                CargarModelos(marca.Id);
+                await CargarModelos(marcaId);
             }
         }
         // Método para cargar tipos de vehículo en el ComboBox
@@ -142,7 +141,7 @@ namespace RentaCar.Escritorio
             comboBoxEstado.ValueMember = "Id";
             comboBoxEstado.SelectedIndex = -1;
         }
-        private void btnGuardar_Click(object sender, EventArgs e)
+        private async void btnGuardar_Click(object sender, EventArgs e)
         {
             string patente = textBoxPatente.Text.Trim().ToUpper();
 
@@ -160,11 +159,6 @@ namespace RentaCar.Escritorio
                 return;
             }
 
-            if (_repoVehiculos.ExistePatente(patente) && modoEdicion == false)
-            {
-                MessageBox.Show("La patente ya existe");
-                return;
-            }
             int anio = (int)numericUpDownAnio.Value;
 
             if (anio < 1950 || anio > DateTime.Now.Year)
@@ -202,20 +196,21 @@ namespace RentaCar.Escritorio
                 Anio = (int)numericUpDownAnio.Value,
                 Kilometraje = (int)numericUpDownKm.Value
             };
+           
             if (modoEdicion)
             {
-                _repoVehiculos.Actualizar(vehiculo);
+                await _vehiculoServicio.Actualizar(vehiculo);
                 MessageBox.Show("Vehículo actualizado correctamente");
                 modoEdicion = false;
                 textBoxPatente.Enabled = true;
             }
             else
             {
-                _repoVehiculos.Agregar(vehiculo);
+                await _vehiculoServicio.Agregar(vehiculo);
                 MessageBox.Show("Vehículo guardado correctamente");
             }
-            
 
+            await Task.Delay(100); // opcional para evitar race condition visual
             CargarVehiculos();
             LimpiarCampos();
             BloquearCampos(false);
@@ -286,7 +281,7 @@ namespace RentaCar.Escritorio
 
             modoEdicion = true;
         }
-        private void btnEliminar_Click(object sender, EventArgs e)
+        private async void btnEliminar_Click(object sender, EventArgs e)
         {
             if (dataGridView.CurrentRow == null)
             {
@@ -305,7 +300,7 @@ namespace RentaCar.Escritorio
 
             if (resultado == DialogResult.Yes)
             {
-                _repoVehiculos.Eliminar(patente);
+                await _vehiculoServicio.Eliminar(patente);
 
                 MessageBox.Show("Vehículo eliminado correctamente");
 

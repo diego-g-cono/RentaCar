@@ -11,6 +11,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<RentaCarDBContext>();
 builder.Services.AddScoped<ClienteRepositorio>();
+builder.Services.AddScoped<VehiculoRepositorio>();
+builder.Services.AddScoped<MarcaRepositorio>();
+builder.Services.AddScoped<ModeloRepositorio>();
 
 var app = builder.Build();
 
