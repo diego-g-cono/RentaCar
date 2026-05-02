@@ -1,5 +1,5 @@
 ﻿using System.Net.Http.Json;
-using RentaCar.Dominio;
+using RentaCar.Dtos.Clientes;
 
 namespace RentaCar.Escritorio.Servicios
 {
@@ -12,25 +12,43 @@ namespace RentaCar.Escritorio.Servicios
             _http = Conexion.Instancia.Cliente;
         }
 
-        public async Task<List<Cliente>> ObtenerTodos()
+        public async Task<List<ClienteResponse>> ObtenerTodos()
         {
-            return await _http.GetFromJsonAsync<List<Cliente>>("clientes")
-                   ?? new List<Cliente>();
+            return await _http.GetFromJsonAsync<List<ClienteResponse>>("clientes")
+                   ?? new List<ClienteResponse>();
         }
 
-        public async Task Agregar(Cliente cliente)
+        public async Task Agregar(ClienteCreateRequest cliente)
         {
-            await _http.PostAsJsonAsync("clientes", cliente);
+            var response = await _http.PostAsJsonAsync("clientes", cliente);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                var error = await response.Content.ReadAsStringAsync();
+                throw new Exception($"Error al agregar cliente: {error}");
+            }
         }
 
-        public async Task Actualizar(Cliente cliente)
+        public async Task Actualizar(int dni, ClienteUpdateRequest cliente)
         {
-            await _http.PutAsJsonAsync($"clientes/{cliente.Dni}", cliente);
+            var response = await _http.PutAsJsonAsync($"clientes/{dni}", cliente);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                var error = await response.Content.ReadAsStringAsync();
+                throw new Exception($"Error al actualizar cliente: {error}");
+            }
         }
 
         public async Task Eliminar(int dni)
         {
-            await _http.DeleteAsync($"clientes/{dni}");
+            var response = await _http.DeleteAsync($"clientes/{dni}");
+
+            if (!response.IsSuccessStatusCode)
+            {
+                var error = await response.Content.ReadAsStringAsync();
+                throw new Exception($"Error al eliminar cliente: {error}");
+            }
         }
     }
 }

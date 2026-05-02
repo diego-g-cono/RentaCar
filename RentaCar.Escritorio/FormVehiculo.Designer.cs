@@ -32,15 +32,6 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormVehiculo));
             dataGridView = new DataGridView();
-            ColumnPatente = new DataGridViewTextBoxColumn();
-            ColumnMarca = new DataGridViewTextBoxColumn();
-            ColumnModelo = new DataGridViewTextBoxColumn();
-            ColumnTipo = new DataGridViewTextBoxColumn();
-            ColumnAnio = new DataGridViewTextBoxColumn();
-            ColumnColor = new DataGridViewTextBoxColumn();
-            ColumnCombustible = new DataGridViewTextBoxColumn();
-            ColumnKm = new DataGridViewTextBoxColumn();
-            ColumnEstado = new DataGridViewTextBoxColumn();
             buttonNuevo = new Button();
             buttonEditar = new Button();
             buttonEliminar = new Button();
@@ -65,6 +56,15 @@
             labelPatente = new Label();
             buttonGuardar = new Button();
             buttonCancelar = new Button();
+            ColumnPatente = new DataGridViewTextBoxColumn();
+            ColumnMarca = new DataGridViewTextBoxColumn();
+            ColumnModelo = new DataGridViewTextBoxColumn();
+            ColumnTipo = new DataGridViewTextBoxColumn();
+            ColumnAnio = new DataGridViewTextBoxColumn();
+            ColumnColor = new DataGridViewTextBoxColumn();
+            ColumnCombustible = new DataGridViewTextBoxColumn();
+            ColumnKm = new DataGridViewTextBoxColumn();
+            ColumnEstado = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDownKm).BeginInit();
@@ -103,60 +103,6 @@
             dataGridView.RowTemplate.DefaultCellStyle.SelectionForeColor = SystemColors.ButtonFace;
             dataGridView.Size = new Size(944, 361);
             dataGridView.TabIndex = 6;
-            // 
-            // ColumnPatente
-            // 
-            ColumnPatente.DataPropertyName = "Patente";
-            ColumnPatente.HeaderText = "Patente";
-            ColumnPatente.Name = "ColumnPatente";
-            // 
-            // ColumnMarca
-            // 
-            ColumnMarca.DataPropertyName = "Marca";
-            ColumnMarca.HeaderText = "Marca";
-            ColumnMarca.Name = "ColumnMarca";
-            // 
-            // ColumnModelo
-            // 
-            ColumnModelo.DataPropertyName = "Modelo";
-            ColumnModelo.HeaderText = "Modelo";
-            ColumnModelo.Name = "ColumnModelo";
-            // 
-            // ColumnTipo
-            // 
-            ColumnTipo.DataPropertyName = "Tipo";
-            ColumnTipo.HeaderText = "Tipo";
-            ColumnTipo.Name = "ColumnTipo";
-            // 
-            // ColumnAnio
-            // 
-            ColumnAnio.DataPropertyName = "Anio";
-            ColumnAnio.HeaderText = "Año";
-            ColumnAnio.Name = "ColumnAnio";
-            // 
-            // ColumnColor
-            // 
-            ColumnColor.DataPropertyName = "Color";
-            ColumnColor.HeaderText = "Color";
-            ColumnColor.Name = "ColumnColor";
-            // 
-            // ColumnCombustible
-            // 
-            ColumnCombustible.DataPropertyName = "Combustible";
-            ColumnCombustible.HeaderText = "Combustible";
-            ColumnCombustible.Name = "ColumnCombustible";
-            // 
-            // ColumnKm
-            // 
-            ColumnKm.DataPropertyName = "Kilometraje";
-            ColumnKm.HeaderText = "Kilometraje";
-            ColumnKm.Name = "ColumnKm";
-            // 
-            // ColumnEstado
-            // 
-            ColumnEstado.DataPropertyName = "Estado";
-            ColumnEstado.HeaderText = "Estado";
-            ColumnEstado.Name = "ColumnEstado";
             // 
             // buttonNuevo
             // 
@@ -478,6 +424,60 @@
             buttonCancelar.Text = "Cancelar";
             buttonCancelar.UseVisualStyleBackColor = false;
             buttonCancelar.Click += btnCancelar_Click;
+            // 
+            // ColumnPatente
+            // 
+            ColumnPatente.DataPropertyName = "Patente";
+            ColumnPatente.HeaderText = "Patente";
+            ColumnPatente.Name = "ColumnPatente";
+            // 
+            // ColumnMarca
+            // 
+            ColumnMarca.DataPropertyName = "MarcaNombre";
+            ColumnMarca.HeaderText = "Marca";
+            ColumnMarca.Name = "ColumnMarca";
+            // 
+            // ColumnModelo
+            // 
+            ColumnModelo.DataPropertyName = "ModeloNombre";
+            ColumnModelo.HeaderText = "Modelo";
+            ColumnModelo.Name = "ColumnModelo";
+            // 
+            // ColumnTipo
+            // 
+            ColumnTipo.DataPropertyName = "TipoNombre";
+            ColumnTipo.HeaderText = "Tipo";
+            ColumnTipo.Name = "ColumnTipo";
+            // 
+            // ColumnAnio
+            // 
+            ColumnAnio.DataPropertyName = "Anio";
+            ColumnAnio.HeaderText = "Año";
+            ColumnAnio.Name = "ColumnAnio";
+            // 
+            // ColumnColor
+            // 
+            ColumnColor.DataPropertyName = "ColorNombre";
+            ColumnColor.HeaderText = "Color";
+            ColumnColor.Name = "ColumnColor";
+            // 
+            // ColumnCombustible
+            // 
+            ColumnCombustible.DataPropertyName = "CombustibleNombre";
+            ColumnCombustible.HeaderText = "Combustible";
+            ColumnCombustible.Name = "ColumnCombustible";
+            // 
+            // ColumnKm
+            // 
+            ColumnKm.DataPropertyName = "Kilometraje";
+            ColumnKm.HeaderText = "Kilometraje";
+            ColumnKm.Name = "ColumnKm";
+            // 
+            // ColumnEstado
+            // 
+            ColumnEstado.DataPropertyName = "EstadoNombre";
+            ColumnEstado.HeaderText = "Estado";
+            ColumnEstado.Name = "ColumnEstado";
             // 
             // FormVehiculo
             // 

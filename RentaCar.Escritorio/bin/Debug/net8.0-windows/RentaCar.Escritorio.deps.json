@@ -9,6 +9,7 @@
       "RentaCar.Escritorio/1.0.0": {
         "dependencies": {
           "RentaCar.Dominio": "1.0.0",
+          "RentaCar.Dtos": "1.0.0",
           "RentaCar.Infraestructura": "1.0.0"
         },
         "runtime": {
@@ -194,6 +195,14 @@
           }
         }
       },
+      "RentaCar.Dtos/1.0.0": {
+        "runtime": {
+          "RentaCar.Dtos.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
       "RentaCar.Infraestructura/1.0.0": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "8.0.22",
@@ -329,6 +338,11 @@
       "hashPath": "npgsql.entityframeworkcore.postgresql.8.0.11.nupkg.sha512"
     },
     "RentaCar.Dominio/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "RentaCar.Dtos/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -4,6 +4,7 @@
     {
         // Foreign key
         public int MarcaId { get; set; }
+        public Marca? Marca { get; set; }
 
         public Modelo(string nombre, int marcaId) : base(nombre)
         {

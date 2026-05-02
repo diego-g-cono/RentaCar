@@ -383,6 +383,16 @@
           "bin/placeholder/RentaCar.Dominio.dll": {}
         }
       },
+      "RentaCar.Dtos/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/RentaCar.Dtos.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/RentaCar.Dtos.dll": {}
+        }
+      },
       "RentaCar.Infraestructura/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -1221,6 +1231,11 @@
       "path": "../RentaCar.Dominio/RentaCar.Dominio.csproj",
       "msbuildProject": "../RentaCar.Dominio/RentaCar.Dominio.csproj"
     },
+    "RentaCar.Dtos/1.0.0": {
+      "type": "project",
+      "path": "../RentaCar.Dtos/RentaCar.Dtos.csproj",
+      "msbuildProject": "../RentaCar.Dtos/RentaCar.Dtos.csproj"
+    },
     "RentaCar.Infraestructura/1.0.0": {
       "type": "project",
       "path": "../RentaCar.Infraestructura/RentaCar.Infraestructura.csproj",
@@ -1230,6 +1245,7 @@
   "projectFileDependencyGroups": {
     "net8.0": [
       "RentaCar.Dominio >= 1.0.0",
+      "RentaCar.Dtos >= 1.0.0",
       "RentaCar.Infraestructura >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.6.2"
     ]
@@ -1268,6 +1284,9 @@
           "projectReferences": {
             "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Dominio\\RentaCar.Dominio.csproj": {
               "projectPath": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Dominio\\RentaCar.Dominio.csproj"
+            },
+            "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Dtos\\RentaCar.Dtos.csproj": {
+              "projectPath": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Dtos\\RentaCar.Dtos.csproj"
             },
             "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Infraestructura\\RentaCar.Infraestructura.csproj": {
               "projectPath": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Infraestructura\\RentaCar.Infraestructura.csproj"

@@ -1,3 +1,4 @@
+using RentaCar.Infraestructura;
 using RentaCar.Infraestructura.Data;
 using RentaCar.Infraestructura.Repositorios;
 
@@ -14,6 +15,10 @@ builder.Services.AddScoped<ClienteRepositorio>();
 builder.Services.AddScoped<VehiculoRepositorio>();
 builder.Services.AddScoped<MarcaRepositorio>();
 builder.Services.AddScoped<ModeloRepositorio>();
+builder.Services.AddScoped<ColorRepositorio>();
+builder.Services.AddScoped<CombustibleRepositorio>();
+builder.Services.AddScoped<TipoVehiculoRepositorio>();
+builder.Services.AddScoped<EstadoVehiculoRepositorio>();
 
 var app = builder.Build();
 

@@ -1,5 +1,5 @@
-﻿using RentaCar.Dominio;
-using System.Net.Http.Json;
+﻿using System.Net.Http.Json;
+using RentaCar.Dtos.Vehiculos;
 
 namespace RentaCar.Escritorio.Servicios
 {
@@ -12,25 +12,51 @@ namespace RentaCar.Escritorio.Servicios
             _http = Conexion.Instancia.Cliente;
         }
 
-        public async Task<List<Vehiculo>> ObtenerTodos()
+        public async Task<List<VehiculoResponse>> ObtenerTodos()
         {
-            return await _http.GetFromJsonAsync<List<Vehiculo>>("vehiculos")
-                   ?? new List<Vehiculo>();
+            var response = await _http.GetAsync("vehiculos");
+
+            if (!response.IsSuccessStatusCode)
+            {
+                var error = await response.Content.ReadAsStringAsync();
+                throw new Exception($"Error al obtener vehículos: {error}");
+            }
+
+            return await response.Content.ReadFromJsonAsync<List<VehiculoResponse>>()
+                   ?? new List<VehiculoResponse>();
         }
 
-        public async Task Agregar(Vehiculo vehiculo)
+        public async Task Agregar(VehiculoCreateRequest vehiculo)
         {
-            await _http.PostAsJsonAsync("vehiculos", vehiculo);
+            var response = await _http.PostAsJsonAsync("vehiculos", vehiculo);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                var error = await response.Content.ReadAsStringAsync();
+                throw new Exception($"Error al agregar vehículo: {error}");
+            }
         }
 
-        public async Task Actualizar(Vehiculo vehiculo)
+        public async Task Actualizar(string patente, VehiculoUpdateRequest vehiculo)
         {
-            await _http.PutAsJsonAsync($"vehiculos/{vehiculo.Patente}", vehiculo);
+            var response = await _http.PutAsJsonAsync($"vehiculos/{patente}", vehiculo);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                var error = await response.Content.ReadAsStringAsync();
+                throw new Exception($"Error al actualizar vehículo: {error}");
+            }
         }
 
         public async Task Eliminar(string patente)
         {
-            await _http.DeleteAsync($"vehiculos/{patente}");
+            var response = await _http.DeleteAsync($"vehiculos/{patente}");
+
+            if (!response.IsSuccessStatusCode)
+            {
+                var error = await response.Content.ReadAsStringAsync();
+                throw new Exception($"Error al eliminar vehículo: {error}");
+            }
         }
     }
 }

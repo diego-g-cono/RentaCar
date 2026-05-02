@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RentaCar.Dtos.Vehiculos;
 using RentaCar.Dominio;
 using RentaCar.Infraestructura.Repositorios;
 
@@ -19,28 +20,92 @@ namespace RentaCar.API.Controllers
         public IActionResult ObtenerTodos()
         {
             var vehiculos = _repoVehiculos.ObtenerTodos();
-            return Ok(vehiculos);
+
+            var response = vehiculos.Select(v => new VehiculoResponse
+            {
+                Patente = v.Patente,
+                Anio = v.Anio,
+                Kilometraje = v.Kilometraje,
+
+                MarcaId = v.MarcaId,
+                MarcaNombre = v.Marca?.Nombre,
+
+                ModeloId = v.ModeloId,
+                ModeloNombre = v.Modelo?.Nombre,
+
+                ColorId = v.ColorId,
+                ColorNombre = v.Color?.Nombre,
+
+                CombustibleId = v.CombustibleId,
+                CombustibleNombre = v.Combustible?.Nombre,
+
+                EstadoId = v.EstadoId,
+                EstadoNombre = v.Estado?.Nombre,
+
+                TipoId = v.TipoId,
+                TipoNombre = v.Tipo?.Nombre
+            }).ToList();
+
+            return Ok(response);
         }
 
         [HttpGet("{patente}")]
         public IActionResult ObtenerPorPatente(string patente)
         {
-            var vehiculo = _repoVehiculos.ObtenerPorPatente(patente);
+            var v = _repoVehiculos.ObtenerPorPatente(patente);
 
-            if (vehiculo == null)
+            if (v == null)
                 return NotFound("Vehículo no encontrado");
 
-            return Ok(vehiculo);
+            var response = new VehiculoResponse
+            {
+                Patente = v.Patente,
+                Anio = v.Anio,
+                Kilometraje = v.Kilometraje,
+
+                MarcaId = v.MarcaId,
+                MarcaNombre = v.Marca?.Nombre,
+
+                ModeloId = v.ModeloId,
+                ModeloNombre = v.Modelo?.Nombre,
+
+                ColorId = v.ColorId,
+                ColorNombre = v.Color?.Nombre,
+
+                CombustibleId = v.CombustibleId,
+                CombustibleNombre = v.Combustible?.Nombre,
+
+                EstadoId = v.EstadoId,
+                EstadoNombre = v.Estado?.Nombre,
+
+                TipoId = v.TipoId,
+                TipoNombre = v.Tipo?.Nombre
+            };
+
+            return Ok(response);
         }
 
         [HttpPost]
-        public IActionResult Crear([FromBody] Vehiculo vehiculo)
+        public IActionResult Crear([FromBody] VehiculoCreateRequest request)
         {
-            if (vehiculo == null)
+            if (request == null)
                 return BadRequest("Datos inválidos");
 
-            if (_repoVehiculos.ExistePatente(vehiculo.Patente))
+            if (_repoVehiculos.ExistePatente(request.Patente))
                 return BadRequest("La patente ya existe");
+
+            var vehiculo = new Vehiculo
+            {
+                Patente = request.Patente,
+                Anio = request.Anio,
+                Kilometraje = request.Kilometraje,
+                MarcaId = request.MarcaId,
+                ModeloId = request.ModeloId,
+                ColorId = request.ColorId,
+                CombustibleId = request.CombustibleId,
+                EstadoId = request.EstadoId,
+                TipoId = request.TipoId
+            };
 
             _repoVehiculos.Agregar(vehiculo);
 
@@ -48,9 +113,9 @@ namespace RentaCar.API.Controllers
         }
 
         [HttpPut("{patente}")]
-        public IActionResult Actualizar(string patente, [FromBody] Vehiculo vehiculo)
+        public IActionResult Actualizar(string patente, [FromBody] VehiculoUpdateRequest request)
         {
-            if (vehiculo == null || patente != vehiculo.Patente)
+            if (request == null)
                 return BadRequest("Datos inválidos");
 
             var existente = _repoVehiculos.ObtenerPorPatente(patente);
@@ -58,7 +123,16 @@ namespace RentaCar.API.Controllers
             if (existente == null)
                 return NotFound("Vehículo no encontrado");
 
-            _repoVehiculos.Actualizar(vehiculo);
+            existente.Anio = request.Anio;
+            existente.Kilometraje = request.Kilometraje;
+            existente.MarcaId = request.MarcaId;
+            existente.ModeloId = request.ModeloId;
+            existente.ColorId = request.ColorId;
+            existente.CombustibleId = request.CombustibleId;
+            existente.EstadoId = request.EstadoId;
+            existente.TipoId = request.TipoId;
+
+            _repoVehiculos.Actualizar(existente);
 
             return Ok("Vehículo actualizado correctamente");
         }

@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using RentaCar.Dominio;
+using RentaCar.Dtos.Marcas;
 using RentaCar.Infraestructura.Repositorios;
 
 namespace RentaCar.API.Controllers
@@ -19,7 +19,14 @@ namespace RentaCar.API.Controllers
         public IActionResult ObtenerTodos()
         {
             var marcas = _repoMarcas.ObtenerTodos();
-            return Ok(marcas);
+
+            var response = marcas.Select(m => new MarcaResponse
+            {
+                Id = m.Id,
+                Nombre = m.Nombre
+            });
+
+            return Ok(response);
         }
 
         [HttpGet("{id}")]
@@ -30,14 +37,25 @@ namespace RentaCar.API.Controllers
             if (marca == null)
                 return NotFound("Marca no encontrada");
 
-            return Ok(marca);
+            var response = new MarcaResponse
+            {
+                Id = marca.Id,
+                Nombre = marca.Nombre
+            };
+
+            return Ok(response);
         }
 
         [HttpPost]
-        public IActionResult Crear([FromBody] Marca marca)
+        public IActionResult Crear([FromBody] MarcaCreateRequest request)
         {
-            if (marca == null)
+            if (request == null || string.IsNullOrWhiteSpace(request.Nombre))
                 return BadRequest("Datos inválidos");
+
+            var marca = new Dominio.Marca
+            {
+                Nombre = request.Nombre
+            };
 
             _repoMarcas.Agregar(marca);
 
@@ -45,9 +63,9 @@ namespace RentaCar.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Actualizar(int id, [FromBody] Marca marca)
+        public IActionResult Actualizar(int id, [FromBody] MarcaUpdateRequest request)
         {
-            if (marca == null || id != marca.Id)
+            if (request == null)
                 return BadRequest("Datos inválidos");
 
             var existente = _repoMarcas.ObtenerPorId(id);
@@ -55,7 +73,9 @@ namespace RentaCar.API.Controllers
             if (existente == null)
                 return NotFound("Marca no encontrada");
 
-            _repoMarcas.Actualizar(marca);
+            existente.Nombre = request.Nombre;
+
+            _repoMarcas.Actualizar(existente);
 
             return Ok("Marca actualizada correctamente");
         }

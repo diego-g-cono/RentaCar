@@ -1,4 +1,4 @@
-﻿using RentaCar.Dominio;
+﻿using RentaCar.Dtos.Marcas;
 using System.Net.Http.Json;
 
 namespace RentaCar.Escritorio.Servicios
@@ -12,25 +12,25 @@ namespace RentaCar.Escritorio.Servicios
             _http = Conexion.Instancia.Cliente;
         }
 
-        public async Task<List<Marca>> ObtenerTodos()
+        public async Task<List<MarcaResponse>> ObtenerTodos()
         {
-            return await _http.GetFromJsonAsync<List<Marca>>("marcas")
-                   ?? new List<Marca>();
+            return await _http.GetFromJsonAsync<List<MarcaResponse>>("marcas")
+                   ?? new List<MarcaResponse>();
         }
 
-        public async Task<Marca?> ObtenerPorId(int id)
+        public async Task<MarcaResponse?> ObtenerPorId(int id)
         {
-            return await _http.GetFromJsonAsync<Marca>($"marcas/{id}");
+            return await _http.GetFromJsonAsync<MarcaResponse>($"marcas/{id}");
         }
 
-        public async Task Agregar(Marca marca)
+        public async Task Agregar(MarcaCreateRequest request)
         {
-            await _http.PostAsJsonAsync("marcas", marca);
+            await _http.PostAsJsonAsync("marcas", request);
         }
 
-        public async Task Actualizar(Marca marca)
+        public async Task Actualizar(int id, MarcaUpdateRequest request)
         {
-            await _http.PutAsJsonAsync($"marcas/{marca.Id}", marca);
+            await _http.PutAsJsonAsync($"marcas/{id}", request);
         }
 
         public async Task Eliminar(int id)

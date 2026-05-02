@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using RentaCar.Dominio;
-using RentaCar.Infraestructura;
+using RentaCar.Dtos.Modelos;
 using RentaCar.Infraestructura.Repositorios;
 
 namespace RentaCar.API.Controllers
@@ -20,7 +19,16 @@ namespace RentaCar.API.Controllers
         public IActionResult ObtenerTodos()
         {
             var modelos = _repoModelos.ObtenerTodos();
-            return Ok(modelos);
+
+            var response = modelos.Select(m => new ModeloResponse
+            {
+                Id = m.Id,
+                Nombre = m.Nombre,
+                MarcaId = m.MarcaId,
+                MarcaNombre = m.Marca?.Nombre
+            });
+
+            return Ok(response);
         }
 
         [HttpGet("{id}")]
@@ -31,14 +39,28 @@ namespace RentaCar.API.Controllers
             if (modelo == null)
                 return NotFound("Modelo no encontrado");
 
-            return Ok(modelo);
+            var response = new ModeloResponse
+            {
+                Id = modelo.Id,
+                Nombre = modelo.Nombre,
+                MarcaId = modelo.MarcaId,
+                MarcaNombre = modelo.Marca?.Nombre
+            };
+
+            return Ok(response);
         }
 
         [HttpPost]
-        public IActionResult Crear([FromBody] Modelo modelo)
+        public IActionResult Crear([FromBody] ModeloCreateRequest request)
         {
-            if (modelo == null)
+            if (request == null || string.IsNullOrWhiteSpace(request.Nombre))
                 return BadRequest("Datos inválidos");
+
+            var modelo = new Dominio.Modelo
+            {
+                Nombre = request.Nombre,
+                MarcaId = request.MarcaId
+            };
 
             _repoModelos.Agregar(modelo);
 
@@ -46,9 +68,9 @@ namespace RentaCar.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Actualizar(int id, [FromBody] Modelo modelo)
+        public IActionResult Actualizar(int id, [FromBody] ModeloUpdateRequest request)
         {
-            if (modelo == null || id != modelo.Id)
+            if (request == null)
                 return BadRequest("Datos inválidos");
 
             var existente = _repoModelos.ObtenerPorId(id);
@@ -56,7 +78,10 @@ namespace RentaCar.API.Controllers
             if (existente == null)
                 return NotFound("Modelo no encontrado");
 
-            _repoModelos.Actualizar(modelo);
+            existente.Nombre = request.Nombre;
+            existente.MarcaId = request.MarcaId;
+
+            _repoModelos.Actualizar(existente);
 
             return Ok("Modelo actualizado correctamente");
         }
@@ -78,7 +103,16 @@ namespace RentaCar.API.Controllers
         public IActionResult ObtenerPorMarca(int marcaId)
         {
             var modelos = _repoModelos.ObtenerPorMarca(marcaId);
-            return Ok(modelos);
+
+            var response = modelos.Select(m => new ModeloResponse
+            {
+                Id = m.Id,
+                Nombre = m.Nombre,
+                MarcaId = m.MarcaId,
+                MarcaNombre = m.Marca?.Nombre
+            });
+
+            return Ok(response);
         }
     }
 }

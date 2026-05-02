@@ -134,3 +134,5 @@ D:\Seminario I\TP Final\Rev1\RentaCar\RentaCar.Escritorio\obj\Debug\net8.0-windo
 D:\Seminario I\TP Final\Rev1\RentaCar\RentaCar.Escritorio\obj\Debug\net8.0-windows\RentaCar.Escritorio.pdb
 D:\Seminario I\TP Final\Rev1\RentaCar\RentaCar.Escritorio\obj\Debug\net8.0-windows\RentaCar.Escritorio.genruntimeconfig.cache
 D:\Seminario I\TP Final\Rev1\RentaCar\RentaCar.Escritorio\obj\Debug\net8.0-windows\ref\RentaCar.Escritorio.dll
+D:\Seminario I\TP Final\Rev1\RentaCar\RentaCar.Escritorio\bin\Debug\net8.0-windows\RentaCar.Dtos.dll
+D:\Seminario I\TP Final\Rev1\RentaCar\RentaCar.Escritorio\bin\Debug\net8.0-windows\RentaCar.Dtos.pdb

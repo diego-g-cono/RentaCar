@@ -1,4 +1,4 @@
-﻿using RentaCar.Dominio;
+﻿using RentaCar.Dtos.Modelos;
 using System.Net.Http.Json;
 
 namespace RentaCar.Escritorio.Servicios
@@ -12,35 +12,36 @@ namespace RentaCar.Escritorio.Servicios
             _http = Conexion.Instancia.Cliente;
         }
 
-        public async Task<List<Modelo>> ObtenerTodos()
+        public async Task<List<ModeloResponse>> ObtenerTodos()
         {
-            return await _http.GetFromJsonAsync<List<Modelo>>("modelos")
-                   ?? new List<Modelo>();
+            return await _http.GetFromJsonAsync<List<ModeloResponse>>("modelos")
+                   ?? new List<ModeloResponse>();
         }
 
-        public async Task<Modelo?> ObtenerPorId(int id)
+        public async Task<ModeloResponse?> ObtenerPorId(int id)
         {
-            return await _http.GetFromJsonAsync<Modelo>($"modelos/{id}");
+            return await _http.GetFromJsonAsync<ModeloResponse>($"modelos/{id}");
         }
 
-        public async Task Agregar(Modelo modelo)
+        public async Task Agregar(ModeloCreateRequest request)
         {
-            await _http.PostAsJsonAsync("modelos", modelo);
+            await _http.PostAsJsonAsync("modelos", request);
         }
 
-        public async Task Actualizar(Modelo modelo)
+        public async Task Actualizar(int id, ModeloUpdateRequest request)
         {
-            await _http.PutAsJsonAsync($"modelos/{modelo.Id}", modelo);
+            await _http.PutAsJsonAsync($"modelos/{id}", request);
         }
 
         public async Task Eliminar(int id)
         {
             await _http.DeleteAsync($"modelos/{id}");
         }
-        public async Task<List<Modelo>> ObtenerPorMarca(int marcaId)
+
+        public async Task<List<ModeloResponse>> ObtenerPorMarca(int marcaId)
         {
-            return await _http.GetFromJsonAsync<List<Modelo>>($"modelos/marca/{marcaId}")
-                   ?? new List<Modelo>();
+            return await _http.GetFromJsonAsync<List<ModeloResponse>>($"modelos/marca/{marcaId}")
+                   ?? new List<ModeloResponse>();
         }
     }
 }
