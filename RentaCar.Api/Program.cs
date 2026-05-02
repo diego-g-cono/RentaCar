@@ -19,6 +19,8 @@ builder.Services.AddScoped<ColorRepositorio>();
 builder.Services.AddScoped<CombustibleRepositorio>();
 builder.Services.AddScoped<TipoVehiculoRepositorio>();
 builder.Services.AddScoped<EstadoVehiculoRepositorio>();
+builder.Services.AddScoped<ReservaRepositorio>();
+builder.Services.AddScoped<EstadoReservaRepositorio>();
 
 var app = builder.Build();
 

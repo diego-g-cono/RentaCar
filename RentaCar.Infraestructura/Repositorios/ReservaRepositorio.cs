@@ -61,5 +61,11 @@ namespace RentaCar.Infraestructura.Data
                 _context.SaveChanges();
             }
         }
+        public List<Reserva> ObtenerPorVehiculo(string patente)
+        {
+            return _context.Reservas
+                .Where(r => r.VehiculoPatente == patente)
+                .ToList();
+        }
     }
 }

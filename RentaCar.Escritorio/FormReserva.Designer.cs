@@ -58,14 +58,6 @@
             tabControl = new TabControl();
             tabPageReserva = new TabPage();
             dataGridViewReserva = new DataGridView();
-            ColumnId = new DataGridViewTextBoxColumn();
-            ColumnCliente = new DataGridViewTextBoxColumn();
-            ColumnVehiculo = new DataGridViewTextBoxColumn();
-            ColumnFechaRetiro = new DataGridViewTextBoxColumn();
-            ColumnFechaDevolucion = new DataGridViewTextBoxColumn();
-            ColumnPrecio = new DataGridViewTextBoxColumn();
-            ColumnSenia = new DataGridViewTextBoxColumn();
-            ColumnEstadoReserva = new DataGridViewTextBoxColumn();
             tabPageCliente = new TabPage();
             dataGridViewCliente = new DataGridView();
             ColumnDNI = new DataGridViewTextBoxColumn();
@@ -75,6 +67,14 @@
             ColumnTelefono = new DataGridViewTextBoxColumn();
             tabPageVehiculo = new TabPage();
             dataGridViewVehiculo = new DataGridView();
+            ColumnId = new DataGridViewTextBoxColumn();
+            ColumnCliente = new DataGridViewTextBoxColumn();
+            ColumnVehiculo = new DataGridViewTextBoxColumn();
+            ColumnFechaRetiro = new DataGridViewTextBoxColumn();
+            ColumnFechaDevolucion = new DataGridViewTextBoxColumn();
+            ColumnPrecio = new DataGridViewTextBoxColumn();
+            ColumnSenia = new DataGridViewTextBoxColumn();
+            ColumnEstadoReserva = new DataGridViewTextBoxColumn();
             ColumnPatente = new DataGridViewTextBoxColumn();
             ColumnMarca = new DataGridViewTextBoxColumn();
             ColumnModelo = new DataGridViewTextBoxColumn();
@@ -205,7 +205,6 @@
             dtpFechaDevolucion.Name = "dtpFechaDevolucion";
             dtpFechaDevolucion.Size = new Size(200, 22);
             dtpFechaDevolucion.TabIndex = 24;
-            dtpFechaDevolucion.ValueChanged += dtpFechaDevolucion_ValueChanged;
             // 
             // dtpFechaRetiro
             // 
@@ -394,54 +393,6 @@
             dataGridViewReserva.Size = new Size(846, 365);
             dataGridViewReserva.TabIndex = 11;
             // 
-            // ColumnId
-            // 
-            ColumnId.DataPropertyName = "Id";
-            ColumnId.HeaderText = "ID";
-            ColumnId.Name = "ColumnId";
-            // 
-            // ColumnCliente
-            // 
-            ColumnCliente.DataPropertyName = "ClienteDni";
-            ColumnCliente.HeaderText = "Cliente";
-            ColumnCliente.Name = "ColumnCliente";
-            // 
-            // ColumnVehiculo
-            // 
-            ColumnVehiculo.DataPropertyName = "VehiculoPatente";
-            ColumnVehiculo.HeaderText = "Vehículo";
-            ColumnVehiculo.Name = "ColumnVehiculo";
-            // 
-            // ColumnFechaRetiro
-            // 
-            ColumnFechaRetiro.DataPropertyName = "FechaInicio";
-            ColumnFechaRetiro.HeaderText = "Fecha Retiro";
-            ColumnFechaRetiro.Name = "ColumnFechaRetiro";
-            // 
-            // ColumnFechaDevolucion
-            // 
-            ColumnFechaDevolucion.DataPropertyName = "FechaFin";
-            ColumnFechaDevolucion.HeaderText = "Fecha Devolución";
-            ColumnFechaDevolucion.Name = "ColumnFechaDevolucion";
-            // 
-            // ColumnPrecio
-            // 
-            ColumnPrecio.DataPropertyName = "Precio";
-            ColumnPrecio.HeaderText = "Precio";
-            ColumnPrecio.Name = "ColumnPrecio";
-            // 
-            // ColumnSenia
-            // 
-            ColumnSenia.DataPropertyName = "Senia";
-            ColumnSenia.HeaderText = "Seña";
-            ColumnSenia.Name = "ColumnSenia";
-            // 
-            // ColumnEstadoReserva
-            // 
-            ColumnEstadoReserva.DataPropertyName = "Estado";
-            ColumnEstadoReserva.HeaderText = "Estado";
-            ColumnEstadoReserva.Name = "ColumnEstadoReserva";
-            // 
             // tabPageCliente
             // 
             tabPageCliente.BackColor = Color.MidnightBlue;
@@ -561,6 +512,54 @@
             dataGridViewVehiculo.Size = new Size(944, 361);
             dataGridViewVehiculo.TabIndex = 7;
             // 
+            // ColumnId
+            // 
+            ColumnId.DataPropertyName = "Id";
+            ColumnId.HeaderText = "ID";
+            ColumnId.Name = "ColumnId";
+            // 
+            // ColumnCliente
+            // 
+            ColumnCliente.DataPropertyName = "ClienteDni";
+            ColumnCliente.HeaderText = "Cliente";
+            ColumnCliente.Name = "ColumnCliente";
+            // 
+            // ColumnVehiculo
+            // 
+            ColumnVehiculo.DataPropertyName = "VehiculoPatente";
+            ColumnVehiculo.HeaderText = "Vehículo";
+            ColumnVehiculo.Name = "ColumnVehiculo";
+            // 
+            // ColumnFechaRetiro
+            // 
+            ColumnFechaRetiro.DataPropertyName = "FechaInicio";
+            ColumnFechaRetiro.HeaderText = "Fecha Retiro";
+            ColumnFechaRetiro.Name = "ColumnFechaRetiro";
+            // 
+            // ColumnFechaDevolucion
+            // 
+            ColumnFechaDevolucion.DataPropertyName = "FechaFin";
+            ColumnFechaDevolucion.HeaderText = "Fecha Devolución";
+            ColumnFechaDevolucion.Name = "ColumnFechaDevolucion";
+            // 
+            // ColumnPrecio
+            // 
+            ColumnPrecio.DataPropertyName = "Precio";
+            ColumnPrecio.HeaderText = "Precio";
+            ColumnPrecio.Name = "ColumnPrecio";
+            // 
+            // ColumnSenia
+            // 
+            ColumnSenia.DataPropertyName = "Senia";
+            ColumnSenia.HeaderText = "Seña";
+            ColumnSenia.Name = "ColumnSenia";
+            // 
+            // ColumnEstadoReserva
+            // 
+            ColumnEstadoReserva.DataPropertyName = "EstadoNombre";
+            ColumnEstadoReserva.HeaderText = "Estado";
+            ColumnEstadoReserva.Name = "ColumnEstadoReserva";
+            // 
             // ColumnPatente
             // 
             ColumnPatente.DataPropertyName = "Patente";
@@ -569,19 +568,19 @@
             // 
             // ColumnMarca
             // 
-            ColumnMarca.DataPropertyName = "Marca";
+            ColumnMarca.DataPropertyName = "MarcaNombre";
             ColumnMarca.HeaderText = "Marca";
             ColumnMarca.Name = "ColumnMarca";
             // 
             // ColumnModelo
             // 
-            ColumnModelo.DataPropertyName = "Modelo";
+            ColumnModelo.DataPropertyName = "ModeloNombre";
             ColumnModelo.HeaderText = "Modelo";
             ColumnModelo.Name = "ColumnModelo";
             // 
             // ColumnTipo
             // 
-            ColumnTipo.DataPropertyName = "Tipo";
+            ColumnTipo.DataPropertyName = "TipoNombre";
             ColumnTipo.HeaderText = "Tipo";
             ColumnTipo.Name = "ColumnTipo";
             // 
@@ -593,13 +592,13 @@
             // 
             // ColumnColor
             // 
-            ColumnColor.DataPropertyName = "Color";
+            ColumnColor.DataPropertyName = "ColorNombre";
             ColumnColor.HeaderText = "Color";
             ColumnColor.Name = "ColumnColor";
             // 
             // ColumnCombustible
             // 
-            ColumnCombustible.DataPropertyName = "Combustible";
+            ColumnCombustible.DataPropertyName = "CombustibleNombre";
             ColumnCombustible.HeaderText = "Combustible";
             ColumnCombustible.Name = "ColumnCombustible";
             // 
@@ -611,7 +610,7 @@
             // 
             // ColumnEstado
             // 
-            ColumnEstado.DataPropertyName = "Estado";
+            ColumnEstado.DataPropertyName = "EstadoNombre";
             ColumnEstado.HeaderText = "Estado";
             ColumnEstado.Name = "ColumnEstado";
             // 
@@ -679,15 +678,6 @@
         private DataGridViewTextBoxColumn ColumnEmail;
         private DataGridViewTextBoxColumn ColumnTelefono;
         private DataGridView dataGridViewVehiculo;
-        private DataGridViewTextBoxColumn ColumnPatente;
-        private DataGridViewTextBoxColumn ColumnMarca;
-        private DataGridViewTextBoxColumn ColumnModelo;
-        private DataGridViewTextBoxColumn ColumnTipo;
-        private DataGridViewTextBoxColumn ColumnAnio;
-        private DataGridViewTextBoxColumn ColumnColor;
-        private DataGridViewTextBoxColumn ColumnCombustible;
-        private DataGridViewTextBoxColumn ColumnKm;
-        private DataGridViewTextBoxColumn ColumnEstado;
         private DataGridView dataGridViewReserva;
         private DataGridViewTextBoxColumn ColumnId;
         private DataGridViewTextBoxColumn ColumnCliente;
@@ -697,5 +687,14 @@
         private DataGridViewTextBoxColumn ColumnPrecio;
         private DataGridViewTextBoxColumn ColumnSenia;
         private DataGridViewTextBoxColumn ColumnEstadoReserva;
+        private DataGridViewTextBoxColumn ColumnPatente;
+        private DataGridViewTextBoxColumn ColumnMarca;
+        private DataGridViewTextBoxColumn ColumnModelo;
+        private DataGridViewTextBoxColumn ColumnTipo;
+        private DataGridViewTextBoxColumn ColumnAnio;
+        private DataGridViewTextBoxColumn ColumnColor;
+        private DataGridViewTextBoxColumn ColumnCombustible;
+        private DataGridViewTextBoxColumn ColumnKm;
+        private DataGridViewTextBoxColumn ColumnEstado;
     }
 }
