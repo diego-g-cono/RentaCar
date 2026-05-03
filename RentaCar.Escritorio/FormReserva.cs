@@ -12,6 +12,7 @@ namespace RentaCar.Escritorio
         private readonly ClienteServicio _clienteServicio;
         private readonly VehiculoServicio _vehiculoServicio;
         private readonly EstadoReservaServicio _estadoServicio;
+        private bool modoEdicion = false;
 
         public FormReserva()
         {
@@ -26,6 +27,10 @@ namespace RentaCar.Escritorio
         private async void FormReserva_Load(object sender, EventArgs e)
         {
             BloquearCampos(false);
+            textBoxCliente.ReadOnly = true;
+            textBoxVehiculo.ReadOnly = true;
+            dtpFechaRetiro.MinDate = DateTime.Today;
+            dtpFechaDevolucion.MinDate = DateTime.Today.AddDays(1);
 
             await CargarVehiculos();
             await CargarClientes();
@@ -81,33 +86,116 @@ namespace RentaCar.Escritorio
         private void buttonNuevo_Click(object sender, EventArgs e)
         {
             BloquearCampos(true);
+            modoEdicion = false;
+        }
+        private void buttonEditar_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewReserva.CurrentRow == null)
+            {
+                MessageBox.Show("Seleccioná una reserva primero");
+                return;
+            }
+
+            var reserva = (ReservaResponse)dataGridViewReserva.CurrentRow.DataBoundItem;
+
+            textBoxCliente.Text = reserva.ClienteDni.ToString();
+            textBoxVehiculo.Text = reserva.VehiculoPatente;
+            dtpFechaRetiro.Value = reserva.FechaInicio.ToDateTime(TimeOnly.MinValue);
+            dtpFechaDevolucion.Value = reserva.FechaFin.ToDateTime(TimeOnly.MinValue);
+            numericUpDownPrecio.Value = reserva.Precio;
+            numericUpDownSenia.Value = reserva.Senia;
+            comboBoxEstado.SelectedValue = reserva.EstadoId;
+
+            modoEdicion = true;
+            BloquearCampos(true);
+        }
+        private void buttonCancelar_Click(object sender, EventArgs e)
+        {
+            var resultado = MessageBox.Show(
+                "Se perderán los datos ingresados. ¿Deseás continuar?",
+                "Confirmar cancelación",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (resultado == DialogResult.Yes)
+            {
+                LimpiarCampos();
+                modoEdicion = false;
+                BloquearCampos(false);
+            }
         }
 
         private async void buttonGuardar_Click(object sender, EventArgs e)
         {
+            // 🔸 Validaciones
+            if (string.IsNullOrWhiteSpace(textBoxCliente.Text) ||
+                string.IsNullOrWhiteSpace(textBoxVehiculo.Text) ||
+                comboBoxEstado.SelectedIndex == -1)
+            {
+                MessageBox.Show("Todos los campos son obligatorios");
+                return;
+            }
+
+            if (dtpFechaRetiro.Value.Date < DateTime.Today)
+            {
+                MessageBox.Show("La fecha de retiro no puede ser anterior a hoy");
+                return;
+            }
+
+            if (dtpFechaDevolucion.Value <= dtpFechaRetiro.Value)
+            {
+                MessageBox.Show("La fecha de devolución debe ser al menos un día posterior al retiro");
+                return;
+            }
+
             try
             {
-                var request = new ReservaCreateRequest
+                if (modoEdicion)
                 {
-                    ClienteDni = int.Parse(textBoxCliente.Text),
-                    VehiculoPatente = textBoxVehiculo.Text,
-                    FechaInicio = DateOnly.FromDateTime(dtpFechaRetiro.Value),
-                    FechaFin = DateOnly.FromDateTime(dtpFechaDevolucion.Value),
-                    Precio = numericUpDownPrecio.Value,
-                    Senia = numericUpDownSenia.Value,
-                    EstadoId = (int)comboBoxEstado.SelectedValue
-                };
+                    var reserva = (ReservaResponse)dataGridViewReserva.CurrentRow.DataBoundItem;
 
-                await _reservaServicio.Agregar(request);
+                    var updateRequest = new ReservaUpdateRequest
+                    {
+                        ClienteDni = int.Parse(textBoxCliente.Text),
+                        VehiculoPatente = textBoxVehiculo.Text,
+                        FechaInicio = DateOnly.FromDateTime(dtpFechaRetiro.Value),
+                        FechaFin = DateOnly.FromDateTime(dtpFechaDevolucion.Value),
+                        Precio = numericUpDownPrecio.Value,
+                        Senia = numericUpDownSenia.Value,
+                        EstadoId = (int)comboBoxEstado.SelectedValue
+                    };
 
-                MessageBox.Show("Reserva creada correctamente");
+                    await _reservaServicio.Actualizar(reserva.Id, updateRequest);
 
-                await CargarReservas();
+                    MessageBox.Show("Reserva actualizada correctamente");
+                }
+                else
+                {
+                    var createRequest = new ReservaCreateRequest
+                    {
+                        ClienteDni = int.Parse(textBoxCliente.Text),
+                        VehiculoPatente = textBoxVehiculo.Text,
+                        FechaInicio = DateOnly.FromDateTime(dtpFechaRetiro.Value),
+                        FechaFin = DateOnly.FromDateTime(dtpFechaDevolucion.Value),
+                        Precio = numericUpDownPrecio.Value,
+                        Senia = numericUpDownSenia.Value,
+                        EstadoId = (int)comboBoxEstado.SelectedValue
+                    };
+
+                    await _reservaServicio.Agregar(createRequest);
+
+                    MessageBox.Show("Reserva creada correctamente");
+                }
+
+                LimpiarCampos();
                 BloquearCampos(false);
+                await CargarReservas();
+                modoEdicion = false;
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error: {ex.Message}");
+                MessageBox.Show($"Error:\n{ex.Message}");
             }
         }
 
@@ -135,5 +223,41 @@ namespace RentaCar.Escritorio
             textBoxVehiculo.Text = textBoxVehiculo.Text.ToUpper();
             textBoxVehiculo.SelectionStart = textBoxVehiculo.Text.Length;
         }
+        private void dataGridViewVehiculo_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            var vehiculo = (VehiculoResponse)dataGridViewVehiculo.Rows[e.RowIndex].DataBoundItem;
+
+            textBoxVehiculo.Text = vehiculo.Patente;
+        }
+        private void dataGridViewCliente_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            var cliente = (ClienteResponse)dataGridViewCliente.Rows[e.RowIndex].DataBoundItem;
+
+            textBoxCliente.Text = cliente.Dni.ToString();
+        }
+        private void LimpiarCampos()
+        {
+            textBoxCliente.Clear();
+            textBoxVehiculo.Clear();
+            dtpFechaRetiro.Value = DateTime.Today;
+            dtpFechaDevolucion.Value = DateTime.Today.AddDays(1);
+            numericUpDownPrecio.Value = 0;
+            numericUpDownSenia.Value = 0;
+            comboBoxEstado.SelectedIndex = -1;
+        }
+        private void dtpFechaRetiro_ValueChanged(object sender, EventArgs e)
+        {
+            dtpFechaDevolucion.MinDate = dtpFechaRetiro.Value.AddDays(1);
+
+            if (dtpFechaDevolucion.Value <= dtpFechaRetiro.Value)
+            {
+                dtpFechaDevolucion.Value = dtpFechaRetiro.Value.AddDays(1);
+            }
+        }
+
     }
 }

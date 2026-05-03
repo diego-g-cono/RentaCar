@@ -3,19 +3,13 @@
   "WorkspaceRootPath": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Dominio\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4117058D-68E7-41BC-BB4F-4C6DD3AC24C6}|..\\RentaCar.Escritorio\\RentaCar.Escritorio.csproj|d:\\seminario i\\tp final\\rev1\\rentacar\\rentacar.escritorio\\formreserva.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4117058D-68E7-41BC-BB4F-4C6DD3AC24C6}|..\\RentaCar.Escritorio\\RentaCar.Escritorio.csproj|d:\\seminario i\\tp final\\rev1\\rentacar\\rentacar.escritorio\\formreserva.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{4117058D-68E7-41BC-BB4F-4C6DD3AC24C6}|..\\RentaCar.Escritorio\\RentaCar.Escritorio.csproj|d:\\seminario i\\tp final\\rev1\\rentacar\\rentacar.escritorio\\formreserva.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5CB2976B-D53D-47B6-B5BC-212ADA9F1B9E}|..\\RentaCar.Api\\RentaCar.Api.csproj|d:\\seminario i\\tp final\\rev1\\rentacar\\rentacar.api\\controllers\\reservascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4117058D-68E7-41BC-BB4F-4C6DD3AC24C6}|..\\RentaCar.Escritorio\\RentaCar.Escritorio.csproj|d:\\seminario i\\tp final\\rev1\\rentacar\\rentacar.escritorio\\formcliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D1CCC161-5285-427B-A0EC-2D845A430F8D}|..\\RentaCar.Infraestructura\\RentaCar.Infraestructura.csproj|d:\\seminario i\\tp final\\rev1\\rentacar\\rentacar.infraestructura\\repositorios\\reservarepositorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4117058D-68E7-41BC-BB4F-4C6DD3AC24C6}|..\\RentaCar.Escritorio\\RentaCar.Escritorio.csproj|d:\\seminario i\\tp final\\rev1\\rentacar\\rentacar.escritorio\\formreserva.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -25,7 +19,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 303,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -33,67 +27,41 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "FormReserva.cs [Design]",
-              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Escritorio\\FormReserva.cs",
-              "RelativeDocumentMoniker": "..\\RentaCar.Escritorio\\FormReserva.cs",
-              "ToolTip": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Escritorio\\FormReserva.cs [Design]*",
-              "RelativeToolTip": "..\\RentaCar.Escritorio\\FormReserva.cs [Design]*",
+              "DocumentIndex": 1,
+              "Title": "FormCliente.cs",
+              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Escritorio\\FormCliente.cs",
+              "RelativeDocumentMoniker": "..\\RentaCar.Escritorio\\FormCliente.cs",
+              "ToolTip": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Escritorio\\FormCliente.cs",
+              "RelativeToolTip": "..\\RentaCar.Escritorio\\FormCliente.cs",
+              "ViewState": "AgIAAGMAAAAAAAAAAAAmwAwAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-02T23:41:40.741Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2026-05-03T15:58:44.149Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "FormReserva.Designer.cs",
-              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Escritorio\\FormReserva.Designer.cs",
-              "RelativeDocumentMoniker": "..\\RentaCar.Escritorio\\FormReserva.Designer.cs",
-              "ToolTip": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Escritorio\\FormReserva.Designer.cs*",
-              "RelativeToolTip": "..\\RentaCar.Escritorio\\FormReserva.Designer.cs*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAM4AAAAtAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "FormReserva.cs",
+              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Escritorio\\FormReserva.cs",
+              "RelativeDocumentMoniker": "..\\RentaCar.Escritorio\\FormReserva.cs",
+              "ToolTip": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Escritorio\\FormReserva.cs",
+              "RelativeToolTip": "..\\RentaCar.Escritorio\\FormReserva.cs",
+              "ViewState": "AgIAANcAAAAAAAAAAAAgwOIAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-02T23:39:49.863Z",
+              "WhenOpened": "2026-05-03T14:38:54.859Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "FormReserva.cs",
+              "Title": "FormReserva.cs [Design]",
               "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Escritorio\\FormReserva.cs",
               "RelativeDocumentMoniker": "..\\RentaCar.Escritorio\\FormReserva.cs",
-              "ToolTip": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Escritorio\\FormReserva.cs*",
-              "RelativeToolTip": "..\\RentaCar.Escritorio\\FormReserva.cs*",
-              "ViewState": "AgIAAFgAAAAAAAAAAAAYwAYAAAAdAAAAAAAAAA==",
+              "ToolTip": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Escritorio\\FormReserva.cs [Design]",
+              "RelativeToolTip": "..\\RentaCar.Escritorio\\FormReserva.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-02T23:35:53.035Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ReservaRepositorio.cs",
-              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Infraestructura\\Repositorios\\ReservaRepositorio.cs",
-              "RelativeDocumentMoniker": "..\\RentaCar.Infraestructura\\Repositorios\\ReservaRepositorio.cs",
-              "ToolTip": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Infraestructura\\Repositorios\\ReservaRepositorio.cs",
-              "RelativeToolTip": "..\\RentaCar.Infraestructura\\Repositorios\\ReservaRepositorio.cs",
-              "ViewState": "AgIAACYAAAAAAAAAAAA9wEQAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-02T23:32:48.965Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ReservasController.cs",
-              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Api\\Controllers\\ReservasController.cs",
-              "RelativeDocumentMoniker": "..\\RentaCar.Api\\Controllers\\ReservasController.cs",
-              "ToolTip": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Api\\Controllers\\ReservasController.cs",
-              "RelativeToolTip": "..\\RentaCar.Api\\Controllers\\ReservasController.cs",
-              "ViewState": "AgIAAFwAAAAAAAAAAAAIwAsAAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-02T23:31:33.754Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-02T23:41:40.741Z",
+              "EditorCaption": " [Design]"
             }
           ]
         }

@@ -16,13 +16,13 @@ namespace RentaCar.Escritorio
             _clienteServicio = new ClienteServicio();
         }
 
-        private void FormCliente_Load(object sender, EventArgs e)
+        private async void FormCliente_Load(object sender, EventArgs e)
         {
-            CargarClientes();
+            await CargarClientes();
             BloquearCampos(false);
         }
 
-        private async void CargarClientes()
+        private async Task CargarClientes()
         {
             try
             {
@@ -104,7 +104,7 @@ namespace RentaCar.Escritorio
 
                 LimpiarCampos();
                 BloquearCampos(false);
-                CargarClientes();
+                await CargarClientes();
             }
             catch (Exception ex)
             {
