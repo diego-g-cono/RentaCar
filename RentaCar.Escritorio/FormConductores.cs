@@ -1,36 +1,27 @@
-﻿using RentaCar.Dominio;
-using RentaCar.Infraestructura;
-using RentaCar.Infraestructura.Data;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using RentaCar.Dtos.Conductores;
+using RentaCar.Escritorio.Servicios;
 
 namespace RentaCar.Escritorio
 {
     public partial class FormConductores : Form
     {
-        private readonly RentaCarDBContext _context;
-        private readonly ConductorRepositorio _repoConductores;
+        private readonly ConductorServicio _conductorServicio;
+
         private bool modoEdicion = false;
+        private int dniSeleccionado;
 
         public FormConductores()
         {
-            _context = new RentaCarDBContext();
-            _repoConductores = new ConductorRepositorio(_context);
             InitializeComponent();
+            _conductorServicio = new ConductorServicio();
         }
 
-        private void FormConductores_Load(object sender, EventArgs e)
+        private async void FormConductores_Load(object sender, EventArgs e)
         {
             BloquearCampos(false);
-            CargarConductores();
+            await CargarConductores();
         }
+
         private void BloquearCampos(bool estado)
         {
             dateTimePickerVencLic.Enabled = estado;
@@ -38,13 +29,15 @@ namespace RentaCar.Escritorio
             textBoxApellido.Enabled = estado;
             textBoxDni.Enabled = estado;
         }
-        private void CargarConductores()
+
+        private async Task CargarConductores()
         {
-            List<Conductor> conductores = _repoConductores.ObtenerTodos();
+            var conductores = await _conductorServicio.ObtenerTodos();
 
             dataGridViewConductores.AutoGenerateColumns = false;
             dataGridViewConductores.DataSource = conductores;
         }
+
         private void LimpiarCampos()
         {
             textBoxDni.Text = "";
@@ -58,90 +51,96 @@ namespace RentaCar.Escritorio
             BloquearCampos(true);
             LimpiarCampos();
             modoEdicion = false;
+            textBoxDni.Enabled = true;
         }
-        private void buttonGuardar_Click(object sender, EventArgs e)
+
+        private async void buttonGuardar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(textBoxDni.Text))
+            try
             {
-                MessageBox.Show("El DNI es obligatorio.");
-                return;
-            }
-
-            if (!int.TryParse(textBoxDni.Text, out int dni))
-            {
-                MessageBox.Show("El DNI debe ser numérico.");
-                return;
-            }
-
-            if (string.IsNullOrWhiteSpace(textBoxNombre.Text))
-            {
-                MessageBox.Show("El nombre es obligatorio.");
-                return;
-            }
-
-            if (string.IsNullOrWhiteSpace(textBoxApellido.Text))
-            {
-                MessageBox.Show("El apellido es obligatorio.");
-                return;
-            }
-
-            if (dateTimePickerVencLic.Value.Date < DateTime.Today)
-            {
-                MessageBox.Show("La licencia no puede estar vencida.");
-                return;
-            }
-            
-            var confirm = MessageBox.Show(
-                $"¿Son correctos los datos?\n\n" +
-                $"DNI: {dni}\n" +
-                $"Nombre: {textBoxNombre.Text}\n" +
-                $"Apellido: {textBoxApellido.Text}\n" +
-                $"Vencimiento Licencia: {dateTimePickerVencLic.Value.Date}",
-                "Confirmar",
-                MessageBoxButtons.YesNo
-            );
-
-            if (confirm != DialogResult.Yes)
-                return;
-
-            Conductor conductor;
-
-            if(modoEdicion)
-            {
-                conductor = (Conductor)dataGridViewConductores.SelectedRows[0].DataBoundItem;
-                conductor.Nombre = textBoxNombre.Text;
-                conductor.Apellido = textBoxApellido.Text;
-                conductor.FechaVencLic = DateOnly.FromDateTime(dateTimePickerVencLic.Value);
-                _repoConductores.Actualizar(conductor);
-                MessageBox.Show("Conductor editado correctamente");
-
-            }
-            else
-            {
-                conductor = new Conductor()
+                if (string.IsNullOrWhiteSpace(textBoxDni.Text))
                 {
-                    Dni = int.Parse(textBoxDni.Text),
-                    Nombre = textBoxNombre.Text,
-                    Apellido = textBoxApellido.Text,
-                    FechaVencLic = DateOnly.FromDateTime(dateTimePickerVencLic.Value)
-                };
-                _repoConductores.Agregar(conductor);
-                MessageBox.Show("Conductor agregado correctamente");
+                    MessageBox.Show("El DNI es obligatorio.");
+                    return;
+                }
 
-            }
+                if (!int.TryParse(textBoxDni.Text, out int dni))
+                {
+                    MessageBox.Show("El DNI debe ser numérico.");
+                    return;
+                }
 
-               
-                _context.SaveChanges();
+                if (string.IsNullOrWhiteSpace(textBoxNombre.Text))
+                {
+                    MessageBox.Show("El nombre es obligatorio.");
+                    return;
+                }
 
-                CargarConductores();
+                if (string.IsNullOrWhiteSpace(textBoxApellido.Text))
+                {
+                    MessageBox.Show("El apellido es obligatorio.");
+                    return;
+                }
+
+                if (dateTimePickerVencLic.Value.Date < DateTime.Today)
+                {
+                    MessageBox.Show("La licencia no puede estar vencida.");
+                    return;
+                }
+
+                var confirm = MessageBox.Show(
+                    $"¿Son correctos los datos?\n\n" +
+                    $"DNI: {dni}\n" +
+                    $"Nombre: {textBoxNombre.Text}\n" +
+                    $"Apellido: {textBoxApellido.Text}\n" +
+                    $"Vencimiento Licencia: {dateTimePickerVencLic.Value.Date}",
+                    "Confirmar",
+                    MessageBoxButtons.YesNo
+                );
+
+                if (confirm != DialogResult.Yes)
+                    return;
+
+                if (modoEdicion)
+                {
+                    var updateRequest = new ConductorUpdateRequest
+                    {
+                        Nombre = textBoxNombre.Text,
+                        Apellido = textBoxApellido.Text,
+                        FechaVencLic = DateOnly.FromDateTime(dateTimePickerVencLic.Value)
+                    };
+
+                    await _conductorServicio.Actualizar(dniSeleccionado, updateRequest);
+
+                    MessageBox.Show("Conductor editado correctamente");
+                }
+                else
+                {
+                    var createRequest = new ConductorCreateRequest
+                    {
+                        Dni = dni,
+                        Nombre = textBoxNombre.Text,
+                        Apellido = textBoxApellido.Text,
+                        FechaVencLic = DateOnly.FromDateTime(dateTimePickerVencLic.Value)
+                    };
+
+                    await _conductorServicio.Agregar(createRequest);
+
+                    MessageBox.Show("Conductor agregado correctamente");
+                }
+
+                await CargarConductores();
                 LimpiarCampos();
                 BloquearCampos(false);
+                modoEdicion = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+            }
         }
 
-
-
-
-        private void buttonEliminar_Click(object sender, EventArgs e)
+        private async void buttonEliminar_Click(object sender, EventArgs e)
         {
             if (dataGridViewConductores.SelectedRows.Count == 0)
             {
@@ -149,20 +148,21 @@ namespace RentaCar.Escritorio
                 return;
             }
 
-            Conductor conductorSeleccionado = (Conductor)dataGridViewConductores.SelectedRows[0].DataBoundItem;
+            var conductor = (ConductorResponse)dataGridViewConductores.SelectedRows[0].DataBoundItem;
 
             var confirm = MessageBox.Show(
-                $"¿Eliminar a {conductorSeleccionado.Nombre} {conductorSeleccionado.Apellido}?",
+                $"¿Eliminar a {conductor.Nombre} {conductor.Apellido}?",
                 "Confirmar",
                 MessageBoxButtons.YesNo
             );
 
             if (confirm == DialogResult.Yes)
             {
-                _repoConductores.Eliminar(conductorSeleccionado.Dni);
+                await _conductorServicio.Eliminar(conductor.Dni);
 
-                CargarConductores();
+                await CargarConductores();
                 LimpiarCampos();
+
                 MessageBox.Show("Conductor eliminado correctamente.");
             }
         }
@@ -174,11 +174,16 @@ namespace RentaCar.Escritorio
                 MessageBox.Show("No seleccionaste ningún conductor.");
                 return;
             }
+
             BloquearCampos(true);
 
-            Conductor conductor = (Conductor)dataGridViewConductores.SelectedRows[0].DataBoundItem;
+            var conductor = (ConductorResponse)dataGridViewConductores.SelectedRows[0].DataBoundItem;
+
+            dniSeleccionado = conductor.Dni;
+
             textBoxDni.Text = conductor.Dni.ToString();
-            textBoxDni.Enabled = false; // DNI no se puede editar
+            textBoxDni.Enabled = false;
+
             textBoxNombre.Text = conductor.Nombre;
             textBoxApellido.Text = conductor.Apellido;
             dateTimePickerVencLic.Value = conductor.FechaVencLic.ToDateTime(new TimeOnly());

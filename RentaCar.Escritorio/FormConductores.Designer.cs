@@ -65,7 +65,7 @@
             buttonCancelar.FlatStyle = FlatStyle.Flat;
             buttonCancelar.Font = new Font("Verdana", 9F);
             buttonCancelar.ForeColor = SystemColors.ButtonFace;
-            buttonCancelar.Location = new Point(261, 304);
+            buttonCancelar.Location = new Point(261, 322);
             buttonCancelar.Name = "buttonCancelar";
             buttonCancelar.Size = new Size(77, 33);
             buttonCancelar.TabIndex = 28;
@@ -82,7 +82,7 @@
             buttonGuardar.FlatStyle = FlatStyle.Flat;
             buttonGuardar.Font = new Font("Verdana", 9F);
             buttonGuardar.ForeColor = SystemColors.ButtonFace;
-            buttonGuardar.Location = new Point(23, 304);
+            buttonGuardar.Location = new Point(23, 322);
             buttonGuardar.Name = "buttonGuardar";
             buttonGuardar.Size = new Size(77, 33);
             buttonGuardar.TabIndex = 27;
@@ -102,9 +102,9 @@
             groupBoxConductores.Controls.Add(labelVencLic);
             groupBoxConductores.Font = new Font("Verdana", 9F, FontStyle.Bold);
             groupBoxConductores.ForeColor = SystemColors.ButtonFace;
-            groupBoxConductores.Location = new Point(23, 91);
+            groupBoxConductores.Location = new Point(23, 82);
             groupBoxConductores.Name = "groupBoxConductores";
-            groupBoxConductores.Size = new Size(315, 207);
+            groupBoxConductores.Size = new Size(315, 216);
             groupBoxConductores.TabIndex = 26;
             groupBoxConductores.TabStop = false;
             groupBoxConductores.Text = "Conductor";
@@ -198,7 +198,7 @@
             buttonEliminar.FlatStyle = FlatStyle.Flat;
             buttonEliminar.Font = new Font("Verdana", 9F);
             buttonEliminar.ForeColor = SystemColors.ButtonFace;
-            buttonEliminar.Location = new Point(231, 44);
+            buttonEliminar.Location = new Point(261, 22);
             buttonEliminar.Name = "buttonEliminar";
             buttonEliminar.Size = new Size(77, 33);
             buttonEliminar.TabIndex = 25;
@@ -215,7 +215,7 @@
             buttonEditar.FlatStyle = FlatStyle.Flat;
             buttonEditar.Font = new Font("Verdana", 9F);
             buttonEditar.ForeColor = SystemColors.ButtonFace;
-            buttonEditar.Location = new Point(131, 44);
+            buttonEditar.Location = new Point(141, 22);
             buttonEditar.Name = "buttonEditar";
             buttonEditar.Size = new Size(77, 33);
             buttonEditar.TabIndex = 24;
@@ -232,7 +232,7 @@
             buttonNuevo.FlatStyle = FlatStyle.Flat;
             buttonNuevo.Font = new Font("Verdana", 9F);
             buttonNuevo.ForeColor = SystemColors.ButtonFace;
-            buttonNuevo.Location = new Point(35, 44);
+            buttonNuevo.Location = new Point(23, 22);
             buttonNuevo.Name = "buttonNuevo";
             buttonNuevo.Size = new Size(77, 33);
             buttonNuevo.TabIndex = 23;

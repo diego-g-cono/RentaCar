@@ -188,17 +188,62 @@ namespace RentaCar.Infraestructura.Data
             modelBuilder.Entity<Alquiler>(entity =>
             {
                 entity.ToTable("alquileres");
+
                 entity.HasKey(a => a.Id);
 
                 entity.Property(a => a.Id).HasColumnName("id");
-                entity.Property(a => a.ReservaId).HasColumnName("reserva_id");
-                entity.Property(a => a.FechaInicio).HasColumnName("fecha_inicio");
-                entity.Property(a => a.FechaFin).HasColumnName("fecha_fin");
-                entity.Property(a => a.EstadoId).HasColumnName("estado_id");
-                entity.Property(a => a.Precio).HasColumnName("precio");
-                entity.Property(a => a.ConductorId).HasColumnName("conductor_dni");
-                entity.Property(a => a.ClienteId).HasColumnName("cliente_dni");
-                entity.Property(a => a.VehiculoPatente).HasColumnName("vehiculo_patente");
+
+                entity.Property(a => a.ReservaId)
+                    .HasColumnName("reserva_id");
+
+                entity.Property(a => a.FechaInicio)
+                    .HasColumnName("fecha_inicio");
+
+                entity.Property(a => a.FechaFin)
+                    .HasColumnName("fecha_fin");
+
+                entity.Property(a => a.EstadoId)
+                    .HasColumnName("estado_id");
+
+                entity.Property(a => a.Precio)
+                    .HasColumnName("precio");
+
+                entity.Property(a => a.ConductorDni)
+                    .HasColumnName("conductor_dni");
+
+                entity.Property(a => a.ClienteDni)
+                    .HasColumnName("cliente_dni");
+
+                entity.Property(a => a.VehiculoPatente)
+                    .HasColumnName("vehiculo_patente");
+
+                entity.HasOne(a => a.Conductor)
+                    .WithMany()
+                    .HasForeignKey(a => a.ConductorDni)
+                    .HasPrincipalKey(c => c.Dni)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasOne(a => a.Cliente)
+                    .WithMany()
+                    .HasForeignKey(a => a.ClienteDni)
+                    .HasPrincipalKey(c => c.Dni)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasOne(a => a.Vehiculo)
+                    .WithMany()
+                    .HasForeignKey(a => a.VehiculoPatente)
+                    .HasPrincipalKey(v => v.Patente)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasOne(a => a.Estado)
+                    .WithMany()
+                    .HasForeignKey(a => a.EstadoId)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasOne(a => a.Reserva)
+                    .WithMany()
+                    .HasForeignKey(a => a.ReservaId)
+                    .OnDelete(DeleteBehavior.SetNull);
             });
 
             modelBuilder.Entity<Devolucion>(entity =>

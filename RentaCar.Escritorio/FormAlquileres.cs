@@ -1,45 +1,41 @@
-﻿using RentaCar.Dominio;
-using RentaCar.Infraestructura;
-using RentaCar.Infraestructura.Data;
-using RentaCar.Infraestructura.Repositorios;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using RentaCar.Dtos.Alquileres;
+using RentaCar.Dtos.Vehiculos;
+using RentaCar.Dtos.Clientes;
+using RentaCar.Dtos.Conductores;
+using RentaCar.Dtos.Reservas;
+using RentaCar.Dtos.EstadoAlquiler;
+using RentaCar.Escritorio.Servicios;
 
 namespace RentaCar.Escritorio
 {
     public partial class FormAlquileres : Form
     {
-        private readonly RentaCarDBContext _context;
-        private readonly AlquilerRepositorio _repoAlquileres;
-        private readonly VehiculoRepositorio _repoVehiculos;
-        private readonly ClienteRepositorio _repoClientes;
-        private readonly ConductorRepositorio _repoConductores;
-        private readonly ReservaRepositorio _repoReserva;
+        private readonly AlquilerServicio _alquilerServicio;
+        private readonly VehiculoServicio _vehiculoServicio;
+        private readonly ClienteServicio _clienteServicio;
+        private readonly ConductorServicio _conductorServicio;
+        private readonly ReservaServicio _reservaServicio;
+        private readonly EstadoAlquilerServicio _estadoServicio;
+
         private bool modoEdicion = false;
         private bool autoCompletar = false;
+        private int alquilerIdSeleccionado;
 
         public FormAlquileres()
         {
             InitializeComponent();
-            _context = new RentaCarDBContext();
-            _repoAlquileres = new AlquilerRepositorio(_context);
-            _repoVehiculos = new VehiculoRepositorio(_context);
-            _repoClientes = new ClienteRepositorio(_context);
-            _repoConductores = new ConductorRepositorio(_context);
-            _repoReserva = new ReservaRepositorio(_context);
 
+            _alquilerServicio = new AlquilerServicio();
+            _vehiculoServicio = new VehiculoServicio();
+            _clienteServicio = new ClienteServicio();
+            _conductorServicio = new ConductorServicio();
+            _reservaServicio = new ReservaServicio();
+            _estadoServicio = new EstadoAlquilerServicio();
         }
-        private void FormAlquileres_Load(object sender, EventArgs e)
+
+        private async void FormAlquileres_Load(object sender, EventArgs e)
         {
-            CargarTablas();
-            CargarEstados();
+            await CargarTodo();
             BloquearCampos(false);
         }
 
@@ -51,8 +47,6 @@ namespace RentaCar.Escritorio
             comboBoxEstado.Enabled = estado;
         }
 
-        
-        
         private void LimpiarCampos()
         {
             dtpFechaInicio.Value = DateTime.Now;
@@ -65,31 +59,18 @@ namespace RentaCar.Escritorio
             comboBoxEstado.SelectedIndex = -1;
         }
 
-        private void CargarEstados()
+        private async Task CargarTodo()
         {
-            comboBoxEstado.DataSource = _context.EstadosAlquileres.ToList();
+            dataGridViewVehiculos.DataSource = await _vehiculoServicio.ObtenerTodos();
+            dataGridViewClientes.DataSource = await _clienteServicio.ObtenerTodos();
+            dataGridViewConductores.DataSource = await _conductorServicio.ObtenerTodos();
+            dataGridViewReserva.DataSource = await _reservaServicio.ObtenerTodos();
+            dataGridViewAlquileres.DataSource = await _alquilerServicio.ObtenerTodos();
+
+            comboBoxEstado.DataSource = await _estadoServicio.ObtenerTodos();
             comboBoxEstado.DisplayMember = "Nombre";
             comboBoxEstado.ValueMember = "Id";
             comboBoxEstado.SelectedIndex = -1;
-        }
-
-        private void CargarTablas()
-        {
-            dataGridViewVehiculos.AutoGenerateColumns = false;
-            dataGridViewVehiculos.DataSource = _repoVehiculos.ObtenerTodos();
-
-            dataGridViewClientes.AutoGenerateColumns = false;
-            dataGridViewClientes.DataSource = _repoClientes.ObtenerTodos();
-
-            dataGridViewReserva.AutoGenerateColumns = false;
-            dataGridViewReserva.DataSource = _repoReserva.ObtenerTodos();
-
-            dataGridViewConductores.AutoGenerateColumns = false;
-            dataGridViewConductores.DataSource = _repoConductores.ObtenerTodos();
-
-            dataGridViewAlquileres.AutoGenerateColumns = false;
-            dataGridViewAlquileres.DataSource = _repoAlquileres.ObtenerTodos();
-
         }
 
         private void buttonNuevo_Click(object sender, EventArgs e)
@@ -98,128 +79,108 @@ namespace RentaCar.Escritorio
             modoEdicion = false;
             BloquearCampos(true);
             LimpiarCampos();
-
         }
+
         private void buttonEditar_Click(object sender, EventArgs e)
         {
-
             if (dataGridViewAlquileres.SelectedRows.Count == 0)
             {
                 MessageBox.Show("No seleccionaste ningún alquiler.");
                 return;
             }
 
-            BloquearCampos(true);
+            var alquiler = (AlquilerResponse)dataGridViewAlquileres.SelectedRows[0].DataBoundItem;
 
-            Alquiler alquilerSeleccionado = (Alquiler)dataGridViewAlquileres.SelectedRows[0].DataBoundItem;
-            dtpFechaInicio.Value = alquilerSeleccionado.FechaInicio.ToDateTime(new TimeOnly());
-            dtpFechaDevolucion.Value = alquilerSeleccionado.FechaFin.ToDateTime(new TimeOnly());
-            textBoxVehiculo.Text = alquilerSeleccionado.VehiculoPatente.ToString();
-            numericUpDownPrecio.Value = alquilerSeleccionado.Precio;
-            textBoxDniCliente.Text = alquilerSeleccionado.ClienteId.ToString();
-            textBoxDniCond.Text = alquilerSeleccionado.ConductorId.ToString();
-            textBoxReserva.Text = alquilerSeleccionado.ReservaId.ToString();
+            alquilerIdSeleccionado = alquiler.Id;
 
-            autoCompletar = true;
+            dtpFechaInicio.Value = alquiler.FechaInicio.ToDateTime(new TimeOnly());
+            dtpFechaDevolucion.Value = alquiler.FechaFin.ToDateTime(new TimeOnly());
+            textBoxVehiculo.Text = alquiler.VehiculoPatente;
+            numericUpDownPrecio.Value = alquiler.Precio;
+            textBoxDniCliente.Text = alquiler.ClienteDni.ToString();
+            textBoxDniCond.Text = alquiler.ConductorDni.ToString();
+            textBoxReserva.Text = alquiler.ReservaId?.ToString();
+
+            comboBoxEstado.SelectedValue = alquiler.EstadoId;
+
             modoEdicion = true;
-      
+            autoCompletar = true;
+            BloquearCampos(true);
         }
-        private void buttonGuardar_Click(object sender, EventArgs e)
+
+        private async void buttonGuardar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(textBoxVehiculo.Text))
+            try
             {
-                MessageBox.Show("Debe seleccionar un vehículo.");
-                return;
-            }
+                // VALIDACIONES (igual que antes)
+                if (string.IsNullOrWhiteSpace(textBoxVehiculo.Text))
+                    throw new Exception("Debe seleccionar un vehículo.");
 
-            if (string.IsNullOrWhiteSpace(textBoxDniCliente.Text))
-            {
-                MessageBox.Show("Debe seleccionar un cliente.");
-                return;
-            }
+                if (string.IsNullOrWhiteSpace(textBoxDniCliente.Text))
+                    throw new Exception("Debe seleccionar un cliente.");
 
-            if (string.IsNullOrWhiteSpace(textBoxDniCond.Text))
-            {
-                MessageBox.Show("Debe seleccionar un conductor.");
-                return;
-            }
+                if (string.IsNullOrWhiteSpace(textBoxDniCond.Text))
+                    throw new Exception("Debe seleccionar un conductor.");
 
-            if (comboBoxEstado.SelectedIndex == -1)
-            {
-                MessageBox.Show("Debe seleccionar un estado.");
-                return;
-            }
+                if (comboBoxEstado.SelectedIndex == -1)
+                    throw new Exception("Debe seleccionar un estado.");
 
-            if (dtpFechaDevolucion.Value < dtpFechaInicio.Value)
-            {
-                MessageBox.Show("La fecha de devolución no puede ser menor a la fecha de inicio.");
-                return;
-            }
+                if (dtpFechaDevolucion.Value < dtpFechaInicio.Value)
+                    throw new Exception("La fecha de devolución no puede ser menor.");
 
-            if (string.IsNullOrWhiteSpace(textBoxReserva.Text))
-            {
-                MessageBox.Show("Debe seleccionar una reserva.");
-                return;
-            }
+                if (numericUpDownPrecio.Value <= 0)
+                    throw new Exception("El precio debe ser mayor a cero.");
 
-            if (numericUpDownPrecio.Value <= 0)
-            {
-                MessageBox.Show("El precio debe ser mayor a cero.");
-                return;
-            }
+                var confirm = MessageBox.Show("¿Guardar alquiler?", "Confirmar", MessageBoxButtons.YesNo);
+                if (confirm != DialogResult.Yes) return;
 
-
-            var confirm = MessageBox.Show(
-                    $"¿Estás seguro de guardar este alquiler?",
-                    "Confirmar",
-                    MessageBoxButtons.YesNo
-                );
-    
-                if (confirm != DialogResult.Yes)
-                    return;
-
-            Alquiler alquiler;
-
-            if (modoEdicion)
-            {
-                alquiler = (Alquiler)dataGridViewAlquileres.SelectedRows[0].DataBoundItem;
-                alquiler.FechaInicio = DateOnly.FromDateTime(dtpFechaInicio.Value);
-                alquiler.FechaFin = DateOnly.FromDateTime(dtpFechaDevolucion.Value);
-                alquiler.VehiculoPatente = textBoxVehiculo.Text;
-                alquiler.Precio = numericUpDownPrecio.Value;
-                alquiler.ClienteId = int.Parse(textBoxDniCliente.Text);
-                alquiler.ConductorId = int.Parse(textBoxDniCond.Text);
-                alquiler.ReservaId = int.Parse(textBoxReserva.Text);
-                alquiler.EstadoId = (int)comboBoxEstado.SelectedValue;
-                
-                _repoAlquileres.Actualizar(alquiler);
-                MessageBox.Show("Alquiler actualizado correctamente.");
-
-            } else
-            {
-                alquiler = new Alquiler()
+                if (modoEdicion)
                 {
-                    FechaInicio = DateOnly.FromDateTime(dtpFechaInicio.Value),
-                    FechaFin = DateOnly.FromDateTime(dtpFechaDevolucion.Value),
-                    VehiculoPatente = textBoxVehiculo.Text,
-                    Precio = numericUpDownPrecio.Value,
-                    ClienteId = int.Parse(textBoxDniCliente.Text),
-                    ConductorId = int.Parse(textBoxDniCond.Text),
-                    ReservaId = int.Parse(textBoxReserva.Text),
-                    EstadoId = (int)comboBoxEstado.SelectedValue
-                };
-                _repoAlquileres.Agregar(alquiler);
-                MessageBox.Show("Alquiler agregado correctamente.");
+                    var update = new AlquilerUpdateRequest
+                    {
+                        FechaInicio = DateOnly.FromDateTime(dtpFechaInicio.Value),
+                        FechaFin = DateOnly.FromDateTime(dtpFechaDevolucion.Value),
+                        VehiculoPatente = textBoxVehiculo.Text,
+                        Precio = numericUpDownPrecio.Value,
+                        ClienteDni = int.Parse(textBoxDniCliente.Text),
+                        ConductorDni = int.Parse(textBoxDniCond.Text),
+                        ReservaId = string.IsNullOrWhiteSpace(textBoxReserva.Text) ? null : int.Parse(textBoxReserva.Text),
+                        EstadoId = (int)comboBoxEstado.SelectedValue
+                    };
+
+                    await _alquilerServicio.Actualizar(alquilerIdSeleccionado, update);
+                    MessageBox.Show("Alquiler actualizado");
+                }
+                else
+                {
+                    var create = new AlquilerCreateRequest
+                    {
+                        FechaInicio = DateOnly.FromDateTime(dtpFechaInicio.Value),
+                        FechaFin = DateOnly.FromDateTime(dtpFechaDevolucion.Value),
+                        VehiculoPatente = textBoxVehiculo.Text,
+                        Precio = numericUpDownPrecio.Value,
+                        ClienteDni = int.Parse(textBoxDniCliente.Text),
+                        ConductorDni = int.Parse(textBoxDniCond.Text),
+                        ReservaId = string.IsNullOrWhiteSpace(textBoxReserva.Text) ? null : int.Parse(textBoxReserva.Text),
+                        EstadoId = (int)comboBoxEstado.SelectedValue
+                    };
+
+                    await _alquilerServicio.Agregar(create);
+                    MessageBox.Show("Alquiler creado");
+                }
+
+                await CargarTodo();
+                LimpiarCampos();
+                BloquearCampos(false);
+                autoCompletar = false;
             }
-
-            _context.SaveChanges();
-
-            CargarTablas();
-            LimpiarCampos();
-            BloquearCampos(false);
-            autoCompletar = false;
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
-        private void buttonEliminar_Click(object sender, EventArgs e)
+
+        private async void buttonEliminar_Click(object sender, EventArgs e)
         {
             if (dataGridViewAlquileres.SelectedRows.Count == 0)
             {
@@ -227,56 +188,39 @@ namespace RentaCar.Escritorio
                 return;
             }
 
-            var confirm = MessageBox.Show(
-                    $"¿Estás seguro de eliminar este alquiler?",
-                    "Confirmar",
-                    MessageBoxButtons.YesNo
-                );
-    
-                if (confirm != DialogResult.Yes)
-                    return;
+            var alquiler = (AlquilerResponse)dataGridViewAlquileres.SelectedRows[0].DataBoundItem;
 
-                var alquilerSeleccionado = (Alquiler)dataGridViewAlquileres.SelectedRows[0].DataBoundItem;
-                _repoAlquileres.Eliminar(alquilerSeleccionado.Id);
+            var confirm = MessageBox.Show("¿Eliminar?", "Confirmar", MessageBoxButtons.YesNo);
+            if (confirm != DialogResult.Yes) return;
 
-            CargarTablas();
+            await _alquilerServicio.Eliminar(alquiler.Id);
+
+            await CargarTodo();
             LimpiarCampos();
         }
 
         private void dataGridViewVehiculos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && autoCompletar)
-            {
-                DataGridViewRow row = dataGridViewVehiculos.Rows[e.RowIndex];
-                textBoxVehiculo.Text = row.Cells["ColumnPatente"].Value.ToString();
-            }
+                textBoxVehiculo.Text = dataGridViewVehiculos.Rows[e.RowIndex].Cells["ColumnPatente"].Value.ToString();
         }
 
         private void dataGridViewClientes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && autoCompletar)
-            {
-                DataGridViewRow row = dataGridViewClientes.Rows[e.RowIndex];
-                textBoxDniCliente.Text = row.Cells["ColumnDni"].Value.ToString();
-            }
+                textBoxDniCliente.Text = dataGridViewClientes.Rows[e.RowIndex].Cells["ColumnDNI"].Value.ToString();
         }
 
         private void dataGridViewConductores_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && autoCompletar)
-            {
-                DataGridViewRow row = dataGridViewConductores.Rows[e.RowIndex];
-                textBoxDniCond.Text = row.Cells["ColumnDniCond"].Value.ToString();
-            }
+                textBoxDniCond.Text = dataGridViewConductores.Rows[e.RowIndex].Cells["ColumnDniCond"].Value.ToString();
         }
 
         private void dataGridViewReserva_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && autoCompletar)
-            {
-                DataGridViewRow row = dataGridViewReserva.Rows[e.RowIndex];
-                textBoxReserva.Text = row.Cells["ColumnId"].Value.ToString();
-            }
+                textBoxReserva.Text = dataGridViewReserva.Rows[e.RowIndex].Cells["ColumnId"].Value.ToString();
         }
 
         private void buttonCancelar_Click(object sender, EventArgs e)

@@ -21,6 +21,9 @@ builder.Services.AddScoped<TipoVehiculoRepositorio>();
 builder.Services.AddScoped<EstadoVehiculoRepositorio>();
 builder.Services.AddScoped<ReservaRepositorio>();
 builder.Services.AddScoped<EstadoReservaRepositorio>();
+builder.Services.AddScoped<AlquilerRepositorio>();
+builder.Services.AddScoped<EstadoAlquilerRepositorio>();
+builder.Services.AddScoped<ConductorRepositorio>();
 
 var app = builder.Build();
 

@@ -1,11 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RentaCar.Dominio;
 using RentaCar.Infraestructura.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RentaCar.Infraestructura
 {
@@ -17,39 +12,40 @@ namespace RentaCar.Infraestructura
         {
             _context = context;
         }
-
-        // Obtener todos los alquileres
         public List<Alquiler> ObtenerTodos()
         {
-            return _context.Alquileres.ToList();
+            return _context.Alquileres
+                .Include(a => a.Conductor)
+                .Include(a => a.Cliente)
+                .Include(a => a.Estado)
+                .Include(a => a.Reserva)
+                .Include(a => a.Vehiculo)
+                .ToList();
         }
-
-        // Obtener alquiler por ID
         public Alquiler? ObtenerPorId(int id)
         {
             return _context.Alquileres
+                .Include(a => a.Conductor)
+                .Include(a => a.Cliente)
+                .Include(a => a.Estado)
+                .Include(a => a.Reserva)
+                .Include(a => a.Vehiculo)
                 .FirstOrDefault(a => a.Id == id);
         }
 
-        // Agregar alquiler
         public void Agregar(Alquiler alquiler)
         {
             _context.Alquileres.Add(alquiler);
             _context.SaveChanges();
         }
-
-        // Actualizar alquiler
         public void Actualizar(Alquiler alquiler)
         {
             _context.Alquileres.Update(alquiler);
             _context.SaveChanges();
         }
-
-        // Eliminar alquiler
         public void Eliminar(int id)
         {
-            var alquiler = _context.Alquileres
-                .FirstOrDefault(a => a.Id == id);
+            var alquiler = _context.Alquileres.Find(id);
 
             if (alquiler != null)
             {
