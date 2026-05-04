@@ -26,5 +26,6 @@ namespace RentaCar.Dominio
             RolId = rolId;
             Activo = activo;
         }
+        public Usuario() { }
     }
 }

@@ -64,5 +64,10 @@ namespace RentaCar.Infraestructura
                 _context.SaveChanges();
             }
         }
+        public bool ExisteNombreUsuario(string nombreUsuario)
+        {
+            return _context.Usuarios
+                .Any(u => u.NombreUsuario == nombreUsuario);
+        }
     }
 }

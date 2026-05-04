@@ -5,5 +5,6 @@
         public Rol(string nombre) : base(nombre)
         {
         }
+        public Rol() { }
     }
 }

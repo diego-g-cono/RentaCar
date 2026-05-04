@@ -24,6 +24,9 @@ builder.Services.AddScoped<EstadoReservaRepositorio>();
 builder.Services.AddScoped<AlquilerRepositorio>();
 builder.Services.AddScoped<EstadoAlquilerRepositorio>();
 builder.Services.AddScoped<ConductorRepositorio>();
+builder.Services.AddScoped<TarifaRepositorio>();
+builder.Services.AddScoped<DevolucionRepositorio>();
+builder.Services.AddScoped<UsuarioRepositorio>();
 
 var app = builder.Build();
 

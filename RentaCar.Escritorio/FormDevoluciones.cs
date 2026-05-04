@@ -1,53 +1,45 @@
-﻿using RentaCar.Dominio;
-using RentaCar.Infraestructura;
-using RentaCar.Infraestructura.Data;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using RentaCar.Dtos.Devoluciones;
+using RentaCar.Dtos.Alquileres;
+using RentaCar.Escritorio.Servicios;
 
 namespace RentaCar.Escritorio
 {
     public partial class FormDevoluciones : Form
     {
-        private readonly RentaCarDBContext _context;
-        private readonly DevolucionRepositorio _repoDevoluciones;
-        private readonly AlquilerRepositorio _repoAlquileres;
+        private readonly DevolucionServicio _devolucionServicio;
+        private readonly AlquilerServicio _alquilerServicio;
+
         private bool modoEdicion = false;
         private bool autoCompletar = false;
+        private int devolucionIdSeleccionada;
 
         public FormDevoluciones()
         {
-            _context = new RentaCarDBContext();
-            _repoDevoluciones = new DevolucionRepositorio(_context);
-            _repoAlquileres = new AlquilerRepositorio(_context);
             InitializeComponent();
-        }
-        private void FormDevoluciones_Load(object sender, EventArgs e)
-        {
-            BloquearCampos(false);
-            CargarDevoluciones();
-            CargarAlquileres();
-            CargarTanqueLleno();
-            MessageBox.Show("entrando");
+            _devolucionServicio = new DevolucionServicio();
+            _alquilerServicio = new AlquilerServicio();
         }
 
-        private void CargarDevoluciones()
+        private async void FormDevoluciones_Load(object sender, EventArgs e)
         {
-            var devoluciones = _repoDevoluciones.ObtenerTodos();
+            BloquearCampos(false);
+            await CargarDevoluciones();
+            await CargarAlquileres();
+            CargarTanqueLleno();
+        }
+
+        private async Task CargarDevoluciones()
+        {
+            var devoluciones = await _devolucionServicio.ObtenerTodos();
+
             dataGridViewDevoluciones.AutoGenerateColumns = false;
             dataGridViewDevoluciones.DataSource = devoluciones;
         }
 
-        private void CargarAlquileres()
+        private async Task CargarAlquileres()
         {
-            var alquileres = _repoAlquileres.ObtenerTodos();
+            var alquileres = await _alquilerServicio.ObtenerTodos();
+
             dataGridViewAlquileres.AutoGenerateColumns = false;
             dataGridViewAlquileres.DataSource = alquileres;
         }
@@ -69,7 +61,6 @@ namespace RentaCar.Escritorio
         private void BloquearCampos(bool estado)
         {
             dtpFechaDevolucion.Enabled = estado;
-            //textBoxAlquiler.Enabled = estado;
             comboBoxTqueLleno.Enabled = estado;
             textBoxObservaciones.Enabled = estado;
         }
@@ -100,7 +91,10 @@ namespace RentaCar.Escritorio
 
             BloquearCampos(true);
 
-            Devolucion devolucion = (Devolucion)dataGridViewDevoluciones.SelectedRows[0].DataBoundItem;
+            var devolucion = (DevolucionResponse)dataGridViewDevoluciones.SelectedRows[0].DataBoundItem;
+
+            devolucionIdSeleccionada = devolucion.Id;
+
             dtpFechaDevolucion.Value = devolucion.Fecha.ToDateTime(new TimeOnly());
             textBoxAlquiler.Text = devolucion.AlquilerId.ToString();
             comboBoxTqueLleno.SelectedValue = devolucion.TanqueLleno;
@@ -108,32 +102,9 @@ namespace RentaCar.Escritorio
 
             autoCompletar = true;
             modoEdicion = true;
-
         }
 
-        private void buttonEliminar_Click(object sender, EventArgs e)
-        {
-            if (dataGridViewDevoluciones.SelectedRows.Count == 0)
-            {
-                MessageBox.Show("No seleccionaste ninguna devolución.");
-                return;
-            }
-
-            var confirm = MessageBox.Show("¿Estás seguro de eliminar esta devolución?", "Confirmar eliminación", MessageBoxButtons.YesNo);
-
-            if (confirm != DialogResult.Yes)
-                return;
-
-            var devolucion = (Devolucion)dataGridViewDevoluciones.SelectedRows[0].DataBoundItem;
-            _repoDevoluciones.Eliminar(devolucion.Id);
-
-            CargarDevoluciones();
-            LimpiarCampos();
-            BloquearCampos(false);
-            autoCompletar = false;
-        }
-
-        private void buttonGuardar_Click(object sender, EventArgs e)
+        private async void buttonGuardar_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(textBoxAlquiler.Text))
             {
@@ -147,43 +118,66 @@ namespace RentaCar.Escritorio
                 return;
             }
 
-            if (comboBoxTqueLleno.SelectedValue == null)
-            {
-                MessageBox.Show("Debe seleccionar una opción válida para el tanque lleno.");
+            var confirm = MessageBox.Show("¿Confirmar operación?", "Confirmar", MessageBoxButtons.YesNo);
+
+            if (confirm != DialogResult.Yes)
                 return;
-            }
 
             if (modoEdicion)
             {
-                var devolucion = (Devolucion)dataGridViewDevoluciones.SelectedRows[0].DataBoundItem;
-                devolucion.Fecha = DateOnly.FromDateTime(dtpFechaDevolucion.Value);
-                devolucion.AlquilerId = int.Parse(textBoxAlquiler.Text);
-                devolucion.TanqueLleno = (bool)comboBoxTqueLleno.SelectedValue;
-                devolucion.Observaciones = textBoxObservaciones.Text;
-                _repoDevoluciones.Actualizar(devolucion);
-                MessageBox.Show("Devolución actualizada correctamente.");
-
-            }
-            else
-            {
-                var devolucion = new Devolucion()
+                var update = new DevolucionUpdateRequest
                 {
                     Fecha = DateOnly.FromDateTime(dtpFechaDevolucion.Value),
                     AlquilerId = int.Parse(textBoxAlquiler.Text),
                     TanqueLleno = (bool)comboBoxTqueLleno.SelectedValue,
                     Observaciones = textBoxObservaciones.Text
                 };
-                _repoDevoluciones.Agregar(devolucion);
+
+                await _devolucionServicio.Actualizar(devolucionIdSeleccionada, update);
+
+                MessageBox.Show("Devolución actualizada correctamente.");
+            }
+            else
+            {
+                var create = new DevolucionCreateRequest
+                {
+                    Fecha = DateOnly.FromDateTime(dtpFechaDevolucion.Value),
+                    AlquilerId = int.Parse(textBoxAlquiler.Text),
+                    TanqueLleno = (bool)comboBoxTqueLleno.SelectedValue,
+                    Observaciones = textBoxObservaciones.Text
+                };
+
+                await _devolucionServicio.Agregar(create);
+
                 MessageBox.Show("Devolución creada correctamente.");
             }
 
-            _context.SaveChanges();
-
-            CargarDevoluciones();
+            await CargarDevoluciones();
             LimpiarCampos();
             BloquearCampos(false);
             autoCompletar = false;
+        }
 
+        private async void buttonEliminar_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewDevoluciones.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("No seleccionaste ninguna devolución.");
+                return;
+            }
+
+            var devolucion = (DevolucionResponse)dataGridViewDevoluciones.SelectedRows[0].DataBoundItem;
+
+            var confirm = MessageBox.Show("¿Eliminar devolución?", "Confirmar", MessageBoxButtons.YesNo);
+
+            if (confirm != DialogResult.Yes)
+                return;
+
+            await _devolucionServicio.Eliminar(devolucion.Id);
+
+            await CargarDevoluciones();
+            LimpiarCampos();
+            BloquearCampos(false);
         }
 
         private void buttonCancelar_Click(object sender, EventArgs e)
@@ -197,7 +191,7 @@ namespace RentaCar.Escritorio
         {
             if (e.RowIndex >= 0 && autoCompletar)
             {
-                var alquiler = (Alquiler)dataGridViewAlquileres.Rows[e.RowIndex].DataBoundItem;
+                var alquiler = (AlquilerResponse)dataGridViewAlquileres.Rows[e.RowIndex].DataBoundItem;
                 textBoxAlquiler.Text = alquiler.Id.ToString();
             }
         }

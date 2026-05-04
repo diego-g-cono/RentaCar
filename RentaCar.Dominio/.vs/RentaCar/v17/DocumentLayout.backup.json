@@ -3,10 +3,16 @@
   "WorkspaceRootPath": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Dominio\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4117058D-68E7-41BC-BB4F-4C6DD3AC24C6}|..\\RentaCar.Escritorio\\RentaCar.Escritorio.csproj|d:\\seminario i\\tp final\\rev1\\rentacar\\rentacar.escritorio\\formalquileres.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4117058D-68E7-41BC-BB4F-4C6DD3AC24C6}|..\\RentaCar.Escritorio\\RentaCar.Escritorio.csproj|d:\\seminario i\\tp final\\rev1\\rentacar\\rentacar.escritorio\\formusuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4117058D-68E7-41BC-BB4F-4C6DD3AC24C6}|..\\RentaCar.Escritorio\\RentaCar.Escritorio.csproj|d:\\seminario i\\tp final\\rev1\\rentacar\\rentacar.escritorio\\formalquileres.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{4117058D-68E7-41BC-BB4F-4C6DD3AC24C6}|..\\RentaCar.Escritorio\\RentaCar.Escritorio.csproj|d:\\seminario i\\tp final\\rev1\\rentacar\\rentacar.escritorio\\formconductores.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5CB2976B-D53D-47B6-B5BC-212ADA9F1B9E}|..\\RentaCar.Api\\RentaCar.Api.csproj|d:\\seminario i\\tp final\\rev1\\rentacar\\rentacar.api\\controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4117058D-68E7-41BC-BB4F-4C6DD3AC24C6}|..\\RentaCar.Escritorio\\RentaCar.Escritorio.csproj|d:\\seminario i\\tp final\\rev1\\rentacar\\rentacar.escritorio\\formusuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -16,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 303,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -25,27 +31,52 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "FormAlquileres.cs [Design]",
-              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Escritorio\\FormAlquileres.cs",
-              "RelativeDocumentMoniker": "..\\RentaCar.Escritorio\\FormAlquileres.cs",
-              "ToolTip": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Escritorio\\FormAlquileres.cs [Design]",
-              "RelativeToolTip": "..\\RentaCar.Escritorio\\FormAlquileres.cs [Design]",
+              "Title": "FormConductores.cs [Design]",
+              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Escritorio\\FormConductores.cs",
+              "RelativeDocumentMoniker": "..\\RentaCar.Escritorio\\FormConductores.cs",
+              "ToolTip": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Escritorio\\FormConductores.cs [Design]",
+              "RelativeToolTip": "..\\RentaCar.Escritorio\\FormConductores.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-04T01:54:38.459Z",
+              "WhenOpened": "2026-05-04T23:09:22.556Z",
               "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "FormAlquileres.cs",
-              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Escritorio\\FormAlquileres.cs",
-              "RelativeDocumentMoniker": "..\\RentaCar.Escritorio\\FormAlquileres.cs",
-              "ToolTip": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Escritorio\\FormAlquileres.cs",
-              "RelativeToolTip": "..\\RentaCar.Escritorio\\FormAlquileres.cs",
-              "ViewState": "AgIAAC8AAAAAAAAAAAAwwEUAAAA3AAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "UsuariosController.cs",
+              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Api\\Controllers\\UsuariosController.cs",
+              "RelativeDocumentMoniker": "..\\RentaCar.Api\\Controllers\\UsuariosController.cs",
+              "ToolTip": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Api\\Controllers\\UsuariosController.cs",
+              "RelativeToolTip": "..\\RentaCar.Api\\Controllers\\UsuariosController.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-04T00:35:25.08Z",
+              "WhenOpened": "2026-05-04T23:07:42.99Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "FormUsuarios.cs",
+              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Escritorio\\FormUsuarios.cs",
+              "RelativeDocumentMoniker": "..\\RentaCar.Escritorio\\FormUsuarios.cs",
+              "ToolTip": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Escritorio\\FormUsuarios.cs",
+              "RelativeToolTip": "..\\RentaCar.Escritorio\\FormUsuarios.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAQwAcAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-04T22:13:11.473Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FormUsuarios.cs [Design]",
+              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Escritorio\\FormUsuarios.cs",
+              "RelativeDocumentMoniker": "..\\RentaCar.Escritorio\\FormUsuarios.cs",
+              "ToolTip": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Escritorio\\FormUsuarios.cs [Design]",
+              "RelativeToolTip": "..\\RentaCar.Escritorio\\FormUsuarios.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-04T22:13:01.899Z",
+              "EditorCaption": " [Design]"
             }
           ]
         }

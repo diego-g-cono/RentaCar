@@ -429,14 +429,14 @@
             // 
             // dataGridViewTextBoxColumn6
             // 
-            dataGridViewTextBoxColumn6.DataPropertyName = "ClienteId";
+            dataGridViewTextBoxColumn6.DataPropertyName = "ClienteDni";
             dataGridViewTextBoxColumn6.HeaderText = "Cliente";
             dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             dataGridViewTextBoxColumn6.ReadOnly = true;
             // 
             // DniConductor
             // 
-            DniConductor.DataPropertyName = "ConductorId";
+            DniConductor.DataPropertyName = "ConductorDni";
             DniConductor.HeaderText = "Conductor";
             DniConductor.Name = "DniConductor";
             DniConductor.ReadOnly = true;
@@ -450,7 +450,7 @@
             // 
             // dataGridViewTextBoxColumn12
             // 
-            dataGridViewTextBoxColumn12.DataPropertyName = "EstadoId";
+            dataGridViewTextBoxColumn12.DataPropertyName = "EstadoNombre";
             dataGridViewTextBoxColumn12.HeaderText = "Estado";
             dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
             dataGridViewTextBoxColumn12.ReadOnly = true;
@@ -503,6 +503,10 @@
         private TextBox textBoxAlquiler;
         private DataGridView dataGridViewDevoluciones;
         private DataGridView dataGridViewAlquileres;
+        private DataGridViewTextBoxColumn fechaColumn;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
@@ -512,9 +516,5 @@
         private DataGridViewTextBoxColumn DniConductor;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
-        private DataGridViewTextBoxColumn fechaColumn;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
     }
 }

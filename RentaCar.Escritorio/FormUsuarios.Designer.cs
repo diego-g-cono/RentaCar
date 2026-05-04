@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             buttonCancelar = new Button();
             buttonGuardar = new Button();
             groupBox = new GroupBox();
@@ -41,13 +43,15 @@
             buttonEliminar = new Button();
             buttonEditar = new Button();
             buttonNuevo = new Button();
-            dataGridView1 = new DataGridView();
+            dataGridViewUsuarios = new DataGridView();
+            idDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             nombreUsuarioDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            contraseniaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             rolIdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             activoDataGridViewCheckBoxColumn = new DataGridViewCheckBoxColumn();
             usuarioBindingSource = new BindingSource(components);
             groupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewUsuarios).BeginInit();
             ((System.ComponentModel.ISupportInitialize)usuarioBindingSource).BeginInit();
             SuspendLayout();
             // 
@@ -60,12 +64,13 @@
             buttonCancelar.FlatStyle = FlatStyle.Flat;
             buttonCancelar.Font = new Font("Verdana", 9F);
             buttonCancelar.ForeColor = SystemColors.ButtonFace;
-            buttonCancelar.Location = new Point(265, 305);
+            buttonCancelar.Location = new Point(265, 290);
             buttonCancelar.Name = "buttonCancelar";
             buttonCancelar.Size = new Size(77, 33);
             buttonCancelar.TabIndex = 34;
             buttonCancelar.Text = "Cancelar";
             buttonCancelar.UseVisualStyleBackColor = false;
+            buttonCancelar.Click += buttonCancelar_Click;
             // 
             // buttonGuardar
             // 
@@ -76,12 +81,13 @@
             buttonGuardar.FlatStyle = FlatStyle.Flat;
             buttonGuardar.Font = new Font("Verdana", 9F);
             buttonGuardar.ForeColor = SystemColors.ButtonFace;
-            buttonGuardar.Location = new Point(27, 305);
+            buttonGuardar.Location = new Point(27, 290);
             buttonGuardar.Name = "buttonGuardar";
             buttonGuardar.Size = new Size(77, 33);
             buttonGuardar.TabIndex = 33;
             buttonGuardar.Text = "Guardar";
             buttonGuardar.UseVisualStyleBackColor = false;
+            buttonGuardar.Click += buttonGuardar_Click;
             // 
             // groupBox
             // 
@@ -93,7 +99,7 @@
             groupBox.Controls.Add(labelApellido);
             groupBox.Font = new Font("Verdana", 9F, FontStyle.Bold);
             groupBox.ForeColor = SystemColors.ButtonFace;
-            groupBox.Location = new Point(27, 111);
+            groupBox.Location = new Point(27, 86);
             groupBox.Name = "groupBox";
             groupBox.Size = new Size(315, 177);
             groupBox.TabIndex = 32;
@@ -137,7 +143,7 @@
             // 
             labelEmail.AutoSize = true;
             labelEmail.Font = new Font("Verdana", 9F);
-            labelEmail.Location = new Point(76, 84);
+            labelEmail.Location = new Point(24, 84);
             labelEmail.Name = "labelEmail";
             labelEmail.Size = new Size(31, 14);
             labelEmail.TabIndex = 16;
@@ -147,7 +153,7 @@
             // 
             labelTelefono.AutoSize = true;
             labelTelefono.Font = new Font("Verdana", 9F);
-            labelTelefono.Location = new Point(67, 134);
+            labelTelefono.Location = new Point(24, 131);
             labelTelefono.Name = "labelTelefono";
             labelTelefono.Size = new Size(49, 14);
             labelTelefono.TabIndex = 3;
@@ -172,12 +178,13 @@
             buttonEliminar.FlatStyle = FlatStyle.Flat;
             buttonEliminar.Font = new Font("Verdana", 9F);
             buttonEliminar.ForeColor = SystemColors.ButtonFace;
-            buttonEliminar.Location = new Point(235, 64);
+            buttonEliminar.Location = new Point(265, 21);
             buttonEliminar.Name = "buttonEliminar";
             buttonEliminar.Size = new Size(77, 33);
             buttonEliminar.TabIndex = 31;
             buttonEliminar.Text = "Eliminar";
             buttonEliminar.UseVisualStyleBackColor = false;
+            buttonEliminar.Click += buttonEliminar_Click;
             // 
             // buttonEditar
             // 
@@ -188,12 +195,13 @@
             buttonEditar.FlatStyle = FlatStyle.Flat;
             buttonEditar.Font = new Font("Verdana", 9F);
             buttonEditar.ForeColor = SystemColors.ButtonFace;
-            buttonEditar.Location = new Point(135, 64);
+            buttonEditar.Location = new Point(145, 21);
             buttonEditar.Name = "buttonEditar";
             buttonEditar.Size = new Size(77, 33);
             buttonEditar.TabIndex = 30;
             buttonEditar.Text = "Editar";
             buttonEditar.UseVisualStyleBackColor = false;
+            buttonEditar.Click += buttonEditar_Click;
             // 
             // buttonNuevo
             // 
@@ -204,34 +212,66 @@
             buttonNuevo.FlatStyle = FlatStyle.Flat;
             buttonNuevo.Font = new Font("Verdana", 9F);
             buttonNuevo.ForeColor = SystemColors.ButtonFace;
-            buttonNuevo.Location = new Point(39, 64);
+            buttonNuevo.Location = new Point(27, 21);
             buttonNuevo.Name = "buttonNuevo";
             buttonNuevo.Size = new Size(77, 33);
             buttonNuevo.TabIndex = 29;
             buttonNuevo.Text = "Nuevo";
             buttonNuevo.UseVisualStyleBackColor = false;
+            buttonNuevo.Click += buttonNuevo_Click;
             // 
-            // dataGridView1
+            // dataGridViewUsuarios
             // 
-            dataGridView1.AutoGenerateColumns = false;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { nombreUsuarioDataGridViewTextBoxColumn, rolIdDataGridViewTextBoxColumn, activoDataGridViewCheckBoxColumn });
-            dataGridView1.DataSource = usuarioBindingSource;
-            dataGridView1.Location = new Point(395, 64);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(349, 242);
-            dataGridView1.TabIndex = 35;
+            dataGridViewUsuarios.AutoGenerateColumns = false;
+            dataGridViewUsuarios.BackgroundColor = Color.MidnightBlue;
+            dataGridViewUsuarios.BorderStyle = BorderStyle.Fixed3D;
+            dataGridViewUsuarios.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
+            dataGridViewUsuarios.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.MidnightBlue;
+            dataGridViewCellStyle1.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ButtonFace;
+            dataGridViewCellStyle1.SelectionBackColor = Color.RoyalBlue;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridViewUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewUsuarios.Columns.AddRange(new DataGridViewColumn[] { idDataGridViewTextBoxColumn, nombreUsuarioDataGridViewTextBoxColumn, contraseniaDataGridViewTextBoxColumn, rolIdDataGridViewTextBoxColumn, activoDataGridViewCheckBoxColumn });
+            dataGridViewUsuarios.DataSource = usuarioBindingSource;
+            dataGridViewUsuarios.GridColor = Color.MidnightBlue;
+            dataGridViewUsuarios.Location = new Point(395, 64);
+            dataGridViewUsuarios.Name = "dataGridViewUsuarios";
+            dataGridViewCellStyle2.BackColor = Color.MidnightBlue;
+            dataGridViewCellStyle2.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ButtonFace;
+            dataGridViewCellStyle2.SelectionBackColor = Color.RoyalBlue;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.ButtonFace;
+            dataGridViewUsuarios.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewUsuarios.Size = new Size(548, 242);
+            dataGridViewUsuarios.TabIndex = 35;
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            idDataGridViewTextBoxColumn.HeaderText = "Id";
+            idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
             // 
             // nombreUsuarioDataGridViewTextBoxColumn
             // 
             nombreUsuarioDataGridViewTextBoxColumn.DataPropertyName = "NombreUsuario";
-            nombreUsuarioDataGridViewTextBoxColumn.HeaderText = "Usuario";
+            nombreUsuarioDataGridViewTextBoxColumn.HeaderText = "NombreUsuario";
             nombreUsuarioDataGridViewTextBoxColumn.Name = "nombreUsuarioDataGridViewTextBoxColumn";
+            // 
+            // contraseniaDataGridViewTextBoxColumn
+            // 
+            contraseniaDataGridViewTextBoxColumn.DataPropertyName = "Contrasenia";
+            contraseniaDataGridViewTextBoxColumn.HeaderText = "Contrasenia";
+            contraseniaDataGridViewTextBoxColumn.Name = "contraseniaDataGridViewTextBoxColumn";
             // 
             // rolIdDataGridViewTextBoxColumn
             // 
             rolIdDataGridViewTextBoxColumn.DataPropertyName = "RolId";
-            rolIdDataGridViewTextBoxColumn.HeaderText = "Rol";
+            rolIdDataGridViewTextBoxColumn.HeaderText = "RolId";
             rolIdDataGridViewTextBoxColumn.Name = "rolIdDataGridViewTextBoxColumn";
             // 
             // activoDataGridViewCheckBoxColumn
@@ -249,8 +289,8 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MidnightBlue;
-            ClientSize = new Size(800, 375);
-            Controls.Add(dataGridView1);
+            ClientSize = new Size(1010, 375);
+            Controls.Add(dataGridViewUsuarios);
             Controls.Add(buttonCancelar);
             Controls.Add(buttonGuardar);
             Controls.Add(groupBox);
@@ -261,7 +301,7 @@
             Text = "Usuarios";
             groupBox.ResumeLayout(false);
             groupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewUsuarios).EndInit();
             ((System.ComponentModel.ISupportInitialize)usuarioBindingSource).EndInit();
             ResumeLayout(false);
         }
@@ -278,12 +318,14 @@
         private Button buttonEliminar;
         private Button buttonEditar;
         private Button buttonNuevo;
-        private DataGridView dataGridView1;
+        private DataGridView dataGridViewUsuarios;
         private BindingSource usuarioBindingSource;
-        private DataGridViewTextBoxColumn nombreUsuarioDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn rolIdDataGridViewTextBoxColumn;
-        private DataGridViewCheckBoxColumn activoDataGridViewCheckBoxColumn;
         private ComboBox comboBoxRol;
         private ComboBox comboBoxActivo;
+        private DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn nombreUsuarioDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn contraseniaDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn rolIdDataGridViewTextBoxColumn;
+        private DataGridViewCheckBoxColumn activoDataGridViewCheckBoxColumn;
     }
 }

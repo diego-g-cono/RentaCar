@@ -66,7 +66,7 @@
             buttonNuevo.FlatStyle = FlatStyle.Flat;
             buttonNuevo.Font = new Font("Verdana", 9F);
             buttonNuevo.ForeColor = SystemColors.ButtonFace;
-            buttonNuevo.Location = new Point(24, 22);
+            buttonNuevo.Location = new Point(12, 22);
             buttonNuevo.Name = "buttonNuevo";
             buttonNuevo.Size = new Size(77, 33);
             buttonNuevo.TabIndex = 4;
@@ -83,7 +83,7 @@
             buttonEditar.FlatStyle = FlatStyle.Flat;
             buttonEditar.Font = new Font("Verdana", 9F);
             buttonEditar.ForeColor = SystemColors.ButtonFace;
-            buttonEditar.Location = new Point(120, 22);
+            buttonEditar.Location = new Point(131, 22);
             buttonEditar.Name = "buttonEditar";
             buttonEditar.Size = new Size(77, 33);
             buttonEditar.TabIndex = 5;
@@ -100,7 +100,7 @@
             buttonEliminar.FlatStyle = FlatStyle.Flat;
             buttonEliminar.Font = new Font("Verdana", 9F);
             buttonEliminar.ForeColor = SystemColors.ButtonFace;
-            buttonEliminar.Location = new Point(220, 22);
+            buttonEliminar.Location = new Point(250, 22);
             buttonEliminar.Name = "buttonEliminar";
             buttonEliminar.Size = new Size(77, 33);
             buttonEliminar.TabIndex = 6;
@@ -120,9 +120,9 @@
             groupBox.Controls.Add(labelNombre);
             groupBox.Font = new Font("Verdana", 9F, FontStyle.Bold);
             groupBox.ForeColor = SystemColors.ButtonFace;
-            groupBox.Location = new Point(12, 90);
+            groupBox.Location = new Point(12, 66);
             groupBox.Name = "groupBox";
-            groupBox.Size = new Size(315, 187);
+            groupBox.Size = new Size(315, 211);
             groupBox.TabIndex = 7;
             groupBox.TabStop = false;
             groupBox.Text = "Datos Tarifa";
@@ -218,7 +218,7 @@
             buttonCancelar.FlatStyle = FlatStyle.Flat;
             buttonCancelar.Font = new Font("Verdana", 9F);
             buttonCancelar.ForeColor = SystemColors.ButtonFace;
-            buttonCancelar.Location = new Point(250, 303);
+            buttonCancelar.Location = new Point(250, 293);
             buttonCancelar.Name = "buttonCancelar";
             buttonCancelar.Size = new Size(77, 33);
             buttonCancelar.TabIndex = 22;
@@ -235,7 +235,7 @@
             buttonGuardar.FlatStyle = FlatStyle.Flat;
             buttonGuardar.Font = new Font("Verdana", 9F);
             buttonGuardar.ForeColor = SystemColors.ButtonFace;
-            buttonGuardar.Location = new Point(12, 303);
+            buttonGuardar.Location = new Point(12, 293);
             buttonGuardar.Name = "buttonGuardar";
             buttonGuardar.Size = new Size(77, 33);
             buttonGuardar.TabIndex = 21;
@@ -304,15 +304,15 @@
             // 
             // ActivaDataGridViewCheckBoxColumn
             // 
-            ActivaDataGridViewCheckBoxColumn.DataPropertyName = "ActivaDataGridViewCheckBoxColumn";
+            ActivaDataGridViewCheckBoxColumn.DataPropertyName = "Activa";
             ActivaDataGridViewCheckBoxColumn.HeaderText = "Activa";
             ActivaDataGridViewCheckBoxColumn.Name = "ActivaDataGridViewCheckBoxColumn";
             ActivaDataGridViewCheckBoxColumn.ReadOnly = true;
             // 
             // NombreVehiculo
             // 
-            NombreVehiculo.DataPropertyName = "NombreVehiculo";
-            NombreVehiculo.HeaderText = "Vehiculo";
+            NombreVehiculo.DataPropertyName = "TipoVehiculoNombre";
+            NombreVehiculo.HeaderText = "Tipo Vehiculo";
             NombreVehiculo.Name = "NombreVehiculo";
             NombreVehiculo.ReadOnly = true;
             // 
