@@ -1,0 +1,116 @@
+﻿@page "/flota"
+@inject IHttpClientFactory HttpFactory
+@using RentaCar.Dtos.Vehiculos
+
+<div class="page-container">
+
+    <h3 class="titulo">Nuestra flota</h3>
+
+    @if (vehiculos == null)
+    {
+        <p class="loading">Cargando vehículos...</p>
+    }
+    else if (!vehiculos.Any())
+    {
+        <p class="empty">No hay vehículos disponibles 😕</p>
+    }
+    else
+    {
+        <div class="grid">
+            @foreach (var v in vehiculos)
+            {
+                <div class="auto-card">
+                    <img src="@ObtenerImagen(v)"
+                         class="auto-img"
+                         onerror="this.src='images/autos/default.jpg'" />
+
+                    <h4>@v.MarcaNombre @v.ModeloNombre</h4>
+
+                    <span class="badge">@v.TipoNombre</span>
+
+                    <p class="patente">@v.Patente</p>
+                </div>
+            }
+        </div>
+    }
+
+</div>
+
+@code {
+    private List<VehiculoResponse>? vehiculos;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var client = HttpFactory.CreateClient("Api");
+
+        vehiculos = await client.GetFromJsonAsync<List<VehiculoResponse>>("vehiculos");
+    }
+
+    private string ObtenerImagen(VehiculoResponse v)
+    {
+        var marca = v.MarcaNombre?.ToLower().Replace(" ", "-");
+        var modelo = v.ModeloNombre?.ToLower().Replace(" ", "-");
+
+        return $"images/autos/{marca}-{modelo}.png";
+    }
+}
+<style>
+    .titulo {
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 28px;
+    }
+
+    .loading, .empty {
+        text-align: center;
+        color: #94a3b8;
+    }
+
+    .grid {
+        max-width: 1200px;
+        margin: auto;
+    }
+
+    .auto-card {
+        background: #1e293b;
+        padding: 15px;
+        border-radius: 12px;
+        text-align: center;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        transition: transform 0.2s;
+    }
+
+    .auto-card:hover {
+        transform: scale(1.03);
+    }
+
+    .auto-img {
+        width: 100%;
+        height: 140px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
+
+    .badge {
+        display: inline-block;
+        background: #2563eb;
+        padding: 5px 10px;
+        border-radius: 8px;
+        font-size: 12px;
+        margin-bottom: 8px;
+    }
+
+    .patente {
+        color: #94a3b8;
+        font-size: 14px;
+    }
+
+    .page-container {
+        background: #0f172a;
+        min-height: 100vh;
+        padding: 30px;
+        color: #e5e7eb;
+    }
+
+</style>

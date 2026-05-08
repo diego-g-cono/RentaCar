@@ -43,10 +43,13 @@
 
     private void BuscarAutos()
     {
-        Console.WriteLine("CLICK FUNCIONA");
         var url = $"/vehiculos?inicio={FechaRetiro:yyyy-MM-dd}&fin={FechaDevolucion:yyyy-MM-dd}";
         Nav.NavigateTo(url);
     }
+    private void BuscarFlota()
+    {
+        Nav.NavigateTo("/flota");
+	}
 }
 
 <style>
