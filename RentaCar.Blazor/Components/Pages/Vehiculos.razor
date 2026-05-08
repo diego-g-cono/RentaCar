@@ -1,0 +1,46 @@
+﻿@page "/vehiculos"
+@inject IHttpClientFactory HttpFactory
+@inject NavigationManager Nav
+@using RentaCar.Dtos.Vehiculos
+
+<h3>Autos disponibles</h3>
+
+@if (vehiculos == null)
+{
+    <p>Cargando...</p>
+}
+else if (!vehiculos.Any())
+{
+    <p>No hay autos disponibles 😕</p>
+}
+else
+{
+    @foreach (var v in vehiculos)
+    {
+        <div class="auto-card">
+            <p><b>@v.MarcaNombre @v.ModeloNombre</b></p>
+            <p>@v.TipoNombre</p>
+            <p>@v.Patente</p>
+        </div>
+    }
+}
+
+@code {
+    private List<VehiculoResponse>? vehiculos;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var uri = Nav.ToAbsoluteUri(Nav.Uri);
+        var query = System.Web.HttpUtility.ParseQueryString(uri.Query);
+        var http = HttpFactory.CreateClient("API");
+
+        var inicio = query["inicio"];
+        var fin = query["fin"];
+
+        var client = HttpFactory.CreateClient("Api");
+
+        vehiculos = await client.GetFromJsonAsync<List<VehiculoResponse>>(
+            $"vehiculos/disponibles?fechaInicio={inicio}&fechaFin={fin}"
+        );
+    }
+}

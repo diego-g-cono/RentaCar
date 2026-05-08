@@ -44,12 +44,10 @@
             buttonEditar = new Button();
             buttonNuevo = new Button();
             dataGridViewUsuarios = new DataGridView();
-            idDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            nombreUsuarioDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            contraseniaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            rolIdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            activoDataGridViewCheckBoxColumn = new DataGridViewCheckBoxColumn();
             usuarioBindingSource = new BindingSource(components);
+            ColumnNombre = new DataGridViewTextBoxColumn();
+            ColumnRol = new DataGridViewTextBoxColumn();
+            ColumnActivo = new DataGridViewTextBoxColumn();
             groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewUsuarios).BeginInit();
             ((System.ComponentModel.ISupportInitialize)usuarioBindingSource).BeginInit();
@@ -222,7 +220,6 @@
             // 
             // dataGridViewUsuarios
             // 
-            dataGridViewUsuarios.AutoGenerateColumns = false;
             dataGridViewUsuarios.BackgroundColor = Color.MidnightBlue;
             dataGridViewUsuarios.BorderStyle = BorderStyle.Fixed3D;
             dataGridViewUsuarios.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
@@ -236,8 +233,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dataGridViewUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewUsuarios.Columns.AddRange(new DataGridViewColumn[] { idDataGridViewTextBoxColumn, nombreUsuarioDataGridViewTextBoxColumn, contraseniaDataGridViewTextBoxColumn, rolIdDataGridViewTextBoxColumn, activoDataGridViewCheckBoxColumn });
-            dataGridViewUsuarios.DataSource = usuarioBindingSource;
+            dataGridViewUsuarios.Columns.AddRange(new DataGridViewColumn[] { ColumnNombre, ColumnRol, ColumnActivo });
             dataGridViewUsuarios.GridColor = Color.MidnightBlue;
             dataGridViewUsuarios.Location = new Point(395, 64);
             dataGridViewUsuarios.Name = "dataGridViewUsuarios";
@@ -250,39 +246,27 @@
             dataGridViewUsuarios.Size = new Size(548, 242);
             dataGridViewUsuarios.TabIndex = 35;
             // 
-            // idDataGridViewTextBoxColumn
-            // 
-            idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            idDataGridViewTextBoxColumn.HeaderText = "Id";
-            idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            // 
-            // nombreUsuarioDataGridViewTextBoxColumn
-            // 
-            nombreUsuarioDataGridViewTextBoxColumn.DataPropertyName = "NombreUsuario";
-            nombreUsuarioDataGridViewTextBoxColumn.HeaderText = "NombreUsuario";
-            nombreUsuarioDataGridViewTextBoxColumn.Name = "nombreUsuarioDataGridViewTextBoxColumn";
-            // 
-            // contraseniaDataGridViewTextBoxColumn
-            // 
-            contraseniaDataGridViewTextBoxColumn.DataPropertyName = "Contrasenia";
-            contraseniaDataGridViewTextBoxColumn.HeaderText = "Contrasenia";
-            contraseniaDataGridViewTextBoxColumn.Name = "contraseniaDataGridViewTextBoxColumn";
-            // 
-            // rolIdDataGridViewTextBoxColumn
-            // 
-            rolIdDataGridViewTextBoxColumn.DataPropertyName = "RolId";
-            rolIdDataGridViewTextBoxColumn.HeaderText = "RolId";
-            rolIdDataGridViewTextBoxColumn.Name = "rolIdDataGridViewTextBoxColumn";
-            // 
-            // activoDataGridViewCheckBoxColumn
-            // 
-            activoDataGridViewCheckBoxColumn.DataPropertyName = "Activo";
-            activoDataGridViewCheckBoxColumn.HeaderText = "Activo";
-            activoDataGridViewCheckBoxColumn.Name = "activoDataGridViewCheckBoxColumn";
-            // 
             // usuarioBindingSource
             // 
             usuarioBindingSource.DataSource = typeof(Dominio.Usuario);
+            // 
+            // ColumnNombre
+            // 
+            ColumnNombre.DataPropertyName = "NombreUsuario";
+            ColumnNombre.HeaderText = "Nombre de Usuario";
+            ColumnNombre.Name = "ColumnNombre";
+            // 
+            // ColumnRol
+            // 
+            ColumnRol.DataPropertyName = "RolId";
+            ColumnRol.HeaderText = "Rol";
+            ColumnRol.Name = "ColumnRol";
+            // 
+            // ColumnActivo
+            // 
+            ColumnActivo.DataPropertyName = "Activo";
+            ColumnActivo.HeaderText = "Activo";
+            ColumnActivo.Name = "ColumnActivo";
             // 
             // FormUsuarios
             // 
@@ -322,10 +306,8 @@
         private BindingSource usuarioBindingSource;
         private ComboBox comboBoxRol;
         private ComboBox comboBoxActivo;
-        private DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn nombreUsuarioDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn contraseniaDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn rolIdDataGridViewTextBoxColumn;
-        private DataGridViewCheckBoxColumn activoDataGridViewCheckBoxColumn;
+        private DataGridViewTextBoxColumn ColumnNombre;
+        private DataGridViewTextBoxColumn ColumnRol;
+        private DataGridViewTextBoxColumn ColumnActivo;
     }
 }

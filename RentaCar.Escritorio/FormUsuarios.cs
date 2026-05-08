@@ -6,8 +6,10 @@ namespace RentaCar.Escritorio
     public partial class FormUsuarios : Form
     {
         private readonly UsuarioServicio _usuarioServicio;
+        private readonly RolServicio _rolServicio;
+
         private bool modoEdicion = false;
-        private readonly RolServicio _rolServicio = new RolServicio();
+        private BindingSource _bindingUsuarios = new BindingSource();
 
         public FormUsuarios()
         {
@@ -19,20 +21,38 @@ namespace RentaCar.Escritorio
         private async void FormUsuarios_Load(object sender, EventArgs e)
         {
             BloquearCampos(false);
-            await CargarUsuarios();
             await CargarRoles();
+            await CargarUsuarios();
         }
 
+        // ✅ CARGA DE USUARIOS (FIX IMPORTANTE)
         private async Task CargarUsuarios()
         {
-            var usuarios = await _usuarioServicio.ObtenerTodos();
-            dataGridViewUsuarios.AutoGenerateColumns = false;
-            dataGridViewUsuarios.DataSource = usuarios;
+            try
+            {
+                var usuarios = await _usuarioServicio.ObtenerTodos();
+                var roles = await _rolServicio.ObtenerTodos();
+
+                var lista = usuarios.Select(u => new
+                {
+                    u.Id, // importante aunque no se muestre
+                    u.NombreUsuario,
+                    Rol = roles.FirstOrDefault(r => r.Id == u.RolId)?.Nombre ?? "Sin rol",
+                    u.Activo
+                }).ToList();
+
+                dataGridViewUsuarios.AutoGenerateColumns = false;
+                dataGridViewUsuarios.DataSource = lista;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error cargando usuarios: {ex.Message}");
+            }
         }
 
         private async Task CargarRoles()
         {
-            var roles = await _rolServicio.ObtenerTodos(); // o UsuarioServicio si viene ahí
+            var roles = await _rolServicio.ObtenerTodos();
 
             comboBoxRol.DataSource = roles;
             comboBoxRol.DisplayMember = "Nombre";
@@ -71,7 +91,7 @@ namespace RentaCar.Escritorio
             LimpiarCampos();
         }
 
-        private void buttonEditar_Click(object sender, EventArgs e)
+        private async void buttonEditar_Click(object sender, EventArgs e)
         {
             if (dataGridViewUsuarios.SelectedRows.Count == 0)
             {
@@ -79,7 +99,11 @@ namespace RentaCar.Escritorio
                 return;
             }
 
-            var usuario = (UsuarioResponse)dataGridViewUsuarios.SelectedRows[0].DataBoundItem;
+            // ⚠️ IMPORTANTE: tomar del servicio original, no del grid mapeado
+            var usuarios = (List<UsuarioResponse>)await _usuarioServicio.ObtenerTodos();
+            var id = (int)dataGridViewUsuarios.SelectedRows[0].Cells["Id"].Value;
+
+            var usuario = usuarios.First(u => u.Id == id);
 
             textBoxNombreUsuario.Text = usuario.NombreUsuario;
             comboBoxRol.SelectedValue = usuario.RolId;
@@ -97,15 +121,9 @@ namespace RentaCar.Escritorio
                 return;
             }
 
-            if (comboBoxRol.SelectedValue == null)
+            if (comboBoxRol.SelectedValue == null || comboBoxActivo.SelectedValue == null)
             {
-                MessageBox.Show("Debe seleccionar un rol.");
-                return;
-            }
-
-            if (comboBoxActivo.SelectedValue == null)
-            {
-                MessageBox.Show("Debe seleccionar estado.");
+                MessageBox.Show("Debe completar todos los campos.");
                 return;
             }
 
@@ -113,31 +131,27 @@ namespace RentaCar.Escritorio
             {
                 if (modoEdicion)
                 {
-                    var usuarioSeleccionado = (UsuarioResponse)dataGridViewUsuarios.SelectedRows[0].DataBoundItem;
+                    var id = (int)dataGridViewUsuarios.SelectedRows[0].Cells["Id"].Value;
 
                     var request = new UsuarioUpdateRequest
                     {
                         NombreUsuario = textBoxNombreUsuario.Text,
-                        RolId = comboBoxRol.SelectedValue.ToString(),
+                        RolId = (int)comboBoxRol.SelectedValue,
                         Activo = (bool)comboBoxActivo.SelectedValue
                     };
 
-                    await _usuarioServicio.Actualizar(usuarioSeleccionado.Id, request);
-
-                    MessageBox.Show("Usuario actualizado correctamente.");
+                    await _usuarioServicio.Actualizar(id, request);
                 }
                 else
                 {
                     var request = new UsuarioCreateRequest
                     {
                         NombreUsuario = textBoxNombreUsuario.Text,
-                        RolId = comboBoxRol.SelectedValue.ToString(),
+                        RolId = (int)comboBoxRol.SelectedValue,
                         Activo = (bool)comboBoxActivo.SelectedValue
                     };
 
                     await _usuarioServicio.Agregar(request);
-
-                    MessageBox.Show("Usuario creado correctamente.");
                 }
 
                 await CargarUsuarios();
@@ -158,26 +172,20 @@ namespace RentaCar.Escritorio
                 return;
             }
 
-            var confirm = MessageBox.Show(
-                "¿Eliminar usuario?",
-                "Confirmar",
-                MessageBoxButtons.YesNo
-            );
+            var confirm = MessageBox.Show("¿Eliminar usuario?", "Confirmar", MessageBoxButtons.YesNo);
 
             if (confirm != DialogResult.Yes)
                 return;
 
-            var usuario = (UsuarioResponse)dataGridViewUsuarios.SelectedRows[0].DataBoundItem;
-
             try
             {
-                await _usuarioServicio.Eliminar(usuario.Id);
+                var id = (int)dataGridViewUsuarios.SelectedRows[0].Cells["Id"].Value;
+
+                await _usuarioServicio.Eliminar(id);
 
                 await CargarUsuarios();
                 LimpiarCampos();
                 BloquearCampos(false);
-
-                MessageBox.Show("Usuario eliminado.");
             }
             catch (Exception ex)
             {

@@ -1,7 +1,112 @@
 ﻿@page "/"
+@inject NavigationManager Nav
+@rendermode InteractiveServer
 
-<PageTitle>Home</PageTitle>
+<PageTitle>RentaCar - Inicio</PageTitle>
 
-<h1>Hello, world!</h1>
+<div class="container">
+    <div class="card">
+        <h1>RentaCar</h1>
+        <p class="subtitle">Alquilá tu auto en segundos</p>
 
-Welcome to your new app.
+        <div class="input-group">
+            <label>Fecha de retiro</label>
+            <InputDate @bind-Value="FechaRetiro"
+                       min="@MinRetiro" />
+        </div>
+
+        <div class="input-group">
+            <label>Fecha de devolución</label>
+            <InputDate @bind-Value="FechaDevolucion"
+                       min="@MinDevolucion" />
+        </div>
+
+        <button class="btn" @onclick="BuscarAutos">
+            Buscar vehículos disponibles
+        </button>
+
+    </div>
+</div>
+
+@code {
+
+    private DateTime FechaRetiro { get; set; } = DateTime.Today;
+    private DateTime FechaDevolucion { get; set; } = DateTime.Today.AddDays(1);
+
+    private string MinRetiro => DateTime.Today.ToString("yyyy-MM-dd");
+
+    private string MinDevolucion =>
+        (FechaRetiro > DateTime.Today
+            ? FechaRetiro
+            : DateTime.Today.AddDays(1)
+        ).ToString("yyyy-MM-dd");
+
+    private void BuscarAutos()
+    {
+        Console.WriteLine("CLICK FUNCIONA");
+        var url = $"/vehiculos?inicio={FechaRetiro:yyyy-MM-dd}&fin={FechaDevolucion:yyyy-MM-dd}";
+        Nav.NavigateTo(url);
+    }
+}
+
+<style>
+    body {
+        background: #0f172a;
+        color: #e5e7eb;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80vh;
+    }
+
+    .card {
+        background: #1e293b;
+        padding: 30px;
+        border-radius: 16px;
+        width: 350px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        text-align: center;
+    }
+
+    .subtitle {
+        color: #94a3b8;
+        margin-bottom: 20px;
+    }
+
+    .input-group {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        margin-bottom: 15px;
+    }
+
+    input {
+        background: #0f172a;
+        border: 1px solid #334155;
+        border-radius: 8px;
+        padding: 10px;
+        color: #e5e7eb;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 10px;
+        background: linear-gradient(135deg, #3b82f6, #2563eb);
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    .resultado {
+        margin-top: 20px;
+        font-size: 14px;
+        color: #cbd5f5;
+    }
+</style>

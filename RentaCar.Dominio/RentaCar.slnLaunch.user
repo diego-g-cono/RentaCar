@@ -7,7 +7,7 @@
         "Action": "Start"
       },
       {
-        "Path": "..\\RentaCar.Escritorio\\RentaCar.Escritorio.csproj",
+        "Path": "..\\RentaCar.Blazor\\RentaCar.Blazor.csproj",
         "Action": "Start"
       }
     ]

@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net8.0": {}
+    "net8.0": {
+      "RentaCar.Dtos/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/RentaCar.Dtos.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/RentaCar.Dtos.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "RentaCar.Dtos/1.0.0": {
+      "type": "project",
+      "path": "../RentaCar.Dtos/RentaCar.Dtos.csproj",
+      "msbuildProject": "../RentaCar.Dtos/RentaCar.Dtos.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net8.0": []
+    "net8.0": [
+      "RentaCar.Dtos >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\diego\\.nuget\\packages\\": {},
@@ -38,7 +57,11 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Dtos\\RentaCar.Dtos.csproj": {
+              "projectPath": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Dtos\\RentaCar.Dtos.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

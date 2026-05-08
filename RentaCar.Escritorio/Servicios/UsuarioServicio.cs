@@ -11,64 +11,31 @@ namespace RentaCar.Escritorio.Servicios
         {
             _http = Conexion.Instancia.Cliente;
         }
+
         public async Task<List<UsuarioResponse>> ObtenerTodos()
         {
-            var response = await _http.GetAsync("usuarios");
-
-            if (!response.IsSuccessStatusCode)
-            {
-                var error = await response.Content.ReadAsStringAsync();
-                throw new Exception($"Error al obtener usuarios: {error}");
-            }
-
-            return await response.Content.ReadFromJsonAsync<List<UsuarioResponse>>()
+            return await _http.GetFromJsonAsync<List<UsuarioResponse>>("usuarios")
                    ?? new List<UsuarioResponse>();
         }
+
         public async Task<UsuarioResponse?> ObtenerPorId(int id)
         {
-            var response = await _http.GetAsync($"usuarios/{id}");
-
-            if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
-                return null;
-
-            if (!response.IsSuccessStatusCode)
-            {
-                var error = await response.Content.ReadAsStringAsync();
-                throw new Exception($"Error al obtener usuario: {error}");
-            }
-
-            return await response.Content.ReadFromJsonAsync<UsuarioResponse>();
+            return await _http.GetFromJsonAsync<UsuarioResponse>($"usuarios/{id}");
         }
 
-        public async Task Agregar(UsuarioCreateRequest usuario)
+        public async Task Agregar(UsuarioCreateRequest request)
         {
-            var response = await _http.PostAsJsonAsync("usuarios", usuario);
-
-            if (!response.IsSuccessStatusCode)
-            {
-                var error = await response.Content.ReadAsStringAsync();
-                throw new Exception($"Error al crear usuario: {error}");
-            }
+            await _http.PostAsJsonAsync("usuarios", request);
         }
-        public async Task Actualizar(int id, UsuarioUpdateRequest usuario)
+
+        public async Task Actualizar(int id, UsuarioUpdateRequest request)
         {
-            var response = await _http.PutAsJsonAsync($"usuarios/{id}", usuario);
-
-            if (!response.IsSuccessStatusCode)
-            {
-                var error = await response.Content.ReadAsStringAsync();
-                throw new Exception($"Error al actualizar usuario: {error}");
-            }
+            await _http.PutAsJsonAsync($"usuarios/{id}", request);
         }
+
         public async Task Eliminar(int id)
         {
-            var response = await _http.DeleteAsync($"usuarios/{id}");
-
-            if (!response.IsSuccessStatusCode)
-            {
-                var error = await response.Content.ReadAsStringAsync();
-                throw new Exception($"Error al eliminar usuario: {error}");
-            }
+            await _http.DeleteAsync($"usuarios/{id}");
         }
 
         public async Task<LoginResponse?> Login(LoginRequest request)
@@ -77,12 +44,6 @@ namespace RentaCar.Escritorio.Servicios
 
             if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
                 return null;
-
-            if (!response.IsSuccessStatusCode)
-            {
-                var error = await response.Content.ReadAsStringAsync();
-                throw new Exception($"Error en login: {error}");
-            }
 
             return await response.Content.ReadFromJsonAsync<LoginResponse>();
         }

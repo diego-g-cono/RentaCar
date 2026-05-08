@@ -149,5 +149,38 @@ namespace RentaCar.API.Controllers
 
             return Ok("Vehículo eliminado correctamente");
         }
+
+        [HttpGet("disponibles")]
+        public IActionResult ObtenerDisponibles(DateOnly fechaInicio, DateOnly fechaFin)
+        {
+            var vehiculos = _repoVehiculos.ObtenerDisponibles(fechaInicio, fechaFin);
+
+            var response = vehiculos.Select(v => new VehiculoResponse
+            {
+                Patente = v.Patente,
+                Anio = v.Anio,
+                Kilometraje = v.Kilometraje,
+
+                MarcaId = v.MarcaId,
+                MarcaNombre = v.Marca?.Nombre,
+
+                ModeloId = v.ModeloId,
+                ModeloNombre = v.Modelo?.Nombre,
+
+                ColorId = v.ColorId,
+                ColorNombre = v.Color?.Nombre,
+
+                CombustibleId = v.CombustibleId,
+                CombustibleNombre = v.Combustible?.Nombre,
+
+                EstadoId = v.EstadoId,
+                EstadoNombre = v.Estado?.Nombre,
+
+                TipoId = v.TipoId,
+                TipoNombre = v.Tipo?.Nombre
+            }).ToList();
+
+            return Ok(response);
+        }
     }
 }

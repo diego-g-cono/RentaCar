@@ -73,5 +73,21 @@ namespace RentaCar.Infraestructura.Repositorios
         {
             return _context.Vehiculos.Any(v => v.Patente == patente);
         }
+        public List<Vehiculo> ObtenerDisponibles(DateOnly inicio, DateOnly fin)
+        {
+            return _context.Vehiculos
+                .Include(v => v.Marca)
+                .Include(v => v.Modelo)
+                .Include(v => v.Color)
+                .Include(v => v.Combustible)
+                .Include(v => v.Estado)
+                .Include(v => v.Tipo)
+                .Where(v => !_context.Reservas.Any(r =>
+                    r.VehiculoPatente == v.Patente &&
+                    inicio < r.FechaFin &&
+                    fin > r.FechaInicio
+                ))
+                .ToList();
+        }
     }
 }
