@@ -1,0 +1,209 @@
+﻿@page "/reserva"
+@inject IHttpClientFactory HttpFactory
+@inject NavigationManager Nav
+@using RentaCar.Dtos.Reservas
+
+<h3 class="titulo">Crear reserva</h3>
+
+@if (reserva == null)
+{
+    <p class="error">Error: no se pudo inicializar la reserva</p>
+}
+else
+{
+    <div class="form">
+
+        <div class="vehiculo">
+            <span>Vehículo</span>
+            <strong>@reserva.VehiculoPatente</strong>
+        </div>
+
+        <div class="input-group">
+            <label>DNI Cliente</label>
+            <input type="number" @bind="reserva.ClienteDni" />
+        </div>
+
+        <div class="input-group">
+            <label>Nombre Cliente</label>
+            <input type="text" @bind="reserva.ClienteNombre" />
+        </div>
+
+        <div class="input-group">
+            <label>Fecha inicio</label>
+            <InputDate @bind-Value="fechaInicio" />
+        </div>
+
+        <div class="input-group">
+            <label>Fecha fin</label>
+            <InputDate @bind-Value="fechaFin" />
+        </div>
+
+        <div class="input-group">
+            <label>Seña</label>
+            <input type="number" step="0.01" @bind="reserva.Senia" />
+        </div>
+
+        <button class="btn" @onclick="ConfirmarReserva">
+            Confirmar reserva
+        </button>
+
+    </div>
+}
+
+
+
+@code {
+    private ReservaResponse? reserva;
+
+    private DateTime fechaInicio;
+    private DateTime fechaFin;
+
+    protected override void OnInitialized()
+    {
+        var uri = Nav.ToAbsoluteUri(Nav.Uri);
+        var query = System.Web.HttpUtility.ParseQueryString(uri.Query);
+
+        reserva = new ReservaResponse();
+
+        reserva.VehiculoPatente = query["patente"] ?? "SIN-PATENTE";
+
+        var inicioStr = query["inicio"];
+        var finStr = query["fin"];
+
+        if (DateTime.TryParse(inicioStr, out var inicio))
+            fechaInicio = inicio;
+        else
+            fechaInicio = DateTime.Today;
+
+        if (DateTime.TryParse(finStr, out var fin))
+            fechaFin = fin;
+        else
+            fechaFin = DateTime.Today.AddDays(1);
+
+        reserva.FechaInicio = DateOnly.FromDateTime(fechaInicio);
+        reserva.FechaFin = DateOnly.FromDateTime(fechaFin);
+
+        reserva.EstadoId = 1;
+        reserva.EstadoNombre = "Pendiente";
+    }
+
+    private void ConfirmarReserva()
+    {
+        reserva!.FechaInicio = DateOnly.FromDateTime(fechaInicio);
+        reserva.FechaFin = DateOnly.FromDateTime(fechaFin);
+
+        Console.WriteLine($"Reserva creada para {reserva.ClienteNombre}");
+    }
+}
+
+<style>
+    body {
+        background: #0f172a;
+        color: #e5e7eb;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .titulo {
+        text-align: center;
+        margin-bottom: 25px;
+        font-size: 26px;
+    }
+
+    .form {
+        max-width: 500px;
+        margin: 0 auto;
+        background: #1e293b;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    .vehiculo {
+        background: #0f172a;
+        padding: 12px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+        .vehiculo span {
+            display: block;
+            font-size: 12px;
+            color: #94a3b8;
+        }
+
+        .vehiculo strong {
+            font-size: 16px;
+        }
+
+    .input-group {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+    }
+
+    label {
+        font-size: 13px;
+        margin-bottom: 5px;
+        color: #cbd5f5;
+    }
+
+    input, .form ::deep input, .form ::deep select {
+        width: 100%;
+        max-width: 100%;
+        background: #0f172a;
+        border: 1px solid #334155;
+        border-radius: 8px;
+        padding: 10px;
+        color: #e5e7eb;
+    }
+
+        .form ::deep input[type="date"] {
+            width: 100%;
+        }
+
+    .btn {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 10px;
+        background: linear-gradient(135deg, #3b82f6, #2563eb);
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 15px;
+        transition: 0.2s;
+    }
+
+        .btn:hover {
+            transform: scale(1.03);
+        }
+
+    .error {
+        text-align: center;
+        color: #f87171;
+    }
+
+    input, textarea, select {
+        width: 100%;
+        background-color: #0f172a !important;
+        color: #e5e7eb !important;
+        border: 1px solid #334155;
+        border-radius: 8px;
+        padding: 10px;
+    }
+
+    .form ::deep input {
+        background-color: #0f172a !important;
+        color: #e5e7eb !important;
+    }
+
+    input[type="date"]::-webkit-calendar-picker-indicator {
+        filter: invert(1);
+        cursor: pointer;
+    }
+
+    input::placeholder {
+        color: #94a3b8;
+    }
+</style>

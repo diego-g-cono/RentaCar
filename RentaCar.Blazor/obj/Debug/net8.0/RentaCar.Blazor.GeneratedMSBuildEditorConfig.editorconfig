@@ -40,6 +40,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Seminario I/TP Final/Rev1/RentaCar/RentaCar.Blazor/Components/Pages/Reserva.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xSZXNlcnZhLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Seminario I/TP Final/Rev1/RentaCar/RentaCar.Blazor/Components/Pages/Vehiculos.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xWZWhpY3Vsb3MucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 

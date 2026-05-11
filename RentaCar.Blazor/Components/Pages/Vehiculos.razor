@@ -1,7 +1,9 @@
 ﻿@page "/vehiculos"
 @inject IHttpClientFactory HttpFactory
 @inject NavigationManager Nav
+@rendermode InteractiveServer
 @using RentaCar.Dtos.Vehiculos
+
 
 <h3 class="title">Autos disponibles</h3>
 
@@ -29,7 +31,8 @@ else
 
                 <p class="patente">@v.CombustibleNombre</p>
 
-                <button class="btn-reservar">
+                <button class="btn-reservar"
+                        @onclick="() => Reservar(v.Patente)">
                     Reservar
                 </button>
             </div>
@@ -60,6 +63,18 @@ else
         var modelo = v.ModeloNombre?.ToLower().Replace(" ", "-");
 
         return $"images/autos/{marca}-{modelo}.png";
+    }
+    private void Reservar(string patente)
+    {
+        var uri = Nav.ToAbsoluteUri(Nav.Uri);
+        var query = System.Web.HttpUtility.ParseQueryString(uri.Query);
+
+        var inicio = query["inicio"];
+        var fin = query["fin"];
+
+        var url = $"/reserva?patente={patente}&inicio={inicio}&fin={fin}";
+
+        Nav.NavigateTo(url);
     }
 }
 
