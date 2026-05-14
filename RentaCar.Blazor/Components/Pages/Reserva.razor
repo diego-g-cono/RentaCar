@@ -1,6 +1,7 @@
 ﻿@page "/reserva"
 @inject IHttpClientFactory HttpFactory
 @inject NavigationManager Nav
+@rendermode InteractiveServer
 @using RentaCar.Dtos.Reservas
 
 <h3 class="titulo">Crear reserva</h3>
@@ -87,12 +88,45 @@ else
         reserva.EstadoNombre = "Pendiente";
     }
 
-    private void ConfirmarReserva()
+    private async Task ConfirmarReserva()
     {
-        reserva!.FechaInicio = DateOnly.FromDateTime(fechaInicio);
-        reserva.FechaFin = DateOnly.FromDateTime(fechaFin);
+        var client = HttpFactory.CreateClient("Api");
 
-        Console.WriteLine($"Reserva creada para {reserva.ClienteNombre}");
+        try
+        {
+            // Armar DTO correcto para la API
+            var request = new ReservaCreateRequest
+            {
+                ClienteDni = reserva!.ClienteDni,
+                VehiculoPatente = reserva.VehiculoPatente,
+                FechaInicio = DateOnly.FromDateTime(fechaInicio),
+                FechaFin = DateOnly.FromDateTime(fechaFin),
+                Precio = reserva.Precio, // después lo podés calcular automático
+                Senia = reserva.Senia,
+                EstadoId = 1 // Pendiente
+            };
+            Console.WriteLine(request);
+            
+
+            var response = await client.PostAsJsonAsync("reservas", request);
+
+            if (response.IsSuccessStatusCode)
+            {
+                Console.WriteLine("Reserva creada correctamente");
+
+                // Redirigir
+                Nav.NavigateTo("/flota");
+            }
+            else
+            {
+                var error = await response.Content.ReadAsStringAsync();
+                Console.WriteLine($"Error: {error}");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error de conexión: {ex.Message}");
+        }
     }
 }
 
