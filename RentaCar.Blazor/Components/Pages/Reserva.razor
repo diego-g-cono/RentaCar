@@ -1,8 +1,11 @@
 ﻿@page "/reserva"
 @inject IHttpClientFactory HttpFactory
+@inject AuthService Auth
 @inject NavigationManager Nav
 @rendermode InteractiveServer
 @using RentaCar.Dtos.Reservas
+@using RentaCar.Dtos.Vehiculos
+@using RentaCar.Blazor.Services
 
 <h3 class="titulo">Crear reserva</h3>
 
@@ -16,7 +19,7 @@ else
 
         <div class="vehiculo">
             <span>Vehículo</span>
-            <strong>@reserva.VehiculoPatente</strong>
+            <strong>@(vehiculoDescripcion ?? reserva.VehiculoPatente)</strong>
         </div>
 
         <div class="input-group">
@@ -58,9 +61,15 @@ else
 
     private DateTime fechaInicio;
     private DateTime fechaFin;
+    private string? vehiculoDescripcion;
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
+        if (!Auth.EstaLogueado)
+        {
+            Nav.NavigateTo("/login");
+            return;
+        }
         var uri = Nav.ToAbsoluteUri(Nav.Uri);
         var query = System.Web.HttpUtility.ParseQueryString(uri.Query);
 
@@ -68,18 +77,25 @@ else
 
         reserva.VehiculoPatente = query["patente"] ?? "SIN-PATENTE";
 
+        var client = HttpFactory.CreateClient("Api");
+
+        var vehiculo = await client.GetFromJsonAsync<VehiculoResponse>($"vehiculos/{reserva.VehiculoPatente}");
+
+        if (vehiculo != null)
+        {
+            vehiculoDescripcion = $"{vehiculo.MarcaNombre} {vehiculo.ModeloNombre}";
+        }
+
         var inicioStr = query["inicio"];
         var finStr = query["fin"];
 
-        if (DateTime.TryParse(inicioStr, out var inicio))
-            fechaInicio = inicio;
-        else
-            fechaInicio = DateTime.Today;
+        fechaInicio = DateTime.TryParse(inicioStr, out var inicio)
+            ? inicio
+            : DateTime.Today;
 
-        if (DateTime.TryParse(finStr, out var fin))
-            fechaFin = fin;
-        else
-            fechaFin = DateTime.Today.AddDays(1);
+        fechaFin = DateTime.TryParse(finStr, out var fin)
+            ? fin
+            : DateTime.Today.AddDays(1);
 
         reserva.FechaInicio = DateOnly.FromDateTime(fechaInicio);
         reserva.FechaFin = DateOnly.FromDateTime(fechaFin);
@@ -94,16 +110,16 @@ else
 
         try
         {
-            // Armar DTO correcto para la API
+
             var request = new ReservaCreateRequest
             {
                 ClienteDni = reserva!.ClienteDni,
                 VehiculoPatente = reserva.VehiculoPatente,
                 FechaInicio = DateOnly.FromDateTime(fechaInicio),
                 FechaFin = DateOnly.FromDateTime(fechaFin),
-                Precio = reserva.Precio, // después lo podés calcular automático
+                Precio = reserva.Precio,
                 Senia = reserva.Senia,
-                EstadoId = 1 // Pendiente
+                EstadoId = 1 
             };
             Console.WriteLine(request);
             
@@ -114,7 +130,7 @@ else
             {
                 Console.WriteLine("Reserva creada correctamente");
 
-                // Redirigir
+         
                 Nav.NavigateTo("/flota");
             }
             else

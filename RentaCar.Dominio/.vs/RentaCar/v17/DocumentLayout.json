@@ -3,43 +3,25 @@
   "WorkspaceRootPath": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Dominio\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4117058D-68E7-41BC-BB4F-4C6DD3AC24C6}|..\\RentaCar.Escritorio\\RentaCar.Escritorio.csproj|d:\\seminario i\\tp final\\rev1\\rentacar\\rentacar.escritorio\\servicios\\reservaservicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7B946326-8E32-4FE9-8E23-759916F7F39B}|..\\RentaCar.Blazor\\RentaCar.Blazor.csproj|d:\\seminario i\\tp final\\rev1\\rentacar\\rentacar.blazor\\components\\pages\\reserva.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5CB2976B-D53D-47B6-B5BC-212ADA9F1B9E}|..\\RentaCar.Api\\RentaCar.Api.csproj|d:\\seminario i\\tp final\\rev1\\rentacar\\rentacar.api\\controllers\\reservascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4117058D-68E7-41BC-BB4F-4C6DD3AC24C6}|..\\RentaCar.Escritorio\\RentaCar.Escritorio.csproj|d:\\seminario i\\tp final\\rev1\\rentacar\\rentacar.escritorio\\servicios\\conexion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D1CCC161-5285-427B-A0EC-2D845A430F8D}|..\\RentaCar.Infraestructura\\RentaCar.Infraestructura.csproj|d:\\seminario i\\tp final\\rev1\\rentacar\\rentacar.infraestructura\\repositorios\\reservarepositorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E98A8B0D-F7F2-422A-8802-DE1A1E7F721F}|..\\RentaCar.Dtos\\RentaCar.Dtos.csproj|d:\\seminario i\\tp final\\rev1\\rentacar\\rentacar.dtos\\reservas\\reservacreaterequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5CB2976B-D53D-47B6-B5BC-212ADA9F1B9E}|..\\RentaCar.Api\\RentaCar.Api.csproj|d:\\seminario i\\tp final\\rev1\\rentacar\\rentacar.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7B946326-8E32-4FE9-8E23-759916F7F39B}|..\\RentaCar.Blazor\\RentaCar.Blazor.csproj|d:\\seminario i\\tp final\\rev1\\rentacar\\rentacar.blazor\\components\\pages\\vehiculos.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7B946326-8E32-4FE9-8E23-759916F7F39B}|..\\RentaCar.Blazor\\RentaCar.Blazor.csproj|d:\\seminario i\\tp final\\rev1\\rentacar\\rentacar.blazor\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E98A8B0D-F7F2-422A-8802-DE1A1E7F721F}|..\\RentaCar.Dtos\\RentaCar.Dtos.csproj|d:\\seminario i\\tp final\\rev1\\rentacar\\rentacar.dtos\\reservas\\reservaresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7B946326-8E32-4FE9-8E23-759916F7F39B}|..\\RentaCar.Blazor\\RentaCar.Blazor.csproj|d:\\seminario i\\tp final\\rev1\\rentacar\\rentacar.blazor\\components\\pages\\flota.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7B946326-8E32-4FE9-8E23-759916F7F39B}|..\\RentaCar.Blazor\\RentaCar.Blazor.csproj|d:\\seminario i\\tp final\\rev1\\rentacar\\rentacar.blazor\\components\\pages\\counter.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{7B946326-8E32-4FE9-8E23-759916F7F39B}|..\\RentaCar.Blazor\\RentaCar.Blazor.csproj|d:\\seminario i\\tp final\\rev1\\rentacar\\rentacar.blazor\\components\\pages\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7B946326-8E32-4FE9-8E23-759916F7F39B}|..\\RentaCar.Blazor\\RentaCar.Blazor.csproj|d:\\seminario i\\tp final\\rev1\\rentacar\\rentacar.blazor\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7B946326-8E32-4FE9-8E23-759916F7F39B}|..\\RentaCar.Blazor\\RentaCar.Blazor.csproj|d:\\seminario i\\tp final\\rev1\\rentacar\\rentacar.blazor\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{7B946326-8E32-4FE9-8E23-759916F7F39B}|..\\RentaCar.Blazor\\RentaCar.Blazor.csproj|d:\\seminario i\\tp final\\rev1\\rentacar\\rentacar.blazor\\components\\pages\\reserva.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7B946326-8E32-4FE9-8E23-759916F7F39B}|..\\RentaCar.Blazor\\RentaCar.Blazor.csproj|d:\\seminario i\\tp final\\rev1\\rentacar\\rentacar.blazor\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7B946326-8E32-4FE9-8E23-759916F7F39B}|..\\RentaCar.Blazor\\RentaCar.Blazor.csproj|d:\\seminario i\\tp final\\rev1\\rentacar\\rentacar.blazor\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -58,167 +40,93 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ReservaServicio.cs",
-              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Escritorio\\Servicios\\ReservaServicio.cs",
-              "RelativeDocumentMoniker": "..\\RentaCar.Escritorio\\Servicios\\ReservaServicio.cs",
-              "ToolTip": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Escritorio\\Servicios\\ReservaServicio.cs",
-              "RelativeToolTip": "..\\RentaCar.Escritorio\\Servicios\\ReservaServicio.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-13T23:56:36.871Z",
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Api\\appsettings.json",
+              "RelativeDocumentMoniker": "..\\RentaCar.Api\\appsettings.json",
+              "ToolTip": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Api\\appsettings.json",
+              "RelativeToolTip": "..\\RentaCar.Api\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-05-19T23:17:41.546Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Conexion.cs",
-              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Escritorio\\Servicios\\Conexion.cs",
-              "RelativeDocumentMoniker": "..\\RentaCar.Escritorio\\Servicios\\Conexion.cs",
-              "ToolTip": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Escritorio\\Servicios\\Conexion.cs",
-              "RelativeToolTip": "..\\RentaCar.Escritorio\\Servicios\\Conexion.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-13T23:33:09.397Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ReservasController.cs",
-              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Api\\Controllers\\ReservasController.cs",
-              "RelativeDocumentMoniker": "..\\RentaCar.Api\\Controllers\\ReservasController.cs",
-              "ToolTip": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Api\\Controllers\\ReservasController.cs",
-              "RelativeToolTip": "..\\RentaCar.Api\\Controllers\\ReservasController.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABwAAAAyAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-13T21:59:51.129Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ReservaCreateRequest.cs",
-              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Dtos\\Reservas\\ReservaCreateRequest.cs",
-              "RelativeDocumentMoniker": "..\\RentaCar.Dtos\\Reservas\\ReservaCreateRequest.cs",
-              "ToolTip": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Dtos\\Reservas\\ReservaCreateRequest.cs",
-              "RelativeToolTip": "..\\RentaCar.Dtos\\Reservas\\ReservaCreateRequest.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-13T21:59:13.305Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ReservaRepositorio.cs",
-              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Infraestructura\\Repositorios\\ReservaRepositorio.cs",
-              "RelativeDocumentMoniker": "..\\RentaCar.Infraestructura\\Repositorios\\ReservaRepositorio.cs",
-              "ToolTip": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Infraestructura\\Repositorios\\ReservaRepositorio.cs",
-              "RelativeToolTip": "..\\RentaCar.Infraestructura\\Repositorios\\ReservaRepositorio.cs",
-              "ViewState": "AgIAACYAAAAAAAAAAAAcwCoAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-11T22:31:10.203Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "ReservaResponse.cs",
-              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Dtos\\Reservas\\ReservaResponse.cs",
-              "RelativeDocumentMoniker": "..\\RentaCar.Dtos\\Reservas\\ReservaResponse.cs",
-              "ToolTip": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Dtos\\Reservas\\ReservaResponse.cs",
-              "RelativeToolTip": "..\\RentaCar.Dtos\\Reservas\\ReservaResponse.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-09T19:01:23.893Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Reserva.razor",
-              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Blazor\\Components\\Pages\\Reserva.razor",
-              "RelativeDocumentMoniker": "..\\RentaCar.Blazor\\Components\\Pages\\Reserva.razor",
-              "ToolTip": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Blazor\\Components\\Pages\\Reserva.razor",
-              "RelativeToolTip": "..\\RentaCar.Blazor\\Components\\Pages\\Reserva.razor",
-              "ViewState": "AgIAAE0AAAAAAAAAAAAYwG4AAABBAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-05-09T18:53:32.804Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Home.razor",
-              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Blazor\\Components\\Pages\\Home.razor",
-              "RelativeDocumentMoniker": "..\\RentaCar.Blazor\\Components\\Pages\\Home.razor",
-              "ToolTip": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Blazor\\Components\\Pages\\Home.razor",
-              "RelativeToolTip": "..\\RentaCar.Blazor\\Components\\Pages\\Home.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-05-07T21:01:31.234Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Vehiculos.razor",
-              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Blazor\\Components\\Pages\\Vehiculos.razor",
-              "RelativeDocumentMoniker": "..\\RentaCar.Blazor\\Components\\Pages\\Vehiculos.razor",
-              "ToolTip": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Blazor\\Components\\Pages\\Vehiculos.razor",
-              "RelativeToolTip": "..\\RentaCar.Blazor\\Components\\Pages\\Vehiculos.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-05-07T23:08:46.493Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Flota.razor",
-              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Blazor\\Components\\Pages\\Flota.razor",
-              "RelativeDocumentMoniker": "..\\RentaCar.Blazor\\Components\\Pages\\Flota.razor",
-              "ToolTip": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Blazor\\Components\\Pages\\Flota.razor",
-              "RelativeToolTip": "..\\RentaCar.Blazor\\Components\\Pages\\Flota.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-05-08T21:53:55.177Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "NavMenu.razor",
-              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Blazor\\Components\\Layout\\NavMenu.razor",
-              "RelativeDocumentMoniker": "..\\RentaCar.Blazor\\Components\\Layout\\NavMenu.razor",
-              "ToolTip": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Blazor\\Components\\Layout\\NavMenu.razor",
-              "RelativeToolTip": "..\\RentaCar.Blazor\\Components\\Layout\\NavMenu.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-05-07T21:09:45.043Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
               "Title": "MainLayout.razor",
               "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Blazor\\Components\\Layout\\MainLayout.razor",
               "RelativeDocumentMoniker": "..\\RentaCar.Blazor\\Components\\Layout\\MainLayout.razor",
               "ToolTip": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Blazor\\Components\\Layout\\MainLayout.razor",
               "RelativeToolTip": "..\\RentaCar.Blazor\\Components\\Layout\\MainLayout.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAdAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-05-07T21:08:59.705Z"
+              "WhenOpened": "2026-05-19T22:47:33.791Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Counter.razor",
-              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Blazor\\Components\\Pages\\Counter.razor",
-              "RelativeDocumentMoniker": "..\\RentaCar.Blazor\\Components\\Pages\\Counter.razor",
-              "ToolTip": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Blazor\\Components\\Pages\\Counter.razor",
-              "RelativeToolTip": "..\\RentaCar.Blazor\\Components\\Pages\\Counter.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "Reserva.razor",
+              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Blazor\\Components\\Pages\\Reserva.razor",
+              "RelativeDocumentMoniker": "..\\RentaCar.Blazor\\Components\\Pages\\Reserva.razor",
+              "ToolTip": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Blazor\\Components\\Pages\\Reserva.razor",
+              "RelativeToolTip": "..\\RentaCar.Blazor\\Components\\Pages\\Reserva.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-05-07T21:08:38.641Z"
+              "WhenOpened": "2026-05-19T22:44:53.927Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Vehiculos.razor",
+              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Blazor\\Components\\Pages\\Vehiculos.razor",
+              "RelativeDocumentMoniker": "..\\RentaCar.Blazor\\Components\\Pages\\Vehiculos.razor",
+              "ToolTip": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Blazor\\Components\\Pages\\Vehiculos.razor",
+              "RelativeToolTip": "..\\RentaCar.Blazor\\Components\\Pages\\Vehiculos.razor",
+              "ViewState": "AgIAACQAAAAAAAAAAAAAADAAAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-19T22:40:47.949Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Login.razor",
+              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Blazor\\Components\\Pages\\Login.razor",
+              "RelativeDocumentMoniker": "..\\RentaCar.Blazor\\Components\\Pages\\Login.razor",
+              "ToolTip": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Blazor\\Components\\Pages\\Login.razor",
+              "RelativeToolTip": "..\\RentaCar.Blazor\\Components\\Pages\\Login.razor",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAMAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-19T22:19:00.614Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Blazor\\Services\\AuthService.cs",
+              "RelativeDocumentMoniker": "..\\RentaCar.Blazor\\Services\\AuthService.cs",
+              "ToolTip": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Blazor\\Services\\AuthService.cs",
+              "RelativeToolTip": "..\\RentaCar.Blazor\\Services\\AuthService.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAcwDEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-19T22:16:00.296Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Home.razor",
+              "DocumentMoniker": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Blazor\\Components\\Pages\\Home.razor",
+              "RelativeDocumentMoniker": "..\\RentaCar.Blazor\\Components\\Pages\\Home.razor",
+              "ToolTip": "D:\\Seminario I\\TP Final\\Rev1\\RentaCar\\RentaCar.Blazor\\Components\\Pages\\Home.razor",
+              "RelativeToolTip": "..\\RentaCar.Blazor\\Components\\Pages\\Home.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-07T21:01:31.234Z",
+              "EditorCaption": ""
             }
           ]
         }

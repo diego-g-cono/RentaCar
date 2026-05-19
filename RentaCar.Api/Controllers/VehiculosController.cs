@@ -52,6 +52,9 @@ namespace RentaCar.API.Controllers
         [HttpGet("{patente}")]
         public IActionResult ObtenerPorPatente(string patente)
         {
+            if (string.IsNullOrWhiteSpace(patente))
+                return BadRequest("Patente inválida");
+
             var v = _repoVehiculos.ObtenerPorPatente(patente);
 
             if (v == null)

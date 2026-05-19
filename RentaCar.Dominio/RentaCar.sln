@@ -15,6 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentaCar.Infraestructura", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentaCar.Blazor", "..\RentaCar.Blazor\RentaCar.Blazor.csproj", "{7B946326-8E32-4FE9-8E23-759916F7F39B}"
 	ProjectSection(ProjectDependencies) = postProject
+		{5CB2976B-D53D-47B6-B5BC-212ADA9F1B9E} = {5CB2976B-D53D-47B6-B5BC-212ADA9F1B9E}
 		{E98A8B0D-F7F2-422A-8802-DE1A1E7F721F} = {E98A8B0D-F7F2-422A-8802-DE1A1E7F721F}
 	EndProjectSection
 EndProject

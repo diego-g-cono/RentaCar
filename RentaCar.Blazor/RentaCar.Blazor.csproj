@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\RentaCar.Api\RentaCar.Api.csproj" />
     <ProjectReference Include="..\RentaCar.Dtos\RentaCar.Dtos.csproj" />
   </ItemGroup>
 
