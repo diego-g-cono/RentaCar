@@ -1,4 +1,7 @@
 ﻿@inherits LayoutComponentBase
+@inject AuthService Auth
+@inject NavigationManager Nav
+@using RentaCar.Blazor.Services
 
 <div class="page">
     <div class="sidebar">
@@ -6,8 +9,25 @@
     </div>
 
     <main>
-        <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
+        <div class="top-row px-4" style="display:flex; justify-content:flex-end; align-items:center; gap:10px;">
+
+            @if (!Auth.EstaLogueado)
+            {
+                <button class="btn-login" @onclick="IrLogin">
+                    Iniciar sesión
+                </button>
+            }
+            else
+            {
+                <span>
+                    @Auth.NombreUsuario
+                </span>
+
+                <button class="btn-login" @onclick="Logout">
+                    Salir
+                </button>
+            }
+
         </div>
 
         <article class="content px-4">
@@ -21,3 +41,31 @@
     <a href="" class="reload">Reload</a>
     <a class="dismiss">🗙</a>
 </div>
+
+<style>
+    .btn-login {
+        background: #3b82f6;
+        color: white;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+        .btn-login:hover {
+            background: #2563eb;
+        }
+</style>
+
+@code {
+    void IrLogin()
+    {
+        Nav.NavigateTo("/login");
+    }
+
+    void Logout()
+    {
+        Auth.Logout();
+        Nav.NavigateTo("/");
+    }
+}

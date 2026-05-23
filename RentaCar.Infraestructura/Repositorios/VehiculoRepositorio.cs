@@ -29,9 +29,21 @@ namespace RentaCar.Infraestructura.Repositorios
                 .ToList();
         }
 
-        public Vehiculo ObtenerPorPatente(string patente)
+        public Vehiculo? ObtenerPorPatente(string patente)
         {
-            return _context.Vehiculos.FirstOrDefault(v => v.Patente == patente);
+            if (string.IsNullOrWhiteSpace(patente))
+                return null;
+
+            patente = patente.Trim().ToUpper();
+
+            return _context.Vehiculos
+                .Include(v => v.Marca)
+                .Include(v => v.Modelo)
+                .Include(v => v.Color)
+                .Include(v => v.Tipo)
+                .Include(v => v.Estado)
+                .Include(v => v.Combustible)
+                .FirstOrDefault(v => v.Patente == patente);
         }
 
         public void Agregar(Vehiculo vehiculo)

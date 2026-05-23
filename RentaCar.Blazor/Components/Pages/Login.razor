@@ -1,0 +1,166 @@
+﻿@page "/login"
+@inject AuthService Auth
+@inject NavigationManager Nav
+@rendermode InteractiveServer
+@using RentaCar.Blazor.Services
+@using RentaCar.Dtos.Usuarios
+
+<div class="login-bg">
+    <div class="login-card">
+
+        <h3 class="titulo">Iniciar sesión</h3>
+
+        <div class="form">
+
+            <div class="input-group">
+                <label>Usuario</label>
+                <input @bind="usuario" placeholder="Ingrese su usuario" />
+            </div>
+
+            <div class="input-group">
+                <label>Contraseña</label>
+                <input type="password" @bind="password" placeholder="••••••••" />
+            </div>
+
+            <button class="btn" @onclick="LoginClick">
+                Ingresar
+            </button>
+
+            @if (!string.IsNullOrEmpty(error))
+            {
+                <p class="error">@error</p>
+            }
+
+        </div>
+    </div>
+</div>
+
+@code {
+    private string usuario = "";
+    private string password = "";
+    private string error = "";
+
+    private async Task LoginClick()
+    {
+        var ok = await Auth.Login(usuario, password);
+
+        if (ok)
+        {
+            Nav.NavigateTo("/");
+        }
+        else
+        {
+            error = "Usuario o contraseña incorrectos";
+        }
+    }
+}
+
+<style>
+    /* Fondo con blur */
+    .login-bg {
+        position: fixed;
+        inset: 0;
+        background: linear-gradient(135deg, #0f172a, #020617);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+        /* Capa blur */
+        .login-bg::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            backdrop-filter: blur(12px);
+            background: rgba(15, 23, 42, 0.6);
+        }
+
+    /* Card */
+    .login-card {
+        position: relative;
+        width: 100%;
+        max-width: 400px;
+        background: rgba(30, 41, 59, 0.9);
+        padding: 30px;
+        border-radius: 16px;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+        backdrop-filter: blur(20px);
+        animation: fadeIn 0.4s ease;
+    }
+
+    /* Animación */
+    @@keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .titulo {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 24px;
+        color: #e5e7eb;
+    }
+
+    .form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .input-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    label {
+        font-size: 13px;
+        margin-bottom: 5px;
+        color: #cbd5f5;
+    }
+
+    input {
+        background: #020617;
+        border: 1px solid #334155;
+        border-radius: 10px;
+        padding: 10px;
+        color: #e5e7eb;
+        transition: 0.2s;
+    }
+
+        input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 2px rgba(59,130,246,0.3);
+        }
+
+    .btn {
+        margin-top: 10px;
+        padding: 12px;
+        border: none;
+        border-radius: 10px;
+        background: linear-gradient(135deg, #3b82f6, #2563eb);
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+        .btn:hover {
+            transform: scale(1.03);
+            box-shadow: 0 5px 20px rgba(37,99,235,0.5);
+        }
+
+    .error {
+        color: #f87171;
+        text-align: center;
+        font-size: 14px;
+        margin-top: 5px;
+    }
+</style>

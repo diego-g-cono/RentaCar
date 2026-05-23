@@ -1,7 +1,8 @@
 using RentaCar.Blazor.Components;
+using RentaCar.Blazor.Services;
 
 var builder = WebApplication.CreateBuilder(args);
-
+builder.Services.AddScoped<AuthService>();
 
 builder.Services.AddHttpClient("Api", client =>
 {
