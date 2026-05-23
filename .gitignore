@@ -15,3 +15,13 @@ obj/
 # OS
 Thumbs.db
 .DS_Store
+
+# Generated assembly info
+*.AssemblyInfo.cs
+
+# NuGet
+project.assets.json
+
+# Compiled binaries
+*.dll
+*.pdb
