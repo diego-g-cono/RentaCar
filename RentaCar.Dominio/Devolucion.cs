@@ -14,6 +14,8 @@ namespace RentaCar.Dominio
 
         public string Observaciones { get; set; }
 
+        public bool Activo { get; set; } = true;
+
         public Devolucion(int id, DateOnly fecha, int alquilerId, bool tanqueLleno, string observaciones)
         {
             Id = id;

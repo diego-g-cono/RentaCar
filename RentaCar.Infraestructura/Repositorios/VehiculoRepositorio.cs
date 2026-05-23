@@ -25,6 +25,7 @@ namespace RentaCar.Infraestructura.Repositorios
                 .Include(v => v.Tipo)
                 .Include(v => v.Estado)
                 .Include(v => v.Combustible)
+                .Where(v => v.Activo)
                 .ToList();
         }
 
@@ -65,7 +66,7 @@ namespace RentaCar.Infraestructura.Repositorios
 
             if (vehiculo != null)
             {
-                _context.Vehiculos.Remove(vehiculo);
+                vehiculo.Activo = false;
                 _context.SaveChanges();
             }
         }

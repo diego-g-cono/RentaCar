@@ -21,7 +21,9 @@ namespace RentaCar.Infraestructura.Repositorios
         // Obtener todos los clientes
         public List<Cliente> ObtenerTodos()
         {
-            return _context.Clientes.ToList();
+            return _context.Clientes
+                .Where(c => c.Activo)
+                .ToList();
         }
 
         // Obtener cliente por DNI
@@ -62,7 +64,7 @@ namespace RentaCar.Infraestructura.Repositorios
 
             if (cliente != null)
             {
-                _context.Clientes.Remove(cliente);
+                cliente.Activo = false;
                 _context.SaveChanges();
             }
         }

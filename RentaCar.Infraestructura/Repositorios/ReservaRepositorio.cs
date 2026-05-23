@@ -25,6 +25,7 @@ namespace RentaCar.Infraestructura.Data
                 .Include(r => r.Cliente)
                 .Include(r => r.Vehiculo)
                 .Include(r => r.Estado)
+                .Where(r => r.Activo)
                 .ToList();
         }
 
@@ -57,7 +58,7 @@ namespace RentaCar.Infraestructura.Data
 
             if (reserva != null)
             {
-                _context.Reservas.Remove(reserva);
+                reserva.Activo = false;
                 _context.SaveChanges();
             }
         }

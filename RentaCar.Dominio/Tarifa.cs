@@ -17,6 +17,8 @@ namespace RentaCar.Dominio
         public TipoVehiculo TipoVehiculo { get; set; }
         public string NombreVehiculo => TipoVehiculo?.Nombre;
 
+        public bool Activo { get; set; } = true;
+
         public Tarifa(int id, decimal precioDia, decimal precioSemana, bool activa, int tipoVehiculoId)
         {
             Id = id;

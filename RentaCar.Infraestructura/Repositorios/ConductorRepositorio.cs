@@ -23,8 +23,8 @@ namespace RentaCar.Infraestructura
         {
             //return _context.Conductores.ToList();
             return _context.Conductores
-        .FromSqlRaw("SELECT dni as id, dni, nombre, apellido, fecha_venc_lic FROM conductores")
-        .ToList();
+                .Where(c => c.Activo) 
+                .ToList();
         }
 
         // Obtener conductor por DNI
@@ -56,7 +56,7 @@ namespace RentaCar.Infraestructura
 
             if (conductor != null)
             {
-                _context.Conductores.Remove(conductor);
+                conductor.Activo = false;
                 _context.SaveChanges();
             }
         }
