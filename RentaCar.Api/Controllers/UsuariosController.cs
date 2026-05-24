@@ -1,12 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
+using RentaCar.API.Services;
 using RentaCar.Dominio;
 using RentaCar.Dtos.Usuarios;
 using RentaCar.Infraestructura;
 using RentaCar.Infraestructura.Repositorios;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
 
 namespace RentaCar.API.Controllers
 {
@@ -15,60 +12,51 @@ namespace RentaCar.API.Controllers
     public class UsuariosController : ControllerBase
     {
         private readonly UsuarioRepositorio _repoUsuarios;
-        private readonly IConfiguration _config;
+        private readonly ClienteRepositorio _repoClientes;
+        private readonly JwtService _jwtService;
 
-        public UsuariosController(UsuarioRepositorio repoUsuarios, IConfiguration config)
+        public UsuariosController(
+            UsuarioRepositorio repoUsuarios,
+            JwtService jwtService,
+            ClienteRepositorio repoClientes)
         {
             _repoUsuarios = repoUsuarios;
-            _config = config;
+            _jwtService = jwtService;
+            _repoClientes = repoClientes;
         }
 
         [HttpPost("login")]
         public IActionResult Login([FromBody] LoginRequest request)
         {
-            if (request == null)
-                return BadRequest("Datos inválidos");
-
             var usuario = _repoUsuarios.ObtenerPorNombreUsuario(request.NombreUsuario);
+            Console.WriteLine(usuario.NombreUsuario);
 
             if (usuario == null)
-                return Unauthorized("Usuario o contraseña incorrectos");
+                return Unauthorized("Usuario inválido");
 
-            bool passwordValida = PasswordHelper.VerifyPassword(request.Contrasenia, usuario.Contrasenia);
+            bool passwordOk = BCrypt.Net.BCrypt.Verify(
+                request.Contrasenia,
+                usuario.Contrasenia);
 
-            if (!passwordValida)
-                return Unauthorized("Usuario o contraseña incorrectos");
+            if (!passwordOk)
+                return Unauthorized("Contraseña inválida");
+            Console.WriteLine(usuario.Id);
 
-            if (!usuario.Activo)
-                return Unauthorized("Usuario inactivo");
+            var cliente = _repoClientes.ObtenerPorUsuarioId(usuario.Id);
+            
 
-            var claims = new[]
-            {
-                new Claim(ClaimTypes.Name, usuario.NombreUsuario),
-                new Claim("Id", usuario.Id.ToString()),
-                new Claim(ClaimTypes.Role, usuario.RolId.ToString())
-            };
-
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]!));
-            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-
-            var token = new JwtSecurityToken(
-                issuer: "RentaCar",
-                audience: "RentaCar",
-                claims: claims,
-                expires: DateTime.Now.AddHours(2),
-                signingCredentials: creds
-            );
-
-            var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
+            var token = _jwtService.GenerarToken(usuario);
 
             var response = new LoginResponse
             {
                 Id = usuario.Id,
                 NombreUsuario = usuario.NombreUsuario,
                 RolId = usuario.RolId,
-                Token = tokenString,
-                Activo = usuario.Activo
+                Token = token,
+                Activo = usuario.Activo,
+
+                ClienteDni = cliente?.Dni ?? 0,
+                ClienteNombre = cliente?.Nombre ?? ""
             };
 
             return Ok(response);

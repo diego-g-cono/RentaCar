@@ -31,7 +31,7 @@ namespace RentaCar.Infraestructura
                 .FirstOrDefault(u => u.Id == id);
         }
 
-        // Obtener usuario por nombre de usuario (muy útil para login)
+        // Obtener usuario por nombre de usuario
         public Usuario? ObtenerPorNombreUsuario(string nombreUsuario)
         {
             return _context.Usuarios

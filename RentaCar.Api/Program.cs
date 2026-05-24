@@ -1,6 +1,7 @@
 using RentaCar.Infraestructura;
 using RentaCar.Infraestructura.Data;
 using RentaCar.Infraestructura.Repositorios;
+using RentaCar.API.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,6 +28,7 @@ builder.Services.AddScoped<ConductorRepositorio>();
 builder.Services.AddScoped<TarifaRepositorio>();
 builder.Services.AddScoped<DevolucionRepositorio>();
 builder.Services.AddScoped<UsuarioRepositorio>();
+builder.Services.AddScoped<JwtService>();
 
 var app = builder.Build();
 

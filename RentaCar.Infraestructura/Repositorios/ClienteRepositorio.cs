@@ -68,5 +68,10 @@ namespace RentaCar.Infraestructura.Repositorios
                 _context.SaveChanges();
             }
         }
+        public Cliente? ObtenerPorUsuarioId(int usuarioId)
+        {
+            return _context.Clientes
+                .FirstOrDefault(c => c.UsuarioId == usuarioId);
+        }
     }
 }

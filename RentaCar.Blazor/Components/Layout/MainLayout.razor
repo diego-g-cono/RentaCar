@@ -43,18 +43,41 @@
 </div>
 
 <style>
+
+    .top-row {
+        background: #0f172a !important;
+        border-bottom: 1px solid #1e293b;
+        min-height: 60px;
+        color: #e5e7eb;
+    }
+
+    main {
+        background: #020617;
+        min-height: 100vh;
+    }
+
+    .content {
+        background: #020617;
+        color: #e5e7eb;
+        min-height: calc(100vh - 60px);
+    }
+
     .btn-login {
         background: #3b82f6;
         color: white;
         border: none;
-        padding: 6px 12px;
+        padding: 8px 14px;
         border-radius: 8px;
         cursor: pointer;
+        transition: 0.2s;
+        font-weight: 600;
     }
 
         .btn-login:hover {
             background: #2563eb;
+            transform: scale(1.03);
         }
+
 </style>
 
 @code {

@@ -2,6 +2,7 @@
 @inject IHttpClientFactory HttpFactory
 @inject AuthService Auth
 @inject NavigationManager Nav
+@inject AuthService Auth
 @rendermode InteractiveServer
 @using RentaCar.Dtos.Reservas
 @using RentaCar.Dtos.Vehiculos
@@ -24,12 +25,16 @@ else
 
         <div class="input-group">
             <label>DNI Cliente</label>
-            <input type="number" @bind="reserva.ClienteDni" />
+            <input type="number"
+                   @bind="reserva.ClienteDni"
+                   readonly />
         </div>
 
         <div class="input-group">
             <label>Nombre Cliente</label>
-            <input type="text" @bind="reserva.ClienteNombre" />
+            <input type="text"
+                   @bind="reserva.ClienteNombre"
+                   readonly />
         </div>
 
         <div class="input-group">
@@ -73,7 +78,11 @@ else
         var uri = Nav.ToAbsoluteUri(Nav.Uri);
         var query = System.Web.HttpUtility.ParseQueryString(uri.Query);
 
-        reserva = new ReservaResponse();
+        reserva = new ReservaResponse
+        {
+            ClienteDni = Auth.ClienteDni,
+            ClienteNombre = Auth.ClienteNombre
+        };
 
         reserva.VehiculoPatente = query["patente"] ?? "SIN-PATENTE";
 
