@@ -20,6 +20,7 @@ namespace RentaCar.Escritorio
         {
             await CargarClientes();
             BloquearCampos(false);
+            BloquearBotones(false);
         }
 
         private async Task CargarClientes()
@@ -42,6 +43,12 @@ namespace RentaCar.Escritorio
             textBoxDNI.Enabled = estado;
             textBoxTel.Enabled = estado;
             textBoxEmail.Enabled = estado;
+        }
+
+        private void BloquearBotones(bool estado)
+        {
+            buttonGuardar.Enabled = estado;
+            buttonCancelar.Enabled = estado;
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)

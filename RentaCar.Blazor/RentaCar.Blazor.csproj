@@ -11,8 +11,4 @@
     <ProjectReference Include="..\RentaCar.Dtos\RentaCar.Dtos.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="wwwroot\images\autos\" />
-  </ItemGroup>
-
 </Project>

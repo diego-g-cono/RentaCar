@@ -15,6 +15,8 @@ namespace RentaCar.Dominio
         public string Email { get; set; }
         public string Telefono { get; set; }
 
+        public bool Activo { get; set; } = true;
+
         // Foreign key
         public int? UsuarioId { get; set; }
         public Cliente() { }

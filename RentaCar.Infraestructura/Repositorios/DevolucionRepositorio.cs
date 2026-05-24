@@ -21,7 +21,9 @@ namespace RentaCar.Infraestructura
         // Obtener todas las devoluciones
         public List<Devolucion> ObtenerTodos()
         {
-            return _context.Devoluciones.ToList();
+            return _context.Devoluciones
+                .Where(d => d.Activo)
+                .ToList();
         }
 
         // Obtener devolución por ID
@@ -53,7 +55,7 @@ namespace RentaCar.Infraestructura
 
             if (devolucion != null)
             {
-                _context.Devoluciones.Remove(devolucion);
+                devolucion.Activo = false;
                 _context.SaveChanges();
             }
         }

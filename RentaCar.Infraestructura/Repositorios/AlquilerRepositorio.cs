@@ -20,6 +20,7 @@ namespace RentaCar.Infraestructura
                 .Include(a => a.Estado)
                 .Include(a => a.Reserva)
                 .Include(a => a.Vehiculo)
+                .Where(a => a.Activo)
                 .ToList();
         }
         public Alquiler? ObtenerPorId(int id)
@@ -49,7 +50,7 @@ namespace RentaCar.Infraestructura
 
             if (alquiler != null)
             {
-                _context.Alquileres.Remove(alquiler);
+                alquiler.Activo = false;
                 _context.SaveChanges();
             }
         }

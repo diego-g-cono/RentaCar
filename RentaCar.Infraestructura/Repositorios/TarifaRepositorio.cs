@@ -23,6 +23,7 @@ namespace RentaCar.Infraestructura
         {
             return _context.Tarifas
                 .Include(t => t.TipoVehiculo)
+                .Where(t => t.Activo)
                 .ToList();
         }
 
@@ -62,7 +63,7 @@ namespace RentaCar.Infraestructura
 
             if (tarifa != null)
             {
-                _context.Tarifas.Remove(tarifa);
+                tarifa.Activo = false;
                 _context.SaveChanges();
             }
         }

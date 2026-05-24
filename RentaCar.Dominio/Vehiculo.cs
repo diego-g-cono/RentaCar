@@ -23,6 +23,8 @@ namespace RentaCar.Dominio
         public int TipoId { get; set; }
         public TipoVehiculo? Tipo { get; set; }
 
+        public bool Activo { get; set; } = true;
+
         public Vehiculo(
             string patente,
             int anio,

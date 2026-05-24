@@ -1,4 +1,5 @@
 ﻿using RentaCar.Dtos.Conductores;
+using RentaCar.Escritorio.Helpers;
 using RentaCar.Escritorio.Servicios;
 
 namespace RentaCar.Escritorio
@@ -8,6 +9,7 @@ namespace RentaCar.Escritorio
         private readonly ConductorServicio _conductorServicio;
 
         private bool modoEdicion = false;
+
         private int dniSeleccionado;
 
         public FormConductores()
@@ -19,6 +21,7 @@ namespace RentaCar.Escritorio
         private async void FormConductores_Load(object sender, EventArgs e)
         {
             BloquearCampos(false);
+            BloquearBotones(false);
             await CargarConductores();
         }
 
@@ -28,6 +31,12 @@ namespace RentaCar.Escritorio
             textBoxNombre.Enabled = estado;
             textBoxApellido.Enabled = estado;
             textBoxDni.Enabled = estado;
+        }
+
+        private void BloquearBotones(bool estado)
+        {
+            buttonGuardar.Enabled = estado;
+            buttonCancelar.Enabled = estado;
         }
 
         private async Task CargarConductores()
@@ -49,6 +58,7 @@ namespace RentaCar.Escritorio
         private void buttonNuevo_Click(object sender, EventArgs e)
         {
             BloquearCampos(true);
+            BloquearBotones(true);
             LimpiarCampos();
             modoEdicion = false;
             textBoxDni.Enabled = true;
@@ -60,46 +70,47 @@ namespace RentaCar.Escritorio
             {
                 if (string.IsNullOrWhiteSpace(textBoxDni.Text))
                 {
-                    MessageBox.Show("El DNI es obligatorio.");
+                    Dialogos.Error(Mensajes.CampoVacio("DNI"));
                     return;
                 }
 
                 if (!int.TryParse(textBoxDni.Text, out int dni))
                 {
-                    MessageBox.Show("El DNI debe ser numérico.");
+                    Dialogos.Error(Mensajes.FormatoInvalido("DNI"));
                     return;
                 }
 
                 if (string.IsNullOrWhiteSpace(textBoxNombre.Text))
                 {
-                    MessageBox.Show("El nombre es obligatorio.");
+                    Dialogos.Error(Mensajes.CampoVacio("Nombre"));
                     return;
                 }
 
                 if (string.IsNullOrWhiteSpace(textBoxApellido.Text))
                 {
-                    MessageBox.Show("El apellido es obligatorio.");
+                    Dialogos.Error(Mensajes.CampoVacio("Apellido"));
                     return;
                 }
 
                 if (dateTimePickerVencLic.Value.Date < DateTime.Today)
                 {
-                    MessageBox.Show("La licencia no puede estar vencida.");
+                    Dialogos.Error(Mensajes.LicenciaVencida);
                     return;
                 }
 
-                var confirm = MessageBox.Show(
+                string mensajeConfirmacion = 
                     $"¿Son correctos los datos?\n\n" +
                     $"DNI: {dni}\n" +
                     $"Nombre: {textBoxNombre.Text}\n" +
                     $"Apellido: {textBoxApellido.Text}\n" +
-                    $"Vencimiento Licencia: {dateTimePickerVencLic.Value.Date}",
-                    "Confirmar",
-                    MessageBoxButtons.YesNo
-                );
-
-                if (confirm != DialogResult.Yes)
+                    $"Vencimiento Licencia: {dateTimePickerVencLic.Value.Date}";
+                
+                if(!Dialogos.Confirmar(mensajeConfirmacion))
+                {
                     return;
+                }
+
+                
 
                 if (modoEdicion)
                 {
@@ -112,7 +123,7 @@ namespace RentaCar.Escritorio
 
                     await _conductorServicio.Actualizar(dniSeleccionado, updateRequest);
 
-                    MessageBox.Show("Conductor editado correctamente");
+                    Dialogos.Info(Mensajes.ExitoEdicion("conductor"));
                 }
                 else
                 {
@@ -126,17 +137,19 @@ namespace RentaCar.Escritorio
 
                     await _conductorServicio.Agregar(createRequest);
 
-                    MessageBox.Show("Conductor agregado correctamente");
+                    //MessageBox.Show("Conductor agregado correctamente");
+                    Dialogos.Info(Mensajes.ExitoGuardado("conductor"));
                 }
 
                 await CargarConductores();
                 LimpiarCampos();
                 BloquearCampos(false);
+                BloquearBotones(false);
                 modoEdicion = false;
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error");
+                Dialogos.Error(ex.Message);
             }
         }
 
@@ -144,38 +157,38 @@ namespace RentaCar.Escritorio
         {
             if (dataGridViewConductores.SelectedRows.Count == 0)
             {
-                MessageBox.Show("No seleccionaste ningún conductor.");
+                Dialogos.Error(Mensajes.SeleccioneEntidad("conductor"));
                 return;
             }
 
             var conductor = (ConductorResponse)dataGridViewConductores.SelectedRows[0].DataBoundItem;
 
-            var confirm = MessageBox.Show(
-                $"¿Eliminar a {conductor.Nombre} {conductor.Apellido}?",
-                "Confirmar",
-                MessageBoxButtons.YesNo
-            );
-
-            if (confirm == DialogResult.Yes)
+            string mensajeConfirmacion = $"¿Eliminar a {conductor.Nombre} {conductor.Apellido}?";
+            
+            if (!Dialogos.Confirmar(mensajeConfirmacion))
             {
+                return;
+            }
+            
                 await _conductorServicio.Eliminar(conductor.Dni);
 
                 await CargarConductores();
                 LimpiarCampos();
 
-                MessageBox.Show("Conductor eliminado correctamente.");
-            }
+                Dialogos.Info(Mensajes.ExitoEliminacion("conductor"));
+
         }
 
         private void buttonEditar_Click(object sender, EventArgs e)
         {
             if (dataGridViewConductores.SelectedRows.Count == 0)
             {
-                MessageBox.Show("No seleccionaste ningún conductor.");
+                Dialogos.Error(Mensajes.SeleccioneEntidad("conductor"));
                 return;
             }
 
             BloquearCampos(true);
+            BloquearBotones(true);
 
             var conductor = (ConductorResponse)dataGridViewConductores.SelectedRows[0].DataBoundItem;
 
@@ -193,8 +206,14 @@ namespace RentaCar.Escritorio
 
         private void buttonCancelar_Click(object sender, EventArgs e)
         {
+            if(!Dialogos.Confirmar(Mensajes.ConfirmarCancelacion()))
+            {
+                return;
+            }
+
             LimpiarCampos();
             BloquearCampos(false);
+            BloquearBotones(false);
             modoEdicion = false;
         }
     }

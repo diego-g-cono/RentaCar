@@ -20,6 +20,8 @@ namespace RentaCar.Dominio
         public EstadoAlquiler? Estado { get; set; }
         public Reserva? Reserva { get; set; }
 
+        public bool Activo { get; set; } = true;
+
         public Alquiler(
             DateOnly fechaInicio,
             DateOnly fechaFin,

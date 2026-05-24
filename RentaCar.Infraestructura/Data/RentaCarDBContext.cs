@@ -34,7 +34,7 @@ namespace RentaCar.Infraestructura.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=RentaCarDb;Username=postgres;Password=<1123581321>;");
+            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=rentacar;Username=postgres;Password=postgres;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -53,6 +53,7 @@ namespace RentaCar.Infraestructura.Data
                 entity.Property(v => v.CombustibleId).HasColumnName("combustible_id");
                 entity.Property(v => v.Kilometraje).HasColumnName("kilometraje");
                 entity.Property(v => v.TipoId).HasColumnName("tipo_id");
+                entity.Property(v => v.Activo).HasColumnName("activo");
 
                 entity.HasOne(v => v.Marca)
                       .WithMany()
@@ -90,6 +91,7 @@ namespace RentaCar.Infraestructura.Data
                 entity.Property(c => c.Email).HasColumnName("email");
                 entity.Property(c => c.Telefono).HasColumnName("telefono");
                 entity.Property(c => c.UsuarioId).HasColumnName("usuario_id");
+                entity.Property(c => c.Activo).HasColumnName("activo");
             });
 
             modelBuilder.Entity<Reserva>(entity =>
@@ -105,6 +107,7 @@ namespace RentaCar.Infraestructura.Data
                 entity.Property(r => r.EstadoId).HasColumnName("estado_id");
                 entity.Property(r => r.Senia).HasColumnName("senia");
                 entity.Property(r => r.Precio).HasColumnName("precio");
+                entity.Property(r => r.Activo).HasColumnName("activo");
             });
 
             modelBuilder.Entity<Marca>(entity =>
@@ -244,6 +247,9 @@ namespace RentaCar.Infraestructura.Data
                     .WithMany()
                     .HasForeignKey(a => a.ReservaId)
                     .OnDelete(DeleteBehavior.SetNull);
+
+                entity.Property(a => a.Activo)
+                    .HasColumnName("activo");
             });
 
             modelBuilder.Entity<Devolucion>(entity =>
@@ -256,6 +262,7 @@ namespace RentaCar.Infraestructura.Data
                 entity.Property(d => d.Fecha).HasColumnName("fecha");
                 entity.Property(d => d.TanqueLleno).HasColumnName("tanque_lleno");
                 entity.Property(d => d.Observaciones).HasColumnName("observaciones");
+                entity.Property(d => d.Activo).HasColumnName("activo");
             });
 
             modelBuilder.Entity<Conductor>(entity =>
@@ -267,6 +274,7 @@ namespace RentaCar.Infraestructura.Data
                 entity.Property(c => c.Nombre).HasColumnName("nombre");
                 entity.Property(c => c.Apellido).HasColumnName("apellido");
                 entity.Property(c => c.FechaVencLic).HasColumnName("fecha_venc_lic");
+                entity.Property(c => c.Activo).HasColumnName("activo");
             });
 
             modelBuilder.Entity<EstadoAlquiler>(entity =>
@@ -319,6 +327,7 @@ namespace RentaCar.Infraestructura.Data
                 entity.Property(t => t.PrecioSemana).HasColumnName("precio_semana");
                 entity.Property(t => t.PrecioDia).HasColumnName("precio_dia");
                 entity.Property(t => t.Activa).HasColumnName("activa");
+                entity.Property(t => t.Activo).HasColumnName("activo");
             });
 
             modelBuilder.Entity<TipoVehiculo>(entity =>

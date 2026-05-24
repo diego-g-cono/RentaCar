@@ -20,6 +20,8 @@ namespace RentaCar.Dominio
         public int EstadoId { get; set; }
         public EstadoReserva Estado { get; set; }
 
+        public bool Activo { get; set; } = true;
+
         public Reserva(
             int clienteDni,
             string vehiculoPatente,
