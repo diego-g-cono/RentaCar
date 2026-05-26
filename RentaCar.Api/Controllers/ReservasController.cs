@@ -164,5 +164,48 @@ namespace RentaCar.API.Controllers
 
             return Ok("Reserva eliminada correctamente");
         }
+
+        [HttpPut("cancelar/{id}")]
+        public IActionResult CancelarReserva(int id)
+        {
+            var reserva = _repoReservas.ObtenerPorId(id);
+
+            if (reserva == null)
+                return NotFound("Reserva no encontrada");
+
+            _repoReservas.CancelarReserva(id);
+
+            return Ok("Reserva cancelada correctamente");
+        }
+        [HttpGet("usuario/{usuarioId}")]
+        public IActionResult ObtenerPorUsuario(int usuarioId)
+        {
+            var cliente = _repoClientes.ObtenerPorUsuarioId(usuarioId);
+
+            if (cliente == null)
+                return NotFound("Cliente no encontrado");
+
+            var reservas = _repoReservas.ObtenerTodos()
+                .Where(r => r.ClienteDni == cliente.Dni)
+                .ToList();
+
+            var response = reservas.Select(r => new ReservaResponse
+            {
+                Id = r.Id,
+                ClienteDni = r.ClienteDni,
+                ClienteNombre = r.Cliente?.Nombre,
+                VehiculoPatente = r.VehiculoPatente,
+                FechaInicio = r.FechaInicio,
+                FechaFin = r.FechaFin,
+                Precio = r.Precio,
+                Senia = r.Senia,
+                EstadoId = r.EstadoId,
+                EstadoNombre = r.Estado?.Nombre,
+                VehiculoMarca = r.Vehiculo?.Marca.Nombre,
+                VehiculoModelo = r.Vehiculo?.Modelo.Nombre
+            });
+
+            return Ok(response);
+        }
     }
 }

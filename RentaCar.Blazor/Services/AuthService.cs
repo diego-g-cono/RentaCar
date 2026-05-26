@@ -10,9 +10,11 @@ namespace RentaCar.Blazor.Services
         public string? Token { get; private set; }
         public string? NombreUsuario { get; private set; }
         public bool EstaLogueado => !string.IsNullOrEmpty(Token);
-        public int ClienteDni { get; private set; }
 
+        public int UsuarioId { get; private set; }   
+        public int ClienteDni { get; private set; }
         public string? ClienteNombre { get; private set; }
+        public string? ClienteApellido { get; private set; }
 
         public AuthService(IHttpClientFactory httpFactory)
         {
@@ -38,9 +40,11 @@ namespace RentaCar.Blazor.Services
 
             Token = data!.Token;
             NombreUsuario = data.NombreUsuario;
+            UsuarioId = data.Id;                    
 
             ClienteDni = data.ClienteDni;
             ClienteNombre = data.ClienteNombre;
+            ClienteApellido = data.ClienteApellido;
 
             client.DefaultRequestHeaders.Authorization =
                 new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", Token);
@@ -52,8 +56,10 @@ namespace RentaCar.Blazor.Services
         {
             Token = null;
             NombreUsuario = null;
+            UsuarioId = 0;                           
+            ClienteDni = 0;
+            ClienteNombre = null;
+            ClienteApellido = null;
         }
-
     }
-
 }

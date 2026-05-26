@@ -1,0 +1,220 @@
+﻿@page "/cancelar-reserva"
+@inject IHttpClientFactory HttpFactory
+@inject NavigationManager Nav
+@inject AuthService Auth
+
+@using RentaCar.Blazor.Services
+@using RentaCar.Dtos.Reservas
+
+<div class="page-container">
+
+    <h3 class="titulo">Mis reservas</h3>
+
+    @if (reservas == null)
+    {
+        <p class="loading">Cargando reservas...</p>
+    }
+    else if (!reservas.Any())
+    {
+        <p class="empty">No tenés reservas activas 😕</p>
+    }
+    else
+    {
+        <div class="grid">
+
+            @foreach (var r in reservas)
+            {
+                <div class="card-reserva">
+
+                    <div class="estado">
+                        @r.EstadoNombre
+                    </div>
+
+                    <h4>@r.VehiculoMarca</h4>
+                    <h5>@r.VehiculoModelo</h5>
+
+                    <div class="info">
+                        <span>Desde</span>
+                        <strong>@r.FechaInicio</strong>
+                    </div>
+
+                    <div class="info">
+                        <span>Hasta</span>
+                        <strong>@r.FechaFin</strong>
+                    </div>
+
+                    <div class="info">
+                        <span>Seña</span>
+                        <strong>$ @r.Senia</strong>
+                    </div>
+
+                    <button class="btn-cancelar"
+                            @onclick="() => CancelarReservas(r.Id)">
+                        Cancelar reserva
+                    </button>
+
+                </div>
+            }
+
+        </div>
+    }
+
+    @if (!string.IsNullOrEmpty(mensaje))
+    {
+        <div class="@(success ? "success" : "error-box")">
+            @mensaje
+        </div>
+    }
+
+</div>
+
+@code {
+
+    private List<ReservaResponse>? reservas;
+
+    private string mensaje = "";
+    private bool success = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (!Auth.EstaLogueado)
+        {
+            Nav.NavigateTo("/login");
+            return;
+        }
+
+        var client = HttpFactory.CreateClient("Api");
+
+        reservas = await client.GetFromJsonAsync<List<ReservaResponse>>(
+            $"reservas/usuario/{Auth.UsuarioId}"
+        );
+
+        reservas = reservas?
+            .Where(r => r.EstadoNombre != "Cancelada")
+            .ToList();
+    }
+
+
+    private async Task CancelarReservas(int id)
+    {
+        var client = HttpFactory.CreateClient("Api");
+
+        var response = await client.DeleteAsync($"reservas/{id}");
+
+        if (response.IsSuccessStatusCode)
+        {
+            success = true;
+            mensaje = "✅ Reserva cancelada correctamente";
+
+            reservas = reservas!
+                .Where(r => r.Id != id)
+                .ToList();
+        }
+        else
+        {
+            success = false;
+            mensaje = "❌ No se pudo cancelar la reserva";
+        }
+    }
+}
+
+<style>
+
+    .page-container {
+        min-height: 100vh;
+        background: #0f172a;
+        color: #e5e7eb;
+        padding: 30px;
+    }
+
+    .titulo {
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 28px;
+    }
+
+    .loading,
+    .empty {
+        text-align: center;
+        color: #94a3b8;
+    }
+
+    .login-box {
+        max-width: 400px;
+        margin: auto;
+        background: #1e293b;
+        padding: 25px;
+        border-radius: 12px;
+        text-align: center;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px;
+    }
+
+    .card-reserva {
+        background: #1e293b;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    }
+
+    .estado {
+        display: inline-block;
+        background: #2563eb;
+        padding: 5px 10px;
+        border-radius: 8px;
+        font-size: 12px;
+        margin-bottom: 15px;
+    }
+
+    .info {
+        margin-bottom: 10px;
+    }
+
+        .info span {
+            display: block;
+            font-size: 12px;
+            color: #94a3b8;
+        }
+
+    .btn,
+    .btn-cancelar {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 10px;
+        background: linear-gradient(135deg, #ef4444, #dc2626);
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 15px;
+    }
+
+    .btn {
+        background: linear-gradient(135deg, #3b82f6, #2563eb);
+    }
+
+    .success {
+        margin-top: 20px;
+        background: rgba(34,197,94,0.15);
+        border: 1px solid #22c55e;
+        color: #86efac;
+        padding: 12px;
+        border-radius: 10px;
+        text-align: center;
+    }
+
+    .error-box {
+        margin-top: 20px;
+        background: rgba(239,68,68,0.15);
+        border: 1px solid #ef4444;
+        color: #fca5a5;
+        padding: 12px;
+        border-radius: 10px;
+        text-align: center;
+    }
+
+</style>

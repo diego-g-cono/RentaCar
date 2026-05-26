@@ -23,8 +23,14 @@ namespace RentaCar.Infraestructura.Data
         {
             return _context.Reservas
                 .Include(r => r.Cliente)
-                .Include(r => r.Vehiculo)
                 .Include(r => r.Estado)
+
+                .Include(r => r.Vehiculo)
+                    .ThenInclude(v => v.Marca)
+
+                .Include(r => r.Vehiculo)
+                    .ThenInclude(v => v.Modelo)
+
                 .Where(r => r.Activo)
                 .ToList();
         }
@@ -65,8 +71,24 @@ namespace RentaCar.Infraestructura.Data
         public List<Reserva> ObtenerPorVehiculo(string patente)
         {
             return _context.Reservas
-                .Where(r => r.VehiculoPatente == patente)
+                .Where(r =>
+                    r.VehiculoPatente == patente &&
+                    r.Activo)
                 .ToList();
+        }
+        public void CancelarReserva(int id)
+        {
+            var reserva = _context.Reservas
+                .FirstOrDefault(r => r.Id == id);
+
+            if (reserva != null)
+            {
+                reserva.Activo = false;
+
+                reserva.EstadoId = 3;
+
+                _context.SaveChanges();
+            }
         }
     }
 }

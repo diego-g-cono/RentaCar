@@ -8,16 +8,24 @@
 
 <div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
     <nav class="flex-column">
+
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
                 <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Inicio
             </NavLink>
         </div>
+
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="flota" Match="NavLinkMatch.Prefix">
-                <span class="bi bi-car-front-fill" aria-hidden="true"></span> Flota
+                <span class="bi bi-car-front-fill" style="vertical-align: middle;"></span> Flota
             </NavLink>
         </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="cancelar-reserva" Match="NavLinkMatch.Prefix">
+                <span class="bi bi-calendar-x-fill" style="vertical-align: middle;"></span> Cancelar Reserva
+            </NavLink>
+        </div>
+
     </nav>
 </div>
-

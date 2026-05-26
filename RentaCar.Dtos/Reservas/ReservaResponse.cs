@@ -6,8 +6,11 @@
 
         public int ClienteDni { get; set; }
         public string? ClienteNombre { get; set; }
+        public string? ClienteApellido { get; set; }
 
         public string VehiculoPatente { get; set; } = null!;
+        public string? VehiculoMarca { get; set; }
+        public string? VehiculoModelo { get; set; }
 
         public DateOnly FechaInicio { get; set; }
         public DateOnly FechaFin { get; set; }

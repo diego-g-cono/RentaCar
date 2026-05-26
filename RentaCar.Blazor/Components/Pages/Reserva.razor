@@ -1,6 +1,5 @@
 ﻿@page "/reserva"
 @inject IHttpClientFactory HttpFactory
-@inject AuthService Auth
 @inject NavigationManager Nav
 @inject AuthService Auth
 @rendermode InteractiveServer
@@ -38,6 +37,13 @@ else
         </div>
 
         <div class="input-group">
+            <label>Apellido Cliente</label>
+            <input type="text"
+                   @bind="reserva.ClienteApellido"
+                   readonly />
+        </div>
+
+        <div class="input-group">
             <label>Fecha inicio</label>
             <InputDate @bind-Value="fechaInicio" />
         </div>
@@ -55,6 +61,12 @@ else
         <button class="btn" @onclick="ConfirmarReserva">
             Confirmar reserva
         </button>
+        @if (!string.IsNullOrEmpty(mensaje))
+        {
+            <div class="@(reservaExitosa ? "success" : "error-box")">
+                @mensaje
+            </div>
+        }
 
     </div>
 }
@@ -67,6 +79,8 @@ else
     private DateTime fechaInicio;
     private DateTime fechaFin;
     private string? vehiculoDescripcion;
+    private string mensaje = "";
+    private bool reservaExitosa = false;
 
     protected override async Task OnInitializedAsync()
     {
@@ -81,7 +95,8 @@ else
         reserva = new ReservaResponse
         {
             ClienteDni = Auth.ClienteDni,
-            ClienteNombre = Auth.ClienteNombre
+            ClienteNombre = Auth.ClienteNombre,
+            ClienteApellido = Auth.ClienteApellido
         };
 
         reserva.VehiculoPatente = query["patente"] ?? "SIN-PATENTE";
@@ -137,15 +152,21 @@ else
 
             if (response.IsSuccessStatusCode)
             {
-                Console.WriteLine("Reserva creada correctamente");
+                reservaExitosa = true;
+                mensaje = "La reserva fue creada correctamente";
 
-         
-                Nav.NavigateTo("/flota");
+                StateHasChanged();
+
+                await Task.Delay(1500);
+
+                Nav.NavigateTo("/");
+
             }
             else
             {
                 var error = await response.Content.ReadAsStringAsync();
-                Console.WriteLine($"Error: {error}");
+                reservaExitosa = false;
+                mensaje = $"❌ {error}";
             }
         }
         catch (Exception ex)
@@ -264,5 +285,25 @@ else
 
     input::placeholder {
         color: #94a3b8;
+    }
+
+    .success {
+        margin-top: 15px;
+        background: rgba(34,197,94,0.15);
+        border: 1px solid #22c55e;
+        color: #86efac;
+        padding: 12px;
+        border-radius: 10px;
+        text-align: center;
+    }
+
+    .error-box {
+        margin-top: 15px;
+        background: rgba(239,68,68,0.15);
+        border: 1px solid #ef4444;
+        color: #fca5a5;
+        padding: 12px;
+        border-radius: 10px;
+        text-align: center;
     }
 </style>

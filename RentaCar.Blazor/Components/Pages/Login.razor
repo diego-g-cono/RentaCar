@@ -25,6 +25,12 @@
             <button class="btn" @onclick="LoginClick">
                 Ingresar
             </button>
+            @if (loginExitoso)
+            {
+                <div class="success">
+                    ¡Bienvenido @Auth.NombreUsuario!
+                </div>
+            }
 
             @if (!string.IsNullOrEmpty(error))
             {
@@ -40,12 +46,22 @@
     private string password = "";
     private string error = "";
 
+    private bool loginExitoso = false;
+
     private async Task LoginClick()
     {
+        error = "";
+
         var ok = await Auth.Login(usuario, password);
 
         if (ok)
         {
+            loginExitoso = true;
+
+            StateHasChanged();
+
+            await Task.Delay(1500);
+
             Nav.NavigateTo("/");
         }
         else
@@ -163,4 +179,30 @@
         font-size: 14px;
         margin-top: 5px;
     }
+
+    .success {
+        margin-top: 15px;
+        background: rgba(34,197,94,0.15);
+        border: 1px solid #22c55e;
+        color: #86efac;
+        padding: 12px;
+        border-radius: 10px;
+        text-align: center;
+        animation: fadeIn 0.3s ease;
+    }
+    @@keyframes fadeIn {
+        from
+
+    {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    }
+
 </style>

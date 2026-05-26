@@ -4,6 +4,7 @@ using RentaCar.Dominio;
 using RentaCar.Dtos.Usuarios;
 using RentaCar.Infraestructura;
 using RentaCar.Infraestructura.Repositorios;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace RentaCar.API.Controllers
 {
@@ -56,7 +57,8 @@ namespace RentaCar.API.Controllers
                 Activo = usuario.Activo,
 
                 ClienteDni = cliente?.Dni ?? 0,
-                ClienteNombre = cliente?.Nombre ?? ""
+                ClienteNombre = cliente?.Nombre ?? "",
+                ClienteApellido = cliente?.Apellido ?? "",
             };
 
             return Ok(response);
