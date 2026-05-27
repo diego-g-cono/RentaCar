@@ -46,7 +46,6 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        Console.WriteLine(BCrypt.Net.BCrypt.HashPassword("1234"));
         var uri = Nav.ToAbsoluteUri(Nav.Uri);
         var query = System.Web.HttpUtility.ParseQueryString(uri.Query);
 

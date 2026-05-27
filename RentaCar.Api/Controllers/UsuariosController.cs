@@ -30,7 +30,6 @@ namespace RentaCar.API.Controllers
         public IActionResult Login([FromBody] LoginRequest request)
         {
             var usuario = _repoUsuarios.ObtenerPorNombreUsuario(request.NombreUsuario);
-            Console.WriteLine(usuario.NombreUsuario);
 
             if (usuario == null)
                 return Unauthorized("Usuario inválido");
@@ -41,7 +40,6 @@ namespace RentaCar.API.Controllers
 
             if (!passwordOk)
                 return Unauthorized("Contraseña inválida");
-            Console.WriteLine(usuario.Id);
 
             var cliente = _repoClientes.ObtenerPorUsuarioId(usuario.Id);
             

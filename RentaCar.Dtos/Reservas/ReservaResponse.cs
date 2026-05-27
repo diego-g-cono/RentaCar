@@ -20,5 +20,6 @@
 
         public int EstadoId { get; set; }
         public string? EstadoNombre { get; set; }
+        public bool Activo { get; set; }
     }
 }

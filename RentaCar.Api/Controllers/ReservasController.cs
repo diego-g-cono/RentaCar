@@ -202,7 +202,8 @@ namespace RentaCar.API.Controllers
                 EstadoId = r.EstadoId,
                 EstadoNombre = r.Estado?.Nombre,
                 VehiculoMarca = r.Vehiculo?.Marca.Nombre,
-                VehiculoModelo = r.Vehiculo?.Modelo.Nombre
+                VehiculoModelo = r.Vehiculo?.Modelo.Nombre,
+                Activo = r.Activo
             });
 
             return Ok(response);

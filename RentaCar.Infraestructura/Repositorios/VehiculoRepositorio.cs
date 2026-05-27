@@ -97,6 +97,8 @@ namespace RentaCar.Infraestructura.Repositorios
                 .Include(v => v.Tipo)
                 .Where(v => !_context.Reservas.Any(r =>
                     r.VehiculoPatente == v.Patente &&
+                    r.Activo &&
+                    r.EstadoId != 3 &&
                     inicio < r.FechaFin &&
                     fin > r.FechaInicio
                 ))

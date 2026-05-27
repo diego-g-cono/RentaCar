@@ -16,7 +16,7 @@
     }
     else if (!reservas.Any())
     {
-        <p class="empty">No tenés reservas activas 😕</p>
+        <p class="empty">No tenés reservas activas</p>
     }
     else
     {
@@ -26,7 +26,7 @@
             {
                 <div class="card-reserva">
 
-                    <div class="estado">
+                    <div class="estado @ObtenerClaseEstado(r.EstadoNombre)">
                         @r.EstadoNombre
                     </div>
 
@@ -90,31 +90,49 @@
         );
 
         reservas = reservas?
-            .Where(r => r.EstadoNombre != "Cancelada")
+            .Where(r => r.Activo)
             .ToList();
     }
-
 
     private async Task CancelarReservas(int id)
     {
         var client = HttpFactory.CreateClient("Api");
 
-        var response = await client.DeleteAsync($"reservas/{id}");
+        var response = await client.PutAsync(
+            $"reservas/cancelar/{id}",
+            null
+        );
 
         if (response.IsSuccessStatusCode)
         {
             success = true;
             mensaje = "✅ Reserva cancelada correctamente";
 
-            reservas = reservas!
-                .Where(r => r.Id != id)
-                .ToList();
+            var reserva = reservas?
+                .FirstOrDefault(r => r.Id == id);
+
+            if (reserva != null)
+            {
+                reserva.EstadoNombre = "Cancelada";
+            }
+
+            StateHasChanged();
         }
         else
         {
             success = false;
             mensaje = "❌ No se pudo cancelar la reserva";
         }
+    }
+    private string ObtenerClaseEstado(string? estado)
+    {
+        return estado?.ToLower() switch
+        {
+            "cancelada" => "estado-cancelada",
+            "pendiente" => "estado-pendiente",
+            "confirmada" => "estado-confirmada",
+            _ => "estado-default"
+        };
     }
 }
 
@@ -163,11 +181,29 @@
 
     .estado {
         display: inline-block;
-        background: #2563eb;
-        padding: 5px 10px;
+        padding: 6px 12px;
         border-radius: 8px;
         font-size: 12px;
+        font-weight: bold;
         margin-bottom: 15px;
+        color: white;
+    }
+
+    .estado-cancelada {
+        background: #dc2626;
+    }
+
+    .estado-pendiente {
+        background: #eab308;
+        color: #111827;
+    }
+
+    .estado-confirmada {
+        background: #16a34a;
+    }
+
+    .estado-default {
+        background: #2563eb;
     }
 
     .info {
