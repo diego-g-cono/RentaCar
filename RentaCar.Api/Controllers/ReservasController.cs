@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RentaCar.Dtos.Reservas;
+using RentaCar.Infraestructura;
 using RentaCar.Infraestructura.Data;
 using RentaCar.Infraestructura.Repositorios;
 
@@ -12,15 +13,21 @@ namespace RentaCar.API.Controllers
         private readonly ReservaRepositorio _repoReservas;
         private readonly ClienteRepositorio _repoClientes;
         private readonly VehiculoRepositorio _repoVehiculos;
+        private readonly TarifaRepositorio _repoTarifas;
+        private readonly SeguroRepositorio _repoSeguros;
 
         public ReservasController(
             ReservaRepositorio repoReservas,
             ClienteRepositorio repoClientes,
-            VehiculoRepositorio repoVehiculos)
+            VehiculoRepositorio repoVehiculos,
+            TarifaRepositorio repoTarifas,
+            SeguroRepositorio repoSeguros)
         {
             _repoReservas = repoReservas;
             _repoClientes = repoClientes;
             _repoVehiculos = repoVehiculos;
+            _repoTarifas = repoTarifas;
+            _repoSeguros = repoSeguros;
         }
 
         [HttpGet]
@@ -207,6 +214,42 @@ namespace RentaCar.API.Controllers
             });
 
             return Ok(response);
+        }
+        [HttpGet("calcular-precio")]
+        public IActionResult CalcularPrecio(
+    string patente,
+    DateOnly inicio,
+    DateOnly fin,
+    int seguroId)
+        {
+            var vehiculo = _repoVehiculos.ObtenerPorPatente(patente);
+
+            if (vehiculo == null)
+                return NotFound();
+
+            var tarifa = _repoTarifas.ObtenerPorTipo(
+                vehiculo.TipoId
+            );
+
+            var seguro = _repoSeguros.ObtenerPorId(seguroId);
+
+            int dias = (fin.ToDateTime(TimeOnly.MinValue)
+                        - inicio.ToDateTime(TimeOnly.MinValue))
+                        .Days;
+
+            if (dias <= 0)
+                dias = 1;
+
+            int semanas = dias / 7;
+            int diasRestantes = dias % 7;
+
+            decimal subtotal =
+                semanas * tarifa.PrecioSemana +
+                diasRestantes * tarifa.PrecioDia;
+
+            decimal total = subtotal * seguro.Tasa;
+
+            return Ok(total);
         }
     }
 }

@@ -29,6 +29,7 @@ builder.Services.AddScoped<TarifaRepositorio>();
 builder.Services.AddScoped<DevolucionRepositorio>();
 builder.Services.AddScoped<UsuarioRepositorio>();
 builder.Services.AddScoped<JwtService>();
+builder.Services.AddScoped<SeguroRepositorio>();
 
 var app = builder.Build();
 

@@ -34,7 +34,7 @@ namespace RentaCar.Infraestructura.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=rentacar;Username=postgres;Password=postgres;");
+            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=rentacar;Username=postgres;Password=<1123581321>;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -315,6 +315,7 @@ namespace RentaCar.Infraestructura.Data
                 entity.Property(s => s.Id).HasColumnName("id");
                 entity.Property(s => s.Nombre).HasColumnName("nombre");
                 entity.Property(s => s.Tasa).HasColumnName("tasa");
+                entity.Property(t => t.Activo).HasColumnName("activo");
             });
 
             modelBuilder.Entity<Tarifa>(entity =>
@@ -326,7 +327,6 @@ namespace RentaCar.Infraestructura.Data
                 entity.Property(t => t.TipoVehiculoId).HasColumnName("tipo_vehiculo_id");
                 entity.Property(t => t.PrecioSemana).HasColumnName("precio_semana");
                 entity.Property(t => t.PrecioDia).HasColumnName("precio_dia");
-                entity.Property(t => t.Activa).HasColumnName("activa");
                 entity.Property(t => t.Activo).HasColumnName("activo");
             });
 

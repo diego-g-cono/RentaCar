@@ -27,7 +27,7 @@ namespace RentaCar.API.Controllers
                 Id = t.Id,
                 PrecioDia = t.PrecioDia,
                 PrecioSemana = t.PrecioSemana,
-                Activa = t.Activa,
+                Activo = t.Activo,
 
                 TipoVehiculoId = t.TipoVehiculoId,
                 TipoVehiculoNombre = t.TipoVehiculo?.Nombre
@@ -49,7 +49,7 @@ namespace RentaCar.API.Controllers
                 Id = t.Id,
                 PrecioDia = t.PrecioDia,
                 PrecioSemana = t.PrecioSemana,
-                Activa = t.Activa,
+                Activo = t.Activo,
 
                 TipoVehiculoId = t.TipoVehiculoId,
                 TipoVehiculoNombre = t.TipoVehiculo?.Nombre
@@ -68,7 +68,7 @@ namespace RentaCar.API.Controllers
             {
                 PrecioDia = request.PrecioDia,
                 PrecioSemana = request.PrecioSemana,
-                Activa = request.Activa,
+                Activo = request.Activo,
                 TipoVehiculoId = request.TipoVehiculoId
             };
 
@@ -90,7 +90,7 @@ namespace RentaCar.API.Controllers
 
             existente.PrecioDia = request.PrecioDia;
             existente.PrecioSemana = request.PrecioSemana;
-            existente.Activa = request.Activa;
+            existente.Activo = request.Activo;
             existente.TipoVehiculoId = request.TipoVehiculoId;
 
             _repoTarifas.Actualizar(existente);

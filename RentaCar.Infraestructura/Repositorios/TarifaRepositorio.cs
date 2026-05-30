@@ -34,13 +34,6 @@ namespace RentaCar.Infraestructura
                 .FirstOrDefault(t => t.Id == id);
         }
 
-        // Obtener tarifa activa de un tipo de vehículo
-        public Tarifa? ObtenerTarifaActivaPorTipoVehiculo(int tipoVehiculoId)
-        {
-            return _context.Tarifas
-                .FirstOrDefault(t => t.TipoVehiculoId == tipoVehiculoId && t.Activa);
-        }
-
         // Agregar tarifa
         public void Agregar(Tarifa tarifa)
         {
@@ -66,6 +59,16 @@ namespace RentaCar.Infraestructura
                 tarifa.Activo = false;
                 _context.SaveChanges();
             }
+        }
+        public Tarifa? ObtenerPorTipo(int tipoVehiculoId)
+        {
+            return _context.Tarifas
+                .Include(t => t.TipoVehiculo)
+                .Where(t =>
+                    t.TipoVehiculoId == tipoVehiculoId &&
+                    t.Activo)
+                .OrderByDescending(t => t.Id)
+                .FirstOrDefault();
         }
     }
 }

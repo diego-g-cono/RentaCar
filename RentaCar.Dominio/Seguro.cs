@@ -9,9 +9,11 @@ namespace RentaCar.Dominio
     public class Seguro : Catalogo
     {
         public decimal Tasa { get; set; }
-        public Seguro(string nombre, decimal tasa) : base(nombre)
+        public bool Activo { get; set; }
+        public Seguro(string nombre, decimal tasa, bool activo) : base(nombre)
         {
             Tasa = tasa;
+            Activo = activo;
         }
     }
 }

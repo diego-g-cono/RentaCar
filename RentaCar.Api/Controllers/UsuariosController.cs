@@ -61,5 +61,43 @@ namespace RentaCar.API.Controllers
 
             return Ok(response);
         }
+        [HttpPost("registrar")]
+        public IActionResult Registrar([FromBody] RegistroClienteRequest request)
+        {
+            if (request == null)
+                return BadRequest("Datos inválidos");
+
+            if (_repoUsuarios.ObtenerPorNombreUsuario(request.NombreUsuario) != null)
+                return BadRequest("El nombre de usuario ya existe");
+
+            if (_repoClientes.ObtenerPorDni(request.Dni) != null)
+                return BadRequest("Ya existe un cliente con ese DNI");
+
+            var usuario = new Usuario
+            {
+                NombreUsuario = request.NombreUsuario,
+                Contrasenia = request.Contrasenia,
+                RolId = 3, // Cliente
+                Activo = true
+            };
+
+            _repoUsuarios.Agregar(usuario);
+
+            usuario = _repoUsuarios.ObtenerPorNombreUsuario(request.NombreUsuario);
+
+            var cliente = new Cliente
+            {
+                Dni = request.Dni,
+                Nombre = request.Nombre,
+                Apellido = request.Apellido,
+                Email = request.Email,
+                Telefono = request.Telefono,
+                UsuarioId = usuario!.Id
+            };
+
+            _repoClientes.Agregar(cliente);
+
+            return Ok("Cliente registrado correctamente");
+        }
     }
 }
