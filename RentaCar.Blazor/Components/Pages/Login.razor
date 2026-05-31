@@ -4,6 +4,7 @@
 @rendermode InteractiveServer
 @using RentaCar.Blazor.Services
 @using RentaCar.Dtos.Usuarios
+@using System.Text.RegularExpressions;
 
 <div class="login-bg">
     <div class="login-card">
@@ -52,7 +53,9 @@
 
                     <div class="input-group">
                         <label>DNI</label>
-                        <input type="number" @bind="nuevoDni" />
+                        <input type="number"
+                               min="1"
+                               @bind="nuevoDni" />
                     </div>
 
                     <div class="input-group">
@@ -71,7 +74,9 @@
 
                     <div class="input-group">
                         <label>Teléfono</label>
-                        <input @bind="nuevoTelefono" />
+                        <input type="tel"
+                               pattern="[0-9]*"
+                               @bind="nuevoTelefono" />
                     </div>
 
                     <div class="input-group">
@@ -135,12 +140,73 @@
     }
     private async Task Registrar()
     {
+        error = "";
+
+        // Validar campos obligatorios
+        if (nuevoDni <= 0 ||
+            string.IsNullOrWhiteSpace(nuevoNombre) ||
+            string.IsNullOrWhiteSpace(nuevoApellido) ||
+            string.IsNullOrWhiteSpace(nuevoEmail) ||
+            string.IsNullOrWhiteSpace(nuevoTelefono) ||
+            string.IsNullOrWhiteSpace(nuevoUsuario) ||
+            string.IsNullOrWhiteSpace(nuevoPassword))
+        {
+            error = "Todos los campos son obligatorios.";
+            return;
+        }
+
+        // Validar nombre
+        if (!Regex.IsMatch(nuevoNombre, @"^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$"))
+        {
+            error = "El nombre sólo puede contener letras.";
+            return;
+        }
+
+        // Validar apellido
+        if (!Regex.IsMatch(nuevoApellido, @"^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$"))
+        {
+            error = "El apellido sólo puede contener letras.";
+            return;
+        }
+
+        // Validar email
+        if (!Regex.IsMatch(
+            nuevoEmail,
+            @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
+        {
+            error = "Ingrese un e-mail válido.";
+            return;
+        }
+
+        // Validar teléfono
+        if (!Regex.IsMatch(nuevoTelefono, @"^[0-9]+$"))
+        {
+            error = "El teléfono sólo puede contener números.";
+            return;
+        }
+
         try
         {
             var client = new HttpClient
             {
                 BaseAddress = new Uri("https://localhost:7272/api/")
             };
+
+            // Verificar usuario duplicado
+            var existeUsuario = await client.GetAsync(
+                $"usuarios/existe/{nuevoUsuario}");
+
+            if (existeUsuario.IsSuccessStatusCode)
+            {
+                var existe = await existeUsuario.Content
+                    .ReadFromJsonAsync<bool>();
+
+                if (existe)
+                {
+                    error = "El nombre de usuario ya existe.";
+                    return;
+                }
+            }
 
             var request = new
             {

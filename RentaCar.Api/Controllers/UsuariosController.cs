@@ -99,5 +99,12 @@ namespace RentaCar.API.Controllers
 
             return Ok("Cliente registrado correctamente");
         }
+        [HttpGet("existe/{nombreUsuario}")]
+        public IActionResult ExisteUsuario(string nombreUsuario)
+        {
+            var usuario = _repoUsuarios.ObtenerPorNombreUsuario(nombreUsuario);
+
+            return Ok(usuario != null);
+        }
     }
 }

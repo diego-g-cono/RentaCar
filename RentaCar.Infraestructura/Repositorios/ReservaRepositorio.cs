@@ -83,8 +83,6 @@ namespace RentaCar.Infraestructura.Data
 
             if (reserva != null)
             {
-                reserva.Activo = false;
-
                 reserva.EstadoId = 3;
 
                 _context.SaveChanges();

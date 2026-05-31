@@ -26,9 +26,9 @@ else
 
                 <h4>@v.MarcaNombre @v.ModeloNombre</h4>
 
-                <div class="info">
-                    <span class="badge">@v.TipoNombre</span>
-                </div>
+                <span class="badge @ObtenerClaseTipo(v.TipoNombre)">
+                    @v.TipoNombre
+                </span>
 
                 <p class="patente">@v.CombustibleNombre</p>
 
@@ -81,6 +81,17 @@ else
         var url = $"/reserva?patente={patente}&inicio={inicio}&fin={fin}";
 
         Nav.NavigateTo(url);
+    }
+    private string ObtenerClaseTipo(string? tipo)
+    {
+        return tipo?.ToLower() switch
+        {
+            "suv" => "badge-suv",
+            "hatchback" => "badge-hatchback",
+            "sedán" => "badge-sedan",
+            "pickup" => "badge-pickup",
+            _ => ""
+        };
     }
 }
 
@@ -169,5 +180,28 @@ else
         border-radius: 10px;
         margin-bottom: 10px;
         background: #0f172a;
+    }
+
+    .badge {
+        padding: 5px 10px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: bold;
+        color: white;
+    }
+
+    .badge-suv {
+        background: #f59e0b;
+    }
+    .badge-hatchback {
+        background: #3b82f6;
+    }
+
+    .badge-sedan {
+        background: #8b5cf6;
+    }
+
+    .badge-pickup {
+        background: #ef4444;
     }
 </style>
