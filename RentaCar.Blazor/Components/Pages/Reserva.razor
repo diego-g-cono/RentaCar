@@ -180,8 +180,6 @@ else
                 Senia = reserva.Senia,
                 EstadoId = 2
             };
-            Console.WriteLine(request);
-            
 
             var response = await client.PostAsJsonAsync("reservas", request);
 

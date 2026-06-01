@@ -16,8 +16,20 @@
     }
     else
     {
+        <div class="filtro-container">
+            <label>Filtrar por tipo de vehículo:</label>
+
+            <select @bind="tipoSeleccionado">
+                <option value="">Todos</option>
+
+                @foreach (var tipo in tiposVehiculo)
+                {
+                    <option value="@tipo">@tipo</option>
+                }
+            </select>
+        </div>
         <div class="grid">
-            @foreach (var v in vehiculos)
+            @foreach (var v in VehiculosFiltrados)
             {
                 <div class="auto-card">
                     <img src="@ObtenerImagen(v)"
@@ -26,7 +38,9 @@
 
                     <h4>@v.MarcaNombre @v.ModeloNombre</h4>
 
-                    <span class="badge">@v.TipoNombre</span>
+                    <span class="badge @ObtenerClaseTipo(v.TipoNombre)">
+                        @v.TipoNombre
+                    </span>
 
                     <p class="patente">@v.CombustibleNombre</p>
                 </div>
@@ -38,12 +52,28 @@
 
 @code {
     private List<VehiculoResponse>? vehiculos;
+    private string tipoSeleccionado = "";
+
+    private List<string> tiposVehiculo = new();
+
+    private IEnumerable<VehiculoResponse> VehiculosFiltrados =>
+        string.IsNullOrWhiteSpace(tipoSeleccionado)
+            ? vehiculos ?? Enumerable.Empty<VehiculoResponse>()
+            : vehiculos?.Where(v => v.TipoNombre == tipoSeleccionado)
+                ?? Enumerable.Empty<VehiculoResponse>();
 
     protected override async Task OnInitializedAsync()
     {
         var client = HttpFactory.CreateClient("Api");
 
         vehiculos = await client.GetFromJsonAsync<List<VehiculoResponse>>("vehiculos");
+
+        tiposVehiculo = vehiculos?
+            .Select(v => v.TipoNombre)
+            .Distinct()
+            .OrderBy(t => t)
+            .ToList()
+            ?? new();
     }
 
     private string ObtenerImagen(VehiculoResponse v)
@@ -52,6 +82,18 @@
         var modelo = v.ModeloNombre?.ToLower().Replace(" ", "-");
 
         return $"images/autos/{marca}-{modelo}.png";
+    }
+    private string ObtenerClaseTipo(string? tipo)
+    {
+        return tipo?.ToLower() switch
+        {
+            "suv" => "badge-suv",
+            "hatchback" => "badge-hatchback",
+            "sedán" => "badge-sedan",
+            "sedan" => "badge-sedan",
+            "pickup" => "badge-pickup",
+            _ => ""
+        };
     }
 }
 <style>
@@ -121,4 +163,40 @@
         color: #e5e7eb;
     }
 
+    .filtro-container {
+        max-width: 300px;
+        margin: 0 auto 25px auto;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+        .filtro-container label {
+            color: #cbd5e1;
+            font-size: 14px;
+        }
+
+        .filtro-container select {
+            background: #1e293b;
+            color: #e5e7eb;
+            border: 1px solid #334155;
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+    .badge-suv {
+        background: #f59e0b;
+    }
+
+    .badge-hatchback {
+        background: #3b82f6;
+    }
+
+    .badge-sedan {
+        background: #8b5cf6;
+    }
+
+    .badge-pickup {
+        background: #ef4444;
+    }
 </style>

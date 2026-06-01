@@ -94,10 +94,11 @@ namespace RentaCar.API.Controllers
             if (vehiculo == null)
                 return BadRequest("El vehículo no existe");
 
-            // 🔥 Validación clave: solapamiento de reservas
             var reservasExistentes = _repoReservas.ObtenerPorVehiculo(request.VehiculoPatente);
 
             bool haySolapamiento = reservasExistentes.Any(r =>
+                r.Activo &&
+                r.EstadoId != 3 &&
                 request.FechaInicio <= r.FechaFin &&
                 request.FechaFin >= r.FechaInicio
             );

@@ -3,6 +3,7 @@
 @inject AuthService Auth
 @inject NavigationManager Nav
 @rendermode InteractiveServer
+@using Microsoft.AspNetCore.Components.Forms
 @using RentaCar.Dtos.Vehiculos
 @using RentaCar.Blazor.Services
 
@@ -18,8 +19,20 @@ else if (!vehiculos.Any())
 }
 else
 {
+    <div class="filtro-container">
+        <label>Tipo de vehículo</label>
+
+        <InputSelect @bind-Value="tipoSeleccionado" class="filtro-select">
+            <option value="">Todos</option>
+
+            @foreach (var tipo in tiposVehiculo)
+            {
+                <option value="@tipo">@tipo</option>
+            }
+        </InputSelect>
+    </div>
     <div class="grid">
-        @foreach (var v in vehiculos)
+        @foreach (var v in VehiculosFiltrados)
         {
             <div class="auto-card">
                 <img src="@ObtenerImagen(v)" class="auto-img" />
@@ -43,6 +56,15 @@ else
 
 @code {
     private List<VehiculoResponse>? vehiculos;
+    private string tipoSeleccionado = "";
+
+    private List<string> tiposVehiculo = new();
+
+    private IEnumerable<VehiculoResponse> VehiculosFiltrados =>
+        string.IsNullOrWhiteSpace(tipoSeleccionado)
+            ? vehiculos ?? Enumerable.Empty<VehiculoResponse>()
+            : vehiculos?.Where(v => v.TipoNombre == tipoSeleccionado)
+                ?? Enumerable.Empty<VehiculoResponse>();
 
     protected override async Task OnInitializedAsync()
     {
@@ -57,6 +79,14 @@ else
         vehiculos = await client.GetFromJsonAsync<List<VehiculoResponse>>(
             $"vehiculos/disponibles?fechaInicio={inicio}&fechaFin={fin}"
         );
+
+        tiposVehiculo = vehiculos?
+            .Select(v => v.TipoNombre)
+            .Where(t => !string.IsNullOrWhiteSpace(t))
+            .Distinct()
+            .OrderBy(t => t)
+            .ToList()
+            ?? new();
     }
     private string ObtenerImagen(VehiculoResponse v)
     {
@@ -116,8 +146,11 @@ else
 
     .grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(250px, 250px));
+        justify-content: center;
         gap: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
         padding: 30px;
     }
 
@@ -203,5 +236,26 @@ else
 
     .badge-pickup {
         background: #ef4444;
+    }
+
+    .filtro-container {
+        max-width: 300px;
+        margin: 20px auto;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+        .filtro-container label {
+            color: #cbd5e1;
+            font-size: 14px;
+        }
+
+    .filtro-select {
+        background: #1e293b;
+        color: #e5e7eb;
+        border: 1px solid #334155;
+        border-radius: 10px;
+        padding: 10px;
     }
 </style>
