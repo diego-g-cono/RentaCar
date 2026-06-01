@@ -98,19 +98,13 @@ namespace RentaCar.Escritorio
                     return;
                 }
 
-                string mensajeConfirmacion = 
-                    $"¿Son correctos los datos?\n\n" +
-                    $"DNI: {dni}\n" +
-                    $"Nombre: {textBoxNombre.Text}\n" +
-                    $"Apellido: {textBoxApellido.Text}\n" +
-                    $"Vencimiento Licencia: {dateTimePickerVencLic.Value.Date}";
-                
-                if(!Dialogos.Confirmar(mensajeConfirmacion))
+
+                if (!Dialogos.Confirmar(Mensajes.ConfirmarGuardado("al conductor")))
                 {
                     return;
                 }
 
-                
+
 
                 if (modoEdicion)
                 {
@@ -163,19 +157,19 @@ namespace RentaCar.Escritorio
 
             var conductor = (ConductorResponse)dataGridViewConductores.SelectedRows[0].DataBoundItem;
 
-            string mensajeConfirmacion = $"¿Eliminar a {conductor.Nombre} {conductor.Apellido}?";
-            
-            if (!Dialogos.Confirmar(mensajeConfirmacion))
+            //string mensajeConfirmacion = $"¿Eliminar a {conductor.Nombre} {conductor.Apellido}?";
+
+            if (!Dialogos.Confirmar(Mensajes.ConfirmarEliminacion("conductor " + conductor.Dni)))
             {
                 return;
             }
-            
-                await _conductorServicio.Eliminar(conductor.Dni);
 
-                await CargarConductores();
-                LimpiarCampos();
+            await _conductorServicio.Eliminar(conductor.Dni);
 
-                Dialogos.Info(Mensajes.ExitoEliminacion("conductor"));
+            await CargarConductores();
+            LimpiarCampos();
+
+            Dialogos.Info(Mensajes.ExitoEliminacion("conductor"));
 
         }
 
@@ -206,7 +200,7 @@ namespace RentaCar.Escritorio
 
         private void buttonCancelar_Click(object sender, EventArgs e)
         {
-            if(!Dialogos.Confirmar(Mensajes.ConfirmarCancelacion()))
+            if (!Dialogos.Confirmar(Mensajes.ConfirmarCancelacion()))
             {
                 return;
             }
@@ -215,6 +209,28 @@ namespace RentaCar.Escritorio
             BloquearCampos(false);
             BloquearBotones(false);
             modoEdicion = false;
+        }
+
+        private void textBoxDni_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+        private void textBoxNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && e.KeyChar != ' ')
+            {
+                e.Handled = true;
+            }
+        }
+        private void textBoxApellido_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && e.KeyChar != ' ')
+            {
+                e.Handled = true;
+            }
         }
     }
 }

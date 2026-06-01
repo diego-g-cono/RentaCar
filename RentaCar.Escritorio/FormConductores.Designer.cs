@@ -126,6 +126,7 @@
             textBoxApellido.Name = "textBoxApellido";
             textBoxApellido.Size = new Size(121, 22);
             textBoxApellido.TabIndex = 20;
+            textBoxApellido.KeyPress += textBoxApellido_KeyPress;
             // 
             // textBoxNombre
             // 
@@ -137,6 +138,7 @@
             textBoxNombre.Name = "textBoxNombre";
             textBoxNombre.Size = new Size(121, 22);
             textBoxNombre.TabIndex = 19;
+            textBoxNombre.KeyPress += textBoxNombre_KeyPress;
             // 
             // textBoxDni
             // 
@@ -148,6 +150,7 @@
             textBoxDni.Name = "textBoxDni";
             textBoxDni.Size = new Size(121, 22);
             textBoxDni.TabIndex = 18;
+            textBoxDni.KeyPress += textBoxDni_KeyPress;
             // 
             // labelNombreCond
             // 

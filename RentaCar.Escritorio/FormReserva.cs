@@ -49,6 +49,8 @@ namespace RentaCar.Escritorio
             comboBoxEstado.Enabled = estado;
         }
 
+        
+
         private async Task CargarVehiculos()
         {
             var vehiculos = await _vehiculoServicio.ObtenerTodos();

@@ -41,17 +41,6 @@ namespace RentaCar.Escritorio
             comboBoxVehiculo.DataSource = tiposVehiculo;
             comboBoxVehiculo.DisplayMember = "Nombre";
             comboBoxVehiculo.ValueMember = "Id";
-
-            comboBoxEstado.DataSource = new[]
-            {
-                new { Texto = "Si", Valor = true },
-                new { Texto = "No", Valor = false }
-            };
-
-            comboBoxEstado.DisplayMember = "Texto";
-            comboBoxEstado.ValueMember = "Valor";
-
-            comboBoxEstado.SelectedIndex = -1;
             comboBoxVehiculo.SelectedIndex = -1;
         }
 
@@ -59,7 +48,6 @@ namespace RentaCar.Escritorio
         {
             textBoxPrecioDia.Text = "";
             textBoxPrecioSemana.Text = "";
-            comboBoxEstado.SelectedIndex = -1;
             comboBoxVehiculo.SelectedIndex = -1;
         }
 
@@ -67,7 +55,6 @@ namespace RentaCar.Escritorio
         {
             textBoxPrecioDia.Enabled = estado;
             textBoxPrecioSemana.Enabled = estado;
-            comboBoxEstado.Enabled = estado;
             comboBoxVehiculo.Enabled = estado;
         }
 
@@ -101,7 +88,7 @@ namespace RentaCar.Escritorio
             textBoxPrecioDia.Text = tarifa.PrecioDia.ToString();
             textBoxPrecioSemana.Text = tarifa.PrecioSemana.ToString();
             comboBoxVehiculo.SelectedValue = tarifa.TipoVehiculoId;
-            comboBoxEstado.SelectedValue = tarifa.Activa;
+            //comboBoxEstado.SelectedValue = tarifa.Activa;
 
             modoEdicion = true;
         }
@@ -132,12 +119,6 @@ namespace RentaCar.Escritorio
                 return;
             }
 
-            if (comboBoxEstado.SelectedItem == null)
-            {
-                Dialogos.Error(Mensajes.CampoVacio("Estado"));
-                return;
-            }
-
             if (comboBoxVehiculo.SelectedValue == null)
             {
                 Dialogos.Error(Mensajes.CampoVacio("Tipo de vehículo"));
@@ -162,7 +143,7 @@ namespace RentaCar.Escritorio
                     {
                         PrecioDia = precioDia,
                         PrecioSemana = precioSemana,
-                        Activa = (bool)comboBoxEstado.SelectedValue,
+                        //Activa = (bool)comboBoxEstado.SelectedValue,
                         TipoVehiculoId = (int)comboBoxVehiculo.SelectedValue
                     };
 
@@ -174,7 +155,7 @@ namespace RentaCar.Escritorio
                     {
                         PrecioDia = precioDia,
                         PrecioSemana = precioSemana,
-                        Activa = (bool)comboBoxEstado.SelectedValue,
+                        //Activa = (bool)comboBoxEstado.SelectedValue,
                         TipoVehiculoId = (int)comboBoxVehiculo.SelectedValue
                     };
 
@@ -234,6 +215,21 @@ namespace RentaCar.Escritorio
                 {
                     MessageBox.Show(ex.Message);
                 }
+            }
+        }
+
+        private void textBoxPrecioDia_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+        private void textBoxPrecioSemana_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
             }
         }
     }

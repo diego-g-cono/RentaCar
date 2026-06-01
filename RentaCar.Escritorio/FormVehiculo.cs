@@ -1,5 +1,6 @@
 ﻿using RentaCar.Dominio;
 using RentaCar.Dtos.Vehiculos;
+using RentaCar.Escritorio.Helpers;
 using RentaCar.Escritorio.Servicios;
 using RentaCar.Infraestructura;
 using RentaCar.Infraestructura.Data;
@@ -150,7 +151,7 @@ namespace RentaCar.Escritorio
 
                 if (string.IsNullOrWhiteSpace(patente))
                 {
-                    MessageBox.Show("Ingrese la patente");
+                    Dialogos.Error(Mensajes.CampoVacio("Patente"));
                     return;
                 }
 
@@ -158,7 +159,7 @@ namespace RentaCar.Escritorio
 
                 if (!regex.IsMatch(patente))
                 {
-                    MessageBox.Show("Formato de patente inválido");
+                    Dialogos.Error(Mensajes.FormatoInvalido("patente"));
                     return;
                 }
 

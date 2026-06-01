@@ -1,6 +1,7 @@
 ﻿using RentaCar.Dtos.Devoluciones;
 using RentaCar.Dtos.Alquileres;
 using RentaCar.Escritorio.Servicios;
+using RentaCar.Escritorio.Helpers;
 
 namespace RentaCar.Escritorio
 {
@@ -23,6 +24,7 @@ namespace RentaCar.Escritorio
         private async void FormDevoluciones_Load(object sender, EventArgs e)
         {
             BloquearCampos(false);
+            BloquearBotones(false);
             await CargarDevoluciones();
             await CargarAlquileres();
             CargarTanqueLleno();
@@ -65,6 +67,12 @@ namespace RentaCar.Escritorio
             textBoxObservaciones.Enabled = estado;
         }
 
+        private void BloquearBotones(bool estado)
+        {
+            buttonGuardar.Enabled = estado;
+            buttonCancelar.Enabled = estado;
+        }
+
         private void LimpiarCampos()
         {
             dtpFechaDevolucion.Value = DateTime.Now;
@@ -78,6 +86,7 @@ namespace RentaCar.Escritorio
             modoEdicion = false;
             autoCompletar = true;
             BloquearCampos(true);
+            BloquearBotones(true);
             LimpiarCampos();
         }
 
@@ -85,11 +94,13 @@ namespace RentaCar.Escritorio
         {
             if (dataGridViewDevoluciones.SelectedRows.Count == 0)
             {
-                MessageBox.Show("No seleccionaste ninguna devolución.");
+                //MessageBox.Show("No seleccionaste ninguna devolución.");
+                Dialogos.Error(Mensajes.SeleccioneEntidad("devolución"));
                 return;
             }
 
             BloquearCampos(true);
+            BloquearBotones(true);
 
             var devolucion = (DevolucionResponse)dataGridViewDevoluciones.SelectedRows[0].DataBoundItem;
 
@@ -108,20 +119,23 @@ namespace RentaCar.Escritorio
         {
             if (string.IsNullOrWhiteSpace(textBoxAlquiler.Text))
             {
-                MessageBox.Show("Debe seleccionar un alquiler.");
+                Dialogos.Error(Mensajes.SeleccioneEntidad("alquiler"));
                 return;
             }
 
             if (comboBoxTqueLleno.SelectedIndex == -1)
             {
-                MessageBox.Show("Debe indicar si el tanque está lleno.");
+                Dialogos.Error(Mensajes.TanqueLleno);
                 return;
             }
 
-            var confirm = MessageBox.Show("¿Confirmar operación?", "Confirmar", MessageBoxButtons.YesNo);
+            //var confirm = MessageBox.Show("¿Confirmar operación?", "Confirmar", MessageBoxButtons.YesNo);
 
-            if (confirm != DialogResult.Yes)
+            //if (confirm != DialogResult.Yes)
+            //    return;
+            if(!Dialogos.Confirmar(Mensajes.ConfirmarGuardado("Devolución")))
                 return;
+
 
             if (modoEdicion)
             {
@@ -135,7 +149,7 @@ namespace RentaCar.Escritorio
 
                 await _devolucionServicio.Actualizar(devolucionIdSeleccionada, update);
 
-                MessageBox.Show("Devolución actualizada correctamente.");
+                Dialogos.Info(Mensajes.ExitoEdicion("Devolución"));
             }
             else
             {
@@ -149,12 +163,13 @@ namespace RentaCar.Escritorio
 
                 await _devolucionServicio.Agregar(create);
 
-                MessageBox.Show("Devolución creada correctamente.");
+                Dialogos.Info(Mensajes.ExitoGuardado("devolución"));
             }
 
             await CargarDevoluciones();
             LimpiarCampos();
             BloquearCampos(false);
+            BloquearBotones(false);
             autoCompletar = false;
         }
 
@@ -162,15 +177,18 @@ namespace RentaCar.Escritorio
         {
             if (dataGridViewDevoluciones.SelectedRows.Count == 0)
             {
-                MessageBox.Show("No seleccionaste ninguna devolución.");
+                Dialogos.Error(Mensajes.SeleccioneEntidad("devolución"));
                 return;
             }
 
             var devolucion = (DevolucionResponse)dataGridViewDevoluciones.SelectedRows[0].DataBoundItem;
 
-            var confirm = MessageBox.Show("¿Eliminar devolución?", "Confirmar", MessageBoxButtons.YesNo);
+            //var confirm = MessageBox.Show("¿Eliminar devolución?", "Confirmar", MessageBoxButtons.YesNo);
 
-            if (confirm != DialogResult.Yes)
+            //if (confirm != DialogResult.Yes)
+            //    return;
+
+            if(!Dialogos.Confirmar(Mensajes.ConfirmarEliminacion("devolución")))
                 return;
 
             await _devolucionServicio.Eliminar(devolucion.Id);
@@ -178,12 +196,19 @@ namespace RentaCar.Escritorio
             await CargarDevoluciones();
             LimpiarCampos();
             BloquearCampos(false);
+            BloquearBotones(false);
+
+            Dialogos.Info(Mensajes.ExitoEliminacion("Devolución"));
         }
 
         private void buttonCancelar_Click(object sender, EventArgs e)
         {
+            if(!Dialogos.Confirmar(Mensajes.ConfirmarCancelacion()))
+                return;
+
             LimpiarCampos();
             BloquearCampos(false);
+            BloquearBotones(false);
             autoCompletar = false;
         }
 

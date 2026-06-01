@@ -28,28 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle13 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle14 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle15 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle16 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle17 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle18 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle19 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle20 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
             tabControlAlquileres = new TabControl();
             tabPage1 = new TabPage();
             dataGridViewAlquileres = new DataGridView();
-            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn8 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn9 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn7 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn10 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
-            DniConductor = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn11 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn12 = new DataGridViewTextBoxColumn();
             tabPage2 = new TabPage();
             dataGridViewVehiculos = new DataGridView();
             ColumnPatente = new DataGridViewTextBoxColumn();
@@ -106,6 +97,15 @@
             labelPrecio = new Label();
             labelVehiculo = new Label();
             labelCliente = new Label();
+            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn8 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn9 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn7 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn10 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
+            DniConductor = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn11 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn12 = new DataGridViewTextBoxColumn();
             tabControlAlquileres.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewAlquileres).BeginInit();
@@ -131,7 +131,7 @@
             tabControlAlquileres.Location = new Point(398, 50);
             tabControlAlquileres.Name = "tabControlAlquileres";
             tabControlAlquileres.SelectedIndex = 0;
-            tabControlAlquileres.Size = new Size(952, 339);
+            tabControlAlquileres.Size = new Size(950, 339);
             tabControlAlquileres.TabIndex = 18;
             // 
             // tabPage1
@@ -141,7 +141,7 @@
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(944, 311);
+            tabPage1.Size = new Size(942, 311);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Alquileres";
             // 
@@ -152,95 +152,32 @@
             dataGridViewAlquileres.BorderStyle = BorderStyle.Fixed3D;
             dataGridViewAlquileres.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
             dataGridViewAlquileres.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.BackColor = Color.MidnightBlue;
-            dataGridViewCellStyle11.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle11.ForeColor = SystemColors.ButtonFace;
-            dataGridViewCellStyle11.SelectionBackColor = Color.RoyalBlue;
-            dataGridViewCellStyle11.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.True;
-            dataGridViewAlquileres.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.MidnightBlue;
+            dataGridViewCellStyle1.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ButtonFace;
+            dataGridViewCellStyle1.SelectionBackColor = Color.RoyalBlue;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridViewAlquileres.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewAlquileres.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewAlquileres.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn8, dataGridViewTextBoxColumn9, dataGridViewTextBoxColumn7, dataGridViewTextBoxColumn10, dataGridViewTextBoxColumn6, DniConductor, dataGridViewTextBoxColumn11, dataGridViewTextBoxColumn12 });
             dataGridViewAlquileres.GridColor = Color.MidnightBlue;
             dataGridViewAlquileres.Location = new Point(0, 0);
             dataGridViewAlquileres.Name = "dataGridViewAlquileres";
             dataGridViewAlquileres.ReadOnly = true;
-            dataGridViewCellStyle12.BackColor = Color.MidnightBlue;
-            dataGridViewCellStyle12.ForeColor = SystemColors.ButtonFace;
-            dataGridViewCellStyle12.SelectionBackColor = Color.RoyalBlue;
-            dataGridViewCellStyle12.SelectionForeColor = SystemColors.ButtonFace;
-            dataGridViewAlquileres.RowsDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle2.BackColor = Color.MidnightBlue;
+            dataGridViewCellStyle2.ForeColor = SystemColors.ButtonFace;
+            dataGridViewCellStyle2.SelectionBackColor = Color.RoyalBlue;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.ButtonFace;
+            dataGridViewAlquileres.RowsDefaultCellStyle = dataGridViewCellStyle2;
             dataGridViewAlquileres.RowTemplate.DefaultCellStyle.BackColor = Color.MidnightBlue;
             dataGridViewAlquileres.RowTemplate.DefaultCellStyle.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewAlquileres.RowTemplate.DefaultCellStyle.ForeColor = SystemColors.ButtonFace;
             dataGridViewAlquileres.RowTemplate.DefaultCellStyle.SelectionBackColor = Color.RoyalBlue;
             dataGridViewAlquileres.RowTemplate.DefaultCellStyle.SelectionForeColor = SystemColors.ButtonFace;
-            dataGridViewAlquileres.Size = new Size(950, 315);
+            dataGridViewAlquileres.Size = new Size(946, 315);
             dataGridViewAlquileres.TabIndex = 13;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            dataGridViewTextBoxColumn5.DataPropertyName = "Id";
-            dataGridViewTextBoxColumn5.HeaderText = "ID";
-            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            dataGridViewTextBoxColumn8.DataPropertyName = "FechaInicio";
-            dataGridViewTextBoxColumn8.HeaderText = "Fecha Inicio";
-            dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            dataGridViewTextBoxColumn8.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            dataGridViewTextBoxColumn9.DataPropertyName = "FechaFin";
-            dataGridViewTextBoxColumn9.HeaderText = "Fecha Devolución";
-            dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            dataGridViewTextBoxColumn9.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            dataGridViewTextBoxColumn7.DataPropertyName = "VehiculoPatente";
-            dataGridViewTextBoxColumn7.HeaderText = "Vehículo";
-            dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            dataGridViewTextBoxColumn7.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            dataGridViewTextBoxColumn10.DataPropertyName = "Precio";
-            dataGridViewTextBoxColumn10.HeaderText = "Precio";
-            dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            dataGridViewTextBoxColumn10.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            dataGridViewTextBoxColumn6.DataPropertyName = "ClienteId";
-            dataGridViewTextBoxColumn6.HeaderText = "Cliente";
-            dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            dataGridViewTextBoxColumn6.ReadOnly = true;
-            // 
-            // DniConductor
-            // 
-            DniConductor.DataPropertyName = "ConductorId";
-            DniConductor.HeaderText = "Conductor";
-            DniConductor.Name = "DniConductor";
-            DniConductor.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            dataGridViewTextBoxColumn11.DataPropertyName = "ReservaId";
-            dataGridViewTextBoxColumn11.HeaderText = "ID Reserva";
-            dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            dataGridViewTextBoxColumn11.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn12
-            // 
-            dataGridViewTextBoxColumn12.DataPropertyName = "EstadoId";
-            dataGridViewTextBoxColumn12.HeaderText = "Estado";
-            dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-            dataGridViewTextBoxColumn12.ReadOnly = true;
             // 
             // tabPage2
             // 
@@ -260,25 +197,25 @@
             dataGridViewVehiculos.BorderStyle = BorderStyle.Fixed3D;
             dataGridViewVehiculos.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
             dataGridViewVehiculos.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle13.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = Color.MidnightBlue;
-            dataGridViewCellStyle13.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle13.ForeColor = SystemColors.ButtonFace;
-            dataGridViewCellStyle13.SelectionBackColor = Color.RoyalBlue;
-            dataGridViewCellStyle13.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = DataGridViewTriState.True;
-            dataGridViewVehiculos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = Color.MidnightBlue;
+            dataGridViewCellStyle3.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ButtonFace;
+            dataGridViewCellStyle3.SelectionBackColor = Color.RoyalBlue;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dataGridViewVehiculos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewVehiculos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewVehiculos.Columns.AddRange(new DataGridViewColumn[] { ColumnPatente, ColumnMarca, ColumnModelo, ColumnTipo, ColumnAnio, ColumnColor, ColumnCombustible, ColumnKm, ColumnEstado });
             dataGridViewVehiculos.GridColor = Color.MidnightBlue;
             dataGridViewVehiculos.Location = new Point(-2, -1);
             dataGridViewVehiculos.Name = "dataGridViewVehiculos";
             dataGridViewVehiculos.ReadOnly = true;
-            dataGridViewCellStyle14.BackColor = Color.MidnightBlue;
-            dataGridViewCellStyle14.ForeColor = SystemColors.ButtonFace;
-            dataGridViewCellStyle14.SelectionBackColor = Color.RoyalBlue;
-            dataGridViewCellStyle14.SelectionForeColor = SystemColors.ButtonFace;
-            dataGridViewVehiculos.RowsDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle4.BackColor = Color.MidnightBlue;
+            dataGridViewCellStyle4.ForeColor = SystemColors.ButtonFace;
+            dataGridViewCellStyle4.SelectionBackColor = Color.RoyalBlue;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.ButtonFace;
+            dataGridViewVehiculos.RowsDefaultCellStyle = dataGridViewCellStyle4;
             dataGridViewVehiculos.RowTemplate.DefaultCellStyle.BackColor = Color.MidnightBlue;
             dataGridViewVehiculos.RowTemplate.DefaultCellStyle.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewVehiculos.RowTemplate.DefaultCellStyle.ForeColor = SystemColors.ButtonFace;
@@ -297,21 +234,21 @@
             // 
             // ColumnMarca
             // 
-            ColumnMarca.DataPropertyName = "Marca";
+            ColumnMarca.DataPropertyName = "MarcaNombre";
             ColumnMarca.HeaderText = "Marca";
             ColumnMarca.Name = "ColumnMarca";
             ColumnMarca.ReadOnly = true;
             // 
             // ColumnModelo
             // 
-            ColumnModelo.DataPropertyName = "Modelo";
+            ColumnModelo.DataPropertyName = "ModeloNombre";
             ColumnModelo.HeaderText = "Modelo";
             ColumnModelo.Name = "ColumnModelo";
             ColumnModelo.ReadOnly = true;
             // 
             // ColumnTipo
             // 
-            ColumnTipo.DataPropertyName = "Tipo";
+            ColumnTipo.DataPropertyName = "TipoNombre";
             ColumnTipo.HeaderText = "Tipo";
             ColumnTipo.Name = "ColumnTipo";
             ColumnTipo.ReadOnly = true;
@@ -325,14 +262,14 @@
             // 
             // ColumnColor
             // 
-            ColumnColor.DataPropertyName = "Color";
+            ColumnColor.DataPropertyName = "ColorNombre";
             ColumnColor.HeaderText = "Color";
             ColumnColor.Name = "ColumnColor";
             ColumnColor.ReadOnly = true;
             // 
             // ColumnCombustible
             // 
-            ColumnCombustible.DataPropertyName = "Combustible";
+            ColumnCombustible.DataPropertyName = "CombustibleNombre";
             ColumnCombustible.HeaderText = "Combustible";
             ColumnCombustible.Name = "ColumnCombustible";
             ColumnCombustible.ReadOnly = true;
@@ -346,7 +283,7 @@
             // 
             // ColumnEstado
             // 
-            ColumnEstado.DataPropertyName = "Estado";
+            ColumnEstado.DataPropertyName = "EstadoNombre";
             ColumnEstado.HeaderText = "Estado";
             ColumnEstado.Name = "ColumnEstado";
             ColumnEstado.ReadOnly = true;
@@ -368,25 +305,25 @@
             dataGridViewClientes.BorderStyle = BorderStyle.Fixed3D;
             dataGridViewClientes.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
             dataGridViewClientes.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle15.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle15.BackColor = Color.MidnightBlue;
-            dataGridViewCellStyle15.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle15.ForeColor = SystemColors.ButtonFace;
-            dataGridViewCellStyle15.SelectionBackColor = Color.RoyalBlue;
-            dataGridViewCellStyle15.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = DataGridViewTriState.True;
-            dataGridViewClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = Color.MidnightBlue;
+            dataGridViewCellStyle5.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle5.ForeColor = SystemColors.ButtonFace;
+            dataGridViewCellStyle5.SelectionBackColor = Color.RoyalBlue;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dataGridViewClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dataGridViewClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewClientes.Columns.AddRange(new DataGridViewColumn[] { ColumnDNI, ColumnNombre, ColumnApellido, ColumnEmail, ColumnTelefono });
             dataGridViewClientes.GridColor = Color.MidnightBlue;
             dataGridViewClientes.Location = new Point(-4, 0);
             dataGridViewClientes.Name = "dataGridViewClientes";
             dataGridViewClientes.ReadOnly = true;
-            dataGridViewCellStyle16.BackColor = Color.MidnightBlue;
-            dataGridViewCellStyle16.ForeColor = SystemColors.ButtonFace;
-            dataGridViewCellStyle16.SelectionBackColor = Color.RoyalBlue;
-            dataGridViewCellStyle16.SelectionForeColor = SystemColors.ButtonFace;
-            dataGridViewClientes.RowsDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle6.BackColor = Color.MidnightBlue;
+            dataGridViewCellStyle6.ForeColor = SystemColors.ButtonFace;
+            dataGridViewCellStyle6.SelectionBackColor = Color.RoyalBlue;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.ButtonFace;
+            dataGridViewClientes.RowsDefaultCellStyle = dataGridViewCellStyle6;
             dataGridViewClientes.RowTemplate.DefaultCellStyle.BackColor = Color.MidnightBlue;
             dataGridViewClientes.RowTemplate.DefaultCellStyle.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewClientes.RowTemplate.DefaultCellStyle.ForeColor = SystemColors.ButtonFace;
@@ -437,7 +374,7 @@
             tabPage3.Controls.Add(dataGridViewConductores);
             tabPage3.Location = new Point(4, 24);
             tabPage3.Name = "tabPage3";
-            tabPage3.Size = new Size(942, 311);
+            tabPage3.Size = new Size(944, 311);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Conductores";
             // 
@@ -448,25 +385,25 @@
             dataGridViewConductores.BorderStyle = BorderStyle.Fixed3D;
             dataGridViewConductores.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
             dataGridViewConductores.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle17.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle17.BackColor = Color.MidnightBlue;
-            dataGridViewCellStyle17.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle17.ForeColor = SystemColors.ButtonFace;
-            dataGridViewCellStyle17.SelectionBackColor = Color.RoyalBlue;
-            dataGridViewCellStyle17.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = DataGridViewTriState.True;
-            dataGridViewConductores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = Color.MidnightBlue;
+            dataGridViewCellStyle7.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle7.ForeColor = SystemColors.ButtonFace;
+            dataGridViewCellStyle7.SelectionBackColor = Color.RoyalBlue;
+            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
+            dataGridViewConductores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             dataGridViewConductores.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewConductores.Columns.AddRange(new DataGridViewColumn[] { ColumnDniCond, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4 });
             dataGridViewConductores.GridColor = Color.MidnightBlue;
             dataGridViewConductores.Location = new Point(0, 3);
             dataGridViewConductores.Name = "dataGridViewConductores";
             dataGridViewConductores.ReadOnly = true;
-            dataGridViewCellStyle18.BackColor = Color.MidnightBlue;
-            dataGridViewCellStyle18.ForeColor = SystemColors.ButtonFace;
-            dataGridViewCellStyle18.SelectionBackColor = Color.RoyalBlue;
-            dataGridViewCellStyle18.SelectionForeColor = SystemColors.ButtonFace;
-            dataGridViewConductores.RowsDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle8.BackColor = Color.MidnightBlue;
+            dataGridViewCellStyle8.ForeColor = SystemColors.ButtonFace;
+            dataGridViewCellStyle8.SelectionBackColor = Color.RoyalBlue;
+            dataGridViewCellStyle8.SelectionForeColor = SystemColors.ButtonFace;
+            dataGridViewConductores.RowsDefaultCellStyle = dataGridViewCellStyle8;
             dataGridViewConductores.RowTemplate.DefaultCellStyle.BackColor = Color.MidnightBlue;
             dataGridViewConductores.RowTemplate.DefaultCellStyle.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewConductores.RowTemplate.DefaultCellStyle.ForeColor = SystemColors.ButtonFace;
@@ -510,7 +447,7 @@
             tabPage4.Controls.Add(dataGridViewReserva);
             tabPage4.Location = new Point(4, 24);
             tabPage4.Name = "tabPage4";
-            tabPage4.Size = new Size(942, 311);
+            tabPage4.Size = new Size(944, 311);
             tabPage4.TabIndex = 3;
             tabPage4.Text = "Reservas";
             // 
@@ -521,25 +458,25 @@
             dataGridViewReserva.BorderStyle = BorderStyle.Fixed3D;
             dataGridViewReserva.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
             dataGridViewReserva.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle19.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle19.BackColor = Color.MidnightBlue;
-            dataGridViewCellStyle19.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle19.ForeColor = SystemColors.ButtonFace;
-            dataGridViewCellStyle19.SelectionBackColor = Color.RoyalBlue;
-            dataGridViewCellStyle19.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle19.WrapMode = DataGridViewTriState.True;
-            dataGridViewReserva.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = Color.MidnightBlue;
+            dataGridViewCellStyle9.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle9.ForeColor = SystemColors.ButtonFace;
+            dataGridViewCellStyle9.SelectionBackColor = Color.RoyalBlue;
+            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
+            dataGridViewReserva.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             dataGridViewReserva.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewReserva.Columns.AddRange(new DataGridViewColumn[] { ColumnId, ColumnCliente, ColumnVehiculo, ColumnFechaRetiro, ColumnFechaDevolucion, ColumnPrecio, ColumnSenia, ColumnEstadoReserva });
             dataGridViewReserva.GridColor = Color.MidnightBlue;
             dataGridViewReserva.Location = new Point(3, 3);
             dataGridViewReserva.Name = "dataGridViewReserva";
             dataGridViewReserva.ReadOnly = true;
-            dataGridViewCellStyle20.BackColor = Color.MidnightBlue;
-            dataGridViewCellStyle20.ForeColor = SystemColors.ButtonFace;
-            dataGridViewCellStyle20.SelectionBackColor = Color.RoyalBlue;
-            dataGridViewCellStyle20.SelectionForeColor = SystemColors.ButtonFace;
-            dataGridViewReserva.RowsDefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle10.BackColor = Color.MidnightBlue;
+            dataGridViewCellStyle10.ForeColor = SystemColors.ButtonFace;
+            dataGridViewCellStyle10.SelectionBackColor = Color.RoyalBlue;
+            dataGridViewCellStyle10.SelectionForeColor = SystemColors.ButtonFace;
+            dataGridViewReserva.RowsDefaultCellStyle = dataGridViewCellStyle10;
             dataGridViewReserva.RowTemplate.DefaultCellStyle.BackColor = Color.MidnightBlue;
             dataGridViewReserva.RowTemplate.DefaultCellStyle.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewReserva.RowTemplate.DefaultCellStyle.ForeColor = SystemColors.ButtonFace;
@@ -878,12 +815,75 @@
             labelCliente.TabIndex = 0;
             labelCliente.Text = "Fecha Inicio:";
             // 
+            // dataGridViewTextBoxColumn5
+            // 
+            dataGridViewTextBoxColumn5.DataPropertyName = "Id";
+            dataGridViewTextBoxColumn5.HeaderText = "ID";
+            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            dataGridViewTextBoxColumn8.DataPropertyName = "FechaInicio";
+            dataGridViewTextBoxColumn8.HeaderText = "Fecha Inicio";
+            dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            dataGridViewTextBoxColumn8.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            dataGridViewTextBoxColumn9.DataPropertyName = "FechaFin";
+            dataGridViewTextBoxColumn9.HeaderText = "Fecha Devolución";
+            dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            dataGridViewTextBoxColumn9.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            dataGridViewTextBoxColumn7.DataPropertyName = "VehiculoPatente";
+            dataGridViewTextBoxColumn7.HeaderText = "Vehículo";
+            dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            dataGridViewTextBoxColumn7.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            dataGridViewTextBoxColumn10.DataPropertyName = "Precio";
+            dataGridViewTextBoxColumn10.HeaderText = "Precio";
+            dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            dataGridViewTextBoxColumn10.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            dataGridViewTextBoxColumn6.DataPropertyName = "ClienteNombre";
+            dataGridViewTextBoxColumn6.HeaderText = "Cliente";
+            dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // DniConductor
+            // 
+            DniConductor.DataPropertyName = "ConductorNombre";
+            DniConductor.HeaderText = "Conductor";
+            DniConductor.Name = "DniConductor";
+            DniConductor.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            dataGridViewTextBoxColumn11.DataPropertyName = "ReservaId";
+            dataGridViewTextBoxColumn11.HeaderText = "ID Reserva";
+            dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            dataGridViewTextBoxColumn11.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            dataGridViewTextBoxColumn12.DataPropertyName = "EstadoId";
+            dataGridViewTextBoxColumn12.HeaderText = "Estado";
+            dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            dataGridViewTextBoxColumn12.ReadOnly = true;
+            // 
             // FormAlquileres
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MidnightBlue;
-            ClientSize = new Size(1387, 430);
+            ClientSize = new Size(1492, 433);
             Controls.Add(groupBoxAlquileres);
             Controls.Add(buttonCancelar);
             Controls.Add(buttonGuardar);
@@ -919,15 +919,6 @@
         private TabPage tabPage3;
         private TabPage tabPage4;
         private DataGridView dataGridViewVehiculos;
-        private DataGridViewTextBoxColumn ColumnPatente;
-        private DataGridViewTextBoxColumn ColumnMarca;
-        private DataGridViewTextBoxColumn ColumnModelo;
-        private DataGridViewTextBoxColumn ColumnTipo;
-        private DataGridViewTextBoxColumn ColumnAnio;
-        private DataGridViewTextBoxColumn ColumnColor;
-        private DataGridViewTextBoxColumn ColumnCombustible;
-        private DataGridViewTextBoxColumn ColumnKm;
-        private DataGridViewTextBoxColumn ColumnEstado;
         private TabPage tabPage5;
         private DataGridView dataGridViewClientes;
         private DataGridViewTextBoxColumn ColumnDNI;
@@ -972,6 +963,16 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private DataGridView dataGridView;
+        private DataGridViewTextBoxColumn ColumnPatente;
+        private DataGridViewTextBoxColumn ColumnMarca;
+        private DataGridViewTextBoxColumn ColumnModelo;
+        private DataGridViewTextBoxColumn ColumnTipo;
+        private DataGridViewTextBoxColumn ColumnAnio;
+        private DataGridViewTextBoxColumn ColumnColor;
+        private DataGridViewTextBoxColumn ColumnCombustible;
+        private DataGridViewTextBoxColumn ColumnKm;
+        private DataGridViewTextBoxColumn ColumnEstado;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;

@@ -51,10 +51,6 @@
             tabControlDevoluciones = new TabControl();
             tabPage1 = new TabPage();
             dataGridViewDevoluciones = new DataGridView();
-            fechaColumn = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
             tabPage2 = new TabPage();
             dataGridViewAlquileres = new DataGridView();
             dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
@@ -66,6 +62,10 @@
             DniConductor = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn11 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn12 = new DataGridViewTextBoxColumn();
+            fechaColumn = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
+            tanqueLleno = new DataGridViewCheckBoxColumn();
+            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)devolucionBindingSource).BeginInit();
             groupBox.SuspendLayout();
             tabControlDevoluciones.SuspendLayout();
@@ -300,7 +300,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dataGridViewDevoluciones.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewDevoluciones.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewDevoluciones.Columns.AddRange(new DataGridViewColumn[] { fechaColumn, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4 });
+            dataGridViewDevoluciones.Columns.AddRange(new DataGridViewColumn[] { fechaColumn, dataGridViewTextBoxColumn2, tanqueLleno, dataGridViewTextBoxColumn4 });
             dataGridViewDevoluciones.GridColor = Color.MidnightBlue;
             dataGridViewDevoluciones.Location = new Point(0, 3);
             dataGridViewDevoluciones.Name = "dataGridViewDevoluciones";
@@ -317,34 +317,6 @@
             dataGridViewDevoluciones.RowTemplate.DefaultCellStyle.SelectionForeColor = SystemColors.ButtonFace;
             dataGridViewDevoluciones.Size = new Size(444, 255);
             dataGridViewDevoluciones.TabIndex = 32;
-            // 
-            // fechaColumn
-            // 
-            fechaColumn.DataPropertyName = "fecha";
-            fechaColumn.HeaderText = "Fecha";
-            fechaColumn.Name = "fechaColumn";
-            fechaColumn.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            dataGridViewTextBoxColumn2.DataPropertyName = "AlquilerId";
-            dataGridViewTextBoxColumn2.HeaderText = "Alquiler";
-            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            dataGridViewTextBoxColumn3.DataPropertyName = "TanqueLleno";
-            dataGridViewTextBoxColumn3.HeaderText = "Tanque Lleno";
-            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            dataGridViewTextBoxColumn4.DataPropertyName = "Observaciones";
-            dataGridViewTextBoxColumn4.HeaderText = "Observaciones";
-            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
             // tabPage2
             // 
@@ -455,6 +427,34 @@
             dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
             dataGridViewTextBoxColumn12.ReadOnly = true;
             // 
+            // fechaColumn
+            // 
+            fechaColumn.DataPropertyName = "fecha";
+            fechaColumn.HeaderText = "Fecha";
+            fechaColumn.Name = "fechaColumn";
+            fechaColumn.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            dataGridViewTextBoxColumn2.DataPropertyName = "AlquilerId";
+            dataGridViewTextBoxColumn2.HeaderText = "Alquiler";
+            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // tanqueLleno
+            // 
+            tanqueLleno.DataPropertyName = "TanqueLleno";
+            tanqueLleno.HeaderText = "Tanque Lleno";
+            tanqueLleno.Name = "tanqueLleno";
+            tanqueLleno.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            dataGridViewTextBoxColumn4.DataPropertyName = "Observaciones";
+            dataGridViewTextBoxColumn4.HeaderText = "Observaciones";
+            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
             // FormDevoluciones
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -503,10 +503,6 @@
         private TextBox textBoxAlquiler;
         private DataGridView dataGridViewDevoluciones;
         private DataGridView dataGridViewAlquileres;
-        private DataGridViewTextBoxColumn fechaColumn;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
@@ -516,5 +512,10 @@
         private DataGridViewTextBoxColumn DniConductor;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private DataGridViewTextBoxColumn fechaColumn;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridViewCheckBoxColumn tanqueLleno;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
     }
 }

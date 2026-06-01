@@ -1,4 +1,5 @@
 ﻿using RentaCar.Dtos.Clientes;
+using RentaCar.Escritorio.Helpers;
 using RentaCar.Escritorio.Servicios;
 using System.Net.Mail;
 
@@ -18,9 +19,9 @@ namespace RentaCar.Escritorio
 
         private async void FormCliente_Load(object sender, EventArgs e)
         {
-            await CargarClientes();
             BloquearCampos(false);
             BloquearBotones(false);
+            await CargarClientes();
         }
 
         private async Task CargarClientes()
@@ -54,24 +55,62 @@ namespace RentaCar.Escritorio
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             BloquearCampos(true);
+            BloquearBotones(true);
             modoEdicion = false;
         }
 
         private async void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(textBoxDNI.Text) ||
-                string.IsNullOrWhiteSpace(textBoxNombre.Text) ||
-                string.IsNullOrWhiteSpace(textBoxApellido.Text) ||
-                string.IsNullOrWhiteSpace(textBoxEmail.Text) ||
-                string.IsNullOrWhiteSpace(textBoxTel.Text))
+            
+            if (string.IsNullOrWhiteSpace(textBoxDNI.Text))
             {
-                MessageBox.Show("Todos los campos son obligatorios");
+                Dialogos.Error(Mensajes.CampoVacio("DNI"));
+            }
+
+            if(!int.TryParse(textBoxDNI.Text, out _))
+            {
+                Dialogos.Error(Mensajes.FormatoInvalido("DNI"));
                 return;
             }
 
+            if (string.IsNullOrWhiteSpace(textBoxNombre.Text))
+            {
+                Dialogos.Error(Mensajes.CampoVacio("Nombre"));
+                return;
+            }
+
+            if(string.IsNullOrWhiteSpace(textBoxApellido.Text))
+            {
+                Dialogos.Error(Mensajes.CampoVacio("Apellido"));
+                return;
+            }
+
+            if(string.IsNullOrWhiteSpace(textBoxEmail.Text))
+            {
+                Dialogos.Error(Mensajes.CampoVacio("Email"));
+                return;
+            }
+            
             if (!EmailValido(textBoxEmail.Text))
             {
-                MessageBox.Show("Ingrese un email válido");
+                Dialogos.Error(Mensajes.FormatoInvalido("Email"));
+                return;
+            }
+
+            if(string.IsNullOrWhiteSpace(textBoxTel.Text))
+            {
+                Dialogos.Error(Mensajes.CampoVacio("Telefono"));
+                return;
+            }
+
+            if(!double.TryParse(textBoxTel.Text, out _))
+            {
+                Dialogos.Error(Mensajes.FormatoInvalido("Telefono"));
+                return;
+            }
+
+            if(!Dialogos.Confirmar(Mensajes.ConfirmarGuardado("al cliente")))
+            {
                 return;
             }
 
@@ -91,7 +130,7 @@ namespace RentaCar.Escritorio
 
                     await _clienteServicio.Actualizar(dni, updateRequest);
 
-                    MessageBox.Show("Cliente actualizado correctamente");
+                    Dialogos.Info(Mensajes.ExitoEdicion("Cliente"));
                 }
                 else
                 {
@@ -106,7 +145,7 @@ namespace RentaCar.Escritorio
 
                     await _clienteServicio.Agregar(createRequest);
 
-                    MessageBox.Show("Cliente creado correctamente");
+                    Dialogos.Info(Mensajes.ExitoGuardado("Cliente"));
                 }
 
                 LimpiarCampos();
@@ -121,27 +160,24 @@ namespace RentaCar.Escritorio
 
         private async void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (dataGridView.CurrentRow == null)
+            if (dataGridView.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Seleccione un cliente");
+                Dialogos.Error(Mensajes.SeleccioneEntidad("Cliente"));
                 return;
             }
 
-            var dni = (int)dataGridView.CurrentRow.Cells["ColumnDNI"].Value;
+            var dni = (int)dataGridView.SelectedRows[0].Cells["ColumnDNI"].Value;
 
-            var resultado = MessageBox.Show(
-                $"¿Eliminar cliente {dni}?",
-                "Confirmar",
-                MessageBoxButtons.YesNo
-            );
-
-            if (resultado == DialogResult.Yes)
+            if(!Dialogos.Confirmar(Mensajes.ConfirmarEliminacion("al cliente " + dni)))
             {
+                return;
+            }
+
                 try
                 {
                     await _clienteServicio.Eliminar(dni);
 
-                    MessageBox.Show("Cliente eliminado correctamente");
+                    Dialogos.Info(Mensajes.ExitoEliminacion("Cliente"));
 
                     CargarClientes();
                     LimpiarCampos();
@@ -151,24 +187,25 @@ namespace RentaCar.Escritorio
                 {
                     MessageBox.Show($"Error al eliminar:\n{ex.Message}");
                 }
-            }
+     
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            if (dataGridView.CurrentRow == null)
+            if (dataGridView.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Seleccione un registro");
+                Dialogos.Error(Mensajes.SeleccioneEntidad("cliente"));
                 return;
             }
 
-            textBoxDNI.Text = dataGridView.CurrentRow.Cells["ColumnDNI"].Value.ToString();
-            textBoxNombre.Text = dataGridView.CurrentRow.Cells["ColumnNombre"].Value.ToString();
-            textBoxApellido.Text = dataGridView.CurrentRow.Cells["ColumnApellido"].Value.ToString();
-            textBoxEmail.Text = dataGridView.CurrentRow.Cells["ColumnEmail"].Value.ToString();
-            textBoxTel.Text = dataGridView.CurrentRow.Cells["ColumnTelefono"].Value.ToString();
+            textBoxDNI.Text = dataGridView.SelectedRows[0].Cells["ColumnDNI"].Value.ToString();
+            textBoxNombre.Text = dataGridView.SelectedRows[0].Cells["ColumnNombre"].Value.ToString();
+            textBoxApellido.Text = dataGridView.SelectedRows[0].Cells["ColumnApellido"].Value.ToString();
+            textBoxEmail.Text = dataGridView.SelectedRows[0].Cells["ColumnEmail"].Value.ToString();
+            textBoxTel.Text = dataGridView.SelectedRows[0].Cells["ColumnTelefono"].Value.ToString();
 
             BloquearCampos(true);
+            BloquearBotones(true);
             textBoxDNI.Enabled = false;
             modoEdicion = true;
         }
@@ -197,17 +234,15 @@ namespace RentaCar.Escritorio
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            var resultado = MessageBox.Show(
-                "¿Cancelar operación?",
-                "Confirmar",
-                MessageBoxButtons.YesNo
-            );
+                if(!Dialogos.Confirmar(Mensajes.ConfirmarCancelacion()))
+                {
+                    return;
+                }
 
-            if (resultado == DialogResult.Yes)
-            {
                 LimpiarCampos();
                 BloquearCampos(false);
-            }
+                BloquearBotones(false);
+            
         }
         private void textBoxDNI_KeyPress(object sender, KeyPressEventArgs e)
         {

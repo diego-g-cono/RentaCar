@@ -36,10 +36,8 @@
             buttonEliminar = new Button();
             groupBox = new GroupBox();
             comboBoxVehiculo = new ComboBox();
-            comboBoxEstado = new ComboBox();
             textBoxPrecioSemana = new TextBox();
             textBoxPrecioDia = new TextBox();
-            labelEmail = new Label();
             labelTelefono = new Label();
             labelApellido = new Label();
             labelNombre = new Label();
@@ -50,7 +48,6 @@
             Id = new DataGridViewTextBoxColumn();
             PrecioDia = new DataGridViewTextBoxColumn();
             PrecioSemana = new DataGridViewTextBoxColumn();
-            ActivaDataGridViewCheckBoxColumn = new DataGridViewTextBoxColumn();
             NombreVehiculo = new DataGridViewTextBoxColumn();
             groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)tarifaBindingSource).BeginInit();
@@ -111,18 +108,16 @@
             // groupBox
             // 
             groupBox.Controls.Add(comboBoxVehiculo);
-            groupBox.Controls.Add(comboBoxEstado);
             groupBox.Controls.Add(textBoxPrecioSemana);
             groupBox.Controls.Add(textBoxPrecioDia);
-            groupBox.Controls.Add(labelEmail);
             groupBox.Controls.Add(labelTelefono);
             groupBox.Controls.Add(labelApellido);
             groupBox.Controls.Add(labelNombre);
             groupBox.Font = new Font("Verdana", 9F, FontStyle.Bold);
             groupBox.ForeColor = SystemColors.ButtonFace;
-            groupBox.Location = new Point(12, 66);
+            groupBox.Location = new Point(12, 87);
             groupBox.Name = "groupBox";
-            groupBox.Size = new Size(315, 211);
+            groupBox.Size = new Size(315, 166);
             groupBox.TabIndex = 7;
             groupBox.TabStop = false;
             groupBox.Text = "Datos Tarifa";
@@ -132,20 +127,10 @@
             comboBoxVehiculo.BackColor = Color.MidnightBlue;
             comboBoxVehiculo.ForeColor = SystemColors.ButtonFace;
             comboBoxVehiculo.FormattingEnabled = true;
-            comboBoxVehiculo.Location = new Point(129, 150);
+            comboBoxVehiculo.Location = new Point(129, 123);
             comboBoxVehiculo.Name = "comboBoxVehiculo";
             comboBoxVehiculo.Size = new Size(121, 22);
             comboBoxVehiculo.TabIndex = 29;
-            // 
-            // comboBoxEstado
-            // 
-            comboBoxEstado.BackColor = Color.MidnightBlue;
-            comboBoxEstado.ForeColor = SystemColors.ButtonFace;
-            comboBoxEstado.FormattingEnabled = true;
-            comboBoxEstado.Location = new Point(129, 118);
-            comboBoxEstado.Name = "comboBoxEstado";
-            comboBoxEstado.Size = new Size(121, 22);
-            comboBoxEstado.TabIndex = 28;
             // 
             // textBoxPrecioSemana
             // 
@@ -157,6 +142,7 @@
             textBoxPrecioSemana.Name = "textBoxPrecioSemana";
             textBoxPrecioSemana.Size = new Size(121, 22);
             textBoxPrecioSemana.TabIndex = 18;
+            textBoxPrecioSemana.KeyPress += textBoxPrecioSemana_KeyPress;
             // 
             // textBoxPrecioDia
             // 
@@ -168,22 +154,13 @@
             textBoxPrecioDia.Name = "textBoxPrecioDia";
             textBoxPrecioDia.Size = new Size(121, 22);
             textBoxPrecioDia.TabIndex = 17;
-            // 
-            // labelEmail
-            // 
-            labelEmail.AutoSize = true;
-            labelEmail.Font = new Font("Verdana", 9F);
-            labelEmail.Location = new Point(19, 118);
-            labelEmail.Name = "labelEmail";
-            labelEmail.Size = new Size(49, 14);
-            labelEmail.TabIndex = 16;
-            labelEmail.Text = "Activa:";
+            textBoxPrecioDia.KeyPress += textBoxPrecioDia_KeyPress;
             // 
             // labelTelefono
             // 
             labelTelefono.AutoSize = true;
             labelTelefono.Font = new Font("Verdana", 9F);
-            labelTelefono.Location = new Point(19, 153);
+            labelTelefono.Location = new Point(19, 126);
             labelTelefono.Name = "labelTelefono";
             labelTelefono.Size = new Size(63, 14);
             labelTelefono.TabIndex = 3;
@@ -263,7 +240,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dataGridViewTarifas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewTarifas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewTarifas.Columns.AddRange(new DataGridViewColumn[] { Id, PrecioDia, PrecioSemana, ActivaDataGridViewCheckBoxColumn, NombreVehiculo });
+            dataGridViewTarifas.Columns.AddRange(new DataGridViewColumn[] { Id, PrecioDia, PrecioSemana, NombreVehiculo });
             dataGridViewTarifas.GridColor = Color.MidnightBlue;
             dataGridViewTarifas.Location = new Point(379, 66);
             dataGridViewTarifas.Name = "dataGridViewTarifas";
@@ -301,13 +278,6 @@
             PrecioSemana.HeaderText = "Precio Semana";
             PrecioSemana.Name = "PrecioSemana";
             PrecioSemana.ReadOnly = true;
-            // 
-            // ActivaDataGridViewCheckBoxColumn
-            // 
-            ActivaDataGridViewCheckBoxColumn.DataPropertyName = "Activa";
-            ActivaDataGridViewCheckBoxColumn.HeaderText = "Activa";
-            ActivaDataGridViewCheckBoxColumn.Name = "ActivaDataGridViewCheckBoxColumn";
-            ActivaDataGridViewCheckBoxColumn.ReadOnly = true;
             // 
             // NombreVehiculo
             // 
@@ -347,20 +317,17 @@
         private GroupBox groupBox;
         private TextBox textBoxPrecioSemana;
         private TextBox textBoxPrecioDia;
-        private Label labelEmail;
         private Label labelTelefono;
         private Label labelApellido;
         private Label labelNombre;
         private Button buttonCancelar;
         private Button buttonGuardar;
-        private ComboBox comboBoxEstado;
         private BindingSource tarifaBindingSource;
         private ComboBox comboBoxVehiculo;
         private DataGridView dataGridViewTarifas;
         private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn PrecioDia;
         private DataGridViewTextBoxColumn PrecioSemana;
-        private DataGridViewTextBoxColumn ActivaDataGridViewCheckBoxColumn;
         private DataGridViewTextBoxColumn NombreVehiculo;
     }
 }

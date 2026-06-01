@@ -5,6 +5,7 @@ using RentaCar.Dtos.Conductores;
 using RentaCar.Dtos.Reservas;
 using RentaCar.Dtos.EstadoAlquiler;
 using RentaCar.Escritorio.Servicios;
+using RentaCar.Escritorio.Helpers;
 
 namespace RentaCar.Escritorio
 {
@@ -37,6 +38,7 @@ namespace RentaCar.Escritorio
         {
             await CargarTodo();
             BloquearCampos(false);
+            BloquearBotones(false);
         }
 
         private void BloquearCampos(bool estado)
@@ -45,6 +47,12 @@ namespace RentaCar.Escritorio
             dtpFechaDevolucion.Enabled = estado;
             numericUpDownPrecio.Enabled = estado;
             comboBoxEstado.Enabled = estado;
+        }
+
+        private void BloquearBotones(bool estado)
+        {
+            buttonGuardar.Enabled = estado;
+            buttonCancelar.Enabled = estado;
         }
 
         private void LimpiarCampos()
@@ -78,6 +86,7 @@ namespace RentaCar.Escritorio
             autoCompletar = true;
             modoEdicion = false;
             BloquearCampos(true);
+            BloquearBotones(true);
             LimpiarCampos();
         }
 
@@ -85,7 +94,7 @@ namespace RentaCar.Escritorio
         {
             if (dataGridViewAlquileres.SelectedRows.Count == 0)
             {
-                MessageBox.Show("No seleccionaste ningún alquiler.");
+                Dialogos.Error(Mensajes.SeleccioneEntidad("alquiler"));
                 return;
             }
 
@@ -106,33 +115,67 @@ namespace RentaCar.Escritorio
             modoEdicion = true;
             autoCompletar = true;
             BloquearCampos(true);
+            BloquearBotones(true);
         }
 
         private async void buttonGuardar_Click(object sender, EventArgs e)
         {
-            try
+            //try
+            //{
+            // VALIDACIONES (igual que antes)
+            /*
+            if (string.IsNullOrWhiteSpace(textBoxVehiculo.Text))
+                throw new Exception("Debe seleccionar un vehículo.");
+
+            if (string.IsNullOrWhiteSpace(textBoxDniCliente.Text))
+                throw new Exception("Debe seleccionar un cliente.");
+
+            if (string.IsNullOrWhiteSpace(textBoxDniCond.Text))
+                throw new Exception("Debe seleccionar un conductor.");
+
+            if (comboBoxEstado.SelectedIndex == -1)
+                throw new Exception("Debe seleccionar un estado.");
+
+            if (dtpFechaDevolucion.Value < dtpFechaInicio.Value)
+                throw new Exception("La fecha de devolución no puede ser menor.");
+
+            if (numericUpDownPrecio.Value <= 0)
+                throw new Exception("El precio debe ser mayor a cero.");
+
+            var confirm = MessageBox.Show("¿Guardar alquiler?", "Confirmar", MessageBoxButtons.YesNo);
+            if (confirm != DialogResult.Yes) return;
+            */
+
+            if (string.IsNullOrWhiteSpace(textBoxVehiculo.Text))
             {
-                // VALIDACIONES (igual que antes)
-                if (string.IsNullOrWhiteSpace(textBoxVehiculo.Text))
-                    throw new Exception("Debe seleccionar un vehículo.");
+                Dialogos.Error(Mensajes.SeleccioneEntidad("vehículo"));
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(textBoxDniCliente.Text))
+            {
+                Dialogos.Error(Mensajes.SeleccioneEntidad("cliente"));
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(textBoxDniCond.Text))
+            {
+                Dialogos.Error(Mensajes.SeleccioneEntidad("conductor"));
+                return;
+            }
+            if (comboBoxEstado.SelectedIndex == -1)
+            {
+                Dialogos.Error(Mensajes.SeleccioneEntidad("estado"));
+                return;
+            }
+            if(dtpFechaDevolucion.Value < dtpFechaInicio.Value)
+            {
+                Dialogos.Error(Mensajes.FechaInicioMayorFechaFin);
+                return;
+            }
 
-                if (string.IsNullOrWhiteSpace(textBoxDniCliente.Text))
-                    throw new Exception("Debe seleccionar un cliente.");
-
-                if (string.IsNullOrWhiteSpace(textBoxDniCond.Text))
-                    throw new Exception("Debe seleccionar un conductor.");
-
-                if (comboBoxEstado.SelectedIndex == -1)
-                    throw new Exception("Debe seleccionar un estado.");
-
-                if (dtpFechaDevolucion.Value < dtpFechaInicio.Value)
-                    throw new Exception("La fecha de devolución no puede ser menor.");
-
-                if (numericUpDownPrecio.Value <= 0)
-                    throw new Exception("El precio debe ser mayor a cero.");
-
-                var confirm = MessageBox.Show("¿Guardar alquiler?", "Confirmar", MessageBoxButtons.YesNo);
-                if (confirm != DialogResult.Yes) return;
+            if(!Dialogos.Confirmar(Mensajes.ConfirmarGuardado("alquiler")))
+            {
+                return;
+            }
 
                 if (modoEdicion)
                 {
@@ -149,8 +192,8 @@ namespace RentaCar.Escritorio
                     };
 
                     await _alquilerServicio.Actualizar(alquilerIdSeleccionado, update);
-                    MessageBox.Show("Alquiler actualizado");
-                }
+                    Dialogos.Info(Mensajes.ExitoEdicion("Alquiler"));
+            }
                 else
                 {
                     var create = new AlquilerCreateRequest
@@ -166,32 +209,40 @@ namespace RentaCar.Escritorio
                     };
 
                     await _alquilerServicio.Agregar(create);
-                    MessageBox.Show("Alquiler creado");
+                    Dialogos.Info(Mensajes.ExitoGuardado("Alquiler"));
                 }
 
                 await CargarTodo();
                 LimpiarCampos();
                 BloquearCampos(false);
+                BloquearBotones(false);
                 autoCompletar = false;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
         }
+            //catch (Exception ex)
+            //{
+           //     MessageBox.Show(ex.Message);
+           // }
+        //}
 
         private async void buttonEliminar_Click(object sender, EventArgs e)
         {
             if (dataGridViewAlquileres.SelectedRows.Count == 0)
             {
-                MessageBox.Show("No seleccionaste ningún alquiler.");
+                Dialogos.Error(Mensajes.SeleccioneEntidad("alquiler"));
                 return;
             }
 
             var alquiler = (AlquilerResponse)dataGridViewAlquileres.SelectedRows[0].DataBoundItem;
 
-            var confirm = MessageBox.Show("¿Eliminar?", "Confirmar", MessageBoxButtons.YesNo);
-            if (confirm != DialogResult.Yes) return;
+            //var confirm = MessageBox.Show("¿Eliminar?", "Confirmar", MessageBoxButtons.YesNo);
+            //if (confirm != DialogResult.Yes) return;
+
+            if(!Dialogos.Confirmar(Mensajes.ConfirmarEliminacion("alquiler")))
+            {
+                return;
+            }
+
+            Dialogos.Info(Mensajes.ExitoEliminacion("Alquiler"));
 
             await _alquilerServicio.Eliminar(alquiler.Id);
 
@@ -225,8 +276,12 @@ namespace RentaCar.Escritorio
 
         private void buttonCancelar_Click(object sender, EventArgs e)
         {
+            if(!Dialogos.Confirmar(Mensajes.ConfirmarCancelacion())) 
+                return;
+
             LimpiarCampos();
             BloquearCampos(false);
+            BloquearBotones(false);
             autoCompletar = false;
         }
     }

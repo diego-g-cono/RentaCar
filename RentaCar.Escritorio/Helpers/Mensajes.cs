@@ -15,14 +15,14 @@ namespace RentaCar.Escritorio.Helpers
 
         public static string LicenciaVencida => "La licencia del conductor está vencida.";
 
+        public static string TanqueLleno => "Debe indicar si el tanque está lleno.";
+
         public static string FechaInicioMayorFechaFin => "La fecha de inicio no puede ser mayor a la fecha de fin.";
 
         public static string SeleccioneEntidad(string entidad) => $"No se ha seleccionado ningún {entidad}";
 
         //confirmaciones
         public static string ConfirmarEliminacion(string entidad) => $"¿Está seguro que desea eliminar {entidad}?";
-
-        public static string ConfirmarEdicion(string entidad) => $"¿Está seguro que desea editar {entidad}?";
 
         public static string ConfirmarGuardado(string entidad) => $"¿Está seguro que desea guardar {entidad}?";
 
