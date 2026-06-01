@@ -1,6 +1,7 @@
 ﻿@inherits LayoutComponentBase
 @inject AuthService Auth
 @inject NavigationManager Nav
+@inject AuthService Auth
 @using RentaCar.Blazor.Services
 
 <div class="page">
@@ -42,6 +43,7 @@
     <a class="dismiss">🗙</a>
 </div>
 
+
 <style>
 
     .top-row {
@@ -81,14 +83,27 @@
 </style>
 
 @code {
+    private bool _sesionRestaurada;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender && !_sesionRestaurada)
+        {
+            _sesionRestaurada = true;
+
+            await Auth.RestaurarSesion();
+
+            StateHasChanged();
+        }
+    }
     void IrLogin()
     {
         Nav.NavigateTo("/login");
     }
 
-    void Logout()
+    private async Task Logout()
     {
-        Auth.Logout();
+        await Auth.Logout();
         Nav.NavigateTo("/");
     }
 }

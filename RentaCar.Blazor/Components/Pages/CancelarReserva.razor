@@ -101,6 +101,11 @@
 
     protected override async Task OnInitializedAsync()
     {
+        while (!Auth.Inicializado)
+        {
+            await Task.Delay(50);
+        }
+
         if (!Auth.EstaLogueado)
         {
             Nav.NavigateTo("/login");

@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
 using RentaCar.Blazor.Components;
 using RentaCar.Blazor.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<AuthService>();
+builder.Services.AddScoped<ProtectedSessionStorage>();
 
 builder.Services.AddHttpClient("Api", client =>
 {

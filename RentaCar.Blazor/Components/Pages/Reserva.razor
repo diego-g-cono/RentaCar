@@ -46,12 +46,12 @@ else
 
         <div class="input-group">
             <label>Fecha inicio</label>
-            <InputDate @bind-Value="fechaInicio" />
+            <InputDate @bind-Value="fechaInicio" readonly/>
         </div>
 
         <div class="input-group">
             <label>Fecha fin</label>
-            <InputDate @bind-Value="fechaFin" />
+            <InputDate @bind-Value="fechaFin" readonly/>
         </div>
         <div class="input-group">
             <label>Seguro</label>
@@ -107,6 +107,11 @@ else
 
     protected override async Task OnInitializedAsync()
     {
+        while (!Auth.Inicializado)
+        {
+            await Task.Delay(50);
+        }
+
         if (!Auth.EstaLogueado)
         {
             Nav.NavigateTo("/login");
