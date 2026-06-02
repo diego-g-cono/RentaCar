@@ -47,6 +47,7 @@ namespace RentaCar.Escritorio
         {
             await CargarVehiculos();
             BloquearCampos(false);
+            BloquearBotones(false);
             await CargarMarcas();
             await CargarTiposVehiculo();
             await CargarColores();
@@ -72,9 +73,17 @@ namespace RentaCar.Escritorio
             numericUpDownKm.Enabled = estado;
             comboBoxEstado.Enabled = estado;
         }
+
+        private void BloquearBotones(bool estado)
+        {
+            buttonGuardar.Enabled = estado;
+            buttonCancelar.Enabled = estado;
+        }
+
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             BloquearCampos(true);
+            BloquearBotones(true);
         }
         // Método para cargar marcas en el ComboBox
         private async Task CargarMarcas()
@@ -165,7 +174,7 @@ namespace RentaCar.Escritorio
 
                 int anio = (int)numericUpDownAnio.Value;
                 int kilometraje = (int)numericUpDownKm.Value;
-
+                /*
                 if (!(comboBoxMarca.SelectedItem is Marca marca) ||
                     !(comboBoxModelo.SelectedItem is Modelo modelo) ||
                     !(comboBoxColor.SelectedItem is Dominio.Color color) ||
@@ -176,24 +185,61 @@ namespace RentaCar.Escritorio
                     MessageBox.Show("Complete todos los campos");
                     return;
                 }
+                */
+
+                if(comboBoxMarca.SelectedIndex == -1)
+                {
+                    Dialogos.Error(Mensajes.SeleccioneEntidad("marca"));
+                    return;
+                }
+                if (comboBoxModelo.SelectedIndex == -1)
+                {
+                    Dialogos.Error(Mensajes.SeleccioneEntidad("modelo"));
+                    return;
+                }
+                if (comboBoxColor.SelectedIndex == -1)
+                {
+                    Dialogos.Error(Mensajes.SeleccioneEntidad("color"));
+                    return;
+                }
+                if(comboBoxTipo.SelectedIndex == -1)
+                {
+                    Dialogos.Error(Mensajes.SeleccioneEntidad("tipo de vehículo"));
+                    return;
+                }
+                if (comboBoxCombustible.SelectedIndex == -1)
+                {
+                    Dialogos.Error(Mensajes.SeleccioneEntidad("combustible"));
+                    return;
+                }
+                if (comboBoxEstado.SelectedIndex == -1)
+                {
+                    Dialogos.Error(Mensajes.SeleccioneEntidad("estado del vehículo"));
+                    return;
+                }
+
+                if(!Dialogos.Confirmar(Mensajes.ConfirmarGuardado("vehículo")))
+                {
+                    return;
+                }
 
                 if (modoEdicion)
                 {
                     var updateRequest = new VehiculoUpdateRequest
                     {
-                        MarcaId = marca.Id,
-                        ModeloId = modelo.Id,
-                        TipoId = tipo.Id,
-                        ColorId = color.Id,
-                        CombustibleId = combustible.Id,
-                        EstadoId = estado.Id,
-                        Anio = anio,
-                        Kilometraje = kilometraje
+                        MarcaId = (int)comboBoxMarca.SelectedValue,
+                        ModeloId = (int)comboBoxModelo.SelectedValue,
+                        TipoId = (int)comboBoxTipo.SelectedValue,
+                        ColorId = (int)comboBoxColor.SelectedValue,
+                        CombustibleId = (int)comboBoxCombustible.SelectedValue,
+                        EstadoId = (int)comboBoxEstado.SelectedValue,
+                        Anio = (int)numericUpDownAnio.Value,
+                        Kilometraje = (int)numericUpDownKm.Value
                     };
 
                     await _vehiculoServicio.Actualizar(patenteSeleccionada, updateRequest);
 
-                    MessageBox.Show("Vehículo actualizado correctamente");
+                    Dialogos.Info(Mensajes.ExitoEdicion("Vehículo"));
                     modoEdicion = false;
                     textBoxPatente.Enabled = true;
                 }
@@ -202,24 +248,25 @@ namespace RentaCar.Escritorio
                     var createRequest = new VehiculoCreateRequest
                     {
                         Patente = patente,
-                        MarcaId = marca.Id,
-                        ModeloId = modelo.Id,
-                        TipoId = tipo.Id,
-                        ColorId = color.Id,
-                        CombustibleId = combustible.Id,
-                        EstadoId = estado.Id,
-                        Anio = anio,
-                        Kilometraje = kilometraje
+                        MarcaId = (int)comboBoxMarca.SelectedValue,
+                        ModeloId = (int)comboBoxModelo.SelectedValue,
+                        TipoId = (int)comboBoxTipo.SelectedValue,
+                        ColorId = (int)comboBoxColor.SelectedValue,
+                        CombustibleId = (int)comboBoxCombustible.SelectedValue,
+                        EstadoId = (int)comboBoxEstado.SelectedValue,
+                        Anio = (int)numericUpDownAnio.Value,
+                        Kilometraje = (int)numericUpDownKm.Value
                     };
 
                     await _vehiculoServicio.Agregar(createRequest);
 
-                    MessageBox.Show("Vehículo guardado correctamente");
+                    Dialogos.Info(Mensajes.ExitoGuardado("Vehículo"));
                 }
 
                 await CargarVehiculos();
                 LimpiarCampos();
                 BloquearCampos(false);
+                BloquearBotones(false);
             }
             catch (Exception ex)
             {
@@ -247,30 +294,39 @@ namespace RentaCar.Escritorio
         }
         private void btnCancelar_Click(object sender, EventArgs e)
         {
+
+            if (!Dialogos.Confirmar(Mensajes.ConfirmarCancelacion()))
+            {
+                return;
+            }
+
+            /*
             var resultado = MessageBox.Show(
                 "¿Está seguro que desea cancelar? Se perderán los datos ingresados.",
                 "Confirmar cancelación",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Warning
             );
+            */
 
-            if (resultado == DialogResult.Yes)
-            {
+            //if (resultado == DialogResult.Yes)
+            //{
                 LimpiarCampos();
                 BloquearCampos(false);
+                BloquearBotones(false);
                 modoEdicion = false;
-            }
+            //}
         }
 
         private async void btnEditar_Click(object sender, EventArgs e)
         {
-            if (dataGridView.CurrentRow == null)
+            if (dataGridView.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Seleccione un vehículo para editar");
+                Dialogos.Error(Mensajes.SeleccioneEntidad("vehículo"));
                 return;
             }
 
-            var vehiculo = (VehiculoResponse)dataGridView.CurrentRow.DataBoundItem;
+            var vehiculo = (VehiculoResponse)dataGridView.SelectedRows[0].DataBoundItem;
 
             patenteSeleccionada = vehiculo.Patente;
 
@@ -290,35 +346,42 @@ namespace RentaCar.Escritorio
             comboBoxEstado.SelectedValue = vehiculo.EstadoId;
 
             BloquearCampos(true);
+            BloquearBotones(true);
             modoEdicion = true;
         }
         private async void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (dataGridView.CurrentRow == null)
+            if (dataGridView.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Seleccione un vehículo para eliminar");
+                Dialogos.Error(Mensajes.SeleccioneEntidad("vehículo"));
                 return;
             }
 
-            var patente = dataGridView.CurrentRow.Cells["ColumnPatente"].Value.ToString();
+            var patente = dataGridView.SelectedRows[0].Cells["ColumnPatente"].Value.ToString();
 
+            if(!Dialogos.Confirmar(Mensajes.ConfirmarEliminacion("vehículo")))
+            {
+                return;
+            }
+            /*
             var resultado = MessageBox.Show(
                 $"¿Está seguro que desea eliminar el vehículo {patente}?",
                 "Confirmar eliminación",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Warning
             );
+            */
+            //if (resultado == DialogResult.Yes)
+            //{
+            await _vehiculoServicio.Eliminar(patente);
 
-            if (resultado == DialogResult.Yes)
-            {
-                await _vehiculoServicio.Eliminar(patente);
-
-                MessageBox.Show("Vehículo eliminado correctamente");
+                Dialogos.Info(Mensajes.ExitoEliminacion("Vehículo"));
 
                 await CargarVehiculos();
                 LimpiarCampos();
                 BloquearCampos(false);
-            }
+                BloquearBotones(false);
+            //}
         }
 
     }

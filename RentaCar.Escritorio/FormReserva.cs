@@ -3,6 +3,7 @@ using RentaCar.Dtos.Clientes;
 using RentaCar.Dtos.Vehiculos;
 using RentaCar.Dtos.EstadoReserva;
 using RentaCar.Escritorio.Servicios;
+using RentaCar.Escritorio.Helpers;
 
 namespace RentaCar.Escritorio
 {
@@ -13,6 +14,7 @@ namespace RentaCar.Escritorio
         private readonly VehiculoServicio _vehiculoServicio;
         private readonly EstadoReservaServicio _estadoServicio;
         private bool modoEdicion = false;
+        private bool autoCompletar = false;
 
         public FormReserva()
         {
@@ -27,6 +29,7 @@ namespace RentaCar.Escritorio
         private async void FormReserva_Load(object sender, EventArgs e)
         {
             BloquearCampos(false);
+            BloquearBotones(false);
             textBoxCliente.ReadOnly = true;
             textBoxVehiculo.ReadOnly = true;
             dtpFechaRetiro.MinDate = DateTime.Today;
@@ -49,7 +52,12 @@ namespace RentaCar.Escritorio
             comboBoxEstado.Enabled = estado;
         }
 
-        
+        private void BloquearBotones(bool estado)
+        {
+            buttonGuardar.Enabled = estado;
+            buttonCancelar.Enabled = estado;
+        }
+
 
         private async Task CargarVehiculos()
         {
@@ -88,17 +96,19 @@ namespace RentaCar.Escritorio
         private void buttonNuevo_Click(object sender, EventArgs e)
         {
             BloquearCampos(true);
+            BloquearBotones(true);
             modoEdicion = false;
+            autoCompletar = true;
         }
         private void buttonEditar_Click(object sender, EventArgs e)
         {
-            if (dataGridViewReserva.CurrentRow == null)
+            if (dataGridViewReserva.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Seleccioná una reserva primero");
+                Dialogos.Error(Mensajes.SeleccioneEntidad("reserva"));
                 return;
             }
 
-            var reserva = (ReservaResponse)dataGridViewReserva.CurrentRow.DataBoundItem;
+            var reserva = (ReservaResponse)dataGridViewReserva.SelectedRows[0].DataBoundItem;
 
             textBoxCliente.Text = reserva.ClienteDni.ToString();
             textBoxVehiculo.Text = reserva.VehiculoPatente;
@@ -109,45 +119,67 @@ namespace RentaCar.Escritorio
             comboBoxEstado.SelectedValue = reserva.EstadoId;
 
             modoEdicion = true;
+            autoCompletar = true;
             BloquearCampos(true);
+            BloquearBotones(true);
         }
         private void buttonCancelar_Click(object sender, EventArgs e)
         {
+            /*
             var resultado = MessageBox.Show(
                 "Se perderán los datos ingresados. ¿Deseás continuar?",
                 "Confirmar cancelación",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Warning
             );
-
-            if (resultado == DialogResult.Yes)
+            */
+            if (!Dialogos.Confirmar(Mensajes.ConfirmarCancelacion()))
             {
+                return;
+            }
+
                 LimpiarCampos();
                 modoEdicion = false;
+                autoCompletar = false;
                 BloquearCampos(false);
-            }
+                BloquearBotones(false);
+            
         }
 
         private async void buttonGuardar_Click(object sender, EventArgs e)
         {
-            // 🔸 Validaciones
-            if (string.IsNullOrWhiteSpace(textBoxCliente.Text) ||
-                string.IsNullOrWhiteSpace(textBoxVehiculo.Text) ||
-                comboBoxEstado.SelectedIndex == -1)
-            {
-                MessageBox.Show("Todos los campos son obligatorios");
+
+            if (string.IsNullOrWhiteSpace(textBoxCliente.Text)){
+                Dialogos.Error(Mensajes.CampoVacio("cliente"));
                 return;
             }
 
-            if (dtpFechaRetiro.Value.Date < DateTime.Today)
+            if (string.IsNullOrWhiteSpace(textBoxVehiculo.Text))
             {
-                MessageBox.Show("La fecha de retiro no puede ser anterior a hoy");
+                Dialogos.Error(Mensajes.CampoVacio("vehículo"));
+                return;
+            }
+            
+            if(dtpFechaRetiro.Value.Date < DateTime.Today)
+            {
+                Dialogos.Error(Mensajes.FechaRetiroInvalida);
                 return;
             }
 
             if (dtpFechaDevolucion.Value <= dtpFechaRetiro.Value)
             {
-                MessageBox.Show("La fecha de devolución debe ser al menos un día posterior al retiro");
+                Dialogos.Error(Mensajes.FechaInicioMayorFechaFin);
+                return;
+            }
+
+            if(comboBoxEstado.SelectedIndex == -1)
+            {
+                Dialogos.Error(Mensajes.CampoVacio("estado"));
+                return;
+            }
+
+            if (!Dialogos.Confirmar(Mensajes.ConfirmarGuardado("Reserva")))
+            {
                 return;
             }
 
@@ -155,7 +187,7 @@ namespace RentaCar.Escritorio
             {
                 if (modoEdicion)
                 {
-                    var reserva = (ReservaResponse)dataGridViewReserva.CurrentRow.DataBoundItem;
+                    var reserva = (ReservaResponse)dataGridViewReserva.SelectedRows[0].DataBoundItem;
 
                     var updateRequest = new ReservaUpdateRequest
                     {
@@ -170,7 +202,7 @@ namespace RentaCar.Escritorio
 
                     await _reservaServicio.Actualizar(reserva.Id, updateRequest);
 
-                    MessageBox.Show("Reserva actualizada correctamente");
+                    Dialogos.Info(Mensajes.ExitoEdicion("Reserva"));
                 }
                 else
                 {
@@ -187,13 +219,15 @@ namespace RentaCar.Escritorio
 
                     await _reservaServicio.Agregar(createRequest);
 
-                    MessageBox.Show("Reserva creada correctamente");
+                    Dialogos.Info(Mensajes.ExitoGuardado("Reserva"));
                 }
 
                 LimpiarCampos();
                 BloquearCampos(false);
+                BloquearBotones(false);
                 await CargarReservas();
                 modoEdicion = false;
+                autoCompletar = false;
             }
             catch (Exception ex)
             {
@@ -203,13 +237,22 @@ namespace RentaCar.Escritorio
 
         private async void buttonEliminar_Click(object sender, EventArgs e)
         {
-            if (dataGridViewReserva.CurrentRow == null) return;
+            if (dataGridViewReserva.SelectedRows.Count == 0)
+            {
+                Dialogos.Error(Mensajes.SeleccioneEntidad("reserva"));
+                return;
+            }
+            
+            if(!Dialogos.Confirmar(Mensajes.ConfirmarEliminacion("la reserva")))
+            {
+                return;
+            }
 
-            var reserva = (ReservaResponse)dataGridViewReserva.CurrentRow.DataBoundItem;
+            var reserva = (ReservaResponse)dataGridViewReserva.SelectedRows[0].DataBoundItem;
 
             await _reservaServicio.Eliminar(reserva.Id);
 
-            MessageBox.Show("Reserva eliminada");
+            Dialogos.Info(Mensajes.ExitoEliminacion("Reserva"));
 
             await CargarReservas();
         }
@@ -227,19 +270,14 @@ namespace RentaCar.Escritorio
         }
         private void dataGridViewVehiculo_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < 0) return;
-
-            var vehiculo = (VehiculoResponse)dataGridViewVehiculo.Rows[e.RowIndex].DataBoundItem;
-
-            textBoxVehiculo.Text = vehiculo.Patente;
+            if (e.RowIndex >= 0 && autoCompletar)
+                textBoxVehiculo.Text = ((VehiculoResponse)dataGridViewVehiculo.Rows[e.RowIndex].DataBoundItem).Patente;
         }
+
         private void dataGridViewCliente_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < 0) return;
-
-            var cliente = (ClienteResponse)dataGridViewCliente.Rows[e.RowIndex].DataBoundItem;
-
-            textBoxCliente.Text = cliente.Dni.ToString();
+            if (e.RowIndex >= 0 && autoCompletar)
+                textBoxCliente.Text = ((ClienteResponse)dataGridViewCliente.Rows[e.RowIndex].DataBoundItem).Dni.ToString();
         }
         private void LimpiarCampos()
         {

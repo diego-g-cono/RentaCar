@@ -199,5 +199,10 @@ namespace RentaCar.Escritorio
             BloquearCampos(false);
             modoEdicion = false;
         }
+
+        private void FormUsuarios_Load_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

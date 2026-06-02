@@ -120,31 +120,6 @@ namespace RentaCar.Escritorio
 
         private async void buttonGuardar_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            // VALIDACIONES (igual que antes)
-            /*
-            if (string.IsNullOrWhiteSpace(textBoxVehiculo.Text))
-                throw new Exception("Debe seleccionar un vehículo.");
-
-            if (string.IsNullOrWhiteSpace(textBoxDniCliente.Text))
-                throw new Exception("Debe seleccionar un cliente.");
-
-            if (string.IsNullOrWhiteSpace(textBoxDniCond.Text))
-                throw new Exception("Debe seleccionar un conductor.");
-
-            if (comboBoxEstado.SelectedIndex == -1)
-                throw new Exception("Debe seleccionar un estado.");
-
-            if (dtpFechaDevolucion.Value < dtpFechaInicio.Value)
-                throw new Exception("La fecha de devolución no puede ser menor.");
-
-            if (numericUpDownPrecio.Value <= 0)
-                throw new Exception("El precio debe ser mayor a cero.");
-
-            var confirm = MessageBox.Show("¿Guardar alquiler?", "Confirmar", MessageBoxButtons.YesNo);
-            if (confirm != DialogResult.Yes) return;
-            */
 
             if (string.IsNullOrWhiteSpace(textBoxVehiculo.Text))
             {
@@ -177,6 +152,8 @@ namespace RentaCar.Escritorio
                 return;
             }
 
+            try
+            {
                 if (modoEdicion)
                 {
                     var update = new AlquilerUpdateRequest
@@ -193,7 +170,7 @@ namespace RentaCar.Escritorio
 
                     await _alquilerServicio.Actualizar(alquilerIdSeleccionado, update);
                     Dialogos.Info(Mensajes.ExitoEdicion("Alquiler"));
-            }
+                }
                 else
                 {
                     var create = new AlquilerCreateRequest
@@ -212,17 +189,20 @@ namespace RentaCar.Escritorio
                     Dialogos.Info(Mensajes.ExitoGuardado("Alquiler"));
                 }
 
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+
+
                 await CargarTodo();
                 LimpiarCampos();
                 BloquearCampos(false);
                 BloquearBotones(false);
                 autoCompletar = false;
         }
-            //catch (Exception ex)
-            //{
-           //     MessageBox.Show(ex.Message);
-           // }
-        //}
+            
 
         private async void buttonEliminar_Click(object sender, EventArgs e)
         {

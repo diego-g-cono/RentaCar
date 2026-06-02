@@ -384,6 +384,7 @@
             dataGridViewReserva.GridColor = Color.MidnightBlue;
             dataGridViewReserva.Location = new Point(0, 0);
             dataGridViewReserva.Name = "dataGridViewReserva";
+            dataGridViewReserva.ReadOnly = true;
             dataGridViewCellStyle2.BackColor = Color.MidnightBlue;
             dataGridViewCellStyle2.ForeColor = SystemColors.ButtonFace;
             dataGridViewCellStyle2.SelectionBackColor = Color.RoyalBlue;
@@ -402,48 +403,56 @@
             ColumnId.DataPropertyName = "Id";
             ColumnId.HeaderText = "ID";
             ColumnId.Name = "ColumnId";
+            ColumnId.ReadOnly = true;
             // 
             // ColumnCliente
             // 
             ColumnCliente.DataPropertyName = "ClienteDni";
             ColumnCliente.HeaderText = "Cliente";
             ColumnCliente.Name = "ColumnCliente";
+            ColumnCliente.ReadOnly = true;
             // 
             // ColumnVehiculo
             // 
             ColumnVehiculo.DataPropertyName = "VehiculoPatente";
             ColumnVehiculo.HeaderText = "Vehículo";
             ColumnVehiculo.Name = "ColumnVehiculo";
+            ColumnVehiculo.ReadOnly = true;
             // 
             // ColumnFechaRetiro
             // 
             ColumnFechaRetiro.DataPropertyName = "FechaInicio";
             ColumnFechaRetiro.HeaderText = "Fecha Retiro";
             ColumnFechaRetiro.Name = "ColumnFechaRetiro";
+            ColumnFechaRetiro.ReadOnly = true;
             // 
             // ColumnFechaDevolucion
             // 
             ColumnFechaDevolucion.DataPropertyName = "FechaFin";
             ColumnFechaDevolucion.HeaderText = "Fecha Devolución";
             ColumnFechaDevolucion.Name = "ColumnFechaDevolucion";
+            ColumnFechaDevolucion.ReadOnly = true;
             // 
             // ColumnPrecio
             // 
             ColumnPrecio.DataPropertyName = "Precio";
             ColumnPrecio.HeaderText = "Precio";
             ColumnPrecio.Name = "ColumnPrecio";
+            ColumnPrecio.ReadOnly = true;
             // 
             // ColumnSenia
             // 
             ColumnSenia.DataPropertyName = "Senia";
             ColumnSenia.HeaderText = "Seña";
             ColumnSenia.Name = "ColumnSenia";
+            ColumnSenia.ReadOnly = true;
             // 
             // ColumnEstadoReserva
             // 
             ColumnEstadoReserva.DataPropertyName = "EstadoNombre";
             ColumnEstadoReserva.HeaderText = "Estado";
             ColumnEstadoReserva.Name = "ColumnEstadoReserva";
+            ColumnEstadoReserva.ReadOnly = true;
             // 
             // tabPageCliente
             // 
@@ -477,6 +486,7 @@
             dataGridViewCliente.GridColor = Color.MidnightBlue;
             dataGridViewCliente.Location = new Point(0, 0);
             dataGridViewCliente.Name = "dataGridViewCliente";
+            dataGridViewCliente.ReadOnly = true;
             dataGridViewCellStyle4.BackColor = Color.MidnightBlue;
             dataGridViewCellStyle4.ForeColor = SystemColors.ButtonFace;
             dataGridViewCellStyle4.SelectionBackColor = Color.RoyalBlue;
@@ -496,30 +506,35 @@
             ColumnDNI.DataPropertyName = "DNI";
             ColumnDNI.HeaderText = "DNI";
             ColumnDNI.Name = "ColumnDNI";
+            ColumnDNI.ReadOnly = true;
             // 
             // ColumnNombre
             // 
             ColumnNombre.DataPropertyName = "Nombre";
             ColumnNombre.HeaderText = "Nombre";
             ColumnNombre.Name = "ColumnNombre";
+            ColumnNombre.ReadOnly = true;
             // 
             // ColumnApellido
             // 
             ColumnApellido.DataPropertyName = "Apellido";
             ColumnApellido.HeaderText = "Apellido";
             ColumnApellido.Name = "ColumnApellido";
+            ColumnApellido.ReadOnly = true;
             // 
             // ColumnEmail
             // 
             ColumnEmail.DataPropertyName = "Email";
             ColumnEmail.HeaderText = "E-mail";
             ColumnEmail.Name = "ColumnEmail";
+            ColumnEmail.ReadOnly = true;
             // 
             // ColumnTelefono
             // 
             ColumnTelefono.DataPropertyName = "Telefono";
             ColumnTelefono.HeaderText = "Teléfono";
             ColumnTelefono.Name = "ColumnTelefono";
+            ColumnTelefono.ReadOnly = true;
             // 
             // tabPageVehiculo
             // 
@@ -552,6 +567,7 @@
             dataGridViewVehiculo.GridColor = Color.MidnightBlue;
             dataGridViewVehiculo.Location = new Point(0, 0);
             dataGridViewVehiculo.Name = "dataGridViewVehiculo";
+            dataGridViewVehiculo.ReadOnly = true;
             dataGridViewCellStyle6.BackColor = Color.MidnightBlue;
             dataGridViewCellStyle6.ForeColor = SystemColors.ButtonFace;
             dataGridViewCellStyle6.SelectionBackColor = Color.RoyalBlue;
@@ -571,54 +587,63 @@
             ColumnPatente.DataPropertyName = "Patente";
             ColumnPatente.HeaderText = "Patente";
             ColumnPatente.Name = "ColumnPatente";
+            ColumnPatente.ReadOnly = true;
             // 
             // ColumnMarca
             // 
             ColumnMarca.DataPropertyName = "MarcaNombre";
             ColumnMarca.HeaderText = "Marca";
             ColumnMarca.Name = "ColumnMarca";
+            ColumnMarca.ReadOnly = true;
             // 
             // ColumnModelo
             // 
             ColumnModelo.DataPropertyName = "ModeloNombre";
             ColumnModelo.HeaderText = "Modelo";
             ColumnModelo.Name = "ColumnModelo";
+            ColumnModelo.ReadOnly = true;
             // 
             // ColumnTipo
             // 
             ColumnTipo.DataPropertyName = "TipoNombre";
             ColumnTipo.HeaderText = "Tipo";
             ColumnTipo.Name = "ColumnTipo";
+            ColumnTipo.ReadOnly = true;
             // 
             // ColumnAnio
             // 
             ColumnAnio.DataPropertyName = "Anio";
             ColumnAnio.HeaderText = "Año";
             ColumnAnio.Name = "ColumnAnio";
+            ColumnAnio.ReadOnly = true;
             // 
             // ColumnColor
             // 
             ColumnColor.DataPropertyName = "ColorNombre";
             ColumnColor.HeaderText = "Color";
             ColumnColor.Name = "ColumnColor";
+            ColumnColor.ReadOnly = true;
             // 
             // ColumnCombustible
             // 
             ColumnCombustible.DataPropertyName = "CombustibleNombre";
             ColumnCombustible.HeaderText = "Combustible";
             ColumnCombustible.Name = "ColumnCombustible";
+            ColumnCombustible.ReadOnly = true;
             // 
             // ColumnKm
             // 
             ColumnKm.DataPropertyName = "Kilometraje";
             ColumnKm.HeaderText = "Kilometraje";
             ColumnKm.Name = "ColumnKm";
+            ColumnKm.ReadOnly = true;
             // 
             // ColumnEstado
             // 
             ColumnEstado.DataPropertyName = "EstadoNombre";
             ColumnEstado.HeaderText = "Estado";
             ColumnEstado.Name = "ColumnEstado";
+            ColumnEstado.ReadOnly = true;
             // 
             // FormReserva
             // 

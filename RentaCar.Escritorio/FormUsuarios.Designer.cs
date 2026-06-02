@@ -44,10 +44,10 @@
             buttonEditar = new Button();
             buttonNuevo = new Button();
             dataGridViewUsuarios = new DataGridView();
-            usuarioBindingSource = new BindingSource(components);
             ColumnNombre = new DataGridViewTextBoxColumn();
             ColumnRol = new DataGridViewTextBoxColumn();
             ColumnActivo = new DataGridViewTextBoxColumn();
+            usuarioBindingSource = new BindingSource(components);
             groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewUsuarios).BeginInit();
             ((System.ComponentModel.ISupportInitialize)usuarioBindingSource).BeginInit();
@@ -246,10 +246,6 @@
             dataGridViewUsuarios.Size = new Size(548, 242);
             dataGridViewUsuarios.TabIndex = 35;
             // 
-            // usuarioBindingSource
-            // 
-            usuarioBindingSource.DataSource = typeof(Dominio.Usuario);
-            // 
             // ColumnNombre
             // 
             ColumnNombre.DataPropertyName = "NombreUsuario";
@@ -268,6 +264,10 @@
             ColumnActivo.HeaderText = "Activo";
             ColumnActivo.Name = "ColumnActivo";
             // 
+            // usuarioBindingSource
+            // 
+            usuarioBindingSource.DataSource = typeof(Dominio.Usuario);
+            // 
             // FormUsuarios
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -283,6 +283,7 @@
             Controls.Add(buttonNuevo);
             Name = "FormUsuarios";
             Text = "Usuarios";
+            Load += FormUsuarios_Load_1;
             groupBox.ResumeLayout(false);
             groupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewUsuarios).EndInit();

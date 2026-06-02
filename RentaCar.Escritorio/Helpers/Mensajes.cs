@@ -19,6 +19,8 @@ namespace RentaCar.Escritorio.Helpers
 
         public static string FechaInicioMayorFechaFin => "La fecha de inicio no puede ser mayor a la fecha de fin.";
 
+        public static string FechaRetiroInvalida => "La fecha de retiro no puede ser anterior a la fecha actual.";
+
         public static string SeleccioneEntidad(string entidad) => $"No se ha seleccionado ningún {entidad}";
 
         //confirmaciones
@@ -26,7 +28,7 @@ namespace RentaCar.Escritorio.Helpers
 
         public static string ConfirmarGuardado(string entidad) => $"¿Está seguro que desea guardar {entidad}?";
 
-        public static string ConfirmarCancelacion() => $"¿Está seguro que desea cancelar la operación?";
+        public static string ConfirmarCancelacion() => $"¿Está seguro que desea cancelar la operación? Se perderan los datos ingresados.";
 
         //resultados
         public static string ExitoGuardado(string entidad) => $"{entidad} guardado correctamente.";
