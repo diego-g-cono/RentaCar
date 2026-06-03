@@ -11,6 +11,8 @@ namespace RentaCar.Escritorio
 
         private bool modoEdicion = false;
 
+        private List<ClienteResponse> _clientes;
+
         public FormCliente()
         {
             InitializeComponent();
@@ -28,8 +30,8 @@ namespace RentaCar.Escritorio
         {
             try
             {
-                var clientes = await _clienteServicio.ObtenerTodos();
-                dataGridView.DataSource = clientes;
+                _clientes = await _clienteServicio.ObtenerTodos();
+                dataGridView.DataSource = _clientes;
             }
             catch (Exception ex)
             {
@@ -264,6 +266,26 @@ namespace RentaCar.Escritorio
             {
                 e.Handled = true;
             }
+        }
+
+        private void textBoxBuscador_TextChanged(object sender, EventArgs e)
+        {
+            string busqueda = textBoxBuscador.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(busqueda))
+            {
+                dataGridView.DataSource = _clientes;
+                return;
+            }
+
+            var filtrados = _clientes
+                .Where(c => c.Dni.ToString().Contains(busqueda) ||
+                            c.Nombre.Contains(busqueda, StringComparison.OrdinalIgnoreCase) ||
+                            c.Apellido.Contains(busqueda, StringComparison.OrdinalIgnoreCase) ||
+                            c.Email.Contains(busqueda, StringComparison.OrdinalIgnoreCase))
+                .ToList();
+
+            dataGridView.DataSource = filtrados;
         }
     }
 }

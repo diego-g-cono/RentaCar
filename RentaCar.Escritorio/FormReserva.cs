@@ -1,9 +1,10 @@
-﻿using RentaCar.Dtos.Reservas;
+﻿using RentaCar.Dominio;
 using RentaCar.Dtos.Clientes;
-using RentaCar.Dtos.Vehiculos;
 using RentaCar.Dtos.EstadoReserva;
-using RentaCar.Escritorio.Servicios;
+using RentaCar.Dtos.Reservas;
+using RentaCar.Dtos.Vehiculos;
 using RentaCar.Escritorio.Helpers;
+using RentaCar.Escritorio.Servicios;
 
 namespace RentaCar.Escritorio
 {
@@ -15,6 +16,7 @@ namespace RentaCar.Escritorio
         private readonly EstadoReservaServicio _estadoServicio;
         private bool modoEdicion = false;
         private bool autoCompletar = false;
+        private List<ReservaResponse> _reservas;
 
         public FormReserva()
         {
@@ -77,10 +79,10 @@ namespace RentaCar.Escritorio
 
         private async Task CargarReservas()
         {
-            var reservas = await _reservaServicio.ObtenerTodos();
+            _reservas = await _reservaServicio.ObtenerTodos();
 
             dataGridViewReserva.AutoGenerateColumns = false;
-            dataGridViewReserva.DataSource = reservas;
+            dataGridViewReserva.DataSource = _reservas;
         }
 
         private async Task CargarEstados()
@@ -138,18 +140,19 @@ namespace RentaCar.Escritorio
                 return;
             }
 
-                LimpiarCampos();
-                modoEdicion = false;
-                autoCompletar = false;
-                BloquearCampos(false);
-                BloquearBotones(false);
-            
+            LimpiarCampos();
+            modoEdicion = false;
+            autoCompletar = false;
+            BloquearCampos(false);
+            BloquearBotones(false);
+
         }
 
         private async void buttonGuardar_Click(object sender, EventArgs e)
         {
 
-            if (string.IsNullOrWhiteSpace(textBoxCliente.Text)){
+            if (string.IsNullOrWhiteSpace(textBoxCliente.Text))
+            {
                 Dialogos.Error(Mensajes.CampoVacio("cliente"));
                 return;
             }
@@ -159,8 +162,8 @@ namespace RentaCar.Escritorio
                 Dialogos.Error(Mensajes.CampoVacio("vehículo"));
                 return;
             }
-            
-            if(dtpFechaRetiro.Value.Date < DateTime.Today)
+
+            if (dtpFechaRetiro.Value.Date < DateTime.Today)
             {
                 Dialogos.Error(Mensajes.FechaRetiroInvalida);
                 return;
@@ -172,7 +175,7 @@ namespace RentaCar.Escritorio
                 return;
             }
 
-            if(comboBoxEstado.SelectedIndex == -1)
+            if (comboBoxEstado.SelectedIndex == -1)
             {
                 Dialogos.Error(Mensajes.CampoVacio("estado"));
                 return;
@@ -242,8 +245,8 @@ namespace RentaCar.Escritorio
                 Dialogos.Error(Mensajes.SeleccioneEntidad("reserva"));
                 return;
             }
-            
-            if(!Dialogos.Confirmar(Mensajes.ConfirmarEliminacion("la reserva")))
+
+            if (!Dialogos.Confirmar(Mensajes.ConfirmarEliminacion("la reserva")))
             {
                 return;
             }
@@ -299,5 +302,23 @@ namespace RentaCar.Escritorio
             }
         }
 
+        private void textBoxBuscador_TextChanged(object sender, EventArgs e)
+        {
+            string busqueda = textBoxBuscador.Text.ToUpper();
+
+            if (string.IsNullOrEmpty(busqueda))
+            {
+                dataGridViewReserva.DataSource = _reservas;
+                return;
+
+            }
+
+            var filtrados = _reservas
+                .Where(r => r.ClienteDni.ToString().Contains(busqueda))
+                .ToList();
+
+            dataGridViewReserva.DataSource = filtrados;
+
+        }
     }
 }

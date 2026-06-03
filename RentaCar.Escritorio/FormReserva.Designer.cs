@@ -84,6 +84,8 @@
             ColumnCombustible = new DataGridViewTextBoxColumn();
             ColumnKm = new DataGridViewTextBoxColumn();
             ColumnEstado = new DataGridViewTextBoxColumn();
+            textBoxBuscador = new TextBox();
+            labelBuscarPorDni = new Label();
             groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDownSenia).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownPrecio).BeginInit();
@@ -645,12 +647,37 @@
             ColumnEstado.Name = "ColumnEstado";
             ColumnEstado.ReadOnly = true;
             // 
+            // textBoxBuscador
+            // 
+            textBoxBuscador.BackColor = Color.MidnightBlue;
+            textBoxBuscador.BorderStyle = BorderStyle.FixedSingle;
+            textBoxBuscador.Font = new Font("Verdana", 9F);
+            textBoxBuscador.ForeColor = SystemColors.ButtonFace;
+            textBoxBuscador.Location = new Point(1129, 36);
+            textBoxBuscador.Name = "textBoxBuscador";
+            textBoxBuscador.Size = new Size(121, 22);
+            textBoxBuscador.TabIndex = 36;
+            textBoxBuscador.TextChanged += textBoxBuscador_TextChanged;
+            // 
+            // labelBuscarPorDni
+            // 
+            labelBuscarPorDni.AutoSize = true;
+            labelBuscarPorDni.Font = new Font("Verdana", 9F);
+            labelBuscarPorDni.ForeColor = SystemColors.ButtonHighlight;
+            labelBuscarPorDni.Location = new Point(1069, 38);
+            labelBuscarPorDni.Name = "labelBuscarPorDni";
+            labelBuscarPorDni.Size = new Size(54, 14);
+            labelBuscarPorDni.TabIndex = 37;
+            labelBuscarPorDni.Text = "Buscar:";
+            // 
             // FormReserva
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MidnightBlue;
             ClientSize = new Size(1432, 547);
+            Controls.Add(textBoxBuscador);
+            Controls.Add(labelBuscarPorDni);
             Controls.Add(tabControl);
             Controls.Add(buttonCancelar);
             Controls.Add(buttonGuardar);
@@ -674,6 +701,7 @@
             tabPageVehiculo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridViewVehiculo).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -727,5 +755,7 @@
         private DataGridViewTextBoxColumn ColumnCombustible;
         private DataGridViewTextBoxColumn ColumnKm;
         private DataGridViewTextBoxColumn ColumnEstado;
+        private TextBox textBoxBuscador;
+        private Label labelBuscarPorDni;
     }
 }

@@ -53,6 +53,8 @@
             ColumnApellido = new DataGridViewTextBoxColumn();
             ColumnEmail = new DataGridViewTextBoxColumn();
             ColumnTelefono = new DataGridViewTextBoxColumn();
+            textBoxBuscador = new TextBox();
+            labelBuscarPorDni = new Label();
             groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             SuspendLayout();
@@ -335,12 +337,37 @@
             ColumnTelefono.HeaderText = "Teléfono";
             ColumnTelefono.Name = "ColumnTelefono";
             // 
+            // textBoxBuscador
+            // 
+            textBoxBuscador.BackColor = Color.MidnightBlue;
+            textBoxBuscador.BorderStyle = BorderStyle.FixedSingle;
+            textBoxBuscador.Font = new Font("Verdana", 9F);
+            textBoxBuscador.ForeColor = SystemColors.ButtonFace;
+            textBoxBuscador.Location = new Point(780, 19);
+            textBoxBuscador.Name = "textBoxBuscador";
+            textBoxBuscador.Size = new Size(121, 22);
+            textBoxBuscador.TabIndex = 32;
+            textBoxBuscador.TextChanged += textBoxBuscador_TextChanged;
+            // 
+            // labelBuscarPorDni
+            // 
+            labelBuscarPorDni.AutoSize = true;
+            labelBuscarPorDni.Font = new Font("Verdana", 9F);
+            labelBuscarPorDni.ForeColor = SystemColors.ButtonHighlight;
+            labelBuscarPorDni.Location = new Point(720, 21);
+            labelBuscarPorDni.Name = "labelBuscarPorDni";
+            labelBuscarPorDni.Size = new Size(54, 14);
+            labelBuscarPorDni.TabIndex = 33;
+            labelBuscarPorDni.Text = "Buscar:";
+            // 
             // FormCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MidnightBlue;
             ClientSize = new Size(1012, 424);
+            Controls.Add(textBoxBuscador);
+            Controls.Add(labelBuscarPorDni);
             Controls.Add(dataGridView);
             Controls.Add(buttonCancelar);
             Controls.Add(buttonGuardar);
@@ -356,6 +383,7 @@
             groupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -382,5 +410,7 @@
         private DataGridViewTextBoxColumn ColumnApellido;
         private DataGridViewTextBoxColumn ColumnEmail;
         private DataGridViewTextBoxColumn ColumnTelefono;
+        private TextBox textBoxBuscador;
+        private Label labelBuscarPorDni;
     }
 }

@@ -12,6 +12,8 @@ namespace RentaCar.Escritorio
 
         private int dniSeleccionado;
 
+        private List<ConductorResponse> _conductores;
+
         public FormConductores()
         {
             InitializeComponent();
@@ -41,10 +43,10 @@ namespace RentaCar.Escritorio
 
         private async Task CargarConductores()
         {
-            var conductores = await _conductorServicio.ObtenerTodos();
+            _conductores = await _conductorServicio.ObtenerTodos();
 
             dataGridViewConductores.AutoGenerateColumns = false;
-            dataGridViewConductores.DataSource = conductores;
+            dataGridViewConductores.DataSource = _conductores;
         }
 
         private void LimpiarCampos()
@@ -232,5 +234,27 @@ namespace RentaCar.Escritorio
                 e.Handled = true;
             }
         }
+
+        private void textBoxBuscador_TextChanged(object sender, EventArgs e)
+        {
+            string busqueda = textBoxBuscador.Text;
+
+            if (string.IsNullOrEmpty(busqueda))
+            {
+                dataGridViewConductores.DataSource = _conductores;
+                return;
+
+            }
+
+            var filtrados = _conductores
+                .Where(c => c.Dni.ToString().Contains(busqueda) ||
+                            c.Nombre.Contains(busqueda, StringComparison.OrdinalIgnoreCase) ||
+                            c.Apellido.Contains(busqueda, StringComparison.OrdinalIgnoreCase))
+                .ToList();
+
+            dataGridViewConductores.DataSource = filtrados;
+        }
+        
+            
     }
 }

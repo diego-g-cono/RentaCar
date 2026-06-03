@@ -17,6 +17,7 @@ namespace RentaCar.Escritorio
         private readonly ConductorServicio _conductorServicio;
         private readonly ReservaServicio _reservaServicio;
         private readonly EstadoAlquilerServicio _estadoServicio;
+        private List<AlquilerResponse> _alquileres;
 
         private bool modoEdicion = false;
         private bool autoCompletar = false;
@@ -74,6 +75,9 @@ namespace RentaCar.Escritorio
             dataGridViewConductores.DataSource = await _conductorServicio.ObtenerTodos();
             dataGridViewReserva.DataSource = await _reservaServicio.ObtenerTodos();
             dataGridViewAlquileres.DataSource = await _alquilerServicio.ObtenerTodos();
+
+            _alquileres = await _alquilerServicio.ObtenerTodos();
+            dataGridViewAlquileres.DataSource = _alquileres;
 
             comboBoxEstado.DataSource = await _estadoServicio.ObtenerTodos();
             comboBoxEstado.DisplayMember = "Nombre";
@@ -263,6 +267,27 @@ namespace RentaCar.Escritorio
             BloquearCampos(false);
             BloquearBotones(false);
             autoCompletar = false;
+        }
+
+        private void textBoxBuscador_TextChanged(object sender, EventArgs e)
+        {
+            string busqueda = textBoxBuscador.Text;
+
+            if (string.IsNullOrEmpty(busqueda))
+            {
+                dataGridViewAlquileres.DataSource = _alquileres;
+                return;
+
+            }
+
+            var filtrados = _alquileres
+                .Where(c => c.ClienteDni.ToString().Contains(busqueda) ||
+                            c.ClienteNombre.Contains(busqueda, StringComparison.OrdinalIgnoreCase) ||
+                            c.ConductorNombre.Contains(busqueda, StringComparison.OrdinalIgnoreCase) ||
+                            c.ConductorDni.ToString().Contains(busqueda))
+                .ToList();
+
+            dataGridViewAlquileres.DataSource = filtrados;
         }
     }
 }

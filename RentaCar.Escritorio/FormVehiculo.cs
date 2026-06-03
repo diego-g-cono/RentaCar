@@ -28,6 +28,8 @@ namespace RentaCar.Escritorio
         private readonly CombustibleServicio _combustibleServicio;
         private readonly EstadoVehiculoServicio _estadoServicio;
 
+        private List<VehiculoResponse> _vehiculos;
+
         private bool modoEdicion = false;
         private string patenteSeleccionada = null;
         public FormVehiculo()
@@ -56,9 +58,9 @@ namespace RentaCar.Escritorio
         }
         private async Task CargarVehiculos()
         {
-            var vehiculos = await _vehiculoServicio.ObtenerTodos();
+            _vehiculos = await _vehiculoServicio.ObtenerTodos();
             dataGridView.AutoGenerateColumns = false;
-            dataGridView.DataSource = vehiculos;
+            dataGridView.DataSource = _vehiculos;
         }
 
         private void BloquearCampos(bool estado)
@@ -187,7 +189,7 @@ namespace RentaCar.Escritorio
                 }
                 */
 
-                if(comboBoxMarca.SelectedIndex == -1)
+                if (comboBoxMarca.SelectedIndex == -1)
                 {
                     Dialogos.Error(Mensajes.SeleccioneEntidad("marca"));
                     return;
@@ -202,7 +204,7 @@ namespace RentaCar.Escritorio
                     Dialogos.Error(Mensajes.SeleccioneEntidad("color"));
                     return;
                 }
-                if(comboBoxTipo.SelectedIndex == -1)
+                if (comboBoxTipo.SelectedIndex == -1)
                 {
                     Dialogos.Error(Mensajes.SeleccioneEntidad("tipo de vehículo"));
                     return;
@@ -218,7 +220,7 @@ namespace RentaCar.Escritorio
                     return;
                 }
 
-                if(!Dialogos.Confirmar(Mensajes.ConfirmarGuardado("vehículo")))
+                if (!Dialogos.Confirmar(Mensajes.ConfirmarGuardado("vehículo")))
                 {
                     return;
                 }
@@ -311,10 +313,10 @@ namespace RentaCar.Escritorio
 
             //if (resultado == DialogResult.Yes)
             //{
-                LimpiarCampos();
-                BloquearCampos(false);
-                BloquearBotones(false);
-                modoEdicion = false;
+            LimpiarCampos();
+            BloquearCampos(false);
+            BloquearBotones(false);
+            modoEdicion = false;
             //}
         }
 
@@ -359,7 +361,7 @@ namespace RentaCar.Escritorio
 
             var patente = dataGridView.SelectedRows[0].Cells["ColumnPatente"].Value.ToString();
 
-            if(!Dialogos.Confirmar(Mensajes.ConfirmarEliminacion("vehículo")))
+            if (!Dialogos.Confirmar(Mensajes.ConfirmarEliminacion("vehículo")))
             {
                 return;
             }
@@ -375,14 +377,32 @@ namespace RentaCar.Escritorio
             //{
             await _vehiculoServicio.Eliminar(patente);
 
-                Dialogos.Info(Mensajes.ExitoEliminacion("Vehículo"));
+            Dialogos.Info(Mensajes.ExitoEliminacion("Vehículo"));
 
-                await CargarVehiculos();
-                LimpiarCampos();
-                BloquearCampos(false);
-                BloquearBotones(false);
+            await CargarVehiculos();
+            LimpiarCampos();
+            BloquearCampos(false);
+            BloquearBotones(false);
             //}
         }
 
+        private void textBoxBuscador_TextChanged(object sender, EventArgs e)
+        {
+            string busqueda = textBoxBuscador.Text.ToUpper();
+
+            if (string.IsNullOrEmpty(busqueda))
+            {
+                dataGridView.DataSource = _vehiculos;
+                return;
+
+            }
+
+            var filtrados = _vehiculos
+                .Where(v => v.Patente.Contains(busqueda))
+                .ToList();
+
+            dataGridView.DataSource = filtrados;
+
+        }
     }
 }

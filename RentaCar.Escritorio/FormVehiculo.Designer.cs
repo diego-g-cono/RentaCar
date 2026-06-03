@@ -32,6 +32,15 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormVehiculo));
             dataGridView = new DataGridView();
+            ColumnPatente = new DataGridViewTextBoxColumn();
+            ColumnMarca = new DataGridViewTextBoxColumn();
+            ColumnModelo = new DataGridViewTextBoxColumn();
+            ColumnTipo = new DataGridViewTextBoxColumn();
+            ColumnAnio = new DataGridViewTextBoxColumn();
+            ColumnColor = new DataGridViewTextBoxColumn();
+            ColumnCombustible = new DataGridViewTextBoxColumn();
+            ColumnKm = new DataGridViewTextBoxColumn();
+            ColumnEstado = new DataGridViewTextBoxColumn();
             buttonNuevo = new Button();
             buttonEditar = new Button();
             buttonEliminar = new Button();
@@ -56,15 +65,8 @@
             labelPatente = new Label();
             buttonGuardar = new Button();
             buttonCancelar = new Button();
-            ColumnPatente = new DataGridViewTextBoxColumn();
-            ColumnMarca = new DataGridViewTextBoxColumn();
-            ColumnModelo = new DataGridViewTextBoxColumn();
-            ColumnTipo = new DataGridViewTextBoxColumn();
-            ColumnAnio = new DataGridViewTextBoxColumn();
-            ColumnColor = new DataGridViewTextBoxColumn();
-            ColumnCombustible = new DataGridViewTextBoxColumn();
-            ColumnKm = new DataGridViewTextBoxColumn();
-            ColumnEstado = new DataGridViewTextBoxColumn();
+            textBoxBuscador = new TextBox();
+            labelBuscarPorDni = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDownKm).BeginInit();
@@ -103,6 +105,60 @@
             dataGridView.RowTemplate.DefaultCellStyle.SelectionForeColor = SystemColors.ButtonFace;
             dataGridView.Size = new Size(944, 361);
             dataGridView.TabIndex = 6;
+            // 
+            // ColumnPatente
+            // 
+            ColumnPatente.DataPropertyName = "Patente";
+            ColumnPatente.HeaderText = "Patente";
+            ColumnPatente.Name = "ColumnPatente";
+            // 
+            // ColumnMarca
+            // 
+            ColumnMarca.DataPropertyName = "MarcaNombre";
+            ColumnMarca.HeaderText = "Marca";
+            ColumnMarca.Name = "ColumnMarca";
+            // 
+            // ColumnModelo
+            // 
+            ColumnModelo.DataPropertyName = "ModeloNombre";
+            ColumnModelo.HeaderText = "Modelo";
+            ColumnModelo.Name = "ColumnModelo";
+            // 
+            // ColumnTipo
+            // 
+            ColumnTipo.DataPropertyName = "TipoNombre";
+            ColumnTipo.HeaderText = "Tipo";
+            ColumnTipo.Name = "ColumnTipo";
+            // 
+            // ColumnAnio
+            // 
+            ColumnAnio.DataPropertyName = "Anio";
+            ColumnAnio.HeaderText = "Año";
+            ColumnAnio.Name = "ColumnAnio";
+            // 
+            // ColumnColor
+            // 
+            ColumnColor.DataPropertyName = "ColorNombre";
+            ColumnColor.HeaderText = "Color";
+            ColumnColor.Name = "ColumnColor";
+            // 
+            // ColumnCombustible
+            // 
+            ColumnCombustible.DataPropertyName = "CombustibleNombre";
+            ColumnCombustible.HeaderText = "Combustible";
+            ColumnCombustible.Name = "ColumnCombustible";
+            // 
+            // ColumnKm
+            // 
+            ColumnKm.DataPropertyName = "Kilometraje";
+            ColumnKm.HeaderText = "Kilometraje";
+            ColumnKm.Name = "ColumnKm";
+            // 
+            // ColumnEstado
+            // 
+            ColumnEstado.DataPropertyName = "EstadoNombre";
+            ColumnEstado.HeaderText = "Estado";
+            ColumnEstado.Name = "ColumnEstado";
             // 
             // buttonNuevo
             // 
@@ -425,59 +481,28 @@
             buttonCancelar.UseVisualStyleBackColor = false;
             buttonCancelar.Click += btnCancelar_Click;
             // 
-            // ColumnPatente
+            // textBoxBuscador
             // 
-            ColumnPatente.DataPropertyName = "Patente";
-            ColumnPatente.HeaderText = "Patente";
-            ColumnPatente.Name = "ColumnPatente";
+            textBoxBuscador.BackColor = Color.MidnightBlue;
+            textBoxBuscador.BorderStyle = BorderStyle.FixedSingle;
+            textBoxBuscador.Font = new Font("Verdana", 9F);
+            textBoxBuscador.ForeColor = SystemColors.ButtonFace;
+            textBoxBuscador.Location = new Point(1162, 19);
+            textBoxBuscador.Name = "textBoxBuscador";
+            textBoxBuscador.Size = new Size(121, 22);
+            textBoxBuscador.TabIndex = 34;
+            textBoxBuscador.TextChanged += textBoxBuscador_TextChanged;
             // 
-            // ColumnMarca
+            // labelBuscarPorDni
             // 
-            ColumnMarca.DataPropertyName = "MarcaNombre";
-            ColumnMarca.HeaderText = "Marca";
-            ColumnMarca.Name = "ColumnMarca";
-            // 
-            // ColumnModelo
-            // 
-            ColumnModelo.DataPropertyName = "ModeloNombre";
-            ColumnModelo.HeaderText = "Modelo";
-            ColumnModelo.Name = "ColumnModelo";
-            // 
-            // ColumnTipo
-            // 
-            ColumnTipo.DataPropertyName = "TipoNombre";
-            ColumnTipo.HeaderText = "Tipo";
-            ColumnTipo.Name = "ColumnTipo";
-            // 
-            // ColumnAnio
-            // 
-            ColumnAnio.DataPropertyName = "Anio";
-            ColumnAnio.HeaderText = "Año";
-            ColumnAnio.Name = "ColumnAnio";
-            // 
-            // ColumnColor
-            // 
-            ColumnColor.DataPropertyName = "ColorNombre";
-            ColumnColor.HeaderText = "Color";
-            ColumnColor.Name = "ColumnColor";
-            // 
-            // ColumnCombustible
-            // 
-            ColumnCombustible.DataPropertyName = "CombustibleNombre";
-            ColumnCombustible.HeaderText = "Combustible";
-            ColumnCombustible.Name = "ColumnCombustible";
-            // 
-            // ColumnKm
-            // 
-            ColumnKm.DataPropertyName = "Kilometraje";
-            ColumnKm.HeaderText = "Kilometraje";
-            ColumnKm.Name = "ColumnKm";
-            // 
-            // ColumnEstado
-            // 
-            ColumnEstado.DataPropertyName = "EstadoNombre";
-            ColumnEstado.HeaderText = "Estado";
-            ColumnEstado.Name = "ColumnEstado";
+            labelBuscarPorDni.AutoSize = true;
+            labelBuscarPorDni.Font = new Font("Verdana", 9F);
+            labelBuscarPorDni.ForeColor = SystemColors.ButtonHighlight;
+            labelBuscarPorDni.Location = new Point(1102, 21);
+            labelBuscarPorDni.Name = "labelBuscarPorDni";
+            labelBuscarPorDni.Size = new Size(54, 14);
+            labelBuscarPorDni.TabIndex = 35;
+            labelBuscarPorDni.Text = "Buscar:";
             // 
             // FormVehiculo
             // 
@@ -485,6 +510,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MidnightBlue;
             ClientSize = new Size(1375, 529);
+            Controls.Add(textBoxBuscador);
+            Controls.Add(labelBuscarPorDni);
             Controls.Add(dataGridView);
             Controls.Add(buttonCancelar);
             Controls.Add(buttonGuardar);
@@ -502,6 +529,7 @@
             ((System.ComponentModel.ISupportInitialize)numericUpDownKm).EndInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownAnio).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -540,5 +568,7 @@
         private DataGridViewTextBoxColumn ColumnCombustible;
         private DataGridViewTextBoxColumn ColumnKm;
         private DataGridViewTextBoxColumn ColumnEstado;
+        private TextBox textBoxBuscador;
+        private Label labelBuscarPorDni;
     }
 }
