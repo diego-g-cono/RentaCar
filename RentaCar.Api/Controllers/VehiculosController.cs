@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using RentaCar.Dtos.Vehiculos;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using RentaCar.Dominio;
+using RentaCar.Dtos.Vehiculos;
 using RentaCar.Infraestructura.Repositorios;
 
 namespace RentaCar.API.Controllers
@@ -10,10 +12,12 @@ namespace RentaCar.API.Controllers
     public class VehiculosController : ControllerBase
     {
         private readonly VehiculoRepositorio _repoVehiculos;
+        private readonly IWebHostEnvironment _env;
 
-        public VehiculosController(VehiculoRepositorio repoVehiculos)
+        public VehiculosController(VehiculoRepositorio repoVehiculos, IWebHostEnvironment env)
         {
             _repoVehiculos = repoVehiculos;
+            _env = env;
         }
 
         [HttpGet]
@@ -43,7 +47,9 @@ namespace RentaCar.API.Controllers
                 EstadoNombre = v.Estado?.Nombre,
 
                 TipoId = v.TipoId,
-                TipoNombre = v.Tipo?.Nombre
+                TipoNombre = v.Tipo?.Nombre,
+
+                ImagenUrl = v.ImagenUrl
             }).ToList();
 
             return Ok(response);
@@ -82,7 +88,9 @@ namespace RentaCar.API.Controllers
                 EstadoNombre = v.Estado?.Nombre,
 
                 TipoId = v.TipoId,
-                TipoNombre = v.Tipo?.Nombre
+                TipoNombre = v.Tipo?.Nombre,
+
+                ImagenUrl = v.ImagenUrl
             };
 
             return Ok(response);
@@ -180,10 +188,59 @@ namespace RentaCar.API.Controllers
                 EstadoNombre = v.Estado?.Nombre,
 
                 TipoId = v.TipoId,
-                TipoNombre = v.Tipo?.Nombre
+                TipoNombre = v.Tipo?.Nombre,
+
+                ImagenUrl = v.ImagenUrl
             }).ToList();
 
             return Ok(response);
+        }
+        [Authorize]
+        [HttpPost("{patente}/imagen")]
+        public async Task<IActionResult> SubirImagen(
+       string patente,
+       IFormFile archivo)
+        {
+            var rolId =
+                int.Parse(User.FindFirst("RolId")!.Value);
+
+            if (rolId != 1 && rolId != 2)
+                return Forbid();
+            var vehiculo = _repoVehiculos.ObtenerPorPatente(patente);
+
+            if (vehiculo == null)
+                return NotFound();
+
+            var nombreArchivo =
+                $"{Guid.NewGuid()}{Path.GetExtension(archivo.FileName)}";
+
+            var webRoot = Path.Combine(
+                _env.ContentRootPath,
+                "wwwroot");
+
+            var carpetaImagenes = Path.Combine(
+                webRoot,
+                "images",
+                "autos");
+
+            Directory.CreateDirectory(carpetaImagenes);
+
+            var rutaFisica = Path.Combine(
+                carpetaImagenes,
+                nombreArchivo);
+
+            using var stream = new FileStream(rutaFisica, FileMode.Create);
+
+            await archivo.CopyToAsync(stream);
+
+            var baseUrl = $"{Request.Scheme}://{Request.Host}";
+
+            vehiculo.ImagenUrl =
+                $"{baseUrl}/images/autos/{nombreArchivo}";
+
+            _repoVehiculos.Actualizar(vehiculo);
+
+            return Ok(vehiculo.ImagenUrl);
         }
     }
 }

@@ -31,6 +31,9 @@ builder.Services.AddScoped<UsuarioRepositorio>();
 builder.Services.AddScoped<JwtService>();
 builder.Services.AddScoped<SeguroRepositorio>();
 
+
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -43,6 +46,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseStaticFiles();
 
 app.MapControllers();
 

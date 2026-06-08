@@ -23,5 +23,6 @@
 
         public int TipoId { get; set; }
         public string? TipoNombre { get; set; }
+        public string? ImagenUrl { get; set; }
     }
 }

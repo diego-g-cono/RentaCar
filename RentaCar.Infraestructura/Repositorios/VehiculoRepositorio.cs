@@ -67,7 +67,7 @@ namespace RentaCar.Infraestructura.Repositorios
                 existente.CombustibleId = vehiculo.CombustibleId;
                 existente.EstadoId = vehiculo.EstadoId;
                 existente.TipoId = vehiculo.TipoId;
-
+                existente.ImagenUrl = vehiculo.ImagenUrl;
                 _context.SaveChanges();
             }
         }

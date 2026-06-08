@@ -24,6 +24,7 @@ namespace RentaCar.Dominio
         public TipoVehiculo? Tipo { get; set; }
 
         public bool Activo { get; set; } = true;
+        public string? ImagenUrl { get; set; }
 
         public Vehiculo(
             string patente,

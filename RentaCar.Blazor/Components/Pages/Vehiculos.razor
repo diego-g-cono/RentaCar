@@ -35,7 +35,21 @@ else
         @foreach (var v in VehiculosFiltrados)
         {
             <div class="auto-card">
-                <img src="@ObtenerImagen(v)" class="auto-img" />
+                <div class="img-container">
+
+                    <img src="@ObtenerImagen(v)"
+                         class="auto-img" />
+
+                    @if (Auth.PuedeEditarVehiculos)
+                    {
+                        <label class="btn-editar">
+                            ✏️
+                            <InputFile class="input-oculto"
+                                       OnChange="@(e => SubirImagen(e, v.Patente))" />
+                        </label>
+                    }
+
+                </div>
 
                 <h4>@v.MarcaNombre @v.ModeloNombre</h4>
 
@@ -90,27 +104,30 @@ else
     }
     private string ObtenerImagen(VehiculoResponse v)
     {
-        var marca = v.MarcaNombre?.ToLower().Replace(" ", "-");
-        var modelo = v.ModeloNombre?.ToLower().Replace(" ", "-");
-
-        return $"images/autos/{marca}-{modelo}.png";
+        return string.IsNullOrWhiteSpace(v.ImagenUrl)
+            ? "images/autos/default.png"
+            : v.ImagenUrl;
     }
     private void Reservar(string patente)
     {
-        if (!Auth.EstaLogueado)
-        {
-            Nav.NavigateTo("/login");
-            return;
-        }
         var uri = Nav.ToAbsoluteUri(Nav.Uri);
         var query = System.Web.HttpUtility.ParseQueryString(uri.Query);
 
         var inicio = query["inicio"];
         var fin = query["fin"];
 
-        var url = $"/reserva?patente={patente}&inicio={inicio}&fin={fin}";
+        var urlReserva =
+            $"/reserva?patente={patente}&inicio={inicio}&fin={fin}";
 
-        Nav.NavigateTo(url);
+        if (!Auth.EstaLogueado)
+        {
+            Nav.NavigateTo(
+                $"/login?returnUrl={Uri.EscapeDataString(urlReserva)}");
+
+            return;
+        }
+
+        Nav.NavigateTo(urlReserva);
     }
     private string ObtenerClaseTipo(string? tipo)
     {
@@ -122,6 +139,37 @@ else
             "pickup" => "badge-pickup",
             _ => ""
         };
+    }
+    private async Task SubirImagen(InputFileChangeEventArgs e, string patente)
+    {
+        var archivo = e.File;
+
+        using var contenido = new MultipartFormDataContent();
+
+        contenido.Add(
+            new StreamContent(
+                archivo.OpenReadStream(maxAllowedSize: 10 * 1024 * 1024)),
+            "archivo",
+            archivo.Name);
+
+        var client = HttpFactory.CreateClient("Api");
+
+        var response = await client.PostAsync(
+            $"vehiculos/{patente}/imagen",
+            contenido);
+
+        if (response.IsSuccessStatusCode)
+        {
+            // Recargar lista para mostrar la nueva imagen
+            var uri = Nav.ToAbsoluteUri(Nav.Uri);
+            var query = System.Web.HttpUtility.ParseQueryString(uri.Query);
+
+            var inicio = query["inicio"];
+            var fin = query["fin"];
+
+            vehiculos = await client.GetFromJsonAsync<List<VehiculoResponse>>(
+                $"vehiculos/disponibles?fechaInicio={inicio}&fechaFin={fin}");
+        }
     }
 }
 
@@ -257,5 +305,34 @@ else
         border: 1px solid #334155;
         border-radius: 10px;
         padding: 10px;
+    }
+
+    .img-container {
+        position: relative;
+    }
+
+    .btn-editar {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: rgba(15,23,42,.9);
+        color: white;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #334155;
+        transition: .2s;
+    }
+
+        .btn-editar:hover {
+            background: #2563eb;
+        }
+
+    .input-oculto {
+        display: none;
     }
 </style>

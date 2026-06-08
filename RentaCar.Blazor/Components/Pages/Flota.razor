@@ -1,6 +1,9 @@
 ﻿@page "/flota"
+@inject AuthService Auth
 @inject IHttpClientFactory HttpFactory
+@inject NavigationManager Nav
 @using RentaCar.Dtos.Vehiculos
+@using RentaCar.Blazor.Services
 
 <div class="page-container">
 
@@ -32,9 +35,18 @@
             @foreach (var v in VehiculosFiltrados)
             {
                 <div class="auto-card">
-                    <img src="@ObtenerImagen(v)"
-                         class="auto-img"
-                         onerror="this.src='images/autos/default.jpg'" />
+                    <div class="imagen-container">
+                        <img src="@ObtenerImagen(v)" class="auto-img" />
+
+                        @if (Auth.PuedeEditarVehiculos)
+                        {
+                            <label class="btn-editar">
+                                ✏️
+                                <InputFile class="input-oculto"
+                                           OnChange="@(e => SubirImagen(e, v.Patente))" />
+                            </label>
+                        }
+                    </div>
 
                     <h4>@v.MarcaNombre @v.ModeloNombre</h4>
 
@@ -78,10 +90,9 @@
 
     private string ObtenerImagen(VehiculoResponse v)
     {
-        var marca = v.MarcaNombre?.ToLower().Replace(" ", "-");
-        var modelo = v.ModeloNombre?.ToLower().Replace(" ", "-");
-
-        return $"images/autos/{marca}-{modelo}.png";
+        return string.IsNullOrWhiteSpace(v.ImagenUrl)
+            ? "images/autos/default.png"
+            : v.ImagenUrl;
     }
     private string ObtenerClaseTipo(string? tipo)
     {
@@ -94,6 +105,40 @@
             "pickup" => "badge-pickup",
             _ => ""
         };
+    }
+    private async Task SubirImagen(InputFileChangeEventArgs e, string patente)
+    {
+        var archivo = e.File;
+
+        using var contenido = new MultipartFormDataContent();
+
+        contenido.Add(
+            new StreamContent(
+                archivo.OpenReadStream(maxAllowedSize: 10 * 1024 * 1024)),
+            "archivo",
+            archivo.Name);
+
+        var client = HttpFactory.CreateClient("Api");
+
+        var response = await client.PostAsync(
+            $"vehiculos/{patente}/imagen",
+            contenido);
+
+        if (response.IsSuccessStatusCode)
+        {
+            vehiculos = await client.GetFromJsonAsync<List<VehiculoResponse>>(
+                "vehiculos");
+
+            tiposVehiculo = vehiculos?
+                .Select(v => v.TipoNombre)
+                .Where(t => !string.IsNullOrWhiteSpace(t))
+                .Distinct()
+                .OrderBy(t => t)
+                .ToList()
+                ?? new();
+
+            StateHasChanged();
+        }
     }
 }
 <style>
@@ -199,4 +244,35 @@
     .badge-pickup {
         background: #ef4444;
     }
+
+    .imagen-container {
+        position: relative;
+    }
+
+    .btn-editar {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: rgba(15,23,42,.9);
+        border: 1px solid #334155;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: .2s;
+        font-size: 16px;
+    }
+
+        .btn-editar:hover {
+            background: #1e293b;
+            transform: scale(1.1);
+        }
+
+    .input-oculto {
+        display: none;
+    }
+
 </style>

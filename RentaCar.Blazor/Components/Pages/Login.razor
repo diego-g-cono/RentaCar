@@ -116,6 +116,17 @@
     private string nuevoPassword = "";
     private string nuevoEmail = "";
     private string nuevoTelefono = "";
+    private string? returnUrl;
+
+    protected override void OnInitialized()
+    {
+        var uri = Nav.ToAbsoluteUri(Nav.Uri);
+
+        var query =
+            System.Web.HttpUtility.ParseQueryString(uri.Query);
+
+        returnUrl = query["returnUrl"];
+    }
 
     private async Task LoginClick()
     {
@@ -131,7 +142,14 @@
 
             await Task.Delay(1500);
 
-            Nav.NavigateTo("/");
+            if (!string.IsNullOrWhiteSpace(returnUrl))
+            {
+                Nav.NavigateTo(returnUrl);
+            }
+            else
+            {
+                Nav.NavigateTo("/");
+            }
         }
         else
         {

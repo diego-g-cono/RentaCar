@@ -108,7 +108,10 @@
 
         if (!Auth.EstaLogueado)
         {
-            Nav.NavigateTo("/login");
+            var returnUrl = Uri.EscapeDataString(Nav.Uri);
+
+            Nav.NavigateTo($"/login?returnUrl={returnUrl}");
+
             return;
         }
 

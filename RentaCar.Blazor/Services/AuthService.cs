@@ -19,7 +19,9 @@ namespace RentaCar.Blazor.Services
         public string? ClienteApellido { get; private set; }
 
         public bool EstaLogueado => !string.IsNullOrEmpty(Token);
+        public int RolId { get; private set; }
 
+        public bool PuedeEditarVehiculos => RolId == 1 || RolId == 2;
         public AuthService(
             IHttpClientFactory httpFactory,
             ProtectedSessionStorage sessionStorage)
@@ -51,6 +53,7 @@ namespace RentaCar.Blazor.Services
             Token = data!.Token;
             NombreUsuario = data.NombreUsuario;
             UsuarioId = data.Id;
+            RolId = data.RolId;
 
             ClienteDni = data.ClienteDni;
             ClienteNombre = data.ClienteNombre;
@@ -67,6 +70,7 @@ namespace RentaCar.Blazor.Services
             await _sessionStorage.SetAsync("clienteDni", ClienteDni);
             await _sessionStorage.SetAsync("clienteNombre", ClienteNombre);
             await _sessionStorage.SetAsync("clienteApellido", ClienteApellido);
+            await _sessionStorage.SetAsync("rolId", RolId);
 
             return true;
         }
@@ -96,6 +100,9 @@ namespace RentaCar.Blazor.Services
                     ClienteApellido =
                         (await _sessionStorage.GetAsync<string>("clienteApellido")).Value;
 
+                    RolId =
+                        (await _sessionStorage.GetAsync<int>("rolId")).Value;
+
                     var client = _httpFactory.CreateClient("Api");
 
                     client.DefaultRequestHeaders.Authorization =
@@ -116,6 +123,7 @@ namespace RentaCar.Blazor.Services
             await _sessionStorage.DeleteAsync("clienteDni");
             await _sessionStorage.DeleteAsync("clienteNombre");
             await _sessionStorage.DeleteAsync("clienteApellido");
+            await _sessionStorage.DeleteAsync("rolId");
 
             Token = null;
             NombreUsuario = null;
@@ -123,6 +131,7 @@ namespace RentaCar.Blazor.Services
             ClienteDni = 0;
             ClienteNombre = null;
             ClienteApellido = null;
+            RolId = 0;
 
             Inicializado = true;
         }
