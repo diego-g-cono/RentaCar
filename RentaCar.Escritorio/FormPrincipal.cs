@@ -72,7 +72,8 @@ namespace RentaCar.Escritorio
             form.Show();
         }
 
-        private void tarifasToolStripMenuItem1_Click(object sender, EventArgs e)
+        
+        private void tarifasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormTarifas form = new FormTarifas();
             form.MdiParent = this;   // para que sea hijo del formulario principal

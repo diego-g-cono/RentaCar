@@ -25,6 +25,8 @@ namespace RentaCar.Escritorio
             BloquearCampos(false);
             BloquearBotones(false);
             await CargarConductores();
+            dateTimePickerVencLic.MinDate = DateTime.Today;
+            dateTimePickerVencLic.MaxDate = DateTime.Today.AddYears(5);
         }
 
         private void BloquearCampos(bool estado)
@@ -76,7 +78,10 @@ namespace RentaCar.Escritorio
                     return;
                 }
 
-                if (!int.TryParse(textBoxDni.Text, out int dni))
+                if (!int.TryParse(textBoxDni.Text, out int dni)
+                    || dni <= 0
+                    || textBoxDni.Text.Length > 8
+                    || textBoxDni.Text.Length < 7)
                 {
                     Dialogos.Error(Mensajes.FormatoInvalido("DNI"));
                     return;
@@ -170,6 +175,7 @@ namespace RentaCar.Escritorio
 
             await CargarConductores();
             LimpiarCampos();
+            BloquearBotones(false);
 
             Dialogos.Info(Mensajes.ExitoEliminacion("conductor"));
 
@@ -237,7 +243,7 @@ namespace RentaCar.Escritorio
 
         private void textBoxBuscador_TextChanged(object sender, EventArgs e)
         {
-            string busqueda = textBoxBuscador.Text;
+            string busqueda = textBoxBuscador.Text.Trim();
 
             if (string.IsNullOrEmpty(busqueda))
             {

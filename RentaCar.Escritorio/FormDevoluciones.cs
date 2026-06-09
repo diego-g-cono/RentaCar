@@ -23,6 +23,7 @@ namespace RentaCar.Escritorio
 
         private async void FormDevoluciones_Load(object sender, EventArgs e)
         {
+            dtpFechaDevolucion.MinDate = DateTime.Today;
             BloquearCampos(false);
             BloquearBotones(false);
             await CargarDevoluciones();
@@ -87,6 +88,7 @@ namespace RentaCar.Escritorio
             autoCompletar = true;
             BloquearCampos(true);
             BloquearBotones(true);
+            dtpFechaDevolucion.MinDate = DateTime.Today;
             LimpiarCampos();
         }
 
@@ -105,7 +107,7 @@ namespace RentaCar.Escritorio
             var devolucion = (DevolucionResponse)dataGridViewDevoluciones.SelectedRows[0].DataBoundItem;
 
             devolucionIdSeleccionada = devolucion.Id;
-
+            dtpFechaDevolucion.MinDate = devolucion.Fecha.ToDateTime(new TimeOnly());
             dtpFechaDevolucion.Value = devolucion.Fecha.ToDateTime(new TimeOnly());
             textBoxAlquiler.Text = devolucion.AlquilerId.ToString();
             comboBoxTqueLleno.SelectedValue = devolucion.TanqueLleno;
@@ -136,41 +138,49 @@ namespace RentaCar.Escritorio
             if(!Dialogos.Confirmar(Mensajes.ConfirmarGuardado("Devolución")))
                 return;
 
-
-            if (modoEdicion)
+            try
             {
-                var update = new DevolucionUpdateRequest
+
+                if (modoEdicion)
                 {
-                    Fecha = DateOnly.FromDateTime(dtpFechaDevolucion.Value),
-                    AlquilerId = int.Parse(textBoxAlquiler.Text),
-                    TanqueLleno = (bool)comboBoxTqueLleno.SelectedValue,
-                    Observaciones = textBoxObservaciones.Text
-                };
+                    var update = new DevolucionUpdateRequest
+                    {
+                        Fecha = DateOnly.FromDateTime(dtpFechaDevolucion.Value),
+                        AlquilerId = int.Parse(textBoxAlquiler.Text),
+                        TanqueLleno = (bool)comboBoxTqueLleno.SelectedValue,
+                        Observaciones = textBoxObservaciones.Text
+                    };
 
-                await _devolucionServicio.Actualizar(devolucionIdSeleccionada, update);
+                    await _devolucionServicio.Actualizar(devolucionIdSeleccionada, update);
 
-                Dialogos.Info(Mensajes.ExitoEdicion("Devolución"));
+                    Dialogos.Info(Mensajes.ExitoEdicion("Devolución"));
+                }
+                else
+                {
+                    var create = new DevolucionCreateRequest
+                    {
+                        Fecha = DateOnly.FromDateTime(dtpFechaDevolucion.Value),
+                        AlquilerId = int.Parse(textBoxAlquiler.Text),
+                        TanqueLleno = (bool)comboBoxTqueLleno.SelectedValue,
+                        Observaciones = textBoxObservaciones.Text
+                    };
+
+                    await _devolucionServicio.Agregar(create);
+
+                    Dialogos.Info(Mensajes.ExitoGuardado("devolución"));
+                }
+
+                await CargarDevoluciones();
+                LimpiarCampos();
+                BloquearCampos(false);
+                BloquearBotones(false);
+                autoCompletar = false;
             }
-            else
+            catch (Exception ex)
             {
-                var create = new DevolucionCreateRequest
-                {
-                    Fecha = DateOnly.FromDateTime(dtpFechaDevolucion.Value),
-                    AlquilerId = int.Parse(textBoxAlquiler.Text),
-                    TanqueLleno = (bool)comboBoxTqueLleno.SelectedValue,
-                    Observaciones = textBoxObservaciones.Text
-                };
-
-                await _devolucionServicio.Agregar(create);
-
-                Dialogos.Info(Mensajes.ExitoGuardado("devolución"));
+                Dialogos.Error(ex.Message);
+                return;
             }
-
-            await CargarDevoluciones();
-            LimpiarCampos();
-            BloquearCampos(false);
-            BloquearBotones(false);
-            autoCompletar = false;
         }
 
         private async void buttonEliminar_Click(object sender, EventArgs e)
@@ -190,15 +200,25 @@ namespace RentaCar.Escritorio
 
             if(!Dialogos.Confirmar(Mensajes.ConfirmarEliminacion("devolución")))
                 return;
+            try
+            {
+                await _devolucionServicio.Eliminar(devolucion.Id);
 
-            await _devolucionServicio.Eliminar(devolucion.Id);
+                await CargarDevoluciones();
+                LimpiarCampos();
+                BloquearCampos(false);
+                BloquearBotones(false);
 
-            await CargarDevoluciones();
-            LimpiarCampos();
-            BloquearCampos(false);
-            BloquearBotones(false);
+                Dialogos.Info(Mensajes.ExitoEliminacion("Devolución"));
 
-            Dialogos.Info(Mensajes.ExitoEliminacion("Devolución"));
+            }
+            catch(Exception ex)
+            {
+                Dialogos.Error(ex.Message);
+                return;
+            }
+
+            
         }
 
         private void buttonCancelar_Click(object sender, EventArgs e)
@@ -212,7 +232,7 @@ namespace RentaCar.Escritorio
             autoCompletar = false;
         }
 
-        private void dataGridViewAlquileres_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewAlquileres_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && autoCompletar)
             {

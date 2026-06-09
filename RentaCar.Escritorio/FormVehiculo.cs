@@ -86,6 +86,8 @@ namespace RentaCar.Escritorio
         {
             BloquearCampos(true);
             BloquearBotones(true);
+            LimpiarCampos();
+            modoEdicion = false;    
         }
         // Método para cargar marcas en el ComboBox
         private async Task CargarMarcas()
@@ -199,14 +201,14 @@ namespace RentaCar.Escritorio
                     Dialogos.Error(Mensajes.SeleccioneEntidad("modelo"));
                     return;
                 }
-                if (comboBoxColor.SelectedIndex == -1)
-                {
-                    Dialogos.Error(Mensajes.SeleccioneEntidad("color"));
-                    return;
-                }
                 if (comboBoxTipo.SelectedIndex == -1)
                 {
                     Dialogos.Error(Mensajes.SeleccioneEntidad("tipo de vehículo"));
+                    return;
+                }
+                if (comboBoxColor.SelectedIndex == -1)
+                {
+                    Dialogos.Error(Mensajes.SeleccioneEntidad("color"));
                     return;
                 }
                 if (comboBoxCombustible.SelectedIndex == -1)
@@ -388,7 +390,7 @@ namespace RentaCar.Escritorio
 
         private void textBoxBuscador_TextChanged(object sender, EventArgs e)
         {
-            string busqueda = textBoxBuscador.Text.ToUpper();
+            string busqueda = textBoxBuscador.Text.ToUpper().Trim();
 
             if (string.IsNullOrEmpty(busqueda))
             {

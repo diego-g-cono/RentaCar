@@ -177,30 +177,37 @@
             // comboBoxEstado
             // 
             comboBoxEstado.BackColor = Color.MidnightBlue;
+            comboBoxEstado.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxEstado.FlatStyle = FlatStyle.Flat;
+            comboBoxEstado.Font = new Font("Verdana", 9F);
             comboBoxEstado.ForeColor = SystemColors.ButtonFace;
             comboBoxEstado.FormattingEnabled = true;
             comboBoxEstado.Location = new Point(151, 235);
             comboBoxEstado.Name = "comboBoxEstado";
             comboBoxEstado.Size = new Size(121, 22);
-            comboBoxEstado.TabIndex = 27;
+            comboBoxEstado.TabIndex = 9;
             // 
             // numericUpDownSenia
             // 
             numericUpDownSenia.BackColor = Color.MidnightBlue;
             numericUpDownSenia.ForeColor = SystemColors.ButtonFace;
             numericUpDownSenia.Location = new Point(151, 201);
+            numericUpDownSenia.Maximum = new decimal(new int[] { 500000, 0, 0, 0 });
             numericUpDownSenia.Name = "numericUpDownSenia";
             numericUpDownSenia.Size = new Size(120, 22);
             numericUpDownSenia.TabIndex = 26;
+            numericUpDownSenia.KeyPress += numericUpDown_KeyPress;
             // 
             // numericUpDownPrecio
             // 
             numericUpDownPrecio.BackColor = Color.MidnightBlue;
             numericUpDownPrecio.ForeColor = SystemColors.ButtonFace;
             numericUpDownPrecio.Location = new Point(151, 166);
+            numericUpDownPrecio.Maximum = new decimal(new int[] { 500000, 0, 0, 0 });
             numericUpDownPrecio.Name = "numericUpDownPrecio";
             numericUpDownPrecio.Size = new Size(120, 22);
             numericUpDownPrecio.TabIndex = 25;
+            numericUpDownPrecio.KeyPress += numericUpDown_KeyPress;
             // 
             // dtpFechaDevolucion
             // 

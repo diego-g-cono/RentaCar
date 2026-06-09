@@ -40,6 +40,8 @@ namespace RentaCar.Escritorio
             await CargarTodo();
             BloquearCampos(false);
             BloquearBotones(false);
+            dtpFechaInicio.MinDate = DateTime.Today;
+            dtpFechaDevolucion.MinDate = DateTime.Today.AddDays(1);
         }
 
         private void BloquearCampos(bool estado)
@@ -58,8 +60,8 @@ namespace RentaCar.Escritorio
 
         private void LimpiarCampos()
         {
-            dtpFechaInicio.Value = DateTime.Now;
-            dtpFechaDevolucion.Value = DateTime.Now;
+            dtpFechaInicio.Value = DateTime.Today;    
+            dtpFechaDevolucion.Value = DateTime.Today.AddDays(1);
             textBoxVehiculo.Clear();
             numericUpDownPrecio.Value = 0;
             textBoxDniCliente.Clear();
@@ -70,13 +72,21 @@ namespace RentaCar.Escritorio
 
         private async Task CargarTodo()
         {
+            dataGridViewVehiculos.AutoGenerateColumns = false;
             dataGridViewVehiculos.DataSource = await _vehiculoServicio.ObtenerTodos();
+
+            dataGridViewClientes.AutoGenerateColumns = false;
             dataGridViewClientes.DataSource = await _clienteServicio.ObtenerTodos();
+
+            dataGridViewConductores.AutoGenerateColumns = false;
             dataGridViewConductores.DataSource = await _conductorServicio.ObtenerTodos();
+
+            dataGridViewReserva.AutoGenerateColumns = false;
             dataGridViewReserva.DataSource = await _reservaServicio.ObtenerTodos();
-            dataGridViewAlquileres.DataSource = await _alquilerServicio.ObtenerTodos();
+            //dataGridViewAlquileres.DataSource = await _alquilerServicio.ObtenerTodos();
 
             _alquileres = await _alquilerServicio.ObtenerTodos();
+            dataGridViewAlquileres.AutoGenerateColumns = false;
             dataGridViewAlquileres.DataSource = _alquileres;
 
             comboBoxEstado.DataSource = await _estadoServicio.ObtenerTodos();
@@ -87,6 +97,8 @@ namespace RentaCar.Escritorio
 
         private void buttonNuevo_Click(object sender, EventArgs e)
         {
+            dtpFechaInicio.MinDate = DateTime.Today;
+            dtpFechaDevolucion.MinDate = DateTime.Today.AddDays(1);
             autoCompletar = true;
             modoEdicion = false;
             BloquearCampos(true);
@@ -105,6 +117,9 @@ namespace RentaCar.Escritorio
             var alquiler = (AlquilerResponse)dataGridViewAlquileres.SelectedRows[0].DataBoundItem;
 
             alquilerIdSeleccionado = alquiler.Id;
+
+            dtpFechaInicio.MinDate = alquiler.FechaInicio.ToDateTime(new TimeOnly());
+            dtpFechaDevolucion.MinDate = alquiler.FechaInicio.ToDateTime(new TimeOnly());
 
             dtpFechaInicio.Value = alquiler.FechaInicio.ToDateTime(new TimeOnly());
             dtpFechaDevolucion.Value = alquiler.FechaFin.ToDateTime(new TimeOnly());
@@ -193,18 +208,17 @@ namespace RentaCar.Escritorio
                     Dialogos.Info(Mensajes.ExitoGuardado("Alquiler"));
                 }
 
-            } catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-
-
                 await CargarTodo();
                 LimpiarCampos();
                 BloquearCampos(false);
                 BloquearBotones(false);
                 autoCompletar = false;
+
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+              
         }
             
 
@@ -226,33 +240,33 @@ namespace RentaCar.Escritorio
                 return;
             }
 
-            Dialogos.Info(Mensajes.ExitoEliminacion("Alquiler"));
-
             await _alquilerServicio.Eliminar(alquiler.Id);
 
             await CargarTodo();
             LimpiarCampos();
+
+            Dialogos.Info(Mensajes.ExitoEliminacion("Alquiler"));
         }
 
-        private void dataGridViewVehiculos_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewVehiculos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && autoCompletar)
                 textBoxVehiculo.Text = dataGridViewVehiculos.Rows[e.RowIndex].Cells["ColumnPatente"].Value.ToString();
         }
 
-        private void dataGridViewClientes_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewClientes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && autoCompletar)
                 textBoxDniCliente.Text = dataGridViewClientes.Rows[e.RowIndex].Cells["ColumnDNI"].Value.ToString();
         }
 
-        private void dataGridViewConductores_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewConductores_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && autoCompletar)
                 textBoxDniCond.Text = dataGridViewConductores.Rows[e.RowIndex].Cells["ColumnDniCond"].Value.ToString();
         }
 
-        private void dataGridViewReserva_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewReserva_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && autoCompletar)
                 textBoxReserva.Text = dataGridViewReserva.Rows[e.RowIndex].Cells["ColumnId"].Value.ToString();
@@ -271,7 +285,7 @@ namespace RentaCar.Escritorio
 
         private void textBoxBuscador_TextChanged(object sender, EventArgs e)
         {
-            string busqueda = textBoxBuscador.Text;
+            string busqueda = textBoxBuscador.Text.Trim();
 
             if (string.IsNullOrEmpty(busqueda))
             {

@@ -138,7 +138,9 @@
             textBoxTel.Font = new Font("Verdana", 9F);
             textBoxTel.ForeColor = SystemColors.ButtonFace;
             textBoxTel.Location = new Point(120, 166);
+            textBoxTel.MaxLength = 20;
             textBoxTel.Name = "textBoxTel";
+            textBoxTel.ShortcutsEnabled = false;
             textBoxTel.Size = new Size(121, 22);
             textBoxTel.TabIndex = 20;
             textBoxTel.KeyPress += textBoxTel_KeyPress;
@@ -150,7 +152,9 @@
             textBoxEmail.Font = new Font("Verdana", 9F);
             textBoxEmail.ForeColor = SystemColors.ButtonFace;
             textBoxEmail.Location = new Point(120, 131);
+            textBoxEmail.MaxLength = 50;
             textBoxEmail.Name = "textBoxEmail";
+            textBoxEmail.ShortcutsEnabled = false;
             textBoxEmail.Size = new Size(121, 22);
             textBoxEmail.TabIndex = 19;
             // 
@@ -161,7 +165,9 @@
             textBoxApellido.Font = new Font("Verdana", 9F);
             textBoxApellido.ForeColor = SystemColors.ButtonFace;
             textBoxApellido.Location = new Point(120, 93);
+            textBoxApellido.MaxLength = 30;
             textBoxApellido.Name = "textBoxApellido";
+            textBoxApellido.ShortcutsEnabled = false;
             textBoxApellido.Size = new Size(121, 22);
             textBoxApellido.TabIndex = 18;
             textBoxApellido.KeyPress += textBoxNombre_KeyPress;
@@ -173,7 +179,9 @@
             textBoxNombre.Font = new Font("Verdana", 9F);
             textBoxNombre.ForeColor = SystemColors.ButtonFace;
             textBoxNombre.Location = new Point(120, 61);
+            textBoxNombre.MaxLength = 30;
             textBoxNombre.Name = "textBoxNombre";
+            textBoxNombre.ShortcutsEnabled = false;
             textBoxNombre.Size = new Size(121, 22);
             textBoxNombre.TabIndex = 17;
             textBoxNombre.KeyPress += textBoxNombre_KeyPress;
@@ -195,7 +203,9 @@
             textBoxDNI.Font = new Font("Verdana", 9F);
             textBoxDNI.ForeColor = SystemColors.ButtonFace;
             textBoxDNI.Location = new Point(120, 27);
+            textBoxDNI.MaxLength = 8;
             textBoxDNI.Name = "textBoxDNI";
+            textBoxDNI.ShortcutsEnabled = false;
             textBoxDNI.Size = new Size(121, 22);
             textBoxDNI.TabIndex = 8;
             textBoxDNI.KeyPress += textBoxDNI_KeyPress;
@@ -294,6 +304,7 @@
             dataGridView.GridColor = Color.MidnightBlue;
             dataGridView.Location = new Point(356, 60);
             dataGridView.Name = "dataGridView";
+            dataGridView.ReadOnly = true;
             dataGridViewCellStyle2.BackColor = Color.MidnightBlue;
             dataGridViewCellStyle2.ForeColor = SystemColors.ButtonFace;
             dataGridViewCellStyle2.SelectionBackColor = Color.RoyalBlue;
@@ -312,30 +323,35 @@
             ColumnDNI.DataPropertyName = "DNI";
             ColumnDNI.HeaderText = "DNI";
             ColumnDNI.Name = "ColumnDNI";
+            ColumnDNI.ReadOnly = true;
             // 
             // ColumnNombre
             // 
             ColumnNombre.DataPropertyName = "Nombre";
             ColumnNombre.HeaderText = "Nombre";
             ColumnNombre.Name = "ColumnNombre";
+            ColumnNombre.ReadOnly = true;
             // 
             // ColumnApellido
             // 
             ColumnApellido.DataPropertyName = "Apellido";
             ColumnApellido.HeaderText = "Apellido";
             ColumnApellido.Name = "ColumnApellido";
+            ColumnApellido.ReadOnly = true;
             // 
             // ColumnEmail
             // 
             ColumnEmail.DataPropertyName = "Email";
             ColumnEmail.HeaderText = "E-mail";
             ColumnEmail.Name = "ColumnEmail";
+            ColumnEmail.ReadOnly = true;
             // 
             // ColumnTelefono
             // 
             ColumnTelefono.DataPropertyName = "Telefono";
             ColumnTelefono.HeaderText = "Teléfono";
             ColumnTelefono.Name = "ColumnTelefono";
+            ColumnTelefono.ReadOnly = true;
             // 
             // textBoxBuscador
             // 

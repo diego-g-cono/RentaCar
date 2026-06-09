@@ -56,6 +56,7 @@ namespace RentaCar.Escritorio
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
+            LimpiarCampos();
             BloquearCampos(true);
             BloquearBotones(true);
             modoEdicion = false;
@@ -67,13 +68,19 @@ namespace RentaCar.Escritorio
             if (string.IsNullOrWhiteSpace(textBoxDNI.Text))
             {
                 Dialogos.Error(Mensajes.CampoVacio("DNI"));
+                return;
             }
 
-            if(!int.TryParse(textBoxDNI.Text, out _))
+            if(!int.TryParse(textBoxDNI.Text, out int aux) 
+                || textBoxDNI.Text.Length < 7 
+                || textBoxDNI.Text.Length > 8
+                || aux.CompareTo(0) <= 0)
             {
                 Dialogos.Error(Mensajes.FormatoInvalido("DNI"));
                 return;
             }
+
+           
 
             if (string.IsNullOrWhiteSpace(textBoxNombre.Text))
             {
@@ -105,7 +112,9 @@ namespace RentaCar.Escritorio
                 return;
             }
 
-            if(!double.TryParse(textBoxTel.Text, out _))
+            if(!double.TryParse(textBoxTel.Text, out _)
+                || textBoxTel.Text.Length < 6
+                || textBoxTel.Text.Length > 15)
             {
                 Dialogos.Error(Mensajes.FormatoInvalido("Telefono"));
                 return;

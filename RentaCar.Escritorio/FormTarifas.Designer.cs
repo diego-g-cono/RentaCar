@@ -63,7 +63,7 @@
             buttonNuevo.FlatStyle = FlatStyle.Flat;
             buttonNuevo.Font = new Font("Verdana", 9F);
             buttonNuevo.ForeColor = SystemColors.ButtonFace;
-            buttonNuevo.Location = new Point(12, 22);
+            buttonNuevo.Location = new Point(24, 22);
             buttonNuevo.Name = "buttonNuevo";
             buttonNuevo.Size = new Size(77, 33);
             buttonNuevo.TabIndex = 4;
@@ -80,7 +80,7 @@
             buttonEditar.FlatStyle = FlatStyle.Flat;
             buttonEditar.Font = new Font("Verdana", 9F);
             buttonEditar.ForeColor = SystemColors.ButtonFace;
-            buttonEditar.Location = new Point(131, 22);
+            buttonEditar.Location = new Point(120, 22);
             buttonEditar.Name = "buttonEditar";
             buttonEditar.Size = new Size(77, 33);
             buttonEditar.TabIndex = 5;
@@ -97,7 +97,7 @@
             buttonEliminar.FlatStyle = FlatStyle.Flat;
             buttonEliminar.Font = new Font("Verdana", 9F);
             buttonEliminar.ForeColor = SystemColors.ButtonFace;
-            buttonEliminar.Location = new Point(250, 22);
+            buttonEliminar.Location = new Point(220, 22);
             buttonEliminar.Name = "buttonEliminar";
             buttonEliminar.Size = new Size(77, 33);
             buttonEliminar.TabIndex = 6;
@@ -115,9 +115,9 @@
             groupBox.Controls.Add(labelNombre);
             groupBox.Font = new Font("Verdana", 9F, FontStyle.Bold);
             groupBox.ForeColor = SystemColors.ButtonFace;
-            groupBox.Location = new Point(12, 87);
+            groupBox.Location = new Point(12, 90);
             groupBox.Name = "groupBox";
-            groupBox.Size = new Size(315, 166);
+            groupBox.Size = new Size(315, 187);
             groupBox.TabIndex = 7;
             groupBox.TabStop = false;
             groupBox.Text = "Datos Tarifa";
@@ -127,7 +127,7 @@
             comboBoxVehiculo.BackColor = Color.MidnightBlue;
             comboBoxVehiculo.ForeColor = SystemColors.ButtonFace;
             comboBoxVehiculo.FormattingEnabled = true;
-            comboBoxVehiculo.Location = new Point(129, 123);
+            comboBoxVehiculo.Location = new Point(129, 130);
             comboBoxVehiculo.Name = "comboBoxVehiculo";
             comboBoxVehiculo.Size = new Size(121, 22);
             comboBoxVehiculo.TabIndex = 29;
@@ -142,7 +142,6 @@
             textBoxPrecioSemana.Name = "textBoxPrecioSemana";
             textBoxPrecioSemana.Size = new Size(121, 22);
             textBoxPrecioSemana.TabIndex = 18;
-            textBoxPrecioSemana.KeyPress += textBoxPrecioSemana_KeyPress;
             // 
             // textBoxPrecioDia
             // 
@@ -154,13 +153,12 @@
             textBoxPrecioDia.Name = "textBoxPrecioDia";
             textBoxPrecioDia.Size = new Size(121, 22);
             textBoxPrecioDia.TabIndex = 17;
-            textBoxPrecioDia.KeyPress += textBoxPrecioDia_KeyPress;
             // 
             // labelTelefono
             // 
             labelTelefono.AutoSize = true;
             labelTelefono.Font = new Font("Verdana", 9F);
-            labelTelefono.Location = new Point(19, 126);
+            labelTelefono.Location = new Point(19, 133);
             labelTelefono.Name = "labelTelefono";
             labelTelefono.Size = new Size(63, 14);
             labelTelefono.TabIndex = 3;
@@ -195,7 +193,7 @@
             buttonCancelar.FlatStyle = FlatStyle.Flat;
             buttonCancelar.Font = new Font("Verdana", 9F);
             buttonCancelar.ForeColor = SystemColors.ButtonFace;
-            buttonCancelar.Location = new Point(250, 293);
+            buttonCancelar.Location = new Point(250, 303);
             buttonCancelar.Name = "buttonCancelar";
             buttonCancelar.Size = new Size(77, 33);
             buttonCancelar.TabIndex = 22;
@@ -212,7 +210,7 @@
             buttonGuardar.FlatStyle = FlatStyle.Flat;
             buttonGuardar.Font = new Font("Verdana", 9F);
             buttonGuardar.ForeColor = SystemColors.ButtonFace;
-            buttonGuardar.Location = new Point(12, 293);
+            buttonGuardar.Location = new Point(12, 303);
             buttonGuardar.Name = "buttonGuardar";
             buttonGuardar.Size = new Size(77, 33);
             buttonGuardar.TabIndex = 21;
@@ -242,7 +240,7 @@
             dataGridViewTarifas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewTarifas.Columns.AddRange(new DataGridViewColumn[] { Id, PrecioDia, PrecioSemana, NombreVehiculo });
             dataGridViewTarifas.GridColor = Color.MidnightBlue;
-            dataGridViewTarifas.Location = new Point(379, 66);
+            dataGridViewTarifas.Location = new Point(399, 50);
             dataGridViewTarifas.Name = "dataGridViewTarifas";
             dataGridViewTarifas.ReadOnly = true;
             dataGridViewCellStyle2.BackColor = Color.MidnightBlue;
@@ -255,7 +253,7 @@
             dataGridViewTarifas.RowTemplate.DefaultCellStyle.ForeColor = SystemColors.ButtonFace;
             dataGridViewTarifas.RowTemplate.DefaultCellStyle.SelectionBackColor = Color.RoyalBlue;
             dataGridViewTarifas.RowTemplate.DefaultCellStyle.SelectionForeColor = SystemColors.ButtonFace;
-            dataGridViewTarifas.Size = new Size(544, 286);
+            dataGridViewTarifas.Size = new Size(445, 286);
             dataGridViewTarifas.TabIndex = 31;
             // 
             // Id
@@ -281,8 +279,8 @@
             // 
             // NombreVehiculo
             // 
-            NombreVehiculo.DataPropertyName = "TipoVehiculoNombre";
-            NombreVehiculo.HeaderText = "Tipo Vehiculo";
+            NombreVehiculo.DataPropertyName = "NombreVehiculo";
+            NombreVehiculo.HeaderText = "Vehiculo";
             NombreVehiculo.Name = "NombreVehiculo";
             NombreVehiculo.ReadOnly = true;
             // 

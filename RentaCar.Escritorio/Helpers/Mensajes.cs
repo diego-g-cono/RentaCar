@@ -23,6 +23,8 @@ namespace RentaCar.Escritorio.Helpers
 
         public static string SeleccioneEntidad(string entidad) => $"No se ha seleccionado ningún {entidad}";
 
+        public static string CantidadInvalidaDigitos(string entidad) => $"Cantidad de dígitos inválida para {entidad}.";
+
         //confirmaciones
         public static string ConfirmarEliminacion(string entidad) => $"¿Está seguro que desea eliminar {entidad}?";
 

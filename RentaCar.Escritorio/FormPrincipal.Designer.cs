@@ -39,7 +39,7 @@
             agregarToolStripMenuItem = new ToolStripMenuItem();
             usuariosToolStripMenuItem = new ToolStripMenuItem();
             conductoresToolStripMenuItem = new ToolStripMenuItem();
-            tarifasToolStripMenuItem1 = new ToolStripMenuItem();
+            tarifasToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -98,7 +98,7 @@
             // 
             // agregarToolStripMenuItem
             // 
-            agregarToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { usuariosToolStripMenuItem, conductoresToolStripMenuItem, tarifasToolStripMenuItem1 });
+            agregarToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { usuariosToolStripMenuItem, conductoresToolStripMenuItem, tarifasToolStripMenuItem });
             agregarToolStripMenuItem.Name = "agregarToolStripMenuItem";
             agregarToolStripMenuItem.Size = new Size(180, 22);
             agregarToolStripMenuItem.Text = "Agregar/Modificar";
@@ -107,23 +107,23 @@
             // usuariosToolStripMenuItem
             // 
             usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            usuariosToolStripMenuItem.Size = new Size(142, 22);
+            usuariosToolStripMenuItem.Size = new Size(180, 22);
             usuariosToolStripMenuItem.Text = "Usuarios";
             usuariosToolStripMenuItem.Click += usuariosToolStripMenuItem_Click;
             // 
             // conductoresToolStripMenuItem
             // 
             conductoresToolStripMenuItem.Name = "conductoresToolStripMenuItem";
-            conductoresToolStripMenuItem.Size = new Size(142, 22);
+            conductoresToolStripMenuItem.Size = new Size(180, 22);
             conductoresToolStripMenuItem.Text = "Conductores";
             conductoresToolStripMenuItem.Click += conductoresToolStripMenuItem_Click;
             // 
-            // tarifasToolStripMenuItem1
+            // tarifasToolStripMenuItem
             // 
-            tarifasToolStripMenuItem1.Name = "tarifasToolStripMenuItem1";
-            tarifasToolStripMenuItem1.Size = new Size(142, 22);
-            tarifasToolStripMenuItem1.Text = "Tarifas";
-            tarifasToolStripMenuItem1.Click += tarifasToolStripMenuItem1_Click;
+            tarifasToolStripMenuItem.Name = "tarifasToolStripMenuItem";
+            tarifasToolStripMenuItem.Size = new Size(180, 22);
+            tarifasToolStripMenuItem.Text = "Tarifas";
+            tarifasToolStripMenuItem.Click += tarifasToolStripMenuItem_Click;
             // 
             // FormPrincipal
             // 
@@ -158,7 +158,7 @@
         private ToolStripMenuItem agregarToolStripMenuItem;
         private ToolStripMenuItem usuariosToolStripMenuItem;
         private ToolStripMenuItem conductoresToolStripMenuItem;
-        private ToolStripMenuItem tarifasToolStripMenuItem1;
         private ToolStripMenuItem alquilerToolStripMenuItem;
+        private ToolStripMenuItem tarifasToolStripMenuItem;
     }
 }

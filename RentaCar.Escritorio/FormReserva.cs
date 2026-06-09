@@ -16,6 +16,7 @@ namespace RentaCar.Escritorio
         private readonly EstadoReservaServicio _estadoServicio;
         private bool modoEdicion = false;
         private bool autoCompletar = false;
+        private int idSeleccionado;
         private List<ReservaResponse> _reservas;
 
         public FormReserva()
@@ -97,10 +98,14 @@ namespace RentaCar.Escritorio
 
         private void buttonNuevo_Click(object sender, EventArgs e)
         {
+            LimpiarCampos();
             BloquearCampos(true);
             BloquearBotones(true);
             modoEdicion = false;
             autoCompletar = true;
+            dtpFechaRetiro.MinDate = DateTime.Today;
+            dtpFechaDevolucion.MinDate = DateTime.Today.AddDays(1);
+
         }
         private void buttonEditar_Click(object sender, EventArgs e)
         {
@@ -112,8 +117,14 @@ namespace RentaCar.Escritorio
 
             var reserva = (ReservaResponse)dataGridViewReserva.SelectedRows[0].DataBoundItem;
 
+            idSeleccionado = reserva.Id;
+
             textBoxCliente.Text = reserva.ClienteDni.ToString();
             textBoxVehiculo.Text = reserva.VehiculoPatente;
+
+            dtpFechaRetiro.MinDate = reserva.FechaInicio.ToDateTime(TimeOnly.MinValue);
+            dtpFechaDevolucion.MinDate = reserva.FechaInicio.ToDateTime(TimeOnly.MinValue);
+
             dtpFechaRetiro.Value = reserva.FechaInicio.ToDateTime(TimeOnly.MinValue);
             dtpFechaDevolucion.Value = reserva.FechaFin.ToDateTime(TimeOnly.MinValue);
             numericUpDownPrecio.Value = reserva.Precio;
@@ -163,7 +174,7 @@ namespace RentaCar.Escritorio
                 return;
             }
 
-            if (dtpFechaRetiro.Value.Date < DateTime.Today)
+            if (!modoEdicion && dtpFechaRetiro.Value.Date < DateTime.Today)
             {
                 Dialogos.Error(Mensajes.FechaRetiroInvalida);
                 return;
@@ -203,7 +214,7 @@ namespace RentaCar.Escritorio
                         EstadoId = (int)comboBoxEstado.SelectedValue
                     };
 
-                    await _reservaServicio.Actualizar(reserva.Id, updateRequest);
+                    await _reservaServicio.Actualizar(idSeleccionado, updateRequest);
 
                     Dialogos.Info(Mensajes.ExitoEdicion("Reserva"));
                 }
@@ -250,6 +261,8 @@ namespace RentaCar.Escritorio
             {
                 return;
             }
+
+
 
             var reserva = (ReservaResponse)dataGridViewReserva.SelectedRows[0].DataBoundItem;
 
@@ -304,7 +317,7 @@ namespace RentaCar.Escritorio
 
         private void textBoxBuscador_TextChanged(object sender, EventArgs e)
         {
-            string busqueda = textBoxBuscador.Text.ToUpper();
+            string busqueda = textBoxBuscador.Text.ToUpper().Trim();
 
             if (string.IsNullOrEmpty(busqueda))
             {
@@ -314,11 +327,20 @@ namespace RentaCar.Escritorio
             }
 
             var filtrados = _reservas
-                .Where(r => r.ClienteDni.ToString().Contains(busqueda))
+                .Where(r => r.ClienteDni.ToString().Contains(busqueda)
+                        || r.VehiculoPatente.Contains(busqueda))
                 .ToList();
 
             dataGridViewReserva.DataSource = filtrados;
 
+        }
+
+        private void numericUpDown_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

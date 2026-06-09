@@ -51,6 +51,10 @@
             tabControlDevoluciones = new TabControl();
             tabPage1 = new TabPage();
             dataGridViewDevoluciones = new DataGridView();
+            fechaColumn = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
+            tanqueLleno = new DataGridViewCheckBoxColumn();
+            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
             tabPage2 = new TabPage();
             dataGridViewAlquileres = new DataGridView();
             dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
@@ -62,10 +66,6 @@
             DniConductor = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn11 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn12 = new DataGridViewTextBoxColumn();
-            fechaColumn = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
-            tanqueLleno = new DataGridViewCheckBoxColumn();
-            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)devolucionBindingSource).BeginInit();
             groupBox.SuspendLayout();
             tabControlDevoluciones.SuspendLayout();
@@ -141,6 +141,7 @@
             textBoxAlquiler.Location = new Point(151, 80);
             textBoxAlquiler.Name = "textBoxAlquiler";
             textBoxAlquiler.ReadOnly = true;
+            textBoxAlquiler.ShortcutsEnabled = false;
             textBoxAlquiler.Size = new Size(122, 22);
             textBoxAlquiler.TabIndex = 30;
             // 
@@ -151,6 +152,7 @@
             textBoxObservaciones.Font = new Font("Verdana", 9F);
             textBoxObservaciones.ForeColor = SystemColors.ButtonFace;
             textBoxObservaciones.Location = new Point(150, 179);
+            textBoxObservaciones.MaxLength = 200;
             textBoxObservaciones.Name = "textBoxObservaciones";
             textBoxObservaciones.Size = new Size(122, 22);
             textBoxObservaciones.TabIndex = 29;
@@ -158,6 +160,7 @@
             // comboBoxTqueLleno
             // 
             comboBoxTqueLleno.BackColor = Color.MidnightBlue;
+            comboBoxTqueLleno.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxTqueLleno.ForeColor = SystemColors.ButtonFace;
             comboBoxTqueLleno.FormattingEnabled = true;
             comboBoxTqueLleno.Location = new Point(151, 124);
@@ -318,6 +321,34 @@
             dataGridViewDevoluciones.Size = new Size(444, 255);
             dataGridViewDevoluciones.TabIndex = 32;
             // 
+            // fechaColumn
+            // 
+            fechaColumn.DataPropertyName = "fecha";
+            fechaColumn.HeaderText = "Fecha";
+            fechaColumn.Name = "fechaColumn";
+            fechaColumn.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            dataGridViewTextBoxColumn2.DataPropertyName = "AlquilerId";
+            dataGridViewTextBoxColumn2.HeaderText = "Alquiler";
+            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // tanqueLleno
+            // 
+            tanqueLleno.DataPropertyName = "TanqueLleno";
+            tanqueLleno.HeaderText = "Tanque Lleno";
+            tanqueLleno.Name = "tanqueLleno";
+            tanqueLleno.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            dataGridViewTextBoxColumn4.DataPropertyName = "Observaciones";
+            dataGridViewTextBoxColumn4.HeaderText = "Observaciones";
+            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
             // tabPage2
             // 
             tabPage2.Controls.Add(dataGridViewAlquileres);
@@ -362,7 +393,7 @@
             dataGridViewAlquileres.RowTemplate.DefaultCellStyle.SelectionForeColor = SystemColors.ButtonFace;
             dataGridViewAlquileres.Size = new Size(950, 315);
             dataGridViewAlquileres.TabIndex = 14;
-            dataGridViewAlquileres.CellClick += dataGridViewAlquileres_CellClick;
+            dataGridViewAlquileres.CellDoubleClick += dataGridViewAlquileres_CellDoubleClick;
             // 
             // dataGridViewTextBoxColumn5
             // 
@@ -426,34 +457,6 @@
             dataGridViewTextBoxColumn12.HeaderText = "Estado";
             dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
             dataGridViewTextBoxColumn12.ReadOnly = true;
-            // 
-            // fechaColumn
-            // 
-            fechaColumn.DataPropertyName = "fecha";
-            fechaColumn.HeaderText = "Fecha";
-            fechaColumn.Name = "fechaColumn";
-            fechaColumn.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            dataGridViewTextBoxColumn2.DataPropertyName = "AlquilerId";
-            dataGridViewTextBoxColumn2.HeaderText = "Alquiler";
-            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // tanqueLleno
-            // 
-            tanqueLleno.DataPropertyName = "TanqueLleno";
-            tanqueLleno.HeaderText = "Tanque Lleno";
-            tanqueLleno.Name = "tanqueLleno";
-            tanqueLleno.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            dataGridViewTextBoxColumn4.DataPropertyName = "Observaciones";
-            dataGridViewTextBoxColumn4.HeaderText = "Observaciones";
-            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
             // FormDevoluciones
             // 

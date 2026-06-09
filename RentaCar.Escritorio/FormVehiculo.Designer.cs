@@ -93,6 +93,7 @@
             dataGridView.GridColor = Color.MidnightBlue;
             dataGridView.Location = new Point(351, 60);
             dataGridView.Name = "dataGridView";
+            dataGridView.ReadOnly = true;
             dataGridViewCellStyle2.BackColor = Color.MidnightBlue;
             dataGridViewCellStyle2.ForeColor = SystemColors.ButtonFace;
             dataGridViewCellStyle2.SelectionBackColor = Color.RoyalBlue;
@@ -111,54 +112,63 @@
             ColumnPatente.DataPropertyName = "Patente";
             ColumnPatente.HeaderText = "Patente";
             ColumnPatente.Name = "ColumnPatente";
+            ColumnPatente.ReadOnly = true;
             // 
             // ColumnMarca
             // 
             ColumnMarca.DataPropertyName = "MarcaNombre";
             ColumnMarca.HeaderText = "Marca";
             ColumnMarca.Name = "ColumnMarca";
+            ColumnMarca.ReadOnly = true;
             // 
             // ColumnModelo
             // 
             ColumnModelo.DataPropertyName = "ModeloNombre";
             ColumnModelo.HeaderText = "Modelo";
             ColumnModelo.Name = "ColumnModelo";
+            ColumnModelo.ReadOnly = true;
             // 
             // ColumnTipo
             // 
             ColumnTipo.DataPropertyName = "TipoNombre";
             ColumnTipo.HeaderText = "Tipo";
             ColumnTipo.Name = "ColumnTipo";
+            ColumnTipo.ReadOnly = true;
             // 
             // ColumnAnio
             // 
             ColumnAnio.DataPropertyName = "Anio";
             ColumnAnio.HeaderText = "Año";
             ColumnAnio.Name = "ColumnAnio";
+            ColumnAnio.ReadOnly = true;
             // 
             // ColumnColor
             // 
             ColumnColor.DataPropertyName = "ColorNombre";
             ColumnColor.HeaderText = "Color";
             ColumnColor.Name = "ColumnColor";
+            ColumnColor.ReadOnly = true;
             // 
             // ColumnCombustible
             // 
             ColumnCombustible.DataPropertyName = "CombustibleNombre";
             ColumnCombustible.HeaderText = "Combustible";
             ColumnCombustible.Name = "ColumnCombustible";
+            ColumnCombustible.ReadOnly = true;
             // 
             // ColumnKm
             // 
             ColumnKm.DataPropertyName = "Kilometraje";
             ColumnKm.HeaderText = "Kilometraje";
             ColumnKm.Name = "ColumnKm";
+            ColumnKm.ReadOnly = true;
             // 
             // ColumnEstado
             // 
             ColumnEstado.DataPropertyName = "EstadoNombre";
             ColumnEstado.HeaderText = "Estado";
             ColumnEstado.Name = "ColumnEstado";
+            ColumnEstado.ReadOnly = true;
             // 
             // buttonNuevo
             // 
@@ -308,7 +318,7 @@
             numericUpDownAnio.Font = new Font("Verdana", 9F);
             numericUpDownAnio.ForeColor = SystemColors.ButtonFace;
             numericUpDownAnio.Location = new Point(121, 166);
-            numericUpDownAnio.Maximum = new decimal(new int[] { 3000, 0, 0, 0 });
+            numericUpDownAnio.Maximum = new decimal(new int[] { 2026, 0, 0, 0 });
             numericUpDownAnio.Minimum = new decimal(new int[] { 1950, 0, 0, 0 });
             numericUpDownAnio.Name = "numericUpDownAnio";
             numericUpDownAnio.Size = new Size(120, 22);
@@ -362,6 +372,7 @@
             textBoxPatente.Font = new Font("Verdana", 9F);
             textBoxPatente.ForeColor = SystemColors.ButtonFace;
             textBoxPatente.Location = new Point(120, 27);
+            textBoxPatente.MaxLength = 7;
             textBoxPatente.Name = "textBoxPatente";
             textBoxPatente.Size = new Size(121, 22);
             textBoxPatente.TabIndex = 8;
