@@ -140,6 +140,8 @@ namespace RentaCar.API.Controllers
 
             bool haySolapamiento = reservasExistentes.Any(r =>
                 r.Id != id &&
+                r.Activo &&
+                r.EstadoId != 3 &&
                 request.FechaInicio <= r.FechaFin &&
                 request.FechaFin >= r.FechaInicio
             );

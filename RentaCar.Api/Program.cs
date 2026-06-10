@@ -2,6 +2,9 @@ using RentaCar.Infraestructura;
 using RentaCar.Infraestructura.Data;
 using RentaCar.Infraestructura.Repositorios;
 using RentaCar.API.Services;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,7 +34,12 @@ builder.Services.AddScoped<UsuarioRepositorio>();
 builder.Services.AddScoped<JwtService>();
 builder.Services.AddScoped<SeguroRepositorio>();
 
+var key = Encoding.UTF8.GetBytes(
+    builder.Configuration["Jwt:Key"]!);
 
+
+
+builder.Services.AddAuthorization();
 
 
 var app = builder.Build();
@@ -45,6 +53,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.UseStaticFiles();

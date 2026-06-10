@@ -90,9 +90,13 @@
 
     private string ObtenerImagen(VehiculoResponse v)
     {
-        return string.IsNullOrWhiteSpace(v.ImagenUrl)
-            ? "images/autos/default.png"
-            : v.ImagenUrl;
+        if (string.IsNullOrWhiteSpace(v.ImagenUrl))
+            return "https://localhost:7272/images/autos/default.png";
+
+        if (v.ImagenUrl.StartsWith("http"))
+            return v.ImagenUrl;
+
+        return $"https://localhost:7272{v.ImagenUrl}";
     }
     private string ObtenerClaseTipo(string? tipo)
     {

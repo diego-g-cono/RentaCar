@@ -195,18 +195,14 @@ namespace RentaCar.API.Controllers
 
             return Ok(response);
         }
-        [Authorize]
+
         [HttpPost("{patente}/imagen")]
         public async Task<IActionResult> SubirImagen(
-       string patente,
-       IFormFile archivo)
+      string patente,
+      IFormFile archivo)
         {
-            var rolId =
-                int.Parse(User.FindFirst("RolId")!.Value);
-
-            if (rolId != 1 && rolId != 2)
-                return Forbid();
-            var vehiculo = _repoVehiculos.ObtenerPorPatente(patente);
+            var vehiculo =
+                _repoVehiculos.ObtenerPorPatente(patente);
 
             if (vehiculo == null)
                 return NotFound();
@@ -214,12 +210,9 @@ namespace RentaCar.API.Controllers
             var nombreArchivo =
                 $"{Guid.NewGuid()}{Path.GetExtension(archivo.FileName)}";
 
-            var webRoot = Path.Combine(
-                _env.ContentRootPath,
-                "wwwroot");
-
             var carpetaImagenes = Path.Combine(
-                webRoot,
+                _env.ContentRootPath,
+                "wwwroot",
                 "images",
                 "autos");
 
@@ -229,14 +222,13 @@ namespace RentaCar.API.Controllers
                 carpetaImagenes,
                 nombreArchivo);
 
-            using var stream = new FileStream(rutaFisica, FileMode.Create);
+            await using var stream =
+                new FileStream(rutaFisica, FileMode.Create);
 
             await archivo.CopyToAsync(stream);
 
-            var baseUrl = $"{Request.Scheme}://{Request.Host}";
-
             vehiculo.ImagenUrl =
-                $"{baseUrl}/images/autos/{nombreArchivo}";
+                $"/images/autos/{nombreArchivo}";
 
             _repoVehiculos.Actualizar(vehiculo);
 
