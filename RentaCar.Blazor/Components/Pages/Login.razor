@@ -53,9 +53,11 @@
 
                     <div class="input-group">
                         <label>DNI</label>
-                        <input type="number"
-                               min="1"
-                               @bind="nuevoDni" />
+                        <input type="text"
+                               inputmode="numeric"
+                               pattern="[0-9]*"
+                               maxlength="8"
+                               @bind="nuevoDniTexto" />
                     </div>
 
                     <div class="input-group">
@@ -105,7 +107,7 @@
     private string usuario = "";
     private string password = "";
     private string error = "";
-
+    private string nuevoDniTexto = "";
     private bool loginExitoso = false;
     private bool mostrarRegistro = false;
 
@@ -159,6 +161,16 @@
     private async Task Registrar()
     {
         error = "";
+        if (!int.TryParse(nuevoDniTexto, out int nuevoDni))
+        {
+            error = "Ingrese un DNI válido";
+            return;
+        }
+        if (nuevoDni < 1000000)
+        {
+            error = "Ingrese un DNI válido";
+            return;
+        }
 
         // Validar campos obligatorios
         if (nuevoDni <= 0 ||
@@ -174,14 +186,18 @@
         }
 
         // Validar nombre
-        if (!Regex.IsMatch(nuevoNombre, @"^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$"))
+        if (!Regex.IsMatch(
+            nuevoNombre.Trim(),
+            @"^[A-Za-zÁÉÍÓÚáéíóúÑñ]+(?:\s[A-Za-zÁÉÍÓÚáéíóúÑñ]+)*$"))
         {
             error = "El nombre sólo puede contener letras.";
             return;
         }
 
         // Validar apellido
-        if (!Regex.IsMatch(nuevoApellido, @"^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$"))
+        if (!Regex.IsMatch(
+            nuevoApellido.Trim(),
+            @"^[A-Za-zÁÉÍÓÚáéíóúÑñ]+(?:\s[A-Za-zÁÉÍÓÚáéíóúÑñ]+)*$"))
         {
             error = "El apellido sólo puede contener letras.";
             return;
@@ -428,4 +444,13 @@
             box-shadow: 0 5px 20px rgba(34,197,94,0.4);
         }
 
+    .sin-flechas::-webkit-outer-spin-button,
+    .sin-flechas::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    .sin-flechas {
+        -moz-appearance: textfield;
+    }
 </style>
