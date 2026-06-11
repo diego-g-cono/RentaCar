@@ -31,6 +31,7 @@
             components = new System.ComponentModel.Container();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormUsuarios));
             buttonCancelar = new Button();
             buttonGuardar = new Button();
             groupBox = new GroupBox();
@@ -281,6 +282,7 @@
             Controls.Add(buttonEliminar);
             Controls.Add(buttonEditar);
             Controls.Add(buttonNuevo);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormUsuarios";
             Text = "Usuarios";
             Load += FormUsuarios_Load_1;

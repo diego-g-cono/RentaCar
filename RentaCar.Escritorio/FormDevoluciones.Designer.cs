@@ -33,6 +33,7 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDevoluciones));
             devolucionBindingSource = new BindingSource(components);
             buttonCancelar = new Button();
             buttonGuardar = new Button();
@@ -471,6 +472,7 @@
             Controls.Add(buttonEliminar);
             Controls.Add(buttonEditar);
             Controls.Add(buttonNuevo);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormDevoluciones";
             Text = "Devoluciones";
             Load += FormDevoluciones_Load;

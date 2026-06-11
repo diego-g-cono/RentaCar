@@ -15,6 +15,7 @@
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLogin));
             buttonIngresar = new Button();
             labelUsuario = new Label();
             labelContra = new Label();
@@ -107,6 +108,7 @@
             ClientSize = new Size(460, 304);
             Controls.Add(buttonIngresar);
             Controls.Add(groupBox);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormLogin";
             Text = "Login";
             groupBox.ResumeLayout(false);

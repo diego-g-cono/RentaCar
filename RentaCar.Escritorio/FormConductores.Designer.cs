@@ -31,6 +31,7 @@
             components = new System.ComponentModel.Container();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormConductores));
             buttonCancelar = new Button();
             buttonGuardar = new Button();
             groupBoxConductores = new GroupBox();
@@ -355,6 +356,7 @@
             Controls.Add(buttonEliminar);
             Controls.Add(buttonEditar);
             Controls.Add(buttonNuevo);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormConductores";
             Text = "               ";
             Load += FormConductores_Load;
