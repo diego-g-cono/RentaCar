@@ -20,6 +20,7 @@ namespace RentaCar.Escritorio
                 mdi.BackgroundImageLayout = ImageLayout.Stretch;
             }
 
+            if (Sesion.UsuarioActual?.RolId != 1)
             {
                 usuariosToolStripMenuItem.Visible = false;
                 tarifasToolStripMenuItem.Visible = false;
