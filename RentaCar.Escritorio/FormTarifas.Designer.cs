@@ -280,7 +280,7 @@
             // 
             // NombreVehiculo
             // 
-            NombreVehiculo.DataPropertyName = "NombreVehiculo";
+            NombreVehiculo.DataPropertyName = "TipoVehiculoNombre";
             NombreVehiculo.HeaderText = "Vehiculo";
             NombreVehiculo.Name = "NombreVehiculo";
             NombreVehiculo.ReadOnly = true;

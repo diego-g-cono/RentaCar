@@ -1,4 +1,7 @@
 ﻿using RentaCar.Dominio;
+using RentaCar.Dtos.Tarifas;
+using RentaCar.Dtos.Tipo;
+using RentaCar.Escritorio.Servicios;
 using RentaCar.Infraestructura;
 using RentaCar.Infraestructura.Data;
 using RentaCar.Infraestructura.Repositorios;
@@ -18,43 +21,50 @@ namespace RentaCar.Escritorio
 
     public partial class FormTarifas : Form
     {
-        private readonly RentaCarDBContext _context;
-        private readonly TarifaRepositorio _repoTarifas;
+        private readonly TarifaServicio _tarifaServicio;
+        private readonly TipoServicio _tipoServicio;
+
         private bool modoEdicion = false;
         public FormTarifas()
         {
-            _context = new RentaCarDBContext();
-            _repoTarifas = new TarifaRepositorio(_context);
             InitializeComponent();
+
+            _tarifaServicio = new TarifaServicio();
+            _tipoServicio = new TipoServicio();
         }
-        private void FormTarifas_Load(object sender, EventArgs e)
+        private async void FormTarifas_Load(object sender, EventArgs e)
         {
             BloquearCampos(false);
-            CargarTarifas();
-            CargarComboBox();
-            //var tarifas = _repoTarifas.ObtenerTodos();
 
-
+            await CargarComboBox();
+            await CargarTarifas();
         }
 
-        private void CargarTarifas()
+        private async Task CargarTarifas()
         {
-            List<Tarifa> tarifas = _repoTarifas.ObtenerTodos();
-            dataGridViewTarifas.AutoGenerateColumns = false;
-            dataGridViewTarifas.DataSource = tarifas;
+            try
+            {
+                var tarifas = await _tarifaServicio.ObtenerTodos();
+
+                dataGridViewTarifas.AutoGenerateColumns = false;
+                dataGridViewTarifas.DataSource = tarifas;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
-        private void CargarComboBox()
+        private async Task CargarComboBox()
         {
-            var tiposVehiculo = _context.TiposVehiculos.ToList();
-            comboBoxVehiculo.DataSource = tiposVehiculo;
+            var tipos = await _tipoServicio.ObtenerTodos();
+
+            comboBoxVehiculo.DataSource = tipos;
             comboBoxVehiculo.DisplayMember = "Nombre";
             comboBoxVehiculo.ValueMember = "Id";
 
-
             comboBoxVehiculo.SelectedIndex = -1;
         }
-
         private void LimpiarCampos()
         {
             textBoxPrecioDia.Text = "";
@@ -86,15 +96,19 @@ namespace RentaCar.Escritorio
             }
             BloquearCampos(true);
 
-            Tarifa tarifa = (Tarifa)dataGridViewTarifas.SelectedRows[0].DataBoundItem;
+            TarifaResponse tarifa =
+                (TarifaResponse)dataGridViewTarifas.SelectedRows[0].DataBoundItem;
+
             textBoxPrecioDia.Text = tarifa.PrecioDia.ToString();
             textBoxPrecioSemana.Text = tarifa.PrecioSemana.ToString();
+
             comboBoxVehiculo.SelectedValue = tarifa.TipoVehiculoId;
 
             modoEdicion = true;
+            BloquearCampos(true);
         }
 
-        private void buttonGuardar_Click(object sender, EventArgs e)
+        private async void buttonGuardar_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(textBoxPrecioDia.Text))
             {
@@ -130,27 +144,49 @@ namespace RentaCar.Escritorio
 
             if (confirm != DialogResult.Yes)
                 return;
-            Tarifa tarifa;
 
-            if (modoEdicion)
+            try
             {
-                tarifa = (Tarifa)dataGridViewTarifas.SelectedRows[0].DataBoundItem;
-                tarifa.PrecioDia = precioDia;
-                tarifa.PrecioSemana = precioSemana;
-                tarifa.TipoVehiculoId = (int)comboBoxVehiculo.SelectedValue;
-                _repoTarifas.Actualizar(tarifa);
-            }
-            else
-            {
-                tarifa = new Tarifa()
+                if (modoEdicion)
                 {
-                    PrecioDia = precioDia,
-                    PrecioSemana = precioSemana,
-                    TipoVehiculoId = (int)comboBoxVehiculo.SelectedValue
-                };
-                _repoTarifas.Agregar(tarifa);
+                    var tarifa =
+                        (TarifaResponse)dataGridViewTarifas.SelectedRows[0].DataBoundItem;
+
+                    var request = new TarifaUpdateRequest
+                    {
+                        PrecioDia = precioDia,
+                        PrecioSemana = precioSemana,
+                        TipoVehiculoId = (int)comboBoxVehiculo.SelectedValue,
+                        Activo = true
+                    };
+
+                    await _tarifaServicio.Actualizar(tarifa.Id, request);
+                }
+                else
+                {
+                    var request = new TarifaCreateRequest
+                    {
+                        PrecioDia = precioDia,
+                        PrecioSemana = precioSemana,
+                        TipoVehiculoId = ((TipoResponse)comboBoxVehiculo.SelectedValue).Id,
+                        Activo = true
+                    };
+
+                    await _tarifaServicio.Agregar(request);
+                }
+
+                await CargarTarifas();
+
+                LimpiarCampos();
+
+                BloquearCampos(false);
+
+                modoEdicion = false;
             }
-            _context.SaveChanges();
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
             CargarTarifas();
             CargarComboBox();
@@ -165,7 +201,7 @@ namespace RentaCar.Escritorio
             modoEdicion = false;
         }
 
-        private void buttonEliminar_Click(object sender, EventArgs e)
+        private async void buttonEliminar_Click(object sender, EventArgs e)
         {
             if(dataGridViewTarifas.SelectedRows.Count == 0)
             {
@@ -173,18 +209,21 @@ namespace RentaCar.Escritorio
                 return;
             }
 
-            Tarifa tarifa = (Tarifa)dataGridViewTarifas.SelectedRows[0].DataBoundItem;
+            TarifaResponse tarifa =
+                        (TarifaResponse)dataGridViewTarifas.SelectedRows[0].DataBoundItem;
 
             var confirm = MessageBox.Show("¿Confirma que desea eliminar esta tarifa?", "Confirmar", MessageBoxButtons.YesNo);
 
             if (confirm == DialogResult.Yes)
             {
-                _repoTarifas.Eliminar(tarifa.Id);
-                _context.SaveChanges();
-                CargarTarifas();
-                CargarComboBox();
+                await _tarifaServicio.Eliminar(tarifa.Id);
+
+                await CargarTarifas();
+
                 LimpiarCampos();
+
                 BloquearCampos(false);
+
                 MessageBox.Show("Tarifa eliminada correctamente.");
             }
         }
