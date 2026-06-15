@@ -60,7 +60,7 @@ namespace RentaCar.Infraestructura
 
             if (usuario != null)
             {
-                _context.Usuarios.Remove(usuario);
+                usuario.Activo = false;
                 _context.SaveChanges();
             }
         }

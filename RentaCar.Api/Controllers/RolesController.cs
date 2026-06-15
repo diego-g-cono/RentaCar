@@ -7,7 +7,7 @@ using RentaCar.Infraestructura.Repositorios;
 namespace RentaCar.Api.Controllers
 {
     [ApiController]
-    [Route("roles")]
+    [Route("api/[controller]")]
     public class RolesController : ControllerBase
     {
         private readonly RolRepositorio _repo;

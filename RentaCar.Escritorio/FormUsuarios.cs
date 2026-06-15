@@ -1,5 +1,6 @@
 ﻿using RentaCar.Dtos.Usuarios;
 using RentaCar.Escritorio.Servicios;
+using RentaCar.Escritorio.Helpers;
 
 namespace RentaCar.Escritorio
 {
@@ -25,7 +26,7 @@ namespace RentaCar.Escritorio
             await CargarUsuarios();
         }
 
-        // ✅ CARGA DE USUARIOS (FIX IMPORTANTE)
+
         private async Task CargarUsuarios()
         {
             try
@@ -38,10 +39,10 @@ namespace RentaCar.Escritorio
                     u.Id, // importante aunque no se muestre
                     u.NombreUsuario,
                     Rol = roles.FirstOrDefault(r => r.Id == u.RolId)?.Nombre ?? "Sin rol",
-                    u.Activo
+                    Activo = u.Activo ? "Sí" : "No"
                 }).ToList();
 
-                dataGridViewUsuarios.AutoGenerateColumns = false;
+                dataGridViewUsuarios.AutoGenerateColumns = true;
                 dataGridViewUsuarios.DataSource = lista;
             }
             catch (Exception ex)
@@ -80,6 +81,7 @@ namespace RentaCar.Escritorio
         private void LimpiarCampos()
         {
             textBoxNombreUsuario.Clear();
+            textBoxContrasenia.Clear();
             comboBoxRol.SelectedIndex = -1;
             comboBoxActivo.SelectedIndex = -1;
         }
@@ -99,13 +101,13 @@ namespace RentaCar.Escritorio
                 return;
             }
 
-            // ⚠️ IMPORTANTE: tomar del servicio original, no del grid mapeado
             var usuarios = (List<UsuarioResponse>)await _usuarioServicio.ObtenerTodos();
-            var id = (int)dataGridViewUsuarios.SelectedRows[0].Cells["Id"].Value;
+            var id = (int)dataGridViewUsuarios.SelectedRows[0].Cells["IdColumn"].Value;
 
             var usuario = usuarios.First(u => u.Id == id);
 
             textBoxNombreUsuario.Text = usuario.NombreUsuario;
+            textBoxContrasenia.Text = "";
             comboBoxRol.SelectedValue = usuario.RolId;
             comboBoxActivo.SelectedValue = usuario.Activo;
 
@@ -131,27 +133,33 @@ namespace RentaCar.Escritorio
             {
                 if (modoEdicion)
                 {
-                    var id = (int)dataGridViewUsuarios.SelectedRows[0].Cells["Id"].Value;
+                    var id = (int)dataGridViewUsuarios.SelectedRows[0].Cells["IdColumn"].Value;
 
                     var request = new UsuarioUpdateRequest
                     {
                         NombreUsuario = textBoxNombreUsuario.Text,
                         RolId = (int)comboBoxRol.SelectedValue,
-                        Activo = (bool)comboBoxActivo.SelectedValue
+                        Activo = (bool)comboBoxActivo.SelectedValue,
+                        Contrasenia = textBoxContrasenia.Text
                     };
 
                     await _usuarioServicio.Actualizar(id, request);
+                    Dialogos.Info(Mensajes.ExitoEdicion("Usuario"));
                 }
                 else
                 {
                     var request = new UsuarioCreateRequest
                     {
                         NombreUsuario = textBoxNombreUsuario.Text,
-                        RolId = (int)comboBoxRol.SelectedValue,
+                        Contrasenia = textBoxContrasenia.Text,
+                        RolId = comboBoxRol.SelectedValue == null
+                            ? 3
+                            : (int)comboBoxRol.SelectedValue,
                         Activo = (bool)comboBoxActivo.SelectedValue
                     };
 
                     await _usuarioServicio.Agregar(request);
+                    Dialogos.Info(Mensajes.ExitoGuardado("Usuario"));
                 }
 
                 await CargarUsuarios();
@@ -179,7 +187,7 @@ namespace RentaCar.Escritorio
 
             try
             {
-                var id = (int)dataGridViewUsuarios.SelectedRows[0].Cells["Id"].Value;
+                var id = (int)dataGridViewUsuarios.SelectedRows[0].Cells["IdColumn"].Value;
 
                 await _usuarioServicio.Eliminar(id);
 
@@ -200,9 +208,5 @@ namespace RentaCar.Escritorio
             modoEdicion = false;
         }
 
-        private void FormUsuarios_Load_1(object sender, EventArgs e)
-        {
-
-        }
     }
 }

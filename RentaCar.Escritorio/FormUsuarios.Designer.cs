@@ -38,17 +38,20 @@
             comboBoxActivo = new ComboBox();
             comboBoxRol = new ComboBox();
             textBoxNombreUsuario = new TextBox();
-            labelEmail = new Label();
-            labelTelefono = new Label();
+            labelRol = new Label();
+            labelActivo = new Label();
             labelApellido = new Label();
             buttonEliminar = new Button();
             buttonEditar = new Button();
             buttonNuevo = new Button();
             dataGridViewUsuarios = new DataGridView();
+            IdColumn = new DataGridViewTextBoxColumn();
             ColumnNombre = new DataGridViewTextBoxColumn();
             ColumnRol = new DataGridViewTextBoxColumn();
             ColumnActivo = new DataGridViewTextBoxColumn();
             usuarioBindingSource = new BindingSource(components);
+            labelContrasenia = new Label();
+            textBoxContrasenia = new TextBox();
             groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewUsuarios).BeginInit();
             ((System.ComponentModel.ISupportInitialize)usuarioBindingSource).BeginInit();
@@ -63,7 +66,7 @@
             buttonCancelar.FlatStyle = FlatStyle.Flat;
             buttonCancelar.Font = new Font("Verdana", 9F);
             buttonCancelar.ForeColor = SystemColors.ButtonFace;
-            buttonCancelar.Location = new Point(265, 290);
+            buttonCancelar.Location = new Point(265, 321);
             buttonCancelar.Name = "buttonCancelar";
             buttonCancelar.Size = new Size(77, 33);
             buttonCancelar.TabIndex = 34;
@@ -80,7 +83,7 @@
             buttonGuardar.FlatStyle = FlatStyle.Flat;
             buttonGuardar.Font = new Font("Verdana", 9F);
             buttonGuardar.ForeColor = SystemColors.ButtonFace;
-            buttonGuardar.Location = new Point(27, 290);
+            buttonGuardar.Location = new Point(27, 321);
             buttonGuardar.Name = "buttonGuardar";
             buttonGuardar.Size = new Size(77, 33);
             buttonGuardar.TabIndex = 33;
@@ -90,17 +93,19 @@
             // 
             // groupBox
             // 
+            groupBox.Controls.Add(textBoxContrasenia);
+            groupBox.Controls.Add(labelContrasenia);
             groupBox.Controls.Add(comboBoxActivo);
             groupBox.Controls.Add(comboBoxRol);
             groupBox.Controls.Add(textBoxNombreUsuario);
-            groupBox.Controls.Add(labelEmail);
-            groupBox.Controls.Add(labelTelefono);
+            groupBox.Controls.Add(labelRol);
+            groupBox.Controls.Add(labelActivo);
             groupBox.Controls.Add(labelApellido);
             groupBox.Font = new Font("Verdana", 9F, FontStyle.Bold);
             groupBox.ForeColor = SystemColors.ButtonFace;
             groupBox.Location = new Point(27, 86);
             groupBox.Name = "groupBox";
-            groupBox.Size = new Size(315, 177);
+            groupBox.Size = new Size(315, 220);
             groupBox.TabIndex = 32;
             groupBox.TabStop = false;
             groupBox.Text = "Datos Usuario";
@@ -111,7 +116,7 @@
             comboBoxActivo.ForeColor = SystemColors.ButtonFace;
             comboBoxActivo.FormattingEnabled = true;
             comboBoxActivo.Items.AddRange(new object[] { "Si", "No" });
-            comboBoxActivo.Location = new Point(162, 131);
+            comboBoxActivo.Location = new Point(162, 170);
             comboBoxActivo.Name = "comboBoxActivo";
             comboBoxActivo.Size = new Size(121, 22);
             comboBoxActivo.TabIndex = 29;
@@ -122,7 +127,7 @@
             comboBoxRol.ForeColor = SystemColors.ButtonFace;
             comboBoxRol.FormattingEnabled = true;
             comboBoxRol.Items.AddRange(new object[] { "Admin", "User" });
-            comboBoxRol.Location = new Point(162, 81);
+            comboBoxRol.Location = new Point(162, 123);
             comboBoxRol.Name = "comboBoxRol";
             comboBoxRol.Size = new Size(121, 22);
             comboBoxRol.TabIndex = 28;
@@ -138,25 +143,25 @@
             textBoxNombreUsuario.Size = new Size(121, 22);
             textBoxNombreUsuario.TabIndex = 18;
             // 
-            // labelEmail
+            // labelRol
             // 
-            labelEmail.AutoSize = true;
-            labelEmail.Font = new Font("Verdana", 9F);
-            labelEmail.Location = new Point(24, 84);
-            labelEmail.Name = "labelEmail";
-            labelEmail.Size = new Size(31, 14);
-            labelEmail.TabIndex = 16;
-            labelEmail.Text = "Rol:";
+            labelRol.AutoSize = true;
+            labelRol.Font = new Font("Verdana", 9F);
+            labelRol.Location = new Point(24, 126);
+            labelRol.Name = "labelRol";
+            labelRol.Size = new Size(31, 14);
+            labelRol.TabIndex = 16;
+            labelRol.Text = "Rol:";
             // 
-            // labelTelefono
+            // labelActivo
             // 
-            labelTelefono.AutoSize = true;
-            labelTelefono.Font = new Font("Verdana", 9F);
-            labelTelefono.Location = new Point(24, 131);
-            labelTelefono.Name = "labelTelefono";
-            labelTelefono.Size = new Size(49, 14);
-            labelTelefono.TabIndex = 3;
-            labelTelefono.Text = "Activo:";
+            labelActivo.AutoSize = true;
+            labelActivo.Font = new Font("Verdana", 9F);
+            labelActivo.Location = new Point(24, 173);
+            labelActivo.Name = "labelActivo";
+            labelActivo.Size = new Size(49, 14);
+            labelActivo.TabIndex = 3;
+            labelActivo.Text = "Activo:";
             // 
             // labelApellido
             // 
@@ -234,7 +239,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dataGridViewUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewUsuarios.Columns.AddRange(new DataGridViewColumn[] { ColumnNombre, ColumnRol, ColumnActivo });
+            dataGridViewUsuarios.Columns.AddRange(new DataGridViewColumn[] { IdColumn, ColumnNombre, ColumnRol, ColumnActivo });
             dataGridViewUsuarios.GridColor = Color.MidnightBlue;
             dataGridViewUsuarios.Location = new Point(395, 64);
             dataGridViewUsuarios.Name = "dataGridViewUsuarios";
@@ -247,6 +252,12 @@
             dataGridViewUsuarios.Size = new Size(548, 242);
             dataGridViewUsuarios.TabIndex = 35;
             // 
+            // IdColumn
+            // 
+            IdColumn.DataPropertyName = "Id";
+            IdColumn.HeaderText = "Id";
+            IdColumn.Name = "IdColumn";
+            // 
             // ColumnNombre
             // 
             ColumnNombre.DataPropertyName = "NombreUsuario";
@@ -255,7 +266,7 @@
             // 
             // ColumnRol
             // 
-            ColumnRol.DataPropertyName = "RolId";
+            ColumnRol.DataPropertyName = "Rol";
             ColumnRol.HeaderText = "Rol";
             ColumnRol.Name = "ColumnRol";
             // 
@@ -269,12 +280,33 @@
             // 
             usuarioBindingSource.DataSource = typeof(Dominio.Usuario);
             // 
+            // labelContrasenia
+            // 
+            labelContrasenia.AutoSize = true;
+            labelContrasenia.Font = new Font("Verdana", 9F);
+            labelContrasenia.Location = new Point(24, 82);
+            labelContrasenia.Name = "labelContrasenia";
+            labelContrasenia.Size = new Size(86, 14);
+            labelContrasenia.TabIndex = 30;
+            labelContrasenia.Text = "Contraseña:";
+            // 
+            // textBoxContrasenia
+            // 
+            textBoxContrasenia.BackColor = Color.MidnightBlue;
+            textBoxContrasenia.BorderStyle = BorderStyle.FixedSingle;
+            textBoxContrasenia.Font = new Font("Verdana", 9F);
+            textBoxContrasenia.ForeColor = SystemColors.ButtonFace;
+            textBoxContrasenia.Location = new Point(162, 80);
+            textBoxContrasenia.Name = "textBoxContrasenia";
+            textBoxContrasenia.Size = new Size(121, 22);
+            textBoxContrasenia.TabIndex = 31;
+            // 
             // FormUsuarios
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MidnightBlue;
-            ClientSize = new Size(1010, 375);
+            ClientSize = new Size(1009, 458);
             Controls.Add(dataGridViewUsuarios);
             Controls.Add(buttonCancelar);
             Controls.Add(buttonGuardar);
@@ -285,7 +317,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormUsuarios";
             Text = "Usuarios";
-            Load += FormUsuarios_Load_1;
+            Load += FormUsuarios_Load;
             groupBox.ResumeLayout(false);
             groupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewUsuarios).EndInit();
@@ -309,8 +341,14 @@
         private BindingSource usuarioBindingSource;
         private ComboBox comboBoxRol;
         private ComboBox comboBoxActivo;
+        private DataGridViewTextBoxColumn IdColumn;
         private DataGridViewTextBoxColumn ColumnNombre;
         private DataGridViewTextBoxColumn ColumnRol;
         private DataGridViewTextBoxColumn ColumnActivo;
+        private TextBox textBox1;
+        private Label labelContrasenia;
+        private Label labelRol;
+        private TextBox textBoxContrasenia;
+        private Label labelActivo;
     }
 }
