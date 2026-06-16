@@ -11,10 +11,12 @@ namespace RentaCar.API.Controllers
     public class DevolucionesController : ControllerBase
     {
         private readonly DevolucionRepositorio _repo;
+        private readonly AlquilerRepositorio _repoAlquileres;
 
-        public DevolucionesController(DevolucionRepositorio repo)
+        public DevolucionesController(DevolucionRepositorio repo, AlquilerRepositorio repoAlquileres)
         {
             _repo = repo;
+            _repoAlquileres = repoAlquileres;
         }
 
         [HttpGet]
@@ -68,6 +70,14 @@ namespace RentaCar.API.Controllers
                 Observaciones = request.Observaciones
             };
 
+
+            var alquiler = _repoAlquileres.ObtenerPorId(request.AlquilerId);
+
+            if (alquiler != null)
+            {
+                alquiler.EstadoId = 1; // Finalizado
+                _repoAlquileres.Actualizar(alquiler);
+            }
             _repo.Agregar(devolucion);
 
             return Ok("Devolución creada correctamente");

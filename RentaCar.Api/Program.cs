@@ -33,6 +33,7 @@ builder.Services.AddScoped<DevolucionRepositorio>();
 builder.Services.AddScoped<UsuarioRepositorio>();
 builder.Services.AddScoped<JwtService>();
 builder.Services.AddScoped<SeguroRepositorio>();
+builder.Services.AddScoped<RolRepositorio>();
 
 var key = Encoding.UTF8.GetBytes(
     builder.Configuration["Jwt:Key"]!);

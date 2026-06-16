@@ -1,3 +1,5 @@
+using RentaCar.Escritorio.Helpers;
+
 namespace RentaCar.Escritorio
 {
     public partial class FormPrincipal : Form
@@ -16,6 +18,12 @@ namespace RentaCar.Escritorio
                 mdi.BackColor = SystemColors.Desktop;
                 mdi.BackgroundImage = Properties.Resources.fondo;
                 mdi.BackgroundImageLayout = ImageLayout.Stretch;
+            }
+
+            if (Sesion.UsuarioActual?.RolId != 1)
+            {
+                usuariosToolStripMenuItem.Visible = false;
+                tarifasToolStripMenuItem.Visible = false;
             }
         }
 
@@ -78,6 +86,25 @@ namespace RentaCar.Escritorio
             FormTarifas form = new FormTarifas();
             form.MdiParent = this;   // para que sea hijo del formulario principal
             form.Show();
+        }
+        private void cerrarSesionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var resultado = MessageBox.Show(
+                "¿Está seguro que desea cerrar sesión?",
+                "Confirmar cierre de sesión",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question,
+                MessageBoxDefaultButton.Button2);
+
+            if (resultado != DialogResult.Yes)
+                return;
+
+            Sesion.Cerrar();
+
+            var login = new FormLogin();
+            login.Show();
+
+            this.Close();
         }
     }
 }

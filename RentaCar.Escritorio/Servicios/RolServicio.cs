@@ -19,7 +19,11 @@ namespace RentaCar.Escritorio.Servicios
             if (!response.IsSuccessStatusCode)
             {
                 var error = await response.Content.ReadAsStringAsync();
-                throw new Exception($"Error al obtener roles: {error}");
+
+                throw new Exception(
+                    $"Error al obtener roles. " +
+                    $"StatusCode: {(int)response.StatusCode} ({response.StatusCode})\n" +
+                    $"Mensaje: {error}");
             }
 
             return await response.Content.ReadFromJsonAsync<List<RolResponse>>()

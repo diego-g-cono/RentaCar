@@ -38,6 +38,7 @@
             DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAlquileres));
             tabControlAlquileres = new TabControl();
             tabPage1 = new TabPage();
             dataGridViewAlquileres = new DataGridView();
@@ -934,6 +935,7 @@
             Controls.Add(buttonEditar);
             Controls.Add(buttonNuevo);
             Controls.Add(tabControlAlquileres);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormAlquileres";
             Text = "Alquileres";
             Load += FormAlquileres_Load;

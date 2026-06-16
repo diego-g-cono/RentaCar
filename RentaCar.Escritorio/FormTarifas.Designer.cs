@@ -31,6 +31,7 @@
             components = new System.ComponentModel.Container();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormTarifas));
             buttonNuevo = new Button();
             buttonEditar = new Button();
             buttonEliminar = new Button();
@@ -279,7 +280,7 @@
             // 
             // NombreVehiculo
             // 
-            NombreVehiculo.DataPropertyName = "NombreVehiculo";
+            NombreVehiculo.DataPropertyName = "TipoVehiculoNombre";
             NombreVehiculo.HeaderText = "Vehiculo";
             NombreVehiculo.Name = "NombreVehiculo";
             NombreVehiculo.ReadOnly = true;
@@ -297,6 +298,7 @@
             Controls.Add(buttonEliminar);
             Controls.Add(buttonEditar);
             Controls.Add(buttonNuevo);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormTarifas";
             Text = "Tarifas";
             Load += FormTarifas_Load;

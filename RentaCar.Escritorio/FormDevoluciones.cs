@@ -44,7 +44,9 @@ namespace RentaCar.Escritorio
             var alquileres = await _alquilerServicio.ObtenerTodos();
 
             dataGridViewAlquileres.AutoGenerateColumns = false;
-            dataGridViewAlquileres.DataSource = alquileres;
+            dataGridViewAlquileres.DataSource = alquileres
+                .Where(a => a.EstadoId == 2)
+                .ToList();
         }
 
         private void CargarTanqueLleno()
@@ -97,7 +99,7 @@ namespace RentaCar.Escritorio
             if (dataGridViewDevoluciones.SelectedRows.Count == 0)
             {
                 //MessageBox.Show("No seleccionaste ninguna devolución.");
-                Dialogos.Error(Mensajes.SeleccioneEntidad("devolución"));
+                Dialogos.Error(Mensajes.SeleccioneEntidad("Devolución"));
                 return;
             }
 
@@ -167,10 +169,11 @@ namespace RentaCar.Escritorio
 
                     await _devolucionServicio.Agregar(create);
 
-                    Dialogos.Info(Mensajes.ExitoGuardado("devolución"));
+                    Dialogos.Info(Mensajes.ExitoGuardado("Devolución"));
                 }
 
                 await CargarDevoluciones();
+                await CargarAlquileres();
                 LimpiarCampos();
                 BloquearCampos(false);
                 BloquearBotones(false);

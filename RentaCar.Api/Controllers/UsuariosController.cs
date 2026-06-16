@@ -106,5 +106,87 @@ namespace RentaCar.API.Controllers
 
             return Ok(usuario != null);
         }
+
+        [HttpGet]
+        public IActionResult ObtenerTodos()
+        {
+            var usuarios = _repoUsuarios.ObtenerTodos();
+
+            var response = usuarios.Select(u => new UsuarioResponse
+            {
+                Id = u.Id,
+                NombreUsuario = u.NombreUsuario,
+                RolId = u.RolId,
+                Activo = u.Activo
+            }).ToList();
+
+            return Ok(response);
+        }
+        [HttpDelete("{id}")]
+        public IActionResult Eliminar(int id)
+        {
+            var usuario = _repoUsuarios.ObtenerPorId(id);
+
+            if (usuario == null)
+                return NotFound("Usuario no encontrado");
+
+            _repoUsuarios.Eliminar(id);
+
+            return Ok("Usuario desactivado correctamente");
+        }
+        [HttpPost]
+        public IActionResult Crear([FromBody] UsuarioCreateRequest request)
+        {
+            if (request == null)
+                return BadRequest("Datos inválidos");
+
+            if (_repoUsuarios.ObtenerPorNombreUsuario(request.NombreUsuario) != null)
+                return BadRequest("El nombre de usuario ya existe");
+
+            var usuario = new Usuario
+            {
+                NombreUsuario = request.NombreUsuario,
+                Contrasenia = request.Contrasenia, // se hashea automáticamente
+                RolId = request.RolId == 0 ? 3 : request.RolId,
+                Activo = request.Activo
+            };
+
+            _repoUsuarios.Agregar(usuario);
+
+            return Ok("Usuario creado correctamente");
+        }
+        [HttpPut("{id}")]
+        public IActionResult Actualizar(int id, [FromBody] UsuarioUpdateRequest request)
+        {
+            if (request == null)
+                return BadRequest("Datos inválidos");
+
+            var usuario = _repoUsuarios.ObtenerPorId(id);
+
+            if (usuario == null)
+                return NotFound("Usuario no encontrado");
+
+            // Verificar que no exista otro usuario con el mismo nombre
+            var usuarioExistente =
+                _repoUsuarios.ObtenerPorNombreUsuario(request.NombreUsuario);
+
+            if (usuarioExistente != null && usuarioExistente.Id != id)
+                return BadRequest("El nombre de usuario ya existe");
+
+            usuario.NombreUsuario = request.NombreUsuario;
+            usuario.RolId = request.RolId;
+            usuario.Activo = request.Activo;
+
+            // Solo cambiar la contraseña si se ingresó una nueva
+            if (!string.IsNullOrWhiteSpace(request.Contrasenia))
+            {
+                usuario.Contrasenia = request.Contrasenia;
+                // La propiedad Contrasenia se encarga de hashearla automáticamente
+            }
+
+            _repoUsuarios.Actualizar(usuario);
+
+            return Ok("Usuario actualizado correctamente");
+        }
     }
 }
