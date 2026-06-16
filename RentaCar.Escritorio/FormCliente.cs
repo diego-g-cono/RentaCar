@@ -64,15 +64,15 @@ namespace RentaCar.Escritorio
 
         private async void btnGuardar_Click(object sender, EventArgs e)
         {
-            
+
             if (string.IsNullOrWhiteSpace(textBoxDNI.Text))
             {
                 Dialogos.Error(Mensajes.CampoVacio("DNI"));
                 return;
             }
 
-            if(!int.TryParse(textBoxDNI.Text, out int aux) 
-                || textBoxDNI.Text.Length < 7 
+            if (!int.TryParse(textBoxDNI.Text, out int aux)
+                || textBoxDNI.Text.Length < 7
                 || textBoxDNI.Text.Length > 8
                 || aux.CompareTo(0) <= 0)
             {
@@ -80,7 +80,7 @@ namespace RentaCar.Escritorio
                 return;
             }
 
-           
+
 
             if (string.IsNullOrWhiteSpace(textBoxNombre.Text))
             {
@@ -88,31 +88,31 @@ namespace RentaCar.Escritorio
                 return;
             }
 
-            if(string.IsNullOrWhiteSpace(textBoxApellido.Text))
+            if (string.IsNullOrWhiteSpace(textBoxApellido.Text))
             {
                 Dialogos.Error(Mensajes.CampoVacio("Apellido"));
                 return;
             }
 
-            if(string.IsNullOrWhiteSpace(textBoxEmail.Text))
+            if (string.IsNullOrWhiteSpace(textBoxEmail.Text))
             {
                 Dialogos.Error(Mensajes.CampoVacio("Email"));
                 return;
             }
-            
+
             if (!EmailValido(textBoxEmail.Text))
             {
                 Dialogos.Error(Mensajes.FormatoInvalido("Email"));
                 return;
             }
 
-            if(string.IsNullOrWhiteSpace(textBoxTel.Text))
+            if (string.IsNullOrWhiteSpace(textBoxTel.Text))
             {
                 Dialogos.Error(Mensajes.CampoVacio("Telefono"));
                 return;
             }
 
-            if(!double.TryParse(textBoxTel.Text, out _)
+            if (!double.TryParse(textBoxTel.Text, out _)
                 || textBoxTel.Text.Length < 6
                 || textBoxTel.Text.Length > 15)
             {
@@ -120,7 +120,7 @@ namespace RentaCar.Escritorio
                 return;
             }
 
-            if(!Dialogos.Confirmar(Mensajes.ConfirmarGuardado("al cliente")))
+            if (!Dialogos.Confirmar(Mensajes.ConfirmarGuardado("al cliente")))
             {
                 return;
             }
@@ -179,26 +179,26 @@ namespace RentaCar.Escritorio
 
             var dni = (int)dataGridView.SelectedRows[0].Cells["ColumnDNI"].Value;
 
-            if(!Dialogos.Confirmar(Mensajes.ConfirmarEliminacion("al cliente " + dni)))
+            if (!Dialogos.Confirmar(Mensajes.ConfirmarEliminacion("al cliente " + dni)))
             {
                 return;
             }
 
-                try
-                {
-                    await _clienteServicio.Eliminar(dni);
+            try
+            {
+                await _clienteServicio.Eliminar(dni);
 
-                    Dialogos.Info(Mensajes.ExitoEliminacion("Cliente"));
+                Dialogos.Info(Mensajes.ExitoEliminacion("Cliente"));
 
-                    CargarClientes();
-                    LimpiarCampos();
-                    BloquearCampos(false);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error al eliminar:\n{ex.Message}");
-                }
-     
+                CargarClientes();
+                LimpiarCampos();
+                BloquearCampos(false);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al eliminar:\n{ex.Message}");
+            }
+
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
@@ -245,15 +245,15 @@ namespace RentaCar.Escritorio
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-                if(!Dialogos.Confirmar(Mensajes.ConfirmarCancelacion()))
-                {
-                    return;
-                }
+            if (!Dialogos.Confirmar(Mensajes.ConfirmarCancelacion()))
+            {
+                return;
+            }
 
-                LimpiarCampos();
-                BloquearCampos(false);
-                BloquearBotones(false);
-            
+            LimpiarCampos();
+            BloquearCampos(false);
+            BloquearBotones(false);
+
         }
         private void textBoxDNI_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -295,6 +295,11 @@ namespace RentaCar.Escritorio
                 .ToList();
 
             dataGridView.DataSource = filtrados;
+        }
+
+        private async void buttonRecargar_Click(object sender, EventArgs e)
+        {
+            await CargarClientes();
         }
     }
 }

@@ -260,7 +260,10 @@ namespace RentaCar.Escritorio
 
             dataGridViewConductores.DataSource = filtrados;
         }
-        
-            
+
+        private async void buttonRecargar_Click(object sender, EventArgs e)
+        {
+            await CargarConductores();
+        }
     }
 }

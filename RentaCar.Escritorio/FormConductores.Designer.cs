@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             buttonCancelar = new Button();
             buttonGuardar = new Button();
             groupBoxConductores = new GroupBox();
@@ -53,6 +53,7 @@
             ColumnApellido = new DataGridViewTextBoxColumn();
             labelBuscarPorDni = new Label();
             textBoxBuscador = new TextBox();
+            buttonRecargar = new Button();
             groupBoxConductores.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)conductorBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewConductores).BeginInit();
@@ -262,25 +263,25 @@
             dataGridViewConductores.BorderStyle = BorderStyle.Fixed3D;
             dataGridViewConductores.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
             dataGridViewConductores.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.MidnightBlue;
-            dataGridViewCellStyle1.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = SystemColors.ButtonFace;
-            dataGridViewCellStyle1.SelectionBackColor = Color.RoyalBlue;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridViewConductores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = Color.MidnightBlue;
+            dataGridViewCellStyle3.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ButtonFace;
+            dataGridViewCellStyle3.SelectionBackColor = Color.RoyalBlue;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dataGridViewConductores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewConductores.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewConductores.Columns.AddRange(new DataGridViewColumn[] { ColumnDNI, fechaVencLic, ColumnNombre, ColumnApellido });
             dataGridViewConductores.GridColor = Color.MidnightBlue;
             dataGridViewConductores.Location = new Point(403, 82);
             dataGridViewConductores.Name = "dataGridViewConductores";
             dataGridViewConductores.ReadOnly = true;
-            dataGridViewCellStyle2.BackColor = Color.MidnightBlue;
-            dataGridViewCellStyle2.ForeColor = SystemColors.ButtonFace;
-            dataGridViewCellStyle2.SelectionBackColor = Color.RoyalBlue;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.ButtonFace;
-            dataGridViewConductores.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.BackColor = Color.MidnightBlue;
+            dataGridViewCellStyle4.ForeColor = SystemColors.ButtonFace;
+            dataGridViewCellStyle4.SelectionBackColor = Color.RoyalBlue;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.ButtonFace;
+            dataGridViewConductores.RowsDefaultCellStyle = dataGridViewCellStyle4;
             dataGridViewConductores.RowTemplate.DefaultCellStyle.BackColor = Color.MidnightBlue;
             dataGridViewConductores.RowTemplate.DefaultCellStyle.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewConductores.RowTemplate.DefaultCellStyle.ForeColor = SystemColors.ButtonFace;
@@ -340,12 +341,25 @@
             textBoxBuscador.TabIndex = 31;
             textBoxBuscador.TextChanged += textBoxBuscador_TextChanged;
             // 
+            // buttonRecargar
+            // 
+            buttonRecargar.FlatStyle = FlatStyle.System;
+            buttonRecargar.Font = new Font("Segoe UI", 16F);
+            buttonRecargar.Location = new Point(403, 41);
+            buttonRecargar.Name = "buttonRecargar";
+            buttonRecargar.Size = new Size(34, 30);
+            buttonRecargar.TabIndex = 41;
+            buttonRecargar.Text = "↻";
+            buttonRecargar.UseVisualStyleBackColor = true;
+            buttonRecargar.Click += buttonRecargar_Click;
+            // 
             // FormConductores
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MidnightBlue;
-            ClientSize = new Size(870, 367);
+            ClientSize = new Size(869, 367);
+            Controls.Add(buttonRecargar);
             Controls.Add(textBoxBuscador);
             Controls.Add(labelBuscarPorDni);
             Controls.Add(dataGridViewConductores);
@@ -390,5 +404,6 @@
         private DataGridViewTextBoxColumn ColumnApellido;
         private Label labelBuscarPorDni;
         private TextBox textBoxBuscador;
+        private Button buttonRecargar;
     }
 }

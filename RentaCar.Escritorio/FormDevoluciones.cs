@@ -135,7 +135,7 @@ namespace RentaCar.Escritorio
 
             //if (confirm != DialogResult.Yes)
             //    return;
-            if(!Dialogos.Confirmar(Mensajes.ConfirmarGuardado("Devolución")))
+            if (!Dialogos.Confirmar(Mensajes.ConfirmarGuardado("Devolución")))
                 return;
 
             try
@@ -198,7 +198,7 @@ namespace RentaCar.Escritorio
             //if (confirm != DialogResult.Yes)
             //    return;
 
-            if(!Dialogos.Confirmar(Mensajes.ConfirmarEliminacion("devolución")))
+            if (!Dialogos.Confirmar(Mensajes.ConfirmarEliminacion("devolución")))
                 return;
             try
             {
@@ -212,18 +212,18 @@ namespace RentaCar.Escritorio
                 Dialogos.Info(Mensajes.ExitoEliminacion("Devolución"));
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Dialogos.Error(ex.Message);
                 return;
             }
 
-            
+
         }
 
         private void buttonCancelar_Click(object sender, EventArgs e)
         {
-            if(!Dialogos.Confirmar(Mensajes.ConfirmarCancelacion()))
+            if (!Dialogos.Confirmar(Mensajes.ConfirmarCancelacion()))
                 return;
 
             LimpiarCampos();
@@ -239,6 +239,12 @@ namespace RentaCar.Escritorio
                 var alquiler = (AlquilerResponse)dataGridViewAlquileres.Rows[e.RowIndex].DataBoundItem;
                 textBoxAlquiler.Text = alquiler.Id.ToString();
             }
+        }
+
+        private async void buttonRecargar_Click(object sender, EventArgs e)
+        {
+            await CargarDevoluciones();
+            await CargarAlquileres();
         }
     }
 }

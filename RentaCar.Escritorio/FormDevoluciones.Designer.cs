@@ -66,6 +66,7 @@
             DniConductor = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn11 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn12 = new DataGridViewTextBoxColumn();
+            buttonRecargar = new Button();
             ((System.ComponentModel.ISupportInitialize)devolucionBindingSource).BeginInit();
             groupBox.SuspendLayout();
             tabControlDevoluciones.SuspendLayout();
@@ -270,7 +271,7 @@
             // 
             tabControlDevoluciones.Controls.Add(tabPage1);
             tabControlDevoluciones.Controls.Add(tabPage2);
-            tabControlDevoluciones.Location = new Point(434, 16);
+            tabControlDevoluciones.Location = new Point(433, 49);
             tabControlDevoluciones.Name = "tabControlDevoluciones";
             tabControlDevoluciones.SelectedIndex = 0;
             tabControlDevoluciones.Size = new Size(951, 339);
@@ -458,12 +459,25 @@
             dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
             dataGridViewTextBoxColumn12.ReadOnly = true;
             // 
+            // buttonRecargar
+            // 
+            buttonRecargar.FlatStyle = FlatStyle.System;
+            buttonRecargar.Font = new Font("Segoe UI", 16F);
+            buttonRecargar.Location = new Point(433, 12);
+            buttonRecargar.Name = "buttonRecargar";
+            buttonRecargar.Size = new Size(34, 30);
+            buttonRecargar.TabIndex = 42;
+            buttonRecargar.Text = "↻";
+            buttonRecargar.UseVisualStyleBackColor = true;
+            buttonRecargar.Click += buttonRecargar_Click;
+            // 
             // FormDevoluciones
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MidnightBlue;
-            ClientSize = new Size(1396, 364);
+            ClientSize = new Size(1396, 410);
+            Controls.Add(buttonRecargar);
             Controls.Add(tabControlDevoluciones);
             Controls.Add(buttonCancelar);
             Controls.Add(buttonGuardar);
@@ -520,5 +534,6 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private DataGridViewCheckBoxColumn tanqueLleno;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private Button buttonRecargar;
     }
 }

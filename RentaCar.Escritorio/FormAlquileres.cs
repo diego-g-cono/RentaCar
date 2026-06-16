@@ -60,7 +60,7 @@ namespace RentaCar.Escritorio
 
         private void LimpiarCampos()
         {
-            dtpFechaInicio.Value = DateTime.Today;    
+            dtpFechaInicio.Value = DateTime.Today;
             dtpFechaDevolucion.Value = DateTime.Today.AddDays(1);
             textBoxVehiculo.Clear();
             numericUpDownPrecio.Value = 0;
@@ -160,13 +160,13 @@ namespace RentaCar.Escritorio
                 Dialogos.Error(Mensajes.SeleccioneEntidad("estado"));
                 return;
             }
-            if(dtpFechaDevolucion.Value < dtpFechaInicio.Value)
+            if (dtpFechaDevolucion.Value < dtpFechaInicio.Value)
             {
                 Dialogos.Error(Mensajes.FechaInicioMayorFechaFin);
                 return;
             }
 
-            if(!Dialogos.Confirmar(Mensajes.ConfirmarGuardado("alquiler")))
+            if (!Dialogos.Confirmar(Mensajes.ConfirmarGuardado("alquiler")))
             {
                 return;
             }
@@ -214,13 +214,14 @@ namespace RentaCar.Escritorio
                 BloquearBotones(false);
                 autoCompletar = false;
 
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-              
+
         }
-            
+
 
         private async void buttonEliminar_Click(object sender, EventArgs e)
         {
@@ -235,7 +236,7 @@ namespace RentaCar.Escritorio
             //var confirm = MessageBox.Show("¿Eliminar?", "Confirmar", MessageBoxButtons.YesNo);
             //if (confirm != DialogResult.Yes) return;
 
-            if(!Dialogos.Confirmar(Mensajes.ConfirmarEliminacion("alquiler")))
+            if (!Dialogos.Confirmar(Mensajes.ConfirmarEliminacion("alquiler")))
             {
                 return;
             }
@@ -274,7 +275,7 @@ namespace RentaCar.Escritorio
 
         private void buttonCancelar_Click(object sender, EventArgs e)
         {
-            if(!Dialogos.Confirmar(Mensajes.ConfirmarCancelacion())) 
+            if (!Dialogos.Confirmar(Mensajes.ConfirmarCancelacion()))
                 return;
 
             LimpiarCampos();
@@ -302,6 +303,11 @@ namespace RentaCar.Escritorio
                 .ToList();
 
             dataGridViewAlquileres.DataSource = filtrados;
+        }
+
+        private async void buttonRecargar_Click(object sender, EventArgs e)
+        {
+            await CargarTodo();
         }
     }
 }

@@ -86,6 +86,7 @@
             ColumnEstado = new DataGridViewTextBoxColumn();
             textBoxBuscador = new TextBox();
             labelBuscarPorDni = new Label();
+            buttonRecargar = new Button();
             groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDownSenia).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownPrecio).BeginInit();
@@ -677,12 +678,25 @@
             labelBuscarPorDni.TabIndex = 37;
             labelBuscarPorDni.Text = "Buscar:";
             // 
+            // buttonRecargar
+            // 
+            buttonRecargar.FlatStyle = FlatStyle.System;
+            buttonRecargar.Font = new Font("Segoe UI", 16F);
+            buttonRecargar.Location = new Point(420, 22);
+            buttonRecargar.Name = "buttonRecargar";
+            buttonRecargar.Size = new Size(34, 30);
+            buttonRecargar.TabIndex = 43;
+            buttonRecargar.Text = "↻";
+            buttonRecargar.UseVisualStyleBackColor = true;
+            buttonRecargar.Click += buttonRecargar_Click;
+            // 
             // FormReserva
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MidnightBlue;
             ClientSize = new Size(1432, 547);
+            Controls.Add(buttonRecargar);
             Controls.Add(textBoxBuscador);
             Controls.Add(labelBuscarPorDni);
             Controls.Add(tabControl);
@@ -764,5 +778,6 @@
         private DataGridViewTextBoxColumn ColumnEstado;
         private TextBox textBoxBuscador;
         private Label labelBuscarPorDni;
+        private Button buttonRecargar;
     }
 }

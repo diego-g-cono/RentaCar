@@ -342,5 +342,13 @@ namespace RentaCar.Escritorio
                 e.Handled = true;
             }
         }
+
+        private async void buttonRecargar_Click(object sender, EventArgs e)
+        {
+            await CargarVehiculos();
+            await CargarClientes();
+            await CargarReservas();
+            await CargarEstados();
+        }
     }
 }

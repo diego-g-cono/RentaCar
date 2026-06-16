@@ -87,7 +87,7 @@ namespace RentaCar.Escritorio
             BloquearCampos(true);
             BloquearBotones(true);
             LimpiarCampos();
-            modoEdicion = false;    
+            modoEdicion = false;
         }
         // Método para cargar marcas en el ComboBox
         private async Task CargarMarcas()
@@ -405,6 +405,11 @@ namespace RentaCar.Escritorio
 
             dataGridView.DataSource = filtrados;
 
+        }
+
+        private async void buttonRecargar_Click(object sender, EventArgs e)
+        {
+            await CargarVehiculos();
         }
     }
 }
