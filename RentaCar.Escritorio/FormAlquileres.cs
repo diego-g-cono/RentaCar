@@ -1,11 +1,12 @@
 ﻿using RentaCar.Dtos.Alquileres;
-using RentaCar.Dtos.Vehiculos;
 using RentaCar.Dtos.Clientes;
 using RentaCar.Dtos.Conductores;
-using RentaCar.Dtos.Reservas;
 using RentaCar.Dtos.EstadoAlquiler;
-using RentaCar.Escritorio.Servicios;
+using RentaCar.Dtos.Reservas;
+using RentaCar.Dtos.Vehiculos;
 using RentaCar.Escritorio.Helpers;
+using RentaCar.Escritorio.Servicios;
+using System.Windows.Forms;
 
 namespace RentaCar.Escritorio
 {
@@ -18,6 +19,10 @@ namespace RentaCar.Escritorio
         private readonly ReservaServicio _reservaServicio;
         private readonly EstadoAlquilerServicio _estadoServicio;
         private List<AlquilerResponse> _alquileres;
+        private List<VehiculoResponse> _vehiculos;
+        private List<ConductorResponse> _conductores;
+        private List<ReservaResponse> _reservas;
+        private List<ClienteResponse> _clientes;
 
         private bool modoEdicion = false;
         private bool autoCompletar = false;
@@ -72,15 +77,19 @@ namespace RentaCar.Escritorio
 
         private async Task CargarTodo()
         {
+            _vehiculos = await _vehiculoServicio.ObtenerTodos();
             dataGridViewVehiculos.AutoGenerateColumns = false;
             dataGridViewVehiculos.DataSource = await _vehiculoServicio.ObtenerTodos();
 
+            _clientes = await _clienteServicio.ObtenerTodos();
             dataGridViewClientes.AutoGenerateColumns = false;
             dataGridViewClientes.DataSource = await _clienteServicio.ObtenerTodos();
 
+            _conductores = await _conductorServicio.ObtenerTodos();
             dataGridViewConductores.AutoGenerateColumns = false;
             dataGridViewConductores.DataSource = await _conductorServicio.ObtenerTodos();
 
+            _reservas = await _reservaServicio.ObtenerTodos();
             dataGridViewReserva.AutoGenerateColumns = false;
             dataGridViewReserva.DataSource = await _reservaServicio.ObtenerTodos();
             //dataGridViewAlquileres.DataSource = await _alquilerServicio.ObtenerTodos();
@@ -288,23 +297,111 @@ namespace RentaCar.Escritorio
         {
             string busqueda = textBoxBuscador.Text.Trim();
 
+            switch (tabControlAlquileres.SelectedTab.Name)
+            {
+                case "tabPage1":
+                    FiltrarAlquileres(busqueda);
+                    break;
+
+                case "tabPage2":
+                    FiltrarVehiculos(busqueda);
+                    break;
+
+                case "tabPage5":
+                    FiltrarClientes(busqueda);
+                    break;
+
+                case "tabPage3":
+                    FiltrarConductores(busqueda);
+                    break;
+
+                case "tabPage4":
+                    FiltrarReservas(busqueda);
+                    break;
+            }
+        }
+        private void FiltrarAlquileres(string busqueda)
+        {
             if (string.IsNullOrEmpty(busqueda))
             {
                 dataGridViewAlquileres.DataSource = _alquileres;
                 return;
-
             }
 
             var filtrados = _alquileres
-                .Where(c => c.ClienteDni.ToString().Contains(busqueda) ||
-                            c.ClienteNombre.Contains(busqueda, StringComparison.OrdinalIgnoreCase) ||
-                            c.ConductorNombre.Contains(busqueda, StringComparison.OrdinalIgnoreCase) ||
-                            c.ConductorDni.ToString().Contains(busqueda))
+                .Where(a =>
+                    a.ClienteDni.ToString().Contains(busqueda) ||
+                    a.ClienteNombre.Contains(busqueda, StringComparison.OrdinalIgnoreCase) ||
+                    a.ConductorNombre.Contains(busqueda, StringComparison.OrdinalIgnoreCase) ||
+                    a.ConductorDni.ToString().Contains(busqueda))
                 .ToList();
 
             dataGridViewAlquileres.DataSource = filtrados;
         }
+        private void FiltrarVehiculos(string busqueda)
+        {
+            if (string.IsNullOrEmpty(busqueda))
+            {
+                dataGridViewVehiculos.DataSource = _vehiculos;
+                return;
+            }
+            var filtrados = _vehiculos
+                .Where(v =>
+                    v.Patente.Contains(busqueda, StringComparison.OrdinalIgnoreCase) ||
+                    v.MarcaNombre.Contains(busqueda, StringComparison.OrdinalIgnoreCase) ||
+                    v.ModeloNombre.Contains(busqueda, StringComparison.OrdinalIgnoreCase))
+                .ToList();
+            dataGridViewVehiculos.DataSource = filtrados;
+        }
 
+        private void FiltrarClientes(string busqueda)
+        {
+            if (string.IsNullOrEmpty(busqueda))
+            {
+                dataGridViewClientes.DataSource = _clientes;
+                return;
+            }
+            var filtrados = _clientes
+                .Where(c =>
+                    c.Dni.ToString().Contains(busqueda) ||
+                    c.Nombre.Contains(busqueda, StringComparison.OrdinalIgnoreCase) ||
+                    c.Apellido.Contains(busqueda, StringComparison.OrdinalIgnoreCase))
+                .ToList();
+            dataGridViewClientes.DataSource = filtrados;
+        }
+
+        private void FiltrarConductores(string busqueda)
+        {
+            if (string.IsNullOrEmpty(busqueda))
+            {
+                dataGridViewConductores.DataSource = _conductores;
+                return;
+            }
+            var filtrados = _conductores
+                .Where(c =>
+                    c.Dni.ToString().Contains(busqueda) ||
+                    c.Nombre.Contains(busqueda, StringComparison.OrdinalIgnoreCase) ||
+                    c.Apellido.Contains(busqueda, StringComparison.OrdinalIgnoreCase))
+                .ToList();
+            dataGridViewConductores.DataSource = filtrados;
+        }
+
+        private void FiltrarReservas(string busqueda)
+        {
+            if (string.IsNullOrEmpty(busqueda))
+            {
+                dataGridViewReserva.DataSource = _reservas;
+                return;
+            }
+            var filtrados = _reservas
+                .Where(r =>
+                    r.Id.ToString().Contains(busqueda) ||
+                    r.ClienteDni.ToString().Contains(busqueda) ||
+                    r.ClienteNombre.Contains(busqueda, StringComparison.OrdinalIgnoreCase))
+                .ToList();
+
+            dataGridViewReserva.DataSource = filtrados;
+        }
         private async void buttonRecargar_Click(object sender, EventArgs e)
         {
             await CargarTodo();

@@ -77,14 +77,6 @@
             dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
             tabPage4 = new TabPage();
             dataGridViewReserva = new DataGridView();
-            ColumnId = new DataGridViewTextBoxColumn();
-            ColumnCliente = new DataGridViewTextBoxColumn();
-            ColumnVehiculo = new DataGridViewTextBoxColumn();
-            ColumnFechaRetiro = new DataGridViewTextBoxColumn();
-            ColumnFechaDevolucion = new DataGridViewTextBoxColumn();
-            ColumnPrecio = new DataGridViewTextBoxColumn();
-            ColumnSenia = new DataGridViewTextBoxColumn();
-            ColumnEstadoReserva = new DataGridViewTextBoxColumn();
             buttonEliminar = new Button();
             buttonEditar = new Button();
             buttonNuevo = new Button();
@@ -110,6 +102,14 @@
             textBoxBuscador = new TextBox();
             labelBuscarPorDni = new Label();
             buttonRecargar = new Button();
+            ColumnId = new DataGridViewTextBoxColumn();
+            ColumnCliente = new DataGridViewTextBoxColumn();
+            ColumnVehiculo = new DataGridViewTextBoxColumn();
+            ColumnFechaRetiro = new DataGridViewTextBoxColumn();
+            ColumnFechaDevolucion = new DataGridViewTextBoxColumn();
+            ColumnPrecio = new DataGridViewTextBoxColumn();
+            ColumnSenia = new DataGridViewTextBoxColumn();
+            ColumnEstadoReserva = new DataGridViewTextBoxColumn();
             tabControlAlquileres.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewAlquileres).BeginInit();
@@ -553,62 +553,6 @@
             dataGridViewReserva.TabIndex = 12;
             dataGridViewReserva.CellDoubleClick += dataGridViewReserva_CellDoubleClick;
             // 
-            // ColumnId
-            // 
-            ColumnId.DataPropertyName = "Id";
-            ColumnId.HeaderText = "ID";
-            ColumnId.Name = "ColumnId";
-            ColumnId.ReadOnly = true;
-            // 
-            // ColumnCliente
-            // 
-            ColumnCliente.DataPropertyName = "ClienteDni";
-            ColumnCliente.HeaderText = "Cliente";
-            ColumnCliente.Name = "ColumnCliente";
-            ColumnCliente.ReadOnly = true;
-            // 
-            // ColumnVehiculo
-            // 
-            ColumnVehiculo.DataPropertyName = "VehiculoPatente";
-            ColumnVehiculo.HeaderText = "Vehículo";
-            ColumnVehiculo.Name = "ColumnVehiculo";
-            ColumnVehiculo.ReadOnly = true;
-            // 
-            // ColumnFechaRetiro
-            // 
-            ColumnFechaRetiro.DataPropertyName = "FechaInicio";
-            ColumnFechaRetiro.HeaderText = "Fecha Retiro";
-            ColumnFechaRetiro.Name = "ColumnFechaRetiro";
-            ColumnFechaRetiro.ReadOnly = true;
-            // 
-            // ColumnFechaDevolucion
-            // 
-            ColumnFechaDevolucion.DataPropertyName = "FechaFin";
-            ColumnFechaDevolucion.HeaderText = "Fecha Devolución";
-            ColumnFechaDevolucion.Name = "ColumnFechaDevolucion";
-            ColumnFechaDevolucion.ReadOnly = true;
-            // 
-            // ColumnPrecio
-            // 
-            ColumnPrecio.DataPropertyName = "Precio";
-            ColumnPrecio.HeaderText = "Precio";
-            ColumnPrecio.Name = "ColumnPrecio";
-            ColumnPrecio.ReadOnly = true;
-            // 
-            // ColumnSenia
-            // 
-            ColumnSenia.DataPropertyName = "Senia";
-            ColumnSenia.HeaderText = "Seña";
-            ColumnSenia.Name = "ColumnSenia";
-            ColumnSenia.ReadOnly = true;
-            // 
-            // ColumnEstadoReserva
-            // 
-            ColumnEstadoReserva.DataPropertyName = "Estado";
-            ColumnEstadoReserva.HeaderText = "Estado";
-            ColumnEstadoReserva.Name = "ColumnEstadoReserva";
-            ColumnEstadoReserva.ReadOnly = true;
-            // 
             // buttonEliminar
             // 
             buttonEliminar.BackColor = Color.Red;
@@ -918,6 +862,62 @@
             buttonRecargar.Text = "↻";
             buttonRecargar.UseVisualStyleBackColor = true;
             buttonRecargar.Click += buttonRecargar_Click;
+            // 
+            // ColumnId
+            // 
+            ColumnId.DataPropertyName = "Id";
+            ColumnId.HeaderText = "ID";
+            ColumnId.Name = "ColumnId";
+            ColumnId.ReadOnly = true;
+            // 
+            // ColumnCliente
+            // 
+            ColumnCliente.DataPropertyName = "ClienteDni";
+            ColumnCliente.HeaderText = "Cliente";
+            ColumnCliente.Name = "ColumnCliente";
+            ColumnCliente.ReadOnly = true;
+            // 
+            // ColumnVehiculo
+            // 
+            ColumnVehiculo.DataPropertyName = "VehiculoPatente";
+            ColumnVehiculo.HeaderText = "Vehículo";
+            ColumnVehiculo.Name = "ColumnVehiculo";
+            ColumnVehiculo.ReadOnly = true;
+            // 
+            // ColumnFechaRetiro
+            // 
+            ColumnFechaRetiro.DataPropertyName = "FechaInicio";
+            ColumnFechaRetiro.HeaderText = "Fecha Retiro";
+            ColumnFechaRetiro.Name = "ColumnFechaRetiro";
+            ColumnFechaRetiro.ReadOnly = true;
+            // 
+            // ColumnFechaDevolucion
+            // 
+            ColumnFechaDevolucion.DataPropertyName = "FechaFin";
+            ColumnFechaDevolucion.HeaderText = "Fecha Devolución";
+            ColumnFechaDevolucion.Name = "ColumnFechaDevolucion";
+            ColumnFechaDevolucion.ReadOnly = true;
+            // 
+            // ColumnPrecio
+            // 
+            ColumnPrecio.DataPropertyName = "Precio";
+            ColumnPrecio.HeaderText = "Precio";
+            ColumnPrecio.Name = "ColumnPrecio";
+            ColumnPrecio.ReadOnly = true;
+            // 
+            // ColumnSenia
+            // 
+            ColumnSenia.DataPropertyName = "Senia";
+            ColumnSenia.HeaderText = "Seña";
+            ColumnSenia.Name = "ColumnSenia";
+            ColumnSenia.ReadOnly = true;
+            // 
+            // ColumnEstadoReserva
+            // 
+            ColumnEstadoReserva.DataPropertyName = "EstadoNombre";
+            ColumnEstadoReserva.HeaderText = "Estado";
+            ColumnEstadoReserva.Name = "ColumnEstadoReserva";
+            ColumnEstadoReserva.ReadOnly = true;
             // 
             // FormAlquileres
             // 
