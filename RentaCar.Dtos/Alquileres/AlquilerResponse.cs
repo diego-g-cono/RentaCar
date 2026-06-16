@@ -20,5 +20,6 @@
         public string? EstadoNombre { get; set; }
 
         public int? ReservaId { get; set; }
+        public bool Activo { get; set; }
     }
 }
