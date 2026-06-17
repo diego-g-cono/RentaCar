@@ -18,6 +18,8 @@ namespace RentaCar.Escritorio
         private bool autoCompletar = false;
         private int idSeleccionado;
         private List<ReservaResponse> _reservas;
+        private List<VehiculoResponse> _vehiculos;
+        private List<ClienteResponse> _clientes;
 
         public FormReserva()
         {
@@ -64,18 +66,18 @@ namespace RentaCar.Escritorio
 
         private async Task CargarVehiculos()
         {
-            var vehiculos = await _vehiculoServicio.ObtenerTodos();
+            _vehiculos = await _vehiculoServicio.ObtenerTodos();
 
             dataGridViewVehiculo.AutoGenerateColumns = false;
-            dataGridViewVehiculo.DataSource = vehiculos;
+            dataGridViewVehiculo.DataSource = _vehiculos;
         }
 
         private async Task CargarClientes()
         {
-            var clientes = await _clienteServicio.ObtenerTodos();
+            _clientes = await _clienteServicio.ObtenerTodos();
 
             dataGridViewCliente.AutoGenerateColumns = false;
-            dataGridViewCliente.DataSource = clientes;
+            dataGridViewCliente.DataSource = _clientes;
         }
 
         private async Task CargarReservas()
@@ -317,22 +319,70 @@ namespace RentaCar.Escritorio
 
         private void textBoxBuscador_TextChanged(object sender, EventArgs e)
         {
-            string busqueda = textBoxBuscador.Text.ToUpper().Trim();
+            string busqueda = textBoxBuscador.Text.Trim();
 
+            switch (tabControl.SelectedTab.Name)
+            {
+                case "tabPageReserva":
+                    FiltrarReservas(busqueda);
+                    break;
+
+                case "tabPageCliente":
+                    FiltrarClientes(busqueda);
+                    break;
+
+                case "tabPageVehiculo":
+                    FiltrarVehiculos(busqueda);
+                    break;
+
+            }
+
+        }
+        private void FiltrarReservas(string busqueda)
+        {
             if (string.IsNullOrEmpty(busqueda))
             {
                 dataGridViewReserva.DataSource = _reservas;
                 return;
-
             }
-
             var filtrados = _reservas
-                .Where(r => r.ClienteDni.ToString().Contains(busqueda)
-                        || r.VehiculoPatente.Contains(busqueda))
+                .Where(r =>
+                    r.Id.ToString().Contains(busqueda) ||
+                    r.ClienteDni.ToString().Contains(busqueda) ||
+                    r.ClienteNombre.Contains(busqueda, StringComparison.OrdinalIgnoreCase))
                 .ToList();
 
             dataGridViewReserva.DataSource = filtrados;
-
+        }
+        private void FiltrarVehiculos(string busqueda)
+        {
+            if (string.IsNullOrEmpty(busqueda))
+            {
+                dataGridViewVehiculo.DataSource = _vehiculos;
+                return;
+            }
+            var filtrados = _vehiculos
+                .Where(v =>
+                    v.Patente.Contains(busqueda, StringComparison.OrdinalIgnoreCase) ||
+                    v.MarcaNombre.Contains(busqueda, StringComparison.OrdinalIgnoreCase) ||
+                    v.ModeloNombre.Contains(busqueda, StringComparison.OrdinalIgnoreCase))
+                .ToList();
+            dataGridViewVehiculo.DataSource = filtrados;
+        }
+        private void FiltrarClientes(string busqueda)
+        {
+            if (string.IsNullOrEmpty(busqueda))
+            {
+                dataGridViewCliente.DataSource = _clientes;
+                return;
+            }
+            var filtrados = _clientes
+                .Where(c =>
+                    c.Dni.ToString().Contains(busqueda) ||
+                    c.Nombre.Contains(busqueda, StringComparison.OrdinalIgnoreCase) ||
+                    c.Apellido.Contains(busqueda, StringComparison.OrdinalIgnoreCase))
+                .ToList();
+            dataGridViewCliente.DataSource = filtrados;
         }
 
         private void numericUpDown_KeyPress(object sender, KeyPressEventArgs e)
