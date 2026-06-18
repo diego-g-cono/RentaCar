@@ -8,6 +8,7 @@ namespace RentaCar.Escritorio
     {
         private readonly UsuarioServicio _usuarioServicio;
         private readonly RolServicio _rolServicio;
+        private List<UsuarioResponse> _usuarios = new();
 
         private bool modoEdicion = false;
         private BindingSource _bindingUsuarios = new BindingSource();
@@ -31,12 +32,12 @@ namespace RentaCar.Escritorio
         {
             try
             {
-                var usuarios = await _usuarioServicio.ObtenerTodos();
+                _usuarios = await _usuarioServicio.ObtenerTodos();
                 var roles = await _rolServicio.ObtenerTodos();
 
-                var lista = usuarios.Select(u => new
+                var lista = _usuarios.Select(u => new
                 {
-                    u.Id, // importante aunque no se muestre
+                    u.Id,
                     u.NombreUsuario,
                     Rol = roles.FirstOrDefault(r => r.Id == u.RolId)?.Nombre ?? "Sin rol",
                     Activo = u.Activo ? "Sí" : "No"
@@ -206,6 +207,44 @@ namespace RentaCar.Escritorio
             LimpiarCampos();
             BloquearCampos(false);
             modoEdicion = false;
+        }
+        private async void textBoxBuscador_TextChanged(object sender, EventArgs e)
+        {
+            string busqueda = textBoxBuscador.Text.Trim();
+
+            var roles = await _rolServicio.ObtenerTodos();
+
+            if (string.IsNullOrEmpty(busqueda))
+            {
+                dataGridViewUsuarios.DataSource = _usuarios
+                    .Select(u => new
+                    {
+                        u.Id,
+                        u.NombreUsuario,
+                        Rol = roles.FirstOrDefault(r => r.Id == u.RolId)?.Nombre ?? "Sin rol",
+                        Activo = u.Activo ? "Sí" : "No"
+                    })
+                    .ToList();
+
+                return;
+            }
+
+            var filtrados = _usuarios
+                .Where(u =>
+                    u.NombreUsuario.Contains(busqueda, StringComparison.OrdinalIgnoreCase) ||
+                    (u.Activo ? "Sí" : "No").Contains(busqueda, StringComparison.OrdinalIgnoreCase) ||
+                    (roles.FirstOrDefault(r => r.Id == u.RolId)?.Nombre ?? "")
+                        .Contains(busqueda, StringComparison.OrdinalIgnoreCase))
+                .Select(u => new
+                {
+                    u.Id,
+                    u.NombreUsuario,
+                    Rol = roles.FirstOrDefault(r => r.Id == u.RolId)?.Nombre ?? "Sin rol",
+                    Activo = u.Activo ? "Sí" : "No"
+                })
+                .ToList();
+
+            dataGridViewUsuarios.DataSource = filtrados;
         }
 
     }

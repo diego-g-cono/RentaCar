@@ -23,6 +23,7 @@ namespace RentaCar.Escritorio
     {
         private readonly TarifaServicio _tarifaServicio;
         private readonly TipoServicio _tipoServicio;
+        private List<TarifaResponse> _tarifas = new();
 
         private bool modoEdicion = false;
         public FormTarifas()
@@ -44,10 +45,10 @@ namespace RentaCar.Escritorio
         {
             try
             {
-                var tarifas = await _tarifaServicio.ObtenerTodos();
+                _tarifas = await _tarifaServicio.ObtenerTodos();
 
                 dataGridViewTarifas.AutoGenerateColumns = false;
-                dataGridViewTarifas.DataSource = tarifas;
+                dataGridViewTarifas.DataSource = _tarifas;
             }
             catch (Exception ex)
             {
@@ -226,6 +227,23 @@ namespace RentaCar.Escritorio
 
                 MessageBox.Show("Tarifa eliminada correctamente.");
             }
+        }
+        private void textBoxBuscador_TextChanged(object sender, EventArgs e)
+        {
+            string busqueda = textBoxBuscador.Text.Trim();
+
+            if (string.IsNullOrEmpty(busqueda))
+            {
+                dataGridViewTarifas.DataSource = _tarifas;
+                return;
+            }
+            var filtrados = _tarifas
+                .Where(t =>
+                    t.TipoVehiculoNombre.ToString().Contains(busqueda))
+                .ToList();
+
+            dataGridViewTarifas.DataSource = filtrados;
+
         }
     }
 }

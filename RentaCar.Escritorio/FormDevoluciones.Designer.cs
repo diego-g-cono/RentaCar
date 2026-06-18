@@ -68,6 +68,8 @@
             dataGridViewTextBoxColumn11 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn12 = new DataGridViewTextBoxColumn();
             buttonRecargar = new Button();
+            textBoxBuscador = new TextBox();
+            labelBuscar = new Label();
             ((System.ComponentModel.ISupportInitialize)devolucionBindingSource).BeginInit();
             groupBox.SuspendLayout();
             tabControlDevoluciones.SuspendLayout();
@@ -472,12 +474,37 @@
             buttonRecargar.UseVisualStyleBackColor = true;
             buttonRecargar.Click += buttonRecargar_Click;
             // 
+            // textBoxBuscador
+            // 
+            textBoxBuscador.BackColor = Color.MidnightBlue;
+            textBoxBuscador.BorderStyle = BorderStyle.FixedSingle;
+            textBoxBuscador.Font = new Font("Verdana", 9F);
+            textBoxBuscador.ForeColor = SystemColors.ButtonFace;
+            textBoxBuscador.Location = new Point(1263, 26);
+            textBoxBuscador.Name = "textBoxBuscador";
+            textBoxBuscador.Size = new Size(121, 22);
+            textBoxBuscador.TabIndex = 43;
+            textBoxBuscador.TextChanged += textBoxBuscador_TextChanged;
+            // 
+            // labelBuscar
+            // 
+            labelBuscar.AutoSize = true;
+            labelBuscar.Font = new Font("Verdana", 9F);
+            labelBuscar.ForeColor = SystemColors.ButtonHighlight;
+            labelBuscar.Location = new Point(1203, 28);
+            labelBuscar.Name = "labelBuscar";
+            labelBuscar.Size = new Size(54, 14);
+            labelBuscar.TabIndex = 44;
+            labelBuscar.Text = "Buscar:";
+            // 
             // FormDevoluciones
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MidnightBlue;
             ClientSize = new Size(1396, 410);
+            Controls.Add(textBoxBuscador);
+            Controls.Add(labelBuscar);
             Controls.Add(buttonRecargar);
             Controls.Add(tabControlDevoluciones);
             Controls.Add(buttonCancelar);
@@ -499,6 +526,7 @@
             tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridViewAlquileres).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -537,5 +565,7 @@
         private DataGridViewCheckBoxColumn tanqueLleno;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private Button buttonRecargar;
+        private TextBox textBoxBuscador;
+        private Label labelBuscar;
     }
 }

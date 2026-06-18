@@ -1,7 +1,8 @@
-﻿using RentaCar.Dtos.Devoluciones;
+﻿using RentaCar.Dominio;
 using RentaCar.Dtos.Alquileres;
-using RentaCar.Escritorio.Servicios;
+using RentaCar.Dtos.Devoluciones;
 using RentaCar.Escritorio.Helpers;
+using RentaCar.Escritorio.Servicios;
 
 namespace RentaCar.Escritorio
 {
@@ -9,6 +10,8 @@ namespace RentaCar.Escritorio
     {
         private readonly DevolucionServicio _devolucionServicio;
         private readonly AlquilerServicio _alquilerServicio;
+        private List<AlquilerResponse> _alquileres;
+        private List<DevolucionResponse> _devoluciones;
 
         private bool modoEdicion = false;
         private bool autoCompletar = false;
@@ -33,18 +36,18 @@ namespace RentaCar.Escritorio
 
         private async Task CargarDevoluciones()
         {
-            var devoluciones = await _devolucionServicio.ObtenerTodos();
+            _devoluciones = await _devolucionServicio.ObtenerTodos();
 
             dataGridViewDevoluciones.AutoGenerateColumns = false;
-            dataGridViewDevoluciones.DataSource = devoluciones;
+            dataGridViewDevoluciones.DataSource = _devoluciones;
         }
 
         private async Task CargarAlquileres()
         {
-            var alquileres = await _alquilerServicio.ObtenerTodos();
+            _alquileres = await _alquilerServicio.ObtenerTodos();
 
             dataGridViewAlquileres.AutoGenerateColumns = false;
-            dataGridViewAlquileres.DataSource = alquileres
+            dataGridViewAlquileres.DataSource = _alquileres
                 .Where(a => a.EstadoId == 2)
                 .ToList();
         }
@@ -248,6 +251,50 @@ namespace RentaCar.Escritorio
         {
             await CargarDevoluciones();
             await CargarAlquileres();
+        }
+        private void textBoxBuscador_TextChanged(object sender, EventArgs e)
+        {
+            string busqueda = textBoxBuscador.Text.Trim();
+
+            switch (tabControlDevoluciones.SelectedTab.Name)
+            {
+                case "tabPage1":
+                    FiltrarDevoluciones(busqueda);
+                    break;
+
+                case "tabPage2":
+                    FiltrarAlquileres(busqueda);
+                    break;
+            }
+        }
+        private void FiltrarAlquileres(string busqueda)
+        {
+            if (string.IsNullOrEmpty(busqueda))
+            {
+                dataGridViewAlquileres.DataSource = _alquileres;
+                return;
+            }
+
+            var filtrados = _alquileres
+                .Where(a =>
+                    a.ClienteDni.ToString().Contains(busqueda) ||
+                    a.Id.ToString().Contains(busqueda))
+                .ToList();
+
+            dataGridViewAlquileres.DataSource = filtrados;
+        }
+        private void FiltrarDevoluciones(string busqueda)
+        {
+            if (string.IsNullOrEmpty(busqueda))
+            {
+                dataGridViewDevoluciones.DataSource = _devoluciones;
+                return;
+            }
+            var filtrados = _devoluciones
+                .Where(d =>
+                    d.AlquilerId.ToString().Contains(busqueda))
+                .ToList();
+            dataGridViewDevoluciones.DataSource = filtrados;
         }
     }
 }

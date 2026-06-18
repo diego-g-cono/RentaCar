@@ -35,6 +35,8 @@
             buttonCancelar = new Button();
             buttonGuardar = new Button();
             groupBox = new GroupBox();
+            textBoxContrasenia = new TextBox();
+            labelContrasenia = new Label();
             comboBoxActivo = new ComboBox();
             comboBoxRol = new ComboBox();
             textBoxNombreUsuario = new TextBox();
@@ -50,8 +52,8 @@
             ColumnRol = new DataGridViewTextBoxColumn();
             ColumnActivo = new DataGridViewTextBoxColumn();
             usuarioBindingSource = new BindingSource(components);
-            labelContrasenia = new Label();
-            textBoxContrasenia = new TextBox();
+            textBoxBuscador = new TextBox();
+            labelBuscarPorDni = new Label();
             groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewUsuarios).BeginInit();
             ((System.ComponentModel.ISupportInitialize)usuarioBindingSource).BeginInit();
@@ -66,7 +68,7 @@
             buttonCancelar.FlatStyle = FlatStyle.Flat;
             buttonCancelar.Font = new Font("Verdana", 9F);
             buttonCancelar.ForeColor = SystemColors.ButtonFace;
-            buttonCancelar.Location = new Point(265, 321);
+            buttonCancelar.Location = new Point(265, 305);
             buttonCancelar.Name = "buttonCancelar";
             buttonCancelar.Size = new Size(77, 33);
             buttonCancelar.TabIndex = 34;
@@ -83,7 +85,7 @@
             buttonGuardar.FlatStyle = FlatStyle.Flat;
             buttonGuardar.Font = new Font("Verdana", 9F);
             buttonGuardar.ForeColor = SystemColors.ButtonFace;
-            buttonGuardar.Location = new Point(27, 321);
+            buttonGuardar.Location = new Point(27, 305);
             buttonGuardar.Name = "buttonGuardar";
             buttonGuardar.Size = new Size(77, 33);
             buttonGuardar.TabIndex = 33;
@@ -103,12 +105,33 @@
             groupBox.Controls.Add(labelApellido);
             groupBox.Font = new Font("Verdana", 9F, FontStyle.Bold);
             groupBox.ForeColor = SystemColors.ButtonFace;
-            groupBox.Location = new Point(27, 86);
+            groupBox.Location = new Point(27, 64);
             groupBox.Name = "groupBox";
             groupBox.Size = new Size(315, 220);
             groupBox.TabIndex = 32;
             groupBox.TabStop = false;
             groupBox.Text = "Datos Usuario";
+            // 
+            // textBoxContrasenia
+            // 
+            textBoxContrasenia.BackColor = Color.MidnightBlue;
+            textBoxContrasenia.BorderStyle = BorderStyle.FixedSingle;
+            textBoxContrasenia.Font = new Font("Verdana", 9F);
+            textBoxContrasenia.ForeColor = SystemColors.ButtonFace;
+            textBoxContrasenia.Location = new Point(162, 80);
+            textBoxContrasenia.Name = "textBoxContrasenia";
+            textBoxContrasenia.Size = new Size(121, 22);
+            textBoxContrasenia.TabIndex = 31;
+            // 
+            // labelContrasenia
+            // 
+            labelContrasenia.AutoSize = true;
+            labelContrasenia.Font = new Font("Verdana", 9F);
+            labelContrasenia.Location = new Point(24, 82);
+            labelContrasenia.Name = "labelContrasenia";
+            labelContrasenia.Size = new Size(86, 14);
+            labelContrasenia.TabIndex = 30;
+            labelContrasenia.Text = "Contraseña:";
             // 
             // comboBoxActivo
             // 
@@ -280,26 +303,28 @@
             // 
             usuarioBindingSource.DataSource = typeof(Dominio.Usuario);
             // 
-            // labelContrasenia
+            // textBoxBuscador
             // 
-            labelContrasenia.AutoSize = true;
-            labelContrasenia.Font = new Font("Verdana", 9F);
-            labelContrasenia.Location = new Point(24, 82);
-            labelContrasenia.Name = "labelContrasenia";
-            labelContrasenia.Size = new Size(86, 14);
-            labelContrasenia.TabIndex = 30;
-            labelContrasenia.Text = "Contraseña:";
+            textBoxBuscador.BackColor = Color.MidnightBlue;
+            textBoxBuscador.BorderStyle = BorderStyle.FixedSingle;
+            textBoxBuscador.Font = new Font("Verdana", 9F);
+            textBoxBuscador.ForeColor = SystemColors.ButtonFace;
+            textBoxBuscador.Location = new Point(821, 28);
+            textBoxBuscador.Name = "textBoxBuscador";
+            textBoxBuscador.Size = new Size(121, 22);
+            textBoxBuscador.TabIndex = 40;
+            textBoxBuscador.TextChanged += textBoxBuscador_TextChanged;
             // 
-            // textBoxContrasenia
+            // labelBuscarPorDni
             // 
-            textBoxContrasenia.BackColor = Color.MidnightBlue;
-            textBoxContrasenia.BorderStyle = BorderStyle.FixedSingle;
-            textBoxContrasenia.Font = new Font("Verdana", 9F);
-            textBoxContrasenia.ForeColor = SystemColors.ButtonFace;
-            textBoxContrasenia.Location = new Point(162, 80);
-            textBoxContrasenia.Name = "textBoxContrasenia";
-            textBoxContrasenia.Size = new Size(121, 22);
-            textBoxContrasenia.TabIndex = 31;
+            labelBuscarPorDni.AutoSize = true;
+            labelBuscarPorDni.Font = new Font("Verdana", 9F);
+            labelBuscarPorDni.ForeColor = SystemColors.ButtonHighlight;
+            labelBuscarPorDni.Location = new Point(761, 30);
+            labelBuscarPorDni.Name = "labelBuscarPorDni";
+            labelBuscarPorDni.Size = new Size(54, 14);
+            labelBuscarPorDni.TabIndex = 41;
+            labelBuscarPorDni.Text = "Buscar:";
             // 
             // FormUsuarios
             // 
@@ -307,6 +332,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MidnightBlue;
             ClientSize = new Size(1009, 458);
+            Controls.Add(textBoxBuscador);
+            Controls.Add(labelBuscarPorDni);
             Controls.Add(dataGridViewUsuarios);
             Controls.Add(buttonCancelar);
             Controls.Add(buttonGuardar);
@@ -323,6 +350,7 @@
             ((System.ComponentModel.ISupportInitialize)dataGridViewUsuarios).EndInit();
             ((System.ComponentModel.ISupportInitialize)usuarioBindingSource).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -350,5 +378,7 @@
         private Label labelRol;
         private TextBox textBoxContrasenia;
         private Label labelActivo;
+        private TextBox textBoxBuscador;
+        private Label labelBuscarPorDni;
     }
 }
