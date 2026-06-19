@@ -25,17 +25,35 @@ namespace RentaCar.Escritorio.Servicios
 
         public async Task Agregar(UsuarioCreateRequest request)
         {
-            await _http.PostAsJsonAsync("usuarios", request);
+            var response = await _http.PostAsJsonAsync("usuarios", request);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                var mensaje = await response.Content.ReadAsStringAsync();
+                throw new Exception(mensaje);
+            }
         }
 
         public async Task Actualizar(int id, UsuarioUpdateRequest request)
         {
-            await _http.PutAsJsonAsync($"usuarios/{id}", request);
+            var response = await _http.PutAsJsonAsync($"usuarios/{id}", request);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                var mensaje = await response.Content.ReadAsStringAsync();
+                throw new Exception(mensaje);
+            }
         }
 
         public async Task Eliminar(int id)
         {
-            await _http.DeleteAsync($"usuarios/{id}");
+            var response = await _http.DeleteAsync($"usuarios/{id}");
+
+            if (!response.IsSuccessStatusCode)
+            {
+                var mensaje = await response.Content.ReadAsStringAsync();
+                throw new Exception(mensaje);
+            }
         }
 
         public async Task<LoginResponse?> Login(LoginRequest request)

@@ -54,6 +54,7 @@
             usuarioBindingSource = new BindingSource(components);
             textBoxBuscador = new TextBox();
             labelBuscarPorDni = new Label();
+            buttonRecargar = new Button();
             groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewUsuarios).BeginInit();
             ((System.ComponentModel.ISupportInitialize)usuarioBindingSource).BeginInit();
@@ -326,12 +327,25 @@
             labelBuscarPorDni.TabIndex = 41;
             labelBuscarPorDni.Text = "Buscar:";
             // 
+            // buttonRecargar
+            // 
+            buttonRecargar.FlatStyle = FlatStyle.System;
+            buttonRecargar.Font = new Font("Segoe UI", 16F);
+            buttonRecargar.Location = new Point(395, 24);
+            buttonRecargar.Name = "buttonRecargar";
+            buttonRecargar.Size = new Size(34, 30);
+            buttonRecargar.TabIndex = 44;
+            buttonRecargar.Text = "↻";
+            buttonRecargar.UseVisualStyleBackColor = true;
+            buttonRecargar.Click += buttonRecargar_Click;
+            // 
             // FormUsuarios
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MidnightBlue;
             ClientSize = new Size(1009, 458);
+            Controls.Add(buttonRecargar);
             Controls.Add(textBoxBuscador);
             Controls.Add(labelBuscarPorDni);
             Controls.Add(dataGridViewUsuarios);
@@ -380,5 +394,6 @@
         private Label labelActivo;
         private TextBox textBoxBuscador;
         private Label labelBuscarPorDni;
+        private Button buttonRecargar;
     }
 }

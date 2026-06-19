@@ -102,10 +102,9 @@ namespace RentaCar.Escritorio
                 return;
             }
 
-            var usuarios = (List<UsuarioResponse>)await _usuarioServicio.ObtenerTodos();
             var id = (int)dataGridViewUsuarios.SelectedRows[0].Cells["IdColumn"].Value;
 
-            var usuario = usuarios.First(u => u.Id == id);
+            var usuario = _usuarios.First(u => u.Id == id);
 
             textBoxNombreUsuario.Text = usuario.NombreUsuario;
             textBoxContrasenia.Text = "";
@@ -247,5 +246,10 @@ namespace RentaCar.Escritorio
             dataGridViewUsuarios.DataSource = filtrados;
         }
 
+        private async void buttonRecargar_Click(object sender, EventArgs e)
+        {
+            await CargarRoles();
+            await CargarUsuarios();
+        }
     }
 }

@@ -169,7 +169,7 @@ namespace RentaCar.Escritorio
                     {
                         PrecioDia = precioDia,
                         PrecioSemana = precioSemana,
-                        TipoVehiculoId = ((TipoResponse)comboBoxVehiculo.SelectedValue).Id,
+                        TipoVehiculoId = (int)comboBoxVehiculo.SelectedValue,
                         Activo = true
                     };
 
@@ -204,7 +204,7 @@ namespace RentaCar.Escritorio
 
         private async void buttonEliminar_Click(object sender, EventArgs e)
         {
-            if(dataGridViewTarifas.SelectedRows.Count == 0)
+            if (dataGridViewTarifas.SelectedRows.Count == 0)
             {
                 MessageBox.Show("No seleccionaste ninguna tarifa.");
                 return;
@@ -244,6 +244,11 @@ namespace RentaCar.Escritorio
 
             dataGridViewTarifas.DataSource = filtrados;
 
+        }
+
+        private async void buttonRecargar_Click(object sender, EventArgs e)
+        {
+            await CargarTarifas();
         }
     }
 }
