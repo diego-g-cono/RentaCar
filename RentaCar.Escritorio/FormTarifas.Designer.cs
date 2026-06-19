@@ -52,6 +52,7 @@
             NombreVehiculo = new DataGridViewTextBoxColumn();
             textBoxBuscador = new TextBox();
             labelBuscarPorDni = new Label();
+            buttonRecargar = new Button();
             groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)tarifaBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewTarifas).BeginInit();
@@ -128,6 +129,7 @@
             // comboBoxVehiculo
             // 
             comboBoxVehiculo.BackColor = Color.MidnightBlue;
+            comboBoxVehiculo.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxVehiculo.ForeColor = SystemColors.ButtonFace;
             comboBoxVehiculo.FormattingEnabled = true;
             comboBoxVehiculo.Location = new Point(137, 120);
@@ -143,6 +145,7 @@
             textBoxPrecioSemana.ForeColor = SystemColors.ButtonFace;
             textBoxPrecioSemana.Location = new Point(138, 76);
             textBoxPrecioSemana.Name = "textBoxPrecioSemana";
+            textBoxPrecioSemana.ShortcutsEnabled = false;
             textBoxPrecioSemana.Size = new Size(121, 22);
             textBoxPrecioSemana.TabIndex = 18;
             // 
@@ -154,6 +157,7 @@
             textBoxPrecioDia.ForeColor = SystemColors.ButtonFace;
             textBoxPrecioDia.Location = new Point(138, 34);
             textBoxPrecioDia.Name = "textBoxPrecioDia";
+            textBoxPrecioDia.ShortcutsEnabled = false;
             textBoxPrecioDia.Size = new Size(121, 22);
             textBoxPrecioDia.TabIndex = 17;
             // 
@@ -310,12 +314,25 @@
             labelBuscarPorDni.TabIndex = 39;
             labelBuscarPorDni.Text = "Buscar:";
             // 
+            // buttonRecargar
+            // 
+            buttonRecargar.FlatStyle = FlatStyle.System;
+            buttonRecargar.Font = new Font("Segoe UI", 16F);
+            buttonRecargar.Location = new Point(406, 25);
+            buttonRecargar.Name = "buttonRecargar";
+            buttonRecargar.Size = new Size(34, 30);
+            buttonRecargar.TabIndex = 41;
+            buttonRecargar.Text = "↻";
+            buttonRecargar.UseVisualStyleBackColor = true;
+            buttonRecargar.Click += buttonRecargar_Click;
+            // 
             // FormTarifas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MidnightBlue;
             ClientSize = new Size(951, 388);
+            Controls.Add(buttonRecargar);
             Controls.Add(textBoxBuscador);
             Controls.Add(labelBuscarPorDni);
             Controls.Add(dataGridViewTarifas);
@@ -359,5 +376,6 @@
         private DataGridViewTextBoxColumn NombreVehiculo;
         private TextBox textBoxBuscador;
         private Label labelBuscarPorDni;
+        private Button buttonRecargar;
     }
 }

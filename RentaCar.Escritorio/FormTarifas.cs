@@ -1,6 +1,7 @@
 ﻿using RentaCar.Dominio;
 using RentaCar.Dtos.Tarifas;
 using RentaCar.Dtos.Tipo;
+using RentaCar.Escritorio.Helpers;
 using RentaCar.Escritorio.Servicios;
 using RentaCar.Infraestructura;
 using RentaCar.Infraestructura.Data;
@@ -36,6 +37,7 @@ namespace RentaCar.Escritorio
         private async void FormTarifas_Load(object sender, EventArgs e)
         {
             BloquearCampos(false);
+            BloquearBotones(false);
 
             await CargarComboBox();
             await CargarTarifas();
@@ -79,6 +81,12 @@ namespace RentaCar.Escritorio
             comboBoxVehiculo.Enabled = estado;
         }
 
+        private void BloquearBotones(bool estado)
+        {
+            buttonGuardar.Enabled = estado;
+            buttonCancelar.Enabled = estado;
+        }
+
 
 
         private void buttonNuevo_Click(object sender, EventArgs e)
@@ -86,16 +94,17 @@ namespace RentaCar.Escritorio
             BloquearCampos(true);
             LimpiarCampos();
             modoEdicion = false;
+            BloquearBotones(true);
         }
 
         private void buttonEditar_Click(object sender, EventArgs e)
         {
             if (dataGridViewTarifas.SelectedRows.Count == 0)
             {
-                MessageBox.Show("No seleccionaste ninguna tarifa.");
+                //MessageBox.Show("No seleccionaste ninguna tarifa.");
+                Dialogos.Error(Mensajes.SeleccioneEntidad("tarifa"));
                 return;
             }
-            BloquearCampos(true);
 
             TarifaResponse tarifa =
                 (TarifaResponse)dataGridViewTarifas.SelectedRows[0].DataBoundItem;
@@ -107,43 +116,48 @@ namespace RentaCar.Escritorio
 
             modoEdicion = true;
             BloquearCampos(true);
+            BloquearBotones(true);
         }
 
         private async void buttonGuardar_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(textBoxPrecioDia.Text))
             {
-                MessageBox.Show("El precio por día es obligatorio.");
+                //MessageBox.Show("El precio por día es obligatorio.");
+                Dialogos.Error(Mensajes.CampoVacio("precio por día"));
                 return;
             }
 
             if (!decimal.TryParse(textBoxPrecioDia.Text, out decimal precioDia))
             {
-                MessageBox.Show("El precio por día debe ser numérico.");
+                Dialogos.Error(Mensajes.FormatoInvalido("precio por día"));
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(textBoxPrecioSemana.Text))
             {
-                MessageBox.Show("El precio por semana es obligatorio.");
+                Dialogos.Error(Mensajes.CampoVacio("precio por semana"));
                 return;
             }
 
             if (!decimal.TryParse(textBoxPrecioSemana.Text, out decimal precioSemana))
             {
-                MessageBox.Show("El precio por semana debe ser numérico.");
+                Dialogos.Error(Mensajes.FormatoInvalido("precio por semana"));
                 return;
             }
 
             if (comboBoxVehiculo.SelectedValue == null)
             {
-                MessageBox.Show("Debe seleccionar un tipo de vehículo.");
+                Dialogos.Error(Mensajes.SeleccioneEntidad("tipo de vehículo"));
                 return;
             }
 
-            var confirm = MessageBox.Show("¿Confirma que desea guardar esta tarifa?", "Confirmar", MessageBoxButtons.YesNo);
+            //var confirm = MessageBox.Show("¿Confirma que desea guardar esta tarifa?", "Confirmar", MessageBoxButtons.YesNo);
 
-            if (confirm != DialogResult.Yes)
+            // if (confirm != DialogResult.Yes)
+            //    return;
+
+            if (!Dialogos.Confirmar(Mensajes.ConfirmarGuardado("la tarifa")))
                 return;
 
             try
@@ -162,6 +176,7 @@ namespace RentaCar.Escritorio
                     };
 
                     await _tarifaServicio.Actualizar(tarifa.Id, request);
+                    Dialogos.Info(Mensajes.ExitoEdicion("Tarifa"));
                 }
                 else
                 {
@@ -169,63 +184,70 @@ namespace RentaCar.Escritorio
                     {
                         PrecioDia = precioDia,
                         PrecioSemana = precioSemana,
-                        TipoVehiculoId = ((TipoResponse)comboBoxVehiculo.SelectedValue).Id,
+                        //TipoVehiculoId = ((TipoResponse)comboBoxVehiculo.SelectedValue).Id,
+                        TipoVehiculoId = (int)comboBoxVehiculo.SelectedValue,
                         Activo = true
                     };
 
                     await _tarifaServicio.Agregar(request);
+                    Dialogos.Info(Mensajes.ExitoGuardado("Tarifa"));
                 }
 
                 await CargarTarifas();
 
                 LimpiarCampos();
-
                 BloquearCampos(false);
-
                 modoEdicion = false;
+                BloquearBotones(false);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
 
-            CargarTarifas();
-            CargarComboBox();
-            LimpiarCampos();
-            BloquearCampos(false);
+            //CargarTarifas();
+            //CargarComboBox();
+            //LimpiarCampos();
+            //BloquearCampos(false);
+            //BloquearBotones(false);
         }
 
         private void buttonCancelar_Click(object sender, EventArgs e)
         {
+            if (!Dialogos.Confirmar(Mensajes.ConfirmarCancelacion()))
+                return;
+
+
             LimpiarCampos();
             BloquearCampos(false);
             modoEdicion = false;
+            BloquearBotones(false);
         }
 
         private async void buttonEliminar_Click(object sender, EventArgs e)
         {
-            if(dataGridViewTarifas.SelectedRows.Count == 0)
+            if (dataGridViewTarifas.SelectedRows.Count == 0)
             {
-                MessageBox.Show("No seleccionaste ninguna tarifa.");
+                Dialogos.Error(Mensajes.SeleccioneEntidad("tarifa"));
                 return;
             }
 
             TarifaResponse tarifa =
                         (TarifaResponse)dataGridViewTarifas.SelectedRows[0].DataBoundItem;
 
-            var confirm = MessageBox.Show("¿Confirma que desea eliminar esta tarifa?", "Confirmar", MessageBoxButtons.YesNo);
+            //var confirm = MessageBox.Show("¿Confirma que desea eliminar esta tarifa?", "Confirmar", MessageBoxButtons.YesNo);
 
-            if (confirm == DialogResult.Yes)
+            if (Dialogos.Confirmar(Mensajes.ConfirmarEliminacion("la tarifa")))
             {
                 await _tarifaServicio.Eliminar(tarifa.Id);
 
                 await CargarTarifas();
 
                 LimpiarCampos();
-
                 BloquearCampos(false);
+                BloquearBotones(false);
 
-                MessageBox.Show("Tarifa eliminada correctamente.");
+                Dialogos.Info(Mensajes.ExitoEliminacion("Tarifa"));
             }
         }
         private void textBoxBuscador_TextChanged(object sender, EventArgs e)
@@ -244,6 +266,11 @@ namespace RentaCar.Escritorio
 
             dataGridViewTarifas.DataSource = filtrados;
 
+        }
+
+        private async void buttonRecargar_Click(object sender, EventArgs e)
+        {
+            await CargarTarifas();
         }
     }
 }
