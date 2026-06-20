@@ -23,6 +23,8 @@ namespace RentaCar.Escritorio
         private async void FormUsuarios_Load(object sender, EventArgs e)
         {
             BloquearCampos(false);
+            BloquearBotones(false);
+
             await CargarRoles();
             await CargarUsuarios();
         }
@@ -75,6 +77,7 @@ namespace RentaCar.Escritorio
         private void BloquearCampos(bool estado)
         {
             textBoxNombreUsuario.Enabled = estado;
+            textBoxContrasenia.Enabled = estado;
             comboBoxRol.Enabled = estado;
             comboBoxActivo.Enabled = estado;
         }
@@ -90,8 +93,11 @@ namespace RentaCar.Escritorio
         private void buttonNuevo_Click(object sender, EventArgs e)
         {
             modoEdicion = false;
-            BloquearCampos(true);
+
             LimpiarCampos();
+
+            BloquearCampos(true);
+            BloquearBotones(true);
         }
 
         private async void buttonEditar_Click(object sender, EventArgs e)
@@ -112,7 +118,9 @@ namespace RentaCar.Escritorio
             comboBoxActivo.SelectedValue = usuario.Activo;
 
             modoEdicion = true;
+
             BloquearCampos(true);
+            BloquearBotones(true);
         }
 
         private async void buttonGuardar_Click(object sender, EventArgs e)
@@ -163,8 +171,13 @@ namespace RentaCar.Escritorio
                 }
 
                 await CargarUsuarios();
+
                 LimpiarCampos();
+
                 BloquearCampos(false);
+                BloquearBotones(false);
+
+                modoEdicion = false;
             }
             catch (Exception ex)
             {
@@ -192,8 +205,13 @@ namespace RentaCar.Escritorio
                 await _usuarioServicio.Eliminar(id);
 
                 await CargarUsuarios();
+
                 LimpiarCampos();
+
                 BloquearCampos(false);
+                BloquearBotones(false);
+
+                modoEdicion = false;
             }
             catch (Exception ex)
             {
@@ -203,8 +221,14 @@ namespace RentaCar.Escritorio
 
         private void buttonCancelar_Click(object sender, EventArgs e)
         {
+            if (!Dialogos.Confirmar(Mensajes.ConfirmarCancelacion()))
+                return;
+
             LimpiarCampos();
+
             BloquearCampos(false);
+            BloquearBotones(false);
+
             modoEdicion = false;
         }
         private async void textBoxBuscador_TextChanged(object sender, EventArgs e)
@@ -245,7 +269,11 @@ namespace RentaCar.Escritorio
 
             dataGridViewUsuarios.DataSource = filtrados;
         }
-
+        private void BloquearBotones(bool estado)
+        {
+            buttonGuardar.Enabled = estado;
+            buttonCancelar.Enabled = estado;
+        }
         private async void buttonRecargar_Click(object sender, EventArgs e)
         {
             await CargarRoles();
