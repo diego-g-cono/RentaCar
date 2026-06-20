@@ -24,6 +24,7 @@ namespace RentaCar.Infraestructura.Data
             return _context.Reservas
                 .Include(r => r.Cliente)
                 .Include(r => r.Estado)
+                .Include(r => r.Seguro)
 
                 .Include(r => r.Vehiculo)
                     .ThenInclude(v => v.Marca)

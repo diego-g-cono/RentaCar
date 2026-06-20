@@ -19,6 +19,9 @@ namespace RentaCar.Dominio
         public Cliente? Cliente { get; set; }
         public EstadoAlquiler? Estado { get; set; }
         public Reserva? Reserva { get; set; }
+        public int SeguroId { get; set; }
+
+        public Seguro Seguro { get; set; }
 
         public bool Activo { get; set; } = true;
 

@@ -55,5 +55,20 @@ namespace RentaCar.Escritorio.Servicios
                 throw new Exception(error);
             }
         }
+        public async Task<decimal> CalcularPrecio(
+    string patente,
+    DateOnly inicio,
+    DateOnly fin,
+    int seguroId)
+        {
+            string url =
+                $"reservas/calcular-precio" +
+                $"?patente={patente}" +
+                $"&inicio={inicio:yyyy-MM-dd}" +
+                $"&fin={fin:yyyy-MM-dd}" +
+                $"&seguroId={seguroId}";
+
+            return await _http.GetFromJsonAsync<decimal>(url);
+        }
     }
 }

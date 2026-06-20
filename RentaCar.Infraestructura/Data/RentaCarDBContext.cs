@@ -109,6 +109,7 @@ namespace RentaCar.Infraestructura.Data
                 entity.Property(r => r.Senia).HasColumnName("senia");
                 entity.Property(r => r.Precio).HasColumnName("precio");
                 entity.Property(r => r.Activo).HasColumnName("activo");
+                entity.Property(r => r.SeguroId).HasColumnName("seguro_id");
             });
 
             modelBuilder.Entity<Marca>(entity =>
@@ -221,6 +222,12 @@ namespace RentaCar.Infraestructura.Data
                 entity.Property(a => a.VehiculoPatente)
                     .HasColumnName("vehiculo_patente");
 
+                entity.Property(a => a.SeguroId)
+                    .HasColumnName("seguro_id");
+
+                entity.Property(a => a.Activo)
+                    .HasColumnName("activo");
+
                 entity.HasOne(a => a.Conductor)
                     .WithMany()
                     .HasForeignKey(a => a.ConductorDni)
@@ -248,9 +255,13 @@ namespace RentaCar.Infraestructura.Data
                     .WithMany()
                     .HasForeignKey(a => a.ReservaId)
                     .OnDelete(DeleteBehavior.SetNull);
+                entity.HasOne(a => a.Seguro)
+                    .WithMany()
+                    .HasForeignKey(a => a.SeguroId)
+                    .OnDelete(DeleteBehavior.Restrict);
 
-                entity.Property(a => a.Activo)
-                    .HasColumnName("activo");
+                
+
             });
 
             modelBuilder.Entity<Devolucion>(entity =>

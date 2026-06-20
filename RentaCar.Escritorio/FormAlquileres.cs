@@ -18,6 +18,7 @@ namespace RentaCar.Escritorio
         private readonly ConductorServicio _conductorServicio;
         private readonly ReservaServicio _reservaServicio;
         private readonly EstadoAlquilerServicio _estadoServicio;
+        private readonly SeguroServicio _seguroServicio;
         private List<AlquilerResponse> _alquileres;
         private List<VehiculoResponse> _vehiculos;
         private List<ConductorResponse> _conductores;
@@ -38,6 +39,7 @@ namespace RentaCar.Escritorio
             _conductorServicio = new ConductorServicio();
             _reservaServicio = new ReservaServicio();
             _estadoServicio = new EstadoAlquilerServicio();
+            _seguroServicio = new SeguroServicio();
         }
 
         private async void FormAlquileres_Load(object sender, EventArgs e)
@@ -47,6 +49,9 @@ namespace RentaCar.Escritorio
             BloquearBotones(false);
             dtpFechaInicio.MinDate = DateTime.Today;
             dtpFechaDevolucion.MinDate = DateTime.Today.AddDays(1);
+
+            radioButtonSReserva.Checked = true;
+            CambiarModoAlquiler();
         }
 
         private void BloquearCampos(bool estado)
@@ -73,6 +78,7 @@ namespace RentaCar.Escritorio
             textBoxDniCond.Clear();
             textBoxReserva.Clear();
             comboBoxEstado.SelectedIndex = -1;
+            comboBoxSeguro.SelectedIndex = -1;
         }
 
         private async Task CargarTodo()
@@ -102,6 +108,13 @@ namespace RentaCar.Escritorio
             comboBoxEstado.DisplayMember = "Nombre";
             comboBoxEstado.ValueMember = "Id";
             comboBoxEstado.SelectedIndex = -1;
+
+            var seguros = await _seguroServicio.ObtenerTodos();
+
+            comboBoxSeguro.DataSource = seguros.Where(s => s.Activo).ToList();
+            comboBoxSeguro.DisplayMember = "Nombre";
+            comboBoxSeguro.ValueMember = "Id";
+            comboBoxSeguro.SelectedIndex = -1;
         }
 
         private void buttonNuevo_Click(object sender, EventArgs e)
@@ -148,27 +161,36 @@ namespace RentaCar.Escritorio
 
         private async void buttonGuardar_Click(object sender, EventArgs e)
         {
-
             if (string.IsNullOrWhiteSpace(textBoxVehiculo.Text))
             {
                 Dialogos.Error(Mensajes.SeleccioneEntidad("vehículo"));
                 return;
             }
+
             if (string.IsNullOrWhiteSpace(textBoxDniCliente.Text))
             {
                 Dialogos.Error(Mensajes.SeleccioneEntidad("cliente"));
                 return;
             }
+
             if (string.IsNullOrWhiteSpace(textBoxDniCond.Text))
             {
                 Dialogos.Error(Mensajes.SeleccioneEntidad("conductor"));
                 return;
             }
+
             if (comboBoxEstado.SelectedIndex == -1)
             {
                 Dialogos.Error(Mensajes.SeleccioneEntidad("estado"));
                 return;
             }
+
+            if (comboBoxSeguro.SelectedValue == null)
+            {
+                Dialogos.Error(Mensajes.SeleccioneEntidad("seguro"));
+                return;
+            }
+
             if (dtpFechaDevolucion.Value < dtpFechaInicio.Value)
             {
                 Dialogos.Error(Mensajes.FechaInicioMayorFechaFin);
@@ -182,6 +204,13 @@ namespace RentaCar.Escritorio
 
             try
             {
+                int? reservaId = null;
+
+                if (radioButtonCReserva.Checked)
+                {
+                    reservaId = int.Parse(textBoxReserva.Text);
+                }
+
                 if (modoEdicion)
                 {
                     var update = new AlquilerUpdateRequest
@@ -192,11 +221,13 @@ namespace RentaCar.Escritorio
                         Precio = numericUpDownPrecio.Value,
                         ClienteDni = int.Parse(textBoxDniCliente.Text),
                         ConductorDni = int.Parse(textBoxDniCond.Text),
-                        ReservaId = string.IsNullOrWhiteSpace(textBoxReserva.Text) ? null : int.Parse(textBoxReserva.Text),
-                        EstadoId = (int)comboBoxEstado.SelectedValue
+                        ReservaId = reservaId,
+                        EstadoId = (int)comboBoxEstado.SelectedValue,
+                        SeguroId = (int)comboBoxSeguro.SelectedValue
                     };
 
                     await _alquilerServicio.Actualizar(alquilerIdSeleccionado, update);
+
                     Dialogos.Info(Mensajes.ExitoEdicion("Alquiler"));
                 }
                 else
@@ -209,26 +240,30 @@ namespace RentaCar.Escritorio
                         Precio = numericUpDownPrecio.Value,
                         ClienteDni = int.Parse(textBoxDniCliente.Text),
                         ConductorDni = int.Parse(textBoxDniCond.Text),
-                        ReservaId = string.IsNullOrWhiteSpace(textBoxReserva.Text) ? null : int.Parse(textBoxReserva.Text),
-                        EstadoId = (int)comboBoxEstado.SelectedValue
+                        ReservaId = reservaId,
+                        EstadoId = (int)comboBoxEstado.SelectedValue,
+                        SeguroId = (int)comboBoxSeguro.SelectedValue
                     };
 
                     await _alquilerServicio.Agregar(create);
+
                     Dialogos.Info(Mensajes.ExitoGuardado("Alquiler"));
                 }
 
                 await CargarTodo();
+
                 LimpiarCampos();
+
                 BloquearCampos(false);
                 BloquearBotones(false);
-                autoCompletar = false;
 
+                autoCompletar = false;
+                modoEdicion = false;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-
         }
 
 
@@ -258,10 +293,17 @@ namespace RentaCar.Escritorio
             Dialogos.Info(Mensajes.ExitoEliminacion("Alquiler"));
         }
 
-        private void dataGridViewVehiculos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private async void dataGridViewVehiculos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && autoCompletar)
-                textBoxVehiculo.Text = dataGridViewVehiculos.Rows[e.RowIndex].Cells["ColumnPatente"].Value.ToString();
+            {
+                textBoxVehiculo.Text =
+                    dataGridViewVehiculos.Rows[e.RowIndex]
+                    .Cells["ColumnPatente"]
+                    .Value.ToString();
+
+                await ActualizarPrecio();
+            }
         }
 
         private void dataGridViewClientes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -276,10 +318,32 @@ namespace RentaCar.Escritorio
                 textBoxDniCond.Text = dataGridViewConductores.Rows[e.RowIndex].Cells["ColumnDniCond"].Value.ToString();
         }
 
-        private void dataGridViewReserva_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewReserva_CellDoubleClick(object sender,
+    DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && autoCompletar)
-                textBoxReserva.Text = dataGridViewReserva.Rows[e.RowIndex].Cells["ColumnId"].Value.ToString();
+            if (e.RowIndex < 0 || !autoCompletar)
+                return;
+
+            var reserva = (ReservaResponse)
+                dataGridViewReserva.Rows[e.RowIndex].DataBoundItem;
+
+            textBoxReserva.Text = reserva.Id.ToString();
+
+            textBoxVehiculo.Text = reserva.VehiculoPatente;
+            textBoxDniCliente.Text = reserva.ClienteDni.ToString();
+
+            dtpFechaInicio.Value =
+                reserva.FechaInicio.ToDateTime(TimeOnly.MinValue);
+
+            dtpFechaDevolucion.Value =
+                reserva.FechaFin.ToDateTime(TimeOnly.MinValue);
+
+            comboBoxSeguro.SelectedValue = reserva.SeguroId;
+
+            numericUpDownPrecio.Value = reserva.Precio;
+
+            textBoxSaldo.Text =
+                (reserva.Precio - reserva.Senia).ToString("0.00");
         }
 
         private void buttonCancelar_Click(object sender, EventArgs e)
@@ -405,6 +469,75 @@ namespace RentaCar.Escritorio
         private async void buttonRecargar_Click(object sender, EventArgs e)
         {
             await CargarTodo();
+        }
+        private void CambiarModoAlquiler()
+        {
+            bool conReserva = radioButtonCReserva.Checked;
+
+            // campos editables
+            textBoxDniCond.Enabled = true;
+            comboBoxEstado.Enabled = true;
+
+            // reserva
+            textBoxReserva.Enabled = conReserva;
+
+            // datos que vienen de la reserva
+            textBoxVehiculo.Enabled = !conReserva;
+            textBoxDniCliente.Enabled = !conReserva;
+            dtpFechaInicio.Enabled = !conReserva;
+            dtpFechaDevolucion.Enabled = !conReserva;
+            comboBoxSeguro.Enabled = !conReserva;
+
+            numericUpDownPrecio.Enabled = false;
+            textBoxSaldo.Enabled = false;
+
+            if (!conReserva)
+                textBoxReserva.Clear();
+        }
+        private void radioButtonSReserva_CheckedChanged(object sender, EventArgs e)
+        {
+            CambiarModoAlquiler();
+        }
+
+        private void radioButtonCReserva_CheckedChanged(object sender, EventArgs e)
+        {
+            CambiarModoAlquiler();
+        }
+        private async Task ActualizarPrecio()
+        {
+            if (radioButtonCReserva.Checked)
+                return;
+
+            if (string.IsNullOrWhiteSpace(textBoxVehiculo.Text))
+                return;
+
+            if (comboBoxSeguro.SelectedValue == null)
+                return;
+
+            decimal precio =
+                await _reservaServicio.CalcularPrecio(
+                    textBoxVehiculo.Text,
+                    DateOnly.FromDateTime(dtpFechaInicio.Value),
+                    DateOnly.FromDateTime(dtpFechaDevolucion.Value),
+                    (int)comboBoxSeguro.SelectedValue);
+
+            numericUpDownPrecio.Value = precio;
+
+            textBoxSaldo.Text = precio.ToString("0.00");
+        }
+        private async void comboBoxSeguro_SelectedIndexChanged(object sender,
+    EventArgs e)
+        {
+            await ActualizarPrecio();
+        }
+        private async void dtpFechaInicio_ValueChanged(object sender, EventArgs e)
+        {
+            await ActualizarPrecio();
+        }
+
+        private async void dtpFechaDevolucion_ValueChanged(object sender, EventArgs e)
+        {
+            await ActualizarPrecio();
         }
     }
 }

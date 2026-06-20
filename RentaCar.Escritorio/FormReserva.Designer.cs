@@ -39,9 +39,11 @@
             buttonEditar = new Button();
             buttonNuevo = new Button();
             groupBox = new GroupBox();
+            textBoxPrecio = new TextBox();
+            comboBoxSeguro = new ComboBox();
+            labelSeguro = new Label();
             comboBoxEstado = new ComboBox();
             numericUpDownSenia = new NumericUpDown();
-            numericUpDownPrecio = new NumericUpDown();
             dtpFechaDevolucion = new DateTimePicker();
             dtpFechaRetiro = new DateTimePicker();
             labelEstado = new Label();
@@ -60,36 +62,36 @@
             buttonRecargar = new Button();
             tabPageVehiculo = new TabPage();
             dataGridViewVehiculo = new DataGridView();
-            ColumnEstado = new DataGridViewTextBoxColumn();
-            ColumnKm = new DataGridViewTextBoxColumn();
-            ColumnCombustible = new DataGridViewTextBoxColumn();
-            ColumnColor = new DataGridViewTextBoxColumn();
-            ColumnAnio = new DataGridViewTextBoxColumn();
-            ColumnTipo = new DataGridViewTextBoxColumn();
-            ColumnModelo = new DataGridViewTextBoxColumn();
-            ColumnMarca = new DataGridViewTextBoxColumn();
             ColumnPatente = new DataGridViewTextBoxColumn();
+            ColumnMarca = new DataGridViewTextBoxColumn();
+            ColumnModelo = new DataGridViewTextBoxColumn();
+            ColumnTipo = new DataGridViewTextBoxColumn();
+            ColumnAnio = new DataGridViewTextBoxColumn();
+            ColumnColor = new DataGridViewTextBoxColumn();
+            ColumnCombustible = new DataGridViewTextBoxColumn();
+            ColumnKm = new DataGridViewTextBoxColumn();
+            ColumnEstado = new DataGridViewTextBoxColumn();
             tabPageCliente = new TabPage();
             dataGridViewCliente = new DataGridView();
-            ColumnTelefono = new DataGridViewTextBoxColumn();
-            ColumnEmail = new DataGridViewTextBoxColumn();
-            ColumnApellido = new DataGridViewTextBoxColumn();
-            ColumnNombre = new DataGridViewTextBoxColumn();
             ColumnDNI = new DataGridViewTextBoxColumn();
+            ColumnNombre = new DataGridViewTextBoxColumn();
+            ColumnApellido = new DataGridViewTextBoxColumn();
+            ColumnEmail = new DataGridViewTextBoxColumn();
+            ColumnTelefono = new DataGridViewTextBoxColumn();
             tabPageReserva = new TabPage();
             dataGridViewReserva = new DataGridView();
-            ColumnEstadoReserva = new DataGridViewTextBoxColumn();
-            ColumnSenia = new DataGridViewTextBoxColumn();
-            ColumnPrecio = new DataGridViewTextBoxColumn();
-            ColumnFechaDevolucion = new DataGridViewTextBoxColumn();
-            ColumnFechaRetiro = new DataGridViewTextBoxColumn();
-            ColumnVehiculo = new DataGridViewTextBoxColumn();
-            ColumnCliente = new DataGridViewTextBoxColumn();
             ColumnId = new DataGridViewTextBoxColumn();
+            ColumnCliente = new DataGridViewTextBoxColumn();
+            ColumnVehiculo = new DataGridViewTextBoxColumn();
+            ColumnFechaRetiro = new DataGridViewTextBoxColumn();
+            ColumnFechaDevolucion = new DataGridViewTextBoxColumn();
+            ColumnSeguro = new DataGridViewTextBoxColumn();
+            ColumnPrecio = new DataGridViewTextBoxColumn();
+            ColumnSenia = new DataGridViewTextBoxColumn();
+            ColumnEstadoReserva = new DataGridViewTextBoxColumn();
             tabControl = new TabControl();
             groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDownSenia).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownPrecio).BeginInit();
             tabPageVehiculo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewVehiculo).BeginInit();
             tabPageCliente.SuspendLayout();
@@ -152,9 +154,11 @@
             // 
             // groupBox
             // 
+            groupBox.Controls.Add(textBoxPrecio);
+            groupBox.Controls.Add(comboBoxSeguro);
+            groupBox.Controls.Add(labelSeguro);
             groupBox.Controls.Add(comboBoxEstado);
             groupBox.Controls.Add(numericUpDownSenia);
-            groupBox.Controls.Add(numericUpDownPrecio);
             groupBox.Controls.Add(dtpFechaDevolucion);
             groupBox.Controls.Add(dtpFechaRetiro);
             groupBox.Controls.Add(labelEstado);
@@ -170,10 +174,45 @@
             groupBox.ForeColor = SystemColors.ButtonFace;
             groupBox.Location = new Point(12, 64);
             groupBox.Name = "groupBox";
-            groupBox.Size = new Size(370, 280);
+            groupBox.Size = new Size(370, 321);
             groupBox.TabIndex = 7;
             groupBox.TabStop = false;
             groupBox.Text = "Datos Reserva";
+            // 
+            // textBoxPrecio
+            // 
+            textBoxPrecio.BackColor = Color.MidnightBlue;
+            textBoxPrecio.BorderStyle = BorderStyle.FixedSingle;
+            textBoxPrecio.Font = new Font("Verdana", 9F);
+            textBoxPrecio.ForeColor = SystemColors.ButtonFace;
+            textBoxPrecio.Location = new Point(151, 212);
+            textBoxPrecio.Name = "textBoxPrecio";
+            textBoxPrecio.Size = new Size(121, 22);
+            textBoxPrecio.TabIndex = 29;
+            // 
+            // comboBoxSeguro
+            // 
+            comboBoxSeguro.BackColor = Color.MidnightBlue;
+            comboBoxSeguro.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxSeguro.FlatStyle = FlatStyle.Flat;
+            comboBoxSeguro.Font = new Font("Verdana", 9F);
+            comboBoxSeguro.ForeColor = SystemColors.ButtonFace;
+            comboBoxSeguro.FormattingEnabled = true;
+            comboBoxSeguro.Location = new Point(151, 170);
+            comboBoxSeguro.Name = "comboBoxSeguro";
+            comboBoxSeguro.Size = new Size(121, 22);
+            comboBoxSeguro.TabIndex = 27;
+            comboBoxSeguro.SelectedIndexChanged += comboBoxSeguro_SelectedIndexChanged;
+            // 
+            // labelSeguro
+            // 
+            labelSeguro.AutoSize = true;
+            labelSeguro.Font = new Font("Verdana", 9F);
+            labelSeguro.Location = new Point(19, 173);
+            labelSeguro.Name = "labelSeguro";
+            labelSeguro.Size = new Size(57, 14);
+            labelSeguro.TabIndex = 28;
+            labelSeguro.Text = "Seguro:";
             // 
             // comboBoxEstado
             // 
@@ -183,7 +222,7 @@
             comboBoxEstado.Font = new Font("Verdana", 9F);
             comboBoxEstado.ForeColor = SystemColors.ButtonFace;
             comboBoxEstado.FormattingEnabled = true;
-            comboBoxEstado.Location = new Point(151, 235);
+            comboBoxEstado.Location = new Point(150, 281);
             comboBoxEstado.Name = "comboBoxEstado";
             comboBoxEstado.Size = new Size(121, 22);
             comboBoxEstado.TabIndex = 9;
@@ -192,23 +231,12 @@
             // 
             numericUpDownSenia.BackColor = Color.MidnightBlue;
             numericUpDownSenia.ForeColor = SystemColors.ButtonFace;
-            numericUpDownSenia.Location = new Point(151, 201);
+            numericUpDownSenia.Location = new Point(150, 247);
             numericUpDownSenia.Maximum = new decimal(new int[] { 500000, 0, 0, 0 });
             numericUpDownSenia.Name = "numericUpDownSenia";
             numericUpDownSenia.Size = new Size(120, 22);
             numericUpDownSenia.TabIndex = 26;
             numericUpDownSenia.KeyPress += numericUpDown_KeyPress;
-            // 
-            // numericUpDownPrecio
-            // 
-            numericUpDownPrecio.BackColor = Color.MidnightBlue;
-            numericUpDownPrecio.ForeColor = SystemColors.ButtonFace;
-            numericUpDownPrecio.Location = new Point(151, 166);
-            numericUpDownPrecio.Maximum = new decimal(new int[] { 500000, 0, 0, 0 });
-            numericUpDownPrecio.Name = "numericUpDownPrecio";
-            numericUpDownPrecio.Size = new Size(120, 22);
-            numericUpDownPrecio.TabIndex = 25;
-            numericUpDownPrecio.KeyPress += numericUpDown_KeyPress;
             // 
             // dtpFechaDevolucion
             // 
@@ -216,6 +244,7 @@
             dtpFechaDevolucion.Name = "dtpFechaDevolucion";
             dtpFechaDevolucion.Size = new Size(200, 22);
             dtpFechaDevolucion.TabIndex = 24;
+            dtpFechaDevolucion.ValueChanged += dateTimePickerFechaFin_ValueChanged;
             // 
             // dtpFechaRetiro
             // 
@@ -223,13 +252,13 @@
             dtpFechaRetiro.Name = "dtpFechaRetiro";
             dtpFechaRetiro.Size = new Size(200, 22);
             dtpFechaRetiro.TabIndex = 23;
-            dtpFechaRetiro.ValueChanged += dtpFechaRetiro_ValueChanged;
+            dtpFechaRetiro.ValueChanged += dateTimePickerFechaInicio_ValueChanged;
             // 
             // labelEstado
             // 
             labelEstado.AutoSize = true;
             labelEstado.Font = new Font("Verdana", 9F);
-            labelEstado.Location = new Point(19, 238);
+            labelEstado.Location = new Point(18, 284);
             labelEstado.Name = "labelEstado";
             labelEstado.Size = new Size(56, 14);
             labelEstado.TabIndex = 22;
@@ -239,7 +268,7 @@
             // 
             labelSenia.AutoSize = true;
             labelSenia.Font = new Font("Verdana", 9F);
-            labelSenia.Location = new Point(19, 203);
+            labelSenia.Location = new Point(18, 249);
             labelSenia.Name = "labelSenia";
             labelSenia.Size = new Size(44, 14);
             labelSenia.TabIndex = 21;
@@ -283,7 +312,7 @@
             // 
             labelPrecio.AutoSize = true;
             labelPrecio.Font = new Font("Verdana", 9F);
-            labelPrecio.Location = new Point(19, 168);
+            labelPrecio.Location = new Point(18, 214);
             labelPrecio.Name = "labelPrecio";
             labelPrecio.Size = new Size(50, 14);
             labelPrecio.TabIndex = 3;
@@ -328,7 +357,7 @@
             buttonCancelar.FlatStyle = FlatStyle.Flat;
             buttonCancelar.Font = new Font("Verdana", 9F);
             buttonCancelar.ForeColor = SystemColors.ButtonFace;
-            buttonCancelar.Location = new Point(305, 364);
+            buttonCancelar.Location = new Point(305, 401);
             buttonCancelar.Name = "buttonCancelar";
             buttonCancelar.Size = new Size(77, 33);
             buttonCancelar.TabIndex = 10;
@@ -345,7 +374,7 @@
             buttonGuardar.FlatStyle = FlatStyle.Flat;
             buttonGuardar.Font = new Font("Verdana", 9F);
             buttonGuardar.ForeColor = SystemColors.ButtonFace;
-            buttonGuardar.Location = new Point(12, 364);
+            buttonGuardar.Location = new Point(12, 401);
             buttonGuardar.Name = "buttonGuardar";
             buttonGuardar.Size = new Size(77, 33);
             buttonGuardar.TabIndex = 9;
@@ -359,7 +388,7 @@
             textBoxBuscador.BorderStyle = BorderStyle.FixedSingle;
             textBoxBuscador.Font = new Font("Verdana", 9F);
             textBoxBuscador.ForeColor = SystemColors.ButtonFace;
-            textBoxBuscador.Location = new Point(1129, 36);
+            textBoxBuscador.Location = new Point(1245, 30);
             textBoxBuscador.Name = "textBoxBuscador";
             textBoxBuscador.Size = new Size(121, 22);
             textBoxBuscador.TabIndex = 36;
@@ -370,7 +399,7 @@
             labelBuscarPorDni.AutoSize = true;
             labelBuscarPorDni.Font = new Font("Verdana", 9F);
             labelBuscarPorDni.ForeColor = SystemColors.ButtonHighlight;
-            labelBuscarPorDni.Location = new Point(1069, 38);
+            labelBuscarPorDni.Location = new Point(1172, 34);
             labelBuscarPorDni.Name = "labelBuscarPorDni";
             labelBuscarPorDni.Size = new Size(54, 14);
             labelBuscarPorDni.TabIndex = 37;
@@ -434,54 +463,12 @@
             dataGridViewVehiculo.TabIndex = 7;
             dataGridViewVehiculo.CellDoubleClick += dataGridViewVehiculo_CellDoubleClick;
             // 
-            // ColumnEstado
+            // ColumnPatente
             // 
-            ColumnEstado.DataPropertyName = "EstadoNombre";
-            ColumnEstado.HeaderText = "Estado";
-            ColumnEstado.Name = "ColumnEstado";
-            ColumnEstado.ReadOnly = true;
-            // 
-            // ColumnKm
-            // 
-            ColumnKm.DataPropertyName = "Kilometraje";
-            ColumnKm.HeaderText = "Kilometraje";
-            ColumnKm.Name = "ColumnKm";
-            ColumnKm.ReadOnly = true;
-            // 
-            // ColumnCombustible
-            // 
-            ColumnCombustible.DataPropertyName = "CombustibleNombre";
-            ColumnCombustible.HeaderText = "Combustible";
-            ColumnCombustible.Name = "ColumnCombustible";
-            ColumnCombustible.ReadOnly = true;
-            // 
-            // ColumnColor
-            // 
-            ColumnColor.DataPropertyName = "ColorNombre";
-            ColumnColor.HeaderText = "Color";
-            ColumnColor.Name = "ColumnColor";
-            ColumnColor.ReadOnly = true;
-            // 
-            // ColumnAnio
-            // 
-            ColumnAnio.DataPropertyName = "Anio";
-            ColumnAnio.HeaderText = "Año";
-            ColumnAnio.Name = "ColumnAnio";
-            ColumnAnio.ReadOnly = true;
-            // 
-            // ColumnTipo
-            // 
-            ColumnTipo.DataPropertyName = "TipoNombre";
-            ColumnTipo.HeaderText = "Tipo";
-            ColumnTipo.Name = "ColumnTipo";
-            ColumnTipo.ReadOnly = true;
-            // 
-            // ColumnModelo
-            // 
-            ColumnModelo.DataPropertyName = "ModeloNombre";
-            ColumnModelo.HeaderText = "Modelo";
-            ColumnModelo.Name = "ColumnModelo";
-            ColumnModelo.ReadOnly = true;
+            ColumnPatente.DataPropertyName = "Patente";
+            ColumnPatente.HeaderText = "Patente";
+            ColumnPatente.Name = "ColumnPatente";
+            ColumnPatente.ReadOnly = true;
             // 
             // ColumnMarca
             // 
@@ -490,12 +477,54 @@
             ColumnMarca.Name = "ColumnMarca";
             ColumnMarca.ReadOnly = true;
             // 
-            // ColumnPatente
+            // ColumnModelo
             // 
-            ColumnPatente.DataPropertyName = "Patente";
-            ColumnPatente.HeaderText = "Patente";
-            ColumnPatente.Name = "ColumnPatente";
-            ColumnPatente.ReadOnly = true;
+            ColumnModelo.DataPropertyName = "ModeloNombre";
+            ColumnModelo.HeaderText = "Modelo";
+            ColumnModelo.Name = "ColumnModelo";
+            ColumnModelo.ReadOnly = true;
+            // 
+            // ColumnTipo
+            // 
+            ColumnTipo.DataPropertyName = "TipoNombre";
+            ColumnTipo.HeaderText = "Tipo";
+            ColumnTipo.Name = "ColumnTipo";
+            ColumnTipo.ReadOnly = true;
+            // 
+            // ColumnAnio
+            // 
+            ColumnAnio.DataPropertyName = "Anio";
+            ColumnAnio.HeaderText = "Año";
+            ColumnAnio.Name = "ColumnAnio";
+            ColumnAnio.ReadOnly = true;
+            // 
+            // ColumnColor
+            // 
+            ColumnColor.DataPropertyName = "ColorNombre";
+            ColumnColor.HeaderText = "Color";
+            ColumnColor.Name = "ColumnColor";
+            ColumnColor.ReadOnly = true;
+            // 
+            // ColumnCombustible
+            // 
+            ColumnCombustible.DataPropertyName = "CombustibleNombre";
+            ColumnCombustible.HeaderText = "Combustible";
+            ColumnCombustible.Name = "ColumnCombustible";
+            ColumnCombustible.ReadOnly = true;
+            // 
+            // ColumnKm
+            // 
+            ColumnKm.DataPropertyName = "Kilometraje";
+            ColumnKm.HeaderText = "Kilometraje";
+            ColumnKm.Name = "ColumnKm";
+            ColumnKm.ReadOnly = true;
+            // 
+            // ColumnEstado
+            // 
+            ColumnEstado.DataPropertyName = "EstadoNombre";
+            ColumnEstado.HeaderText = "Estado";
+            ColumnEstado.Name = "ColumnEstado";
+            ColumnEstado.ReadOnly = true;
             // 
             // tabPageCliente
             // 
@@ -544,26 +573,12 @@
             dataGridViewCliente.TabIndex = 10;
             dataGridViewCliente.CellDoubleClick += dataGridViewCliente_CellDoubleClick;
             // 
-            // ColumnTelefono
+            // ColumnDNI
             // 
-            ColumnTelefono.DataPropertyName = "Telefono";
-            ColumnTelefono.HeaderText = "Teléfono";
-            ColumnTelefono.Name = "ColumnTelefono";
-            ColumnTelefono.ReadOnly = true;
-            // 
-            // ColumnEmail
-            // 
-            ColumnEmail.DataPropertyName = "Email";
-            ColumnEmail.HeaderText = "E-mail";
-            ColumnEmail.Name = "ColumnEmail";
-            ColumnEmail.ReadOnly = true;
-            // 
-            // ColumnApellido
-            // 
-            ColumnApellido.DataPropertyName = "Apellido";
-            ColumnApellido.HeaderText = "Apellido";
-            ColumnApellido.Name = "ColumnApellido";
-            ColumnApellido.ReadOnly = true;
+            ColumnDNI.DataPropertyName = "DNI";
+            ColumnDNI.HeaderText = "DNI";
+            ColumnDNI.Name = "ColumnDNI";
+            ColumnDNI.ReadOnly = true;
             // 
             // ColumnNombre
             // 
@@ -572,12 +587,26 @@
             ColumnNombre.Name = "ColumnNombre";
             ColumnNombre.ReadOnly = true;
             // 
-            // ColumnDNI
+            // ColumnApellido
             // 
-            ColumnDNI.DataPropertyName = "DNI";
-            ColumnDNI.HeaderText = "DNI";
-            ColumnDNI.Name = "ColumnDNI";
-            ColumnDNI.ReadOnly = true;
+            ColumnApellido.DataPropertyName = "Apellido";
+            ColumnApellido.HeaderText = "Apellido";
+            ColumnApellido.Name = "ColumnApellido";
+            ColumnApellido.ReadOnly = true;
+            // 
+            // ColumnEmail
+            // 
+            ColumnEmail.DataPropertyName = "Email";
+            ColumnEmail.HeaderText = "E-mail";
+            ColumnEmail.Name = "ColumnEmail";
+            ColumnEmail.ReadOnly = true;
+            // 
+            // ColumnTelefono
+            // 
+            ColumnTelefono.DataPropertyName = "Telefono";
+            ColumnTelefono.HeaderText = "Teléfono";
+            ColumnTelefono.Name = "ColumnTelefono";
+            ColumnTelefono.ReadOnly = true;
             // 
             // tabPageReserva
             // 
@@ -605,7 +634,7 @@
             dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
             dataGridViewReserva.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dataGridViewReserva.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewReserva.Columns.AddRange(new DataGridViewColumn[] { ColumnId, ColumnCliente, ColumnVehiculo, ColumnFechaRetiro, ColumnFechaDevolucion, ColumnPrecio, ColumnSenia, ColumnEstadoReserva });
+            dataGridViewReserva.Columns.AddRange(new DataGridViewColumn[] { ColumnId, ColumnCliente, ColumnVehiculo, ColumnFechaRetiro, ColumnFechaDevolucion, ColumnSeguro, ColumnPrecio, ColumnSenia, ColumnEstadoReserva });
             dataGridViewReserva.GridColor = Color.MidnightBlue;
             dataGridViewReserva.Location = new Point(0, 0);
             dataGridViewReserva.Name = "dataGridViewReserva";
@@ -620,50 +649,15 @@
             dataGridViewReserva.RowTemplate.DefaultCellStyle.ForeColor = SystemColors.ButtonFace;
             dataGridViewReserva.RowTemplate.DefaultCellStyle.SelectionBackColor = Color.RoyalBlue;
             dataGridViewReserva.RowTemplate.DefaultCellStyle.SelectionForeColor = SystemColors.ButtonFace;
-            dataGridViewReserva.Size = new Size(846, 365);
+            dataGridViewReserva.Size = new Size(943, 355);
             dataGridViewReserva.TabIndex = 11;
             // 
-            // ColumnEstadoReserva
+            // ColumnId
             // 
-            ColumnEstadoReserva.DataPropertyName = "EstadoNombre";
-            ColumnEstadoReserva.HeaderText = "Estado";
-            ColumnEstadoReserva.Name = "ColumnEstadoReserva";
-            ColumnEstadoReserva.ReadOnly = true;
-            // 
-            // ColumnSenia
-            // 
-            ColumnSenia.DataPropertyName = "Senia";
-            ColumnSenia.HeaderText = "Seña";
-            ColumnSenia.Name = "ColumnSenia";
-            ColumnSenia.ReadOnly = true;
-            // 
-            // ColumnPrecio
-            // 
-            ColumnPrecio.DataPropertyName = "Precio";
-            ColumnPrecio.HeaderText = "Precio";
-            ColumnPrecio.Name = "ColumnPrecio";
-            ColumnPrecio.ReadOnly = true;
-            // 
-            // ColumnFechaDevolucion
-            // 
-            ColumnFechaDevolucion.DataPropertyName = "FechaFin";
-            ColumnFechaDevolucion.HeaderText = "Fecha Devolución";
-            ColumnFechaDevolucion.Name = "ColumnFechaDevolucion";
-            ColumnFechaDevolucion.ReadOnly = true;
-            // 
-            // ColumnFechaRetiro
-            // 
-            ColumnFechaRetiro.DataPropertyName = "FechaInicio";
-            ColumnFechaRetiro.HeaderText = "Fecha Retiro";
-            ColumnFechaRetiro.Name = "ColumnFechaRetiro";
-            ColumnFechaRetiro.ReadOnly = true;
-            // 
-            // ColumnVehiculo
-            // 
-            ColumnVehiculo.DataPropertyName = "VehiculoPatente";
-            ColumnVehiculo.HeaderText = "Vehículo";
-            ColumnVehiculo.Name = "ColumnVehiculo";
-            ColumnVehiculo.ReadOnly = true;
+            ColumnId.DataPropertyName = "Id";
+            ColumnId.HeaderText = "ID";
+            ColumnId.Name = "ColumnId";
+            ColumnId.ReadOnly = true;
             // 
             // ColumnCliente
             // 
@@ -672,12 +666,54 @@
             ColumnCliente.Name = "ColumnCliente";
             ColumnCliente.ReadOnly = true;
             // 
-            // ColumnId
+            // ColumnVehiculo
             // 
-            ColumnId.DataPropertyName = "Id";
-            ColumnId.HeaderText = "ID";
-            ColumnId.Name = "ColumnId";
-            ColumnId.ReadOnly = true;
+            ColumnVehiculo.DataPropertyName = "VehiculoPatente";
+            ColumnVehiculo.HeaderText = "Vehículo";
+            ColumnVehiculo.Name = "ColumnVehiculo";
+            ColumnVehiculo.ReadOnly = true;
+            // 
+            // ColumnFechaRetiro
+            // 
+            ColumnFechaRetiro.DataPropertyName = "FechaInicio";
+            ColumnFechaRetiro.HeaderText = "Fecha Retiro";
+            ColumnFechaRetiro.Name = "ColumnFechaRetiro";
+            ColumnFechaRetiro.ReadOnly = true;
+            // 
+            // ColumnFechaDevolucion
+            // 
+            ColumnFechaDevolucion.DataPropertyName = "FechaFin";
+            ColumnFechaDevolucion.HeaderText = "Fecha Devolución";
+            ColumnFechaDevolucion.Name = "ColumnFechaDevolucion";
+            ColumnFechaDevolucion.ReadOnly = true;
+            // 
+            // ColumnSeguro
+            // 
+            ColumnSeguro.DataPropertyName = "SeguroNombre";
+            ColumnSeguro.HeaderText = "Seguro";
+            ColumnSeguro.Name = "ColumnSeguro";
+            ColumnSeguro.ReadOnly = true;
+            // 
+            // ColumnPrecio
+            // 
+            ColumnPrecio.DataPropertyName = "Precio";
+            ColumnPrecio.HeaderText = "Precio";
+            ColumnPrecio.Name = "ColumnPrecio";
+            ColumnPrecio.ReadOnly = true;
+            // 
+            // ColumnSenia
+            // 
+            ColumnSenia.DataPropertyName = "Senia";
+            ColumnSenia.HeaderText = "Seña";
+            ColumnSenia.Name = "ColumnSenia";
+            ColumnSenia.ReadOnly = true;
+            // 
+            // ColumnEstadoReserva
+            // 
+            ColumnEstadoReserva.DataPropertyName = "EstadoNombre";
+            ColumnEstadoReserva.HeaderText = "Estado";
+            ColumnEstadoReserva.Name = "ColumnEstadoReserva";
+            ColumnEstadoReserva.ReadOnly = true;
             // 
             // tabControl
             // 
@@ -713,7 +749,6 @@
             groupBox.ResumeLayout(false);
             groupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDownSenia).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownPrecio).EndInit();
             tabPageVehiculo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridViewVehiculo).EndInit();
             tabPageCliente.ResumeLayout(false);
@@ -742,7 +777,6 @@
         private Label labelSenia;
         private ComboBox comboBoxEstado;
         private NumericUpDown numericUpDownSenia;
-        private NumericUpDown numericUpDownPrecio;
         private DateTimePicker dtpFechaDevolucion;
         private DateTimePicker dtpFechaRetiro;
         private Button buttonCancelar;
@@ -770,14 +804,18 @@
         private DataGridViewTextBoxColumn ColumnTelefono;
         private TabPage tabPageReserva;
         private DataGridView dataGridViewReserva;
+        private TabControl tabControl;
+        private ComboBox comboBoxSeguro;
+        private Label labelSeguro;
         private DataGridViewTextBoxColumn ColumnId;
         private DataGridViewTextBoxColumn ColumnCliente;
         private DataGridViewTextBoxColumn ColumnVehiculo;
         private DataGridViewTextBoxColumn ColumnFechaRetiro;
         private DataGridViewTextBoxColumn ColumnFechaDevolucion;
+        private DataGridViewTextBoxColumn ColumnSeguro;
         private DataGridViewTextBoxColumn ColumnPrecio;
         private DataGridViewTextBoxColumn ColumnSenia;
         private DataGridViewTextBoxColumn ColumnEstadoReserva;
-        private TabControl tabControl;
+        private TextBox textBoxPrecio;
     }
 }

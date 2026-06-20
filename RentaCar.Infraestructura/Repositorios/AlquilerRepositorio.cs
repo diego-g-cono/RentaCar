@@ -20,6 +20,7 @@ namespace RentaCar.Infraestructura
                 .Include(a => a.Estado)
                 .Include(a => a.Reserva)
                 .Include(a => a.Vehiculo)
+                .Include(a => a.Seguro)
                 .Where(a => a.Activo)
                 .ToList();
         }
@@ -31,6 +32,7 @@ namespace RentaCar.Infraestructura
                 .Include(a => a.Estado)
                 .Include(a => a.Reserva)
                 .Include(a => a.Vehiculo)
+                .Include(a => a.Seguro)
                 .FirstOrDefault(a => a.Id == id);
         }
 

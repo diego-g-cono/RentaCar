@@ -44,7 +44,9 @@ namespace RentaCar.API.Controllers
                 EstadoId = a.EstadoId,
                 EstadoNombre = a.Estado?.Nombre,
 
-                ReservaId = a.ReservaId
+                ReservaId = a.ReservaId,
+                SeguroId = a.SeguroId,
+                SeguroNombre = a.Seguro.Nombre,
             }).ToList();
 
             return Ok(response);
@@ -80,7 +82,9 @@ namespace RentaCar.API.Controllers
                 EstadoId = a.EstadoId,
                 EstadoNombre = a.Estado?.Nombre,
 
-                ReservaId = a.ReservaId
+                ReservaId = a.ReservaId,
+                SeguroId = a.SeguroId,
+                SeguroNombre = a.Seguro.Nombre,
             };
 
             return Ok(response);
@@ -101,7 +105,8 @@ namespace RentaCar.API.Controllers
                 ConductorDni = request.ConductorDni,
                 ClienteDni = request.ClienteDni,
                 EstadoId = request.EstadoId,
-                ReservaId = request.ReservaId
+                ReservaId = request.ReservaId,
+                SeguroId = request.SeguroId
             };
 
             _repoAlquileres.Agregar(alquiler);
@@ -128,6 +133,7 @@ namespace RentaCar.API.Controllers
             existente.ClienteDni = request.ClienteDni;
             existente.EstadoId = request.EstadoId;
             existente.ReservaId = request.ReservaId;
+            existente.SeguroId = request.SeguroId;
 
             _repoAlquileres.Actualizar(existente);
 

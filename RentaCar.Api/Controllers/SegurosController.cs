@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using RentaCar.Infraestructura;
+using RentaCar.Dominio;
+using RentaCar.Infraestructura.Repositorios;
 using RentaCar.Dtos.Seguros;
 
 namespace RentaCar.API.Controllers
@@ -24,7 +25,8 @@ namespace RentaCar.API.Controllers
             {
                 Id = s.Id,
                 Nombre = s.Nombre,
-                Tasa = s.Tasa
+                Tasa = s.Tasa,
+                Activo = s.Activo
             });
 
             return Ok(response);
@@ -42,7 +44,8 @@ namespace RentaCar.API.Controllers
             {
                 Id = seguro.Id,
                 Nombre = seguro.Nombre,
-                Tasa = seguro.Tasa
+                Tasa = seguro.Tasa,
+                Activo = seguro.Activo
             };
 
             return Ok(response);

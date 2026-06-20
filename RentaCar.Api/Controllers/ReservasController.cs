@@ -46,7 +46,9 @@ namespace RentaCar.API.Controllers
                 Precio = r.Precio,
                 Senia = r.Senia,
                 EstadoId = r.EstadoId,
-                EstadoNombre = r.Estado?.Nombre
+                EstadoNombre = r.Estado?.Nombre,
+                SeguroId = r.SeguroId,
+                SeguroNombre = r.Seguro?.Nombre,
             });
 
             return Ok(response);
@@ -71,7 +73,9 @@ namespace RentaCar.API.Controllers
                 Precio = r.Precio,
                 Senia = r.Senia,
                 EstadoId = r.EstadoId,
-                EstadoNombre = r.Estado?.Nombre
+                EstadoNombre = r.Estado?.Nombre,
+                SeguroId = r.SeguroId,
+                SeguroNombre = r.Seguro?.Nombre
             };
 
             return Ok(response);
@@ -114,7 +118,8 @@ namespace RentaCar.API.Controllers
                 FechaFin = request.FechaFin,
                 Precio = request.Precio,
                 Senia = request.Senia,
-                EstadoId = request.EstadoId
+                EstadoId = request.EstadoId,
+                SeguroId = request.SeguroId
             };
 
             _repoReservas.Agregar(reserva);
@@ -156,6 +161,7 @@ namespace RentaCar.API.Controllers
             existente.Precio = request.Precio;
             existente.Senia = request.Senia;
             existente.EstadoId = request.EstadoId;
+            existente.SeguroId = request.SeguroId;
 
             _repoReservas.Actualizar(existente);
 
@@ -213,17 +219,19 @@ namespace RentaCar.API.Controllers
                 EstadoNombre = r.Estado?.Nombre,
                 VehiculoMarca = r.Vehiculo?.Marca.Nombre,
                 VehiculoModelo = r.Vehiculo?.Modelo.Nombre,
-                Activo = r.Activo
+                Activo = r.Activo,
+                SeguroId = r.SeguroId,
+                SeguroNombre = r.Seguro.Nombre
             });
 
             return Ok(response);
         }
         [HttpGet("calcular-precio")]
         public IActionResult CalcularPrecio(
-    string patente,
-    DateOnly inicio,
-    DateOnly fin,
-    int seguroId)
+                        string patente,
+                        DateOnly inicio,
+                        DateOnly fin,
+                        int seguroId)
         {
             var vehiculo = _repoVehiculos.ObtenerPorPatente(patente);
 

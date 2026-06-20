@@ -1,8 +1,7 @@
 ﻿namespace RentaCar.Dtos.Seguros
 {
-    public class SeguroResponse
+    public class SeguroCreateRequest
     {
-        public int Id { get; set; }
         public string Nombre { get; set; }
         public decimal Tasa { get; set; }
         public bool Activo { get; set; }

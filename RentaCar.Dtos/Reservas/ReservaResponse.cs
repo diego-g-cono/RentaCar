@@ -21,5 +21,7 @@
         public int EstadoId { get; set; }
         public string? EstadoNombre { get; set; }
         public bool Activo { get; set; }
+        public int SeguroId { get; set; }
+        public string SeguroNombre { get; set; }
     }
 }

@@ -12,5 +12,6 @@
         public decimal Senia { get; set; }
 
         public int EstadoId { get; set; }
+        public int SeguroId { get; set; }
     }
 }

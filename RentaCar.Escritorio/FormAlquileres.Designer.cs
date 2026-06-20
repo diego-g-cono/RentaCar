@@ -46,6 +46,7 @@
             dataGridViewTextBoxColumn8 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn9 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn7 = new DataGridViewTextBoxColumn();
+            ColumnSeguro = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn10 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
             DniConductor = new DataGridViewTextBoxColumn();
@@ -91,6 +92,12 @@
             buttonCancelar = new Button();
             buttonGuardar = new Button();
             groupBoxAlquileres = new GroupBox();
+            textBoxSaldo = new TextBox();
+            label2 = new Label();
+            comboBoxSeguro = new ComboBox();
+            labelSeguro = new Label();
+            radioButtonCReserva = new RadioButton();
+            radioButtonSReserva = new RadioButton();
             comboBoxEstado = new ComboBox();
             labelEstado = new Label();
             textBoxReserva = new TextBox();
@@ -135,7 +142,7 @@
             tabControlAlquileres.Location = new Point(402, 64);
             tabControlAlquileres.Name = "tabControlAlquileres";
             tabControlAlquileres.SelectedIndex = 0;
-            tabControlAlquileres.Size = new Size(950, 339);
+            tabControlAlquileres.Size = new Size(1055, 339);
             tabControlAlquileres.TabIndex = 18;
             // 
             // tabPage1
@@ -145,7 +152,7 @@
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(942, 311);
+            tabPage1.Size = new Size(1047, 311);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Alquileres";
             // 
@@ -165,7 +172,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dataGridViewAlquileres.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewAlquileres.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewAlquileres.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn8, dataGridViewTextBoxColumn9, dataGridViewTextBoxColumn7, dataGridViewTextBoxColumn10, dataGridViewTextBoxColumn6, DniConductor, dataGridViewTextBoxColumn11, dataGridViewTextBoxColumn12 });
+            dataGridViewAlquileres.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn8, dataGridViewTextBoxColumn9, dataGridViewTextBoxColumn7, ColumnSeguro, dataGridViewTextBoxColumn10, dataGridViewTextBoxColumn6, DniConductor, dataGridViewTextBoxColumn11, dataGridViewTextBoxColumn12 });
             dataGridViewAlquileres.GridColor = Color.MidnightBlue;
             dataGridViewAlquileres.Location = new Point(0, 0);
             dataGridViewAlquileres.Name = "dataGridViewAlquileres";
@@ -180,7 +187,7 @@
             dataGridViewAlquileres.RowTemplate.DefaultCellStyle.ForeColor = SystemColors.ButtonFace;
             dataGridViewAlquileres.RowTemplate.DefaultCellStyle.SelectionBackColor = Color.RoyalBlue;
             dataGridViewAlquileres.RowTemplate.DefaultCellStyle.SelectionForeColor = SystemColors.ButtonFace;
-            dataGridViewAlquileres.Size = new Size(946, 315);
+            dataGridViewAlquileres.Size = new Size(1044, 315);
             dataGridViewAlquileres.TabIndex = 13;
             // 
             // dataGridViewTextBoxColumn5
@@ -210,6 +217,12 @@
             dataGridViewTextBoxColumn7.HeaderText = "Vehículo";
             dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             dataGridViewTextBoxColumn7.ReadOnly = true;
+            // 
+            // ColumnSeguro
+            // 
+            ColumnSeguro.HeaderText = "Seguro";
+            ColumnSeguro.Name = "ColumnSeguro";
+            ColumnSeguro.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn10
             // 
@@ -252,7 +265,7 @@
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(942, 311);
+            tabPage2.Size = new Size(1047, 311);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Vehiculos";
             tabPage2.UseVisualStyleBackColor = true;
@@ -361,7 +374,7 @@
             tabPage5.Controls.Add(dataGridViewClientes);
             tabPage5.Location = new Point(4, 24);
             tabPage5.Name = "tabPage5";
-            tabPage5.Size = new Size(942, 311);
+            tabPage5.Size = new Size(1047, 311);
             tabPage5.TabIndex = 4;
             tabPage5.Text = "Clientes";
             // 
@@ -441,7 +454,7 @@
             tabPage3.Controls.Add(dataGridViewConductores);
             tabPage3.Location = new Point(4, 24);
             tabPage3.Name = "tabPage3";
-            tabPage3.Size = new Size(942, 311);
+            tabPage3.Size = new Size(1047, 311);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Conductores";
             // 
@@ -514,7 +527,7 @@
             tabPage4.Controls.Add(dataGridViewReserva);
             tabPage4.Location = new Point(4, 24);
             tabPage4.Name = "tabPage4";
-            tabPage4.Size = new Size(942, 311);
+            tabPage4.Size = new Size(1047, 311);
             tabPage4.TabIndex = 3;
             tabPage4.Text = "Reservas";
             // 
@@ -669,7 +682,7 @@
             buttonCancelar.FlatStyle = FlatStyle.Flat;
             buttonCancelar.Font = new Font("Verdana", 9F);
             buttonCancelar.ForeColor = SystemColors.ButtonFace;
-            buttonCancelar.Location = new Point(305, 399);
+            buttonCancelar.Location = new Point(305, 504);
             buttonCancelar.Name = "buttonCancelar";
             buttonCancelar.Size = new Size(77, 33);
             buttonCancelar.TabIndex = 23;
@@ -686,7 +699,7 @@
             buttonGuardar.FlatStyle = FlatStyle.Flat;
             buttonGuardar.Font = new Font("Verdana", 9F);
             buttonGuardar.ForeColor = SystemColors.ButtonFace;
-            buttonGuardar.Location = new Point(12, 399);
+            buttonGuardar.Location = new Point(12, 504);
             buttonGuardar.Name = "buttonGuardar";
             buttonGuardar.Size = new Size(77, 33);
             buttonGuardar.TabIndex = 22;
@@ -696,6 +709,12 @@
             // 
             // groupBoxAlquileres
             // 
+            groupBoxAlquileres.Controls.Add(textBoxSaldo);
+            groupBoxAlquileres.Controls.Add(label2);
+            groupBoxAlquileres.Controls.Add(comboBoxSeguro);
+            groupBoxAlquileres.Controls.Add(labelSeguro);
+            groupBoxAlquileres.Controls.Add(radioButtonCReserva);
+            groupBoxAlquileres.Controls.Add(radioButtonSReserva);
             groupBoxAlquileres.Controls.Add(comboBoxEstado);
             groupBoxAlquileres.Controls.Add(labelEstado);
             groupBoxAlquileres.Controls.Add(textBoxReserva);
@@ -716,18 +735,90 @@
             groupBoxAlquileres.ForeColor = SystemColors.ButtonFace;
             groupBoxAlquileres.Location = new Point(12, 64);
             groupBoxAlquileres.Name = "groupBoxAlquileres";
-            groupBoxAlquileres.Size = new Size(370, 318);
+            groupBoxAlquileres.Size = new Size(370, 421);
             groupBoxAlquileres.TabIndex = 24;
             groupBoxAlquileres.TabStop = false;
             groupBoxAlquileres.Text = "Datos Alquiler";
+            // 
+            // textBoxSaldo
+            // 
+            textBoxSaldo.BackColor = Color.MidnightBlue;
+            textBoxSaldo.BorderStyle = BorderStyle.FixedSingle;
+            textBoxSaldo.Font = new Font("Verdana", 9F);
+            textBoxSaldo.ForeColor = SystemColors.ButtonFace;
+            textBoxSaldo.Location = new Point(151, 235);
+            textBoxSaldo.Name = "textBoxSaldo";
+            textBoxSaldo.ReadOnly = true;
+            textBoxSaldo.Size = new Size(120, 22);
+            textBoxSaldo.TabIndex = 41;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Verdana", 9F);
+            label2.Location = new Point(20, 237);
+            label2.Name = "label2";
+            label2.Size = new Size(47, 14);
+            label2.TabIndex = 40;
+            label2.Text = "Saldo:";
+            // 
+            // comboBoxSeguro
+            // 
+            comboBoxSeguro.BackColor = Color.MidnightBlue;
+            comboBoxSeguro.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxSeguro.FlatStyle = FlatStyle.Flat;
+            comboBoxSeguro.Font = new Font("Verdana", 9F);
+            comboBoxSeguro.ForeColor = SystemColors.ButtonFace;
+            comboBoxSeguro.FormattingEnabled = true;
+            comboBoxSeguro.Location = new Point(151, 164);
+            comboBoxSeguro.Name = "comboBoxSeguro";
+            comboBoxSeguro.Size = new Size(121, 22);
+            comboBoxSeguro.TabIndex = 38;
+            comboBoxSeguro.SelectedIndexChanged += comboBoxSeguro_SelectedIndexChanged;
+            // 
+            // labelSeguro
+            // 
+            labelSeguro.AutoSize = true;
+            labelSeguro.Font = new Font("Verdana", 9F);
+            labelSeguro.Location = new Point(19, 167);
+            labelSeguro.Name = "labelSeguro";
+            labelSeguro.Size = new Size(57, 14);
+            labelSeguro.TabIndex = 39;
+            labelSeguro.Text = "Seguro:";
+            // 
+            // radioButtonCReserva
+            // 
+            radioButtonCReserva.AutoSize = true;
+            radioButtonCReserva.Location = new Point(192, 24);
+            radioButtonCReserva.Name = "radioButtonCReserva";
+            radioButtonCReserva.Size = new Size(108, 18);
+            radioButtonCReserva.TabIndex = 37;
+            radioButtonCReserva.TabStop = true;
+            radioButtonCReserva.Text = "Con Reserva";
+            radioButtonCReserva.UseVisualStyleBackColor = true;
+            radioButtonCReserva.CheckedChanged += radioButtonCReserva_CheckedChanged;
+            // 
+            // radioButtonSReserva
+            // 
+            radioButtonSReserva.AutoSize = true;
+            radioButtonSReserva.Location = new Point(19, 24);
+            radioButtonSReserva.Name = "radioButtonSReserva";
+            radioButtonSReserva.Size = new Size(104, 18);
+            radioButtonSReserva.TabIndex = 36;
+            radioButtonSReserva.TabStop = true;
+            radioButtonSReserva.Text = "Sin Reserva";
+            radioButtonSReserva.UseVisualStyleBackColor = true;
+            radioButtonSReserva.CheckedChanged += radioButtonSReserva_CheckedChanged;
             // 
             // comboBoxEstado
             // 
             comboBoxEstado.BackColor = Color.MidnightBlue;
             comboBoxEstado.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxEstado.FlatStyle = FlatStyle.Flat;
+            comboBoxEstado.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             comboBoxEstado.ForeColor = SystemColors.ButtonFace;
             comboBoxEstado.FormattingEnabled = true;
-            comboBoxEstado.Location = new Point(149, 272);
+            comboBoxEstado.Location = new Point(150, 383);
             comboBoxEstado.Name = "comboBoxEstado";
             comboBoxEstado.Size = new Size(121, 22);
             comboBoxEstado.TabIndex = 35;
@@ -736,7 +827,7 @@
             // 
             labelEstado.AutoSize = true;
             labelEstado.Font = new Font("Verdana", 9F);
-            labelEstado.Location = new Point(22, 272);
+            labelEstado.Location = new Point(20, 383);
             labelEstado.Name = "labelEstado";
             labelEstado.Size = new Size(56, 14);
             labelEstado.TabIndex = 34;
@@ -748,7 +839,7 @@
             textBoxReserva.BorderStyle = BorderStyle.FixedSingle;
             textBoxReserva.Font = new Font("Verdana", 9F);
             textBoxReserva.ForeColor = SystemColors.ButtonFace;
-            textBoxReserva.Location = new Point(149, 233);
+            textBoxReserva.Location = new Point(150, 344);
             textBoxReserva.Name = "textBoxReserva";
             textBoxReserva.ReadOnly = true;
             textBoxReserva.Size = new Size(121, 22);
@@ -760,7 +851,7 @@
             textBoxDniCond.BorderStyle = BorderStyle.FixedSingle;
             textBoxDniCond.Font = new Font("Verdana", 9F);
             textBoxDniCond.ForeColor = SystemColors.ButtonFace;
-            textBoxDniCond.Location = new Point(149, 192);
+            textBoxDniCond.Location = new Point(150, 303);
             textBoxDniCond.Name = "textBoxDniCond";
             textBoxDniCond.ReadOnly = true;
             textBoxDniCond.Size = new Size(121, 22);
@@ -770,7 +861,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Verdana", 9F);
-            label1.Location = new Point(19, 194);
+            label1.Location = new Point(20, 305);
             label1.Name = "label1";
             label1.Size = new Size(104, 14);
             label1.TabIndex = 31;
@@ -782,7 +873,7 @@
             textBoxDniCliente.BorderStyle = BorderStyle.FixedSingle;
             textBoxDniCliente.Font = new Font("Verdana", 9F);
             textBoxDniCliente.ForeColor = SystemColors.ButtonFace;
-            textBoxDniCliente.Location = new Point(150, 157);
+            textBoxDniCliente.Location = new Point(151, 268);
             textBoxDniCliente.Name = "textBoxDniCliente";
             textBoxDniCliente.ReadOnly = true;
             textBoxDniCliente.Size = new Size(120, 22);
@@ -790,16 +881,17 @@
             // 
             // dtpFechaDevolucion
             // 
-            dtpFechaDevolucion.Location = new Point(150, 61);
+            dtpFechaDevolucion.Location = new Point(150, 93);
             dtpFechaDevolucion.Name = "dtpFechaDevolucion";
             dtpFechaDevolucion.Size = new Size(200, 22);
             dtpFechaDevolucion.TabIndex = 29;
+            dtpFechaDevolucion.ValueChanged += dtpFechaDevolucion_ValueChanged;
             // 
             // labelFechaDevolucion
             // 
             labelFechaDevolucion.AutoSize = true;
             labelFechaDevolucion.Font = new Font("Verdana", 9F);
-            labelFechaDevolucion.Location = new Point(19, 67);
+            labelFechaDevolucion.Location = new Point(19, 99);
             labelFechaDevolucion.Name = "labelFechaDevolucion";
             labelFechaDevolucion.Size = new Size(121, 14);
             labelFechaDevolucion.TabIndex = 28;
@@ -809,7 +901,7 @@
             // 
             numericUpDownPrecio.BackColor = Color.MidnightBlue;
             numericUpDownPrecio.ForeColor = SystemColors.ButtonFace;
-            numericUpDownPrecio.Location = new Point(151, 126);
+            numericUpDownPrecio.Location = new Point(151, 200);
             numericUpDownPrecio.Maximum = new decimal(new int[] { 500000, 0, 0, 0 });
             numericUpDownPrecio.Name = "numericUpDownPrecio";
             numericUpDownPrecio.Size = new Size(121, 22);
@@ -817,16 +909,17 @@
             // 
             // dtpFechaInicio
             // 
-            dtpFechaInicio.Location = new Point(150, 24);
+            dtpFechaInicio.Location = new Point(150, 56);
             dtpFechaInicio.Name = "dtpFechaInicio";
             dtpFechaInicio.Size = new Size(200, 22);
             dtpFechaInicio.TabIndex = 23;
+            dtpFechaInicio.ValueChanged += dtpFechaInicio_ValueChanged;
             // 
             // labelIdReserva
             // 
             labelIdReserva.AutoSize = true;
             labelIdReserva.Font = new Font("Verdana", 9F);
-            labelIdReserva.Location = new Point(19, 235);
+            labelIdReserva.Location = new Point(20, 346);
             labelIdReserva.Name = "labelIdReserva";
             labelIdReserva.Size = new Size(63, 14);
             labelIdReserva.TabIndex = 22;
@@ -836,7 +929,7 @@
             // 
             labelDNICliente.AutoSize = true;
             labelDNICliente.Font = new Font("Verdana", 9F);
-            labelDNICliente.Location = new Point(19, 159);
+            labelDNICliente.Location = new Point(20, 270);
             labelDNICliente.Name = "labelDNICliente";
             labelDNICliente.Size = new Size(83, 14);
             labelDNICliente.TabIndex = 21;
@@ -848,7 +941,7 @@
             textBoxVehiculo.BorderStyle = BorderStyle.FixedSingle;
             textBoxVehiculo.Font = new Font("Verdana", 9F);
             textBoxVehiculo.ForeColor = SystemColors.ButtonFace;
-            textBoxVehiculo.Location = new Point(151, 95);
+            textBoxVehiculo.Location = new Point(151, 127);
             textBoxVehiculo.Name = "textBoxVehiculo";
             textBoxVehiculo.ReadOnly = true;
             textBoxVehiculo.Size = new Size(121, 22);
@@ -858,7 +951,7 @@
             // 
             labelPrecio.AutoSize = true;
             labelPrecio.Font = new Font("Verdana", 9F);
-            labelPrecio.Location = new Point(19, 126);
+            labelPrecio.Location = new Point(19, 200);
             labelPrecio.Name = "labelPrecio";
             labelPrecio.Size = new Size(50, 14);
             labelPrecio.TabIndex = 3;
@@ -868,7 +961,7 @@
             // 
             labelVehiculo.AutoSize = true;
             labelVehiculo.Font = new Font("Verdana", 9F);
-            labelVehiculo.Location = new Point(19, 95);
+            labelVehiculo.Location = new Point(19, 129);
             labelVehiculo.Name = "labelVehiculo";
             labelVehiculo.Size = new Size(117, 14);
             labelVehiculo.TabIndex = 1;
@@ -878,7 +971,7 @@
             // 
             labelCliente.AutoSize = true;
             labelCliente.Font = new Font("Verdana", 9F);
-            labelCliente.Location = new Point(19, 30);
+            labelCliente.Location = new Point(19, 62);
             labelCliente.Name = "labelCliente";
             labelCliente.Size = new Size(86, 14);
             labelCliente.TabIndex = 0;
@@ -890,7 +983,7 @@
             textBoxBuscador.BorderStyle = BorderStyle.FixedSingle;
             textBoxBuscador.Font = new Font("Verdana", 9F);
             textBoxBuscador.ForeColor = SystemColors.ButtonFace;
-            textBoxBuscador.Location = new Point(1223, 23);
+            textBoxBuscador.Location = new Point(1333, 19);
             textBoxBuscador.Name = "textBoxBuscador";
             textBoxBuscador.Size = new Size(121, 22);
             textBoxBuscador.TabIndex = 38;
@@ -901,7 +994,7 @@
             labelBuscarPorDni.AutoSize = true;
             labelBuscarPorDni.Font = new Font("Verdana", 9F);
             labelBuscarPorDni.ForeColor = SystemColors.ButtonHighlight;
-            labelBuscarPorDni.Location = new Point(1163, 25);
+            labelBuscarPorDni.Location = new Point(1273, 21);
             labelBuscarPorDni.Name = "labelBuscarPorDni";
             labelBuscarPorDni.Size = new Size(54, 14);
             labelBuscarPorDni.TabIndex = 39;
@@ -924,7 +1017,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MidnightBlue;
-            ClientSize = new Size(1492, 454);
+            ClientSize = new Size(1492, 588);
             Controls.Add(buttonRecargar);
             Controls.Add(textBoxBuscador);
             Controls.Add(labelBuscarPorDni);
@@ -1019,17 +1112,24 @@
         private DataGridViewTextBoxColumn ColumnCombustible;
         private DataGridViewTextBoxColumn ColumnKm;
         private DataGridViewTextBoxColumn ColumnEstado;
+        private TextBox textBoxBuscador;
+        private Label labelBuscarPorDni;
+        private Button buttonRecargar;
+        private RadioButton radioButtonSReserva;
+        private RadioButton radioButtonCReserva;
+        private ComboBox comboBoxSeguro;
+        private Label labelSeguro;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private DataGridViewTextBoxColumn ColumnSeguro;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private DataGridViewTextBoxColumn DniConductor;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
-        private TextBox textBoxBuscador;
-        private Label labelBuscarPorDni;
-        private Button buttonRecargar;
+        private TextBox textBoxSaldo;
+        private Label label2;
     }
 }

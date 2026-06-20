@@ -14,6 +14,7 @@ namespace RentaCar.Escritorio
         private readonly ClienteServicio _clienteServicio;
         private readonly VehiculoServicio _vehiculoServicio;
         private readonly EstadoReservaServicio _estadoServicio;
+        private readonly SeguroServicio _seguroServicio;
         private bool modoEdicion = false;
         private bool autoCompletar = false;
         private int idSeleccionado;
@@ -29,6 +30,7 @@ namespace RentaCar.Escritorio
             _clienteServicio = new ClienteServicio();
             _vehiculoServicio = new VehiculoServicio();
             _estadoServicio = new EstadoReservaServicio();
+            _seguroServicio = new SeguroServicio();
         }
 
         private async void FormReserva_Load(object sender, EventArgs e)
@@ -39,11 +41,13 @@ namespace RentaCar.Escritorio
             textBoxVehiculo.ReadOnly = true;
             dtpFechaRetiro.MinDate = DateTime.Today;
             dtpFechaDevolucion.MinDate = DateTime.Today.AddDays(1);
+            textBoxPrecio.ReadOnly = true;
 
             await CargarVehiculos();
             await CargarClientes();
             await CargarReservas();
             await CargarEstados();
+            await CargarSeguros();
         }
 
         private void BloquearCampos(bool estado)
@@ -52,9 +56,10 @@ namespace RentaCar.Escritorio
             textBoxVehiculo.Enabled = estado;
             dtpFechaRetiro.Enabled = estado;
             dtpFechaDevolucion.Enabled = estado;
-            numericUpDownPrecio.Enabled = estado;
+            textBoxPrecio.Enabled = estado;
             numericUpDownSenia.Enabled = estado;
             comboBoxEstado.Enabled = estado;
+            comboBoxSeguro.Enabled = estado;
         }
 
         private void BloquearBotones(bool estado)
@@ -97,6 +102,15 @@ namespace RentaCar.Escritorio
             comboBoxEstado.ValueMember = "Id";
             comboBoxEstado.SelectedIndex = -1;
         }
+        private async Task CargarSeguros()
+        {
+            var seguros = await _seguroServicio.ObtenerTodos();
+
+            comboBoxSeguro.DataSource = seguros.Where(s => s.Activo).ToList();
+            comboBoxSeguro.DisplayMember = "Nombre";
+            comboBoxSeguro.ValueMember = "Id";
+            comboBoxSeguro.SelectedIndex = -1;
+        }
 
         private void buttonNuevo_Click(object sender, EventArgs e)
         {
@@ -129,9 +143,10 @@ namespace RentaCar.Escritorio
 
             dtpFechaRetiro.Value = reserva.FechaInicio.ToDateTime(TimeOnly.MinValue);
             dtpFechaDevolucion.Value = reserva.FechaFin.ToDateTime(TimeOnly.MinValue);
-            numericUpDownPrecio.Value = reserva.Precio;
+            textBoxPrecio.Text = reserva.Precio.ToString();
             numericUpDownSenia.Value = reserva.Senia;
             comboBoxEstado.SelectedValue = reserva.EstadoId;
+            comboBoxSeguro.SelectedValue = reserva.SeguroId;
 
             modoEdicion = true;
             autoCompletar = true;
@@ -193,11 +208,17 @@ namespace RentaCar.Escritorio
                 Dialogos.Error(Mensajes.CampoVacio("estado"));
                 return;
             }
+            if (comboBoxSeguro.SelectedIndex == -1)
+            {
+                Dialogos.Error(Mensajes.CampoVacio("seguro"));
+                return;
+            }
 
             if (!Dialogos.Confirmar(Mensajes.ConfirmarGuardado("Reserva")))
             {
                 return;
             }
+
 
             try
             {
@@ -211,9 +232,10 @@ namespace RentaCar.Escritorio
                         VehiculoPatente = textBoxVehiculo.Text,
                         FechaInicio = DateOnly.FromDateTime(dtpFechaRetiro.Value),
                         FechaFin = DateOnly.FromDateTime(dtpFechaDevolucion.Value),
-                        Precio = numericUpDownPrecio.Value,
+                        Precio = decimal.Parse(textBoxPrecio.Text),
                         Senia = numericUpDownSenia.Value,
-                        EstadoId = (int)comboBoxEstado.SelectedValue
+                        EstadoId = (int)comboBoxEstado.SelectedValue,
+                        SeguroId = (int)comboBoxSeguro.SelectedValue
                     };
 
                     await _reservaServicio.Actualizar(idSeleccionado, updateRequest);
@@ -228,9 +250,10 @@ namespace RentaCar.Escritorio
                         VehiculoPatente = textBoxVehiculo.Text,
                         FechaInicio = DateOnly.FromDateTime(dtpFechaRetiro.Value),
                         FechaFin = DateOnly.FromDateTime(dtpFechaDevolucion.Value),
-                        Precio = numericUpDownPrecio.Value,
+                        Precio = decimal.Parse(textBoxPrecio.Text),
                         Senia = numericUpDownSenia.Value,
-                        EstadoId = (int)comboBoxEstado.SelectedValue
+                        EstadoId = (int)comboBoxEstado.SelectedValue,
+                        SeguroId = (int)comboBoxSeguro.SelectedValue
                     };
 
                     await _reservaServicio.Agregar(createRequest);
@@ -286,10 +309,11 @@ namespace RentaCar.Escritorio
             textBoxVehiculo.Text = textBoxVehiculo.Text.ToUpper();
             textBoxVehiculo.SelectionStart = textBoxVehiculo.Text.Length;
         }
-        private void dataGridViewVehiculo_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private async void dataGridViewVehiculo_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && autoCompletar)
                 textBoxVehiculo.Text = ((VehiculoResponse)dataGridViewVehiculo.Rows[e.RowIndex].DataBoundItem).Patente;
+            await ActualizarPrecio();
         }
 
         private void dataGridViewCliente_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -303,20 +327,10 @@ namespace RentaCar.Escritorio
             textBoxVehiculo.Clear();
             dtpFechaRetiro.Value = DateTime.Today;
             dtpFechaDevolucion.Value = DateTime.Today.AddDays(1);
-            numericUpDownPrecio.Value = 0;
+            textBoxPrecio.Text = "";
             numericUpDownSenia.Value = 0;
             comboBoxEstado.SelectedIndex = -1;
         }
-        private void dtpFechaRetiro_ValueChanged(object sender, EventArgs e)
-        {
-            dtpFechaDevolucion.MinDate = dtpFechaRetiro.Value.AddDays(1);
-
-            if (dtpFechaDevolucion.Value <= dtpFechaRetiro.Value)
-            {
-                dtpFechaDevolucion.Value = dtpFechaRetiro.Value.AddDays(1);
-            }
-        }
-
         private void textBoxBuscador_TextChanged(object sender, EventArgs e)
         {
             string busqueda = textBoxBuscador.Text.Trim();
@@ -399,6 +413,51 @@ namespace RentaCar.Escritorio
             await CargarClientes();
             await CargarReservas();
             await CargarEstados();
+            await CargarSeguros();
+        }
+        private async Task ActualizarPrecio()
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(textBoxVehiculo.Text))
+                    return;
+
+                if (comboBoxSeguro.SelectedValue == null)
+                    return;
+
+                int seguroId = (int)comboBoxSeguro.SelectedValue;
+
+                decimal precio = await _reservaServicio.CalcularPrecio(
+                    textBoxVehiculo.Text,
+                    DateOnly.FromDateTime(dtpFechaRetiro.Value),
+                    DateOnly.FromDateTime(dtpFechaDevolucion.Value),
+                    seguroId);
+
+                textBoxPrecio.Text = precio.ToString("0.00");
+            }
+            catch
+            {
+                textBoxPrecio.Text = "";
+            }
+        }
+        private async void comboBoxSeguro_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            await ActualizarPrecio();
+        }
+        private async void dateTimePickerFechaInicio_ValueChanged(object sender, EventArgs e)
+        {
+            dtpFechaDevolucion.MinDate = dtpFechaRetiro.Value.AddDays(1);
+
+            if (dtpFechaDevolucion.Value <= dtpFechaRetiro.Value)
+            {
+                dtpFechaDevolucion.Value = dtpFechaRetiro.Value.AddDays(1);
+            }
+            await ActualizarPrecio();
+        }
+
+        private async void dateTimePickerFechaFin_ValueChanged(object sender, EventArgs e)
+        {
+            await ActualizarPrecio();
         }
     }
 }
