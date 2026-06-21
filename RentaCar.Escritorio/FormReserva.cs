@@ -179,6 +179,9 @@ namespace RentaCar.Escritorio
         private async void buttonGuardar_Click(object sender, EventArgs e)
         {
 
+            decimal precio = decimal.Parse(textBoxPrecio.Text);
+            decimal senia = numericUpDownSenia.Value;
+
             if (string.IsNullOrWhiteSpace(textBoxCliente.Text))
             {
                 Dialogos.Error(Mensajes.CampoVacio("cliente"));
@@ -214,11 +217,16 @@ namespace RentaCar.Escritorio
                 return;
             }
 
+            if (senia > precio)
+            {
+                Dialogos.Error("La seña no puede ser mayor al precio de la reserva.");
+                return;
+            }
+
             if (!Dialogos.Confirmar(Mensajes.ConfirmarGuardado("Reserva")))
             {
                 return;
             }
-
 
             try
             {

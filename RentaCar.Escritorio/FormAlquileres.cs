@@ -1,4 +1,5 @@
-﻿using RentaCar.Dtos.Alquileres;
+﻿using RentaCar.Dominio;
+using RentaCar.Dtos.Alquileres;
 using RentaCar.Dtos.Clientes;
 using RentaCar.Dtos.Conductores;
 using RentaCar.Dtos.EstadoAlquiler;
@@ -28,6 +29,9 @@ namespace RentaCar.Escritorio
         private bool modoEdicion = false;
         private bool autoCompletar = false;
         private int alquilerIdSeleccionado;
+        private TabPage _tabReserva;
+        private TabPage _tabVehiculo;
+        private TabPage _tabCliente;
 
         public FormAlquileres()
         {
@@ -40,17 +44,23 @@ namespace RentaCar.Escritorio
             _reservaServicio = new ReservaServicio();
             _estadoServicio = new EstadoAlquilerServicio();
             _seguroServicio = new SeguroServicio();
+            _tabReserva = tabPage4;
+            _tabVehiculo = tabPage2;
+            _tabCliente = tabPage5;
         }
 
         private async void FormAlquileres_Load(object sender, EventArgs e)
         {
             await CargarTodo();
+
             BloquearCampos(false);
             BloquearBotones(false);
+
             dtpFechaInicio.MinDate = DateTime.Today;
             dtpFechaDevolucion.MinDate = DateTime.Today.AddDays(1);
 
             radioButtonSReserva.Checked = true;
+
             CambiarModoAlquiler();
         }
 
@@ -58,8 +68,11 @@ namespace RentaCar.Escritorio
         {
             dtpFechaInicio.Enabled = estado;
             dtpFechaDevolucion.Enabled = estado;
-            numericUpDownPrecio.Enabled = estado;
+            textBoxPrecio.Enabled = estado;
             comboBoxEstado.Enabled = estado;
+            comboBoxSeguro.Enabled = estado;
+            radioButtonCReserva.Enabled = estado;
+            radioButtonSReserva.Enabled = estado;
         }
 
         private void BloquearBotones(bool estado)
@@ -70,15 +83,21 @@ namespace RentaCar.Escritorio
 
         private void LimpiarCampos()
         {
+            // Restaurar fechas mínimas
+            dtpFechaInicio.MinDate = DateTime.Today;
+            dtpFechaDevolucion.MinDate = DateTime.Today.AddDays(1);
+
             dtpFechaInicio.Value = DateTime.Today;
             dtpFechaDevolucion.Value = DateTime.Today.AddDays(1);
+
             textBoxVehiculo.Clear();
-            numericUpDownPrecio.Value = 0;
+            textBoxPrecio.Text = "0";
             textBoxDniCliente.Clear();
             textBoxDniCond.Clear();
             textBoxReserva.Clear();
             comboBoxEstado.SelectedIndex = -1;
             comboBoxSeguro.SelectedIndex = -1;
+            textBoxSaldo.Clear();
         }
 
         private async Task CargarTodo()
@@ -95,10 +114,13 @@ namespace RentaCar.Escritorio
             dataGridViewConductores.AutoGenerateColumns = false;
             dataGridViewConductores.DataSource = await _conductorServicio.ObtenerTodos();
 
-            _reservas = await _reservaServicio.ObtenerTodos();
+            _reservas = (await _reservaServicio.ObtenerTodos())
+                        .Where(r => r.EstadoId == 1) // Confirmada
+                        .ToList();
+
             dataGridViewReserva.AutoGenerateColumns = false;
-            dataGridViewReserva.DataSource = await _reservaServicio.ObtenerTodos();
-            //dataGridViewAlquileres.DataSource = await _alquilerServicio.ObtenerTodos();
+            dataGridViewReserva.DataSource = _reservas;
+
 
             _alquileres = await _alquilerServicio.ObtenerTodos();
             dataGridViewAlquileres.AutoGenerateColumns = false;
@@ -146,7 +168,7 @@ namespace RentaCar.Escritorio
             dtpFechaInicio.Value = alquiler.FechaInicio.ToDateTime(new TimeOnly());
             dtpFechaDevolucion.Value = alquiler.FechaFin.ToDateTime(new TimeOnly());
             textBoxVehiculo.Text = alquiler.VehiculoPatente;
-            numericUpDownPrecio.Value = alquiler.Precio;
+            textBoxPrecio.Text = alquiler.Precio.ToString();
             textBoxDniCliente.Text = alquiler.ClienteDni.ToString();
             textBoxDniCond.Text = alquiler.ConductorDni.ToString();
             textBoxReserva.Text = alquiler.ReservaId?.ToString();
@@ -218,7 +240,7 @@ namespace RentaCar.Escritorio
                         FechaInicio = DateOnly.FromDateTime(dtpFechaInicio.Value),
                         FechaFin = DateOnly.FromDateTime(dtpFechaDevolucion.Value),
                         VehiculoPatente = textBoxVehiculo.Text,
-                        Precio = numericUpDownPrecio.Value,
+                        Precio = decimal.Parse(textBoxPrecio.Text),
                         ClienteDni = int.Parse(textBoxDniCliente.Text),
                         ConductorDni = int.Parse(textBoxDniCond.Text),
                         ReservaId = reservaId,
@@ -229,6 +251,24 @@ namespace RentaCar.Escritorio
                     await _alquilerServicio.Actualizar(alquilerIdSeleccionado, update);
 
                     Dialogos.Info(Mensajes.ExitoEdicion("Alquiler"));
+                    if (reservaId.HasValue)
+                    {
+                        var reserva = _reservas.First(r => r.Id == reservaId.Value);
+
+                        var updateReserva = new ReservaUpdateRequest
+                        {
+                            FechaInicio = reserva.FechaInicio,
+                            FechaFin = reserva.FechaFin,
+                            VehiculoPatente = reserva.VehiculoPatente,
+                            ClienteDni = reserva.ClienteDni,
+                            Precio = reserva.Precio,
+                            Senia = reserva.Senia,
+                            EstadoId = 4, // Finalizada
+                            SeguroId = reserva.SeguroId
+                        };
+
+                        await _reservaServicio.Actualizar(reservaId.Value, updateReserva);
+                    }
                 }
                 else
                 {
@@ -237,7 +277,7 @@ namespace RentaCar.Escritorio
                         FechaInicio = DateOnly.FromDateTime(dtpFechaInicio.Value),
                         FechaFin = DateOnly.FromDateTime(dtpFechaDevolucion.Value),
                         VehiculoPatente = textBoxVehiculo.Text,
-                        Precio = numericUpDownPrecio.Value,
+                        Precio = decimal.Parse(textBoxPrecio.Text),
                         ClienteDni = int.Parse(textBoxDniCliente.Text),
                         ConductorDni = int.Parse(textBoxDniCond.Text),
                         ReservaId = reservaId,
@@ -248,6 +288,25 @@ namespace RentaCar.Escritorio
                     await _alquilerServicio.Agregar(create);
 
                     Dialogos.Info(Mensajes.ExitoGuardado("Alquiler"));
+
+                    if (reservaId.HasValue)
+                    {
+                        var reserva = _reservas.First(r => r.Id == reservaId.Value);
+
+                        var updateReserva = new ReservaUpdateRequest
+                        {
+                            FechaInicio = reserva.FechaInicio,
+                            FechaFin = reserva.FechaFin,
+                            VehiculoPatente = reserva.VehiculoPatente,
+                            ClienteDni = reserva.ClienteDni,
+                            Precio = reserva.Precio,
+                            Senia = reserva.Senia,
+                            EstadoId = 4, // Finalizada
+                            SeguroId = reserva.SeguroId
+                        };
+
+                        await _reservaServicio.Actualizar(reservaId.Value, updateReserva);
+                    }
                 }
 
                 await CargarTodo();
@@ -319,7 +378,7 @@ namespace RentaCar.Escritorio
         }
 
         private void dataGridViewReserva_CellDoubleClick(object sender,
-    DataGridViewCellEventArgs e)
+            DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0 || !autoCompletar)
                 return;
@@ -332,15 +391,31 @@ namespace RentaCar.Escritorio
             textBoxVehiculo.Text = reserva.VehiculoPatente;
             textBoxDniCliente.Text = reserva.ClienteDni.ToString();
 
-            dtpFechaInicio.Value =
-                reserva.FechaInicio.ToDateTime(TimeOnly.MinValue);
+            DateTime fechaInicio = reserva.FechaInicio.ToDateTime(TimeOnly.MinValue);
+            DateTime fechaFin = reserva.FechaFin.ToDateTime(TimeOnly.MinValue);
 
-            dtpFechaDevolucion.Value =
-                reserva.FechaFin.ToDateTime(TimeOnly.MinValue);
+            // Permitir cargar reservas viejas
+            fechaInicio = reserva.FechaInicio.ToDateTime(TimeOnly.MinValue);
+            fechaFin = reserva.FechaFin.ToDateTime(TimeOnly.MinValue);
+
+            // Si la reserva es anterior a hoy, permitir mostrarla
+            dtpFechaInicio.MinDate = fechaInicio < DateTime.Today
+                ? fechaInicio
+                : DateTime.Today;
+
+            dtpFechaDevolucion.MinDate = fechaFin < DateTime.Today.AddDays(1)
+                ? fechaFin
+                : DateTime.Today.AddDays(1);
+
+            dtpFechaInicio.Value = fechaInicio;
+            dtpFechaDevolucion.Value = fechaFin;
+
+            dtpFechaInicio.Value = fechaInicio;
+            dtpFechaDevolucion.Value = fechaFin;
 
             comboBoxSeguro.SelectedValue = reserva.SeguroId;
 
-            numericUpDownPrecio.Value = reserva.Precio;
+            textBoxPrecio.Text = reserva.Precio.ToString();
 
             textBoxSaldo.Text =
                 (reserva.Precio - reserva.Senia).ToString("0.00");
@@ -474,25 +549,50 @@ namespace RentaCar.Escritorio
         {
             bool conReserva = radioButtonCReserva.Checked;
 
-            // campos editables
             textBoxDniCond.Enabled = true;
             comboBoxEstado.Enabled = true;
 
-            // reserva
             textBoxReserva.Enabled = conReserva;
 
-            // datos que vienen de la reserva
             textBoxVehiculo.Enabled = !conReserva;
             textBoxDniCliente.Enabled = !conReserva;
             dtpFechaInicio.Enabled = !conReserva;
             dtpFechaDevolucion.Enabled = !conReserva;
             comboBoxSeguro.Enabled = !conReserva;
 
-            numericUpDownPrecio.Enabled = false;
+            textBoxPrecio.Enabled = false;
             textBoxSaldo.Enabled = false;
 
             if (!conReserva)
                 textBoxReserva.Clear();
+
+            if (conReserva)
+            {
+                // Mostrar Reserva
+                if (!tabControlAlquileres.TabPages.Contains(_tabReserva))
+                    tabControlAlquileres.TabPages.Add(_tabReserva);
+
+                // Ocultar Cliente y Vehículo
+                if (tabControlAlquileres.TabPages.Contains(_tabVehiculo))
+                    tabControlAlquileres.TabPages.Remove(_tabVehiculo);
+
+                if (tabControlAlquileres.TabPages.Contains(_tabCliente))
+                    tabControlAlquileres.TabPages.Remove(_tabCliente);
+            }
+            else
+            {
+                // Ocultar Reserva
+                if (tabControlAlquileres.TabPages.Contains(_tabReserva))
+                    tabControlAlquileres.TabPages.Remove(_tabReserva);
+
+                // Mostrar Vehículo
+                if (!tabControlAlquileres.TabPages.Contains(_tabVehiculo))
+                    tabControlAlquileres.TabPages.Add(_tabVehiculo);
+
+                // Mostrar Cliente
+                if (!tabControlAlquileres.TabPages.Contains(_tabCliente))
+                    tabControlAlquileres.TabPages.Add(_tabCliente);
+            }
         }
         private void radioButtonSReserva_CheckedChanged(object sender, EventArgs e)
         {
@@ -521,7 +621,7 @@ namespace RentaCar.Escritorio
                     DateOnly.FromDateTime(dtpFechaDevolucion.Value),
                     (int)comboBoxSeguro.SelectedValue);
 
-            numericUpDownPrecio.Value = precio;
+            textBoxPrecio.Text = precio.ToString("0.00");
 
             textBoxSaldo.Text = precio.ToString("0.00");
         }
