@@ -104,7 +104,7 @@ namespace RentaCar.Escritorio
         {
             if (dataGridViewUsuarios.SelectedRows.Count == 0)
             {
-                MessageBox.Show("No seleccionaste ningún usuario.");
+                Dialogos.Error (Mensajes.SeleccioneEntidad("usuario"));
                 return;
             }
 
@@ -127,13 +127,13 @@ namespace RentaCar.Escritorio
         {
             if (string.IsNullOrWhiteSpace(textBoxNombreUsuario.Text))
             {
-                MessageBox.Show("El nombre de usuario es obligatorio.");
+                Dialogos.Error(Mensajes.CampoVacio("nombre de usuario"));
                 return;
             }
 
             if (comboBoxRol.SelectedValue == null || comboBoxActivo.SelectedValue == null)
             {
-                MessageBox.Show("Debe completar todos los campos.");
+                Dialogos.Error(Mensajes.CompleteCamposObligatorios);
                 return;
             }
 
@@ -189,18 +189,22 @@ namespace RentaCar.Escritorio
         {
             if (dataGridViewUsuarios.SelectedRows.Count == 0)
             {
-                MessageBox.Show("No seleccionaste ningún usuario.");
+                Dialogos.Error(Mensajes.SeleccioneEntidad("usuario"));
                 return;
             }
 
-            var confirm = MessageBox.Show("¿Eliminar usuario?", "Confirmar", MessageBoxButtons.YesNo);
+            //var confirm = MessageBox.Show("¿Eliminar usuario?", "Confirmar", MessageBoxButtons.YesNo);
 
-            if (confirm != DialogResult.Yes)
+            //if (confirm != DialogResult.Yes)
+             //   return;
+
+            if(!Dialogos.Confirmar(Mensajes.ConfirmarEliminacion("este usuario")))
                 return;
+
+            var id = (int)dataGridViewUsuarios.SelectedRows[0].Cells["IdColumn"].Value;
 
             try
             {
-                var id = (int)dataGridViewUsuarios.SelectedRows[0].Cells["IdColumn"].Value;
 
                 await _usuarioServicio.Eliminar(id);
 
@@ -212,6 +216,8 @@ namespace RentaCar.Escritorio
                 BloquearBotones(false);
 
                 modoEdicion = false;
+
+                Dialogos.Info(Mensajes.ExitoEliminacion("Usuario"));
             }
             catch (Exception ex)
             {
@@ -225,10 +231,8 @@ namespace RentaCar.Escritorio
                 return;
 
             LimpiarCampos();
-
             BloquearCampos(false);
             BloquearBotones(false);
-
             modoEdicion = false;
         }
         private async void textBoxBuscador_TextChanged(object sender, EventArgs e)

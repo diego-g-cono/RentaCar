@@ -25,6 +25,8 @@ namespace RentaCar.Escritorio.Helpers
 
         public static string CantidadInvalidaDigitos(string entidad) => $"Cantidad de dígitos inválida para {entidad}.";
 
+        public static string CompleteCamposObligatorios => "Debe completar todos los campos.";
+
         //confirmaciones
         public static string ConfirmarEliminacion(string entidad) => $"¿Está seguro que desea eliminar {entidad}?";
 

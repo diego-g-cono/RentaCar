@@ -139,9 +139,25 @@ namespace RentaCar.API.Controllers
         {
             if (request == null)
                 return BadRequest("Datos inválidos");
+            
+            //if (_repoUsuarios.ObtenerPorNombreUsuario(request.NombreUsuario) != null)
+            //    return BadRequest("El nombre de usuario ya existe");
 
-            if (_repoUsuarios.ObtenerPorNombreUsuario(request.NombreUsuario) != null)
-                return BadRequest("El nombre de usuario ya existe");
+            var usuarioExistente = _repoUsuarios.ObtenerPorNombreUsuario(request.NombreUsuario);
+
+            if(usuarioExistente != null)
+            {
+                if(usuarioExistente.Activo)
+                    return BadRequest("El nombre de usuario ya existe");
+
+                usuarioExistente.NombreUsuario = request.NombreUsuario;
+                usuarioExistente.Contrasenia = request.Contrasenia;
+                usuarioExistente.RolId = request.RolId == 0 ? 3 : request.RolId;
+                usuarioExistente.Activo = request.Activo;
+
+                _repoUsuarios.Actualizar(usuarioExistente);
+                return Ok();
+            }
 
             var usuario = new Usuario
             {

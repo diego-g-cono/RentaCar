@@ -137,6 +137,7 @@
             // comboBoxActivo
             // 
             comboBoxActivo.BackColor = Color.MidnightBlue;
+            comboBoxActivo.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxActivo.ForeColor = SystemColors.ButtonFace;
             comboBoxActivo.FormattingEnabled = true;
             comboBoxActivo.Items.AddRange(new object[] { "Si", "No" });
@@ -148,6 +149,7 @@
             // comboBoxRol
             // 
             comboBoxRol.BackColor = Color.MidnightBlue;
+            comboBoxRol.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxRol.ForeColor = SystemColors.ButtonFace;
             comboBoxRol.FormattingEnabled = true;
             comboBoxRol.Items.AddRange(new object[] { "Admin", "User" });
