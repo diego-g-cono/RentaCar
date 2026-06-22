@@ -58,6 +58,27 @@ public class ClientesController : ControllerBase
         if (request == null)
             return BadRequest();
 
+
+        var existente = _repo.ObtenerPorDni(request.Dni);
+
+        if(existente != null)
+        {
+            if (existente.Activo)
+                return Conflict("Ya existe un cliente activo con ese DNI.");
+            
+            // Está per inactivo, lo reactivamos y actualizamos sus datos
+            existente.Nombre = request.Nombre;
+            existente.Apellido = request.Apellido;
+            existente.Email = request.Email;
+            existente.Telefono = request.Telefono;
+            existente.Activo = true;
+            
+            
+            _repo.Actualizar(existente);
+            return Ok();
+        }
+
+
         var cliente = new Cliente
         {
             Dni = request.Dni,

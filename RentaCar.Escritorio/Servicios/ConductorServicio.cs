@@ -25,7 +25,13 @@ namespace RentaCar.Escritorio.Servicios
 
         public async Task Agregar(ConductorCreateRequest request)
         {
-            await _http.PostAsJsonAsync("conductores", request);
+            var response = await _http.PostAsJsonAsync("conductores", request);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                var error = await response.Content.ReadAsStringAsync();
+                throw new Exception(error);
+            }
         }
 
         public async Task Actualizar(int dni, ConductorUpdateRequest request)

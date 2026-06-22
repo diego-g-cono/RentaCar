@@ -57,6 +57,25 @@ namespace RentaCar.API.Controllers
             if (request == null)
                 return BadRequest("Datos inválidos");
 
+            var existente = _repo.ObtenerPorDni(request.Dni);
+
+            if (existente != null)
+            {
+                if (existente.Activo)
+                    return Conflict("Ya existe un conductor activo con ese DNI.");
+
+                // Está pero inactivo, lo reactivamos y actualizamos sus datos
+                existente.Dni = request.Dni;
+                existente.Nombre = request.Nombre;
+                existente.Apellido = request.Apellido;
+                existente.FechaVencLic = request.FechaVencLic;
+                existente.Activo = true;
+
+
+                _repo.Actualizar(existente);
+                return Ok();
+            }
+
             var conductor = new Dominio.Conductor
             {
                 Dni = request.Dni,

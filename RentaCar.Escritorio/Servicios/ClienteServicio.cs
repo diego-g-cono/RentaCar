@@ -25,7 +25,7 @@ namespace RentaCar.Escritorio.Servicios
             if (!response.IsSuccessStatusCode)
             {
                 var error = await response.Content.ReadAsStringAsync();
-                throw new Exception($"Error al agregar cliente: {error}");
+                throw new Exception(error);
             }
         }
 
