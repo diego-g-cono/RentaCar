@@ -30,16 +30,42 @@
 
 @code {
 
-    private DateTime FechaRetiro { get; set; } = DateTime.Today;
-    private DateTime FechaDevolucion { get; set; } = DateTime.Today.AddDays(1);
+    private DateTime _fechaRetiro = DateTime.Today;
+    private DateTime _fechaDevolucion = DateTime.Today.AddDays(1);
+
+    private DateTime FechaRetiro
+    {
+        get => _fechaRetiro;
+        set
+        {
+            _fechaRetiro = value;
+
+            // Si la devolución queda igual o anterior,
+            // moverla automáticamente al día siguiente.
+            if (_fechaDevolucion <= _fechaRetiro)
+            {
+                _fechaDevolucion = _fechaRetiro.AddDays(1);
+            }
+        }
+    }
+
+    private DateTime FechaDevolucion
+    {
+        get => _fechaDevolucion;
+        set
+        {
+            // Nunca permitir devolución <= retiro
+            _fechaDevolucion =
+                value <= _fechaRetiro
+                ? _fechaRetiro.AddDays(1)
+                : value;
+        }
+    }
 
     private string MinRetiro => DateTime.Today.ToString("yyyy-MM-dd");
 
     private string MinDevolucion =>
-        (FechaRetiro > DateTime.Today
-            ? FechaRetiro
-            : DateTime.Today.AddDays(1)
-        ).ToString("yyyy-MM-dd");
+    FechaRetiro.AddDays(1).ToString("yyyy-MM-dd");
 
     private void BuscarAutos()
     {

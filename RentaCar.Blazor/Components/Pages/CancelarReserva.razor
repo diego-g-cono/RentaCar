@@ -48,10 +48,20 @@
                         <strong>$ @r.Senia</strong>
                     </div>
 
-                    <button class="btn-cancelar"
-                            @onclick="() => PedirConfirmacion(r.Id)">
-                        Cancelar reserva
-                    </button>
+                    @if (r.EstadoId == 2)
+                    {
+                        <button class="btn-cancelar"
+                                @onclick="() => PedirConfirmacion(r.Id)">
+                            Cancelar reserva
+                        </button>
+                    }
+                    else
+                    {
+                        <button class="btn-cancelar btn-deshabilitado"
+                                disabled>
+                            No cancelable
+                        </button>
+                    }
 
                 </div>
             }
@@ -168,6 +178,11 @@
     }
     private void PedirConfirmacion(int id)
     {
+        var reserva = reservas?.FirstOrDefault(r => r.Id == id);
+
+        if (reserva == null || reserva.EstadoId != 2)
+            return;
+
         reservaAEliminar = id;
         mostrarConfirmacion = true;
     }
@@ -179,6 +194,14 @@
 
     private async Task ConfirmarCancelacion()
     {
+        var reserva = reservas?.FirstOrDefault(r => r.Id == reservaAEliminar);
+
+        if (reserva == null || reserva.EstadoId != 2)
+        {
+            mostrarConfirmacion = false;
+            return;
+        }
+
         mostrarConfirmacion = false;
 
         await CancelarReservas(reservaAEliminar);
@@ -355,5 +378,11 @@
         color: white;
         font-weight: bold;
         cursor: pointer;
+    }
+
+    .btn-deshabilitado {
+        background: #475569 !important;
+        cursor: not-allowed;
+        opacity: .7;
     }
 </style>
