@@ -34,6 +34,9 @@ namespace RentaCar.API.Controllers
             if (usuario == null)
                 return Unauthorized("Usuario inválido");
 
+            if (!usuario.Activo)
+                return Unauthorized("Usuario desactivado");
+
             bool passwordOk = BCrypt.Net.BCrypt.Verify(
                 request.Contrasenia,
                 usuario.Contrasenia);

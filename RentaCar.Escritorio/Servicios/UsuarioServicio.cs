@@ -60,8 +60,11 @@ namespace RentaCar.Escritorio.Servicios
         {
             var response = await _http.PostAsJsonAsync("usuarios/login", request);
 
-            if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
-                return null;
+            if (!response.IsSuccessStatusCode)
+            {
+                var mensaje = await response.Content.ReadAsStringAsync();
+                throw new Exception(mensaje);
+            }
 
             return await response.Content.ReadFromJsonAsync<LoginResponse>();
         }

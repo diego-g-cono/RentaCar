@@ -21,9 +21,7 @@ namespace RentaCar.Infraestructura
         // Obtener todos los usuarios
         public List<Usuario> ObtenerTodos()
         {
-            return _context.Usuarios
-                .Where(u => u.Activo)
-                .ToList();
+            return _context.Usuarios.ToList();
         }
 
         // Obtener usuario por ID
