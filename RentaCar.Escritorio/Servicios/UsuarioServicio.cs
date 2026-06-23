@@ -68,5 +68,16 @@ namespace RentaCar.Escritorio.Servicios
 
             return await response.Content.ReadFromJsonAsync<LoginResponse>();
         }
+
+        public async Task Registrar(RegistroClienteRequest request)
+        {
+            var response = await _http.PostAsJsonAsync("usuarios/registrar", request);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                var mensaje = await response.Content.ReadAsStringAsync();
+                throw new Exception(mensaje);
+            }
+        }
     }
 }

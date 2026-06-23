@@ -1,4 +1,5 @@
 ﻿using RentaCar.Dtos.Clientes;
+using RentaCar.Dtos.Usuarios;
 using RentaCar.Escritorio.Helpers;
 using RentaCar.Escritorio.Servicios;
 using System.Net.Mail;
@@ -8,6 +9,7 @@ namespace RentaCar.Escritorio
     public partial class FormCliente : Form
     {
         private readonly ClienteServicio _clienteServicio;
+        private readonly UsuarioServicio _usuarioServicio;
 
         private bool modoEdicion = false;
 
@@ -17,6 +19,7 @@ namespace RentaCar.Escritorio
         {
             InitializeComponent();
             _clienteServicio = new ClienteServicio();
+            _usuarioServicio = new UsuarioServicio();
         }
 
         private async void FormCliente_Load(object sender, EventArgs e)
@@ -46,6 +49,8 @@ namespace RentaCar.Escritorio
             textBoxDNI.Enabled = estado;
             textBoxTel.Enabled = estado;
             textBoxEmail.Enabled = estado;
+            textBoxUsuario.Enabled = estado;
+            textBoxContrasenia.Enabled = estado;
         }
 
         private void BloquearBotones(bool estado)
@@ -79,8 +84,6 @@ namespace RentaCar.Escritorio
                 Dialogos.Error(Mensajes.FormatoInvalido("DNI"));
                 return;
             }
-
-
 
             if (string.IsNullOrWhiteSpace(textBoxNombre.Text))
             {
@@ -120,6 +123,7 @@ namespace RentaCar.Escritorio
                 return;
             }
 
+
             if (!Dialogos.Confirmar(Mensajes.ConfirmarGuardado("al cliente")))
             {
                 return;
@@ -127,6 +131,41 @@ namespace RentaCar.Escritorio
 
             try
             {
+                /*
+                if (modoEdicion)
+                {
+                    var updateRequest = new ClienteUpdateRequest
+                    {
+                        Nombre = textBoxNombre.Text,
+                        Apellido = textBoxApellido.Text,
+                        Email = textBoxEmail.Text,
+                        Telefono = textBoxTel.Text
+                    };
+
+                    int dni = int.Parse(textBoxDNI.Text);
+
+                    await _clienteServicio.Actualizar(dni, updateRequest);
+
+                    Dialogos.Info(Mensajes.ExitoEdicion("Cliente"));                  
+                }
+                else
+                {
+                    var createRequest = new ClienteCreateRequest
+                    {
+                        Dni = int.Parse(textBoxDNI.Text),
+                        Nombre = textBoxNombre.Text,
+                        Apellido = textBoxApellido.Text,
+                        Email = textBoxEmail.Text,
+                        Telefono = textBoxTel.Text
+                    };
+
+                    await _clienteServicio.Agregar(createRequest);
+
+                    Dialogos.Info(Mensajes.ExitoGuardado("Cliente"));
+                }
+                */
+                bool completoUsuario = !string.IsNullOrWhiteSpace(textBoxUsuario.Text) && !string.IsNullOrWhiteSpace(textBoxContrasenia.Text);
+
                 if (modoEdicion)
                 {
                     var updateRequest = new ClienteUpdateRequest
@@ -142,6 +181,22 @@ namespace RentaCar.Escritorio
                     await _clienteServicio.Actualizar(dni, updateRequest);
 
                     Dialogos.Info(Mensajes.ExitoEdicion("Cliente"));
+                }
+                else if(completoUsuario)
+                {
+                    var registroRequest = new RegistroClienteRequest
+                    {
+                        Dni = int.Parse(textBoxDNI.Text),
+                        Nombre = textBoxNombre.Text,
+                        Apellido = textBoxApellido.Text,
+                        Email = textBoxEmail.Text,
+                        Telefono = textBoxTel.Text,
+                        NombreUsuario = textBoxUsuario.Text,
+                        Contrasenia = textBoxContrasenia.Text
+                    };
+
+                    await _usuarioServicio.Registrar(registroRequest);
+                    Dialogos.Info(Mensajes.ExitoGuardado("Cliente"));
                 }
                 else
                 {
@@ -214,10 +269,13 @@ namespace RentaCar.Escritorio
             textBoxApellido.Text = dataGridView.SelectedRows[0].Cells["ColumnApellido"].Value.ToString();
             textBoxEmail.Text = dataGridView.SelectedRows[0].Cells["ColumnEmail"].Value.ToString();
             textBoxTel.Text = dataGridView.SelectedRows[0].Cells["ColumnTelefono"].Value.ToString();
+            textBoxUsuario.Text = dataGridView.SelectedRows[0].Cells["ColumnUsuario"].Value.ToString();
 
             BloquearCampos(true);
             BloquearBotones(true);
             textBoxDNI.Enabled = false;
+            textBoxUsuario.Enabled = false;
+            textBoxContrasenia.Enabled = false;
             modoEdicion = true;
         }
 
@@ -241,6 +299,8 @@ namespace RentaCar.Escritorio
             textBoxApellido.Clear();
             textBoxEmail.Clear();
             textBoxTel.Clear();
+            textBoxUsuario.Clear();
+            textBoxContrasenia.Clear();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

@@ -6,5 +6,7 @@ namespace RentaCar.Dtos.Clientes
     {
         public required string Email { get; set; }
         public required string Telefono { get; set; }
+
+        public required string NombreUsuario { get; set; }
     }
 }

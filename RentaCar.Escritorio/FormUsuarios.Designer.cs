@@ -69,7 +69,7 @@
             buttonCancelar.FlatStyle = FlatStyle.Flat;
             buttonCancelar.Font = new Font("Verdana", 9F);
             buttonCancelar.ForeColor = SystemColors.ButtonFace;
-            buttonCancelar.Location = new Point(265, 305);
+            buttonCancelar.Location = new Point(265, 310);
             buttonCancelar.Name = "buttonCancelar";
             buttonCancelar.Size = new Size(77, 33);
             buttonCancelar.TabIndex = 34;
@@ -86,7 +86,7 @@
             buttonGuardar.FlatStyle = FlatStyle.Flat;
             buttonGuardar.Font = new Font("Verdana", 9F);
             buttonGuardar.ForeColor = SystemColors.ButtonFace;
-            buttonGuardar.Location = new Point(27, 305);
+            buttonGuardar.Location = new Point(27, 310);
             buttonGuardar.Name = "buttonGuardar";
             buttonGuardar.Size = new Size(77, 33);
             buttonGuardar.TabIndex = 33;
@@ -121,6 +121,7 @@
             textBoxContrasenia.ForeColor = SystemColors.ButtonFace;
             textBoxContrasenia.Location = new Point(162, 80);
             textBoxContrasenia.Name = "textBoxContrasenia";
+            textBoxContrasenia.PasswordChar = '*';
             textBoxContrasenia.Size = new Size(121, 22);
             textBoxContrasenia.TabIndex = 31;
             // 
@@ -258,7 +259,7 @@
             dataGridViewUsuarios.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = Color.MidnightBlue;
-            dataGridViewCellStyle1.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
             dataGridViewCellStyle1.ForeColor = SystemColors.ButtonFace;
             dataGridViewCellStyle1.SelectionBackColor = Color.RoyalBlue;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
@@ -267,7 +268,7 @@
             dataGridViewUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewUsuarios.Columns.AddRange(new DataGridViewColumn[] { IdColumn, ColumnNombre, ColumnRol, ColumnActivo });
             dataGridViewUsuarios.GridColor = Color.MidnightBlue;
-            dataGridViewUsuarios.Location = new Point(395, 64);
+            dataGridViewUsuarios.Location = new Point(395, 60);
             dataGridViewUsuarios.Name = "dataGridViewUsuarios";
             dataGridViewCellStyle2.BackColor = Color.MidnightBlue;
             dataGridViewCellStyle2.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -275,7 +276,7 @@
             dataGridViewCellStyle2.SelectionBackColor = Color.RoyalBlue;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.ButtonFace;
             dataGridViewUsuarios.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            dataGridViewUsuarios.Size = new Size(548, 242);
+            dataGridViewUsuarios.Size = new Size(451, 294);
             dataGridViewUsuarios.TabIndex = 35;
             // 
             // IdColumn
@@ -346,11 +347,11 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MidnightBlue;
-            ClientSize = new Size(1009, 458);
+            ClientSize = new Size(960, 404);
+            Controls.Add(dataGridViewUsuarios);
             Controls.Add(buttonRecargar);
             Controls.Add(textBoxBuscador);
             Controls.Add(labelBuscarPorDni);
-            Controls.Add(dataGridViewUsuarios);
             Controls.Add(buttonCancelar);
             Controls.Add(buttonGuardar);
             Controls.Add(groupBox);

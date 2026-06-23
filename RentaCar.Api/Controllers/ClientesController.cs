@@ -2,22 +2,25 @@
 using RentaCar.Dominio;
 using RentaCar.Infraestructura.Repositorios;
 using RentaCar.Dtos.Clientes;
+using RentaCar.Infraestructura;
 
 [ApiController]
 [Route("api/[controller]")]
 public class ClientesController : ControllerBase
 {
-    private readonly ClienteRepositorio _repo;
+    private readonly ClienteRepositorio _repoClientes;
+    private readonly UsuarioRepositorio _repoUsuarios;
 
-    public ClientesController(ClienteRepositorio repo)
+    public ClientesController(ClienteRepositorio repoClientes, UsuarioRepositorio repoUsuarios)
     {
-        _repo = repo;
+        _repoClientes = repoClientes;
+        _repoUsuarios = repoUsuarios;
     }
 
     [HttpGet]
     public ActionResult<List<ClienteResponse>> Get()
     {
-        var clientes = _repo.ObtenerTodos();
+        var clientes = _repoClientes.ObtenerTodos();
 
         var response = clientes.Select(c => new ClienteResponse
         {
@@ -26,6 +29,10 @@ public class ClientesController : ControllerBase
             Apellido = c.Apellido,
             Email = c.Email,
             Telefono = c.Telefono,
+            NombreUsuario = c.UsuarioId.HasValue
+            ? _repoUsuarios.ObtenerPorId(c.UsuarioId.Value)?.NombreUsuario ?? "Sin usuario"
+            : "Sin usuario"
+
         }).ToList();
 
         return Ok(response);
@@ -34,7 +41,7 @@ public class ClientesController : ControllerBase
     [HttpGet("{dni}")]
     public ActionResult<ClienteResponse> Get(int dni)
     {
-        var cliente = _repo.ObtenerPorDni(dni);
+        var cliente = _repoClientes.ObtenerPorDni(dni);
 
         if (cliente == null)
             return NotFound();
@@ -46,6 +53,9 @@ public class ClientesController : ControllerBase
             Apellido = cliente.Apellido,
             Email = cliente.Email,
             Telefono = cliente.Telefono,
+            NombreUsuario = cliente.UsuarioId.HasValue
+            ? _repoUsuarios.ObtenerPorId(cliente.UsuarioId.Value)?.NombreUsuario ?? "Sin usuario"
+            : "Sin usuario"
         };
 
         return Ok(response);
@@ -59,7 +69,7 @@ public class ClientesController : ControllerBase
             return BadRequest();
 
 
-        var existente = _repo.ObtenerPorDni(request.Dni);
+        var existente = _repoClientes.ObtenerPorDni(request.Dni);
 
         if(existente != null)
         {
@@ -74,7 +84,7 @@ public class ClientesController : ControllerBase
             existente.Activo = true;
             
             
-            _repo.Actualizar(existente);
+            _repoClientes.Actualizar(existente);
             return Ok();
         }
 
@@ -88,7 +98,7 @@ public class ClientesController : ControllerBase
             Telefono = request.Telefono,
         };
 
-        _repo.Agregar(cliente);
+        _repoClientes.Agregar(cliente);
 
         return Ok();
     }
@@ -99,7 +109,7 @@ public class ClientesController : ControllerBase
         if (request == null)
             return BadRequest();
 
-        var existente = _repo.ObtenerPorDni(dni);
+        var existente = _repoClientes.ObtenerPorDni(dni);
 
         if (existente == null)
             return NotFound();
@@ -109,7 +119,7 @@ public class ClientesController : ControllerBase
         existente.Email = request.Email;
         existente.Telefono = request.Telefono;
 
-        _repo.Actualizar(existente);
+        _repoClientes.Actualizar(existente);
 
         return Ok();
     }
@@ -117,12 +127,12 @@ public class ClientesController : ControllerBase
     [HttpDelete("{dni}")]
     public IActionResult Delete(int dni)
     {
-        var existente = _repo.ObtenerPorDni(dni);
+        var existente = _repoClientes.ObtenerPorDni(dni);
 
         if (existente == null)
             return NotFound();
 
-        _repo.Eliminar(dni);
+        _repoClientes.Eliminar(dni);
 
         return Ok();
     }

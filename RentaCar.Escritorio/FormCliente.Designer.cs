@@ -35,6 +35,10 @@
             buttonEditar = new Button();
             buttonNuevo = new Button();
             groupBox = new GroupBox();
+            textBoxContrasenia = new TextBox();
+            textBoxUsuario = new TextBox();
+            labelUsuario = new Label();
+            labelContrasenia = new Label();
             textBoxTel = new TextBox();
             textBoxEmail = new TextBox();
             textBoxApellido = new TextBox();
@@ -48,14 +52,15 @@
             buttonCancelar = new Button();
             buttonGuardar = new Button();
             dataGridView = new DataGridView();
+            textBoxBuscador = new TextBox();
+            labelBuscarPorDni = new Label();
+            buttonRecargar = new Button();
             ColumnDNI = new DataGridViewTextBoxColumn();
             ColumnNombre = new DataGridViewTextBoxColumn();
             ColumnApellido = new DataGridViewTextBoxColumn();
             ColumnEmail = new DataGridViewTextBoxColumn();
             ColumnTelefono = new DataGridViewTextBoxColumn();
-            textBoxBuscador = new TextBox();
-            labelBuscarPorDni = new Label();
-            buttonRecargar = new Button();
+            ColumnUsuario = new DataGridViewTextBoxColumn();
             groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             SuspendLayout();
@@ -113,6 +118,10 @@
             // 
             // groupBox
             // 
+            groupBox.Controls.Add(textBoxContrasenia);
+            groupBox.Controls.Add(textBoxUsuario);
+            groupBox.Controls.Add(labelUsuario);
+            groupBox.Controls.Add(labelContrasenia);
             groupBox.Controls.Add(textBoxTel);
             groupBox.Controls.Add(textBoxEmail);
             groupBox.Controls.Add(textBoxApellido);
@@ -127,10 +136,57 @@
             groupBox.ForeColor = SystemColors.ButtonFace;
             groupBox.Location = new Point(12, 60);
             groupBox.Name = "groupBox";
-            groupBox.Size = new Size(315, 206);
+            groupBox.Size = new Size(315, 294);
             groupBox.TabIndex = 6;
             groupBox.TabStop = false;
             groupBox.Text = "Datos Cliente";
+            // 
+            // textBoxContrasenia
+            // 
+            textBoxContrasenia.BackColor = Color.MidnightBlue;
+            textBoxContrasenia.BorderStyle = BorderStyle.FixedSingle;
+            textBoxContrasenia.Font = new Font("Verdana", 9F);
+            textBoxContrasenia.ForeColor = SystemColors.ButtonFace;
+            textBoxContrasenia.Location = new Point(120, 245);
+            textBoxContrasenia.MaxLength = 20;
+            textBoxContrasenia.Name = "textBoxContrasenia";
+            textBoxContrasenia.PasswordChar = '*';
+            textBoxContrasenia.ShortcutsEnabled = false;
+            textBoxContrasenia.Size = new Size(121, 22);
+            textBoxContrasenia.TabIndex = 24;
+            // 
+            // textBoxUsuario
+            // 
+            textBoxUsuario.BackColor = Color.MidnightBlue;
+            textBoxUsuario.BorderStyle = BorderStyle.FixedSingle;
+            textBoxUsuario.Font = new Font("Verdana", 9F);
+            textBoxUsuario.ForeColor = SystemColors.ButtonFace;
+            textBoxUsuario.Location = new Point(120, 210);
+            textBoxUsuario.MaxLength = 50;
+            textBoxUsuario.Name = "textBoxUsuario";
+            textBoxUsuario.ShortcutsEnabled = false;
+            textBoxUsuario.Size = new Size(121, 22);
+            textBoxUsuario.TabIndex = 23;
+            // 
+            // labelUsuario
+            // 
+            labelUsuario.AutoSize = true;
+            labelUsuario.Font = new Font("Verdana", 9F);
+            labelUsuario.Location = new Point(20, 210);
+            labelUsuario.Name = "labelUsuario";
+            labelUsuario.Size = new Size(60, 14);
+            labelUsuario.TabIndex = 22;
+            labelUsuario.Text = "Usuario:";
+            // 
+            // labelContrasenia
+            // 
+            labelContrasenia.AutoSize = true;
+            labelContrasenia.Font = new Font("Verdana", 9F);
+            labelContrasenia.Location = new Point(19, 247);
+            labelContrasenia.Name = "labelContrasenia";
+            labelContrasenia.Size = new Size(86, 14);
+            labelContrasenia.TabIndex = 21;
+            labelContrasenia.Text = "Contraseña:";
             // 
             // textBoxTel
             // 
@@ -260,7 +316,7 @@
             buttonCancelar.FlatStyle = FlatStyle.Flat;
             buttonCancelar.Font = new Font("Verdana", 9F);
             buttonCancelar.ForeColor = SystemColors.ButtonFace;
-            buttonCancelar.Location = new Point(250, 281);
+            buttonCancelar.Location = new Point(219, 360);
             buttonCancelar.Name = "buttonCancelar";
             buttonCancelar.Size = new Size(77, 33);
             buttonCancelar.TabIndex = 8;
@@ -277,7 +333,7 @@
             buttonGuardar.FlatStyle = FlatStyle.Flat;
             buttonGuardar.Font = new Font("Verdana", 9F);
             buttonGuardar.ForeColor = SystemColors.ButtonFace;
-            buttonGuardar.Location = new Point(12, 281);
+            buttonGuardar.Location = new Point(19, 360);
             buttonGuardar.Name = "buttonGuardar";
             buttonGuardar.Size = new Size(77, 33);
             buttonGuardar.TabIndex = 7;
@@ -301,7 +357,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView.Columns.AddRange(new DataGridViewColumn[] { ColumnDNI, ColumnNombre, ColumnApellido, ColumnEmail, ColumnTelefono });
+            dataGridView.Columns.AddRange(new DataGridViewColumn[] { ColumnDNI, ColumnNombre, ColumnApellido, ColumnEmail, ColumnTelefono, ColumnUsuario });
             dataGridView.GridColor = Color.MidnightBlue;
             dataGridView.Location = new Point(356, 60);
             dataGridView.Name = "dataGridView";
@@ -316,43 +372,8 @@
             dataGridView.RowTemplate.DefaultCellStyle.ForeColor = SystemColors.ButtonFace;
             dataGridView.RowTemplate.DefaultCellStyle.SelectionBackColor = Color.RoyalBlue;
             dataGridView.RowTemplate.DefaultCellStyle.SelectionForeColor = SystemColors.ButtonFace;
-            dataGridView.Size = new Size(545, 322);
+            dataGridView.Size = new Size(673, 322);
             dataGridView.TabIndex = 9;
-            // 
-            // ColumnDNI
-            // 
-            ColumnDNI.DataPropertyName = "DNI";
-            ColumnDNI.HeaderText = "DNI";
-            ColumnDNI.Name = "ColumnDNI";
-            ColumnDNI.ReadOnly = true;
-            // 
-            // ColumnNombre
-            // 
-            ColumnNombre.DataPropertyName = "Nombre";
-            ColumnNombre.HeaderText = "Nombre";
-            ColumnNombre.Name = "ColumnNombre";
-            ColumnNombre.ReadOnly = true;
-            // 
-            // ColumnApellido
-            // 
-            ColumnApellido.DataPropertyName = "Apellido";
-            ColumnApellido.HeaderText = "Apellido";
-            ColumnApellido.Name = "ColumnApellido";
-            ColumnApellido.ReadOnly = true;
-            // 
-            // ColumnEmail
-            // 
-            ColumnEmail.DataPropertyName = "Email";
-            ColumnEmail.HeaderText = "E-mail";
-            ColumnEmail.Name = "ColumnEmail";
-            ColumnEmail.ReadOnly = true;
-            // 
-            // ColumnTelefono
-            // 
-            ColumnTelefono.DataPropertyName = "Telefono";
-            ColumnTelefono.HeaderText = "Teléfono";
-            ColumnTelefono.Name = "ColumnTelefono";
-            ColumnTelefono.ReadOnly = true;
             // 
             // textBoxBuscador
             // 
@@ -389,12 +410,54 @@
             buttonRecargar.UseVisualStyleBackColor = true;
             buttonRecargar.Click += buttonRecargar_Click;
             // 
+            // ColumnDNI
+            // 
+            ColumnDNI.DataPropertyName = "DNI";
+            ColumnDNI.HeaderText = "DNI";
+            ColumnDNI.Name = "ColumnDNI";
+            ColumnDNI.ReadOnly = true;
+            // 
+            // ColumnNombre
+            // 
+            ColumnNombre.DataPropertyName = "Nombre";
+            ColumnNombre.HeaderText = "Nombre";
+            ColumnNombre.Name = "ColumnNombre";
+            ColumnNombre.ReadOnly = true;
+            // 
+            // ColumnApellido
+            // 
+            ColumnApellido.DataPropertyName = "Apellido";
+            ColumnApellido.HeaderText = "Apellido";
+            ColumnApellido.Name = "ColumnApellido";
+            ColumnApellido.ReadOnly = true;
+            // 
+            // ColumnEmail
+            // 
+            ColumnEmail.DataPropertyName = "Email";
+            ColumnEmail.HeaderText = "E-mail";
+            ColumnEmail.Name = "ColumnEmail";
+            ColumnEmail.ReadOnly = true;
+            // 
+            // ColumnTelefono
+            // 
+            ColumnTelefono.DataPropertyName = "Telefono";
+            ColumnTelefono.HeaderText = "Teléfono";
+            ColumnTelefono.Name = "ColumnTelefono";
+            ColumnTelefono.ReadOnly = true;
+            // 
+            // ColumnUsuario
+            // 
+            ColumnUsuario.DataPropertyName = "NombreUsuario";
+            ColumnUsuario.HeaderText = "Usuario";
+            ColumnUsuario.Name = "ColumnUsuario";
+            ColumnUsuario.ReadOnly = true;
+            // 
             // FormCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MidnightBlue;
-            ClientSize = new Size(922, 424);
+            ClientSize = new Size(1057, 424);
             Controls.Add(buttonRecargar);
             Controls.Add(textBoxBuscador);
             Controls.Add(labelBuscarPorDni);
@@ -435,13 +498,19 @@
         private Button buttonCancelar;
         private Button buttonGuardar;
         private DataGridView dataGridView;
+        private TextBox textBoxBuscador;
+        private Label labelBuscarPorDni;
+        private Button buttonRecargar;
+        private TextBox textBoxContrasenia;
+        private TextBox textBoxUsuario;
+        private Label labelUsuario;
+        private Label labelContrasenia;
         private DataGridViewTextBoxColumn ColumnDNI;
         private DataGridViewTextBoxColumn ColumnNombre;
         private DataGridViewTextBoxColumn ColumnApellido;
         private DataGridViewTextBoxColumn ColumnEmail;
         private DataGridViewTextBoxColumn ColumnTelefono;
-        private TextBox textBoxBuscador;
-        private Label labelBuscarPorDni;
-        private Button buttonRecargar;
+        private DataGridViewTextBoxColumn Usuario;
+        private DataGridViewTextBoxColumn ColumnUsuario;
     }
 }
