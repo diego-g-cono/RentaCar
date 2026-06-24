@@ -123,6 +123,18 @@ namespace RentaCar.Escritorio
                 return;
             }
 
+            if(!modoEdicion && string.IsNullOrWhiteSpace(textBoxUsuario.Text))
+            {
+                Dialogos.Error(Mensajes.CampoVacio("Usuario"));
+                return;
+            }
+
+            if(!modoEdicion && string.IsNullOrWhiteSpace(textBoxContrasenia.Text))
+            {
+                Dialogos.Error(Mensajes.CampoVacio("Contraseña"));
+                return;
+            }
+
 
             if (!Dialogos.Confirmar(Mensajes.ConfirmarGuardado("al cliente")))
             {
@@ -131,7 +143,7 @@ namespace RentaCar.Escritorio
 
             try
             {
-                /*
+                
                 if (modoEdicion)
                 {
                     var updateRequest = new ClienteUpdateRequest
@@ -150,40 +162,6 @@ namespace RentaCar.Escritorio
                 }
                 else
                 {
-                    var createRequest = new ClienteCreateRequest
-                    {
-                        Dni = int.Parse(textBoxDNI.Text),
-                        Nombre = textBoxNombre.Text,
-                        Apellido = textBoxApellido.Text,
-                        Email = textBoxEmail.Text,
-                        Telefono = textBoxTel.Text
-                    };
-
-                    await _clienteServicio.Agregar(createRequest);
-
-                    Dialogos.Info(Mensajes.ExitoGuardado("Cliente"));
-                }
-                */
-                bool completoUsuario = !string.IsNullOrWhiteSpace(textBoxUsuario.Text) && !string.IsNullOrWhiteSpace(textBoxContrasenia.Text);
-
-                if (modoEdicion)
-                {
-                    var updateRequest = new ClienteUpdateRequest
-                    {
-                        Nombre = textBoxNombre.Text,
-                        Apellido = textBoxApellido.Text,
-                        Email = textBoxEmail.Text,
-                        Telefono = textBoxTel.Text
-                    };
-
-                    int dni = int.Parse(textBoxDNI.Text);
-
-                    await _clienteServicio.Actualizar(dni, updateRequest);
-
-                    Dialogos.Info(Mensajes.ExitoEdicion("Cliente"));
-                }
-                else if(completoUsuario)
-                {
                     var registroRequest = new RegistroClienteRequest
                     {
                         Dni = int.Parse(textBoxDNI.Text),
@@ -196,21 +174,6 @@ namespace RentaCar.Escritorio
                     };
 
                     await _usuarioServicio.Registrar(registroRequest);
-                    Dialogos.Info(Mensajes.ExitoGuardado("Cliente"));
-                }
-                else
-                {
-                    var createRequest = new ClienteCreateRequest
-                    {
-                        Dni = int.Parse(textBoxDNI.Text),
-                        Nombre = textBoxNombre.Text,
-                        Apellido = textBoxApellido.Text,
-                        Email = textBoxEmail.Text,
-                        Telefono = textBoxTel.Text
-                    };
-
-                    await _clienteServicio.Agregar(createRequest);
-
                     Dialogos.Info(Mensajes.ExitoGuardado("Cliente"));
                 }
 
