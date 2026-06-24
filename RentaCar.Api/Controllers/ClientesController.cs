@@ -132,7 +132,15 @@ public class ClientesController : ControllerBase
         if (existente == null)
             return NotFound();
 
+        int? usuarioId = existente.UsuarioId;
+
         _repoClientes.Eliminar(dni);
+
+        if (usuarioId.HasValue)
+        {
+            _repoUsuarios.Eliminar(usuarioId.Value);
+        }
+
 
         return Ok();
     }
