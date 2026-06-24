@@ -41,8 +41,7 @@ namespace RentaCar.Escritorio
                 {
                     u.Id,
                     u.NombreUsuario,
-                    Rol = roles.FirstOrDefault(r => r.Id == u.RolId)?.Nombre ?? "Sin rol",
-                    Activo = u.Activo ? "Sí" : "No"
+                    Rol = roles.FirstOrDefault(r => r.Id == u.RolId)?.Nombre ?? "Sin rol"
                 }).ToList();
 
                 dataGridViewUsuarios.AutoGenerateColumns = true;
@@ -62,16 +61,6 @@ namespace RentaCar.Escritorio
             comboBoxRol.DisplayMember = "Nombre";
             comboBoxRol.ValueMember = "Id";
             comboBoxRol.SelectedIndex = -1;
-
-            comboBoxActivo.DataSource = new[]
-            {
-                new { Texto = "Sí", Valor = true },
-                new { Texto = "No", Valor = false }
-            };
-
-            comboBoxActivo.DisplayMember = "Texto";
-            comboBoxActivo.ValueMember = "Valor";
-            comboBoxActivo.SelectedIndex = -1;
         }
 
         private void BloquearCampos(bool estado)
@@ -79,7 +68,6 @@ namespace RentaCar.Escritorio
             textBoxNombreUsuario.Enabled = estado;
             textBoxContrasenia.Enabled = estado;
             comboBoxRol.Enabled = estado;
-            comboBoxActivo.Enabled = estado;
         }
 
         private void LimpiarCampos()
@@ -87,7 +75,6 @@ namespace RentaCar.Escritorio
             textBoxNombreUsuario.Clear();
             textBoxContrasenia.Clear();
             comboBoxRol.SelectedIndex = -1;
-            comboBoxActivo.SelectedIndex = -1;
         }
 
         private void buttonNuevo_Click(object sender, EventArgs e)
@@ -115,7 +102,6 @@ namespace RentaCar.Escritorio
             textBoxNombreUsuario.Text = usuario.NombreUsuario;
             textBoxContrasenia.Text = "";
             comboBoxRol.SelectedValue = usuario.RolId;
-            comboBoxActivo.SelectedValue = usuario.Activo;
 
             modoEdicion = true;
 
@@ -131,7 +117,7 @@ namespace RentaCar.Escritorio
                 return;
             }
 
-            if (comboBoxRol.SelectedValue == null || comboBoxActivo.SelectedValue == null)
+            if (comboBoxRol.SelectedValue == null)
             {
                 Dialogos.Error(Mensajes.CompleteCamposObligatorios);
                 return;
@@ -147,7 +133,6 @@ namespace RentaCar.Escritorio
                     {
                         NombreUsuario = textBoxNombreUsuario.Text,
                         RolId = (int)comboBoxRol.SelectedValue,
-                        Activo = (bool)comboBoxActivo.SelectedValue,
                         Contrasenia = textBoxContrasenia.Text
                     };
 
@@ -162,8 +147,7 @@ namespace RentaCar.Escritorio
                         Contrasenia = textBoxContrasenia.Text,
                         RolId = comboBoxRol.SelectedValue == null
                             ? 3
-                            : (int)comboBoxRol.SelectedValue,
-                        Activo = (bool)comboBoxActivo.SelectedValue
+                            : (int)comboBoxRol.SelectedValue
                     };
 
                     await _usuarioServicio.Agregar(request);
@@ -249,7 +233,6 @@ namespace RentaCar.Escritorio
                         u.Id,
                         u.NombreUsuario,
                         Rol = roles.FirstOrDefault(r => r.Id == u.RolId)?.Nombre ?? "Sin rol",
-                        Activo = u.Activo ? "Sí" : "No"
                     })
                     .ToList();
 
@@ -259,15 +242,13 @@ namespace RentaCar.Escritorio
             var filtrados = _usuarios
                 .Where(u =>
                     u.NombreUsuario.Contains(busqueda, StringComparison.OrdinalIgnoreCase) ||
-                    (u.Activo ? "Sí" : "No").Contains(busqueda, StringComparison.OrdinalIgnoreCase) ||
                     (roles.FirstOrDefault(r => r.Id == u.RolId)?.Nombre ?? "")
                         .Contains(busqueda, StringComparison.OrdinalIgnoreCase))
                 .Select(u => new
                 {
                     u.Id,
                     u.NombreUsuario,
-                    Rol = roles.FirstOrDefault(r => r.Id == u.RolId)?.Nombre ?? "Sin rol",
-                    Activo = u.Activo ? "Sí" : "No"
+                    Rol = roles.FirstOrDefault(r => r.Id == u.RolId)?.Nombre ?? "Sin rol"
                 })
                 .ToList();
 

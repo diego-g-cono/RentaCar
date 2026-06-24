@@ -1009,7 +1009,7 @@
             // 
             // dataGridViewTextBoxColumn12
             // 
-            dataGridViewTextBoxColumn12.DataPropertyName = "EstadoId";
+            dataGridViewTextBoxColumn12.DataPropertyName = "EstadoNombre";
             dataGridViewTextBoxColumn12.HeaderText = "Estado";
             dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
             dataGridViewTextBoxColumn12.ReadOnly = true;
