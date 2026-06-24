@@ -78,7 +78,9 @@
     {
         var client = HttpFactory.CreateClient("Api");
 
-        vehiculos = await client.GetFromJsonAsync<List<VehiculoResponse>>("vehiculos");
+        vehiculos = (await client.GetFromJsonAsync<List<VehiculoResponse>>("vehiculos"))
+    ?.Where(v => v.EstadoId == 1)
+    .ToList();
 
         tiposVehiculo = vehiculos?
             .Select(v => v.TipoNombre)
@@ -130,8 +132,9 @@
 
         if (response.IsSuccessStatusCode)
         {
-            vehiculos = await client.GetFromJsonAsync<List<VehiculoResponse>>(
-                "vehiculos");
+            vehiculos = (await client.GetFromJsonAsync<List<VehiculoResponse>>("vehiculos"))
+    ?.Where(v => v.EstadoId == 1)
+    .ToList();
 
             tiposVehiculo = vehiculos?
                 .Select(v => v.TipoNombre)

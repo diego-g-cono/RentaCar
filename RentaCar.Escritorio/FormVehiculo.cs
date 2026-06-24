@@ -32,6 +32,7 @@ namespace RentaCar.Escritorio
 
         private bool modoEdicion = false;
         private string patenteSeleccionada = null;
+        private bool cargandoVehiculo = false;
         public FormVehiculo()
         {
             InitializeComponent();
@@ -112,6 +113,9 @@ namespace RentaCar.Escritorio
         // Evento para cargar modelos al seleccionar una marca
         private async void comboBoxMarca_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (cargandoVehiculo)
+                return;
+
             if (comboBoxMarca.SelectedValue is int marcaId && marcaId > 0)
             {
                 await CargarModelos(marcaId);
@@ -340,10 +344,15 @@ namespace RentaCar.Escritorio
             numericUpDownAnio.Value = vehiculo.Anio;
             numericUpDownKm.Value = vehiculo.Kilometraje;
 
+            cargandoVehiculo = true;
+
             comboBoxMarca.SelectedValue = vehiculo.MarcaId;
+
             await CargarModelos(vehiculo.MarcaId);
 
             comboBoxModelo.SelectedValue = vehiculo.ModeloId;
+
+            cargandoVehiculo = false;
             comboBoxTipo.SelectedValue = vehiculo.TipoId;
             comboBoxColor.SelectedValue = vehiculo.ColorId;
             comboBoxCombustible.SelectedValue = vehiculo.CombustibleId;
