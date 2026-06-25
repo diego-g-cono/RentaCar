@@ -2,6 +2,7 @@
 using RentaCar.Dominio;
 using RentaCar.Dtos.Alquileres;
 using RentaCar.Infraestructura;
+using RentaCar.Infraestructura.Data;
 using RentaCar.Infraestructura.Repositorios;
 
 namespace RentaCar.API.Controllers
@@ -11,10 +12,12 @@ namespace RentaCar.API.Controllers
     public class AlquileresController : ControllerBase
     {
         private readonly AlquilerRepositorio _repoAlquileres;
+        private readonly ReservaRepositorio _repoReservas;
 
-        public AlquileresController(AlquilerRepositorio repoAlquileres)
+        public AlquileresController(AlquilerRepositorio repoAlquileres, ReservaRepositorio repoReservas)
         {
             _repoAlquileres = repoAlquileres;
+            _repoReservas = repoReservas;
         }
 
         [HttpGet]
@@ -96,6 +99,32 @@ namespace RentaCar.API.Controllers
             if (request == null)
                 return BadRequest("Datos inválidos");
 
+            var alquileresExistentes =
+    _repoAlquileres.ObtenerTodos()
+        .Where(a =>
+            a.VehiculoPatente == request.VehiculoPatente &&
+            a.EstadoId != 4); // Cancelado
+
+            bool hayAlquilerSolapado = alquileresExistentes.Any(a =>
+                request.FechaInicio <= a.FechaFin &&
+                request.FechaFin >= a.FechaInicio);
+
+            if (hayAlquilerSolapado)
+                return BadRequest(
+                    "El vehículo ya tiene un alquiler en ese período");
+
+            var reservasExistentes =
+    _repoReservas.ObtenerPorVehiculo(request.VehiculoPatente);
+
+            bool hayReservaSolapada = reservasExistentes.Any(r =>
+                r.Activo &&
+                r.EstadoId != 3 && // Cancelada
+                request.FechaInicio <= r.FechaFin &&
+                request.FechaFin >= r.FechaInicio);
+
+            if (hayReservaSolapada)
+                return BadRequest(
+                    "El vehículo tiene una reserva en ese período");
             var alquiler = new Alquiler
             {
                 FechaInicio = request.FechaInicio,
@@ -119,6 +148,32 @@ namespace RentaCar.API.Controllers
         {
             if (request == null)
                 return BadRequest("Datos inválidos");
+            var alquileresExistentes =
+    _repoAlquileres.ObtenerTodos()
+        .Where(a =>
+            a.Id != id &&
+            a.VehiculoPatente == request.VehiculoPatente &&
+            a.EstadoId != 4);
+
+            bool hayAlquilerSolapado = alquileresExistentes.Any(a =>
+                request.FechaInicio <= a.FechaFin &&
+                request.FechaFin >= a.FechaInicio);
+
+            if (hayAlquilerSolapado)
+                return BadRequest(
+                    "El vehículo ya tiene un alquiler en ese período");
+            var reservasExistentes =
+    _repoReservas.ObtenerPorVehiculo(request.VehiculoPatente);
+
+            bool hayReservaSolapada = reservasExistentes.Any(r =>
+                r.Activo &&
+                r.EstadoId != 3 &&
+                request.FechaInicio <= r.FechaFin &&
+                request.FechaFin >= r.FechaInicio);
+
+            if (hayReservaSolapada)
+                return BadRequest(
+                    "El vehículo tiene una reserva en ese período");
 
             var existente = _repoAlquileres.ObtenerPorId(id);
 

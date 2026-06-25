@@ -180,6 +180,7 @@ namespace RentaCar.Escritorio
             textBoxReserva.Text = alquiler.ReservaId?.ToString();
 
             comboBoxEstado.SelectedValue = alquiler.EstadoId;
+            comboBoxSeguro.SelectedValue = alquiler.SeguroId;
 
             modoEdicion = true;
             autoCompletar = true;

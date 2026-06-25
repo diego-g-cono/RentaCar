@@ -126,6 +126,7 @@
         }
 
         var client = HttpFactory.CreateClient("Api");
+        Console.WriteLine(Auth.UsuarioId);
 
         reservas = await client.GetFromJsonAsync<List<ReservaResponse>>(
             $"reservas/usuario/{Auth.UsuarioId}"

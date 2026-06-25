@@ -15,19 +15,22 @@ namespace RentaCar.API.Controllers
         private readonly VehiculoRepositorio _repoVehiculos;
         private readonly TarifaRepositorio _repoTarifas;
         private readonly SeguroRepositorio _repoSeguros;
+        private readonly AlquilerRepositorio _repoAlquileres;
 
         public ReservasController(
             ReservaRepositorio repoReservas,
             ClienteRepositorio repoClientes,
             VehiculoRepositorio repoVehiculos,
             TarifaRepositorio repoTarifas,
-            SeguroRepositorio repoSeguros)
+            SeguroRepositorio repoSeguros,
+            AlquilerRepositorio repoAlquileres)
         {
             _repoReservas = repoReservas;
             _repoClientes = repoClientes;
             _repoVehiculos = repoVehiculos;
             _repoTarifas = repoTarifas;
             _repoSeguros = repoSeguros;
+            _repoAlquileres = repoAlquileres;
         }
 
         [HttpGet]
@@ -109,6 +112,19 @@ namespace RentaCar.API.Controllers
 
             if (haySolapamiento)
                 return BadRequest("El vehículo ya está reservado en ese período");
+            var alquileresExistentes =
+    _repoAlquileres.ObtenerTodos()
+        .Where(a =>
+            a.VehiculoPatente == request.VehiculoPatente &&
+            a.EstadoId != 4);
+
+            bool hayAlquilerSolapado = alquileresExistentes.Any(a =>
+                request.FechaInicio <= a.FechaFin &&
+                request.FechaFin >= a.FechaInicio);
+
+            if (hayAlquilerSolapado)
+                return BadRequest(
+                    "El vehículo ya tiene un alquiler en ese período");
 
             var reserva = new Dominio.Reserva
             {
@@ -153,6 +169,19 @@ namespace RentaCar.API.Controllers
 
             if (haySolapamiento)
                 return BadRequest("El vehículo ya está reservado en ese período");
+            var alquileresExistentes =
+    _repoAlquileres.ObtenerTodos()
+        .Where(a =>
+            a.VehiculoPatente == request.VehiculoPatente &&
+            a.EstadoId != 4);
+
+            bool hayAlquilerSolapado = alquileresExistentes.Any(a =>
+                request.FechaInicio <= a.FechaFin &&
+                request.FechaFin >= a.FechaInicio);
+
+            if (hayAlquilerSolapado)
+                return BadRequest(
+                    "El vehículo ya tiene un alquiler en ese período");
 
             existente.ClienteDni = request.ClienteDni;
             existente.VehiculoPatente = request.VehiculoPatente;
@@ -199,7 +228,7 @@ namespace RentaCar.API.Controllers
             var cliente = _repoClientes.ObtenerPorUsuarioId(usuarioId);
 
             if (cliente == null)
-                return NotFound("Cliente no encontrado");
+                return Ok(new List<ReservaResponse>());
 
             var reservas = _repoReservas.ObtenerTodos()
                 .Where(r => r.ClienteDni == cliente.Dni)

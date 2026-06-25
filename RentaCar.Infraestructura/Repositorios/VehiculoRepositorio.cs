@@ -95,13 +95,29 @@ namespace RentaCar.Infraestructura.Repositorios
                 .Include(v => v.Combustible)
                 .Include(v => v.Estado)
                 .Include(v => v.Tipo)
-                .Where(v => !_context.Reservas.Any(r =>
-                    r.VehiculoPatente == v.Patente &&
-                    r.Activo &&
-                    r.EstadoId != 3 &&
-                    inicio < r.FechaFin &&
-                    fin > r.FechaInicio
-                ))
+                .Where(v =>
+
+                    // No tiene reservas superpuestas
+                    !_context.Reservas.Any(r =>
+                        r.VehiculoPatente == v.Patente &&
+                        r.Activo &&
+                        r.EstadoId != 3 && // cancelada
+                        inicio <= r.FechaFin &&
+                        fin >= r.FechaInicio
+                    )
+
+                    &&
+
+                    // No tiene alquileres superpuestos
+                    !_context.Alquileres.Any(a =>
+                        a.VehiculoPatente == v.Patente &&
+                        a.Activo &&
+                        a.EstadoId != 4 && // cancelado
+                        inicio <= a.FechaFin &&
+                        fin >= a.FechaInicio
+                    )
+
+                )
                 .ToList();
         }
     }
