@@ -5,6 +5,5 @@
         public int Id { get; set; }
         public string NombreUsuario { get; set; }
         public int RolId { get; set; }
-        public bool Activo { get; set; }
     }
 }

@@ -90,9 +90,11 @@ else
 
         var client = HttpFactory.CreateClient("Api");
 
-        vehiculos = await client.GetFromJsonAsync<List<VehiculoResponse>>(
-            $"vehiculos/disponibles?fechaInicio={inicio}&fechaFin={fin}"
-        );
+        vehiculos = (await client.GetFromJsonAsync<List<VehiculoResponse>>(
+    $"vehiculos/disponibles?fechaInicio={inicio}&fechaFin={fin}"
+))
+?.Where(v => v.EstadoId == 1)
+.ToList();
 
         tiposVehiculo = vehiculos?
             .Select(v => v.TipoNombre)
@@ -171,8 +173,11 @@ else
             var inicio = query["inicio"];
             var fin = query["fin"];
 
-            vehiculos = await client.GetFromJsonAsync<List<VehiculoResponse>>(
-                $"vehiculos/disponibles?fechaInicio={inicio}&fechaFin={fin}");
+            vehiculos = (await client.GetFromJsonAsync<List<VehiculoResponse>>(
+                $"vehiculos/disponibles?fechaInicio={inicio}&fechaFin={fin}"
+            ))
+            ?.Where(v => v.EstadoId == 1)
+            .ToList();
         }
     }
 }

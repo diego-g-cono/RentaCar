@@ -21,21 +21,23 @@ namespace RentaCar.Infraestructura
         // Obtener todos los usuarios
         public List<Usuario> ObtenerTodos()
         {
-            return _context.Usuarios.ToList();
+            return _context.Usuarios
+                .Where(u => u.Activo)
+                .ToList();
         }
 
         // Obtener usuario por ID
         public Usuario? ObtenerPorId(int id)
         {
             return _context.Usuarios
-                .FirstOrDefault(u => u.Id == id);
+                .FirstOrDefault(u => u.Id == id && u.Activo);
         }
 
         // Obtener usuario por nombre de usuario
         public Usuario? ObtenerPorNombreUsuario(string nombreUsuario)
         {
             return _context.Usuarios
-                .FirstOrDefault(u => u.NombreUsuario == nombreUsuario);
+                .FirstOrDefault(u => u.NombreUsuario == nombreUsuario && u.Activo);
         }
 
         // Agregar usuario

@@ -119,8 +119,7 @@ namespace RentaCar.API.Controllers
             {
                 Id = u.Id,
                 NombreUsuario = u.NombreUsuario,
-                RolId = u.RolId,
-                Activo = u.Activo
+                RolId = u.RolId
             }).ToList();
 
             return Ok(response);
@@ -167,7 +166,7 @@ namespace RentaCar.API.Controllers
                 NombreUsuario = request.NombreUsuario,
                 Contrasenia = request.Contrasenia, // se hashea automáticamente
                 RolId = request.RolId == 0 ? 3 : request.RolId,
-                Activo = request.Activo
+                Activo = true
             };
 
             _repoUsuarios.Agregar(usuario);
@@ -194,7 +193,6 @@ namespace RentaCar.API.Controllers
 
             usuario.NombreUsuario = request.NombreUsuario;
             usuario.RolId = request.RolId;
-            usuario.Activo = request.Activo;
 
             // Solo cambiar la contraseña si se ingresó una nueva
             if (!string.IsNullOrWhiteSpace(request.Contrasenia))

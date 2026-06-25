@@ -37,24 +37,21 @@
             groupBox = new GroupBox();
             textBoxContrasenia = new TextBox();
             labelContrasenia = new Label();
-            comboBoxActivo = new ComboBox();
             comboBoxRol = new ComboBox();
             textBoxNombreUsuario = new TextBox();
             labelRol = new Label();
-            labelActivo = new Label();
             labelApellido = new Label();
             buttonEliminar = new Button();
             buttonEditar = new Button();
             buttonNuevo = new Button();
             dataGridViewUsuarios = new DataGridView();
-            IdColumn = new DataGridViewTextBoxColumn();
-            ColumnNombre = new DataGridViewTextBoxColumn();
-            ColumnRol = new DataGridViewTextBoxColumn();
-            ColumnActivo = new DataGridViewTextBoxColumn();
             usuarioBindingSource = new BindingSource(components);
             textBoxBuscador = new TextBox();
             labelBuscarPorDni = new Label();
             buttonRecargar = new Button();
+            IdColumn = new DataGridViewTextBoxColumn();
+            ColumnNombre = new DataGridViewTextBoxColumn();
+            ColumnRol = new DataGridViewTextBoxColumn();
             groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewUsuarios).BeginInit();
             ((System.ComponentModel.ISupportInitialize)usuarioBindingSource).BeginInit();
@@ -69,7 +66,7 @@
             buttonCancelar.FlatStyle = FlatStyle.Flat;
             buttonCancelar.Font = new Font("Verdana", 9F);
             buttonCancelar.ForeColor = SystemColors.ButtonFace;
-            buttonCancelar.Location = new Point(265, 310);
+            buttonCancelar.Location = new Point(265, 243);
             buttonCancelar.Name = "buttonCancelar";
             buttonCancelar.Size = new Size(77, 33);
             buttonCancelar.TabIndex = 34;
@@ -86,7 +83,7 @@
             buttonGuardar.FlatStyle = FlatStyle.Flat;
             buttonGuardar.Font = new Font("Verdana", 9F);
             buttonGuardar.ForeColor = SystemColors.ButtonFace;
-            buttonGuardar.Location = new Point(27, 310);
+            buttonGuardar.Location = new Point(27, 243);
             buttonGuardar.Name = "buttonGuardar";
             buttonGuardar.Size = new Size(77, 33);
             buttonGuardar.TabIndex = 33;
@@ -98,17 +95,15 @@
             // 
             groupBox.Controls.Add(textBoxContrasenia);
             groupBox.Controls.Add(labelContrasenia);
-            groupBox.Controls.Add(comboBoxActivo);
             groupBox.Controls.Add(comboBoxRol);
             groupBox.Controls.Add(textBoxNombreUsuario);
             groupBox.Controls.Add(labelRol);
-            groupBox.Controls.Add(labelActivo);
             groupBox.Controls.Add(labelApellido);
             groupBox.Font = new Font("Verdana", 9F, FontStyle.Bold);
             groupBox.ForeColor = SystemColors.ButtonFace;
             groupBox.Location = new Point(27, 64);
             groupBox.Name = "groupBox";
-            groupBox.Size = new Size(315, 220);
+            groupBox.Size = new Size(315, 162);
             groupBox.TabIndex = 32;
             groupBox.TabStop = false;
             groupBox.Text = "Datos Usuario";
@@ -134,18 +129,6 @@
             labelContrasenia.Size = new Size(86, 14);
             labelContrasenia.TabIndex = 30;
             labelContrasenia.Text = "Contraseña:";
-            // 
-            // comboBoxActivo
-            // 
-            comboBoxActivo.BackColor = Color.MidnightBlue;
-            comboBoxActivo.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBoxActivo.ForeColor = SystemColors.ButtonFace;
-            comboBoxActivo.FormattingEnabled = true;
-            comboBoxActivo.Items.AddRange(new object[] { "Si", "No" });
-            comboBoxActivo.Location = new Point(162, 170);
-            comboBoxActivo.Name = "comboBoxActivo";
-            comboBoxActivo.Size = new Size(121, 22);
-            comboBoxActivo.TabIndex = 29;
             // 
             // comboBoxRol
             // 
@@ -179,16 +162,6 @@
             labelRol.Size = new Size(31, 14);
             labelRol.TabIndex = 16;
             labelRol.Text = "Rol:";
-            // 
-            // labelActivo
-            // 
-            labelActivo.AutoSize = true;
-            labelActivo.Font = new Font("Verdana", 9F);
-            labelActivo.Location = new Point(24, 173);
-            labelActivo.Name = "labelActivo";
-            labelActivo.Size = new Size(49, 14);
-            labelActivo.TabIndex = 3;
-            labelActivo.Text = "Activo:";
             // 
             // labelApellido
             // 
@@ -266,7 +239,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dataGridViewUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewUsuarios.Columns.AddRange(new DataGridViewColumn[] { IdColumn, ColumnNombre, ColumnRol, ColumnActivo });
+            dataGridViewUsuarios.Columns.AddRange(new DataGridViewColumn[] { IdColumn, ColumnNombre, ColumnRol });
             dataGridViewUsuarios.GridColor = Color.MidnightBlue;
             dataGridViewUsuarios.Location = new Point(395, 60);
             dataGridViewUsuarios.Name = "dataGridViewUsuarios";
@@ -276,8 +249,47 @@
             dataGridViewCellStyle2.SelectionBackColor = Color.RoyalBlue;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.ButtonFace;
             dataGridViewUsuarios.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            dataGridViewUsuarios.Size = new Size(451, 294);
+            dataGridViewUsuarios.Size = new Size(348, 241);
             dataGridViewUsuarios.TabIndex = 35;
+            // 
+            // usuarioBindingSource
+            // 
+            usuarioBindingSource.DataSource = typeof(Dominio.Usuario);
+            // 
+            // textBoxBuscador
+            // 
+            textBoxBuscador.BackColor = Color.MidnightBlue;
+            textBoxBuscador.BorderStyle = BorderStyle.FixedSingle;
+            textBoxBuscador.Font = new Font("Verdana", 9F);
+            textBoxBuscador.ForeColor = SystemColors.ButtonFace;
+            textBoxBuscador.Location = new Point(622, 28);
+            textBoxBuscador.Name = "textBoxBuscador";
+            textBoxBuscador.Size = new Size(121, 22);
+            textBoxBuscador.TabIndex = 40;
+            textBoxBuscador.TextChanged += textBoxBuscador_TextChanged;
+            // 
+            // labelBuscarPorDni
+            // 
+            labelBuscarPorDni.AutoSize = true;
+            labelBuscarPorDni.Font = new Font("Verdana", 9F);
+            labelBuscarPorDni.ForeColor = SystemColors.ButtonHighlight;
+            labelBuscarPorDni.Location = new Point(562, 30);
+            labelBuscarPorDni.Name = "labelBuscarPorDni";
+            labelBuscarPorDni.Size = new Size(54, 14);
+            labelBuscarPorDni.TabIndex = 41;
+            labelBuscarPorDni.Text = "Buscar:";
+            // 
+            // buttonRecargar
+            // 
+            buttonRecargar.FlatStyle = FlatStyle.System;
+            buttonRecargar.Font = new Font("Segoe UI", 16F);
+            buttonRecargar.Location = new Point(395, 24);
+            buttonRecargar.Name = "buttonRecargar";
+            buttonRecargar.Size = new Size(34, 30);
+            buttonRecargar.TabIndex = 44;
+            buttonRecargar.Text = "↻";
+            buttonRecargar.UseVisualStyleBackColor = true;
+            buttonRecargar.Click += buttonRecargar_Click;
             // 
             // IdColumn
             // 
@@ -297,57 +309,12 @@
             ColumnRol.HeaderText = "Rol";
             ColumnRol.Name = "ColumnRol";
             // 
-            // ColumnActivo
-            // 
-            ColumnActivo.DataPropertyName = "Activo";
-            ColumnActivo.HeaderText = "Activo";
-            ColumnActivo.Name = "ColumnActivo";
-            // 
-            // usuarioBindingSource
-            // 
-            usuarioBindingSource.DataSource = typeof(Dominio.Usuario);
-            // 
-            // textBoxBuscador
-            // 
-            textBoxBuscador.BackColor = Color.MidnightBlue;
-            textBoxBuscador.BorderStyle = BorderStyle.FixedSingle;
-            textBoxBuscador.Font = new Font("Verdana", 9F);
-            textBoxBuscador.ForeColor = SystemColors.ButtonFace;
-            textBoxBuscador.Location = new Point(821, 28);
-            textBoxBuscador.Name = "textBoxBuscador";
-            textBoxBuscador.Size = new Size(121, 22);
-            textBoxBuscador.TabIndex = 40;
-            textBoxBuscador.TextChanged += textBoxBuscador_TextChanged;
-            // 
-            // labelBuscarPorDni
-            // 
-            labelBuscarPorDni.AutoSize = true;
-            labelBuscarPorDni.Font = new Font("Verdana", 9F);
-            labelBuscarPorDni.ForeColor = SystemColors.ButtonHighlight;
-            labelBuscarPorDni.Location = new Point(761, 30);
-            labelBuscarPorDni.Name = "labelBuscarPorDni";
-            labelBuscarPorDni.Size = new Size(54, 14);
-            labelBuscarPorDni.TabIndex = 41;
-            labelBuscarPorDni.Text = "Buscar:";
-            // 
-            // buttonRecargar
-            // 
-            buttonRecargar.FlatStyle = FlatStyle.System;
-            buttonRecargar.Font = new Font("Segoe UI", 16F);
-            buttonRecargar.Location = new Point(395, 24);
-            buttonRecargar.Name = "buttonRecargar";
-            buttonRecargar.Size = new Size(34, 30);
-            buttonRecargar.TabIndex = 44;
-            buttonRecargar.Text = "↻";
-            buttonRecargar.UseVisualStyleBackColor = true;
-            buttonRecargar.Click += buttonRecargar_Click;
-            // 
             // FormUsuarios
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MidnightBlue;
-            ClientSize = new Size(960, 404);
+            ClientSize = new Size(789, 335);
             Controls.Add(dataGridViewUsuarios);
             Controls.Add(buttonRecargar);
             Controls.Add(textBoxBuscador);
@@ -385,18 +352,15 @@
         private DataGridView dataGridViewUsuarios;
         private BindingSource usuarioBindingSource;
         private ComboBox comboBoxRol;
-        private ComboBox comboBoxActivo;
-        private DataGridViewTextBoxColumn IdColumn;
-        private DataGridViewTextBoxColumn ColumnNombre;
-        private DataGridViewTextBoxColumn ColumnRol;
-        private DataGridViewTextBoxColumn ColumnActivo;
         private TextBox textBox1;
         private Label labelContrasenia;
         private Label labelRol;
         private TextBox textBoxContrasenia;
-        private Label labelActivo;
         private TextBox textBoxBuscador;
         private Label labelBuscarPorDni;
         private Button buttonRecargar;
+        private DataGridViewTextBoxColumn IdColumn;
+        private DataGridViewTextBoxColumn ColumnNombre;
+        private DataGridViewTextBoxColumn ColumnRol;
     }
 }
