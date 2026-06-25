@@ -27,6 +27,8 @@ namespace RentaCar.Escritorio.Helpers
 
         public static string CompleteCamposObligatorios => "Debe completar todos los campos.";
 
+        public static string ErrorDatos => "Error al cargar los datos. Por favor, intente nuevamente.";
+
         //confirmaciones
         public static string ConfirmarEliminacion(string entidad) => $"¿Está seguro que desea eliminar {entidad}?";
 

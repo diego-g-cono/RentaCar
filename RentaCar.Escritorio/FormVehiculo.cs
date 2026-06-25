@@ -47,14 +47,20 @@ namespace RentaCar.Escritorio
 
         private async void FormVehiculo_Load(object sender, EventArgs e)
         {
-            await CargarVehiculos();
-            BloquearCampos(false);
-            BloquearBotones(false);
-            await CargarMarcas();
-            await CargarTiposVehiculo();
-            await CargarColores();
-            await CargarCombustibles();
-            await CargarEstados();
+            try
+            {
+                await CargarVehiculos();
+                BloquearCampos(false);
+                BloquearBotones(false);
+                await CargarMarcas();
+                await CargarTiposVehiculo();
+                await CargarColores();
+                await CargarCombustibles();
+                await CargarEstados();
+            }catch
+            {
+                Dialogos.Error(Mensajes.ErrorDatos);
+            }
         }
         private async Task CargarVehiculos()
         {

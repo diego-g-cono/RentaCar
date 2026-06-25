@@ -51,17 +51,23 @@ namespace RentaCar.Escritorio
 
         private async void FormAlquileres_Load(object sender, EventArgs e)
         {
-            await CargarTodo();
+            try
+            {
+                await CargarTodo();
 
-            BloquearCampos(false);
-            BloquearBotones(false);
+                BloquearCampos(false);
+                BloquearBotones(false);
 
-            dtpFechaInicio.MinDate = DateTime.Today;
-            dtpFechaDevolucion.MinDate = DateTime.Today.AddDays(1);
+                dtpFechaInicio.MinDate = DateTime.Today;
+                dtpFechaDevolucion.MinDate = DateTime.Today.AddDays(1);
 
-            radioButtonSReserva.Checked = true;
+                radioButtonSReserva.Checked = true;
 
-            CambiarModoAlquiler();
+                CambiarModoAlquiler();
+
+            }catch {
+                Dialogos.Error(Mensajes.ErrorDatos);
+            }
         }
 
         private void BloquearCampos(bool estado)

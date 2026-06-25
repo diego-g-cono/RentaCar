@@ -230,8 +230,8 @@ else
         var precio = await client.GetFromJsonAsync<decimal>(
             $"reservas/calcular-precio" +
             $"?patente={reserva.VehiculoPatente}" +
-            $"&inicio={DateOnly.FromDateTime(fechaInicio)}" +
-            $"&fin={DateOnly.FromDateTime(fechaFin)}" +
+            $"&inicio={DateOnly.FromDateTime(fechaInicio).ToString("yyyy-MM-dd")}" +
+            $"&fin={DateOnly.FromDateTime(fechaFin).ToString("yyyy-MM-dd")}" +
             $"&seguroId={reserva.SeguroId}"
         );
 

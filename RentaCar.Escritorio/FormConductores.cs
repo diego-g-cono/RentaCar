@@ -22,11 +22,19 @@ namespace RentaCar.Escritorio
 
         private async void FormConductores_Load(object sender, EventArgs e)
         {
-            BloquearCampos(false);
-            BloquearBotones(false);
-            await CargarConductores();
-            dateTimePickerVencLic.MinDate = DateTime.Today;
-            dateTimePickerVencLic.MaxDate = DateTime.Today.AddYears(5);
+            try
+            {
+                BloquearCampos(false);
+                BloquearBotones(false);
+                await CargarConductores();
+                dateTimePickerVencLic.MinDate = DateTime.Today;
+                dateTimePickerVencLic.MaxDate = DateTime.Today.AddYears(5);
+
+            } catch
+            {
+                Dialogos.Error(Mensajes.ErrorDatos);
+            }
+            
         }
 
         private void BloquearCampos(bool estado)

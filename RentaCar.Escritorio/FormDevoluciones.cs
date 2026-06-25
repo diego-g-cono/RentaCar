@@ -26,12 +26,19 @@ namespace RentaCar.Escritorio
 
         private async void FormDevoluciones_Load(object sender, EventArgs e)
         {
-            dtpFechaDevolucion.MinDate = DateTime.Today;
-            BloquearCampos(false);
-            BloquearBotones(false);
-            await CargarDevoluciones();
-            await CargarAlquileres();
-            CargarTanqueLleno();
+            try
+            {
+                dtpFechaDevolucion.MinDate = DateTime.Today;
+                BloquearCampos(false);
+                BloquearBotones(false);
+                await CargarDevoluciones();
+                await CargarAlquileres();
+                CargarTanqueLleno();
+
+            } catch
+            {
+                Dialogos.Error(Mensajes.ErrorDatos);
+            }
         }
 
         private async Task CargarDevoluciones()

@@ -35,19 +35,27 @@ namespace RentaCar.Escritorio
 
         private async void FormReserva_Load(object sender, EventArgs e)
         {
-            BloquearCampos(false);
-            BloquearBotones(false);
-            textBoxCliente.ReadOnly = true;
-            textBoxVehiculo.ReadOnly = true;
-            dtpFechaRetiro.MinDate = DateTime.Today;
-            dtpFechaDevolucion.MinDate = DateTime.Today.AddDays(1);
-            textBoxPrecio.ReadOnly = true;
+            try
+            {
+                BloquearCampos(false);
+                BloquearBotones(false);
+                textBoxCliente.ReadOnly = true;
+                textBoxVehiculo.ReadOnly = true;
+                dtpFechaRetiro.MinDate = DateTime.Today;
+                dtpFechaDevolucion.MinDate = DateTime.Today.AddDays(1);
+                textBoxPrecio.ReadOnly = true;
 
-            await CargarVehiculos();
-            await CargarClientes();
-            await CargarReservas();
-            await CargarEstados();
-            await CargarSeguros();
+                await CargarVehiculos();
+                await CargarClientes();
+                await CargarReservas();
+                await CargarEstados();
+                await CargarSeguros();
+
+            } catch
+            {
+                Dialogos.Error(Mensajes.ErrorDatos);
+            }
+            
         }
 
         private void BloquearCampos(bool estado)
