@@ -69,9 +69,10 @@
             buttonCancelar.FlatStyle = FlatStyle.Flat;
             buttonCancelar.Font = new Font("Verdana", 9F);
             buttonCancelar.ForeColor = SystemColors.ButtonFace;
-            buttonCancelar.Location = new Point(261, 322);
+            buttonCancelar.Location = new Point(298, 429);
+            buttonCancelar.Margin = new Padding(3, 4, 3, 4);
             buttonCancelar.Name = "buttonCancelar";
-            buttonCancelar.Size = new Size(77, 33);
+            buttonCancelar.Size = new Size(88, 44);
             buttonCancelar.TabIndex = 28;
             buttonCancelar.Text = "Cancelar";
             buttonCancelar.UseVisualStyleBackColor = false;
@@ -86,9 +87,10 @@
             buttonGuardar.FlatStyle = FlatStyle.Flat;
             buttonGuardar.Font = new Font("Verdana", 9F);
             buttonGuardar.ForeColor = SystemColors.ButtonFace;
-            buttonGuardar.Location = new Point(23, 322);
+            buttonGuardar.Location = new Point(26, 429);
+            buttonGuardar.Margin = new Padding(3, 4, 3, 4);
             buttonGuardar.Name = "buttonGuardar";
-            buttonGuardar.Size = new Size(77, 33);
+            buttonGuardar.Size = new Size(88, 44);
             buttonGuardar.TabIndex = 27;
             buttonGuardar.Text = "Guardar";
             buttonGuardar.UseVisualStyleBackColor = false;
@@ -106,18 +108,21 @@
             groupBoxConductores.Controls.Add(labelVencLic);
             groupBoxConductores.Font = new Font("Verdana", 9F, FontStyle.Bold);
             groupBoxConductores.ForeColor = SystemColors.ButtonFace;
-            groupBoxConductores.Location = new Point(23, 82);
+            groupBoxConductores.Location = new Point(26, 109);
+            groupBoxConductores.Margin = new Padding(3, 4, 3, 4);
             groupBoxConductores.Name = "groupBoxConductores";
-            groupBoxConductores.Size = new Size(315, 216);
+            groupBoxConductores.Padding = new Padding(3, 4, 3, 4);
+            groupBoxConductores.Size = new Size(360, 288);
             groupBoxConductores.TabIndex = 26;
             groupBoxConductores.TabStop = false;
             groupBoxConductores.Text = "Conductor";
             // 
             // dateTimePickerVencLic
             // 
-            dateTimePickerVencLic.Location = new Point(129, 29);
+            dateTimePickerVencLic.Location = new Point(147, 39);
+            dateTimePickerVencLic.Margin = new Padding(3, 4, 3, 4);
             dateTimePickerVencLic.Name = "dateTimePickerVencLic";
-            dateTimePickerVencLic.Size = new Size(121, 22);
+            dateTimePickerVencLic.Size = new Size(138, 26);
             dateTimePickerVencLic.TabIndex = 30;
             // 
             // textBoxApellido
@@ -126,11 +131,12 @@
             textBoxApellido.BorderStyle = BorderStyle.FixedSingle;
             textBoxApellido.Font = new Font("Verdana", 9F);
             textBoxApellido.ForeColor = SystemColors.ButtonFace;
-            textBoxApellido.Location = new Point(129, 153);
+            textBoxApellido.Location = new Point(147, 204);
+            textBoxApellido.Margin = new Padding(3, 4, 3, 4);
             textBoxApellido.MaxLength = 30;
             textBoxApellido.Name = "textBoxApellido";
             textBoxApellido.ShortcutsEnabled = false;
-            textBoxApellido.Size = new Size(121, 22);
+            textBoxApellido.Size = new Size(138, 26);
             textBoxApellido.TabIndex = 20;
             textBoxApellido.KeyPress += textBoxApellido_KeyPress;
             // 
@@ -140,11 +146,12 @@
             textBoxNombre.BorderStyle = BorderStyle.FixedSingle;
             textBoxNombre.Font = new Font("Verdana", 9F);
             textBoxNombre.ForeColor = SystemColors.ButtonFace;
-            textBoxNombre.Location = new Point(129, 116);
+            textBoxNombre.Location = new Point(147, 155);
+            textBoxNombre.Margin = new Padding(3, 4, 3, 4);
             textBoxNombre.MaxLength = 30;
             textBoxNombre.Name = "textBoxNombre";
             textBoxNombre.ShortcutsEnabled = false;
-            textBoxNombre.Size = new Size(121, 22);
+            textBoxNombre.Size = new Size(138, 26);
             textBoxNombre.TabIndex = 19;
             textBoxNombre.KeyPress += textBoxNombre_KeyPress;
             // 
@@ -154,11 +161,12 @@
             textBoxDni.BorderStyle = BorderStyle.FixedSingle;
             textBoxDni.Font = new Font("Verdana", 9F);
             textBoxDni.ForeColor = SystemColors.ButtonFace;
-            textBoxDni.Location = new Point(129, 76);
+            textBoxDni.Location = new Point(147, 101);
+            textBoxDni.Margin = new Padding(3, 4, 3, 4);
             textBoxDni.MaxLength = 8;
             textBoxDni.Name = "textBoxDni";
             textBoxDni.ShortcutsEnabled = false;
-            textBoxDni.Size = new Size(121, 22);
+            textBoxDni.Size = new Size(138, 26);
             textBoxDni.TabIndex = 18;
             textBoxDni.KeyPress += textBoxDni_KeyPress;
             // 
@@ -166,9 +174,9 @@
             // 
             labelNombreCond.AutoSize = true;
             labelNombreCond.Font = new Font("Verdana", 9F);
-            labelNombreCond.Location = new Point(19, 118);
+            labelNombreCond.Location = new Point(22, 157);
             labelNombreCond.Name = "labelNombreCond";
-            labelNombreCond.Size = new Size(61, 14);
+            labelNombreCond.Size = new Size(75, 18);
             labelNombreCond.TabIndex = 16;
             labelNombreCond.Text = "Nombre:";
             // 
@@ -176,9 +184,9 @@
             // 
             labelApellidoCond.AutoSize = true;
             labelApellidoCond.Font = new Font("Verdana", 9F);
-            labelApellidoCond.Location = new Point(19, 155);
+            labelApellidoCond.Location = new Point(22, 207);
             labelApellidoCond.Name = "labelApellidoCond";
-            labelApellidoCond.Size = new Size(61, 14);
+            labelApellidoCond.Size = new Size(71, 18);
             labelApellidoCond.TabIndex = 3;
             labelApellidoCond.Text = "Apellido:";
             // 
@@ -186,9 +194,9 @@
             // 
             labelDni.AutoSize = true;
             labelDni.Font = new Font("Verdana", 9F);
-            labelDni.Location = new Point(19, 78);
+            labelDni.Location = new Point(22, 104);
             labelDni.Name = "labelDni";
-            labelDni.Size = new Size(35, 14);
+            labelDni.Size = new Size(42, 18);
             labelDni.TabIndex = 2;
             labelDni.Text = "DNI:";
             // 
@@ -196,9 +204,9 @@
             // 
             labelVencLic.AutoSize = true;
             labelVencLic.Font = new Font("Verdana", 9F);
-            labelVencLic.Location = new Point(19, 35);
+            labelVencLic.Location = new Point(22, 47);
             labelVencLic.Name = "labelVencLic";
-            labelVencLic.Size = new Size(98, 14);
+            labelVencLic.Size = new Size(116, 18);
             labelVencLic.TabIndex = 1;
             labelVencLic.Text = "Vence licencia:";
             // 
@@ -211,9 +219,10 @@
             buttonEliminar.FlatStyle = FlatStyle.Flat;
             buttonEliminar.Font = new Font("Verdana", 9F);
             buttonEliminar.ForeColor = SystemColors.ButtonFace;
-            buttonEliminar.Location = new Point(261, 22);
+            buttonEliminar.Location = new Point(298, 29);
+            buttonEliminar.Margin = new Padding(3, 4, 3, 4);
             buttonEliminar.Name = "buttonEliminar";
-            buttonEliminar.Size = new Size(77, 33);
+            buttonEliminar.Size = new Size(88, 44);
             buttonEliminar.TabIndex = 25;
             buttonEliminar.Text = "Eliminar";
             buttonEliminar.UseVisualStyleBackColor = false;
@@ -228,9 +237,10 @@
             buttonEditar.FlatStyle = FlatStyle.Flat;
             buttonEditar.Font = new Font("Verdana", 9F);
             buttonEditar.ForeColor = SystemColors.ButtonFace;
-            buttonEditar.Location = new Point(141, 22);
+            buttonEditar.Location = new Point(161, 29);
+            buttonEditar.Margin = new Padding(3, 4, 3, 4);
             buttonEditar.Name = "buttonEditar";
-            buttonEditar.Size = new Size(77, 33);
+            buttonEditar.Size = new Size(88, 44);
             buttonEditar.TabIndex = 24;
             buttonEditar.Text = "Editar";
             buttonEditar.UseVisualStyleBackColor = false;
@@ -245,9 +255,10 @@
             buttonNuevo.FlatStyle = FlatStyle.Flat;
             buttonNuevo.Font = new Font("Verdana", 9F);
             buttonNuevo.ForeColor = SystemColors.ButtonFace;
-            buttonNuevo.Location = new Point(23, 22);
+            buttonNuevo.Location = new Point(26, 29);
+            buttonNuevo.Margin = new Padding(3, 4, 3, 4);
             buttonNuevo.Name = "buttonNuevo";
-            buttonNuevo.Size = new Size(77, 33);
+            buttonNuevo.Size = new Size(88, 44);
             buttonNuevo.TabIndex = 23;
             buttonNuevo.Text = "Nuevo";
             buttonNuevo.UseVisualStyleBackColor = false;
@@ -275,9 +286,11 @@
             dataGridViewConductores.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewConductores.Columns.AddRange(new DataGridViewColumn[] { ColumnDNI, fechaVencLic, ColumnNombre, ColumnApellido });
             dataGridViewConductores.GridColor = Color.MidnightBlue;
-            dataGridViewConductores.Location = new Point(403, 82);
+            dataGridViewConductores.Location = new Point(461, 109);
+            dataGridViewConductores.Margin = new Padding(3, 4, 3, 4);
             dataGridViewConductores.Name = "dataGridViewConductores";
             dataGridViewConductores.ReadOnly = true;
+            dataGridViewConductores.RowHeadersWidth = 51;
             dataGridViewCellStyle2.BackColor = Color.MidnightBlue;
             dataGridViewCellStyle2.ForeColor = SystemColors.ButtonFace;
             dataGridViewCellStyle2.SelectionBackColor = Color.RoyalBlue;
@@ -288,45 +301,53 @@
             dataGridViewConductores.RowTemplate.DefaultCellStyle.ForeColor = SystemColors.ButtonFace;
             dataGridViewConductores.RowTemplate.DefaultCellStyle.SelectionBackColor = Color.RoyalBlue;
             dataGridViewConductores.RowTemplate.DefaultCellStyle.SelectionForeColor = SystemColors.ButtonFace;
-            dataGridViewConductores.Size = new Size(444, 255);
+            dataGridViewConductores.Size = new Size(590, 340);
             dataGridViewConductores.TabIndex = 30;
             // 
             // ColumnDNI
             // 
             ColumnDNI.DataPropertyName = "DNI";
             ColumnDNI.HeaderText = "DNI";
+            ColumnDNI.MinimumWidth = 6;
             ColumnDNI.Name = "ColumnDNI";
             ColumnDNI.ReadOnly = true;
+            ColumnDNI.Width = 125;
             // 
             // fechaVencLic
             // 
             fechaVencLic.DataPropertyName = "fechaVencLic";
             fechaVencLic.HeaderText = "Vence Lic.";
+            fechaVencLic.MinimumWidth = 6;
             fechaVencLic.Name = "fechaVencLic";
             fechaVencLic.ReadOnly = true;
+            fechaVencLic.Width = 125;
             // 
             // ColumnNombre
             // 
             ColumnNombre.DataPropertyName = "Nombre";
             ColumnNombre.HeaderText = "Nombre";
+            ColumnNombre.MinimumWidth = 6;
             ColumnNombre.Name = "ColumnNombre";
             ColumnNombre.ReadOnly = true;
+            ColumnNombre.Width = 125;
             // 
             // ColumnApellido
             // 
             ColumnApellido.DataPropertyName = "Apellido";
             ColumnApellido.HeaderText = "Apellido";
+            ColumnApellido.MinimumWidth = 6;
             ColumnApellido.Name = "ColumnApellido";
             ColumnApellido.ReadOnly = true;
+            ColumnApellido.Width = 125;
             // 
             // labelBuscarPorDni
             // 
             labelBuscarPorDni.AutoSize = true;
             labelBuscarPorDni.Font = new Font("Verdana", 9F);
             labelBuscarPorDni.ForeColor = SystemColors.ButtonHighlight;
-            labelBuscarPorDni.Location = new Point(666, 41);
+            labelBuscarPorDni.Location = new Point(761, 55);
             labelBuscarPorDni.Name = "labelBuscarPorDni";
-            labelBuscarPorDni.Size = new Size(54, 14);
+            labelBuscarPorDni.Size = new Size(65, 18);
             labelBuscarPorDni.TabIndex = 31;
             labelBuscarPorDni.Text = "Buscar:";
             // 
@@ -336,9 +357,10 @@
             textBoxBuscador.BorderStyle = BorderStyle.FixedSingle;
             textBoxBuscador.Font = new Font("Verdana", 9F);
             textBoxBuscador.ForeColor = SystemColors.ButtonFace;
-            textBoxBuscador.Location = new Point(726, 39);
+            textBoxBuscador.Location = new Point(830, 52);
+            textBoxBuscador.Margin = new Padding(3, 4, 3, 4);
             textBoxBuscador.Name = "textBoxBuscador";
-            textBoxBuscador.Size = new Size(121, 22);
+            textBoxBuscador.Size = new Size(138, 26);
             textBoxBuscador.TabIndex = 31;
             textBoxBuscador.TextChanged += textBoxBuscador_TextChanged;
             // 
@@ -346,9 +368,10 @@
             // 
             buttonRecargar.FlatStyle = FlatStyle.System;
             buttonRecargar.Font = new Font("Segoe UI", 16F);
-            buttonRecargar.Location = new Point(403, 41);
+            buttonRecargar.Location = new Point(461, 55);
+            buttonRecargar.Margin = new Padding(3, 4, 3, 4);
             buttonRecargar.Name = "buttonRecargar";
-            buttonRecargar.Size = new Size(34, 30);
+            buttonRecargar.Size = new Size(39, 40);
             buttonRecargar.TabIndex = 41;
             buttonRecargar.Text = "↻";
             buttonRecargar.UseVisualStyleBackColor = true;
@@ -356,10 +379,10 @@
             // 
             // FormConductores
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MidnightBlue;
-            ClientSize = new Size(869, 367);
+            ClientSize = new Size(1092, 489);
             Controls.Add(buttonRecargar);
             Controls.Add(textBoxBuscador);
             Controls.Add(labelBuscarPorDni);
@@ -371,8 +394,9 @@
             Controls.Add(buttonEditar);
             Controls.Add(buttonNuevo);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(3, 4, 3, 4);
             Name = "FormConductores";
-            Text = "               ";
+            Text = "Conductores     ";
             Load += FormConductores_Load;
             groupBoxConductores.ResumeLayout(false);
             groupBoxConductores.PerformLayout();

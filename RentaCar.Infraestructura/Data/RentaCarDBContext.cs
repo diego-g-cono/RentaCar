@@ -19,7 +19,6 @@ namespace RentaCar.Infraestructura.Data
         public DbSet<Combustible> Combustibles { get; set; }
         public DbSet<EstadoVehiculo> EstadosVehiculos { get; set; }
         public DbSet<EstadoReserva> EstadosReservas { get; set; }
-        public DbSet<Administrador> Administradores { get; set; }
         public DbSet<Empleado> Empleados { get; set; }
         public DbSet<Alquiler> Alquileres { get; set; }
         public DbSet<Devolucion> Devoluciones { get; set; }
@@ -34,7 +33,7 @@ namespace RentaCar.Infraestructura.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=rentacar;Username=postgres;Password=<1123581321>;");
+            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=rentacar;Username=postgres;Password=postgres;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -167,16 +166,6 @@ namespace RentaCar.Infraestructura.Data
                 entity.Property(e => e.Nombre).HasColumnName("nombre");
             });
 
-            modelBuilder.Entity<Administrador>(entity =>
-            {
-                entity.ToTable("administradores");
-                entity.HasKey(a => a.Dni);
-
-                entity.Property(a => a.Dni).HasColumnName("dni");
-                entity.Property(a => a.Nombre).HasColumnName("nombre");
-                entity.Property(a => a.Apellido).HasColumnName("apellido");
-                entity.Property(a => a.UsuarioId).HasColumnName("usuario_id");
-            });
 
             modelBuilder.Entity<Empleado>(entity =>
             {

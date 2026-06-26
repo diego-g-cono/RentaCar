@@ -257,7 +257,7 @@ namespace RentaCar.Escritorio
 
                     await _alquilerServicio.Actualizar(alquilerIdSeleccionado, update);
 
-                    Dialogos.Info(Mensajes.ExitoEdicion("Alquiler"));
+                    
                     if (reservaId.HasValue)
                     {
                         var reserva = _reservas.First(r => r.Id == reservaId.Value);
@@ -276,6 +276,7 @@ namespace RentaCar.Escritorio
 
                         await _reservaServicio.Actualizar(reservaId.Value, updateReserva);
                     }
+                       Dialogos.Info(Mensajes.ExitoEdicion("Alquiler"));
                 }
                 else
                 {

@@ -146,8 +146,10 @@ namespace RentaCar.Escritorio
             textBoxCliente.Text = reserva.ClienteDni.ToString();
             textBoxVehiculo.Text = reserva.VehiculoPatente;
 
-            dtpFechaRetiro.MinDate = reserva.FechaInicio.ToDateTime(TimeOnly.MinValue);
-            dtpFechaDevolucion.MinDate = reserva.FechaInicio.ToDateTime(TimeOnly.MinValue);
+            //dtpFechaRetiro.MinDate = reserva.FechaInicio.ToDateTime(TimeOnly.MinValue);
+            //dtpFechaDevolucion.MinDate = reserva.FechaInicio.ToDateTime(TimeOnly.MinValue);
+            dtpFechaRetiro.MinDate = DateTimePicker.MinimumDateTime;
+            dtpFechaDevolucion.MinDate = DateTimePicker.MinimumDateTime;
 
             dtpFechaRetiro.Value = reserva.FechaInicio.ToDateTime(TimeOnly.MinValue);
             dtpFechaDevolucion.Value = reserva.FechaFin.ToDateTime(TimeOnly.MinValue);

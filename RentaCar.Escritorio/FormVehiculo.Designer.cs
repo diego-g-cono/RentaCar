@@ -92,9 +92,11 @@
             dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView.Columns.AddRange(new DataGridViewColumn[] { ColumnPatente, ColumnMarca, ColumnModelo, ColumnTipo, ColumnAnio, ColumnColor, ColumnCombustible, ColumnKm, ColumnEstado });
             dataGridView.GridColor = Color.MidnightBlue;
-            dataGridView.Location = new Point(351, 60);
+            dataGridView.Location = new Point(401, 80);
+            dataGridView.Margin = new Padding(3, 4, 3, 4);
             dataGridView.Name = "dataGridView";
             dataGridView.ReadOnly = true;
+            dataGridView.RowHeadersWidth = 51;
             dataGridViewCellStyle2.BackColor = Color.MidnightBlue;
             dataGridViewCellStyle2.ForeColor = SystemColors.ButtonFace;
             dataGridViewCellStyle2.SelectionBackColor = Color.RoyalBlue;
@@ -105,71 +107,89 @@
             dataGridView.RowTemplate.DefaultCellStyle.ForeColor = SystemColors.ButtonFace;
             dataGridView.RowTemplate.DefaultCellStyle.SelectionBackColor = Color.RoyalBlue;
             dataGridView.RowTemplate.DefaultCellStyle.SelectionForeColor = SystemColors.ButtonFace;
-            dataGridView.Size = new Size(944, 361);
+            dataGridView.Size = new Size(1186, 481);
             dataGridView.TabIndex = 6;
             // 
             // ColumnPatente
             // 
             ColumnPatente.DataPropertyName = "Patente";
             ColumnPatente.HeaderText = "Patente";
+            ColumnPatente.MinimumWidth = 6;
             ColumnPatente.Name = "ColumnPatente";
             ColumnPatente.ReadOnly = true;
+            ColumnPatente.Width = 125;
             // 
             // ColumnMarca
             // 
             ColumnMarca.DataPropertyName = "MarcaNombre";
             ColumnMarca.HeaderText = "Marca";
+            ColumnMarca.MinimumWidth = 6;
             ColumnMarca.Name = "ColumnMarca";
             ColumnMarca.ReadOnly = true;
+            ColumnMarca.Width = 125;
             // 
             // ColumnModelo
             // 
             ColumnModelo.DataPropertyName = "ModeloNombre";
             ColumnModelo.HeaderText = "Modelo";
+            ColumnModelo.MinimumWidth = 6;
             ColumnModelo.Name = "ColumnModelo";
             ColumnModelo.ReadOnly = true;
+            ColumnModelo.Width = 125;
             // 
             // ColumnTipo
             // 
             ColumnTipo.DataPropertyName = "TipoNombre";
             ColumnTipo.HeaderText = "Tipo";
+            ColumnTipo.MinimumWidth = 6;
             ColumnTipo.Name = "ColumnTipo";
             ColumnTipo.ReadOnly = true;
+            ColumnTipo.Width = 125;
             // 
             // ColumnAnio
             // 
             ColumnAnio.DataPropertyName = "Anio";
             ColumnAnio.HeaderText = "Año";
+            ColumnAnio.MinimumWidth = 6;
             ColumnAnio.Name = "ColumnAnio";
             ColumnAnio.ReadOnly = true;
+            ColumnAnio.Width = 125;
             // 
             // ColumnColor
             // 
             ColumnColor.DataPropertyName = "ColorNombre";
             ColumnColor.HeaderText = "Color";
+            ColumnColor.MinimumWidth = 6;
             ColumnColor.Name = "ColumnColor";
             ColumnColor.ReadOnly = true;
+            ColumnColor.Width = 125;
             // 
             // ColumnCombustible
             // 
             ColumnCombustible.DataPropertyName = "CombustibleNombre";
             ColumnCombustible.HeaderText = "Combustible";
+            ColumnCombustible.MinimumWidth = 6;
             ColumnCombustible.Name = "ColumnCombustible";
             ColumnCombustible.ReadOnly = true;
+            ColumnCombustible.Width = 125;
             // 
             // ColumnKm
             // 
             ColumnKm.DataPropertyName = "Kilometraje";
             ColumnKm.HeaderText = "Kilometraje";
+            ColumnKm.MinimumWidth = 6;
             ColumnKm.Name = "ColumnKm";
             ColumnKm.ReadOnly = true;
+            ColumnKm.Width = 125;
             // 
             // ColumnEstado
             // 
             ColumnEstado.DataPropertyName = "EstadoNombre";
             ColumnEstado.HeaderText = "Estado";
+            ColumnEstado.MinimumWidth = 6;
             ColumnEstado.Name = "ColumnEstado";
             ColumnEstado.ReadOnly = true;
+            ColumnEstado.Width = 125;
             // 
             // buttonNuevo
             // 
@@ -180,9 +200,10 @@
             buttonNuevo.FlatStyle = FlatStyle.Flat;
             buttonNuevo.Font = new Font("Verdana", 9F);
             buttonNuevo.ForeColor = SystemColors.ButtonFace;
-            buttonNuevo.Location = new Point(12, 12);
+            buttonNuevo.Location = new Point(14, 16);
+            buttonNuevo.Margin = new Padding(3, 4, 3, 4);
             buttonNuevo.Name = "buttonNuevo";
-            buttonNuevo.Size = new Size(77, 33);
+            buttonNuevo.Size = new Size(88, 44);
             buttonNuevo.TabIndex = 0;
             buttonNuevo.Text = "Nuevo";
             buttonNuevo.UseVisualStyleBackColor = false;
@@ -197,9 +218,10 @@
             buttonEditar.FlatStyle = FlatStyle.Flat;
             buttonEditar.Font = new Font("Verdana", 9F);
             buttonEditar.ForeColor = SystemColors.ButtonFace;
-            buttonEditar.Location = new Point(132, 12);
+            buttonEditar.Location = new Point(151, 16);
+            buttonEditar.Margin = new Padding(3, 4, 3, 4);
             buttonEditar.Name = "buttonEditar";
-            buttonEditar.Size = new Size(77, 33);
+            buttonEditar.Size = new Size(88, 44);
             buttonEditar.TabIndex = 1;
             buttonEditar.Text = "Editar";
             buttonEditar.UseVisualStyleBackColor = false;
@@ -214,9 +236,10 @@
             buttonEliminar.FlatStyle = FlatStyle.Flat;
             buttonEliminar.Font = new Font("Verdana", 9F);
             buttonEliminar.ForeColor = SystemColors.ButtonFace;
-            buttonEliminar.Location = new Point(250, 12);
+            buttonEliminar.Location = new Point(286, 16);
+            buttonEliminar.Margin = new Padding(3, 4, 3, 4);
             buttonEliminar.Name = "buttonEliminar";
-            buttonEliminar.Size = new Size(77, 33);
+            buttonEliminar.Size = new Size(88, 44);
             buttonEliminar.TabIndex = 2;
             buttonEliminar.Text = "Eliminar";
             buttonEliminar.UseVisualStyleBackColor = false;
@@ -244,9 +267,11 @@
             groupBox.Controls.Add(labelPatente);
             groupBox.Font = new Font("Verdana", 9F, FontStyle.Bold);
             groupBox.ForeColor = SystemColors.ButtonFace;
-            groupBox.Location = new Point(12, 60);
+            groupBox.Location = new Point(14, 80);
+            groupBox.Margin = new Padding(3, 4, 3, 4);
             groupBox.Name = "groupBox";
-            groupBox.Size = new Size(315, 361);
+            groupBox.Padding = new Padding(3, 4, 3, 4);
+            groupBox.Size = new Size(360, 481);
             groupBox.TabIndex = 3;
             groupBox.TabStop = false;
             groupBox.Text = "Datos Vehículo";
@@ -259,18 +284,19 @@
             comboBoxTipo.Font = new Font("Verdana", 9F);
             comboBoxTipo.ForeColor = SystemColors.ButtonFace;
             comboBoxTipo.FormattingEnabled = true;
-            comboBoxTipo.Location = new Point(120, 130);
+            comboBoxTipo.Location = new Point(137, 173);
+            comboBoxTipo.Margin = new Padding(3, 4, 3, 4);
             comboBoxTipo.Name = "comboBoxTipo";
-            comboBoxTipo.Size = new Size(121, 22);
+            comboBoxTipo.Size = new Size(138, 26);
             comboBoxTipo.TabIndex = 17;
             // 
             // label7
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Verdana", 9F);
-            label7.Location = new Point(19, 133);
+            label7.Location = new Point(22, 177);
             label7.Name = "label7";
-            label7.Size = new Size(38, 14);
+            label7.Size = new Size(46, 18);
             label7.TabIndex = 16;
             label7.Text = "Tipo:";
             // 
@@ -282,9 +308,10 @@
             comboBoxEstado.Font = new Font("Verdana", 9F);
             comboBoxEstado.ForeColor = SystemColors.ButtonFace;
             comboBoxEstado.FormattingEnabled = true;
-            comboBoxEstado.Location = new Point(120, 318);
+            comboBoxEstado.Location = new Point(137, 424);
+            comboBoxEstado.Margin = new Padding(3, 4, 3, 4);
             comboBoxEstado.Name = "comboBoxEstado";
-            comboBoxEstado.Size = new Size(121, 22);
+            comboBoxEstado.Size = new Size(138, 26);
             comboBoxEstado.TabIndex = 15;
             // 
             // numericUpDownKm
@@ -293,10 +320,11 @@
             numericUpDownKm.BorderStyle = BorderStyle.FixedSingle;
             numericUpDownKm.Font = new Font("Verdana", 9F);
             numericUpDownKm.ForeColor = SystemColors.ButtonFace;
-            numericUpDownKm.Location = new Point(121, 281);
+            numericUpDownKm.Location = new Point(138, 375);
+            numericUpDownKm.Margin = new Padding(3, 4, 3, 4);
             numericUpDownKm.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
             numericUpDownKm.Name = "numericUpDownKm";
-            numericUpDownKm.Size = new Size(120, 22);
+            numericUpDownKm.Size = new Size(137, 26);
             numericUpDownKm.TabIndex = 14;
             // 
             // comboBoxCombustible
@@ -307,9 +335,10 @@
             comboBoxCombustible.Font = new Font("Verdana", 9F);
             comboBoxCombustible.ForeColor = SystemColors.ButtonFace;
             comboBoxCombustible.FormattingEnabled = true;
-            comboBoxCombustible.Location = new Point(120, 240);
+            comboBoxCombustible.Location = new Point(137, 320);
+            comboBoxCombustible.Margin = new Padding(3, 4, 3, 4);
             comboBoxCombustible.Name = "comboBoxCombustible";
-            comboBoxCombustible.Size = new Size(121, 22);
+            comboBoxCombustible.Size = new Size(138, 26);
             comboBoxCombustible.TabIndex = 13;
             // 
             // numericUpDownAnio
@@ -318,11 +347,12 @@
             numericUpDownAnio.BorderStyle = BorderStyle.FixedSingle;
             numericUpDownAnio.Font = new Font("Verdana", 9F);
             numericUpDownAnio.ForeColor = SystemColors.ButtonFace;
-            numericUpDownAnio.Location = new Point(121, 166);
+            numericUpDownAnio.Location = new Point(138, 221);
+            numericUpDownAnio.Margin = new Padding(3, 4, 3, 4);
             numericUpDownAnio.Maximum = new decimal(new int[] { 2026, 0, 0, 0 });
             numericUpDownAnio.Minimum = new decimal(new int[] { 1950, 0, 0, 0 });
             numericUpDownAnio.Name = "numericUpDownAnio";
-            numericUpDownAnio.Size = new Size(120, 22);
+            numericUpDownAnio.Size = new Size(137, 26);
             numericUpDownAnio.TabIndex = 12;
             numericUpDownAnio.Value = new decimal(new int[] { 1950, 0, 0, 0 });
             // 
@@ -334,9 +364,10 @@
             comboBoxColor.Font = new Font("Verdana", 9F);
             comboBoxColor.ForeColor = SystemColors.ButtonFace;
             comboBoxColor.FormattingEnabled = true;
-            comboBoxColor.Location = new Point(120, 202);
+            comboBoxColor.Location = new Point(137, 269);
+            comboBoxColor.Margin = new Padding(3, 4, 3, 4);
             comboBoxColor.Name = "comboBoxColor";
-            comboBoxColor.Size = new Size(121, 22);
+            comboBoxColor.Size = new Size(138, 26);
             comboBoxColor.TabIndex = 11;
             // 
             // comboBoxModelo
@@ -347,9 +378,10 @@
             comboBoxModelo.Font = new Font("Verdana", 9F);
             comboBoxModelo.ForeColor = SystemColors.ButtonFace;
             comboBoxModelo.FormattingEnabled = true;
-            comboBoxModelo.Location = new Point(120, 95);
+            comboBoxModelo.Location = new Point(137, 127);
+            comboBoxModelo.Margin = new Padding(3, 4, 3, 4);
             comboBoxModelo.Name = "comboBoxModelo";
-            comboBoxModelo.Size = new Size(121, 22);
+            comboBoxModelo.Size = new Size(138, 26);
             comboBoxModelo.TabIndex = 10;
             // 
             // comboBoxMarca
@@ -360,9 +392,10 @@
             comboBoxMarca.Font = new Font("Verdana", 9F);
             comboBoxMarca.ForeColor = SystemColors.ButtonFace;
             comboBoxMarca.FormattingEnabled = true;
-            comboBoxMarca.Location = new Point(120, 60);
+            comboBoxMarca.Location = new Point(137, 80);
+            comboBoxMarca.Margin = new Padding(3, 4, 3, 4);
             comboBoxMarca.Name = "comboBoxMarca";
-            comboBoxMarca.Size = new Size(121, 22);
+            comboBoxMarca.Size = new Size(138, 26);
             comboBoxMarca.TabIndex = 9;
             comboBoxMarca.SelectedIndexChanged += comboBoxMarca_SelectedIndexChanged;
             // 
@@ -372,10 +405,11 @@
             textBoxPatente.BorderStyle = BorderStyle.FixedSingle;
             textBoxPatente.Font = new Font("Verdana", 9F);
             textBoxPatente.ForeColor = SystemColors.ButtonFace;
-            textBoxPatente.Location = new Point(120, 27);
+            textBoxPatente.Location = new Point(137, 36);
+            textBoxPatente.Margin = new Padding(3, 4, 3, 4);
             textBoxPatente.MaxLength = 7;
             textBoxPatente.Name = "textBoxPatente";
-            textBoxPatente.Size = new Size(121, 22);
+            textBoxPatente.Size = new Size(138, 26);
             textBoxPatente.TabIndex = 8;
             textBoxPatente.TextChanged += textBoxPatente_TextChanged;
             // 
@@ -383,9 +417,9 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Verdana", 9F);
-            label6.Location = new Point(19, 321);
+            label6.Location = new Point(22, 428);
             label6.Name = "label6";
-            label6.Size = new Size(56, 14);
+            label6.Size = new Size(66, 18);
             label6.TabIndex = 7;
             label6.Text = "Estado:";
             // 
@@ -393,9 +427,9 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Verdana", 9F);
-            label5.Location = new Point(19, 283);
+            label5.Location = new Point(22, 377);
             label5.Name = "label5";
-            label5.Size = new Size(83, 14);
+            label5.Size = new Size(100, 18);
             label5.TabIndex = 6;
             label5.Text = "Kilometraje:";
             // 
@@ -403,9 +437,9 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Verdana", 9F);
-            label4.Location = new Point(18, 243);
+            label4.Location = new Point(21, 324);
             label4.Name = "label4";
-            label4.Size = new Size(90, 14);
+            label4.Size = new Size(107, 18);
             label4.TabIndex = 5;
             label4.Text = "Combustible:";
             // 
@@ -413,9 +447,9 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Verdana", 9F);
-            label3.Location = new Point(18, 205);
+            label3.Location = new Point(21, 273);
             label3.Name = "label3";
-            label3.Size = new Size(45, 14);
+            label3.Size = new Size(55, 18);
             label3.TabIndex = 4;
             label3.Text = "Color:";
             // 
@@ -423,9 +457,9 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Verdana", 9F);
-            label2.Location = new Point(19, 168);
+            label2.Location = new Point(22, 224);
             label2.Name = "label2";
-            label2.Size = new Size(36, 14);
+            label2.Size = new Size(44, 18);
             label2.TabIndex = 3;
             label2.Text = "Año:";
             // 
@@ -433,9 +467,9 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Verdana", 9F);
-            label1.Location = new Point(18, 95);
+            label1.Location = new Point(21, 127);
             label1.Name = "label1";
-            label1.Size = new Size(57, 14);
+            label1.Size = new Size(69, 18);
             label1.TabIndex = 2;
             label1.Text = "Modelo:";
             // 
@@ -443,9 +477,9 @@
             // 
             labelMarca.AutoSize = true;
             labelMarca.Font = new Font("Verdana", 9F);
-            labelMarca.Location = new Point(19, 63);
+            labelMarca.Location = new Point(22, 84);
             labelMarca.Name = "labelMarca";
-            labelMarca.Size = new Size(49, 14);
+            labelMarca.Size = new Size(60, 18);
             labelMarca.TabIndex = 1;
             labelMarca.Text = "Marca:";
             // 
@@ -453,9 +487,9 @@
             // 
             labelPatente.AutoSize = true;
             labelPatente.Font = new Font("Verdana", 9F);
-            labelPatente.Location = new Point(19, 30);
+            labelPatente.Location = new Point(22, 40);
             labelPatente.Name = "labelPatente";
-            labelPatente.Size = new Size(62, 14);
+            labelPatente.Size = new Size(72, 18);
             labelPatente.TabIndex = 0;
             labelPatente.Text = "Patente:";
             // 
@@ -468,9 +502,10 @@
             buttonGuardar.FlatStyle = FlatStyle.Flat;
             buttonGuardar.Font = new Font("Verdana", 9F);
             buttonGuardar.ForeColor = SystemColors.ButtonFace;
-            buttonGuardar.Location = new Point(12, 438);
+            buttonGuardar.Location = new Point(14, 584);
+            buttonGuardar.Margin = new Padding(3, 4, 3, 4);
             buttonGuardar.Name = "buttonGuardar";
-            buttonGuardar.Size = new Size(77, 33);
+            buttonGuardar.Size = new Size(88, 44);
             buttonGuardar.TabIndex = 4;
             buttonGuardar.Text = "Guardar";
             buttonGuardar.UseVisualStyleBackColor = false;
@@ -485,9 +520,10 @@
             buttonCancelar.FlatStyle = FlatStyle.Flat;
             buttonCancelar.Font = new Font("Verdana", 9F);
             buttonCancelar.ForeColor = SystemColors.ButtonFace;
-            buttonCancelar.Location = new Point(250, 438);
+            buttonCancelar.Location = new Point(286, 584);
+            buttonCancelar.Margin = new Padding(3, 4, 3, 4);
             buttonCancelar.Name = "buttonCancelar";
-            buttonCancelar.Size = new Size(77, 33);
+            buttonCancelar.Size = new Size(88, 44);
             buttonCancelar.TabIndex = 5;
             buttonCancelar.Text = "Cancelar";
             buttonCancelar.UseVisualStyleBackColor = false;
@@ -499,9 +535,10 @@
             textBoxBuscador.BorderStyle = BorderStyle.FixedSingle;
             textBoxBuscador.Font = new Font("Verdana", 9F);
             textBoxBuscador.ForeColor = SystemColors.ButtonFace;
-            textBoxBuscador.Location = new Point(1162, 19);
+            textBoxBuscador.Location = new Point(1328, 25);
+            textBoxBuscador.Margin = new Padding(3, 4, 3, 4);
             textBoxBuscador.Name = "textBoxBuscador";
-            textBoxBuscador.Size = new Size(121, 22);
+            textBoxBuscador.Size = new Size(138, 26);
             textBoxBuscador.TabIndex = 34;
             textBoxBuscador.TextChanged += textBoxBuscador_TextChanged;
             // 
@@ -510,9 +547,9 @@
             labelBuscarPorDni.AutoSize = true;
             labelBuscarPorDni.Font = new Font("Verdana", 9F);
             labelBuscarPorDni.ForeColor = SystemColors.ButtonHighlight;
-            labelBuscarPorDni.Location = new Point(1102, 21);
+            labelBuscarPorDni.Location = new Point(1259, 28);
             labelBuscarPorDni.Name = "labelBuscarPorDni";
-            labelBuscarPorDni.Size = new Size(54, 14);
+            labelBuscarPorDni.Size = new Size(65, 18);
             labelBuscarPorDni.TabIndex = 35;
             labelBuscarPorDni.Text = "Buscar:";
             // 
@@ -520,9 +557,10 @@
             // 
             buttonRecargar.FlatStyle = FlatStyle.System;
             buttonRecargar.Font = new Font("Segoe UI", 16F);
-            buttonRecargar.Location = new Point(351, 15);
+            buttonRecargar.Location = new Point(401, 20);
+            buttonRecargar.Margin = new Padding(3, 4, 3, 4);
             buttonRecargar.Name = "buttonRecargar";
-            buttonRecargar.Size = new Size(34, 30);
+            buttonRecargar.Size = new Size(39, 40);
             buttonRecargar.TabIndex = 41;
             buttonRecargar.Text = "↻";
             buttonRecargar.UseVisualStyleBackColor = true;
@@ -530,10 +568,10 @@
             // 
             // FormVehiculo
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MidnightBlue;
-            ClientSize = new Size(1375, 529);
+            ClientSize = new Size(1599, 705);
             Controls.Add(buttonRecargar);
             Controls.Add(textBoxBuscador);
             Controls.Add(labelBuscarPorDni);
@@ -545,6 +583,7 @@
             Controls.Add(buttonEditar);
             Controls.Add(buttonNuevo);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(3, 4, 3, 4);
             Name = "FormVehiculo";
             Text = "Vehículos";
             Load += FormVehiculo_Load;

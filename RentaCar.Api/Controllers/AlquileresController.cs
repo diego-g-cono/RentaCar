@@ -119,6 +119,7 @@ namespace RentaCar.API.Controllers
             bool hayReservaSolapada = reservasExistentes.Any(r =>
                 r.Activo &&
                 r.EstadoId != 3 && // Cancelada
+                r.Id != request.ReservaId &&
                 request.FechaInicio <= r.FechaFin &&
                 request.FechaFin >= r.FechaInicio);
 
@@ -169,6 +170,7 @@ namespace RentaCar.API.Controllers
                 r.Activo &&
                 r.EstadoId != 3 &&
                 request.FechaInicio <= r.FechaFin &&
+                r.Id != request.ReservaId &&
                 request.FechaFin >= r.FechaInicio);
 
             if (hayReservaSolapada)
