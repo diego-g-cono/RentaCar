@@ -92,10 +92,9 @@
             buttonCancelar.FlatStyle = FlatStyle.Flat;
             buttonCancelar.Font = new Font("Verdana", 9F);
             buttonCancelar.ForeColor = SystemColors.ButtonFace;
-            buttonCancelar.Location = new Point(352, 421);
-            buttonCancelar.Margin = new Padding(3, 4, 3, 4);
+            buttonCancelar.Location = new Point(308, 316);
             buttonCancelar.Name = "buttonCancelar";
-            buttonCancelar.Size = new Size(88, 44);
+            buttonCancelar.Size = new Size(77, 33);
             buttonCancelar.TabIndex = 16;
             buttonCancelar.Text = "Cancelar";
             buttonCancelar.UseVisualStyleBackColor = false;
@@ -110,10 +109,9 @@
             buttonGuardar.FlatStyle = FlatStyle.Flat;
             buttonGuardar.Font = new Font("Verdana", 9F);
             buttonGuardar.ForeColor = SystemColors.ButtonFace;
-            buttonGuardar.Location = new Point(17, 421);
-            buttonGuardar.Margin = new Padding(3, 4, 3, 4);
+            buttonGuardar.Location = new Point(15, 316);
             buttonGuardar.Name = "buttonGuardar";
-            buttonGuardar.Size = new Size(88, 44);
+            buttonGuardar.Size = new Size(77, 33);
             buttonGuardar.TabIndex = 15;
             buttonGuardar.Text = "Guardar";
             buttonGuardar.UseVisualStyleBackColor = false;
@@ -131,11 +129,9 @@
             groupBox.Controls.Add(labelAlquiler);
             groupBox.Font = new Font("Verdana", 9F, FontStyle.Bold);
             groupBox.ForeColor = SystemColors.ButtonFace;
-            groupBox.Location = new Point(17, 104);
-            groupBox.Margin = new Padding(3, 4, 3, 4);
+            groupBox.Location = new Point(15, 78);
             groupBox.Name = "groupBox";
-            groupBox.Padding = new Padding(3, 4, 3, 4);
-            groupBox.Size = new Size(423, 296);
+            groupBox.Size = new Size(370, 222);
             groupBox.TabIndex = 14;
             groupBox.TabStop = false;
             groupBox.Text = "Datos Devolucion";
@@ -146,12 +142,11 @@
             textBoxAlquiler.BorderStyle = BorderStyle.FixedSingle;
             textBoxAlquiler.Font = new Font("Verdana", 9F);
             textBoxAlquiler.ForeColor = SystemColors.ButtonFace;
-            textBoxAlquiler.Location = new Point(173, 107);
-            textBoxAlquiler.Margin = new Padding(3, 4, 3, 4);
+            textBoxAlquiler.Location = new Point(151, 80);
             textBoxAlquiler.Name = "textBoxAlquiler";
             textBoxAlquiler.ReadOnly = true;
             textBoxAlquiler.ShortcutsEnabled = false;
-            textBoxAlquiler.Size = new Size(139, 26);
+            textBoxAlquiler.Size = new Size(122, 22);
             textBoxAlquiler.TabIndex = 30;
             // 
             // textBoxObservaciones
@@ -160,11 +155,10 @@
             textBoxObservaciones.BorderStyle = BorderStyle.FixedSingle;
             textBoxObservaciones.Font = new Font("Verdana", 9F);
             textBoxObservaciones.ForeColor = SystemColors.ButtonFace;
-            textBoxObservaciones.Location = new Point(171, 239);
-            textBoxObservaciones.Margin = new Padding(3, 4, 3, 4);
+            textBoxObservaciones.Location = new Point(150, 179);
             textBoxObservaciones.MaxLength = 200;
             textBoxObservaciones.Name = "textBoxObservaciones";
-            textBoxObservaciones.Size = new Size(139, 26);
+            textBoxObservaciones.Size = new Size(122, 22);
             textBoxObservaciones.TabIndex = 29;
             // 
             // comboBoxTqueLleno
@@ -173,27 +167,25 @@
             comboBoxTqueLleno.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxTqueLleno.ForeColor = SystemColors.ButtonFace;
             comboBoxTqueLleno.FormattingEnabled = true;
-            comboBoxTqueLleno.Location = new Point(173, 165);
-            comboBoxTqueLleno.Margin = new Padding(3, 4, 3, 4);
+            comboBoxTqueLleno.Location = new Point(151, 124);
             comboBoxTqueLleno.Name = "comboBoxTqueLleno";
-            comboBoxTqueLleno.Size = new Size(138, 26);
+            comboBoxTqueLleno.Size = new Size(121, 22);
             comboBoxTqueLleno.TabIndex = 28;
             // 
             // dtpFechaDevolucion
             // 
-            dtpFechaDevolucion.Location = new Point(173, 43);
-            dtpFechaDevolucion.Margin = new Padding(3, 4, 3, 4);
+            dtpFechaDevolucion.Location = new Point(151, 32);
             dtpFechaDevolucion.Name = "dtpFechaDevolucion";
-            dtpFechaDevolucion.Size = new Size(228, 26);
+            dtpFechaDevolucion.Size = new Size(200, 22);
             dtpFechaDevolucion.TabIndex = 24;
             // 
             // labelObservaciones
             // 
             labelObservaciones.AutoSize = true;
             labelObservaciones.Font = new Font("Verdana", 9F);
-            labelObservaciones.Location = new Point(22, 241);
+            labelObservaciones.Location = new Point(19, 181);
             labelObservaciones.Name = "labelObservaciones";
-            labelObservaciones.Size = new Size(124, 18);
+            labelObservaciones.Size = new Size(105, 14);
             labelObservaciones.TabIndex = 22;
             labelObservaciones.Text = "Observaciones:";
             // 
@@ -201,9 +193,9 @@
             // 
             labelTqueLleno.AutoSize = true;
             labelTqueLleno.Font = new Font("Verdana", 9F);
-            labelTqueLleno.Location = new Point(22, 169);
+            labelTqueLleno.Location = new Point(19, 127);
             labelTqueLleno.Name = "labelTqueLleno";
-            labelTqueLleno.Size = new Size(106, 18);
+            labelTqueLleno.Size = new Size(92, 14);
             labelTqueLleno.TabIndex = 21;
             labelTqueLleno.Text = "Tanque lleno:";
             // 
@@ -211,9 +203,9 @@
             // 
             labelFechaDevolucion.AutoSize = true;
             labelFechaDevolucion.Font = new Font("Verdana", 9F);
-            labelFechaDevolucion.Location = new Point(22, 51);
+            labelFechaDevolucion.Location = new Point(19, 38);
             labelFechaDevolucion.Name = "labelFechaDevolucion";
-            labelFechaDevolucion.Size = new Size(145, 18);
+            labelFechaDevolucion.Size = new Size(121, 14);
             labelFechaDevolucion.TabIndex = 16;
             labelFechaDevolucion.Text = "Fecha Devolución:";
             // 
@@ -221,9 +213,9 @@
             // 
             labelAlquiler.AutoSize = true;
             labelAlquiler.Font = new Font("Verdana", 9F);
-            labelAlquiler.Location = new Point(22, 109);
+            labelAlquiler.Location = new Point(19, 82);
             labelAlquiler.Name = "labelAlquiler";
-            labelAlquiler.Size = new Size(67, 18);
+            labelAlquiler.Size = new Size(58, 14);
             labelAlquiler.TabIndex = 3;
             labelAlquiler.Text = "Alquiler:";
             // 
@@ -236,10 +228,9 @@
             buttonEliminar.FlatStyle = FlatStyle.Flat;
             buttonEliminar.Font = new Font("Verdana", 9F);
             buttonEliminar.ForeColor = SystemColors.ButtonFace;
-            buttonEliminar.Location = new Point(352, 35);
-            buttonEliminar.Margin = new Padding(3, 4, 3, 4);
+            buttonEliminar.Location = new Point(308, 26);
             buttonEliminar.Name = "buttonEliminar";
-            buttonEliminar.Size = new Size(88, 44);
+            buttonEliminar.Size = new Size(77, 33);
             buttonEliminar.TabIndex = 13;
             buttonEliminar.Text = "Eliminar";
             buttonEliminar.UseVisualStyleBackColor = false;
@@ -254,10 +245,9 @@
             buttonEditar.FlatStyle = FlatStyle.Flat;
             buttonEditar.Font = new Font("Verdana", 9F);
             buttonEditar.ForeColor = SystemColors.ButtonFace;
-            buttonEditar.Location = new Point(189, 35);
-            buttonEditar.Margin = new Padding(3, 4, 3, 4);
+            buttonEditar.Location = new Point(165, 26);
             buttonEditar.Name = "buttonEditar";
-            buttonEditar.Size = new Size(88, 44);
+            buttonEditar.Size = new Size(77, 33);
             buttonEditar.TabIndex = 12;
             buttonEditar.Text = "Editar";
             buttonEditar.UseVisualStyleBackColor = false;
@@ -272,10 +262,9 @@
             buttonNuevo.FlatStyle = FlatStyle.Flat;
             buttonNuevo.Font = new Font("Verdana", 9F);
             buttonNuevo.ForeColor = SystemColors.ButtonFace;
-            buttonNuevo.Location = new Point(17, 35);
-            buttonNuevo.Margin = new Padding(3, 4, 3, 4);
+            buttonNuevo.Location = new Point(15, 26);
             buttonNuevo.Name = "buttonNuevo";
-            buttonNuevo.Size = new Size(88, 44);
+            buttonNuevo.Size = new Size(77, 33);
             buttonNuevo.TabIndex = 11;
             buttonNuevo.Text = "Nueva";
             buttonNuevo.UseVisualStyleBackColor = false;
@@ -285,22 +274,20 @@
             // 
             tabControlDevoluciones.Controls.Add(tabPage1);
             tabControlDevoluciones.Controls.Add(tabPage2);
-            tabControlDevoluciones.Location = new Point(495, 65);
-            tabControlDevoluciones.Margin = new Padding(3, 4, 3, 4);
+            tabControlDevoluciones.Location = new Point(433, 49);
             tabControlDevoluciones.Name = "tabControlDevoluciones";
             tabControlDevoluciones.SelectedIndex = 0;
-            tabControlDevoluciones.Size = new Size(1199, 452);
+            tabControlDevoluciones.Size = new Size(1190, 339);
             tabControlDevoluciones.TabIndex = 17;
             // 
             // tabPage1
             // 
             tabPage1.BackColor = Color.MidnightBlue;
             tabPage1.Controls.Add(dataGridViewDevoluciones);
-            tabPage1.Location = new Point(4, 29);
-            tabPage1.Margin = new Padding(3, 4, 3, 4);
+            tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3, 4, 3, 4);
-            tabPage1.Size = new Size(1079, 419);
+            tabPage1.Padding = new Padding(3, 3, 3, 3);
+            tabPage1.Size = new Size(1041, 311);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Devoluciones";
             // 
@@ -322,8 +309,7 @@
             dataGridViewDevoluciones.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewDevoluciones.Columns.AddRange(new DataGridViewColumn[] { fechaColumn, dataGridViewTextBoxColumn2, tanqueLleno, dataGridViewTextBoxColumn4 });
             dataGridViewDevoluciones.GridColor = Color.MidnightBlue;
-            dataGridViewDevoluciones.Location = new Point(0, 4);
-            dataGridViewDevoluciones.Margin = new Padding(3, 4, 3, 4);
+            dataGridViewDevoluciones.Location = new Point(0, 3);
             dataGridViewDevoluciones.Name = "dataGridViewDevoluciones";
             dataGridViewDevoluciones.ReadOnly = true;
             dataGridViewDevoluciones.RowHeadersWidth = 51;
@@ -337,7 +323,7 @@
             dataGridViewDevoluciones.RowTemplate.DefaultCellStyle.ForeColor = SystemColors.ButtonFace;
             dataGridViewDevoluciones.RowTemplate.DefaultCellStyle.SelectionBackColor = Color.RoyalBlue;
             dataGridViewDevoluciones.RowTemplate.DefaultCellStyle.SelectionForeColor = SystemColors.ButtonFace;
-            dataGridViewDevoluciones.Size = new Size(569, 340);
+            dataGridViewDevoluciones.Size = new Size(570, 255);
             dataGridViewDevoluciones.TabIndex = 32;
             // 
             // fechaColumn
@@ -379,11 +365,10 @@
             // tabPage2
             // 
             tabPage2.Controls.Add(dataGridViewAlquileres);
-            tabPage2.Location = new Point(4, 29);
-            tabPage2.Margin = new Padding(3, 4, 3, 4);
+            tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3, 4, 3, 4);
-            tabPage2.Size = new Size(1191, 419);
+            tabPage2.Padding = new Padding(3, 3, 3, 3);
+            tabPage2.Size = new Size(1182, 311);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Alquileres";
             tabPage2.UseVisualStyleBackColor = true;
@@ -407,7 +392,6 @@
             dataGridViewAlquileres.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn8, dataGridViewTextBoxColumn9, dataGridViewTextBoxColumn7, dataGridViewTextBoxColumn10, dataGridViewTextBoxColumn6, DniConductor, dataGridViewTextBoxColumn11, dataGridViewTextBoxColumn12 });
             dataGridViewAlquileres.GridColor = Color.MidnightBlue;
             dataGridViewAlquileres.Location = new Point(0, 0);
-            dataGridViewAlquileres.Margin = new Padding(3, 4, 3, 4);
             dataGridViewAlquileres.Name = "dataGridViewAlquileres";
             dataGridViewAlquileres.ReadOnly = true;
             dataGridViewAlquileres.RowHeadersWidth = 51;
@@ -421,7 +405,7 @@
             dataGridViewAlquileres.RowTemplate.DefaultCellStyle.ForeColor = SystemColors.ButtonFace;
             dataGridViewAlquileres.RowTemplate.DefaultCellStyle.SelectionBackColor = Color.RoyalBlue;
             dataGridViewAlquileres.RowTemplate.DefaultCellStyle.SelectionForeColor = SystemColors.ButtonFace;
-            dataGridViewAlquileres.Size = new Size(1191, 420);
+            dataGridViewAlquileres.Size = new Size(1182, 315);
             dataGridViewAlquileres.TabIndex = 14;
             dataGridViewAlquileres.CellDoubleClick += dataGridViewAlquileres_CellDoubleClick;
             // 
@@ -510,10 +494,9 @@
             // 
             buttonRecargar.FlatStyle = FlatStyle.System;
             buttonRecargar.Font = new Font("Segoe UI", 16F);
-            buttonRecargar.Location = new Point(495, 16);
-            buttonRecargar.Margin = new Padding(3, 4, 3, 4);
+            buttonRecargar.Location = new Point(433, 12);
             buttonRecargar.Name = "buttonRecargar";
-            buttonRecargar.Size = new Size(39, 40);
+            buttonRecargar.Size = new Size(34, 30);
             buttonRecargar.TabIndex = 42;
             buttonRecargar.Text = "↻";
             buttonRecargar.UseVisualStyleBackColor = true;
@@ -525,10 +508,9 @@
             textBoxBuscador.BorderStyle = BorderStyle.FixedSingle;
             textBoxBuscador.Font = new Font("Verdana", 9F);
             textBoxBuscador.ForeColor = SystemColors.ButtonFace;
-            textBoxBuscador.Location = new Point(1443, 35);
-            textBoxBuscador.Margin = new Padding(3, 4, 3, 4);
+            textBoxBuscador.Location = new Point(1263, 26);
             textBoxBuscador.Name = "textBoxBuscador";
-            textBoxBuscador.Size = new Size(138, 26);
+            textBoxBuscador.Size = new Size(121, 22);
             textBoxBuscador.TabIndex = 43;
             textBoxBuscador.TextChanged += textBoxBuscador_TextChanged;
             // 
@@ -537,18 +519,18 @@
             labelBuscar.AutoSize = true;
             labelBuscar.Font = new Font("Verdana", 9F);
             labelBuscar.ForeColor = SystemColors.ButtonHighlight;
-            labelBuscar.Location = new Point(1375, 37);
+            labelBuscar.Location = new Point(1203, 28);
             labelBuscar.Name = "labelBuscar";
-            labelBuscar.Size = new Size(65, 18);
+            labelBuscar.Size = new Size(54, 14);
             labelBuscar.TabIndex = 44;
             labelBuscar.Text = "Buscar:";
             // 
             // FormDevoluciones
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MidnightBlue;
-            ClientSize = new Size(1722, 547);
+            ClientSize = new Size(1695, 410);
             Controls.Add(textBoxBuscador);
             Controls.Add(labelBuscar);
             Controls.Add(buttonRecargar);
@@ -560,7 +542,6 @@
             Controls.Add(buttonEditar);
             Controls.Add(buttonNuevo);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Margin = new Padding(3, 4, 3, 4);
             Name = "FormDevoluciones";
             Text = "Devoluciones";
             Load += FormDevoluciones_Load;

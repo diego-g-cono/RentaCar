@@ -74,10 +74,9 @@
             buttonEliminar.FlatStyle = FlatStyle.Flat;
             buttonEliminar.Font = new Font("Verdana", 9F);
             buttonEliminar.ForeColor = SystemColors.ButtonFace;
-            buttonEliminar.Location = new Point(286, 16);
-            buttonEliminar.Margin = new Padding(3, 4, 3, 4);
+            buttonEliminar.Location = new Point(250, 12);
             buttonEliminar.Name = "buttonEliminar";
-            buttonEliminar.Size = new Size(88, 44);
+            buttonEliminar.Size = new Size(77, 33);
             buttonEliminar.TabIndex = 5;
             buttonEliminar.Text = "Eliminar";
             buttonEliminar.UseVisualStyleBackColor = false;
@@ -92,10 +91,9 @@
             buttonEditar.FlatStyle = FlatStyle.Flat;
             buttonEditar.Font = new Font("Verdana", 9F);
             buttonEditar.ForeColor = SystemColors.ButtonFace;
-            buttonEditar.Location = new Point(151, 16);
-            buttonEditar.Margin = new Padding(3, 4, 3, 4);
+            buttonEditar.Location = new Point(132, 12);
             buttonEditar.Name = "buttonEditar";
-            buttonEditar.Size = new Size(88, 44);
+            buttonEditar.Size = new Size(77, 33);
             buttonEditar.TabIndex = 4;
             buttonEditar.Text = "Editar";
             buttonEditar.UseVisualStyleBackColor = false;
@@ -110,10 +108,9 @@
             buttonNuevo.FlatStyle = FlatStyle.Flat;
             buttonNuevo.Font = new Font("Verdana", 9F);
             buttonNuevo.ForeColor = SystemColors.ButtonFace;
-            buttonNuevo.Location = new Point(14, 16);
-            buttonNuevo.Margin = new Padding(3, 4, 3, 4);
+            buttonNuevo.Location = new Point(12, 12);
             buttonNuevo.Name = "buttonNuevo";
-            buttonNuevo.Size = new Size(88, 44);
+            buttonNuevo.Size = new Size(77, 33);
             buttonNuevo.TabIndex = 3;
             buttonNuevo.Text = "Nuevo";
             buttonNuevo.UseVisualStyleBackColor = false;
@@ -137,11 +134,9 @@
             groupBox.Controls.Add(labelDNI);
             groupBox.Font = new Font("Verdana", 9F, FontStyle.Bold);
             groupBox.ForeColor = SystemColors.ButtonFace;
-            groupBox.Location = new Point(14, 80);
-            groupBox.Margin = new Padding(3, 4, 3, 4);
+            groupBox.Location = new Point(12, 60);
             groupBox.Name = "groupBox";
-            groupBox.Padding = new Padding(3, 4, 3, 4);
-            groupBox.Size = new Size(360, 392);
+            groupBox.Size = new Size(315, 294);
             groupBox.TabIndex = 6;
             groupBox.TabStop = false;
             groupBox.Text = "Datos Cliente";
@@ -152,13 +147,12 @@
             textBoxContrasenia.BorderStyle = BorderStyle.FixedSingle;
             textBoxContrasenia.Font = new Font("Verdana", 9F);
             textBoxContrasenia.ForeColor = SystemColors.ButtonFace;
-            textBoxContrasenia.Location = new Point(137, 327);
-            textBoxContrasenia.Margin = new Padding(3, 4, 3, 4);
+            textBoxContrasenia.Location = new Point(120, 245);
             textBoxContrasenia.MaxLength = 20;
             textBoxContrasenia.Name = "textBoxContrasenia";
             textBoxContrasenia.PasswordChar = '*';
             textBoxContrasenia.ShortcutsEnabled = false;
-            textBoxContrasenia.Size = new Size(138, 26);
+            textBoxContrasenia.Size = new Size(121, 22);
             textBoxContrasenia.TabIndex = 24;
             // 
             // textBoxUsuario
@@ -167,21 +161,20 @@
             textBoxUsuario.BorderStyle = BorderStyle.FixedSingle;
             textBoxUsuario.Font = new Font("Verdana", 9F);
             textBoxUsuario.ForeColor = SystemColors.ButtonFace;
-            textBoxUsuario.Location = new Point(137, 280);
-            textBoxUsuario.Margin = new Padding(3, 4, 3, 4);
+            textBoxUsuario.Location = new Point(120, 210);
             textBoxUsuario.MaxLength = 50;
             textBoxUsuario.Name = "textBoxUsuario";
             textBoxUsuario.ShortcutsEnabled = false;
-            textBoxUsuario.Size = new Size(138, 26);
+            textBoxUsuario.Size = new Size(121, 22);
             textBoxUsuario.TabIndex = 23;
             // 
             // labelUsuario
             // 
             labelUsuario.AutoSize = true;
             labelUsuario.Font = new Font("Verdana", 9F);
-            labelUsuario.Location = new Point(23, 280);
+            labelUsuario.Location = new Point(20, 210);
             labelUsuario.Name = "labelUsuario";
-            labelUsuario.Size = new Size(71, 18);
+            labelUsuario.Size = new Size(60, 14);
             labelUsuario.TabIndex = 22;
             labelUsuario.Text = "Usuario:";
             // 
@@ -189,9 +182,9 @@
             // 
             labelContrasenia.AutoSize = true;
             labelContrasenia.Font = new Font("Verdana", 9F);
-            labelContrasenia.Location = new Point(22, 329);
+            labelContrasenia.Location = new Point(19, 247);
             labelContrasenia.Name = "labelContrasenia";
-            labelContrasenia.Size = new Size(101, 18);
+            labelContrasenia.Size = new Size(86, 14);
             labelContrasenia.TabIndex = 21;
             labelContrasenia.Text = "Contraseña:";
             // 
@@ -201,12 +194,11 @@
             textBoxTel.BorderStyle = BorderStyle.FixedSingle;
             textBoxTel.Font = new Font("Verdana", 9F);
             textBoxTel.ForeColor = SystemColors.ButtonFace;
-            textBoxTel.Location = new Point(137, 221);
-            textBoxTel.Margin = new Padding(3, 4, 3, 4);
+            textBoxTel.Location = new Point(120, 166);
             textBoxTel.MaxLength = 20;
             textBoxTel.Name = "textBoxTel";
             textBoxTel.ShortcutsEnabled = false;
-            textBoxTel.Size = new Size(138, 26);
+            textBoxTel.Size = new Size(121, 22);
             textBoxTel.TabIndex = 20;
             textBoxTel.KeyPress += textBoxTel_KeyPress;
             // 
@@ -216,12 +208,11 @@
             textBoxEmail.BorderStyle = BorderStyle.FixedSingle;
             textBoxEmail.Font = new Font("Verdana", 9F);
             textBoxEmail.ForeColor = SystemColors.ButtonFace;
-            textBoxEmail.Location = new Point(137, 175);
-            textBoxEmail.Margin = new Padding(3, 4, 3, 4);
+            textBoxEmail.Location = new Point(120, 131);
             textBoxEmail.MaxLength = 50;
             textBoxEmail.Name = "textBoxEmail";
             textBoxEmail.ShortcutsEnabled = false;
-            textBoxEmail.Size = new Size(138, 26);
+            textBoxEmail.Size = new Size(121, 22);
             textBoxEmail.TabIndex = 19;
             // 
             // textBoxApellido
@@ -230,12 +221,11 @@
             textBoxApellido.BorderStyle = BorderStyle.FixedSingle;
             textBoxApellido.Font = new Font("Verdana", 9F);
             textBoxApellido.ForeColor = SystemColors.ButtonFace;
-            textBoxApellido.Location = new Point(137, 124);
-            textBoxApellido.Margin = new Padding(3, 4, 3, 4);
+            textBoxApellido.Location = new Point(120, 93);
             textBoxApellido.MaxLength = 30;
             textBoxApellido.Name = "textBoxApellido";
             textBoxApellido.ShortcutsEnabled = false;
-            textBoxApellido.Size = new Size(138, 26);
+            textBoxApellido.Size = new Size(121, 22);
             textBoxApellido.TabIndex = 18;
             textBoxApellido.KeyPress += textBoxNombre_KeyPress;
             // 
@@ -245,12 +235,11 @@
             textBoxNombre.BorderStyle = BorderStyle.FixedSingle;
             textBoxNombre.Font = new Font("Verdana", 9F);
             textBoxNombre.ForeColor = SystemColors.ButtonFace;
-            textBoxNombre.Location = new Point(137, 81);
-            textBoxNombre.Margin = new Padding(3, 4, 3, 4);
+            textBoxNombre.Location = new Point(120, 61);
             textBoxNombre.MaxLength = 30;
             textBoxNombre.Name = "textBoxNombre";
             textBoxNombre.ShortcutsEnabled = false;
-            textBoxNombre.Size = new Size(138, 26);
+            textBoxNombre.Size = new Size(121, 22);
             textBoxNombre.TabIndex = 17;
             textBoxNombre.KeyPress += textBoxNombre_KeyPress;
             // 
@@ -258,9 +247,9 @@
             // 
             labelEmail.AutoSize = true;
             labelEmail.Font = new Font("Verdana", 9F);
-            labelEmail.Location = new Point(22, 177);
+            labelEmail.Location = new Point(19, 133);
             labelEmail.Name = "labelEmail";
-            labelEmail.Size = new Size(61, 18);
+            labelEmail.Size = new Size(50, 14);
             labelEmail.TabIndex = 16;
             labelEmail.Text = "E-mail:";
             // 
@@ -270,12 +259,11 @@
             textBoxDNI.BorderStyle = BorderStyle.FixedSingle;
             textBoxDNI.Font = new Font("Verdana", 9F);
             textBoxDNI.ForeColor = SystemColors.ButtonFace;
-            textBoxDNI.Location = new Point(137, 36);
-            textBoxDNI.Margin = new Padding(3, 4, 3, 4);
+            textBoxDNI.Location = new Point(120, 27);
             textBoxDNI.MaxLength = 8;
             textBoxDNI.Name = "textBoxDNI";
             textBoxDNI.ShortcutsEnabled = false;
-            textBoxDNI.Size = new Size(138, 26);
+            textBoxDNI.Size = new Size(121, 22);
             textBoxDNI.TabIndex = 8;
             textBoxDNI.KeyPress += textBoxDNI_KeyPress;
             // 
@@ -283,9 +271,9 @@
             // 
             labelTelefono.AutoSize = true;
             labelTelefono.Font = new Font("Verdana", 9F);
-            labelTelefono.Location = new Point(22, 224);
+            labelTelefono.Location = new Point(19, 168);
             labelTelefono.Name = "labelTelefono";
-            labelTelefono.Size = new Size(77, 18);
+            labelTelefono.Size = new Size(65, 14);
             labelTelefono.TabIndex = 3;
             labelTelefono.Text = "Teléfono:";
             // 
@@ -293,9 +281,9 @@
             // 
             labelApellido.AutoSize = true;
             labelApellido.Font = new Font("Verdana", 9F);
-            labelApellido.Location = new Point(21, 127);
+            labelApellido.Location = new Point(18, 95);
             labelApellido.Name = "labelApellido";
-            labelApellido.Size = new Size(71, 18);
+            labelApellido.Size = new Size(61, 14);
             labelApellido.TabIndex = 2;
             labelApellido.Text = "Apellido:";
             // 
@@ -303,9 +291,9 @@
             // 
             labelNombre.AutoSize = true;
             labelNombre.Font = new Font("Verdana", 9F);
-            labelNombre.Location = new Point(22, 84);
+            labelNombre.Location = new Point(19, 63);
             labelNombre.Name = "labelNombre";
-            labelNombre.Size = new Size(75, 18);
+            labelNombre.Size = new Size(61, 14);
             labelNombre.TabIndex = 1;
             labelNombre.Text = "Nombre:";
             // 
@@ -313,9 +301,9 @@
             // 
             labelDNI.AutoSize = true;
             labelDNI.Font = new Font("Verdana", 9F);
-            labelDNI.Location = new Point(22, 40);
+            labelDNI.Location = new Point(19, 30);
             labelDNI.Name = "labelDNI";
-            labelDNI.Size = new Size(42, 18);
+            labelDNI.Size = new Size(35, 14);
             labelDNI.TabIndex = 0;
             labelDNI.Text = "DNI:";
             // 
@@ -328,10 +316,9 @@
             buttonCancelar.FlatStyle = FlatStyle.Flat;
             buttonCancelar.Font = new Font("Verdana", 9F);
             buttonCancelar.ForeColor = SystemColors.ButtonFace;
-            buttonCancelar.Location = new Point(250, 480);
-            buttonCancelar.Margin = new Padding(3, 4, 3, 4);
+            buttonCancelar.Location = new Point(219, 360);
             buttonCancelar.Name = "buttonCancelar";
-            buttonCancelar.Size = new Size(88, 44);
+            buttonCancelar.Size = new Size(77, 33);
             buttonCancelar.TabIndex = 8;
             buttonCancelar.Text = "Cancelar";
             buttonCancelar.UseVisualStyleBackColor = false;
@@ -346,10 +333,9 @@
             buttonGuardar.FlatStyle = FlatStyle.Flat;
             buttonGuardar.Font = new Font("Verdana", 9F);
             buttonGuardar.ForeColor = SystemColors.ButtonFace;
-            buttonGuardar.Location = new Point(22, 480);
-            buttonGuardar.Margin = new Padding(3, 4, 3, 4);
+            buttonGuardar.Location = new Point(19, 360);
             buttonGuardar.Name = "buttonGuardar";
-            buttonGuardar.Size = new Size(88, 44);
+            buttonGuardar.Size = new Size(77, 33);
             buttonGuardar.TabIndex = 7;
             buttonGuardar.Text = "Guardar";
             buttonGuardar.UseVisualStyleBackColor = false;
@@ -373,8 +359,7 @@
             dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView.Columns.AddRange(new DataGridViewColumn[] { ColumnDNI, ColumnNombre, ColumnApellido, ColumnEmail, ColumnTelefono, ColumnUsuario });
             dataGridView.GridColor = Color.MidnightBlue;
-            dataGridView.Location = new Point(407, 80);
-            dataGridView.Margin = new Padding(3, 4, 3, 4);
+            dataGridView.Location = new Point(356, 60);
             dataGridView.Name = "dataGridView";
             dataGridView.ReadOnly = true;
             dataGridView.RowHeadersWidth = 51;
@@ -388,7 +373,7 @@
             dataGridView.RowTemplate.DefaultCellStyle.ForeColor = SystemColors.ButtonFace;
             dataGridView.RowTemplate.DefaultCellStyle.SelectionBackColor = Color.RoyalBlue;
             dataGridView.RowTemplate.DefaultCellStyle.SelectionForeColor = SystemColors.ButtonFace;
-            dataGridView.Size = new Size(817, 429);
+            dataGridView.Size = new Size(816, 322);
             dataGridView.TabIndex = 9;
             // 
             // ColumnDNI
@@ -451,10 +436,9 @@
             textBoxBuscador.BorderStyle = BorderStyle.FixedSingle;
             textBoxBuscador.Font = new Font("Verdana", 9F);
             textBoxBuscador.ForeColor = SystemColors.ButtonFace;
-            textBoxBuscador.Location = new Point(891, 25);
-            textBoxBuscador.Margin = new Padding(3, 4, 3, 4);
+            textBoxBuscador.Location = new Point(780, 19);
             textBoxBuscador.Name = "textBoxBuscador";
-            textBoxBuscador.Size = new Size(138, 26);
+            textBoxBuscador.Size = new Size(121, 22);
             textBoxBuscador.TabIndex = 32;
             textBoxBuscador.TextChanged += textBoxBuscador_TextChanged;
             // 
@@ -463,9 +447,9 @@
             labelBuscarPorDni.AutoSize = true;
             labelBuscarPorDni.Font = new Font("Verdana", 9F);
             labelBuscarPorDni.ForeColor = SystemColors.ButtonHighlight;
-            labelBuscarPorDni.Location = new Point(823, 28);
+            labelBuscarPorDni.Location = new Point(720, 21);
             labelBuscarPorDni.Name = "labelBuscarPorDni";
-            labelBuscarPorDni.Size = new Size(65, 18);
+            labelBuscarPorDni.Size = new Size(54, 14);
             labelBuscarPorDni.TabIndex = 33;
             labelBuscarPorDni.Text = "Buscar:";
             // 
@@ -473,10 +457,9 @@
             // 
             buttonRecargar.FlatStyle = FlatStyle.System;
             buttonRecargar.Font = new Font("Segoe UI", 16F);
-            buttonRecargar.Location = new Point(407, 25);
-            buttonRecargar.Margin = new Padding(3, 4, 3, 4);
+            buttonRecargar.Location = new Point(356, 19);
             buttonRecargar.Name = "buttonRecargar";
-            buttonRecargar.Size = new Size(39, 40);
+            buttonRecargar.Size = new Size(34, 30);
             buttonRecargar.TabIndex = 41;
             buttonRecargar.Text = "↻";
             buttonRecargar.UseVisualStyleBackColor = true;
@@ -484,10 +467,10 @@
             // 
             // FormCliente
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MidnightBlue;
-            ClientSize = new Size(1255, 565);
+            ClientSize = new Size(1199, 424);
             Controls.Add(buttonRecargar);
             Controls.Add(textBoxBuscador);
             Controls.Add(labelBuscarPorDni);
@@ -499,7 +482,6 @@
             Controls.Add(buttonEditar);
             Controls.Add(buttonNuevo);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Margin = new Padding(3, 4, 3, 4);
             Name = "FormCliente";
             Text = "Clientes";
             Load += FormCliente_Load;

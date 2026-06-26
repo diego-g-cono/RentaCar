@@ -67,10 +67,9 @@
             buttonNuevo.FlatStyle = FlatStyle.Flat;
             buttonNuevo.Font = new Font("Verdana", 9F);
             buttonNuevo.ForeColor = SystemColors.ButtonFace;
-            buttonNuevo.Location = new Point(14, 29);
-            buttonNuevo.Margin = new Padding(3, 4, 3, 4);
+            buttonNuevo.Location = new Point(12, 22);
             buttonNuevo.Name = "buttonNuevo";
-            buttonNuevo.Size = new Size(88, 44);
+            buttonNuevo.Size = new Size(77, 33);
             buttonNuevo.TabIndex = 4;
             buttonNuevo.Text = "Nueva";
             buttonNuevo.UseVisualStyleBackColor = false;
@@ -85,10 +84,9 @@
             buttonEditar.FlatStyle = FlatStyle.Flat;
             buttonEditar.Font = new Font("Verdana", 9F);
             buttonEditar.ForeColor = SystemColors.ButtonFace;
-            buttonEditar.Location = new Point(150, 29);
-            buttonEditar.Margin = new Padding(3, 4, 3, 4);
+            buttonEditar.Location = new Point(131, 22);
             buttonEditar.Name = "buttonEditar";
-            buttonEditar.Size = new Size(88, 44);
+            buttonEditar.Size = new Size(77, 33);
             buttonEditar.TabIndex = 5;
             buttonEditar.Text = "Editar";
             buttonEditar.UseVisualStyleBackColor = false;
@@ -103,10 +101,9 @@
             buttonEliminar.FlatStyle = FlatStyle.Flat;
             buttonEliminar.Font = new Font("Verdana", 9F);
             buttonEliminar.ForeColor = SystemColors.ButtonFace;
-            buttonEliminar.Location = new Point(286, 29);
-            buttonEliminar.Margin = new Padding(3, 4, 3, 4);
+            buttonEliminar.Location = new Point(250, 22);
             buttonEliminar.Name = "buttonEliminar";
-            buttonEliminar.Size = new Size(88, 44);
+            buttonEliminar.Size = new Size(77, 33);
             buttonEliminar.TabIndex = 6;
             buttonEliminar.Text = "Eliminar";
             buttonEliminar.UseVisualStyleBackColor = false;
@@ -122,11 +119,9 @@
             groupBox.Controls.Add(labelNombre);
             groupBox.Font = new Font("Verdana", 9F, FontStyle.Bold);
             groupBox.ForeColor = SystemColors.ButtonFace;
-            groupBox.Location = new Point(14, 101);
-            groupBox.Margin = new Padding(3, 4, 3, 4);
+            groupBox.Location = new Point(12, 76);
             groupBox.Name = "groupBox";
-            groupBox.Padding = new Padding(3, 4, 3, 4);
-            groupBox.Size = new Size(360, 225);
+            groupBox.Size = new Size(315, 169);
             groupBox.TabIndex = 7;
             groupBox.TabStop = false;
             groupBox.Text = "Datos Tarifa";
@@ -137,10 +132,9 @@
             comboBoxVehiculo.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxVehiculo.ForeColor = SystemColors.ButtonFace;
             comboBoxVehiculo.FormattingEnabled = true;
-            comboBoxVehiculo.Location = new Point(157, 160);
-            comboBoxVehiculo.Margin = new Padding(3, 4, 3, 4);
+            comboBoxVehiculo.Location = new Point(137, 120);
             comboBoxVehiculo.Name = "comboBoxVehiculo";
-            comboBoxVehiculo.Size = new Size(138, 26);
+            comboBoxVehiculo.Size = new Size(121, 22);
             comboBoxVehiculo.TabIndex = 29;
             // 
             // textBoxPrecioSemana
@@ -149,11 +143,10 @@
             textBoxPrecioSemana.BorderStyle = BorderStyle.FixedSingle;
             textBoxPrecioSemana.Font = new Font("Verdana", 9F);
             textBoxPrecioSemana.ForeColor = SystemColors.ButtonFace;
-            textBoxPrecioSemana.Location = new Point(158, 101);
-            textBoxPrecioSemana.Margin = new Padding(3, 4, 3, 4);
+            textBoxPrecioSemana.Location = new Point(138, 76);
             textBoxPrecioSemana.Name = "textBoxPrecioSemana";
             textBoxPrecioSemana.ShortcutsEnabled = false;
-            textBoxPrecioSemana.Size = new Size(138, 26);
+            textBoxPrecioSemana.Size = new Size(121, 22);
             textBoxPrecioSemana.TabIndex = 18;
             // 
             // textBoxPrecioDia
@@ -162,20 +155,19 @@
             textBoxPrecioDia.BorderStyle = BorderStyle.FixedSingle;
             textBoxPrecioDia.Font = new Font("Verdana", 9F);
             textBoxPrecioDia.ForeColor = SystemColors.ButtonFace;
-            textBoxPrecioDia.Location = new Point(158, 45);
-            textBoxPrecioDia.Margin = new Padding(3, 4, 3, 4);
+            textBoxPrecioDia.Location = new Point(138, 34);
             textBoxPrecioDia.Name = "textBoxPrecioDia";
             textBoxPrecioDia.ShortcutsEnabled = false;
-            textBoxPrecioDia.Size = new Size(138, 26);
+            textBoxPrecioDia.Size = new Size(121, 22);
             textBoxPrecioDia.TabIndex = 17;
             // 
             // labelTipoVehiculo
             // 
             labelTipoVehiculo.AutoSize = true;
             labelTipoVehiculo.Font = new Font("Verdana", 9F);
-            labelTipoVehiculo.Location = new Point(21, 164);
+            labelTipoVehiculo.Location = new Point(18, 123);
             labelTipoVehiculo.Name = "labelTipoVehiculo";
-            labelTipoVehiculo.Size = new Size(134, 18);
+            labelTipoVehiculo.Size = new Size(113, 14);
             labelTipoVehiculo.TabIndex = 3;
             labelTipoVehiculo.Text = "Tipo de vehiculo:";
             // 
@@ -183,9 +175,9 @@
             // 
             labelApellido.AutoSize = true;
             labelApellido.Font = new Font("Verdana", 9F);
-            labelApellido.Location = new Point(21, 104);
+            labelApellido.Location = new Point(18, 78);
             labelApellido.Name = "labelApellido";
-            labelApellido.Size = new Size(126, 18);
+            labelApellido.Size = new Size(105, 14);
             labelApellido.TabIndex = 2;
             labelApellido.Text = "Precio Semana:";
             // 
@@ -193,9 +185,9 @@
             // 
             labelNombre.AutoSize = true;
             labelNombre.Font = new Font("Verdana", 9F);
-            labelNombre.Location = new Point(22, 48);
+            labelNombre.Location = new Point(19, 36);
             labelNombre.Name = "labelNombre";
-            labelNombre.Size = new Size(88, 18);
+            labelNombre.Size = new Size(74, 14);
             labelNombre.TabIndex = 1;
             labelNombre.Text = "Precio Dia:";
             // 
@@ -208,10 +200,9 @@
             buttonCancelar.FlatStyle = FlatStyle.Flat;
             buttonCancelar.Font = new Font("Verdana", 9F);
             buttonCancelar.ForeColor = SystemColors.ButtonFace;
-            buttonCancelar.Location = new Point(286, 352);
-            buttonCancelar.Margin = new Padding(3, 4, 3, 4);
+            buttonCancelar.Location = new Point(250, 264);
             buttonCancelar.Name = "buttonCancelar";
-            buttonCancelar.Size = new Size(88, 44);
+            buttonCancelar.Size = new Size(77, 33);
             buttonCancelar.TabIndex = 22;
             buttonCancelar.Text = "Cancelar";
             buttonCancelar.UseVisualStyleBackColor = false;
@@ -226,10 +217,9 @@
             buttonGuardar.FlatStyle = FlatStyle.Flat;
             buttonGuardar.Font = new Font("Verdana", 9F);
             buttonGuardar.ForeColor = SystemColors.ButtonFace;
-            buttonGuardar.Location = new Point(14, 352);
-            buttonGuardar.Margin = new Padding(3, 4, 3, 4);
+            buttonGuardar.Location = new Point(12, 264);
             buttonGuardar.Name = "buttonGuardar";
-            buttonGuardar.Size = new Size(88, 44);
+            buttonGuardar.Size = new Size(77, 33);
             buttonGuardar.TabIndex = 21;
             buttonGuardar.Text = "Guardar";
             buttonGuardar.UseVisualStyleBackColor = false;
@@ -257,8 +247,7 @@
             dataGridViewTarifas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewTarifas.Columns.AddRange(new DataGridViewColumn[] { Id, PrecioDia, PrecioSemana, NombreVehiculo });
             dataGridViewTarifas.GridColor = Color.MidnightBlue;
-            dataGridViewTarifas.Location = new Point(464, 101);
-            dataGridViewTarifas.Margin = new Padding(3, 4, 3, 4);
+            dataGridViewTarifas.Location = new Point(406, 76);
             dataGridViewTarifas.Name = "dataGridViewTarifas";
             dataGridViewTarifas.ReadOnly = true;
             dataGridViewTarifas.RowHeadersWidth = 51;
@@ -272,7 +261,7 @@
             dataGridViewTarifas.RowTemplate.DefaultCellStyle.ForeColor = SystemColors.ButtonFace;
             dataGridViewTarifas.RowTemplate.DefaultCellStyle.SelectionBackColor = Color.RoyalBlue;
             dataGridViewTarifas.RowTemplate.DefaultCellStyle.SelectionForeColor = SystemColors.ButtonFace;
-            dataGridViewTarifas.Size = new Size(574, 381);
+            dataGridViewTarifas.Size = new Size(570, 286);
             dataGridViewTarifas.TabIndex = 31;
             // 
             // Id
@@ -317,10 +306,9 @@
             textBoxBuscador.BorderStyle = BorderStyle.FixedSingle;
             textBoxBuscador.Font = new Font("Verdana", 9F);
             textBoxBuscador.ForeColor = SystemColors.ButtonFace;
-            textBoxBuscador.Location = new Point(834, 39);
-            textBoxBuscador.Margin = new Padding(3, 4, 3, 4);
+            textBoxBuscador.Location = new Point(730, 29);
             textBoxBuscador.Name = "textBoxBuscador";
-            textBoxBuscador.Size = new Size(138, 26);
+            textBoxBuscador.Size = new Size(121, 22);
             textBoxBuscador.TabIndex = 38;
             textBoxBuscador.TextChanged += textBoxBuscador_TextChanged;
             // 
@@ -329,9 +317,9 @@
             labelBuscarPorDni.AutoSize = true;
             labelBuscarPorDni.Font = new Font("Verdana", 9F);
             labelBuscarPorDni.ForeColor = SystemColors.ButtonHighlight;
-            labelBuscarPorDni.Location = new Point(766, 41);
+            labelBuscarPorDni.Location = new Point(670, 31);
             labelBuscarPorDni.Name = "labelBuscarPorDni";
-            labelBuscarPorDni.Size = new Size(65, 18);
+            labelBuscarPorDni.Size = new Size(54, 14);
             labelBuscarPorDni.TabIndex = 39;
             labelBuscarPorDni.Text = "Buscar:";
             // 
@@ -339,10 +327,9 @@
             // 
             buttonRecargar.FlatStyle = FlatStyle.System;
             buttonRecargar.Font = new Font("Segoe UI", 16F);
-            buttonRecargar.Location = new Point(464, 33);
-            buttonRecargar.Margin = new Padding(3, 4, 3, 4);
+            buttonRecargar.Location = new Point(406, 25);
             buttonRecargar.Name = "buttonRecargar";
-            buttonRecargar.Size = new Size(39, 40);
+            buttonRecargar.Size = new Size(34, 30);
             buttonRecargar.TabIndex = 45;
             buttonRecargar.Text = "↻";
             buttonRecargar.UseVisualStyleBackColor = true;
@@ -350,10 +337,10 @@
             // 
             // FormTarifas
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MidnightBlue;
-            ClientSize = new Size(1087, 517);
+            ClientSize = new Size(988, 388);
             Controls.Add(buttonRecargar);
             Controls.Add(textBoxBuscador);
             Controls.Add(labelBuscarPorDni);
@@ -365,7 +352,6 @@
             Controls.Add(buttonEditar);
             Controls.Add(buttonNuevo);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Margin = new Padding(3, 4, 3, 4);
             Name = "FormTarifas";
             Text = "Tarifas";
             Load += FormTarifas_Load;

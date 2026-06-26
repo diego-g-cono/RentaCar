@@ -66,10 +66,9 @@
             buttonCancelar.FlatStyle = FlatStyle.Flat;
             buttonCancelar.Font = new Font("Verdana", 9F);
             buttonCancelar.ForeColor = SystemColors.ButtonFace;
-            buttonCancelar.Location = new Point(303, 324);
-            buttonCancelar.Margin = new Padding(3, 4, 3, 4);
+            buttonCancelar.Location = new Point(265, 243);
             buttonCancelar.Name = "buttonCancelar";
-            buttonCancelar.Size = new Size(88, 44);
+            buttonCancelar.Size = new Size(77, 33);
             buttonCancelar.TabIndex = 34;
             buttonCancelar.Text = "Cancelar";
             buttonCancelar.UseVisualStyleBackColor = false;
@@ -84,10 +83,9 @@
             buttonGuardar.FlatStyle = FlatStyle.Flat;
             buttonGuardar.Font = new Font("Verdana", 9F);
             buttonGuardar.ForeColor = SystemColors.ButtonFace;
-            buttonGuardar.Location = new Point(31, 324);
-            buttonGuardar.Margin = new Padding(3, 4, 3, 4);
+            buttonGuardar.Location = new Point(27, 243);
             buttonGuardar.Name = "buttonGuardar";
-            buttonGuardar.Size = new Size(88, 44);
+            buttonGuardar.Size = new Size(77, 33);
             buttonGuardar.TabIndex = 33;
             buttonGuardar.Text = "Guardar";
             buttonGuardar.UseVisualStyleBackColor = false;
@@ -103,11 +101,9 @@
             groupBox.Controls.Add(labelApellido);
             groupBox.Font = new Font("Verdana", 9F, FontStyle.Bold);
             groupBox.ForeColor = SystemColors.ButtonFace;
-            groupBox.Location = new Point(31, 85);
-            groupBox.Margin = new Padding(3, 4, 3, 4);
+            groupBox.Location = new Point(27, 64);
             groupBox.Name = "groupBox";
-            groupBox.Padding = new Padding(3, 4, 3, 4);
-            groupBox.Size = new Size(360, 216);
+            groupBox.Size = new Size(315, 162);
             groupBox.TabIndex = 32;
             groupBox.TabStop = false;
             groupBox.Text = "Datos Usuario";
@@ -118,20 +114,19 @@
             textBoxContrasenia.BorderStyle = BorderStyle.FixedSingle;
             textBoxContrasenia.Font = new Font("Verdana", 9F);
             textBoxContrasenia.ForeColor = SystemColors.ButtonFace;
-            textBoxContrasenia.Location = new Point(185, 107);
-            textBoxContrasenia.Margin = new Padding(3, 4, 3, 4);
+            textBoxContrasenia.Location = new Point(162, 80);
             textBoxContrasenia.Name = "textBoxContrasenia";
             textBoxContrasenia.PasswordChar = '*';
-            textBoxContrasenia.Size = new Size(138, 26);
+            textBoxContrasenia.Size = new Size(121, 22);
             textBoxContrasenia.TabIndex = 31;
             // 
             // labelContrasenia
             // 
             labelContrasenia.AutoSize = true;
             labelContrasenia.Font = new Font("Verdana", 9F);
-            labelContrasenia.Location = new Point(27, 109);
+            labelContrasenia.Location = new Point(24, 82);
             labelContrasenia.Name = "labelContrasenia";
-            labelContrasenia.Size = new Size(101, 18);
+            labelContrasenia.Size = new Size(86, 14);
             labelContrasenia.TabIndex = 30;
             labelContrasenia.Text = "Contraseña:";
             // 
@@ -142,10 +137,9 @@
             comboBoxRol.ForeColor = SystemColors.ButtonFace;
             comboBoxRol.FormattingEnabled = true;
             comboBoxRol.Items.AddRange(new object[] { "Admin", "User" });
-            comboBoxRol.Location = new Point(185, 164);
-            comboBoxRol.Margin = new Padding(3, 4, 3, 4);
+            comboBoxRol.Location = new Point(162, 123);
             comboBoxRol.Name = "comboBoxRol";
-            comboBoxRol.Size = new Size(138, 26);
+            comboBoxRol.Size = new Size(121, 22);
             comboBoxRol.TabIndex = 28;
             // 
             // textBoxNombreUsuario
@@ -154,19 +148,18 @@
             textBoxNombreUsuario.BorderStyle = BorderStyle.FixedSingle;
             textBoxNombreUsuario.Font = new Font("Verdana", 9F);
             textBoxNombreUsuario.ForeColor = SystemColors.ButtonFace;
-            textBoxNombreUsuario.Location = new Point(185, 47);
-            textBoxNombreUsuario.Margin = new Padding(3, 4, 3, 4);
+            textBoxNombreUsuario.Location = new Point(162, 35);
             textBoxNombreUsuario.Name = "textBoxNombreUsuario";
-            textBoxNombreUsuario.Size = new Size(138, 26);
+            textBoxNombreUsuario.Size = new Size(121, 22);
             textBoxNombreUsuario.TabIndex = 18;
             // 
             // labelRol
             // 
             labelRol.AutoSize = true;
             labelRol.Font = new Font("Verdana", 9F);
-            labelRol.Location = new Point(27, 168);
+            labelRol.Location = new Point(24, 126);
             labelRol.Name = "labelRol";
-            labelRol.Size = new Size(38, 18);
+            labelRol.Size = new Size(31, 14);
             labelRol.TabIndex = 16;
             labelRol.Text = "Rol:";
             // 
@@ -174,9 +167,9 @@
             // 
             labelApellido.AutoSize = true;
             labelApellido.Font = new Font("Verdana", 9F);
-            labelApellido.Location = new Point(27, 49);
+            labelApellido.Location = new Point(24, 37);
             labelApellido.Name = "labelApellido";
-            labelApellido.Size = new Size(157, 18);
+            labelApellido.Size = new Size(132, 14);
             labelApellido.TabIndex = 2;
             labelApellido.Text = "Nombre de usuario:";
             // 
@@ -189,10 +182,9 @@
             buttonEliminar.FlatStyle = FlatStyle.Flat;
             buttonEliminar.Font = new Font("Verdana", 9F);
             buttonEliminar.ForeColor = SystemColors.ButtonFace;
-            buttonEliminar.Location = new Point(303, 28);
-            buttonEliminar.Margin = new Padding(3, 4, 3, 4);
+            buttonEliminar.Location = new Point(265, 21);
             buttonEliminar.Name = "buttonEliminar";
-            buttonEliminar.Size = new Size(88, 44);
+            buttonEliminar.Size = new Size(77, 33);
             buttonEliminar.TabIndex = 31;
             buttonEliminar.Text = "Eliminar";
             buttonEliminar.UseVisualStyleBackColor = false;
@@ -207,10 +199,9 @@
             buttonEditar.FlatStyle = FlatStyle.Flat;
             buttonEditar.Font = new Font("Verdana", 9F);
             buttonEditar.ForeColor = SystemColors.ButtonFace;
-            buttonEditar.Location = new Point(166, 28);
-            buttonEditar.Margin = new Padding(3, 4, 3, 4);
+            buttonEditar.Location = new Point(145, 21);
             buttonEditar.Name = "buttonEditar";
-            buttonEditar.Size = new Size(88, 44);
+            buttonEditar.Size = new Size(77, 33);
             buttonEditar.TabIndex = 30;
             buttonEditar.Text = "Editar";
             buttonEditar.UseVisualStyleBackColor = false;
@@ -225,10 +216,9 @@
             buttonNuevo.FlatStyle = FlatStyle.Flat;
             buttonNuevo.Font = new Font("Verdana", 9F);
             buttonNuevo.ForeColor = SystemColors.ButtonFace;
-            buttonNuevo.Location = new Point(31, 28);
-            buttonNuevo.Margin = new Padding(3, 4, 3, 4);
+            buttonNuevo.Location = new Point(27, 21);
             buttonNuevo.Name = "buttonNuevo";
-            buttonNuevo.Size = new Size(88, 44);
+            buttonNuevo.Size = new Size(77, 33);
             buttonNuevo.TabIndex = 29;
             buttonNuevo.Text = "Nuevo";
             buttonNuevo.UseVisualStyleBackColor = false;
@@ -251,8 +241,7 @@
             dataGridViewUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewUsuarios.Columns.AddRange(new DataGridViewColumn[] { IdColumn, ColumnNombre, ColumnRol });
             dataGridViewUsuarios.GridColor = Color.MidnightBlue;
-            dataGridViewUsuarios.Location = new Point(451, 80);
-            dataGridViewUsuarios.Margin = new Padding(3, 4, 3, 4);
+            dataGridViewUsuarios.Location = new Point(395, 60);
             dataGridViewUsuarios.Name = "dataGridViewUsuarios";
             dataGridViewUsuarios.RowHeadersWidth = 51;
             dataGridViewCellStyle2.BackColor = Color.MidnightBlue;
@@ -261,7 +250,7 @@
             dataGridViewCellStyle2.SelectionBackColor = Color.RoyalBlue;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.ButtonFace;
             dataGridViewUsuarios.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            dataGridViewUsuarios.Size = new Size(472, 321);
+            dataGridViewUsuarios.Size = new Size(446, 241);
             dataGridViewUsuarios.TabIndex = 35;
             // 
             // IdColumn
@@ -298,10 +287,9 @@
             textBoxBuscador.BorderStyle = BorderStyle.FixedSingle;
             textBoxBuscador.Font = new Font("Verdana", 9F);
             textBoxBuscador.ForeColor = SystemColors.ButtonFace;
-            textBoxBuscador.Location = new Point(711, 37);
-            textBoxBuscador.Margin = new Padding(3, 4, 3, 4);
+            textBoxBuscador.Location = new Point(622, 28);
             textBoxBuscador.Name = "textBoxBuscador";
-            textBoxBuscador.Size = new Size(138, 26);
+            textBoxBuscador.Size = new Size(121, 22);
             textBoxBuscador.TabIndex = 40;
             textBoxBuscador.TextChanged += textBoxBuscador_TextChanged;
             // 
@@ -310,9 +298,9 @@
             labelBuscarPorDni.AutoSize = true;
             labelBuscarPorDni.Font = new Font("Verdana", 9F);
             labelBuscarPorDni.ForeColor = SystemColors.ButtonHighlight;
-            labelBuscarPorDni.Location = new Point(642, 40);
+            labelBuscarPorDni.Location = new Point(562, 30);
             labelBuscarPorDni.Name = "labelBuscarPorDni";
-            labelBuscarPorDni.Size = new Size(65, 18);
+            labelBuscarPorDni.Size = new Size(54, 14);
             labelBuscarPorDni.TabIndex = 41;
             labelBuscarPorDni.Text = "Buscar:";
             // 
@@ -320,10 +308,9 @@
             // 
             buttonRecargar.FlatStyle = FlatStyle.System;
             buttonRecargar.Font = new Font("Segoe UI", 16F);
-            buttonRecargar.Location = new Point(451, 32);
-            buttonRecargar.Margin = new Padding(3, 4, 3, 4);
+            buttonRecargar.Location = new Point(395, 24);
             buttonRecargar.Name = "buttonRecargar";
-            buttonRecargar.Size = new Size(39, 40);
+            buttonRecargar.Size = new Size(34, 30);
             buttonRecargar.TabIndex = 44;
             buttonRecargar.Text = "↻";
             buttonRecargar.UseVisualStyleBackColor = true;
@@ -331,10 +318,10 @@
             // 
             // FormUsuarios
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MidnightBlue;
-            ClientSize = new Size(989, 447);
+            ClientSize = new Size(865, 335);
             Controls.Add(dataGridViewUsuarios);
             Controls.Add(buttonRecargar);
             Controls.Add(textBoxBuscador);
@@ -346,7 +333,6 @@
             Controls.Add(buttonEditar);
             Controls.Add(buttonNuevo);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Margin = new Padding(3, 4, 3, 4);
             Name = "FormUsuarios";
             Text = "Usuarios";
             Load += FormUsuarios_Load;
